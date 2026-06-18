@@ -9,14 +9,6 @@ import { Subscription } from 'rxjs';
  imports: [CommonModule],
  template: `
  <div style="font-family: sans-serif; max-width:700px; margin:40px auto; padding:20px; border:1px solid #ccc; border-radius:8px; text-align: center;">
- <h2>Cosechador local (assets)</h2>
- <p>Se selecciona un producto aleatorio desde los ficheros en <code>assets/</code>.</p>
-
- <div *ngIf="!mostrando">
- <button (click)="mostrarSiguiente()" style="background:#00a650;color:white;border:none;padding:10px20px;border-radius:4px;cursor:pointer;margin-right:10px;">
- Siguiente aleatorio
- </button>
- </div>
 
  <div *ngIf="mostrando">
  <div style="display:flex;gap:20px;align-items:flex-start;">

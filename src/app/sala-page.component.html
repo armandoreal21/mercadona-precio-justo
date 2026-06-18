@@ -46,7 +46,9 @@
  <div class="bg-slate-800 p-4 rounded-xl">
  <h4 class="font-bold text-lg mb-2">Jugadores</h4>
  <ol class="list-decimal list-inside space-y-3">
- <li *ngFor="let j of sala.jugadores" class="flex items-center justify-between gap-2">
+ <ng-container *ngFor="let j of sala.jugadores">
+ <!-- show all players to admin, otherwise show only the current user's input block -->
+ <li *ngIf="isCurrentAdmin() || j.nombre === currentName" class="flex items-center justify-between gap-2">
  <div class="flex-1">
  <div class="font-semibold">{{ j.nombre }} <span *ngIf="j.esAdmin" class="text-yellow-300">(admin)</span></div>
  <div class="text-xs text-slate-400">Puntos: <span *ngIf="canSeePoints(j)">{{ j.puntuacion ||0 }}</span><span *ngIf="!canSeePoints(j)">—</span></div>
@@ -69,7 +71,27 @@
  </ng-container>
  </div>
  </li>
+ </ng-container>
  </ol>
+ </div>
+ </div>
+
+ <!-- waiting modal (shows to the player after they send their apuesta) -->
+ <div *ngIf="esperandoModalVisible" class="fixed inset-0 flex items-center justify-center bg-black/50 z-40">
+ <div class="bg-slate-800 p-6 rounded-xl w-full max-w-md">
+ <h4 class="text-lg font-bold mb-3">Esperando al resto de concursantes</h4>
+ <div *ngIf="!isCurrentAdmin()" class="text-sm text-slate-300 mb-3">Has enviado tu apuesta. Espera a que el administrador calcule las puntuaciones. No podrás cerrar este diálogo hasta entonces.</div>
+ <div *ngIf="isCurrentAdmin()" class="text-sm text-slate-300 mb-3">Has enviado tu apuesta. Puedes cerrar este diálogo y calcular las puntuaciones cuando quieras.</div>
+ <ul class="space-y-2">
+ <li *ngFor="let e of esperandoList" class="flex items-center justify-between bg-slate-900 p-2 rounded">
+ <div>{{ e.nombre }}</div>
+ <div class="text-sm" [ngClass]="{'text-emerald-300': e.apostado, 'text-rose-300': !e.apostado}">{{ e.apostado ? 'Apostado' : 'Sin apostar' }}</div>
+ </li>
+ </ul>
+ <div class="mt-4 text-right">
+ <!-- only admin (or when results exist) may close; non-admins see no button -->
+ <button *ngIf="isCurrentAdmin() || (sala && sala.lastResults)" (click)="cerrarEsperandoModal()" class="px-4 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Cerrar</button>
+ </div>
  </div>
  </div>
 

@@ -63,36 +63,36 @@
     {
       "codigo": "MAXR9",
       "nombre": "Prueba 4",
-      "productoActualId": 35668,
+      "productoActualId": 13525,
       "productoActual": {
-        "id": "35668",
-        "nombre": "Gel de baÃ±o nutritivo Lactovit piel normal y seca",
-        "precio": 2.95,
-        "imagen": "https://prod-mercadona.imgix.net/images/05053a107955497f1762d614e0481923.jpg?fit=crop&h=300&w=300",
+        "id": "13525",
+        "nombre": "Estropajo jabonoso Bosque Verde",
+        "precio": 1.1,
+        "imagen": "https://prod-mercadona.imgix.net/images/0b72b88bb90c8ea34a7b910de5c2a0ce.jpg?fit=crop&h=300&w=300",
         "descripcion": "",
-        "categoria": "Gel y jabÃ³n de manos",
-        "share_url": "https://tienda.mercadona.es/product/35668/gel-bano-nutritivo-lactovit-piel-normal-seca-botella"
+        "categoria": "Estropajo, bayeta y guantes",
+        "share_url": "https://tienda.mercadona.es/product/13525/estropajo-jabonoso-bosque-verde-paquete"
       },
-      "estado": "esperando_jugadores",
+      "estado": "finalizada",
       "jugadores": [
         {
           "nombre": "Vito",
           "esAdmin": false,
-          "puntuacion": 62
+          "puntuacion": 77
         },
         {
           "nombre": "Armando",
           "esAdmin": true,
-          "puntuacion": 49
+          "puntuacion": 64
         },
         {
           "nombre": "Esther",
           "esAdmin": false,
-          "puntuacion": 33
+          "puntuacion": 47
         }
       ],
       "rondasTotales": 10,
-      "rondaActual": 9,
+      "rondaActual": 11,
       "historialRondas": [
         {
           "ronda": 0,
@@ -296,6 +296,72 @@
             }
           ],
           "ts": 1781802714240
+        },
+        {
+          "ronda": 9,
+          "producto": {
+            "id": "35668",
+            "nombre": "Gel de baÃ±o nutritivo Lactovit piel normal y seca",
+            "precio": 2.95,
+            "imagen": "https://prod-mercadona.imgix.net/images/05053a107955497f1762d614e0481923.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Gel y jabÃ³n de manos",
+            "share_url": "https://tienda.mercadona.es/product/35668/gel-bano-nutritivo-lactovit-piel-normal-seca-botella"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.75,
+              "apuesta": 2.2
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 7,
+              "delta": 0.9500000000000002,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Vito",
+              "puntos": 5,
+              "delta": 1.1500000000000001,
+              "apuesta": 1.8
+            }
+          ],
+          "ts": 1781803310148
+        },
+        {
+          "ronda": 10,
+          "producto": {
+            "id": "8671",
+            "nombre": "Tarta carrot cake Hacendado congelada",
+            "precio": 11,
+            "imagen": "https://prod-mercadona.imgix.net/images/eb97414077c7d4b0b5e3a2e055af785b.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Tartas y pasteles",
+            "share_url": "https://tienda.mercadona.es/product/8671/tarta-carrot-cake-hacendado-congelada-bizcocho-zanahoria-con-crema-queso"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 11
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 7,
+              "delta": 1,
+              "apuesta": 12
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 5,
+              "delta": 2,
+              "apuesta": 13
+            }
+          ],
+          "ts": 1781803378156
         }
       ],
       "lastResults": null

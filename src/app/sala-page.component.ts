@@ -22,6 +22,9 @@ export class SalaPageComponent implements OnDestroy {
  errorMsg: string | null = null;
  // store last price for modal display
  lastPrice: number | null = null;
+ // waiting modal state
+ esperandoModalVisible = false;
+ esperandoList: { nombre: string; apostado: boolean }[] = [];
 
  // timer & UI state
  timerSeconds =0;
@@ -105,6 +108,14 @@ export class SalaPageComponent implements OnDestroy {
  }
  }
 
+ private buildEsperandoList() {
+ this.esperandoList = [];
+ if (!this.sala) return;
+ this.sala.jugadores.forEach(j => {
+ this.esperandoList.push({ nombre: j.nombre, apostado: j.apuesta !== undefined });
+ });
+ }
+
  refreshSala(): void {
  this.sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
  this.apuestas = {};
@@ -120,6 +131,8 @@ export class SalaPageComponent implements OnDestroy {
  this.resultados = this.sala.lastResults.results;
  this.lastPrice = typeof this.sala.lastResults.price === 'number' ? this.sala.lastResults.price : null;
  this.resultadosModalVisible = true;
+ // when results exist, close waiting modal
+ this.esperandoModalVisible = false;
  } else {
  // fallback to previous localStorage mechanism (older clients)
  try {
@@ -134,6 +147,8 @@ export class SalaPageComponent implements OnDestroy {
  // ignore
  }
  }
+ // rebuild waiting list so modal shows up-to-date status
+ this.buildEsperandoList();
  }
  this.currentName = this.readCurrentName();
  }
@@ -158,6 +173,9 @@ export class SalaPageComponent implements OnDestroy {
  }
  this.sentMap[nombre] = true;
  this.refreshSala();
+ // open waiting modal for the sender showing who has/hasn't bet yet
+ this.buildEsperandoList();
+ this.esperandoModalVisible = true;
  }
 
  allPlayersHaveApuestas(): boolean {
@@ -238,6 +256,18 @@ export class SalaPageComponent implements OnDestroy {
  this.stopTimer();
  }
  this.refreshSala();
+ }
+
+ cerrarEsperandoModal(): void {
+ // Only admin may close the waiting modal manually; non-admins can only have it auto-closed when results exist
+ if (!this.isCurrentAdmin()) {
+ // if results already present, allow closing
+ if (this.sala && this.sala.lastResults) {
+ this.esperandoModalVisible = false;
+ }
+ return;
+ }
+ this.esperandoModalVisible = false;
  }
 
  onRemovePlayer(nombre: string): void {
