@@ -189,37 +189,71 @@
     {
       "codigo": "J7C5E",
       "nombre": "Mi sala",
-      "productoActualId": 82655,
+      "productoActualId": 52488,
       "productoActual": {
-        "id": "82655",
-        "nombre": "Pan de fibra y sÃ©samo Hacendado",
-        "precio": 1.13,
-        "imagen": "https://prod-mercadona.imgix.net/images/a3392f9e5392dfbc6be285a4864bb40a.jpg?fit=crop&h=300&w=300",
+        "id": "52488",
+        "nombre": "Gelatina sabor a frutos silvestres +ProteÃ­nas Hacendado 10 g proteÃ­nas 0% azÃºcar",
+        "precio": 1.55,
+        "imagen": "https://prod-mercadona.imgix.net/images/5c50c837dc5cd5e8efe4425971c2cf83.jpg?fit=crop&h=300&w=300",
         "descripcion": "",
-        "categoria": "Pan tostado y rallado",
-        "share_url": "https://tienda.mercadona.es/product/82655/pan-fibra-sesamo-hacendado-paquete"
+        "categoria": "Gelatina y otros postres",
+        "share_url": "https://tienda.mercadona.es/product/52488/gelatina-sabor-frutos-silvestres-proteinas-hacendado-10-g-proteinas-0-azucar-pack-4"
       },
       "estado": "esperando_jugadores",
       "jugadores": [
         {
           "nombre": "Armando",
           "esAdmin": true,
-          "puntuacion": 0
+          "puntuacion": 5
         },
         {
           "nombre": "Carmen",
           "esAdmin": false,
-          "puntuacion": 0
+          "puntuacion": 10
         },
         {
           "nombre": "Héctor",
           "esAdmin": false,
-          "puntuacion": 0
+          "puntuacion": 7
         }
       ],
       "rondasTotales": 3,
-      "rondaActual": 0,
-      "historialRondas": [],
+      "rondaActual": 1,
+      "historialRondas": [
+        {
+          "ronda": 0,
+          "producto": {
+            "id": "82655",
+            "nombre": "Pan de fibra y sÃ©samo Hacendado",
+            "precio": 1.13,
+            "imagen": "https://prod-mercadona.imgix.net/images/a3392f9e5392dfbc6be285a4864bb40a.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Pan tostado y rallado",
+            "share_url": "https://tienda.mercadona.es/product/82655/pan-fibra-sesamo-hacendado-paquete"
+          },
+          "resultados": [
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0.8700000000000001,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 7,
+              "delta": 1.87,
+              "apuesta": 3
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 5,
+              "delta": 3.87,
+              "apuesta": 5
+            }
+          ],
+          "ts": 1781811440127
+        }
+      ],
       "lastResults": null
     }
   ]
