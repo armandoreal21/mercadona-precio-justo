@@ -21,6 +21,11 @@ import { SalaService } from './sala.service';
  <input [(ngModel)]="nombre" type="text" placeholder="Ej: Sala de los Cracks" 
  class="w-full bg-slate-700 border-2 border-slate-600 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-yellow-400 transition" />
  </div>
+ <div>
+ <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Rondas Totales</label>
+ <input [(ngModel)]="rondas" type="number" min="1" class="w-24 bg-slate-700 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-semibold focus:outline-none" />
+ <p class="text-xs text-slate-500 mt-1">Número de rondas de la partida (ej:5)</p>
+ </div>
  
  <button (click)="generar()" class="w-full bg-gradient-to-r from-yellow-400 to-amber-500 text-purple-900 font-black text-lg py-3 rounded-xl shadow-lg hover:from-yellow-300 hover:to-amber-400 active:translate-y-0.5 transition uppercase tracking-wider">
  🚀 Generar Sala
@@ -44,10 +49,12 @@ import { SalaService } from './sala.service';
 })
 export class CrearSalaComponent {
  nombre = '';
+ rondas = 5;
  resultado: any = null;
  constructor(private sala: SalaService) {}
  generar() {
  if (!this.nombre || !this.nombre.trim()) { this.resultado = { error: 'Introduce un nombre válido' }; return; }
- this.resultado = this.sala.crearSala(this.nombre);
+ const rounds = Number(this.rondas) || 5;
+ this.resultado = this.sala.crearSala(this.nombre, rounds);
  }
 }

@@ -191,7 +191,21 @@ export class SalaService {
  if (!raw) return [];
  try {
  const parsed = JSON.parse(raw);
- return parsed?.salasActivas || [];
+ const salas: Sala[] = parsed?.salasActivas || [];
+ // migration: ensure existing rooms have rondasTotales set (default5)
+ let changed = false;
+ salas.forEach(s => {
+ if (s.rondasTotales === undefined || s.rondasTotales === null) { s.rondasTotales =5; changed = true; }
+ // ensure historialRondas exists
+ if (!Array.isArray(s.historialRondas)) s.historialRondas = [];
+ // ensure rondaActual exists
+ if (s.rondaActual === undefined || s.rondaActual === null) { s.rondaActual =0; changed = true; }
+ });
+ if (changed) {
+ // persist migration
+ localStorage.setItem(this.storageKey, JSON.stringify({ salasActivas: salas }));
+ }
+ return salas;
  } catch (e) {
  return [];
  }
@@ -235,7 +249,7 @@ export class SalaService {
  return codigo;
  }
 
- crearSala(nombre: string): { sala: Sala; creado: boolean; error?: string } {
+ crearSala(nombre: string, rondas =5): { sala: Sala; creado: boolean; error?: string } {
  const salas = this.readAll();
  if (salas.find(s => s.nombre.toLowerCase() === nombre.trim().toLowerCase())) {
  return { sala: null as any, creado: false, error: 'Ya existe una sala con ese nombre' };
@@ -252,7 +266,7 @@ export class SalaService {
  productoActual: null,
  estado: 'esperando_jugadores',
  jugadores: [],
- rondasTotales:10,
+ rondasTotales: typeof rondas === 'number' && rondaSaneable(rondas) ? Math.max(1, Math.floor(rondas)) :5,
  rondaActual:0,
  historialRondas: [],
  lastResults: null
@@ -299,6 +313,29 @@ export class SalaService {
  const idx = sala.jugadores.findIndex(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
  if (idx === -1) return false;
  sala.jugadores.splice(idx,1);
+ this.writeAll(salas);
+ return true;
+ }
+
+ // reiniciar sala para nueva partida: limpiar historial, resetear puntuaciones, rondas y producto
+ reiniciarSala(codigo: string) {
+ const salas = this.readAll();
+ const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
+ if (!sala) return false;
+ sala.historialRondas = [];
+ sala.rondaActual =0;
+ sala.productoActual = null;
+ sala.lastResults = null;
+ sala.jugadores.forEach(j => { j.puntuacion =0; delete j.apuesta; });
+ this.writeAll(salas);
+ return true;
+ }
+
+ eliminarSala(codigo: string) {
+ const salas = this.readAll();
+ const idx = salas.findIndex(s => s.codigo === (codigo || '').toUpperCase());
+ if (idx === -1) return false;
+ salas.splice(idx,1);
  this.writeAll(salas);
  return true;
  }
@@ -407,4 +444,10 @@ function productoidOrNull(v: any) {
  if (v === null || v === undefined) return null;
  const n = Number(v);
  return isNaN(n) ? String(v) : n;
+}
+
+function rondaSaneable(r: any) {
+ if (r === null || r === undefined) return true;
+ const n = Number(r);
+ return !isNaN(n) && n >0 && n <= 50;
 }

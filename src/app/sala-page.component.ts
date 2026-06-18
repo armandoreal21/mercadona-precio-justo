@@ -271,11 +271,36 @@ export class SalaPageComponent implements OnDestroy {
  this.resultados = null;
  this.errorMsg = null;
  try { localStorage.removeItem('mpj_last_results_' + this.codigo); } catch (e) {}
- // If admin: clear lastResults in shared state and automatically advance + load next product
+ // If admin: clear lastResults in shared state and handle advancing or end-of-game flow
  if (this.isCurrentAdmin()) {
  // clear lastResults for all clients
  this.salaService.clearLastResults(this.codigo);
- // advance round
+ // determine if this was the final round
+ const sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
+ const rondaActual = sala?.rondaActual ??0;
+ const rondasTotales = sala?.rondasTotales ??5;
+ const isFinal = (rondaActual +1) >= rondasTotales;
+ if (isFinal) {
+ // ask admin whether to delete the room or start a new game
+ const eliminar = confirm('Se ha alcanzado la última ronda. ¿Quieres ELIMINAR la sala? Aceptar = Eliminar. Cancelar = Reiniciar partida para jugar de nuevo.');
+ if (eliminar) {
+ this.salaService.eliminarSala(this.codigo);
+ // navigate away after deletion
+ this.router.navigate(['/unirse']);
+ return;
+ } else {
+ // restart for a new game
+ this.salaService.reiniciarSala(this.codigo);
+ // optionally load a new random product for the first round
+ this.cargarProductoAleatorio();
+ // ensure inputs enabled
+ this.inputsDisabled = false;
+ this.stopTimer();
+ this.refreshSala();
+ return;
+ }
+ }
+ // not final round: advance and continue as before
  this.salaService.avanzarRonda(this.codigo);
  // load next product
  this.cargarProductoAleatorio();
