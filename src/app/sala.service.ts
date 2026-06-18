@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 export interface Jugador {
  nombre: string;
@@ -10,15 +10,30 @@ export interface Jugador {
  puntuacion?: number;
 }
 
+export interface ResultadoRonda {
+ nombre: string;
+ puntos: number;
+ delta: number;
+ apuesta?: number;
+}
+
+export interface HistorialRonda {
+ ronda: number;
+ producto?: any;
+ resultados: ResultadoRonda[];
+ ts: number;
+}
+
 export interface Sala {
  codigo: string;
  nombre: string;
  productoActualId?: number | string | null;
- productoActual?: any; // guardamos el objeto producto para UI/local
+ productoActual?: any;
  estado: string;
  jugadores: Jugador[];
  rondasTotales?: number;
  rondaActual?: number;
+ historialRondas?: HistorialRonda[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -27,16 +42,26 @@ export class SalaService {
  private storageKey = 'mpj_salas_v1';
  private templatePath = 'assets/sala-data.json';
 
- // Si estamos en entorno servidor, localStorage no existe. Usaremos cache en memoria.
+ // runtime flag to disable websocket
+ private useWebsocket: boolean = true;
+
  private hasLocalStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
  private memoryCache: { salasActivas: Sala[] } | null = null;
 
- // WebSocket sync
  private ws: WebSocket | null = null;
  private clientId = Math.random().toString(36).slice(2);
  private suppressBroadcast = false;
+ private pendingSync = false;
 
  constructor() {
+ // respect runtime flag to disable websocket
+ try {
+ const env = (window as any).__env;
+ if (env && (env.USE_WS === 'false' || env.USE_WS === false)) {
+ this.useWebsocket = false;
+ }
+ } catch (e) { /* ignore */ }
+
  // Sólo inicializamos localStorage desde template si estamos en navegador
  if (this.hasLocalStorage) {
  if (!localStorage.getItem(this.storageKey)) {
@@ -54,19 +79,29 @@ export class SalaService {
  this.memoryCache = { salasActivas: [] };
  }
 
- // iniciar websocket solo en navegador
- if (typeof window !== 'undefined' && typeof WebSocket !== 'undefined') {
+ // iniciar websocket solo si está habilitado en runtime y el navegador soporta WebSocket
+ if (this.useWebsocket && typeof window !== 'undefined' && typeof WebSocket !== 'undefined') {
  this.initWebsocket();
  }
  }
 
  private initWebsocket() {
+ if (!this.useWebsocket) return;
  try {
- this.ws = new WebSocket('ws://localhost:3001');
+ const url = (window as any).__env?.WS_URL || 'ws://localhost:3001';
+ this.ws = new WebSocket(url);
  this.ws.addEventListener('open', () => {
  // solicitar estado actual al servidor
  const msg = { type: 'requestState', clientId: this.clientId };
  this.ws?.send(JSON.stringify(msg));
+ // if we have local changes that weren't synced, push them now
+ if (this.pendingSync) {
+ try {
+ const local = this.readAll();
+ this.ws?.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: local } }));
+ this.pendingSync = false;
+ } catch (e) { /* ignore */ }
+ }
  });
  this.ws.addEventListener('message', (ev) => {
  try {
@@ -77,11 +112,22 @@ export class SalaService {
  this.suppressBroadcast = true;
  try {
  const state = data.state as { salasActivas: Sala[] };
+ // if server state is empty but we have local state, push local to server to initialize
+ const local = this.readAll();
+ const serverHas = Array.isArray(state?.salasActivas) && state.salasActivas.length >0;
+ if (!serverHas && Array.isArray(local) && local.length >0) {
+ // send our local state to server
+ try { this.ws?.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: local } })); } catch (e) {}
+ }
  if (this.hasLocalStorage) {
  localStorage.setItem(this.storageKey, JSON.stringify(state));
  } else {
  // assign the received state to memoryCache
  this.memoryCache = state;
+ }
+ // notify app that state changed
+ if (typeof window !== 'undefined') {
+ window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: data.clientId } }));
  }
  } catch (e) {
  // ignore
@@ -92,20 +138,46 @@ export class SalaService {
  console.error('WS parse error', e);
  }
  });
- this.ws.addEventListener('close', () => { this.ws = null; });
+ this.ws.addEventListener('close', () => { this.ws = null; if (this.useWebsocket) setTimeout(() => this.tryReconnect(),2000); });
  this.ws.addEventListener('error', () => { /* ignore errors */ });
  } catch (e) {
  // ignore websocket init errors
  this.ws = null;
+ // schedule reconnect
+ setTimeout(() => this.tryReconnect(),2000);
  }
  }
 
- private broadcastState(salas: Sala[]) {
- if (this.suppressBroadcast) return;
- if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return;
- const msg = { type: 'syncState', clientId: this.clientId, state: { salasActivas: salas } };
+ private tryReconnect() {
+ if (!this.useWebsocket) return;
+ if (this.ws) return; // already connected
  try {
- this.ws.send(JSON.stringify(msg));
+ this.initWebsocket();
+ } catch (e) {
+ // schedule again
+ setTimeout(() => this.tryReconnect(),2000);
+ }
+ }
+
+ // HTTP fallback to request server state
+ requestServerState(): Promise<any> {
+ const url = ((window as any).__env?.WS_URL || 'http://localhost:3001').replace(/^ws/, 'http');
+ return this.http.get(url + '/state').pipe(catchError(() => of(null))).toPromise();
+ }
+
+ private broadcastState(salas: Sala[]) {
+ // don't broadcast if we're suppressing or WS disabled
+ if (this.suppressBroadcast) { return; }
+ if (!this.useWebsocket) { return; }
+
+ const ws = this.ws as WebSocket | null;
+ if (!ws) { return; }
+ // check readyState safely
+ const ready = (ws as any).readyState;
+ if (ready !== (WebSocket as any).OPEN) { return; }
+
+ try {
+ ws.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: salas } }));
  } catch (e) {
  // ignore send errors
  }
@@ -135,12 +207,27 @@ export class SalaService {
  this.memoryCache.salasActivas = salas;
  }
 
- // enviar al servidor
+ // If websocket enabled and open, send via WS. Otherwise, use HTTP /sync fallback.
+ if (this.useWebsocket && this.ws && this.ws.readyState === WebSocket.OPEN) {
  this.broadcastState(salas);
+ this.pendingSync = false;
+ } else {
+ this.pendingSync = true;
+ // HTTP fallback: try posting to /sync
+ try {
+ const url = ((window as any).__env?.WS_URL || 'http://localhost:3001').replace(/^ws/, 'http');
+ fetch(url + '/sync', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ clientId: this.clientId, state: { salasActivas: salas } }) }).catch(() => {});
+ } catch (e) {}
+ }
+
+ // notify local listeners
+ if (typeof window !== 'undefined') {
+ window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: this.clientId } }));
+ }
  }
 
  generarCodigo(longitud =5): string {
- const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // evitar I, O,0,1
+ const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZA23456789'; // evitar I, O,0,1
  let codigo = '';
  for (let i =0; i < longitud; i++) codigo += chars[Math.floor(Math.random() * chars.length)];
  return codigo;
@@ -164,7 +251,8 @@ export class SalaService {
  estado: 'esperando_jugadores',
  jugadores: [],
  rondasTotales:10,
- rondaActual:0
+ rondaActual:0,
+ historialRondas: []
  };
  salas.push(nueva);
  this.writeAll(salas);
@@ -181,9 +269,7 @@ export class SalaService {
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return { success: false, error: 'Sala no encontrada' };
  if (!nombreJugador || !nombreJugador.trim()) return { success: false, error: 'Nombre inválido' };
- if (sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase())) {
- return { success: false, error: 'Ya existe un jugador con ese nombre en la sala' };
- }
+ if (sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase())) return { success: false, error: 'Ya existe un jugador con ese nombre en la sala' };
  const jugador: Jugador = { nombre: nombreJugador.trim(), esAdmin: false, puntuacion:0 };
  sala.jugadores.push(jugador);
  this.writeAll(salas);
@@ -193,7 +279,6 @@ export class SalaService {
  unirComoAdmin(codigo: string, nombreJugador: string): { sala?: Sala; success: boolean; error?: string } {
  const res = this.unirASala(codigo, nombreJugador);
  if (!res.success) return res;
- // marcar como admin
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return { success: false, error: 'Sala no encontrada tras unir' };
@@ -204,7 +289,17 @@ export class SalaService {
  return { sala, success: true };
  }
 
- // actualizar todo el objeto producto (se serializa en localStorage)
+ removePlayer(codigo: string, nombreJugador: string) {
+ const salas = this.readAll();
+ const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
+ if (!sala) return false;
+ const idx = sala.jugadores.findIndex(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
+ if (idx === -1) return false;
+ sala.jugadores.splice(idx,1);
+ this.writeAll(salas);
+ return true;
+ }
+
  actualizarProductoObjeto(codigo: string, producto: any) {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
@@ -215,7 +310,6 @@ export class SalaService {
  return true;
  }
 
- // funciones auxiliares para el flujo de juego (actualizar producto, puntuaciones...)
  actualizarProductoActual(codigo: string, productoId: number) {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
@@ -236,7 +330,6 @@ export class SalaService {
  return true;
  }
 
- // nueva: establecer apuesta para un jugador
  setApuesta(codigo: string, nombreJugador: string, apuesta: number) {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
@@ -248,7 +341,6 @@ export class SalaService {
  return true;
  }
 
- // nueva: calcular puntuaciones de la ronda actual usando productoActual.precio
  calcularPuntuacionesRonda(codigo: string): { nombre: string; puntos: number; delta: number }[] | null {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
@@ -256,43 +348,29 @@ export class SalaService {
  const precioReal = Number(sala.productoActual?.precio ?? sala.productoActual?.price ?? sala.productoActual?.unit_price);
  if (!precioReal || isNaN(precioReal)) return null;
 
- // Sólo consideramos jugadores con apuesta numérica
- const jugadoresConApuesta = sala.jugadores.map(j => ({ nombre: j.nombre, apuesta: Number(j.apuesta ?? NaN), puntuacion: j.puntuacion ||0 }))
- .filter(j => !isNaN(j.apuesta));
-
- // Si no hay apuestas, nada que hacer
+ const jugadoresConApuesta = sala.jugadores.map(j => ({ nombre: j.nombre, apuesta: Number(j.apuesta ?? NaN), puntuacion: j.puntuacion ||0 })).filter(j => !isNaN(j.apuesta));
  if (jugadoresConApuesta.length ===0) return [];
-
- // calcular delta absoluto
  const resultados = jugadoresConApuesta.map(j => ({ nombre: j.nombre, delta: Math.abs(j.apuesta - precioReal), apuesta: j.apuesta }));
-
- // ordenar por delta ascendente (más cercano primero)
  resultados.sort((a, b) => a.delta - b.delta);
-
- // asignar puntos por ranking:1º10,2º7,3º5, resto3
  const puntosPorPos = [10,7,5];
  const asignaciones: { nombre: string; puntos: number; delta: number }[] = [];
-
  resultados.forEach((r, idx) => {
  const puntos = idx < puntosPorPos.length ? puntosPorPos[idx] :3;
  asignaciones.push({ nombre: r.nombre, puntos, delta: r.delta });
- // actualizar jugador en sala
  const jugador = sala.jugadores.find(j => j.nombre === r.nombre);
- if (jugador) {
- jugador.puntuacion = (jugador.puntuacion ||0) + puntos;
- }
+ if (jugador) jugador.puntuacion = (jugador.puntuacion ||0) + puntos;
  });
 
- // guardar y avanzar ronda
+ if (!sala.historialRondas) sala.historialRondas = [];
+ sala.historialRondas.push({ ronda: sala.rondaActual ??0, producto: sala.productoActual ? { ...sala.productoActual } : undefined, resultados: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta })), ts: Date.now() });
+
  this.writeAll(salas);
  sala.rondaActual = (sala.rondaActual ||0) +1;
  if ((sala.rondaActual ||0) >= (sala.rondasTotales ||10)) sala.estado = 'finalizada';
  this.writeAll(salas);
-
  return asignaciones;
  }
 
- // nueva: limpiar apuestas (preparar siguiente ronda)
  clearApuestas(codigo: string) {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
@@ -307,9 +385,7 @@ export class SalaService {
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
  sala.rondaActual = (sala.rondaActual ||0) +1;
- if ((sala.rondaActual ||0) >= (sala.rondasTotales ||10)) {
- sala.estado = 'finalizada';
- }
+ if ((sala.rondaActual ||0) >= (sala.rondasTotales ||10)) sala.estado = 'finalizada';
  this.writeAll(salas);
  return true;
  }

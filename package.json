@@ -8,7 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:mercadona-precio-justo": "node dist/mercadona-precio-justo/server/server.mjs",
-    "postinstall": "npx tailwindcss -i ./src/styles.css -o ./src/tailwind-output.css --minify || true",
     "ws-server": "node server/ws-server.js"
   },
   "private": true,

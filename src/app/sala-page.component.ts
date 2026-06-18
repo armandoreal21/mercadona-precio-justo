@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -9,94 +9,9 @@ import { AssetLoaderService } from './asset-loader.service';
  selector: 'app-sala-page',
  standalone: true,
  imports: [CommonModule, RouterModule, FormsModule],
- template: `
- <div class="min-h-screen bg-slate-900 p-4 text-white">
- <div *ngIf="loadError" class="max-w-2xl mx-auto p-6 bg-red-800 rounded-xl text-white">Error cargando assets: {{ loadError }}</div>
- <div *ngIf="!sala && !loadError" class="max-w-2xl mx-auto p-6 bg-slate-800 rounded-xl">Sala no encontrada</div>
-
- <div *ngIf="sala" class="max-w-3xl mx-auto p-6 bg-slate-800 rounded-3xl shadow-2xl border-4 border-purple-600">
- <div class="flex items-center justify-between mb-4">
- <div>
- <h2 class="text-2xl font-black text-yellow-400">Sala: {{ sala.nombre }}</h2>
- <div class="text-sm text-slate-300">Código: <span class="font-mono">{{ sala.codigo }}</span></div>
- </div>
- <div class="text-right">
- <div class="text-sm">Ronda {{ sala.rondaActual }} / {{ sala.rondasTotales }}</div>
- <div class="text-xs text-slate-400">Estado: {{ sala.estado }}</div>
- </div>
- </div>
-
- <div class="grid md:grid-cols-3 gap-4">
- <div class="md:col-span-2 bg-slate-900 p-4 rounded-xl">
-
- <div *ngIf="sala.productoActual; else sinProducto">
- <h3 class="text-xl font-bold">{{ sala.productoActual.nombre || sala.productoActual.display_name }}</h3>
- <img *ngIf="sala.productoActual.imagen || sala.productoActual.thumbnail" [src]="sala.productoActual.imagen || sala.productoActual.thumbnail" class="w-full max-w-sm rounded-lg mt-3" />
- <p class="mt-3 text-slate-300">Precio real: <strong class="text-green-300">{{ sala.productoActual.precio | number:'1.2-2' }} €</strong></p>
- </div>
- <ng-template #sinProducto>
- <div class="text-center text-slate-400 p-6">Aún no se ha seleccionado un producto para esta ronda.</div>
- </ng-template>
-
- <div class="mt-4 flex gap-2 items-center">
- <button (click)="cargarProductoAleatorio()" class="bg-yellow-400 text-purple-900 px-3 py-2 rounded-xl font-bold">Siguiente Producto</button>
- <button (click)="avanzarRonda()" class="bg-cyan-400 text-slate-900 px-3 py-2 rounded-xl font-bold">Finalizar Ronda</button>
-
- <ng-container *ngIf="isCurrentAdmin()">
- <button (click)="onCalcularPuntuaciones()" class="bg-rose-500 text-white px-3 py-2 rounded-xl font-bold" title="Calcular según apuestas">Calcular puntuaciones</button>
- <div class="ml-4 flex items-center gap-2">
- <button (click)="startTimer(30)" class="px-3 py-2 bg-indigo-600 rounded">Iniciar temporizador30s</button>
- <div *ngIf="timerRunning" class="text-sm">Tiempo: {{ timerSeconds }}s</div>
- </div>
- </ng-container>
- </div>
-
- <!-- Resultado modal simple -->
- <div *ngIf="resultadosModalVisible" class="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
- <div class="bg-slate-800 p-6 rounded-xl w-full max-w-lg">
- <h4 class="text-xl font-bold mb-3">Resultados Ronda</h4>
- <div *ngIf="resultados && resultados.length>0" class="space-y-2">
- <div *ngFor="let r of resultados" class="flex justify-between bg-slate-900 p-2 rounded">
- <div><strong>{{ r.nombre }}</strong> — delta: {{ r.delta | number:'1.2-2' }} €</div>
- <div class="font-bold">+{{ r.puntos }} pts</div>
- </div>
- </div>
- <div *ngIf="resultados && resultados.length===0" class="text-slate-400">No hubo apuestas válidas esta ronda.</div>
- <div *ngIf="errorMsg" class="text-red-400 mt-2">{{ errorMsg }}</div>
-
- <div class="mt-4 text-right">
- <button (click)="cerrarModal()" class="px-4 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Cerrar</button>
- </div>
- </div>
- </div>
-
- </div>
-
- <div class="bg-slate-800 p-4 rounded-xl">
- <h4 class="font-bold text-lg mb-2">Jugadores</h4>
- <ol class="list-decimal list-inside space-y-3">
- <li *ngFor="let j of sala.jugadores" class="flex items-center justify-between gap-2">
- <div class="flex-1">
- <div class="font-semibold">{{ j.nombre }} <span *ngIf="j.esAdmin" class="text-yellow-300">(admin)</span></div>
- <div class="text-xs text-slate-400">Puntos: {{ j.puntuacion ||0 }}</div>
- </div>
-
- <div class="w-44">
- <input type="number" [(ngModel)]="apuestas[j.nombre]" placeholder="€" class="w-full text-center bg-slate-700 rounded px-2 py-1" [disabled]="inputsDisabled || sentMap[j.nombre]" />
- <div class="mt-2 flex gap-2">
- <button (click)="enviarApuesta(j.nombre)" class="bg-cyan-400 text-slate-900 px-2 py-1 rounded text-sm" [disabled]="inputsDisabled || sentMap[j.nombre]">Enviar</button>
- <div *ngIf="sentMap[j.nombre]" class="text-xs text-slate-300 self-center">Enviada: {{ j.apuesta }}€</div>
- </div>
- </div>
- </li>
- </ol>
- </div>
- </div>
- </div>
- </div>
- `
+ templateUrl: './sala-page.component.html'
 })
-export class SalaPageComponent {
+export class SalaPageComponent implements OnDestroy {
  sala: Sala | null = null;
  codigo = '';
  loadError: string | null = null;
@@ -112,6 +27,9 @@ export class SalaPageComponent {
  inputsDisabled = false; // global disable after timer ends
  sentMap: Record<string, boolean> = {};
 
+ currentName: string | null = null;
+ showHistorial = false;
+
  constructor(
  private route: ActivatedRoute,
  private salaService: SalaService,
@@ -119,11 +37,35 @@ export class SalaPageComponent {
  private router: Router
  ) {
  this.codigo = String(this.route.snapshot.paramMap.get('codigo') || '').toUpperCase();
+ this.currentName = this.readCurrentName();
  this.init();
+
+ if (typeof window !== 'undefined') {
+ window.addEventListener('mpj_state_updated', this.onRemoteUpdate as EventListener);
+ }
  }
 
- async init() {
- // comprobación previa de assets: Categoria.json
+ ngOnDestroy(): void {
+ if (typeof window !== 'undefined') {
+ window.removeEventListener('mpj_state_updated', this.onRemoteUpdate as EventListener);
+ }
+ this.stopTimer();
+ }
+
+ private onRemoteUpdate = () => this.refreshSala();
+
+ readCurrentName(): string | null {
+ try {
+ const raw = localStorage.getItem('mpj_current');
+ if (!raw) return null;
+ const cur = JSON.parse(raw as string);
+ return cur?.nombre || null;
+ } catch (e) {
+ return null;
+ }
+ }
+
+ async init(): Promise<void> {
  try {
  const cats: any = await fetch('assets/Categoria.json').then(r => r.json());
  if (!cats || !cats.results) {
@@ -135,10 +77,8 @@ export class SalaPageComponent {
  return;
  }
 
- // comprobar que la sala existe
  const sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
  if (!sala) {
- // redirigir a unirse con mensaje
  this.router.navigate(['/unirse']);
  return;
  }
@@ -146,20 +86,23 @@ export class SalaPageComponent {
  this.refreshSala();
  }
 
- hasAdmin(): boolean {
- return !!this.sala && Array.isArray(this.sala.jugadores) && this.sala.jugadores.some(p => !!p.esAdmin);
+ canSeePoints(j: any): boolean {
+ if (this.isCurrentAdmin()) return true;
+ return j.nombre === this.currentName;
  }
 
  isCurrentAdmin(): boolean {
  try {
- const cur = JSON.parse(localStorage.getItem('mpj_current') || 'null');
- return cur && cur.codigo === this.codigo && cur.esAdmin;
+ const raw = localStorage.getItem('mpj_current');
+ if (!raw) return false;
+ const cur = JSON.parse(raw as string);
+ return !!(cur && cur.codigo === this.codigo && cur.esAdmin);
  } catch (e) {
  return false;
  }
  }
 
- refreshSala() {
+ refreshSala(): void {
  this.sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
  this.apuestas = {};
  this.sentMap = {};
@@ -169,9 +112,25 @@ export class SalaPageComponent {
  this.sentMap[j.nombre] = j.apuesta !== undefined;
  });
  }
+ this.currentName = this.readCurrentName();
  }
 
- enviarApuesta(nombre: string) {
+ onRefresh(): void {
+ this.refreshSala();
+ try {
+ const raw = localStorage.getItem('mpj_last_results_' + this.codigo);
+ if (raw) {
+ const stored = JSON.parse(raw as string);
+ this.resultados = stored.results || null;
+ this.resultadosModalVisible = !!this.resultados;
+ }
+ } catch (e) {
+ // ignore
+ }
+ }
+
+ enviarApuesta(nombre: string): void {
+ if (nombre !== this.currentName) return;
  const val = this.apuestas[nombre];
  if (val === null || val === undefined || isNaN(Number(val))) {
  this.errorMsg = 'Introduce un valor numérico válido';
@@ -188,31 +147,40 @@ export class SalaPageComponent {
  this.refreshSala();
  }
 
- startTimer(seconds =30) {
+ allPlayersHaveApuestas(): boolean {
+ if (!this.sala) return false;
+ return this.sala.jugadores.every(j => j.apuesta !== undefined && !isNaN(Number(j.apuesta)));
+ }
+
+ startTimer(seconds =30): void {
  if (this.timerHandle) clearInterval(this.timerHandle);
  this.timerSeconds = seconds;
  this.timerRunning = true;
- this.inputsDisabled = false; // allow inputs while timer runs
+ this.inputsDisabled = false;
  this.timerHandle = setInterval(() => {
  this.timerSeconds -=1;
  if (this.timerSeconds <=0) {
  this.stopTimer();
- // al finalizar, bloquear inputs y calcular automáticamente
  this.inputsDisabled = true;
- this.onCalcularPuntuaciones();
+ if (this.isCurrentAdmin()) this.onCalcularPuntuaciones();
  }
- },1000);
+ },1000) as unknown as number;
  }
 
- stopTimer() {
+ stopTimer(): void {
  if (this.timerHandle) clearInterval(this.timerHandle);
  this.timerHandle = null;
  this.timerRunning = false;
  }
 
- async onCalcularPuntuaciones() {
+ async onCalcularPuntuaciones(): Promise<void> {
  if (!this.isCurrentAdmin()) {
  this.errorMsg = 'Solo el admin puede calcular puntuaciones';
+ setTimeout(() => (this.errorMsg = null),2000);
+ return;
+ }
+ if (!this.allPlayersHaveApuestas()) {
+ this.errorMsg = 'No todos los jugadores han apostado aún';
  setTimeout(() => (this.errorMsg = null),2000);
  return;
  }
@@ -227,26 +195,40 @@ export class SalaPageComponent {
  }
  this.resultados = res;
  this.resultadosModalVisible = true;
- // limpiar apuestas para siguiente ronda
+ try {
+ localStorage.setItem('mpj_last_results_' + this.codigo, JSON.stringify({ ts: Date.now(), results: res }));
+ } catch (e) {}
  this.salaService.clearApuestas(this.codigo);
- // detener timer si estaba corriendo
  this.stopTimer();
  this.inputsDisabled = true;
- // refrescar sala para mostrar nuevas puntuaciones
  this.refreshSala();
  }
 
- cerrarModal() {
+ cerrarModal(): void {
  this.resultadosModalVisible = false;
  this.resultados = null;
  this.errorMsg = null;
+ try { localStorage.removeItem('mpj_last_results_' + this.codigo); } catch (e) {}
  this.refreshSala();
  }
 
- cargarProductoAleatorio() {
+ onRemovePlayer(nombre: string): void {
+ if (!this.isCurrentAdmin()) return;
+ if (!confirm("Eliminar jugador '" + nombre + "' de la sala?")) return;
+ const ok = this.salaService.removePlayer(this.codigo, nombre);
+ if (!ok) {
+ this.errorMsg = 'No se pudo eliminar el jugador';
+ setTimeout(() => (this.errorMsg = null),2000);
+ return;
+ }
+ this.refreshSala();
+ }
+
+ cargarProductoAleatorio(): void {
  this.httpGetRandomProduct().then(p => {
  if (p) {
  this.salaService.actualizarProductoObjeto(this.codigo, p);
+ try { localStorage.removeItem('mpj_last_results_' + this.codigo); } catch (e) {}
  this.refreshSala();
  }
  });
@@ -255,38 +237,37 @@ export class SalaPageComponent {
  async httpGetRandomProduct(): Promise<any | null> {
  try {
  const cats: any = await fetch('assets/Categoria.json').then(r => r.json());
- const results = cats?.results || [];
+ const results = cats && cats.results ? cats.results : [];
  const posiblesSubIds: number[] = [];
- results.forEach((r: any) => {
- if (Array.isArray(r.categories)) r.categories.forEach((sc: any) => {
- if (sc?.id) posiblesSubIds.push(sc.id);
- });
- });
+ results.forEach((r: any) => { if (Array.isArray(r.categories)) r.categories.forEach((sc: any) => { if (sc && sc.id) posiblesSubIds.push(sc.id); }); });
  if (posiblesSubIds.length ===0) return null;
  const elegido = posiblesSubIds[Math.floor(Math.random() * posiblesSubIds.length)];
- const sub: any = await fetch(`assets/subcategorias/${elegido}.json`).then(r => r.json());
+ const sub: any = await fetch('assets/subcategorias/' + elegido + '.json').then(r => r.json());
  const productos: any[] = [];
  if (Array.isArray(sub.products)) productos.push(...sub.products);
  if (Array.isArray(sub.categories)) {
  sub.categories.forEach((b: any) => {
  if (Array.isArray(b.products)) productos.push(...b.products);
- if (Array.isArray(b.categories)) b.categories.forEach((c2: any) => {
- if (Array.isArray(c2.products)) productos.push(...c2.products);
- });
+ if (Array.isArray(b.categories)) b.categories.forEach((c2: any) => { if (Array.isArray(c2.products)) productos.push(...c2.products); });
  });
  }
  if (productos.length ===0) return null;
  const prod = productos[Math.floor(Math.random() * productos.length)];
- const precioRaw = prod?.price_instructions?.unit_price ?? prod?.price?.unit_price ??0;
+ let precioRaw: any =0;
+ if (prod) {
+ if (prod.price_instructions && prod.price_instructions.unit_price != null) precioRaw = prod.price_instructions.unit_price;
+ else if (prod.price && prod.price.unit_price != null) precioRaw = prod.price.unit_price;
+ else precioRaw =0;
+ }
  const precio = typeof precioRaw === 'string' ? parseFloat(precioRaw) : Number(precioRaw);
  return {
- id: prod.id ?? prod?.product_id ?? '',
- nombre: prod.display_name || prod.name || prod?.slug || '',
+ id: prod && (prod.id || prod.product_id) ? (prod.id || prod.product_id) : '',
+ nombre: prod && (prod.display_name || prod.name || prod.slug) ? (prod.display_name || prod.name || prod.slug) : '',
  precio: isNaN(precio) ?0 : precio,
- imagen: prod.thumbnail || prod.photos?.[0]?.regular || prod.share_url || '',
- descripcion: prod.description || prod.long_description || '',
- categoria: sub.name || undefined,
- share_url: prod.share_url || undefined
+ imagen: (prod && (prod.thumbnail || (prod.photos && prod.photos[0] && prod.photos[0].regular) || prod.share_url)) || '',
+ descripcion: prod && (prod.description || prod.long_description) ? (prod.description || prod.long_description) : '',
+ categoria: sub && sub.name ? sub.name : undefined,
+ share_url: prod && prod.share_url ? prod.share_url : undefined
  };
  } catch (e) {
  console.error(e);
@@ -294,7 +275,7 @@ export class SalaPageComponent {
  }
  }
 
- avanzarRonda() {
+ avanzarRonda(): void {
  this.salaService.avanzarRonda(this.codigo);
  this.refreshSala();
  }

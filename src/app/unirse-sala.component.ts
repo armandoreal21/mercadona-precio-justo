@@ -54,8 +54,25 @@ export class UnirseSalaComponent {
  asAdmin = false;
  error: string | null = null;
  constructor(private sala: SalaService, private router: Router) {}
- entrar() {
+
+ async entrar() {
  this.error = null;
+ // try to fetch server state first and wait a short time for sync event
+ try {
+ if (typeof window !== 'undefined' && typeof (this.sala as any).requestServerState === 'function') {
+ try { (this.sala as any).requestServerState(); } catch (e) {}
+ // wait for mpj_state_updated or timeout
+ await new Promise<void>(resolve => {
+ let done = false;
+ const onUpdate = () => { if (done) return; done = true; window.removeEventListener('mpj_state_updated', onUpdate as EventListener); resolve(); };
+ window.addEventListener('mpj_state_updated', onUpdate as EventListener);
+ setTimeout(() => { if (done) return; done = true; window.removeEventListener('mpj_state_updated', onUpdate as EventListener); resolve(); },600);
+ });
+ }
+ } catch (e) {
+ // ignore
+ }
+
  let res: any;
  if (this.asAdmin) {
  res = this.sala.unirComoAdmin(this.codigo, this.nombre);

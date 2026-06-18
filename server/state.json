@@ -1,0 +1,180 @@
+{
+  "salasActivas": [
+    {
+      "codigo": "XZ5K7",
+      "nombre": "Prueba 1",
+      "productoActualId": 69387,
+      "productoActual": {
+        "id": "69387",
+        "nombre": "Preparado de verdura para cocido",
+        "precio": 2.4,
+        "imagen": "https://prod-mercadona.imgix.net/images/f8640a4e43da7fda63f2025154de30fe.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "Verdura",
+        "share_url": "https://tienda.mercadona.es/product/69387/preparado-verdura-cocido-bandeja"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 30
+        }
+      ],
+      "rondasTotales": 10,
+      "rondaActual": 6
+    },
+    {
+      "codigo": "DVVVQ",
+      "nombre": "Prueba 2",
+      "productoActualId": 39129,
+      "productoActual": {
+        "id": "39129",
+        "nombre": "Zumo de piÃ±a y uva Hacendado",
+        "precio": 1.2,
+        "imagen": "https://prod-mercadona.imgix.net/images/d8dd70c608c6bf3aaebdc10b5f6c53bf.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "MelocotÃ³n y piÃ±a",
+        "share_url": "https://tienda.mercadona.es/product/39129/zumo-pina-uva-hacendado-brick"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 10,
+      "rondaActual": 0,
+      "historialRondas": []
+    },
+    {
+      "codigo": "Z8YMQ",
+      "nombre": "Prueba 3",
+      "productoActualId": null,
+      "productoActual": null,
+      "estado": "esperando_jugadores",
+      "jugadores": [],
+      "rondasTotales": 10,
+      "rondaActual": 0,
+      "historialRondas": []
+    },
+    {
+      "codigo": "MAXR9",
+      "nombre": "Prueba 4",
+      "productoActualId": 9776,
+      "productoActual": {
+        "id": "9776",
+        "nombre": "Cerveza 0,0% sin alcohol El Ãguila sin filtrar",
+        "precio": 5.34,
+        "imagen": "https://prod-mercadona.imgix.net/images/4e7260d7e92c0b7666953d09cdfdac5c.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "Cerveza sin alcohol",
+        "share_url": "https://tienda.mercadona.es/product/9776/cerveza-00-sin-alcohol-aguila-sin-filtrar-pack-6"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Vito",
+          "esAdmin": false,
+          "puntuacion": 22
+        },
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 27
+        },
+        {
+          "nombre": "Esther",
+          "esAdmin": false,
+          "puntuacion": 7
+        }
+      ],
+      "rondasTotales": 10,
+      "rondaActual": 5,
+      "historialRondas": [
+        {
+          "ronda": 0,
+          "producto": {
+            "id": "22648",
+            "nombre": "Pizza Pepperoni barbacoa Hacendado ultracongelada",
+            "precio": 3.5,
+            "imagen": "https://prod-mercadona.imgix.net/images/cbb1e8399ede793facd1d4392b29b3aa.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Pizzas",
+            "share_url": "https://tienda.mercadona.es/product/22648/pizza-pepperoni-barbacoa-hacendado-ultracongelada-rellena-salsa-queso"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 0.5
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 7,
+              "delta": 1.5
+            }
+          ],
+          "ts": 1781798395643
+        },
+        {
+          "ronda": 2,
+          "producto": {
+            "id": "12846",
+            "nombre": "Queso lonchas sin lactosa de vaca Hacendado",
+            "precio": 2.6,
+            "imagen": "https://prod-mercadona.imgix.net/images/41e0218522470559822527317e7c5568.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Queso lonchas, rallado y en porciones",
+            "share_url": "https://tienda.mercadona.es/product/12846/queso-lonchas-sin-lactosa-vaca-hacendado-paquete"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 1
+            },
+            {
+              "nombre": "Vito",
+              "puntos": 7,
+              "delta": 1.6
+            }
+          ],
+          "ts": 1781798457566
+        },
+        {
+          "ronda": 4,
+          "producto": {
+            "id": "9776",
+            "nombre": "Cerveza 0,0% sin alcohol El Ãguila sin filtrar",
+            "precio": 5.34,
+            "imagen": "https://prod-mercadona.imgix.net/images/4e7260d7e92c0b7666953d09cdfdac5c.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Cerveza sin alcohol",
+            "share_url": "https://tienda.mercadona.es/product/9776/cerveza-00-sin-alcohol-aguila-sin-filtrar-pack-6"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.33999999999999986
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 7,
+              "delta": 1.3399999999999999
+            },
+            {
+              "nombre": "Vito",
+              "puntos": 5,
+              "delta": 2.34
+            }
+          ],
+          "ts": 1781798541798
+        }
+      ]
+    }
+  ]
+}
