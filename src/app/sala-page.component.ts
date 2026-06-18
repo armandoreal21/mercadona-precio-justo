@@ -38,6 +38,8 @@ export class SalaPageComponent implements OnDestroy {
  // new fields for clasificación feature
  showClasificacion = false;
  clasificacionList: { nombre: string; puntos: number }[] = [];
+ // modal for final round decision
+ showFinalChoiceModal = false;
 
  constructor(
  private route: ActivatedRoute,
@@ -281,24 +283,10 @@ export class SalaPageComponent implements OnDestroy {
  const rondasTotales = sala?.rondasTotales ??5;
  const isFinal = (rondaActual +1) >= rondasTotales;
  if (isFinal) {
- // ask admin whether to delete the room or start a new game
- const eliminar = confirm('Se ha alcanzado la última ronda. ¿Quieres ELIMINAR la sala? Aceptar = Eliminar. Cancelar = Reiniciar partida para jugar de nuevo.');
- if (eliminar) {
- this.salaService.eliminarSala(this.codigo);
- // navigate away after deletion
- this.router.navigate(['/unirse']);
+ // show custom modal to admin to choose action
+ this.showFinalChoiceModal = true;
+ // do not advance or delete yet; handlers will perform actions
  return;
- } else {
- // restart for a new game
- this.salaService.reiniciarSala(this.codigo);
- // optionally load a new random product for the first round
- this.cargarProductoAleatorio();
- // ensure inputs enabled
- this.inputsDisabled = false;
- this.stopTimer();
- this.refreshSala();
- return;
- }
  }
  // not final round: advance and continue as before
  this.salaService.avanzarRonda(this.codigo);
@@ -309,6 +297,31 @@ export class SalaPageComponent implements OnDestroy {
  // reset timer state
  this.stopTimer();
  }
+ this.refreshSala();
+ }
+
+ handleDeleteRoom(): void {
+ // admin confirmed deletion from custom modal
+ this.showFinalChoiceModal = false;
+ this.salaService.eliminarSala(this.codigo);
+ // navigate away
+ this.router.navigate(['/unirse']);
+ }
+
+ handleRestartGame(): void {
+ // admin opted to restart the game
+ this.showFinalChoiceModal = false;
+ this.salaService.reiniciarSala(this.codigo);
+ // optionally load a new random product
+ this.cargarProductoAleatorio();
+ this.inputsDisabled = false;
+ this.stopTimer();
+ this.refreshSala();
+ }
+
+ handleCancelFinalChoice(): void {
+ // admin closed the choice modal without action; keep room as is
+ this.showFinalChoiceModal = false;
  this.refreshSala();
  }
 

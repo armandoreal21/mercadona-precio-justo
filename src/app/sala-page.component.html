@@ -141,5 +141,18 @@
  </div>
  </div>
  </div>
+
+ <!-- custom final choice modal (replace native confirm) -->
+ <div *ngIf="showFinalChoiceModal" class="fixed inset-0 flex items-center justify-center bg-black/60 z-70">
+ <div class="bg-slate-800 p-6 rounded-xl w-full max-w-md border-2 border-yellow-400">
+ <h4 class="text-lg font-bold mb-3">Final de la partida</h4>
+ <p class="text-sm text-slate-300 mb-4">Se ha alcanzado la última ronda. ¿Qué deseas hacer con la sala?</p>
+ <div class="space-y-2">
+ <button (click)="handleDeleteRoom()" class="w-full bg-red-600 text-white px-3 py-2 rounded font-bold">Eliminar sala</button>
+ <button (click)="handleRestartGame()" class="w-full bg-emerald-500 text-white px-3 py-2 rounded font-bold">Reiniciar partida (mantener sala)</button>
+ <button (click)="handleCancelFinalChoice()" class="w-full bg-slate-700 text-white px-3 py-2 rounded">Cancelar</button>
+ </div>
+ </div>
+ </div>
  </div>
 </div>
