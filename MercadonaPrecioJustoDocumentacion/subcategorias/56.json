@@ -1,0 +1,1506 @@
+﻿{
+    "id":  56,
+    "name":  "Queso lonchas, rallado y en porciones",
+    "order":  159,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  310,
+                           "name":  "Queso lonchas",
+                           "order":  159,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "50545",
+                                                "slug":  "queso-lonchas-cremoso-havarti-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50545/queso-lonchas-cremoso-havarti-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/25fe53131f87dfeba20008ce868de29c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas cremoso de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "9.33",
+                                                                           "unit_price":  "2.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        2.85",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50385",
+                                                "slug":  "queso-lonchas-tierno-mezcla-entrepinares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50385/queso-lonchas-tierno-mezcla-entrepinares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/64c70ea48d0a710780a67971c70f7e54.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas tierno mezcla Entrepinares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "9.95",
+                                                                           "unit_price":  "2.49",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.950",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50546",
+                                                "slug":  "queso-lonchas-cremoso-light-havarti-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50546/queso-lonchas-cremoso-light-havarti-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/bf40cbb31507eaf48225f29f65c325b9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas cremoso light de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "9.67",
+                                                                           "unit_price":  "2.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50148",
+                                                "slug":  "queso-lonchas-semicurado-mezcla-entrepinares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50148/queso-lonchas-semicurado-mezcla-entrepinares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/717ff26ca49d56dd956fad414961c020.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas semicurado mezcla Entrepinares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.21,
+                                                                           "bulk_price":  "12.25",
+                                                                           "unit_price":  "2.57",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50371",
+                                                "slug":  "queso-lonchas-fundido-sandwich-mezcla-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50371/queso-lonchas-fundido-sandwich-mezcla-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/466833190111f32b6901258f9ebe4265.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas fundido sÃ¡ndwich mezcla Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "5.75",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.20",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50654",
+                                                "slug":  "queso-lonchas-gouda-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50654/queso-lonchas-gouda-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3c0bd3e0e3803f38df0677d86b8c8b43.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas gouda de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "6.50",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        2.05",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50153",
+                                                "slug":  "queso-lonchas-cabra-entrepinares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50153/queso-lonchas-cabra-entrepinares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/83876b302b8f4bafde5749db67fdfc0b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas de cabra Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.22,
+                                                                           "bulk_price":  "15.50",
+                                                                           "unit_price":  "3.41",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50543",
+                                                "slug":  "queso-lonchas-tierno-vaca-entrepinares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50543/queso-lonchas-tierno-vaca-entrepinares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7fd31869c4e06d13baac0bdc8970e2e5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas tierno de vaca Entrepinares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "8.33",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51182",
+                                                "slug":  "queso-lonchas-fundido-suave-mezcla-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51182/queso-lonchas-fundido-suave-mezcla-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d6d49f98b5ad0ebd7d7604ab48e47a8c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas fundido suave mezcla Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.555,
+                                                                           "bulk_price":  "4.23",
+                                                                           "unit_price":  "2.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  30,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.235",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50459",
+                                                "slug":  "queso-lonchas-edam-vaca-holland-corona-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50459/queso-lonchas-edam-vaca-holland-corona-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f30a5f14122dc2e4ede36df9dc80a881.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas edam de vaca Holland Corona",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "6.83",
+                                                                           "unit_price":  "2.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.834",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51126",
+                                                "slug":  "queso-lonchas-mozzarella-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51126/queso-lonchas-mozzarella-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d96788c89dc992674ef5ea2ebdd8401f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas mozzarella de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "9.00",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "8180",
+                                                "slug":  "queso-lonchas-cheddar-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/8180/queso-lonchas-cheddar-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0b9d375bd00ab01c8971dab13297cfcb.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas cheddar de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "9.25",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60710",
+                                                "slug":  "queso-lonchas-emmental-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60710/queso-lonchas-emmental-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/875611713160608d482a7856b3324512.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas emmental de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "10.75",
+                                                                           "unit_price":  "2.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "12846",
+                                                "slug":  "queso-lonchas-sin-lactosa-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/12846/queso-lonchas-sin-lactosa-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/41e0218522470559822527317e7c5568.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas sin lactosa de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "13.00",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "50151",
+                                                "slug":  "queso-lonchas-oveja-entrepinares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/50151/queso-lonchas-oveja-entrepinares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/42c41d47391b7f165e9c19f13a2ab40d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas de oveja Entrepinares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lonchas",
+                                                                           "unit_size":  0.21,
+                                                                           "bulk_price":  "14.40",
+                                                                           "unit_price":  "3.02",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "14.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51198",
+                                                "slug":  "queso-lonchas-fundido-burger-mezcla-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51198/queso-lonchas-fundido-burger-mezcla-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7bd7b58ec4f47a62db26456bdf66ba1a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso lonchas fundido burger mezcla Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "6.33",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  14,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  312,
+                           "name":  "Queso rallado",
+                           "order":  159,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "22216",
+                                                "slug":  "queso-rallado-emmental-gratinar-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22216/queso-rallado-emmental-gratinar-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/bfc088bcd08f0dc6e421323e51b5d9fa.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso rallado emmental gratinar Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "8.25",
+                                                                           "unit_price":  "1.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51110",
+                                                "slug":  "queso-rallado-mozzarella-pizza-roma-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51110/queso-rallado-mozzarella-pizza-roma-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/78c2ab6019d6ae5ef8934ee4a10cef80.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso rallado mozzarella pizza-Roma de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "8.00",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51151",
+                                                "slug":  "queso-polvo-especial-pasta-mezcla-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51151/queso-polvo-especial-pasta-mezcla-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/80ee5b96b8090f21c040774ba4f5b2f0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso en polvo especial pasta mezcla Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.15,
+                                                                           "bulk_price":  "8.33",
+                                                                           "unit_price":  "1.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21581",
+                                                "slug":  "queso-rallado-4-quesos-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21581/queso-rallado-4-quesos-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8358f4ee3c96a19e215c46bfa39ec0d7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso rallado 4 quesos Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "8.75",
+                                                                           "unit_price":  "1.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.85",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51146",
+                                                "slug":  "queso-polvo-grana-padano-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51146/queso-polvo-grana-padano-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d053faaab49fc2cde99875dffb3eaee9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso en polvo grana padano Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "16.50",
+                                                                           "unit_price":  "1.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "16.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23622",
+                                                "slug":  "queso-rallado-especial-fundir-mezcla-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23622/queso-rallado-especial-fundir-mezcla-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/aa127a068121be5a0a5dfd543ddb2fa0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso rallado especial fundir mezcla Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "5.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        2.10",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23621",
+                                                "slug":  "queso-rallado-especial-fundir-mezcla-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23621/queso-rallado-especial-fundir-mezcla-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1ddf478e8a82a6c7386e9aea1b442b33.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso rallado especial fundir mezcla Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "5.75",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.20",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51236",
+                                                "slug":  "queso-rallado-sin-lactosa-vaca-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51236/queso-rallado-sin-lactosa-vaca-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1789e099c343b7a0eda70dd1a38a9c63.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso rallado sin lactosa de vaca Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.15,
+                                                                           "bulk_price":  "12.00",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  311,
+                           "name":  "Queso en porciones",
+                           "order":  159,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "52405",
+                                                "slug":  "queso-porciones-hacendado-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52405/queso-porciones-hacendado-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/62e21e9aeaf9f20b7c81fc2ff229c976.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso en porciones Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "quesitos",
+                                                                           "unit_size":  0.375,
+                                                                           "bulk_price":  "5.20",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  24,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51232",
+                                                "slug":  "queso-porciones-light-hacendado-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51232/queso-porciones-light-hacendado-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/66ba7ab8e03fba0930d149762ec484a7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso en porciones light Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "quesitos",
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "6.00",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  16,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51504",
+                                                "slug":  "queso-porciones-mini-babybel-malla",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Malla",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51504/queso-porciones-mini-babybel-malla",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/860d756d2962ad4e593a3c2b98e253dc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso en porciones mini Babybel",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "quesitos",
+                                                                           "unit_size":  0.16,
+                                                                           "bulk_price":  "24.38",
+                                                                           "unit_price":  "3.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "24.375",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "51068",
+                                                "slug":  "queso-fundido-con-palitos-vaca-rie-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/51068/queso-fundido-con-palitos-vaca-rie-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/91338c5c55cb5679342a76f04152a6d8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Queso fundido con palitos La vaca que rÃ­e",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "tarrinas",
+                                                                           "unit_size":  0.14,
+                                                                           "bulk_price":  "18.50",
+                                                                           "unit_price":  "2.59",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "18.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  53,
+                          "name":  "Queso untable, fresco y especialidades"
+                      }
+}

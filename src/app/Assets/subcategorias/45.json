@@ -1,0 +1,1806 @@
+﻿{
+    "id":  45,
+    "name":  "Empanados y elaborados",
+    "order":  17,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  291,
+                           "name":  "Empanados y rebozados congelados",
+                           "order":  17,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "63323",
+                                                "slug":  "nuggets-pollo-hacendado-ultracongelados-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/63323/nuggets-pollo-hacendado-ultracongelados-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a83470c87a6d3342c96dd0a449237604.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Nuggets de pollo Hacendado ultracongelados",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "5.00",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        2.70",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "63322",
+                                                "slug":  "delicias-pollo-hacendado-ultracongeladas-con-empanado-base-maiz-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/63322/delicias-pollo-hacendado-ultracongeladas-con-empanado-base-maiz-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/69c43cac064a4c03f04c7e07bf3b617a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Delicias de pollo Hacendado ultracongeladas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "7.40",
+                                                                           "unit_price":  "3.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13496",
+                                                "slug":  "croquetas-cocido-hacendado-ultracongeladas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13496/croquetas-cocido-hacendado-ultracongeladas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1528c21f212a7b7eb203724cba48cfe9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Croquetas de cocido Hacendado ultracongeladas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "5.57",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.572",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        2.00",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "63007",
+                                                "slug":  "nuggets-pavo-hacendado-ultracongelados-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/63007/nuggets-pavo-hacendado-ultracongelados-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2fdc9b83394eee29e89c2779fa919b6b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Nuggets de pavo Hacendado ultracongelados",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "8.50",
+                                                                           "unit_price":  "3.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60306",
+                                                "slug":  "pollo-marinado-rebozado-crispy-american-style-hacendado-ultracongeladas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60306/pollo-marinado-rebozado-crispy-american-style-hacendado-ultracongeladas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1c8a4177bc4a03294292496e2806fdb8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pollo marinado rebozado Crispy American Style Hacendado ultracongelado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "9.80",
+                                                                           "unit_price":  "4.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19996",
+                                                "slug":  "brochetas-pollo-yakitori-hacendado-ultracongeladas-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19996/brochetas-pollo-yakitori-hacendado-ultracongeladas-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/56c1f6bd09368902a2c493d7f0c6a7a3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Brochetas de pollo Yakitori Hacendado ultracongeladas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "15.00",
+                                                                           "unit_price":  "3.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  288,
+                           "name":  "Empanados y elaborados",
+                           "order":  17,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "16266",
+                                                "slug":  "solomillos-pollo-adobados-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16266/solomillos-pollo-adobados-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3a6f4118a6eccda1b48ceef4f2b7e7ba.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Solomillos de pollo adobados",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.45,
+                                                                           "bulk_price":  "8.50",
+                                                                           "unit_price":  "3.83",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "24081",
+                                                "slug":  "pinchos-pollo-adobado-con-varilla-con-pepperoni-bacon-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/24081/pinchos-pollo-adobado-con-varilla-con-pepperoni-bacon-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/922f6942df72ce16d577192de68c4ad5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pinchos de pollo adobado con pepperoni y bacon con varilla",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "10.50",
+                                                                           "unit_price":  "3.68",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "17458",
+                                                "slug":  "costillas-cerdo-marinadas-smoke-honey-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/17458/costillas-cerdo-marinadas-smoke-honey-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/45115582466db86abe80236f9e3b98a0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Costillas de cerdo marinadas Smoke Honey",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.9,
+                                                                           "bulk_price":  "6.50",
+                                                                           "unit_price":  "5.85",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "17575",
+                                                "slug":  "tiras-empanadas-pollo-marinado-chicken-fries-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/17575/tiras-empanadas-pollo-marinado-chicken-fries-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7fafe2d936735af1aeb576e10e31aa3e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Tiras empanadas de pollo marinado chicken fries",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "8.40",
+                                                                           "unit_price":  "2.52",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "35902",
+                                                "slug":  "brochetas-pollo-con-varilla-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35902/brochetas-pollo-con-varilla-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/15b2eaac006412625943b1d7a52d01de.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Brochetas de pollo, pimiento verde y tocino de cerdo con varilla",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.37,
+                                                                           "bulk_price":  "8.00",
+                                                                           "unit_price":  "2.96",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "2137",
+                                                "slug":  "flautas-pollo-queso-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/2137/flautas-pollo-queso-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0ae8e36ead1e2d24d6f95c6abffe5e14.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flautas de pollo y queso",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.28,
+                                                                           "bulk_price":  "7.86",
+                                                                           "unit_price":  "2.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.858",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "2169",
+                                                "slug":  "flautas-bacon-queso-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/2169/flautas-bacon-queso-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/efd938ceb30081a8b1c076c1d4a08bd9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flautas de bacÃ³n y queso",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.28,
+                                                                           "bulk_price":  "7.86",
+                                                                           "unit_price":  "2.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.858",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "2715",
+                                                "slug":  "lomo-cerdo-adobado-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/2715/lomo-cerdo-adobado-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f1c9dda0bf7290499534dbe4776c6207.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes lomo de cerdo adobado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.47,
+                                                                           "bulk_price":  "6.95",
+                                                                           "unit_price":  "3.27",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.950",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "5046",
+                                                "slug":  "lomo-cerdo-adobado-familiar-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/5046/lomo-cerdo-adobado-familiar-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/55cc474c76c30984dc63a16c30fcbc67.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes lomo de cerdo adobado familiar",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.97,
+                                                                           "bulk_price":  "6.70",
+                                                                           "unit_price":  "6.50",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.700",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14298",
+                                                "slug":  "san-jacobos-cerdo-sin-gluten-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14298/san-jacobos-cerdo-sin-gluten-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/496d5a9a9de7faa2cf2b14354963a567.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "San Jacobos de cerdo sin gluten",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "6.60",
+                                                                           "unit_price":  "2.64",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.600",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "2833",
+                                                "slug":  "pechugas-pollo-finas-hierbas-marinadas-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/2833/pechugas-pollo-finas-hierbas-marinadas-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b41d5df0b7894464440dc93ad577066f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes pechuga de pollo finas hierbas marinadas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.6,
+                                                                           "bulk_price":  "8.20",
+                                                                           "unit_price":  "4.92",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21227",
+                                                "slug":  "pechugas-pollo-marinadas-empanadas-sin-gluten-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21227/pechugas-pollo-marinadas-empanadas-sin-gluten-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/42ed3d070937a1a4ae9d33d65e6aa1a3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes pechuga de pollo marinadas empanadas sin gluten",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.47,
+                                                                           "bulk_price":  "8.70",
+                                                                           "unit_price":  "4.09",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.700",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "2839",
+                                                "slug":  "pinchos-cerdo-sin-varilla-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/2839/pinchos-cerdo-sin-varilla-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ecf7155c382139064443e6c57b40c98f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pinchos de cerdo adobado sin varilla",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.51,
+                                                                           "bulk_price":  "7.80",
+                                                                           "unit_price":  "3.98",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "4152",
+                                                "slug":  "medallones-preparado-solomillo-cerdo-provenzal-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/4152/medallones-preparado-solomillo-cerdo-provenzal-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/de9b0edb5cd84e63381ab3085220eee1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Medallones preparado de solomillo cerdo provenzal",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "11.10",
+                                                                           "unit_price":  "4.44",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.100",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "2832",
+                                                "slug":  "alas-pollo-adobadas-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/2832/alas-pollo-adobadas-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9c0c83c985fce305964a324078f2119e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Alas de pollo adobadas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.63,
+                                                                           "bulk_price":  "5.60",
+                                                                           "unit_price":  "3.53",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.600",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23308",
+                                                "slug":  "fiambre-magro-cerdo-adobado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23308/fiambre-magro-cerdo-adobado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/35d3a3b57c5ee4d74e778939d27be3d8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Fiambre de magro de cerdo adobado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.37,
+                                                                           "bulk_price":  "7.57",
+                                                                           "unit_price":  "2.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.568",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "1564",
+                                                "slug":  "costilla-cerdo-iberico-adobada-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/1564/costilla-cerdo-iberico-adobada-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/af452ee749d0981858f5bfd393dccf15.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Costilla de cerdo ibÃ©rico adobada",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "7.55",
+                                                                           "unit_price":  "3.78",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.550",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23305",
+                                                "slug":  "chuletas-cerdo-sajonia-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23305/chuletas-cerdo-sajonia-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f27090a52a211af71289bfd5f60a689d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chuletas de cerdo sajonia",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.39,
+                                                                           "bulk_price":  "9.40",
+                                                                           "unit_price":  "3.67",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "2185",
+                                                "slug":  "oreja-cerdo-cocida-adobada-rogusa-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/2185/oreja-cerdo-cocida-adobada-rogusa-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/12d37311730cb73af04c3774ef3d3034.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Oreja de cerdo cocida adobada Rogusa",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "9.20",
+                                                                           "unit_price":  "4.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23307",
+                                                "slug":  "fiambre-magreta-cerdo-adobada-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23307/fiambre-magreta-cerdo-adobada-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0cda20526aa4182a2fc1ffb4662c41dc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Fiambre de magreta de cerdo adobada",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "7.71",
+                                                                           "unit_price":  "2.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.715",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "3456",
+                                                "slug":  "pinchos-pollo-sin-varilla-adobados-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/3456/pinchos-pollo-sin-varilla-adobados-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/18faa0d5d1fb660eeb970c0958d22bb5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pinchos de pollo sin varilla adobados",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "8.60",
+                                                                           "unit_price":  "4.30",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.600",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21235",
+                                                "slug":  "lagrimitas-pollo-limon-empanadas-sin-gluten-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21235/lagrimitas-pollo-limon-empanadas-sin-gluten-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f9c43f2bec935f80a1bd2adb3b62216c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Lagrimitas de pollo al limÃ³n empanadas sin gluten",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.41,
+                                                                           "bulk_price":  "8.40",
+                                                                           "unit_price":  "3.44",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52514",
+                                                "slug":  "solomillos-pollo-marinados-empanados-sin-gluten-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52514/solomillos-pollo-marinados-empanados-sin-gluten-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8c1bca47470d3fef820cbbb9eb194c97.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes solomillos de pollo marinados empanados sin gluten",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.55,
+                                                                           "bulk_price":  "8.80",
+                                                                           "unit_price":  "4.84",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52810",
+                                                "slug":  "cachopo-vacuno-con-jamon-queso-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52810/cachopo-vacuno-con-jamon-queso-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8aa6b8733136aa0cf9422b43ecb9c572.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cachopo de vacuno con jamÃ³n y queso sin gluten",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "16.70",
+                                                                           "unit_price":  "4.18",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "16.700",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11687",
+                                                "slug":  "filetes-pechuga-pollo-marinadas-empanadas-picantes-sin-gluten-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11687/filetes-pechuga-pollo-marinadas-empanadas-picantes-sin-gluten-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dda158759a1d705e4090839daf4db91b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanados de pollo picantes sin gluten",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.36,
+                                                                           "bulk_price":  "8.61",
+                                                                           "unit_price":  "3.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.612",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14266",
+                                                "slug":  "lomo-cerdo-marinado-empanado-sin-gluten-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14266/lomo-cerdo-marinado-empanado-sin-gluten-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/894341086cba18a64328c86cef90049b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Lomo de cerdo marinado empanado sin gluten",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.32,
+                                                                           "bulk_price":  "10.00",
+                                                                           "unit_price":  "3.20",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14976",
+                                                "slug":  "brochetas-cerdo-adobadas-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14976/brochetas-cerdo-adobadas-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5f0f4ecd5a217250345f700aaf3f14bb.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Brochetas de cerdo adobadas con varilla",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "9.30",
+                                                                           "unit_price":  "3.07",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21565",
+                                                "slug":  "pollo-koreano-con-salsa-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21565/pollo-koreano-con-salsa-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c620b930573ab681044c6044a5a78531.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  3,
+                                                                       "name":  "Carne",
+                                                                       "level":  0,
+                                                                       "order":  17
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pollo Koreano con salsa",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.38,
+                                                                           "bulk_price":  "9.00",
+                                                                           "unit_price":  "3.42",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  78,
+                          "name":  "Cereales"
+                      }
+}

@@ -1,0 +1,1182 @@
+﻿{
+    "id":  95,
+    "name":  "Chicles y caramelos",
+    "order":  11,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  389,
+                           "name":  "Chicles",
+                           "order":  11,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "65235",
+                                                "slug":  "chicles-menta-fuerte-gragea-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65235/chicles-menta-fuerte-gragea-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a732ffc79d989157295923f3d743efbb.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles menta fuerte gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.045,
+                                                                           "bulk_price":  "22.22",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  32,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.223",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65067",
+                                                "slug":  "chicles-menta-fuerte-gragea-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65067/chicles-menta-fuerte-gragea-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8aecdf262ea039446da9154c42ce2d35.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles menta fuerte gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "19.50",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  70,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "19.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65161",
+                                                "slug":  "chicles-hierbabuena-gragea-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65161/chicles-hierbabuena-gragea-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/084ce2eef469f2a392a82687c627f2eb.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles hierbabuena gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.045,
+                                                                           "bulk_price":  "22.22",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  32,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.223",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65172",
+                                                "slug":  "chicles-hierbabuena-gragea-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65172/chicles-hierbabuena-gragea-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3eb555f496248307a116ab2751822c90.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles hierbabuena gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "19.50",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  70,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "19.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65147",
+                                                "slug":  "chicles-menta-suave-gragea-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65147/chicles-menta-suave-gragea-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/004ec71c8f48cc0752a52a331b067222.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles menta suave gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.045,
+                                                                           "bulk_price":  "22.22",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  32,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.223",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65164",
+                                                "slug":  "chicles-fresa-gragea-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65164/chicles-fresa-gragea-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a64913f13dc496ba3e0a24be2ac4ced2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles fresa gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.045,
+                                                                           "bulk_price":  "22.22",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  32,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.223",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65165",
+                                                "slug":  "chicles-fresa-gragea-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65165/chicles-fresa-gragea-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0b8b1fd18173544070ec5422c5f5c7bb.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles fresa gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "19.50",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  70,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "19.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65135",
+                                                "slug":  "chicles-original-sabor-frutas-gragea-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65135/chicles-original-sabor-frutas-gragea-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f814995ad8c172f7d6f5047574d246a0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles original sabor frutas gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.045,
+                                                                           "bulk_price":  "22.22",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  32,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.223",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65213",
+                                                "slug":  "chicles-xxl-gragea-hacendado-sabor-melon-fresa-melocoton-frambuesa-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65213/chicles-xxl-gragea-hacendado-sabor-melon-fresa-melocoton-frambuesa-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f6144ec5697bb40f24ec68b81d174eae.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles XXL gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "18.00",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  25,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "18.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65177",
+                                                "slug":  "chicles-jengibre-gragea-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65177/chicles-jengibre-gragea-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b58612dd228ef47f35d19a57f53d6cf4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles jengibre gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.045,
+                                                                           "bulk_price":  "22.22",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  32,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.223",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52614",
+                                                "slug":  "chicles-eucalipto-gragea-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52614/chicles-eucalipto-gragea-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/acded215d6f3fde944ca7f37525312cb.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chicles eucalipto gragea Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "chicles",
+                                                                           "unit_size":  0.045,
+                                                                           "bulk_price":  "22.22",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  32,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.223",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  394,
+                           "name":  "Caramelos",
+                           "order":  11,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "65302",
+                                                "slug":  "caramelos-nata-hacendado-0-azucares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65302/caramelos-nata-hacendado-0-azucares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f254cebca9e75e726e259e6c333cdd71.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos nata Hacendado 0% azÃºcares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "12.78",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.778",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65123",
+                                                "slug":  "caramelos-cafe-hacendado-0-azucares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65123/caramelos-cafe-hacendado-0-azucares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/54347a2d774d1ae92d25bc8e7496b036.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos cafÃ© Hacendado 0% azÃºcares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "12.78",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.778",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65138",
+                                                "slug":  "caramelos-sabor-eucalipto-mentol-hacendado-0-azucares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65138/caramelos-sabor-eucalipto-mentol-hacendado-0-azucares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ab8a95ae592421cc18e25b033da60f55.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos sabor eucalipto y mentol Hacendado 0% azÃºcares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "11.11",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.112",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65311",
+                                                "slug":  "caramelos-blandos-fruits-hacendado-sabor-limon-naranja-cereza-fresa-pina-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65311/caramelos-blandos-fruits-hacendado-sabor-limon-naranja-cereza-fresa-pina-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/493387191d1b52afd743e72c6ba0ce03.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos blandos Fruits Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "5.33",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65324",
+                                                "slug":  "caramelos-miel-sabor-limon-pifarre-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65324/caramelos-miel-sabor-limon-pifarre-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9b5f069a8d5beed58c850b6aea12a33d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos miel sabor limÃ³n PifarrÃ©",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.125,
+                                                                           "bulk_price":  "9.20",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65327",
+                                                "slug":  "caramelos-regaliz-mentol-respiral-halls-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65327/caramelos-regaliz-mentol-respiral-halls-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c574db59bf527230b58d84817689ba94.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos regaliz mentol Respiral Halls",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.15,
+                                                                           "bulk_price":  "13.00",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "65143",
+                                                "slug":  "caramelos-jengibre-propolis-hacendado-0-azucares-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/65143/caramelos-jengibre-propolis-hacendado-0-azucares-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c91407532dcda9307b4d91f41930899c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos jengibre y prÃ³polis Hacendado 0% azÃºcares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "15.00",
+                                                                           "unit_price":  "1.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "12771",
+                                                "slug":  "caramelos-sabor-eucalipto-mentol-hacendado-0-azucares",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/12771/caramelos-sabor-eucalipto-mentol-hacendado-0-azucares",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1b553d41bffefff0cdd9139469f9e513.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos sabor eucalipto y mentol Hacendado 0% azÃºcares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  0.031,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.093,
+                                                                           "bulk_price":  "17.20",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "17.205",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "12766",
+                                                "slug":  "caramelos-sabor-lima-hacendado-0-azucares",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/12766/caramelos-sabor-lima-hacendado-0-azucares",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0efe3c1fed3c498b3dd92b18a260d29b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos sabor lima Hacendado 0% azÃºcares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  0.031,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.093,
+                                                                           "bulk_price":  "17.20",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "17.205",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19909",
+                                                "slug":  "caramelos-fruits-flowers-hacendado-0-azucares-sabor-arandano-grosella-negra-melocoton-te-verde-hierbas-flores-sauco-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19909/caramelos-fruits-flowers-hacendado-0-azucares-sabor-arandano-grosella-negra-melocoton-te-verde-hierbas-flores-sauco-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2185a8b3d28903793ae4ca16ed9caecd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos Fruits \u0026 Flowers Hacendado 0% azÃºcares",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "15.00",
+                                                                           "unit_price":  "1.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "16441",
+                                                "slug":  "caramelos-masticables-con-palo-lolipop-fiesta-sabor-fresa-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16441/caramelos-masticables-con-palo-lolipop-fiesta-sabor-fresa-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c313a6abb41862563078261f91bac94e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caramelos masticables con palo Lolipop Fiesta sabor fresa",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.048,
+                                                                           "bulk_price":  "20.83",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.084",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  92,
+                          "name":  "Chocolate"
+                      }
+}

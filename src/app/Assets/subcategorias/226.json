@@ -1,0 +1,2230 @@
+﻿{
+    "id":  226,
+    "name":  "Detergente y suavizante ropa",
+    "order":  374,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  722,
+                           "name":  "Detergente lÃ­quido y gel",
+                           "order":  374,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "21534",
+                                                "slug":  "detergente-ropa-color-oscura-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21534/detergente-ropa-color-oscura-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f3b8cbd95b177e12735f13169587232d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa de Color y Oscura Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  3.0,
+                                                                           "bulk_price":  "1.63",
+                                                                           "unit_price":  "4.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.107",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "86397",
+                                                "slug":  "detergente-ropa-jabon-natural-marsella-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86397/detergente-ropa-jabon-natural-marsella-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/102bbb82bf71a7846528e2d2daef4567.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa jabÃ³n natural de Marsella Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  3.0,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "3.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.068",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40404",
+                                                "slug":  "detergente-ropa-blanca-color-bosque-verde-gel-concentrado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40404/detergente-ropa-blanca-color-bosque-verde-gel-concentrado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d7d3cf05c5162a35ed107bc310f505a0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Blanca y de Color Bosque Verde en gel concentrado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  0.81,
+                                                                           "bulk_price":  "4.51",
+                                                                           "unit_price":  "3.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  27,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.136",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "86400",
+                                                "slug":  "detergente-ropa-blanca-color-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86400/detergente-ropa-blanca-color-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a6b5023c46b3a1f230230cc88db78c09.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Blanca y de Color Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  3.0,
+                                                                           "bulk_price":  "1.95",
+                                                                           "unit_price":  "5.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.117",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40530",
+                                                "slug":  "detergente-ropa-prendas-delicadas-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40530/detergente-ropa-prendas-delicadas-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9797257703d2e4f77d7d846efbcd84e6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Prendas Delicadas Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "1.26",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  66,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.038",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "16830",
+                                                "slug":  "detergente-ropa-total-ariel-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16830/detergente-ropa-total-ariel-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8f6b39034dbd905b7d32f54886cf1e16.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Ariel lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.35,
+                                                                           "bulk_price":  "5.89",
+                                                                           "unit_price":  "7.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  30,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.265",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13643",
+                                                "slug":  "detergente-ropa-pieles-sensibles-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13643/detergente-ropa-pieles-sensibles-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e0c6bf972b3f52f80cbdff23d108586d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Pieles Sensibles Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "2.42",
+                                                                           "unit_price":  "4.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  66,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.073",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14946",
+                                                "slug":  "detergente-ropa-colada-mixta-micolor-gel-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14946/detergente-ropa-colada-mixta-micolor-gel-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d2fe09165db835922138be22d01803e1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa colada mixta Micolor en gel",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.26,
+                                                                           "bulk_price":  "4.72",
+                                                                           "unit_price":  "5.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  28,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.723",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40573",
+                                                "slug":  "detergente-ropa-oscura-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40573/detergente-ropa-oscura-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c57e4eabe1b2c37752a03f75d510d019.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Oscura Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.95,
+                                                                           "bulk_price":  "2.05",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  30,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.134",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40567",
+                                                "slug":  "desinfectante-tejidos-lavadora-bosque-verde-sin-lejia-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40567/desinfectante-tejidos-lavadora-bosque-verde-sin-lejia-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e12b22b9d1d9c4b77dc2741d17a92166.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Desinfectante Tejidos y Lavadora Bosque Verde sin lejÃ­a",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "2.20",
+                                                                           "unit_price":  "2.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "86399",
+                                                "slug":  "detergente-ropa-colonia-hipoalergenico-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86399/detergente-ropa-colonia-hipoalergenico-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f5b64f6a4c89b0bd1fb736fb98b51952.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Colonia HipoalergÃ©nico Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  3.0,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "3.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.068",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11664",
+                                                "slug":  "detergente-ropa-frescura-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11664/detergente-ropa-frescura-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c07f239cc2c76fea1f2c71b1b6a60367.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Frescura Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  3.0,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "3.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.068",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  723,
+                           "name":  "Detergente en polvo y monodosis",
+                           "order":  374,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "14270",
+                                                "slug":  "detergente-ropa-blanca-color-bosque-verde-polvo-contiene-dosificador-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14270/detergente-ropa-blanca-color-bosque-verde-polvo-contiene-dosificador-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c75203fbc5e74f0715cf4be74bf8707e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa blanca y de color Bosque Verde en polvo",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  2.75,
+                                                                           "bulk_price":  "2.51",
+                                                                           "unit_price":  "6.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.138",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52553",
+                                                "slug":  "detergente-ropa-all-in-1-ariel-pods-capsulas-lavadora-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52553/detergente-ropa-all-in-1-ariel-pods-capsulas-lavadora-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4a42e5e71080ea960711b84cdc98d1b6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa todo en 1 Ariel Pods en cÃ¡psulas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "cÃ¡psulas",
+                                                                           "unit_size":  0.369,
+                                                                           "bulk_price":  "0.38",
+                                                                           "unit_price":  "6.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  18,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.384",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "16442",
+                                                "slug":  "detergente-ropa-1-frescor-floral-ariel-pods-capsulas-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16442/detergente-ropa-1-frescor-floral-ariel-pods-capsulas-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ac78c0a8f08e2ff7e0d1a5f054bbcba3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa todo en 1 frescor floral Ariel Pods en cÃ¡psulas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "cÃ¡psulas",
+                                                                           "unit_size":  0.4636,
+                                                                           "bulk_price":  "0.36",
+                                                                           "unit_price":  "6.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  19,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.364",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14271",
+                                                "slug":  "detergente-ropa-jabon-marsella-bosque-verde-polvo-contiene-dosificador-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14271/detergente-ropa-jabon-marsella-bosque-verde-polvo-contiene-dosificador-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9bd953189306103748aaec9fe8d1097c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa jabÃ³n de Marsella Bosque Verde en polvo",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  2.75,
+                                                                           "bulk_price":  "2.15",
+                                                                           "unit_price":  "5.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.118",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23440",
+                                                "slug":  "detergente-ropa-blanca-color-bosque-verde-capsulas-lavadora-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23440/detergente-ropa-blanca-color-bosque-verde-capsulas-lavadora-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/385aa36f3f84b97a060a3c9aa56bf8d7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa blanca y color Bosque Verde en cÃ¡psulas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "cÃ¡psulas",
+                                                                           "unit_size":  0.528,
+                                                                           "bulk_price":  "0.19",
+                                                                           "unit_price":  "4.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  24,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.194",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20959",
+                                                "slug":  "detergente-ropa-blanca-color-floral-sensation-bosque-verde-capsulas-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20959/detergente-ropa-blanca-color-floral-sensation-bosque-verde-capsulas-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7506b9fd1605c5c43304dee2f48adf82.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente ropa Blanca y Color floral Sensation Bosque Verde en cÃ¡psulas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "cÃ¡psulas",
+                                                                           "unit_size":  0.528,
+                                                                           "bulk_price":  "0.19",
+                                                                           "unit_price":  "4.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  24,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.194",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  725,
+                           "name":  "Detergente lavado a mano",
+                           "order":  374,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "52752",
+                                                "slug":  "detergente-lavado-mano-bosque-verde-polvo-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52752/detergente-lavado-mano-bosque-verde-polvo-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/aaeaf34a357f844bb096a7b6ce32767e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Detergente Lavado a Mano Bosque Verde en polvo",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.65,
+                                                                           "bulk_price":  "2.92",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.924",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13607",
+                                                "slug":  "jabon-natural-con-glicerina-bosque-verde-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13607/jabon-natural-con-glicerina-bosque-verde-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/49889e4d79b71f6c50be183b72b20810.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "JabÃ³n Natural con glicerina Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  0.2,
+                                                                           "unit_name":  "pastillas",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "4.63",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.625",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  730,
+                           "name":  "Quitamanchas",
+                           "order":  374,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "40552",
+                                                "slug":  "eliminador-olores-higienizante-tejidos-bosque-verde-con-pistola-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40552/eliminador-olores-higienizante-tejidos-bosque-verde-con-pistola-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a6623927ae2dd17358d7472870a30b80.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Eliminador de olores tejidos Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79083",
+                                                "slug":  "toallitas-lavadora-bosque-verde-accion-2-1-anti-transferencia-color-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79083/toallitas-lavadora-bosque-verde-accion-2-1-anti-transferencia-color-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/cac1a7c079067259c478c509671ceead.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Toallitas lavadora Bosque Verde anti-transferencia de color",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  20.0,
+                                                                           "bulk_price":  "0.09",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.093",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40135",
+                                                "slug":  "jabon-blando-natural-beltran-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40135/jabon-blando-natural-beltran-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/97c7d48aba7d278b20c1c76e7c31d8dc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "JabÃ³n blando 100% natural BeltrÃ¡n quitamanchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "5.80",
+                                                                           "unit_price":  "2.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40178",
+                                                "slug":  "disuelve-manchas-bosque-verde-con-pistola-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40178/disuelve-manchas-bosque-verde-con-pistola-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2ebf76a31eaac950e24d0b407493bf0d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Disuelve manchas Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "2.67",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  728,
+                           "name":  "Activador y antical lavadora",
+                           "order":  374,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "35980",
+                                                "slug":  "pastillas-antical-lavadora-bosque-verde-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35980/pastillas-antical-lavadora-bosque-verde-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/eacb45c5370af64fcc829c252c2331d3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pastillas antical para lavadora Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  0.012,
+                                                                           "unit_name":  "pastillas",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.08",
+                                                                           "unit_price":  "3.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  40,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.771",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40317",
+                                                "slug":  "activador-quitamanchas-ropa-color-oxi-active-bosque-verde-polvo-con-oxigeno-activo-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40317/activador-quitamanchas-ropa-color-oxi-active-bosque-verde-polvo-con-oxigeno-activo-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/897dec3caf09f976da529c45a3b7ea90.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Activador Quitamanchas ropa de color Oxi Active Bosque Verde en polvo",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "3.25",
+                                                                           "unit_price":  "3.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40315",
+                                                "slug":  "activador-blanqueante-ropa-blanca-bosque-verde-polvo-con-oxigeno-activo-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40315/activador-blanqueante-ropa-blanca-bosque-verde-polvo-con-oxigeno-activo-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9beeaafc75d836d9621d939ebf93a97e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Activador Blanqueante ropa blanca Oxi Active Bosque Verde en polvo",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "3.25",
+                                                                           "unit_price":  "3.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40233",
+                                                "slug":  "activador-lavado-ropa-color-oxi-active-bosque-verde-gel-con-oxigeno-activo-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40233/activador-lavado-ropa-color-oxi-active-bosque-verde-gel-con-oxigeno-activo-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4c11a64bd16993123277b547c3cbf2cf.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Activador Quitamanchas ropa de color Oxi Active Bosque Verde en gel",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.95",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.950",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40230",
+                                                "slug":  "activador-lavado-ropa-blanca-oxi-active-bosque-verde-gel-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40230/activador-lavado-ropa-blanca-oxi-active-bosque-verde-gel-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f8e15abbdcc94a37f5feef434cfe8b0e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Activador Blanqueante ropa blanca Oxi Active Bosque Verde en gel",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.95",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.950",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15679",
+                                                "slug":  "percarbonato-blanqueante-bosque-verde-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15679/percarbonato-blanqueante-bosque-verde-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4eeed51e4f131ac1a777f20b6a1a6015.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Percarbonato blanqueante Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "2.20",
+                                                                           "unit_price":  "1.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13678",
+                                                "slug":  "limpia-lavadoras-bosque-verde-liquido-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13678/limpia-lavadoras-bosque-verde-liquido-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e2737bcf7ddb5930298c8471f7081a2d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Limpia lavadoras Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "7.80",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  727,
+                           "name":  "Suavizante",
+                           "order":  374,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "14122",
+                                                "slug":  "suavizante-ropa-azul-bosque-verde-concentrado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14122/suavizante-ropa-azul-bosque-verde-concentrado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c6cefe893cf7c03186e186e249fcb4b0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Suavizante ropa Azul Bosque Verde concentrado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.6,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  80,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.023",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14163",
+                                                "slug":  "suavizante-ropa-talco-bosque-verde-concentrado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14163/suavizante-ropa-talco-bosque-verde-concentrado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d2ff070519163e2e1bb174f18664dbeb.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Suavizante ropa Talco Bosque Verde concentrado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.6,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  80,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.023",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14165",
+                                                "slug":  "suavizante-ropa-spa-bosque-verde-concentrado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14165/suavizante-ropa-spa-bosque-verde-concentrado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b3b71f5a7b09eb48f8a038603c03791c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Suavizante ropa Spa Bosque Verde concentrado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.6,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  80,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.023",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14148",
+                                                "slug":  "suavizante-ropa-floral-bosque-verde-concentrado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14148/suavizante-ropa-floral-bosque-verde-concentrado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6f4be460eb58af300285fcfa0e6f8039.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Suavizante ropa Floral Bosque Verde concentrado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.6,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  80,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.023",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14170",
+                                                "slug":  "suavizante-ropa-hipoalergenico-colonia-bosque-verde-concentrado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14170/suavizante-ropa-hipoalergenico-colonia-bosque-verde-concentrado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8f7ed307ef370a2a5644bbe756eae5e2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Suavizante ropa HipoalergÃ©nico Colonia Bosque Verde concentrado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.6,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  80,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.023",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "40752",
+                                                "slug":  "perfumador-ropa-bosque-verde-intensificador-fragancia-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/40752/perfumador-ropa-bosque-verde-intensificador-fragancia-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/eafe95f619a08f57d0e050eecf824710.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Perfumador ropa Bosque Verde intensificador de fragancia",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  0.72,
+                                                                           "bulk_price":  "4.51",
+                                                                           "unit_price":  "3.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  36,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.091",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11661",
+                                                "slug":  "suavizante-ropa-violets-bosque-verde-concentrado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11661/suavizante-ropa-violets-bosque-verde-concentrado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a7cff3784c0169942d55686a9f54ec5d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Suavizante ropa Violets Bosque Verde concentrado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "lavados",
+                                                                           "unit_size":  1.6,
+                                                                           "bulk_price":  "1.13",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  80,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.023",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "lv",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  732,
+                           "name":  "Planchado",
+                           "order":  374,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "90505",
+                                                "slug":  "agua-destilada-bosque-verde-garrafa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Garrafa",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/90505/agua-destilada-bosque-verde-garrafa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/97a14ac137b896e603ef688f2efccd6d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Agua destilada Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.48",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44413",
+                                                "slug":  "agua-plancha-bosque-verde-perfume-ropa-limpia-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44413/agua-plancha-bosque-verde-perfume-ropa-limpia-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/56e716e04c1c57d3bb5ab98657d35875.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Agua para plancha Bosque Verde perfume ropa limpia",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.50",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44404",
+                                                "slug":  "planchado-facil-bosque-verde-con-pistola-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44404/planchado-facil-bosque-verde-con-pistola-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d1ef88df67282223ca7f07085a0d5413.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Planchado fÃ¡cil Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "2.93",
+                                                                           "unit_price":  "2.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.934",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  237,
+                          "name":  "Estropajo, bayeta y guantes"
+                      }
+}

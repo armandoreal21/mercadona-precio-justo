@@ -1,0 +1,766 @@
+﻿{
+    "id":  110,
+    "name":  "Flan y natillas",
+    "order":  598,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  417,
+                           "name":  "Flan",
+                           "order":  598,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "68106",
+                                                "slug":  "flan-vainilla-con-caramelo-hacendado-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68106/flan-vainilla-con-caramelo-hacendado-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/559b96b770ef6a73a19dc8aacf5d1a6d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flan de vainilla con caramelo Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.6,
+                                                                           "bulk_price":  "1.83",
+                                                                           "unit_price":  "1.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.834",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68204",
+                                                "slug":  "flan-huevo-hacendado-bano-maria-pack-9",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-9",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68204/flan-huevo-hacendado-bano-maria-pack-9",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4e579e9bc37d6ebb3f8406760770f297.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flan de huevo Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.9,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "3.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  9,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68149",
+                                                "slug":  "flan-huevo-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68149/flan-huevo-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/da868591f2d6f50f7e0bfec0b28940e7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flan de huevo Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "67633",
+                                                "slug":  "flan-cafe-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/67633/flan-cafe-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fb0a6fdd7930117b3726dbabc954a8e0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flan de cafÃ© Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "5.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68116",
+                                                "slug":  "flan-queso-hacendado-bano-maria-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68116/flan-queso-hacendado-bano-maria-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/df1806996518942539d72e4b20bcdc22.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flan de queso Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "5.38",
+                                                                           "unit_price":  "2.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.375",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68265",
+                                                "slug":  "flan-huevo-sin-azucares-anadidos-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68265/flan-huevo-sin-azucares-anadidos-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6b865525d7e816b80af329833b30b375.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flan de huevo sin azÃºcares aÃ±adidos Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "4.75",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "67635",
+                                                "slug":  "flan-huevo-proteinas-hacendado-0-mg-10-g-proteinas-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/67635/flan-huevo-proteinas-hacendado-0-mg-10-g-proteinas-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8e979f97f75f8d36758e7a19461227d4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Flan de huevo +ProteÃ­nas Hacendado 0% MG 0% azÃºcares aÃ±adidos 10 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "5.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  418,
+                           "name":  "Natillas",
+                           "order":  598,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "68137",
+                                                "slug":  "natillas-sabor-vainilla-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68137/natillas-sabor-vainilla-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2427c668b094177e9c8d0bfbd955f18e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Natillas sabor vainilla Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "2.10",
+                                                                           "unit_price":  "1.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.100",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68266",
+                                                "slug":  "natillas-sabor-vainilla-con-galleta-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68266/natillas-sabor-vainilla-con-galleta-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/91b637de3f473e48be71cfee0693a3a3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Natillas sabor vainilla con galleta Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "2.30",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68138",
+                                                "slug":  "natillas-chocolate-con-leche-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68138/natillas-chocolate-con-leche-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a5dc2eea8ad210c93cc2a831464d72ea.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Natillas de chocolate con leche Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "2.10",
+                                                                           "unit_price":  "1.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.100",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "86245",
+                                                "slug":  "natillas-vainilla-danet-danone-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86245/natillas-vainilla-danet-danone-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/90773d5ffa47a10f02da796472ecc91a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Natillas de vainilla Danet",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "4.04",
+                                                                           "unit_price":  "1.94",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.042",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68243",
+                                                "slug":  "natillas-chocolate-danet-danone-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68243/natillas-chocolate-danet-danone-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/492c04a070fe43c5c272cb4879e11fbe.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Natillas de chocolate Danet",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "4.04",
+                                                                           "unit_price":  "1.94",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.042",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22311",
+                                                "slug":  "natillas-sabor-vainilla-proteinas-hacendado-12-g-proteinas-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22311/natillas-sabor-vainilla-proteinas-hacendado-12-g-proteinas-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/403d8051a4c86676bfd5d8784a6cd76f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Natillas sabor vainilla +ProteÃ­nas Hacendado 12 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "3.65",
+                                                                           "unit_price":  "1.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.646",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21061",
+                                                "slug":  "natillas-con-chocolate-proteinas-hacendado-13-g-mg-10-g-proteinas-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21061/natillas-con-chocolate-proteinas-hacendado-13-g-mg-10-g-proteinas-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a771655436d3ee8093d88e5e68b8a851.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Natillas con chocolate +ProteÃ­nas Hacendado 1,3 g MG 10 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "3.65",
+                                                                           "unit_price":  "1.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.646",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  111,
+                          "name":  "Gelatina y otros postres"
+                      }
+}

@@ -1,0 +1,506 @@
+﻿{
+    "id":  123,
+    "name":  "Berberechos y mejillones",
+    "order":  215,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  454,
+                           "name":  "Berberechos y almejas",
+                           "order":  215,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "18509",
+                                                "slug":  "berberecho-natural-xs-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18509/berberecho-natural-xs-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7063cd5dc297be7ae3b97485a2f6ace3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Berberecho al natural XS Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.185,
+                                                                           "bulk_price":  "17.30",
+                                                                           "unit_price":  "3.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.09,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "35.556",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18552",
+                                                "slug":  "almejones-natural-cono-sur-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18552/almejones-natural-cono-sur-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/575aaedf1adc5a371b9df161927362c6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Almejones al natural Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "10.81",
+                                                                           "unit_price":  "1.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.063,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "19.048",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23531",
+                                                "slug":  "zamburinas-salsa-vieira-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23531/zamburinas-salsa-vieira-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/939f11d8b80bec4fc623f7137a4b0f3b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "ZamburiÃ±as en salsa de vieira Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "16.22",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.063,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "28.572",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  452,
+                           "name":  "Mejillones",
+                           "order":  215,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "18615",
+                                                "slug":  "mejillones-escabeche-hacendado-pequenos-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18615/mejillones-escabeche-hacendado-pequenos-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/39274150d710c245658d381b05fbb37e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mejillones de Chile en escabeche Hacendado pequeÃ±os",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.106,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "7.57",
+                                                                           "unit_price":  "2.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.212,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18619",
+                                                "slug":  "mejillones-escabeche-hacendado-pequenos-13-18-piezas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18619/mejillones-escabeche-hacendado-pequenos-13-18-piezas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/27b73289f0e656a60d6ac9f6bc01346d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mejillones en escabeche Hacendado pequeÃ±os",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "19.37",
+                                                                           "unit_price":  "2.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.069,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "31.160",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18602",
+                                                "slug":  "mejillones-escabeche-hacendado-medianos-8-12-piezas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18602/mejillones-escabeche-hacendado-medianos-8-12-piezas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fae302fdbab0be6efd926988ec0bacaf.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mejillones en escabeche Hacendado medianos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "25.23",
+                                                                           "unit_price":  "2.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.069,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "40.580",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18620",
+                                                "slug":  "mejillones-natural-hacendado-pequenos-15-20-piezas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18620/mejillones-natural-hacendado-pequenos-15-20-piezas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c8879720b1c9bae132effcfb1f11d3d3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mejillones al natural Hacendado pequeÃ±os",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "18.02",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.069,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "28.986",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18621",
+                                                "slug":  "mejillones-picantes-escabeche-hacendado-pequenos-15-20-piezas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18621/mejillones-picantes-escabeche-hacendado-pequenos-15-20-piezas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/18f3303b51987aacf30b20c7df57f2f1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mejillones picantes en escabeche Hacendado pequeÃ±os",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "18.02",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.069,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "28.986",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18622",
+                                                "slug":  "mejillones-salsa-vieira-hacendado-pequenos-13-18-piezas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18622/mejillones-salsa-vieira-hacendado-pequenos-13-18-piezas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/091a1ad796b0be07ad15548343d12ea0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mejillones en salsa de vieira Hacendado pequeÃ±os",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "18.02",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.069,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "28.986",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  127,
+                          "name":  "Conservas de verdura y frutas"
+                      }
+}

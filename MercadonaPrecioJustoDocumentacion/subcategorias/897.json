@@ -1,0 +1,1182 @@
+﻿{
+    "id":  897,
+    "name":  "Listo para Comer",
+    "order":  597,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  878,
+                           "name":  "Platos calientes",
+                           "order":  597,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "60091",
+                                                "slug":  "tortilla-patata-con-calabacin-listo-comer",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60091/tortilla-patata-con-calabacin-listo-comer",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fe57e046130dff298c0a2a82b6f723fd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Tortilla de patata con calabacÃ­n Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.3,
+                                                                           "bulk_price":  "6.54",
+                                                                           "unit_price":  "8.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.539",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60128",
+                                                "slug":  "media-tortilla-patata-con-calabacin-listo-comer",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60128/media-tortilla-patata-con-calabacin-listo-comer",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a4bca5f58a0e151b33805255268ee6d3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Media tortilla de patata con calabacÃ­n Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.65,
+                                                                           "bulk_price":  "7.31",
+                                                                           "unit_price":  "4.75",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.308",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60095",
+                                                "slug":  "pincho-tortilla-patata-con-calabacin-listo-comer",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60095/pincho-tortilla-patata-con-calabacin-listo-comer",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/54363265f36c1510663cc27763e5981d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pincho tortilla de patata con calabacÃ­n Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.215,
+                                                                           "bulk_price":  "9.72",
+                                                                           "unit_price":  "2.10",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.723",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60089",
+                                                "slug":  "tortilla-patata-con-cebolla-listo-comer",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60089/tortilla-patata-con-cebolla-listo-comer",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c769f9e8e8634ea05f33eee3b5243d34.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Tortilla de patata con cebolla Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.3,
+                                                                           "bulk_price":  "6.54",
+                                                                           "unit_price":  "8.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.539",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60127",
+                                                "slug":  "media-tortilla-patata-con-cebolla-listo-comer",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60127/media-tortilla-patata-con-cebolla-listo-comer",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6b27a12999296af626ba6d4dde9ac7ec.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Media tortilla de patata con cebolla Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.65,
+                                                                           "bulk_price":  "7.31",
+                                                                           "unit_price":  "4.75",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.308",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60093",
+                                                "slug":  "pincho-tortilla-patata-con-cebolla-listo-comer",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60093/pincho-tortilla-patata-con-cebolla-listo-comer",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/20d4960edd12efb27ebed2e3048590fc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pincho tortilla de patata con cebolla Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.215,
+                                                                           "bulk_price":  "9.72",
+                                                                           "unit_price":  "2.10",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.723",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13236",
+                                                "slug":  "pollo-teriyaki-contiene-arroz-jazmin-pollo-salsa-teriyaki-puerro-sesamo-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13236/pollo-teriyaki-contiene-arroz-jazmin-pollo-salsa-teriyaki-puerro-sesamo-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6d5527d54fd9c0d634759c308779ff5e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pollo teriyaki",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "5.00",
+                                                                           "unit_price":  "5.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13235",
+                                                "slug":  "noodles-yakisoba-con-carne-verduras-contiene-noodles-carne-cerdo-verduras-salsa-yakisoba-mayonesa-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13235/noodles-yakisoba-con-carne-verduras-contiene-noodles-carne-cerdo-verduras-salsa-yakisoba-mayonesa-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fc26c39dd1a77b50d810307230fddeaa.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Noodles Yakisoba con carne y verduras",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "4.50",
+                                                                           "unit_price":  "4.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "88407",
+                                                "slug":  "lentejas-listo-comer-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/88407/lentejas-listo-comer-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f3969d774c063e03c1da522f39c90a49.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Lentejas Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.485,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13243",
+                                                "slug":  "salmon-con-verduras-listo-comer-compuesto-salmon-marinado-salsa-romescu-arroz-verduras-asadas-calabacin-patata-pimiento-rojo-boniato-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13243/salmon-con-verduras-listo-comer-compuesto-salmon-marinado-salsa-romescu-arroz-verduras-asadas-calabacin-patata-pimiento-rojo-boniato-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c306868b28f7d9be71b7c37b14559c7e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "SalmÃ³n con verduras Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "5.75",
+                                                                           "unit_price":  "5.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  898,
+                           "name":  "Platos frÃ­os",
+                           "order":  597,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "5561",
+                                                "slug":  "ensaladilla-rusa-grande-listo-comer-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/5561/ensaladilla-rusa-grande-listo-comer-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b2764487d4eea824e14721d474584f77.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ensaladilla rusa grande Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.75,
+                                                                           "bulk_price":  "12.00",
+                                                                           "unit_price":  "12.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60226",
+                                                "slug":  "ensaladilla-rusa-mediana-listo-comer-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60226/ensaladilla-rusa-mediana-listo-comer-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0d70a92075e9653e8719d81545beeca5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ensaladilla rusa mediana Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.58,
+                                                                           "bulk_price":  "6.50",
+                                                                           "unit_price":  "6.50",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60212",
+                                                "slug":  "ensaladilla-rusa-pequena-listo-comer-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60212/ensaladilla-rusa-pequena-listo-comer-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/53d8c3afc37ab0104735652ca1cbe512.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ensaladilla rusa pequeÃ±a Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.29,
+                                                                           "bulk_price":  "3.50",
+                                                                           "unit_price":  "3.50",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13241",
+                                                "slug":  "ensalada-pasta-listo-comer-compuesta-atun-huevo-cocido-surimi-mix-queso-cebolla-con-monodosis-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13241/ensalada-pasta-listo-comer-compuesta-atun-huevo-cocido-surimi-mix-queso-cebolla-con-monodosis-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6604913c5a5d31159a6c090c3e84f38d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ensalada de pasta Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.366,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13237",
+                                                "slug":  "poke-salmon-contine-arroz-cocido-salmon-mango-pepino-ensalada-wakame-cebolla-encurtida-mezcla-semillas-salsa-soja-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13237/poke-salmon-contine-arroz-cocido-salmon-mango-pepino-ensalada-wakame-cebolla-encurtida-mezcla-semillas-salsa-soja-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f6b031c42619fb91198aa9fe406c69a8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Poke salmÃ³n",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "5.50",
+                                                                           "unit_price":  "5.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13232",
+                                                "slug":  "surtido-sushi-bento-grande-contiene-4-uramakis-4-makis-4-nigiris-2-futomakis-salsa-soja-salsa-ponzu-salsa-wasabi-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13232/surtido-sushi-bento-grande-contiene-4-uramakis-4-makis-4-nigiris-2-futomakis-salsa-soja-salsa-ponzu-salsa-wasabi-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/632e6a6d74137f0b872ac970f9cc12d8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Surtido sushi Bento grande",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.31,
+                                                                           "bulk_price":  "10.75",
+                                                                           "unit_price":  "10.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13233",
+                                                "slug":  "surtido-sushi-bento-pequeno-contiene-2-nigiris-4-makis-2-uramakis-salsa-soja-salsa-wasabi-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13233/surtido-sushi-bento-pequeno-contiene-2-nigiris-4-makis-2-uramakis-salsa-soja-salsa-wasabi-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5b3d69558d76a35d8edf3243f7c60d5d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Surtido sushi Bento pequeÃ±o",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.16,
+                                                                           "bulk_price":  "6.75",
+                                                                           "unit_price":  "6.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13234",
+                                                "slug":  "surtido-sushi-bento-mix-contiene-ensalada-alga-wakame-2-nigiris-salmon-3-makis-salmon-1-wrap-salmon-cortado-salsa-ponzu-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13234/surtido-sushi-bento-mix-contiene-ensalada-alga-wakame-2-nigiris-salmon-3-makis-salmon-1-wrap-salmon-cortado-salsa-ponzu-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/33dd4ed0bd6aa6d454326d9f8d1dd31b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Surtido sushi Bento mix",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "8.75",
+                                                                           "unit_price":  "8.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13250",
+                                                "slug":  "ensaladilla-marisco-listo-comer-compuesta-mayonesa-boca-mar-langostino-merluza-huevo-hilado-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13250/ensaladilla-marisco-listo-comer-compuesta-mayonesa-boca-mar-langostino-merluza-huevo-hilado-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/165a109b7cfb24e44b03d1ca163298ab.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ensaladilla de marisco Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13242",
+                                                "slug":  "ensalada-marisco-listo-comer-compuesta-pasta-poton-gambon-langostino-aceituna-negra-zanahoria-cebolla-roja-encurtidas-con-monodosis-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13242/ensalada-marisco-listo-comer-compuesta-pasta-poton-gambon-langostino-aceituna-negra-zanahoria-cebolla-roja-encurtidas-con-monodosis-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1e0afd4c1968bc53c1b12c1ef6b6f102.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ensalada de marisco Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "5.50",
+                                                                           "unit_price":  "5.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13240",
+                                                "slug":  "ensalada-pollo-queso-frutos-secos-listo-comer-compuesta-pollo-asado-tomate-cherry-queso-fresco-brotes-espinaca-lechuga-verde-lechuga-roja-mezcla-frutos-secos-fruta-desecada-con-monodosis-bol",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bol",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13240/ensalada-pollo-queso-frutos-secos-listo-comer-compuesta-pollo-asado-tomate-cherry-queso-fresco-brotes-espinaca-lechuga-verde-lechuga-roja-mezcla-frutos-secos-fruta-desecada-con-monodosis-bol",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8e19b97cf10d815ec7c3a284dff1ccf2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ensalada de pollo, queso y frutos secos Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13251",
+                                                "slug":  "brioche-listo-comer-con-jamon-cocido-lechuga-romana-huevo-cocido-mayonesa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13251/brioche-listo-comer-con-jamon-cocido-lechuga-romana-huevo-cocido-mayonesa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/98e2aa19fc128b651e97c34c8f75b47d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  16,
+                                                                       "name":  "Pizzas y platos preparados",
+                                                                       "level":  0,
+                                                                       "order":  597
+                                                                   }
+                                                               ],
+                                                "display_name":  "Brioche Listo para Comer",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.16,
+                                                                           "bulk_price":  "3.00",
+                                                                           "unit_price":  "3.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  138,
+                          "name":  "Pizzas"
+                      }
+}

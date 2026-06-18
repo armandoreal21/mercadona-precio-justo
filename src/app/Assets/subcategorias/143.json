@@ -1,0 +1,650 @@
+﻿{
+    "id":  143,
+    "name":  "Naranja",
+    "order":  793,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  396,
+                           "name":  "Naranja",
+                           "order":  793,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "5250",
+                                                "slug":  "zumo-naranja-recien-exprimido-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/5250/zumo-naranja-recien-exprimido-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7a5da08a9ed080770adffcced9e025f2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo de naranja reciÃ©n exprimido Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "7.80",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "3363",
+                                                "slug":  "zumo-naranja-recien-exprimido-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/3363/zumo-naranja-recien-exprimido-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/97fb8dc0e14a68511eebe04b68b3a172.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo de naranja reciÃ©n exprimido Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "5.90",
+                                                                           "unit_price":  "2.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.900",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "3362",
+                                                "slug":  "zumo-naranja-recien-exprimido-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/3362/zumo-naranja-recien-exprimido-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/70bfb1fb2f725e0ba98259fa063e4f9f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo de naranja reciÃ©n exprimido Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "4.95",
+                                                                           "unit_price":  "4.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.950",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "39010",
+                                                "slug":  "zumo-pura-naranja-hacendado-brick",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/39010/zumo-pura-naranja-hacendado-brick",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b6d2cecc3bad138c6020b6d7eb67ef83.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo pura naranja Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.85",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.850",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "39033",
+                                                "slug":  "zumo-pura-naranja-hacendado-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/39033/zumo-pura-naranja-hacendado-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0ba46f93dcbcaed6ff525f877cae8a29.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo pura naranja Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.2,
+                                                                           "unit_name":  "mini briks",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "2.33",
+                                                                           "unit_price":  "2.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "39032",
+                                                "slug":  "zumo-pura-naranja-con-pulpa-hacendado-brick",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/39032/zumo-pura-naranja-con-pulpa-hacendado-brick",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/49c07dc6cecfe687ec6d06e6061ac967.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo pura naranja con pulpa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.90",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.900",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "39127",
+                                                "slug":  "bebida-florida-hacendado-brick",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/39127/bebida-florida-hacendado-brick",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/13e06b5d2a298309aaaff233753c1bc1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida Florida Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.70",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.700",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "8790",
+                                                "slug":  "bebida-naranja-hacendado-sin-azucares-anadidos-brick",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/8790/bebida-naranja-hacendado-sin-azucares-anadidos-brick",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2a1d63e837b4582f4faeddd8507054a6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida de naranja Hacendado sin azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.05",
+                                                                           "unit_price":  "1.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.050",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "8791",
+                                                "slug":  "bebida-naranja-hacendado-sin-azucares-anadidos-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/8791/bebida-naranja-hacendado-sin-azucares-anadidos-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c8f6dbb9c354634993c77ed89cac7df4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida de naranja Hacendado sin azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.2,
+                                                                           "unit_name":  "mini briks",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "1.54",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.542",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21777",
+                                                "slug":  "zumo-naranja-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21777/zumo-naranja-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/06fa169ee8d4ab22018e6101e4f3aba5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo de naranja Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "2.10",
+                                                                           "unit_price":  "2.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.100",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21776",
+                                                "slug":  "zumo-naranja-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21776/zumo-naranja-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/db64039b287b1a9d27b8f6a93c164f89.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo de naranja Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "3.33",
+                                                                           "unit_price":  "1.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21778",
+                                                "slug":  "zumo-clementina-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21778/zumo-clementina-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/cd85e354252f29613f03a2f21d828ccc.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  10,
+                                                                       "name":  "Zumos",
+                                                                       "level":  0,
+                                                                       "order":  793
+                                                                   }
+                                                               ],
+                                                "display_name":  "Zumo de clementina Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.80",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  98,
+                          "name":  "Tomate y otros sabores"
+                      }
+}

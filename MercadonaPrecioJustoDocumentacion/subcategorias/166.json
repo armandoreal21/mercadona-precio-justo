@@ -1,0 +1,974 @@
+﻿{
+    "id":  166,
+    "name":  "Cerveza sin alcohol",
+    "order":  15,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  556,
+                           "name":  "Cerveza botella y botellÃ­n",
+                           "order":  15,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "26999",
+                                                "slug":  "cerveza-00-sin-alcohol-estrella-galicia",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/26999/cerveza-00-sin-alcohol-estrella-galicia",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/20d840369720979cd6a6e68e4c747d5c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol Estrella Galicia",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.25,
+                                                                           "unit_name":  "botellines",
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "2.64",
+                                                                           "unit_price":  "3.96",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.640",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "27187",
+                                                "slug":  "cerveza-00-sin-alcohol-san-miguel-con-abre-facil-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27187/cerveza-00-sin-alcohol-san-miguel-con-abre-facil-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a37679bdd21c29c39afb77d727500f5e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol San Miguel",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.25,
+                                                                           "unit_name":  "botellines",
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "2.08",
+                                                                           "unit_price":  "3.12",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.080",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60581",
+                                                "slug":  "cerveza-00-sin-alcohol-san-miguel-con-abre-facil-botellin",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "BotellÃ­n",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60581/cerveza-00-sin-alcohol-san-miguel-con-abre-facil-botellin",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f71e806ff4175b06a1ca3026a6af39ad.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol San Miguel",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "2.32",
+                                                                           "unit_price":  "0.58",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.320",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "66558",
+                                                "slug":  "cerveza-00-sin-alcohol-tostada-mahou-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/66558/cerveza-00-sin-alcohol-tostada-mahou-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/72cad3c4a6055fe02f73a906f37a0c27.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol tostada Mahou",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "botellines",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "3.48",
+                                                                           "unit_price":  "6.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.485",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "67026",
+                                                "slug":  "cerveza-00-sin-alcohol-tostada-mahou-botellin",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "BotellÃ­n",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/67026/cerveza-00-sin-alcohol-tostada-mahou-botellin",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b4ddcfee531c9644fee9032ef2d6afd2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol tostada Mahou",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "3.48",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.485",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "9776",
+                                                "slug":  "cerveza-00-sin-alcohol-aguila-sin-filtrar-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/9776/cerveza-00-sin-alcohol-aguila-sin-filtrar-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4e7260d7e92c0b7666953d09cdfdac5c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol El Ãguila sin filtrar",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "botellines",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "2.70",
+                                                                           "unit_price":  "5.34",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.697",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "9777",
+                                                "slug":  "cerveza-00-sin-alcohol-aguila-sin-filtrar-botellin",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "BotellÃ­n",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/9777/cerveza-00-sin-alcohol-aguila-sin-filtrar-botellin",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8803b701761b079d289e0b3e4abdc793.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol El Ãguila sin filtrar",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "2.70",
+                                                                           "unit_price":  "0.89",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.697",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60976",
+                                                "slug":  "cerveza-00-sin-alcohol-estrella-galicia-botellin",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "BotellÃ­n",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60976/cerveza-00-sin-alcohol-estrella-galicia-botellin",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9ceba4ca9824715b233dbf69db8c77e7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol Estrella Galicia",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "2.76",
+                                                                           "unit_price":  "0.69",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.760",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21509",
+                                                "slug":  "cerveza-sin-alcohol-falke",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21509/cerveza-sin-alcohol-falke",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ee642aace6054597c81c96960be694b8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol Falke",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.25,
+                                                                           "unit_name":  "botellines",
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "1.56",
+                                                                           "unit_price":  "2.34",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.560",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21510",
+                                                "slug":  "cerveza-sin-alcohol-falke-botellin",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "BotellÃ­n",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21510/cerveza-sin-alcohol-falke-botellin",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d42d4eb2192a5c0d39d8244f69ac5e15.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol Falke",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "1.56",
+                                                                           "unit_price":  "0.39",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.560",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52920",
+                                                "slug":  "malta-maltin-polar-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52920/malta-maltin-polar-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9fc270fe795dba46d6f576b3fea22993.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Malta MaltÃ­n Polar",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.25,
+                                                                           "unit_name":  "botellines",
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "4.33",
+                                                                           "unit_price":  "6.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52921",
+                                                "slug":  "malta-maltin-polar-botellin",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "BotellÃ­n",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52921/malta-maltin-polar-botellin",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4547b8dd91ba195099a7a75ed4fd7916.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Malta MaltÃ­n Polar",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "4.60",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.600",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  555,
+                           "name":  "Cerveza lata",
+                           "order":  15,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "21736",
+                                                "slug":  "cerveza-00-sin-alcohol-tostada-falke",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21736/cerveza-00-sin-alcohol-tostada-falke",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/52903fd023f4ad9b76c2f8849830b5c4.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol tostada Falke",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.64,
+                                                                           "bulk_price":  "1.39",
+                                                                           "unit_price":  "3.68",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.394",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21737",
+                                                "slug":  "cerveza-00-sin-alcohol-tostada-falke-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21737/cerveza-00-sin-alcohol-tostada-falke-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2a699dc3d8c437c150e48c15d87b44c7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol tostada Falke",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.39",
+                                                                           "unit_price":  "0.46",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.394",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11620",
+                                                "slug":  "cerveza-sin-gluten-mahou-00-sin-alcohol-tostada",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11620/cerveza-sin-gluten-mahou-00-sin-alcohol-tostada",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a764b36d59655e59bb43e9dee5286708.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza sin gluten 0,0% sin alcohol tostada Mahou",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.64,
+                                                                           "bulk_price":  "2.61",
+                                                                           "unit_price":  "6.88",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.607",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11621",
+                                                "slug":  "cerveza-sin-gluten-mahou-00-sin-alcohol-tostada-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11621/cerveza-sin-gluten-mahou-00-sin-alcohol-tostada-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e7d96e76fc4ffe6ab24ed2a72ae6c4b6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza sin gluten 0,0% sin alcohol tostada Mahou",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "2.76",
+                                                                           "unit_price":  "0.91",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.758",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21746",
+                                                "slug":  "cerveza-00-sin-alcohol-falke",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21746/cerveza-00-sin-alcohol-falke",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/19990ecd1b976a416af652fd74810ce8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol Falke",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  3.96,
+                                                                           "bulk_price":  "0.88",
+                                                                           "unit_price":  "3.48",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.879",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        4.08",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21747",
+                                                "slug":  "cerveza-00-sin-alcohol-falke-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21747/cerveza-00-sin-alcohol-falke-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5c601dccbd01aeb5ad4d4d072d170421.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cerveza 0,0% sin alcohol Falke",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "0.88",
+                                                                           "unit_price":  "0.29",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.879",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        0.34",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  181,
+                          "name":  "Licores"
+                      }
+}

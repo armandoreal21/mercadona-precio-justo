@@ -1,0 +1,338 @@
+﻿{
+    "id":  173,
+    "name":  "Vino lambrusco y espumoso",
+    "order":  15,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  579,
+                           "name":  "Vino lambrusco y espumoso",
+                           "order":  15,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "23972",
+                                                "slug":  "frizzante-blanco-verdejo-dulzze-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23972/frizzante-blanco-verdejo-dulzze-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6b43199caa46c2a61fb03a37a6ee020d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Frizzante blanco verdejo DulZ.Ze",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "2.88",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.879",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "23967",
+                                                "slug":  "frizzante-sabor-mango-piccolo-giovanni-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23967/frizzante-sabor-mango-piccolo-giovanni-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0ef8ff769d793f42723222cd04e71fa5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Frizzante sabor mango Piccolo Giovanni",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "3.13",
+                                                                           "unit_price":  "2.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.134",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "24532",
+                                                "slug":  "frizzante-blanco-dulce-sin-alcohol-piccolo-giovanni-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/24532/frizzante-blanco-dulce-sin-alcohol-piccolo-giovanni-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7d2c73e457a9aa3090df609272f5044d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Frizzante dulce sin alcohol Piccolo Giovanni",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "3.47",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.467",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "52533",
+                                                "slug":  "lambrusco-dellemilia-rosado-espumoso-piccolo-giovanni-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52533/lambrusco-dellemilia-rosado-espumoso-piccolo-giovanni-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d171a3df65d01b7e63ebd3c3543ef086.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Lambrusco rosado dell\u0027Emilia Piccolo Giovanni",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "3.07",
+                                                                           "unit_price":  "2.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.067",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "66332",
+                                                "slug":  "vino-blanco-espumoso-verdejo-dulzze-frizzante-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/66332/vino-blanco-espumoso-verdejo-dulzze-frizzante-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1c22d39e6430a588dd9eae64e8a19d89.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Frizzante blanco verdejo DulZ.Ze",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "3.73",
+                                                                           "unit_price":  "2.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.734",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21972",
+                                                "slug":  "vino-rosado-frizzante-sabor-sandia-piccolo-giovanni-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  true
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21972/vino-rosado-frizzante-sabor-sandia-piccolo-giovanni-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b8a02ebcbb62148dd4988c305a283d5e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  19,
+                                                                       "name":  "Bodega",
+                                                                       "level":  0,
+                                                                       "order":  15
+                                                                   }
+                                                               ],
+                                                "display_name":  "Frizzante sabor sandÃ­a Piccolo Giovanni",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "3.13",
+                                                                           "unit_price":  "2.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.134",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  171,
+                          "name":  "Vino rosado"
+                      }
+}

@@ -1,0 +1,1090 @@
+﻿{
+    "id":  84,
+    "name":  "CafÃ© soluble y otras bebidas",
+    "order":  16,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  370,
+                           "name":  "CafÃ© soluble",
+                           "order":  16,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "22163",
+                                                "slug":  "cafe-soluble-classic-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22163/cafe-soluble-classic-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e344726a7521b54735e68a88f002ead4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble Classic Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "19.50",
+                                                                           "unit_price":  "3.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "19.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22718",
+                                                "slug":  "cafe-soluble-classic-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22718/cafe-soluble-classic-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/167de6bbc7936d72b125710ba70b0be2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble Classic Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "29.00",
+                                                                           "unit_price":  "2.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "29.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11049",
+                                                "slug":  "cafe-soluble-clasico-hacendado-sobres-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11049/cafe-soluble-clasico-hacendado-sobres-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d409387b8f192af34480c5d3c6421814.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble classic en sobres Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sobres",
+                                                                           "unit_size":  0.02,
+                                                                           "bulk_price":  "55.00",
+                                                                           "unit_price":  "1.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11136",
+                                                "slug":  "cafe-soluble-natural-nescafe-classic-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11136/cafe-soluble-natural-nescafe-classic-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/cce5b5e4d08a19263135226099a9500b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble natural NescafÃ© classic",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "42.50",
+                                                                           "unit_price":  "8.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "42.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11111",
+                                                "slug":  "cafe-soluble-natural-nescafe-classic-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11111/cafe-soluble-natural-nescafe-classic-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/26c1b9a7e6cf38789d1657939230039b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble natural NescafÃ© classic",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "54.00",
+                                                                           "unit_price":  "5.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "54.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22164",
+                                                "slug":  "cafe-soluble-descafeinado-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22164/cafe-soluble-descafeinado-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2ed0ec1badebdab8ca1aafeba286b697.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble descafeinado Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "22.00",
+                                                                           "unit_price":  "4.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "22.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22719",
+                                                "slug":  "cafe-soluble-descafeinado-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22719/cafe-soluble-descafeinado-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/bd81f9beab36f96ad3895bd8dc03e578.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble descafeinado Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "31.00",
+                                                                           "unit_price":  "3.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "31.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11051",
+                                                "slug":  "cafe-soluble-sobres-descafeinado-hacendado-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11051/cafe-soluble-sobres-descafeinado-hacendado-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dd00da2192da875d333ecbe6b2102f7e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble descafeinado en sobres Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sobres",
+                                                                           "unit_size":  0.02,
+                                                                           "bulk_price":  "60.00",
+                                                                           "unit_price":  "1.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11101",
+                                                "slug":  "cafe-soluble-descafeinado-nescafe-classic-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11101/cafe-soluble-descafeinado-nescafe-classic-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/51f5f9e49dac9da47c19755a5976dbb0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble descafeinado NescafÃ© classic",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "42.50",
+                                                                           "unit_price":  "8.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "42.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11104",
+                                                "slug":  "cafe-soluble-descafeinado-nescafe-classic-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11104/cafe-soluble-descafeinado-nescafe-classic-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8849824b5a366e7fd76c9ce78e5b5405.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble descafeinado NescafÃ© classic",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "54.00",
+                                                                           "unit_price":  "5.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "54.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11123",
+                                                "slug":  "cafe-soluble-espresso-creme-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11123/cafe-soluble-espresso-creme-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7c3c338cf99e554e00ce30e34567f28f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble Espresso Creme Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.08,
+                                                                           "bulk_price":  "36.25",
+                                                                           "unit_price":  "2.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "36.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23406",
+                                                "slug":  "cafe-soluble-cappuccino-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23406/cafe-soluble-cappuccino-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/56a5cbc9d6095c6d7530b9e4d50bd906.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble cappuccino Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "11.00",
+                                                                           "unit_price":  "2.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "67660",
+                                                "slug":  "cafe-soluble-cappuccino-caramelo-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/67660/cafe-soluble-cappuccino-caramelo-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/db82323b63111aa2b0a60b8d7041a8ec.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© soluble cappuccino caramelo Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "11.00",
+                                                                           "unit_price":  "2.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  372,
+                           "name":  "Bebidas frÃ­as",
+                           "order":  16,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "10666",
+                                                "slug":  "cafe-con-leche-cappuccino-hacendado-vaso",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Vaso",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/10666/cafe-con-leche-cappuccino-hacendado-vaso",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f71077f44842e60a701a74c15a390d44.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© con leche cappuccino Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "3.00",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        0.85",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "10642",
+                                                "slug":  "cafe-con-leche-light-sin-lactosa-hacendado-vaso",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Vaso",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/10642/cafe-con-leche-light-sin-lactosa-hacendado-vaso",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5fe468972fe8cc7a33506cba2b436946.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© con leche light sin lactosa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "3.00",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        0.85",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "10644",
+                                                "slug":  "cafe-con-leche-espresso-hacendado-vaso",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Vaso",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/10644/cafe-con-leche-espresso-hacendado-vaso",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fbace2711111518e9ab7a3c54ad58656.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© con leche espresso Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "3.00",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        0.85",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "10672",
+                                                "slug":  "cafe-con-leche-descafeinado-hacendado-vaso",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Vaso",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/10672/cafe-con-leche-descafeinado-hacendado-vaso",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/83a4f4b01c38d63142b2646afe4e1fa7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "CafÃ© con leche descafeinado Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "3.00",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        0.85",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  371,
+                           "name":  "Otros",
+                           "order":  16,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "10449",
+                                                "slug":  "crema-leche-cafe-campina-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/10449/crema-leche-cafe-campina-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d60fe3bcdd22baf485111a85653587d3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "Crema de leche para cafÃ© Campina",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "7.00",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  20,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11187",
+                                                "slug":  "cereales-solubles-con-achicoria-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11187/cereales-solubles-con-achicoria-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/196406a5c892ae3b99ffbc8c56b3e202.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cereales solubles con achicoria Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.15,
+                                                                           "bulk_price":  "14.33",
+                                                                           "unit_price":  "2.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "14.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60515",
+                                                "slug":  "filtros-cafe-cafeteras-tamano-2-4-bosque-verde-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60515/filtros-cafe-cafeteras-tamano-2-4-bosque-verde-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b91e713f26b09a19383a915938d9833c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  8,
+                                                                       "name":  "Cacao, cafÃ© e infusiones",
+                                                                       "level":  0,
+                                                                       "order":  16
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filtros de cafÃ© para cafeteras tamaÃ±o 2 y 4 Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.02",
+                                                                           "unit_price":  "2.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  100,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.022",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  88,
+                          "name":  "TÃ© e infusiones"
+                      }
+}

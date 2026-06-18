@@ -1,0 +1,1754 @@
+﻿{
+    "id":  162,
+    "name":  "Refresco de tÃ© y sin gas",
+    "order":  8,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  544,
+                           "name":  "TÃ©",
+                           "order":  8,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "21827",
+                                                "slug":  "refresco-te-verde-sabor-maracuya-mango-hacendado-zero",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21827/refresco-te-verde-sabor-maracuya-mango-hacendado-zero",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b432b2ef25b1c40ecf6472a068de281c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© verde zero Hacendado sabor maracuyÃ¡ y mango",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "1.52",
+                                                                           "unit_price":  "3.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.516",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "21653",
+                                                "slug":  "refresco-te-rojo-sabor-frutos-rojos-hibisco-granada-hacendado-zero-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21653/refresco-te-rojo-sabor-frutos-rojos-hibisco-granada-hacendado-zero-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/828f6bdbb5bf96a80c7a2abf035adead.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© rojo zero Hacendado sabor frutos rojos, hibisco y granada",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "27832",
+                                                "slug":  "refresco-te-verde-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27832/refresco-te-verde-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2e4409f80f89f9b7afa0b644b8c7a5c8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© verde Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "67938",
+                                                "slug":  "refresco-te-sabor-limon-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/67938/refresco-te-sabor-limon-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e19e213669f0982f1d8c621f214660a8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© sabor limÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14314",
+                                                "slug":  "refresco-te-sabor-limon-hacendado",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14314/refresco-te-sabor-limon-hacendado",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ebbe2caba40ef780e9f6fb571f656549.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© sabor limÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "1.52",
+                                                                           "unit_price":  "3.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.516",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14315",
+                                                "slug":  "refresco-te-sabor-limon-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14315/refresco-te-sabor-limon-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a72e2d524ce4f3116793f8d358db7d3b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© sabor limÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.52",
+                                                                           "unit_price":  "0.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.516",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11307",
+                                                "slug":  "refresco-te-sabor-limon-hacendado-diluir-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11307/refresco-te-sabor-limon-hacendado-diluir-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/473f2617f6e8af822ed6272868ba9f8b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© soluble limÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sobres",
+                                                                           "unit_size":  0.036,
+                                                                           "bulk_price":  "41.67",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.167",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21709",
+                                                "slug":  "refresco-te-sabor-melocoton-hacendado-zero-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21709/refresco-te-sabor-melocoton-hacendado-zero-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/256c7bc59343c14dd56e96e1c2604f95.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ©  zero sabor melocotÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "80478",
+                                                "slug":  "refresco-te-sabor-melocoton-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/80478/refresco-te-sabor-melocoton-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/613b53e43b98aa2ae4bf9854f6fda84b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© sabor melocotÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11319",
+                                                "slug":  "refresco-te-sabor-melocoton-hacendado-diluir-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11319/refresco-te-sabor-melocoton-hacendado-diluir-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f34dae85e4f62fef8f20c8fd644c4d51.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© soluble melocotÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sobres",
+                                                                           "unit_size":  0.036,
+                                                                           "bulk_price":  "41.67",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.167",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11097",
+                                                "slug":  "refresco-te-sabor-mango-pina-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11097/refresco-te-sabor-mango-pina-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/00664bd13cf895890596e835d0d67e96.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© sabor mango y piÃ±a Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21711",
+                                                "slug":  "refresco-te-sabor-mango-hacendado-zero-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21711/refresco-te-sabor-mango-hacendado-zero-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1e9c2c1d35b0a8de568ae8fd0077402b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© zero sabor mango Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "5546",
+                                                "slug":  "refresco-te-sabor-limon-hacendado-zero-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/5546/refresco-te-sabor-limon-hacendado-zero-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4d6868f2c4aec287ab23c0cfc373945b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© zero sabor limÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21710",
+                                                "slug":  "refresco-te-verde-sabor-maracuya-mango-hacendado-zero-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21710/refresco-te-verde-sabor-maracuya-mango-hacendado-zero-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/219a3a5d0e3c29ca2c82c6eba0ef4648.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© verde zero Hacendado sabor maracuyÃ¡ y mango",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21828",
+                                                "slug":  "refresco-te-verde-sabor-maracuya-mango-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21828/refresco-te-verde-sabor-maracuya-mango-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f07cc33e5709d6390946a0cb603f71fa.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© verde zero Hacendado sabor maracuyÃ¡ y mango",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.52",
+                                                                           "unit_price":  "0.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.516",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11688",
+                                                "slug":  "refresco-te-sabor-limon-fuze-tea-bajo-calorias-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11688/refresco-te-sabor-limon-fuze-tea-bajo-calorias-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/47b24130e2a5593bc2c41c9787a81970.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© sabor limÃ³n Fuze Tea",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "1.33",
+                                                                           "unit_price":  "1.99",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.327",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11690",
+                                                "slug":  "refresco-te-sabor-limon-fuze-tea",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11690/refresco-te-sabor-limon-fuze-tea",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d6b77c91988420d11310c3e8bef89e6b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© sabor limÃ³n Fuze Tea",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.64,
+                                                                           "bulk_price":  "2.58",
+                                                                           "unit_price":  "6.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.576",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11691",
+                                                "slug":  "refresco-te-sabor-limon-fuze-tea-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11691/refresco-te-sabor-limon-fuze-tea-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/96f36ade32e761163252923e8130c4ea.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© sabor limÃ³n Fuze Tea",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "3.00",
+                                                                           "unit_price":  "0.99",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "16344",
+                                                "slug":  "refresco-te-sabor-manzana-hacendado-diluir-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16344/refresco-te-sabor-manzana-hacendado-diluir-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c8fd9d1294d7d54e29ec7dbbbca4e44d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco tÃ© soluble manzana Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sobres",
+                                                                           "unit_size":  0.036,
+                                                                           "bulk_price":  "41.67",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.167",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  546,
+                           "name":  "Otros refrescos sin gas",
+                           "order":  8,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "27965",
+                                                "slug":  "limonada-natural-don-simon-light-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27965/limonada-natural-don-simon-light-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/51de1809221a60b2e29ce39c59dadd52.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Limonada natural sin gas light Don SimÃ³n",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.90",
+                                                                           "unit_price":  "1.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.900",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27951",
+                                                "slug":  "refresco-naranja-simon-life-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27951/refresco-naranja-simon-life-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/98c87f86bdb32e92561950913701caa6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco sin gas de naranja Simon Life",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "1.23",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.234",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13944",
+                                                "slug":  "refresco-naranja-hacendado-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13944/refresco-naranja-hacendado-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4e0e2d7c2b0bf10ff15d0347156bc792.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco sin gas de naranja Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.77",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.767",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27842",
+                                                "slug":  "refresco-naranja-gold-spring-sin-gas-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27842/refresco-naranja-gold-spring-sin-gas-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/72d5f9d4748fe87b735248668376ae29.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco sin gas de naranja Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "botellas",
+                                                                           "unit_size":  1.32,
+                                                                           "bulk_price":  "1.21",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.213",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14313",
+                                                "slug":  "refresco-naranja-hacendado-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14313/refresco-naranja-hacendado-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7476880a2845582f9656b00a60aca2a8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco sin gas de naranja Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.21",
+                                                                           "unit_price":  "0.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.213",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13947",
+                                                "slug":  "refresco-fusion-frutas-hacendado-cero-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13947/refresco-fusion-frutas-hacendado-cero-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/daea61f7791036b4afe70b08fe475d46.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco sin gas cero fusiÃ³n de frutas Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        1.15",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27759",
+                                                "slug":  "bebida-florida-sunny-delight-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27759/bebida-florida-sunny-delight-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ee571eb486fdfcdccca1de822735142e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida Florida Sunny Delight",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.25,
+                                                                           "bulk_price":  "1.20",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        1.99",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13946",
+                                                "slug":  "refresco-pina-coco-hacendado-cero-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13946/refresco-pina-coco-hacendado-cero-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/899e33786dd873c8725db279bc3b639d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco sin gas cero piÃ±a-coco Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.67",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        1.15",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "28198",
+                                                "slug":  "agua-coco-chaokoh-100-natural-brick",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/28198/agua-coco-chaokoh-100-natural-brick",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c36335b1c5009321b8c4c017d7b0ee47.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Agua de coco 100% Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "2.30",
+                                                                           "unit_price":  "2.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "28197",
+                                                "slug":  "agua-coco-chaokoh-100-natural-brick",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/28197/agua-coco-chaokoh-100-natural-brick",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2f6e7233004720f9095d0d7e77337e49.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Agua de coco 100% Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "3.64",
+                                                                           "unit_price":  "1.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.637",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21732",
+                                                "slug":  "refresco-tropical-hacendado-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21732/refresco-tropical-hacendado-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5ce31b1455a0dbb0fd6e1fd81dfad2f5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco sin gas Tropical Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.77",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.767",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        1.20",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21734",
+                                                "slug":  "limonada-hacendado-light-sin-gas",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21734/limonada-hacendado-light-sin-gas",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/457f452ec4ce0f906666c5e5fbea19e6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Limonada sin gas light Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "botellas",
+                                                                           "unit_size":  1.32,
+                                                                           "bulk_price":  "1.21",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.213",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21735",
+                                                "slug":  "limonada-hacendado-light-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21735/limonada-hacendado-light-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/897b1cd2c8232a03d41608a84a8cdf33.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Limonada  sin gas light Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.21",
+                                                                           "unit_price":  "0.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.213",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13930",
+                                                "slug":  "refresco-berry-lime-hacendado-sin-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13930/refresco-berry-lime-hacendado-sin-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1fb220960a36e3556316c5a96bb63fa1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco sin gas Berry Lime Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.5,
+                                                                           "bulk_price":  "0.77",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.767",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  135,
+                          "name":  "Aceitunas y encurtidos"
+                      }
+}

@@ -1,0 +1,494 @@
+﻿{
+    "id":  107,
+    "name":  "Yogures y postres infantiles",
+    "order":  598,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  412,
+                           "name":  "Yogures y postres infantiles",
+                           "order":  598,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "68089",
+                                                "slug":  "petit-bolsillo-fresa-hacendado-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68089/petit-bolsillo-fresa-hacendado-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2706e4ae49634f4e868d954a901859fa.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Petit de bolsillo de fresa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.36,
+                                                                           "bulk_price":  "4.72",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.723",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68124",
+                                                "slug":  "danonino-sabor-fresa-danone-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68124/danonino-sabor-fresa-danone-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b0f2724413c1c235b25a0948010a0c6a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Danonino sabor fresa Danone",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.05,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "5.67",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68125",
+                                                "slug":  "danonino-sabor-fresa-platano-danone-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68125/danonino-sabor-fresa-platano-danone-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c124f2dd28d67cd614f44d72d4208a51.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Danonino sabor fresa y plÃ¡tano Danone",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.05,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "5.67",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "68029",
+                                                "slug":  "petit-nesquik-nestle-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/68029/petit-nesquik-nestle-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1a4df2400855982477f38c22ad14dc3c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Petit Nesquik NestlÃ©",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.06,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.36,
+                                                                           "bulk_price":  "5.14",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.139",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19848",
+                                                "slug":  "petit-sabor-fresa-platano-hacendado",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19848/petit-sabor-fresa-platano-hacendado",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3d6cc7e982299854c495c3ddcdc1e7cd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Petit sabor fresa y plÃ¡tano Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.06,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.36,
+                                                                           "bulk_price":  "2.36",
+                                                                           "unit_price":  "0.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.362",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19847",
+                                                "slug":  "petit-sabor-fresa-hacendado",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19847/petit-sabor-fresa-hacendado",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/82b727c30072c19b930584cbc850fcee.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Petit sabor fresa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.06,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.36,
+                                                                           "bulk_price":  "2.36",
+                                                                           "unit_price":  "0.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.362",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22442",
+                                                "slug":  "postre-lacteo-infantil-fresa-platano-hacendado-8-meses",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22442/postre-lacteo-infantil-fresa-platano-hacendado-8-meses",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/649d6e47cf3280b44a4b6058373616f0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bolsita postre lÃ¡cteo fresa y plÃ¡tano Hacendado +8 meses",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "9.00",
+                                                                           "unit_price":  "0.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  1,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60400",
+                                                "slug":  "postre-lacteo-infantil-galleta-hacendado-8-meses",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60400/postre-lacteo-infantil-galleta-hacendado-8-meses",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/af1a5a426c7786a08267baf0d6235a18.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bolsita postre lÃ¡cteo galleta Hacendado +8 meses",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "9.00",
+                                                                           "unit_price":  "0.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  1,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22444",
+                                                "slug":  "postre-lacteo-infantil-cereales-miel-12-meses",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22444/postre-lacteo-infantil-cereales-miel-12-meses",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/bcc110433c7462dfc24e8e901379b3c7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bolsita postre lÃ¡cteo cereales y miel Hacendado +12 meses",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "9.00",
+                                                                           "unit_price":  "0.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  1,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  99,
+                          "name":  "Fruta variada"
+                      }
+}

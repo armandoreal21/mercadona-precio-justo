@@ -1,0 +1,1338 @@
+﻿{
+    "id":  202,
+    "name":  "FijaciÃ³n cabello",
+    "order":  238,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  646,
+                           "name":  "Espuma y laca",
+                           "order":  238,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "75210",
+                                                "slug":  "laca-cabello-nelly-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/75210/laca-cabello-nelly-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f22c942ec615c32dd83e6ed1a4cb10b3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Laca cabello Nelly",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "6.25",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.625",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52693",
+                                                "slug":  "laca-cabello-flex-deliplus-fijacion-3-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52693/laca-cabello-flex-deliplus-fijacion-3-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/69206f7ae9b5b5e6706fc4b1c42de143.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Laca cabello Forte Deliplus fijaciÃ³n 3",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "4.75",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35328",
+                                                "slug":  "espuma-cabello-rizos-definidos-pantene-fijacion-5-con-aceite-coco-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35328/espuma-cabello-rizos-definidos-pantene-fijacion-5-con-aceite-coco-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e4a6858bad86d21193214ecfb6f5d5f0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Espuma cabello Rizos Definidos Pantene fijaciÃ³n 5",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "17.00",
+                                                                           "unit_price":  "4.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.700",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52684",
+                                                "slug":  "laca-cabello-suave-deliplus-fijacion-2-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52684/laca-cabello-suave-deliplus-fijacion-2-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3321681abed5e2c82da42a631fbffaf0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Laca cabello Normal Deliplus fijaciÃ³n 2",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "4.75",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35327",
+                                                "slug":  "laca-cabello-ultra-fuerte-pantene-fijacion-5-con-aceite-jojoba-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35327/laca-cabello-ultra-fuerte-pantene-fijacion-5-con-aceite-jojoba-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/80b61c92bd094d1ad91678f9f4c22308.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Laca cabello Ultra Fuerte Pantene fijaciÃ³n 5",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "14.17",
+                                                                           "unit_price":  "4.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.417",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52694",
+                                                "slug":  "laca-cabello-xtra-forte-deliplus-fijacion-4-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52694/laca-cabello-xtra-forte-deliplus-fijacion-4-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dd35abf51df26c814a1acbb114896a7e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Laca cabello Xtra Forte Deliplus fijaciÃ³n 4",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "4.75",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52695",
+                                                "slug":  "laca-cabello-xtra-forte-deliplus-fijacion-4-tamano-viaje-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52695/laca-cabello-xtra-forte-deliplus-fijacion-4-tamano-viaje-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c55516eba6bfdf2751a715637d61e5ec.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Laca cabello Xtra Forte Deliplus fijaciÃ³n 4",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.075,
+                                                                           "bulk_price":  "14.67",
+                                                                           "unit_price":  "1.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.467",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "9973",
+                                                "slug":  "espuma-cabello-xtra-forte-deliplus-fijacion-4-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/9973/espuma-cabello-xtra-forte-deliplus-fijacion-4-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c847f94da8673900542804758648ed15.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Espuma cabello Xtra Forte Deliplus fijaciÃ³n 4",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "6.17",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.617",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23764",
+                                                "slug":  "espuma-cabello-rizos-descarados-giorgi-fijacion-4-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23764/espuma-cabello-rizos-descarados-giorgi-fijacion-4-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/94a89d266bf85a77dca9224ad7a252ce.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Espuma cabello Rizos Descarados Giorgi fijaciÃ³n 4",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "11.00",
+                                                                           "unit_price":  "2.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.100",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  "        3.25",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35660",
+                                                "slug":  "espuma-cabello-ondas-curly-deliplus-fijacion-3-profix-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35660/espuma-cabello-ondas-curly-deliplus-fijacion-3-profix-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5a85c04ed33944cb98c88aba201df28e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Espuma cabello Ondas Curly Deliplus fijaciÃ³n 3",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "6.17",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.617",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44317",
+                                                "slug":  "protector-termico-cabello-termo-protect-deliplus-fijacion-1-con-pistola-profix-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44317/protector-termico-cabello-termo-protect-deliplus-fijacion-1-con-pistola-profix-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/89cfa6414f496a56d45bb91fbcf56bab.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Protector tÃ©rmico cabello Termo Protect Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "15.00",
+                                                                           "unit_price":  "3.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44313",
+                                                "slug":  "agua-peinado-cabello-aqua-styling-deliplus-fijacion-1-profix-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44313/agua-peinado-cabello-aqua-styling-deliplus-fijacion-1-profix-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9182a1bc5ffa4a841f5d7dbcf5e55ad8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Agua de peinado cabello Aqua Styling Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "10.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "46897",
+                                                "slug":  "spray-cabello-ondas-surfing-deliplus-fijacion-2-profix-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/46897/spray-cabello-ondas-surfing-deliplus-fijacion-2-profix-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/94d0d70e4377147e68c55e763febbe71.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Spray cabello Ondas Surfing Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "12.50",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44342",
+                                                "slug":  "mousse-fijador-cabello-deliplus-fijacion-2-profix-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44342/mousse-fijador-cabello-deliplus-fijacion-2-profix-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fbdbf7d76a949cd323db77e5f9051a67.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mousse fijador cabello Deliplus fijaciÃ³n 2",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "12.50",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "75230",
+                                                "slug":  "laca-cabello-elnett-fijacion-fuerte-loreal-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/75230/laca-cabello-elnett-fijacion-fuerte-loreal-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ba41eb1acee152ed2b2f43969a99928d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Laca cabello Elnett fijaciÃ³n fuerte",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "14.88",
+                                                                           "unit_price":  "5.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.488",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11933",
+                                                "slug":  "polvos-voluminizador-cabello-volum-fix-deliplus-mate-fijacion-4-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11933/polvos-voluminizador-cabello-volum-fix-deliplus-mate-fijacion-4-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c847e4510ad30285f1a9e8af6e18f293.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Polvos voluminizador para el cabello Volum Fix Deliplus mate fijaciÃ³n 4",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.01,
+                                                                           "bulk_price":  "395.00",
+                                                                           "unit_price":  "3.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "39.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  647,
+                           "name":  "Gomina y cera",
+                           "order":  238,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "44276",
+                                                "slug":  "gel-fijador-cabello-xtra-forte-deliplus-fijacion-4-profix-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44276/gel-fijador-cabello-xtra-forte-deliplus-fijacion-4-profix-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/03ced9a1f31ca4756c0c7578fa82225a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gel fijador cabello Xtra Forte Deliplus fijaciÃ³n 4",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "6.40",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.640",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44275",
+                                                "slug":  "gel-fijador-cabello-forte-deliplus-fijacion-3-profix-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44275/gel-fijador-cabello-forte-deliplus-fijacion-3-profix-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/60e5e1c1f424336e3e7f578e42e69ada.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gel fijador cabello Forte Deliplus fijaciÃ³n 3",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "4.38",
+                                                                           "unit_price":  "1.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.438",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14433",
+                                                "slug":  "cera-cabello-mate-deliplus-fijacion-4-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14433/cera-cabello-mate-deliplus-fijacion-4-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f4b244432ad8c7c16511e2444b30330a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cera cabello Mate Deliplus fijaciÃ³n 4",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "30.50",
+                                                                           "unit_price":  "3.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.050",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44316",
+                                                "slug":  "gel-fijador-cabello-x-trem-deliplus-fijacion-6-profix-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44316/gel-fijador-cabello-x-trem-deliplus-fijacion-6-profix-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/52b3d2e70a0adff8e7c79f3744e92dfe.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gel fijador cabello X-trem Deliplus fijaciÃ³n 6",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "6.40",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.640",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23762",
+                                                "slug":  "gel-fijador-cabello-extra-fuerte-giorgi-fijacion-3-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23762/gel-fijador-cabello-extra-fuerte-giorgi-fijacion-3-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/23d0595e9ef7c005fb388830a3fecf0e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gel fijador cabello extra fuerte Giorgi fijaciÃ³n 3",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.17,
+                                                                           "bulk_price":  "16.18",
+                                                                           "unit_price":  "2.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.618",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  "        3.25",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23763",
+                                                "slug":  "gel-fijador-cabello-control-total-giorgi-fijacion-5-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23763/gel-fijador-cabello-control-total-giorgi-fijacion-5-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1f7e3144e4006e5ee13accc06f8cef5b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gel fijador cabello control total Giorgi fijaciÃ³n 5",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.17,
+                                                                           "bulk_price":  "16.18",
+                                                                           "unit_price":  "2.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.618",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  "        3.25",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35639",
+                                                "slug":  "cera-cabello-brillo-deliplus-fijacion-4-profix-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35639/cera-cabello-brillo-deliplus-fijacion-4-profix-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5b453bcb4be5cb8e772762f88938679a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cera cabello Brillo Deliplus fijaciÃ³n 4",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "30.50",
+                                                                           "unit_price":  "3.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.050",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23019",
+                                                "slug":  "gel-activador-rizos-cabello-curl-perfect-deliplus-fix-3-apto-metodo-curly-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23019/gel-activador-rizos-cabello-curl-perfect-deliplus-fix-3-apto-metodo-curly-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ffe5c0c75e6f6b5d9be39c77814521cc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gel activador de rizos cabello Curl Perfect Deliplus fix 3",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "14.00",
+                                                                           "unit_price":  "2.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13924",
+                                                "slug":  "gel-fijador-cabello-con-aceite-oliva-eco-style-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13924/gel-fijador-cabello-con-aceite-oliva-eco-style-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dfd34409aed0c7081962b37853f32869.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  21,
+                                                                       "name":  "Cuidado del cabello",
+                                                                       "level":  0,
+                                                                       "order":  238
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gel fijador cabello con aceite de oliva Eco style",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.237,
+                                                                           "bulk_price":  "12.08",
+                                                                           "unit_price":  "2.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.208",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  192,
+                          "name":  "Afeitado y cuidado para hombre"
+                      }
+}

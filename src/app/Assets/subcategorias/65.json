@@ -1,0 +1,2222 @@
+﻿{
+    "id":  65,
+    "name":  "BollerÃ­a de horno",
+    "order":  515,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  330,
+                           "name":  "BollerÃ­a dulce",
+                           "order":  515,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "21879",
+                                                "slug":  "pepito-crema-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21879/pepito-crema-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d5cc589c786b56637900337132cee280.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pepito de crema",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.21,
+                                                                           "bulk_price":  "10.95",
+                                                                           "unit_price":  "2.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.953",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "24549",
+                                                "slug":  "bizcocho-relleno-caramelo-salado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/24549/bizcocho-relleno-caramelo-salado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/60b9ba91ae5270cd5e9c8b3ce6d4116a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bizcocho relleno de caramelo salado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.485,
+                                                                           "bulk_price":  "7.84",
+                                                                           "unit_price":  "3.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.836",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "84692",
+                                                "slug":  "croissant-mantequilla-26-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84692/croissant-mantequilla-26-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e3db82c4bd5fc7b2e956d3e76b1e8c62.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Croissant de mantequilla 26%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.05,
+                                                                           "bulk_price":  "11.00",
+                                                                           "unit_price":  "0.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "83664",
+                                                "slug":  "pastel-crema-65-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/83664/pastel-crema-65-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/736dc66fe73ff429bef9e9b8c59d3b89.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pastel de crema 65%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.055,
+                                                                           "bulk_price":  "10.00",
+                                                                           "unit_price":  "0.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84629",
+                                                "slug":  "12-mini-croissants-mantequilla-bolsa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bolsa",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84629/12-mini-croissants-mantequilla-bolsa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/55dfb0de5a832d479c76f2e25c653d4b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "12 Mini croissants de mantequilla",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "8.96",
+                                                                           "unit_price":  "2.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.959",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84688",
+                                                "slug":  "6-croissant-rellenos-cacao-bolsa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bolsa",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84688/6-croissant-rellenos-cacao-bolsa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/448b70af6205b50bf11f7994c0eb52c7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "6 Croissant rellenos de cacao",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.28,
+                                                                           "bulk_price":  "6.36",
+                                                                           "unit_price":  "1.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.364",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "83995",
+                                                "slug":  "bizcocho-yogur-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/83995/bizcocho-yogur-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0dc994fc90ab43ba3e9768c9f34d1daa.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bizcocho de yogur Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.8,
+                                                                           "bulk_price":  "4.38",
+                                                                           "unit_price":  "3.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.375",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84710",
+                                                "slug":  "berlina-glace-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84710/berlina-glace-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fe1f277a10ee34a021457159b63a1d70.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Berlina glacÃ©",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "6.25",
+                                                                           "unit_price":  "1.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.35",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84785",
+                                                "slug":  "berlina-cacao-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84785/berlina-cacao-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/efdba4d552600576c2ab47a37bc04fd6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Berlina al cacao",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "6.04",
+                                                                           "unit_price":  "1.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.042",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.55",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84654",
+                                                "slug":  "rosquillas-cacao-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84654/rosquillas-cacao-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6e8e2e6638dd917efd7d1471910d2c9b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Rosquillas al cacao",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.182,
+                                                                           "bulk_price":  "8.52",
+                                                                           "unit_price":  "1.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  7,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.517",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84684",
+                                                "slug":  "8-magdalenas-con-azucar-bolsa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bolsa",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84684/8-magdalenas-con-azucar-bolsa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8330a57014c14859d210c5f39cb613ed.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Magdalenas con azÃºcar",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.38,
+                                                                           "bulk_price":  "7.11",
+                                                                           "unit_price":  "2.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.106",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84900",
+                                                "slug":  "magdalenas-con-pepitas-chocolate-bolsa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bolsa",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84900/magdalenas-con-pepitas-chocolate-bolsa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/bc3e8acc9ee0110881bfe0c0ed6b308a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Magdalenas con pepitas de chocolate",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.38,
+                                                                           "bulk_price":  "8.16",
+                                                                           "unit_price":  "3.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.158",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84358",
+                                                "slug":  "ensaimada-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84358/ensaimada-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/980b96462583d922432d57cdb47c7315.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ensaimada",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.083,
+                                                                           "bulk_price":  "12.05",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.049",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84458",
+                                                "slug":  "trenza-con-nueces-4-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84458/trenza-con-nueces-4-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b3f51a8fa6c6d25bdfbc143ccf4d6beb.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Trenza con nueces 4%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.08,
+                                                                           "bulk_price":  "12.50",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84663",
+                                                "slug":  "caracola-con-pasas-10-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84663/caracola-con-pasas-10-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1a356cacaaf45ca0408c99dfc108ecf1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Caracola con pasas 10%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.103,
+                                                                           "bulk_price":  "9.71",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.709",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21588",
+                                                "slug":  "napolitana-chocolate-35-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21588/napolitana-chocolate-35-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b11a29e9268cfa383d44f4cd77c7cb43.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Napolitana de chocolate 35%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "7.92",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.917",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "12809",
+                                                "slug":  "bizcocho-chocolate-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/12809/bizcocho-chocolate-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/055a5ce9e4d2ba337d6dd20e444d0dc9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bizcocho de cacao",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.41,
+                                                                           "bulk_price":  "7.80",
+                                                                           "unit_price":  "3.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.805",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "9965",
+                                                "slug":  "bizcocho-con-azucar-moreno-nueces-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/9965/bizcocho-con-azucar-moreno-nueces-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a1be45d525db48eb2a1cf77ff37b4301.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bizcocho con azÃºcar moreno y nueces",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "8.38",
+                                                                           "unit_price":  "3.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.375",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84736",
+                                                "slug":  "bizcocho-chocolate-sin-gluten-sin-lactosa-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84736/bizcocho-chocolate-sin-gluten-sin-lactosa-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dc81211122046f2f184596736f63b646.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bizcocho de chocolate sin gluten y sin lactosa",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "10.50",
+                                                                           "unit_price":  "3.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14443",
+                                                "slug":  "bizcocho-azucar-sin-gluten-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14443/bizcocho-azucar-sin-gluten-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1ccc3f49b202571f5a415c93689309cd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bizcocho azÃºcar sin gluten",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "9.50",
+                                                                           "unit_price":  "2.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84937",
+                                                "slug":  "surtido-croissants-rellenos-crema-cacao-crema-con-leche-sabor-chocolate-blanco-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84937/surtido-croissants-rellenos-crema-cacao-crema-con-leche-sabor-chocolate-blanco-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9e729a200c977f97415a449b11d2d973.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Croissants surtidos rellenos de crema de cacao y crema con leche sabor a chocolate blanco",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "8.50",
+                                                                           "unit_price":  "2.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20140",
+                                                "slug":  "berlina-con-cobertura-cacao-crunch-rellena-crema-cacao-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20140/berlina-con-cobertura-cacao-crunch-rellena-crema-cacao-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d5f5768d5daf7ceb8a6e968a7346459d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Berlina con cobertura de cacao crunch rellena de crema de cacao",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "12.50",
+                                                                           "unit_price":  "1.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21540",
+                                                "slug":  "napolitana-crema-31-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21540/napolitana-crema-31-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7da701df38538d298789a53175b055bc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Napolitana de crema 31%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "7.92",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.917",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "16288",
+                                                "slug":  "bizcocho-manzana-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16288/bizcocho-manzana-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4f625f735f24926291921b1f1bb99c0e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bizcocho de manzana",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.6,
+                                                                           "bulk_price":  "7.00",
+                                                                           "unit_price":  "4.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "16354",
+                                                "slug":  "berlina-con-cobertura-frutos-rojos-virutas-chocolate-blanco-relleno-30-arandanos-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16354/berlina-con-cobertura-frutos-rojos-virutas-chocolate-blanco-relleno-30-arandanos-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/39d2a0881fe99bd6ba4e1b4e98973217.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Berlina con cobertura de frutos rojos y virutas de chocolate blanco relleno 30% arÃ¡ndanos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "11.11",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.112",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21990",
+                                                "slug":  "fartons-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21990/fartons-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/44a7447050cb3abf20c5a4662b6d47e5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Fartons",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.215,
+                                                                           "bulk_price":  "10.47",
+                                                                           "unit_price":  "2.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  5,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.466",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  331,
+                           "name":  "BollerÃ­a salada",
+                           "order":  515,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "84284",
+                                                "slug":  "empanada-atun-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84284/empanada-atun-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/af643679aebe19a4769c91976f9585b1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanada de atÃºn",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "7.00",
+                                                                           "unit_price":  "3.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        3.60",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84287",
+                                                "slug":  "empanada-atun-grande-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84287/empanada-atun-grande-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7db27ca0b22ffa3d9ebf1db18bf2392e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanada de atÃºn grande",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.12,
+                                                                           "bulk_price":  "6.43",
+                                                                           "unit_price":  "7.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.429",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84289",
+                                                "slug":  "empanada-rellena-pollo-setas-con-crema-queso-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84289/empanada-rellena-pollo-setas-con-crema-queso-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1e017096d4ae940a9c4ceb15c7f28cb6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanada rellena de pollo y setas con crema de queso",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "7.30",
+                                                                           "unit_price":  "3.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84638",
+                                                "slug":  "12-mini-saladas-bolsa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bolsa",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84638/12-mini-saladas-bolsa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8b231c42fd0c486732b5e2d792920d58.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "12 Mini saladas surtidas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.195,
+                                                                           "bulk_price":  "7.18",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.180",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84597",
+                                                "slug":  "24-mini-saladas-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84597/24-mini-saladas-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f34f7750f48b4aba20a8625e0d8a6ff1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "24 Mini saladas surtidas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.39,
+                                                                           "bulk_price":  "7.18",
+                                                                           "unit_price":  "2.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  24,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.180",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84676",
+                                                "slug":  "6-mini-empanadillas-pisto-bolsa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bolsa",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84676/6-mini-empanadillas-pisto-bolsa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1aa7ff31cb38922203c912fabfe7070c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "6 Mini empanadillas de pisto",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "8.84",
+                                                                           "unit_price":  "1.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.839",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14725",
+                                                "slug":  "hojaldre-sabor-pizza-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14725/hojaldre-sabor-pizza-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/88fa8735cf0dba2e9256bfba9a839635.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Hojaldre sabor pizza",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "13.00",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84940",
+                                                "slug":  "napolitana-mixta-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84940/napolitana-mixta-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6ac934c3f8cbc0b3e383197edebb097c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Napolitana mixta",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.13,
+                                                                           "bulk_price":  "6.92",
+                                                                           "unit_price":  "0.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.924",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84503",
+                                                "slug":  "empanadilla-tomate-22-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84503/empanadilla-tomate-22-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f813690354aaa6e09b5934fbae1d4a43.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanadilla de tomate 22%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "11.67",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84706",
+                                                "slug":  "empanadilla-espinacas-26-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84706/empanadilla-espinacas-26-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dbd19d0360c244ddcfe877d73702cc01.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanadilla de espinacas 26%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "11.67",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "84622",
+                                                "slug":  "empanadilla-guisantes-13-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/84622/empanadilla-guisantes-13-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/313452735fb330dc3c64b70008a86331.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanadilla de guisantes 13%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "14.00",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "14.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19855",
+                                                "slug":  "empanadilla-pollo-7-queso-cabra-4-cebolla-caramelizada-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19855/empanadilla-pollo-7-queso-cabra-4-cebolla-caramelizada-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/cd3d86fe464422f6f8eaf4393d2f226e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanadilla de pollo 7% y queso de cabra 4%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "16.00",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "16.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "4912",
+                                                "slug":  "empanadilla-pollo-10-bechamel-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/4912/empanadilla-pollo-10-bechamel-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fca8ea787af9601db902466b8c8adb3c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanadilla de pollo 10% y bechamel",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.098,
+                                                                           "bulk_price":  "13.27",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.266",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "4911",
+                                                "slug":  "empanadilla-atun-16-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/4911/empanadilla-atun-16-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f1306bdb6ec098d1b05b7d02039e19de.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanadilla de atÃºn 16%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.125,
+                                                                           "bulk_price":  "10.40",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21649",
+                                                "slug":  "empanada-carne-35-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21649/empanada-carne-35-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f8e2843957708bbc27f0d54e5c2c9485.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "Empanada de carne 35%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "7.30",
+                                                                           "unit_price":  "3.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "17466",
+                                                "slug":  "12-artesanitos-surtidos-compuestos-jamon-queso-frankfurt-tortilla-chistorra-bolsa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bolsa",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/17466/12-artesanitos-surtidos-compuestos-jamon-queso-frankfurt-tortilla-chistorra-bolsa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dcf920fef22a40a930482b4415d4c110.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  5,
+                                                                       "name":  "PanaderÃ­a y pastelerÃ­a",
+                                                                       "level":  0,
+                                                                       "order":  515
+                                                                   }
+                                                               ],
+                                                "display_name":  "12 Artesanitos surtidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "11.67",
+                                                                           "unit_price":  "3.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  66,
+                          "name":  "BollerÃ­a envasada"
+                      }
+}

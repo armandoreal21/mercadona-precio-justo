@@ -1,0 +1,818 @@
+﻿{
+    "id":  89,
+    "name":  "AzÃºcar y edulcorante",
+    "order":  11,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  378,
+                           "name":  "AzÃºcar",
+                           "order":  11,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "19897",
+                                                "slug":  "azucar-blanco-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19897/azucar-blanco-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/782bc97fd2960e24b4505e25b384a2d4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "AzÃºcar blanco Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.90",
+                                                                           "unit_price":  "0.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.900",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19837",
+                                                "slug":  "azucar-blanco-sobres-hacendado-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19837/azucar-blanco-sobres-hacendado-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/86a786bc3c1d1538701f5d2397255508.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "AzÃºcar blanco en sobres Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sticks",
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "4.43",
+                                                                           "unit_price":  "1.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.429",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22349",
+                                                "slug":  "azucar-moreno-cana-hacendado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22349/azucar-moreno-cana-hacendado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/feede3851164a6adf1969b62beaacb36.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "AzÃºcar moreno de caÃ±a Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.90",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.900",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19832",
+                                                "slug":  "azucar-moreno-cana-sobres-hacendado-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19832/azucar-moreno-cana-sobres-hacendado-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4a853663e8a2e382621dac9f8eb7d4dd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "AzÃºcar moreno en sobres Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sobres",
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "5.00",
+                                                                           "unit_price":  "1.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  50,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19859",
+                                                "slug":  "panela-azucar-moreno-cana-integral-hacendado-sin-refinar-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19859/panela-azucar-moreno-cana-integral-hacendado-sin-refinar-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/37828e8e0b311ebb395a481f35246b6f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Panela azÃºcar moreno de caÃ±a integral Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "4.10",
+                                                                           "unit_price":  "2.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.100",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35649",
+                                                "slug":  "azucar-glas-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35649/azucar-glas-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/161728aa26be5e8e39fbd114c24b4f6d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "AzÃºcar glas Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "5.20",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  819,
+                           "name":  "Edulcorante y otros",
+                           "order":  11,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "70741",
+                                                "slug":  "edulcorante-liquido-sacarina-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/70741/edulcorante-liquido-sacarina-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6bafe98675aec76afe33d1a6da1ab4fe.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Edulcorante lÃ­quido sacarina Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.15,
+                                                                           "bulk_price":  "5.67",
+                                                                           "unit_price":  "0.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19802",
+                                                "slug":  "edulcorante-pastillas-sacarina-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19802/edulcorante-pastillas-sacarina-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dc0e233a3502c53e0e79b58ec47949d7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Edulcorante en pastillas sacarina Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "pastillas",
+                                                                           "unit_size":  0.052,
+                                                                           "bulk_price":  "22.12",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  850,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "22.116",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19808",
+                                                "slug":  "edulcorante-sobres-sacarina-hacendado-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19808/edulcorante-sobres-sacarina-hacendado-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b226d7519ac3c88588aa2b7b8ed772a7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Edulcorante sacarina en sobres Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sobres",
+                                                                           "unit_size":  0.06,
+                                                                           "bulk_price":  "17.50",
+                                                                           "unit_price":  "1.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  60,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "17.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19860",
+                                                "slug":  "sirope-agave-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19860/sirope-agave-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/761f2c62683397da5f8ac7433ef2652e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Sirope de agave Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "7.43",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.429",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19820",
+                                                "slug":  "edulcorante-liquido-stevia-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19820/edulcorante-liquido-stevia-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a3908a81e00b2393419c76c334e25d63.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Edulcorante lÃ­quido stevia Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.15,
+                                                                           "bulk_price":  "13.67",
+                                                                           "unit_price":  "2.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19817",
+                                                "slug":  "edulcorante-granulado-stevia-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19817/edulcorante-granulado-stevia-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c8c404bea1deab41dcf058e6b8394d43.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Edulcorante granulado stevia Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "15.25",
+                                                                           "unit_price":  "3.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19812",
+                                                "slug":  "edulcorante-pastillas-stevia-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19812/edulcorante-pastillas-stevia-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/daf1d996bb5dc50de4696d52da90400a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Edulcorante en pastillas stevia Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "pastillas",
+                                                                           "unit_size":  0.009,
+                                                                           "bulk_price":  "205.56",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  175,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "20.556",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19825",
+                                                "slug":  "edulcorante-sobres-stevia-hacendado-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19825/edulcorante-sobres-stevia-hacendado-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c4c3200a0fbc1a834b84cbea7bbc2f76.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Edulcorante stevia en sobres Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "sobres",
+                                                                           "unit_size":  0.054,
+                                                                           "bulk_price":  "38.89",
+                                                                           "unit_price":  "2.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  54,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "38.889",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "67637",
+                                                "slug":  "edulcorante-eritritol-sucralosa-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/67637/edulcorante-eritritol-sucralosa-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b0f936ba5a0ea25fd9de787982d8be43.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Edulcorante Eritritol y Sucralosa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "15.25",
+                                                                           "unit_price":  "3.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  95,
+                          "name":  "Chicles y caramelos"
+                      }
+}

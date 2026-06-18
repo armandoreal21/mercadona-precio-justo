@@ -1,0 +1,1858 @@
+﻿{
+    "id":  214,
+    "name":  "Parafarmacia",
+    "order":  305,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  686,
+                           "name":  "BotiquÃ­n",
+                           "order":  305,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "16386",
+                                                "slug":  "stick-antirozaduras-deliplus-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16386/stick-antirozaduras-deliplus-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3e94d0071ebbf32b23e5f65ba35397fd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Stick antirozaduras Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.012,
+                                                                           "bulk_price":  "333.33",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "33.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  true
+                                            },
+                                            {
+                                                "id":  "21848",
+                                                "slug":  "bastoncillos-algodon-100-deliplus-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21848/bastoncillos-algodon-100-deliplus-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7bf370b6723091feb8b9302f07d0ff0d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bastoncillos de algodÃ³n 100% Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  300.0,
+                                                                           "bulk_price":  "0.00",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.004",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "77248",
+                                                "slug":  "alcohol-96o-deliplus-antiseptico-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/77248/alcohol-96o-deliplus-antiseptico-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/eb1cf373157270e2b4192a79709d9951.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Alcohol 96Âº Deliplus antisÃ©ptico",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "3.00",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "77241",
+                                                "slug":  "agua-oxigenada-deliplus-desinfectante-antiseptico-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/77241/agua-oxigenada-deliplus-desinfectante-antiseptico-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/87da79c7a7b3c04f21b2132ad8e2948a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Agua oxigenada Deliplus desinfectante antisÃ©ptico",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "2.60",
+                                                                           "unit_price":  "0.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.260",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "72049",
+                                                "slug":  "pulsera-citronela-talla-l-duracion-2-semanas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/72049/pulsera-citronela-talla-l-duracion-2-semanas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7e44fc0a5855924ae7b7123ec9b28da1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pulsera de citronela talla L Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.50",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "72039",
+                                                "slug":  "pulsera-citronela-talla-s-duracion-2-semanas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/72039/pulsera-citronela-talla-s-duracion-2-semanas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/507e2a9a55789c076168db81f667d9cd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Pulsera de citronela talla S Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.50",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79717",
+                                                "slug":  "tiras-adhesivas-protectoras-classic-color-beige-deliplus-surtidas-elasticas-transpirables-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79717/tiras-adhesivas-protectoras-classic-color-beige-deliplus-surtidas-elasticas-transpirables-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6942ea357b72452f69208fc2b69e5ed4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Tiras adhesivas protectoras Classic color beige Deliplus surtidas, elÃ¡sticas y transpirables",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "tiras",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.03",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  30,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.032",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "33357",
+                                                "slug":  "solucion-unica-lentes-contacto-blandas-deliplus-con-acido-hialuronico-contiene-estuche-portalentes-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/33357/solucion-unica-lentes-contacto-blandas-deliplus-con-acido-hialuronico-contiene-estuche-portalentes-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1db1633094a9331d6c6f15208e743542.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "SoluciÃ³n Ãºnica para lentes de contacto blandas Deliplus con Ã¡cido hialurÃ³nico",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.36,
+                                                                           "bulk_price":  "11.11",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.112",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79673",
+                                                "slug":  "bandas-adhesivas-fijacion-fuerte-color-beige-deliplus-cortar-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79673/bandas-adhesivas-fijacion-fuerte-color-beige-deliplus-cortar-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e4f8c4f5a848ff90c6c5e195ac0f364c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bandas adhesivas fijaciÃ³n fuerte color beige Deliplus para cortar",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "tiras",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.15",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.150",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79666",
+                                                "slug":  "esparadrapo-textil-adhesivo-resistente-color-beige-deliplus-5-m-x-25-cm-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79666/esparadrapo-textil-adhesivo-resistente-color-beige-deliplus-5-m-x-25-cm-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4aa9ce776a9127b5d2a2ff0b6261d768.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Esparadrapo textil adhesivo resistente color beige Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "rollo",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.40",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  1,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "77749",
+                                                "slug":  "vaselina-hidratante-deliplus-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/77749/vaselina-hidratante-deliplus-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/03d022d20f7c59c7686b71445810bb54.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Vaselina hidratante Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "20.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "12051",
+                                                "slug":  "algodon-hidrofilo-100-zig-zag-hipoalergenico-deliplus-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/12051/algodon-hidrofilo-100-zig-zag-hipoalergenico-deliplus-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7c912d34825b258b4db81cea111b1a97.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "AlgodÃ³n hidrÃ³filo 100% zig-zag hipoalergÃ©nico Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "12.00",
+                                                                           "unit_price":  "1.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 g",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35940",
+                                                "slug":  "povidona-yodada-10-cuidaplus-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35940/povidona-yodada-10-cuidaplus-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3b343d40c2d5d63b04401d3e7ef19c5c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Povidona yodada 10% Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.125,
+                                                                           "bulk_price":  "16.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.600",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  "        2.15",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "77322",
+                                                "slug":  "alcohol-romero-deliplus-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/77322/alcohol-romero-deliplus-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b1135b4dd25fb2d5a225b519837ddb60.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Alcohol de romero Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "8.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79136",
+                                                "slug":  "tiras-adhesivas-protectoras-infantiles-deliplus-surtidas-elasticas-transpirables-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79136/tiras-adhesivas-protectoras-infantiles-deliplus-surtidas-elasticas-transpirables-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/98688261834f4fcbea5c14819c5e2582.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Tiras adhesivas protectoras infantiles Deliplus surtidas, elÃ¡sticas y transpirables",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "tiras",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.07",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  20,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.065",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "78401",
+                                                "slug":  "roll-on-alivio-picor-deliplus-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/78401/roll-on-alivio-picor-deliplus-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5d8d47894cf9adede20e4bacb018a751.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Roll-on alivio picor Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.015,
+                                                                           "bulk_price":  "233.33",
+                                                                           "unit_price":  "3.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "23.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79667",
+                                                "slug":  "esparadrapo-papel-adhesivo-microporoso-color-blanco-deliplus-5-m-x-25-cm-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79667/esparadrapo-papel-adhesivo-microporoso-color-blanco-deliplus-5-m-x-25-cm-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/773f16b80c9d08633008f7f4c13d7b00.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Esparadrapo de papel adhesivo microporoso color blanco Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "rollo",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  1,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35734",
+                                                "slug":  "tiras-adhesivas-protectoras-espuma-acolchado-deliplus-proteccion-extra-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35734/tiras-adhesivas-protectoras-espuma-acolchado-deliplus-proteccion-extra-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/38d6e92932ea5f75d5d782dc79cf1e64.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Tiras adhesivas protectoras de espuma acolchado Deliplus protecciÃ³n extra",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "tiras",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  15,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "12779",
+                                                "slug":  "tiras-adhesivas-protectoras-poliuretano-aqua-deliplus-surtidas-resistentes-agua-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/12779/tiras-adhesivas-protectoras-poliuretano-aqua-deliplus-surtidas-resistentes-agua-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/160a9b9a017acf1f044008290727bb57.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Tiras adhesivas protectoras de poliuretano Aqua Deliplus surtidas resistentes al agua",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "tiras",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.11",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.109",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "76480",
+                                                "slug":  "balsamo-oriental-efecto-calor-deliplus-con-vitamina",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/76480/balsamo-oriental-efecto-calor-deliplus-con-vitamina",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d9236de1293a18092058e5031387a70e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "BÃ¡lsamo oriental efecto calor Deliplus con vitamina E",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.03,
+                                                                           "bulk_price":  "100.00",
+                                                                           "unit_price":  "3.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35735",
+                                                "slug":  "apositos-hidrocoloides-adhesivos-ampollas-rozaduras-deliplus-surtidos-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35735/apositos-hidrocoloides-adhesivos-ampollas-rozaduras-deliplus-surtidos-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3233c4f6f14b6479de209e1f99714c9e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "ApÃ³sitos hidrocoloides adhesivos para ampollas y rozaduras Deliplus surtidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.72",
+                                                                           "unit_price":  "4.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.717",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79678",
+                                                "slug":  "venda-elastica-cohesiva-deliplus-fijacion-fuerte-2-m-x-5-cm-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79678/venda-elastica-cohesiva-deliplus-fijacion-fuerte-2-m-x-5-cm-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8781445170fec768288c7e7e75bdea52.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Venda elÃ¡stica cohesiva Deliplus fijaciÃ³n fuerte",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "2.10",
+                                                                           "unit_price":  "2.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  1,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.100",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52996",
+                                                "slug":  "spray-repelente-fuerte-deliplus-antimosquitos-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52996/spray-repelente-fuerte-deliplus-antimosquitos-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d06b962af2c2f7c0bd3f404c604ddfe2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Spray repelente fuerte Deliplus antimosquitos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "27.00",
+                                                                           "unit_price":  "2.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "27.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22712",
+                                                "slug":  "protectores-oidos-espuma-moldex-ruido-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22712/protectores-oidos-espuma-moldex-ruido-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ed880020917310258121bd0ebdd7874d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Protectores para los oÃ­dos de espuma Moldex",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.43",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.425",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21404",
+                                                "slug":  "lagrimas-hidratantes-ojos-deliplus-con-hialuronato-sodico-02-sin-conservantes-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21404/lagrimas-hidratantes-ojos-deliplus-con-hialuronato-sodico-02-sin-conservantes-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/30bbe7133cf94cbf6dd7044061693acc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "LÃ¡grimas hidratantes para los ojos Deliplus con hialuronato sÃ³dico 0,2%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "monodosis",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.18",
+                                                                           "unit_price":  "5.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  30,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.180",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52740",
+                                                "slug":  "stick-arnica-cata-pum-deliplus-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52740/stick-arnica-cata-pum-deliplus-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8385ca3502cd60d049b3c5277ea994c2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Stick de Ã¡rnica Cata Pum Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.014,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79506",
+                                                "slug":  "gasas-esterilizadas-algodon-100-hidrofilo-deliplus-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79506/gasas-esterilizadas-algodon-100-hidrofilo-deliplus-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3385ce62bd7a37d6424b173f90ee0d74.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gasas esterilizadas de algodÃ³n 100% hidrÃ³filo Deliplus",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  10.0,
+                                                                           "bulk_price":  "0.12",
+                                                                           "unit_price":  "1.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.120",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79438",
+                                                "slug":  "spray-desinfectante-antiseptico-transparente-deliplus-contiene-clorhexidina-digluconato-2-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79438/spray-desinfectante-antiseptico-transparente-deliplus-contiene-clorhexidina-digluconato-2-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b28ab29e53c2a41f806b23a87d9af470.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Spray desinfectante antisÃ©ptico transparente Deliplus contiene clorhexidina y digluconato 2%",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.05,
+                                                                           "bulk_price":  "36.00",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.600",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "79712",
+                                                "slug":  "toallitas-manos-hidroalcoholicas-deliplus-75-alcohol-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/79712/toallitas-manos-hidroalcoholicas-deliplus-75-alcohol-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/548bffd0cffb76066bacee754df40f4c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Toallitas de manos hidroalcohÃ³licas Deliplus 75% Alcohol",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  15.0,
+                                                                           "bulk_price":  "0.07",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.067",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "77466",
+                                                "slug":  "gel-hidroalcoholico-80-alcohol-deliplus-antiseptico-sin-aclarado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/77466/gel-hidroalcoholico-80-alcohol-deliplus-antiseptico-sin-aclarado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5bd2b51017b919e0a2aeb0e24527a2ac.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Gel hidroalcohÃ³lico 80% alcohol Deliplus antisÃ©ptico sin aclarado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "7.80",
+                                                                           "unit_price":  "3.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.780",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "100 ml",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "8945",
+                                                "slug":  "mascarillas-quirurgicas-deliplus-reutilizables-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/8945/mascarillas-quirurgicas-deliplus-reutilizables-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/765167f8170d057b524ba081bef25dce.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mascarillas quirÃºrgicas Deliplus no reutilizables",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.15",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.150",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  687,
+                           "name":  "Preservativos",
+                           "order":  305,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "77441",
+                                                "slug":  "preservativos-sensitivo-suave-durex-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/77441/preservativos-sensitivo-suave-durex-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6e56c256640c25db8f306767231fe3c0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Preservativos sensitivo suave Durex",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.69",
+                                                                           "unit_price":  "8.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.688",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11606",
+                                                "slug":  "preservativos-natural-on-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11606/preservativos-natural-on-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/93aa5a401886c6287851ad16bc75dded.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Preservativos natural On",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.25",
+                                                                           "unit_price":  "3.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "77427",
+                                                "slug":  "preservativos-natural-durex-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/77427/preservativos-natural-durex-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1c8d6b7f1d83d906a8c7ba16a27eb1ba.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Preservativos natural Durex",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.60",
+                                                                           "unit_price":  "7.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.605",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11607",
+                                                "slug":  "preservativos-sensitive-on-caja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Caja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11607/preservativos-sensitive-on-caja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8d1bb4d41d0c7e377dcf342d91b62a2b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  23,
+                                                                       "name":  "Fitoterapia y parafarmacia",
+                                                                       "level":  0,
+                                                                       "order":  305
+                                                                   }
+                                                               ],
+                                                "display_name":  "Preservativos sensitive On",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "0.27",
+                                                                           "unit_price":  "3.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.267",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  27,
+                          "name":  "Fruta"
+                      }
+}

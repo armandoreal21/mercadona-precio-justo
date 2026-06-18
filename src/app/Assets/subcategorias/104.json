@@ -1,0 +1,1026 @@
+﻿{
+    "id":  104,
+    "name":  "Yogures naturales y sabores",
+    "order":  598,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  867,
+                           "name":  "Yogures naturales",
+                           "order":  598,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "22313",
+                                                "slug":  "yogur-natural-hacendado-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22313/yogur-natural-hacendado-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0689561ce98dba5c0b3ad43e69be0f5f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur natural Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "1.33",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20584",
+                                                "slug":  "yogur-natural-con-azucar-cana-hacendado-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20584/yogur-natural-con-azucar-cana-hacendado-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ead686f6dd51a57d3e03cdde744912d0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur natural con azÃºcar de caÃ±a Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "1.40",
+                                                                           "unit_price":  "1.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20260",
+                                                "slug":  "yogur-natural-danone-pack-8",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-8",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20260/yogur-natural-danone-pack-8",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/95893922af6683ed5eac61b7fcf87ba2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur natural Danone",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.96,
+                                                                           "bulk_price":  "2.07",
+                                                                           "unit_price":  "1.99",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.073",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20029",
+                                                "slug":  "kefir-natural-sabor-suave-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20029/kefir-natural-sabor-suave-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/996e614f475b8cd286f9a4c15643edea.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "KÃ©fir natural sabor suave",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "2.20",
+                                                                           "unit_price":  "1.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20287",
+                                                "slug":  "yogur-natural-cabra-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20287/yogur-natural-cabra-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e843fb916d43295d0796f91e9eaa9338.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur natural de cabra Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "4.20",
+                                                                           "unit_price":  "2.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20849",
+                                                "slug":  "postre-lacteo-sin-lactosa-cremoso-natural-azucarado-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20849/postre-lacteo-sin-lactosa-cremoso-natural-azucarado-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/df816a023396619577664df7e6d7c6ea.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Postre lÃ¡cteo cremoso natural azucarado sin lactosa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "3.10",
+                                                                           "unit_price":  "1.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.100",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  408,
+                           "name":  "Yogures de sabores",
+                           "order":  598,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "20001",
+                                                "slug":  "yogur-sabores-hacendado-2-fresa-2-platano-2-macedonia-2-coco-2-limon-2-sandia-2-vainilla-2-galleta-pack-16",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-16",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20001/yogur-sabores-hacendado-2-fresa-2-platano-2-macedonia-2-coco-2-limon-2-sandia-2-vainilla-2-galleta-pack-16",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/85b23a9a032693961d03270115cbefa3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabores Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "1.20",
+                                                                           "unit_price":  "2.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  16,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20040",
+                                                "slug":  "yogur-sabor-fresa-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20040/yogur-sabor-fresa-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9fd16b7ce0bf00b78a4d84b44ddd1410.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabor fresa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "1.50",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20041",
+                                                "slug":  "yogur-sabor-limon-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20041/yogur-sabor-limon-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c0979282d56bcf000db771295b59ab32.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabor limÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "1.50",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20033",
+                                                "slug":  "yogur-sabor-macedonia-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20033/yogur-sabor-macedonia-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/86bda79f4445672b5038cc259091c668.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabor macedonia Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "1.50",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20031",
+                                                "slug":  "yogur-sabor-fresa-danone-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20031/yogur-sabor-fresa-danone-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ce3ed2c1589379b243600a9ebf082e15.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabor fresa Danone",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "2.08",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.084",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20376",
+                                                "slug":  "yogur-cremoso-hacendado-con-frutos-silvestres-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20376/yogur-cremoso-hacendado-con-frutos-silvestres-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4b8059bb835b623d71bea1ea109a4056.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur cremoso con frutos silvestres Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "2.50",
+                                                                           "unit_price":  "1.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20379",
+                                                "slug":  "yogur-cremoso-hacendado-con-melocoton-maracuya-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20379/yogur-cremoso-hacendado-con-melocoton-maracuya-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8fcaa52649efa30b3683a7e41645986c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur cremoso con melocotÃ³n y maracuya Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "2.50",
+                                                                           "unit_price":  "1.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20037",
+                                                "slug":  "yogur-sabor-macedonia-danone-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20037/yogur-sabor-macedonia-danone-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6b9aa6f830fdab0ee48e7e6e25485c1e.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabor macedonia Danone",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "2.08",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.084",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20032",
+                                                "slug":  "yogur-sabor-coco-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20032/yogur-sabor-coco-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/acd94f8da88a3a1f4069189f3d2b47bc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabor coco Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "1.50",
+                                                                           "unit_price":  "0.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "60955",
+                                                "slug":  "yogur-con-frutas-hacendado-2-con-melocoton-2-con-fresas-2-con-pera-2-con-frutos-silvestres-pack-8",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-8",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/60955/yogur-con-frutas-hacendado-2-con-melocoton-2-con-fresas-2-con-pera-2-con-frutos-silvestres-pack-8",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/04acf20f1191eb74c8a2e7c15c327e94.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur con frutas Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "2.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20057",
+                                                "slug":  "yogur-sabor-coco-danone-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-4",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20057/yogur-sabor-coco-danone-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/50ccb483b1284d42d6065e011022833f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabor coco Danone",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "2.08",
+                                                                           "unit_price":  "1.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.084",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22799",
+                                                "slug":  "postre-lacteo-sin-lactosa-sabor-fresa-hacendado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22799/postre-lacteo-sin-lactosa-sabor-fresa-hacendado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/85a85cab17a7c9c2759adbcb29fdf6d1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Postre lÃ¡cteo sabor fresa sin lactosa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "2.90",
+                                                                           "unit_price":  "1.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.900",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21321",
+                                                "slug":  "yogur-sabores-hacendado-2-platano-2-macedonia-2-coco-2-fresa",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21321/yogur-sabores-hacendado-2-platano-2-macedonia-2-coco-2-fresa",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/16421e2d7df2246e42f2188f68065575.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur sabores Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.125,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.40",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  107,
+                          "name":  "Yogures y postres infantiles"
+                      }
+}

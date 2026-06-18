@@ -1,0 +1,598 @@
+﻿{
+    "id":  230,
+    "name":  "Limpieza cocina",
+    "order":  374,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  736,
+                           "name":  "Limpieza cocina",
+                           "order":  374,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "43914",
+                                                "slug":  "quitagrasas-bosque-verde-perfume-marsella-con-pistola-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/43914/quitagrasas-bosque-verde-perfume-marsella-con-pistola-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6a855e64ebdb0f85dfd88939bb43c336.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Quitagrasas Bosque Verde perfume Marsella",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "2.00",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "43906",
+                                                "slug":  "quitagrasas-sin-espuma-bosque-verde-perfume-limon-con-pistola-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/43906/quitagrasas-sin-espuma-bosque-verde-perfume-limon-con-pistola-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d476f9f165cb09e39a7ce9d9ef99fd9d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Quitagrasas Bosque Verde perfumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "2.00",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23801",
+                                                "slug":  "quitagrasas-kh-7-con-pistola-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23801/quitagrasas-kh-7-con-pistola-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/afe472e40a5cdce8cd51b3db3ecdf15d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Quitagrasas KH-7",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.78,
+                                                                           "bulk_price":  "4.74",
+                                                                           "unit_price":  "3.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.744",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "43935",
+                                                "slug":  "toallitas-limpiadoras-desengrasantes-cocina-bosque-verde-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/43935/toallitas-limpiadoras-desengrasantes-cocina-bosque-verde-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/92d5bc169085d0f92660ed0cb56ea37a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Toallitas limpiadoras desengrasantes de Cocina Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  50.0,
+                                                                           "bulk_price":  "0.03",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.026",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44210",
+                                                "slug":  "limpiador-hornos-bosque-verde-spray",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Spray",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44210/limpiador-hornos-bosque-verde-spray",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/eb12e866b8644b2ca933b8883d400231.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Limpiador de Hornos Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "4.50",
+                                                                           "unit_price":  "1.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44000",
+                                                "slug":  "limpiador-vitroceramicas-bosque-verde-3-1-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44000/limpiador-vitroceramicas-bosque-verde-3-1-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d8cbad586a8159856a1d369cc465f693.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Limpiador VitrocerÃ¡micas Bosque Verde 3 en 1",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "3.40",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44215",
+                                                "slug":  "limpiador-placas-induccion-bosque-verde-liquido-3-1-con-pistola-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44215/limpiador-placas-induccion-bosque-verde-liquido-3-1-con-pistola-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5ef5166d6b6cf3d2c86386150c942737.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Limpiador Placas de InducciÃ³n Bosque Verde lÃ­quido",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "3.50",
+                                                                           "unit_price":  "1.75",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13633",
+                                                "slug":  "crema-limpiadora-vitroceramicas-vitroclen-5-1-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13633/crema-limpiadora-vitroceramicas-vitroclen-5-1-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ddd76867325a12438e3ad6a68fb0e143.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Crema limpiadora VitrocerÃ¡micas Vitroclen 5 en 1",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.42,
+                                                                           "bulk_price":  "11.67",
+                                                                           "unit_price":  "4.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "9795",
+                                                "slug":  "rasqueta-vitroceramicas-bosque-verde-contiene-5-recambios-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/9795/rasqueta-vitroceramicas-bosque-verde-contiene-5-recambios-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b34c3e6afdfb8079c6fa910f76dfb697.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Rasqueta VitrocerÃ¡micas Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "3.25",
+                                                                           "unit_price":  "3.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "ud",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "ud",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19914",
+                                                "slug":  "multiusos-cocina-bosque-verde-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19914/multiusos-cocina-bosque-verde-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/701fd31002cbccb6da98047bb26c5ef6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Multiusos cocina Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "2.27",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.267",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "44232",
+                                                "slug":  "limpiador-desincrustante-chimeneas-bosque-verde-con-pistola-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/44232/limpiador-desincrustante-chimeneas-bosque-verde-con-pistola-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/37eed54529d21e97fa80b439505c6527.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  26,
+                                                                       "name":  "Limpieza y hogar",
+                                                                       "level":  0,
+                                                                       "order":  374
+                                                                   }
+                                                               ],
+                                                "display_name":  "Limpiador desincrustante y chimeneas Bosque Verde",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.75,
+                                                                           "bulk_price":  "4.73",
+                                                                           "unit_price":  "3.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.734",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  232,
+                          "name":  "Limpieza muebles y multiusos"
+                      }
+}

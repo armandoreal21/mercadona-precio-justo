@@ -1,0 +1,1766 @@
+﻿{
+    "id":  159,
+    "name":  "Refresco de naranja y de limÃ³n",
+    "order":  8,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  539,
+                           "name":  "LimÃ³n",
+                           "order":  8,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "27610",
+                                                "slug":  "refresco-fanta-limon-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27610/refresco-fanta-limon-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/389727daa0890efcf208edc2f8f9b855.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta limÃ³n",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.83",
+                                                                           "unit_price":  "1.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.825",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        1.85",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13817",
+                                                "slug":  "refresco-fanta-limon-pack-9",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-9",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13817/refresco-fanta-limon-pack-9",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0795670035ade48c36e5a3082cc5ff71.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta limÃ³n",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.97,
+                                                                           "bulk_price":  "2.33",
+                                                                           "unit_price":  "6.93",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  9,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27602",
+                                                "slug":  "refresco-fanta-limon-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27602/refresco-fanta-limon-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8a6751eb37f4293f7976556c1a06a415.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta limÃ³n",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "2.42",
+                                                                           "unit_price":  "0.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.425",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "8779",
+                                                "slug":  "refresco-fanta-limon-zero-azucares-anadidos-pack-8",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/8779/refresco-fanta-limon-zero-azucares-anadidos-pack-8",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/942e06710ec416864080c7124e718011.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta limÃ³n zero azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.64,
+                                                                           "bulk_price":  "2.33",
+                                                                           "unit_price":  "6.16",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27608",
+                                                "slug":  "refresco-fanta-limon-zero-azucares-anadidos-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27608/refresco-fanta-limon-zero-azucares-anadidos-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e3925e7300e779ecd39648e309a3860e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta limÃ³n zero azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "2.42",
+                                                                           "unit_price":  "0.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.425",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "29077",
+                                                "slug":  "refresco-limon-hacendado-fresh-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/29077/refresco-limon-hacendado-fresh-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5980897555c596c0be6e8deb03b59448.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de limÃ³n Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.48",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "29043",
+                                                "slug":  "refresco-limon-hacendado-fresh-gas-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/29043/refresco-limon-hacendado-fresh-gas-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/71071fe2e5c6371231f220b3cf60abf7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de limÃ³n Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "2.22",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "29044",
+                                                "slug":  "refresco-limon-hacendado-fresh-gas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/29044/refresco-limon-hacendado-fresh-gas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/84c37745779b7b4e9a3b7eea1efcd613.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de limÃ³n Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "0.37",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "29078",
+                                                "slug":  "refresco-limon-hacendado-zero-azucar-fresh-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/29078/refresco-limon-hacendado-zero-azucar-fresh-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2fc81aa7e37e64f63645de05330d3530.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de limÃ³n Hacendado zero azÃºcar fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.48",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "29045",
+                                                "slug":  "refresco-limon-hacendado-zero-azucar-fresh-gas-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/29045/refresco-limon-hacendado-zero-azucar-fresh-gas-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8a4ca291119d0be79a784b3b2d2879ce.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de limÃ³n Hacendado zero azÃºcar fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "2.22",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "29046",
+                                                "slug":  "refresco-limon-hacendado-zero-azucar-fresh-gas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/29046/refresco-limon-hacendado-zero-azucar-fresh-gas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/23f39916dc4c566b2118b78b125f2ab1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de limÃ³n Hacendado zero azÃºcar fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "0.37",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27761",
+                                                "slug":  "refresco-limon-schweppes-original-pack-8",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-8",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27761/refresco-limon-schweppes-original-pack-8",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/bfbaff8a377e302eae2f392fccda9b55.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco limÃ³n Schweppes original",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.64,
+                                                                           "bulk_price":  "1.97",
+                                                                           "unit_price":  "5.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.970",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        7.76",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27762",
+                                                "slug":  "refresco-limon-schweppes-original-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27762/refresco-limon-schweppes-original-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3e82f539ae4fc3c0da5b9c1c679c6234.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco limÃ³n Schweppes original",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  21,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "2.94",
+                                                                           "unit_price":  "0.97",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.940",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  794,
+                           "name":  "Lima limÃ³n",
+                           "order":  8,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "26990",
+                                                "slug":  "refresco-lima-limon-sprite-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/26990/refresco-lima-limon-sprite-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b51df40f8cf00e0ad42c0203006abeef.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco lima limÃ³n Sprite",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.83",
+                                                                           "unit_price":  "1.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.825",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "28176",
+                                                "slug":  "refresco-lima-limon-sprite-pack-8",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-8",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/28176/refresco-lima-limon-sprite-pack-8",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dfe01e412ce4a845e24973442583443f.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco lima limÃ³n Sprite",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.64,
+                                                                           "bulk_price":  "1.52",
+                                                                           "unit_price":  "4.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.516",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        4.88",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27845",
+                                                "slug":  "refresco-lima-limon-sprite-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27845/refresco-lima-limon-sprite-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c4a11bbeb673d4c96e59b464781f2e34.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco lima limÃ³n Sprite",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.67",
+                                                                           "unit_price":  "0.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        0.65",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21731",
+                                                "slug":  "refresco-lima-limon-hacendado-fresh-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21731/refresco-lima-limon-hacendado-fresh-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9f59c0b0c7041d1c46eae3c39c683eff.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco lima limÃ³n Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.48",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21723",
+                                                "slug":  "refresco-lima-limon-hacendado-fresh-gas",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21723/refresco-lima-limon-hacendado-fresh-gas",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9661aa7a70372812aaa696a8abcc8f08.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco lima limÃ³n Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "2.22",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21724",
+                                                "slug":  "refresco-lima-limon-hacendado-fresh-gas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21724/refresco-lima-limon-hacendado-fresh-gas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/91165d018f73916ea230ea73bb6c7ad3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco lima limÃ³n Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "0.37",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21725",
+                                                "slug":  "refresco-lima-limon-hacendado-zero-azucar-fresh-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21725/refresco-lima-limon-hacendado-zero-azucar-fresh-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/faec9ceb12f30801af0e4514d192ba01.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco lima limÃ³n Hacendado zero azÃºcar fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.48",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  537,
+                           "name":  "Naranja",
+                           "order":  8,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "17542",
+                                                "slug":  "refresco-fanta-naranja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/17542/refresco-fanta-naranja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d2733f2ee33bc99ee13c02b15cbef584.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta naranja",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  2.0,
+                                                                           "unit_name":  "botellas",
+                                                                           "unit_size":  4.0,
+                                                                           "bulk_price":  "0.75",
+                                                                           "unit_price":  "2.98",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.745",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        3.60",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27508",
+                                                "slug":  "refresco-fanta-naranja-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27508/refresco-fanta-naranja-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1e85c99b02fd2070d625f3899793ebc2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta naranja",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.93",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.925",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27571",
+                                                "slug":  "refresco-fanta-naranja-pack-9",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-9",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27571/refresco-fanta-naranja-pack-9",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/43a2ed3e13a659f801c0185ec8a5e177.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta naranja",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.97,
+                                                                           "bulk_price":  "2.33",
+                                                                           "unit_price":  "6.93",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  9,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27502",
+                                                "slug":  "refresco-fanta-naranja-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27502/refresco-fanta-naranja-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/aa8560b5a2668261ad121f58c4942941.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta naranja",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "2.42",
+                                                                           "unit_price":  "0.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.425",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27545",
+                                                "slug":  "refresco-fanta-naranja-zero-azucares-anadidos-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27545/refresco-fanta-naranja-zero-azucares-anadidos-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3874694a9b1f69073ddee2a9c0c79fad.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta naranja zero azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.80",
+                                                                           "unit_price":  "1.59",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.795",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  "        1.85",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "8778",
+                                                "slug":  "refresco-fanta-naranja-zero-azucares-anadidos-pack-8",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/8778/refresco-fanta-naranja-zero-azucares-anadidos-pack-8",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4f417d3a0b711609a1daea581d8995c5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta naranja zero azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  2.64,
+                                                                           "bulk_price":  "2.33",
+                                                                           "unit_price":  "6.16",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.334",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "27510",
+                                                "slug":  "refresco-fanta-naranja-zero-azucares-anadidos-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/27510/refresco-fanta-naranja-zero-azucares-anadidos-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6161ca06c5c9a4862bee618f403af5ae.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco Fanta naranja zero azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "2.42",
+                                                                           "unit_price":  "0.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.425",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21729",
+                                                "slug":  "refresco-naranja-hacendado-fresh-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21729/refresco-naranja-hacendado-fresh-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/712bfec49e20fac4127aa7f413dfd890.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de naranja Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.48",
+                                                                           "unit_price":  "0.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.475",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21719",
+                                                "slug":  "refresco-naranja-hacendado-fresh-gas",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21719/refresco-naranja-hacendado-fresh-gas",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/afb0a282b9bb2c8e110bc7f555133cec.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de naranja Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "2.22",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21720",
+                                                "slug":  "refresco-naranja-hacendado-fresh-gas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21720/refresco-naranja-hacendado-fresh-gas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ec3e94308c014b341c1812f74be57f5a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de naranja Hacendado fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "0.37",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21730",
+                                                "slug":  "refresco-naranja-hacendado-zero-fresh-gas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21730/refresco-naranja-hacendado-zero-fresh-gas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fae53120acde5d1df2d940ad1602358a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de naranja Hacendado zero fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  2.0,
+                                                                           "bulk_price":  "0.45",
+                                                                           "unit_price":  "0.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "0.450",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21721",
+                                                "slug":  "refresco-naranja-hacendado-zero-fresh-gas",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21721/refresco-naranja-hacendado-zero-fresh-gas",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0ac4ea1b417cc2e960d1a071d387f01d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de naranja Hacendado zero fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.33,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  1.98,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "2.22",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21722",
+                                                "slug":  "refresco-naranja-hacendado-zero-azucar-fresh-gas-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21722/refresco-naranja-hacendado-zero-azucar-fresh-gas-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/75e5e105d37f9303ffcb8808441670f5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  18,
+                                                                       "name":  "Agua y refrescos",
+                                                                       "level":  0,
+                                                                       "order":  8
+                                                                   }
+                                                               ],
+                                                "display_name":  "Refresco de naranja Hacendado Zero azÃºcar fresh gas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "1.12",
+                                                                           "unit_price":  "0.37",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "21.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.122",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  161,
+                          "name":  "TÃ³nica y bitter"
+                      }
+}

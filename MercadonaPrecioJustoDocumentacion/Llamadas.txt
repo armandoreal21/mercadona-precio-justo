@@ -1,0 +1,51 @@
+Llamadas para obtener categorias
+https://tienda.mercadona.es/api/categories/
+
+Se obtiene el Categorias.json
+
+En base a eso se puede obtener las subcategorías para poder hacer una llamada con el id:
+
+https://tienda.mercadona.es/api/categories/112
+
+Y obtener todos los productos de esa categoría
+
+subcategorias/112.json
+
+
+Por otra parte, se puede llamar desde powershell a 
+
+# 1. Creamos la carpeta 'subcategorias' si no existe
+if (-not (Test-Path "subcategorias")) {
+    New-Item -ItemType Directory -Path "subcategorias" | Out-Null
+}
+
+Write-Host "Descargando índice general y guardando Categoria.json..."
+# 2. Descargamos el índice principal y lo guardamos en la raíz
+$headers = @{"User-Agent"="Mozilla/5.0"}
+$categoriasLive = Invoke-RestMethod -Uri "https://tienda.mercadona.es/api/categories/" -Headers $headers
+
+$categoriasLive | ConvertTo-Json -Depth 10 | Out-File -FilePath "Categoria.json" -Encoding utf8
+
+# 3. Iteramos sobre los IDs extraídos del objeto en memoria
+$categoriasLive.results.categories.id | ForEach-Object {
+    Write-Host "Descargando subcategoría: $_..."
+    
+    # 4. Descargamos y guardamos dentro de la carpeta 'subcategorias'
+    Invoke-RestMethod -Uri "https://tienda.mercadona.es/api/categories/$_" -Headers $headers | 
+    ConvertTo-Json -Depth 10 | 
+    Out-File -FilePath "subcategorias\$_.json" -Encoding utf8
+    
+    Start-Sleep -Seconds 1
+}
+Write-Host "¡Proceso finalizado con éxito!"
+
+
+que te trae todos los json con categorías de forma actualizada
+
+📁 Tu Carpeta de Trabajo
+ ├── 📄 Categoria.json          <-- El índice vivo con todo el árbol
+ └── 📁 subcategorias           <-- La nueva carpeta automatizada
+      ├── 📄 112.json
+      ├── 📄 115.json
+      └── 📄 213.json           <-- El detalle de los productos (¡sin el prefijo "categoria_" para que quede más limpio!)
+

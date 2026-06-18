@@ -1,0 +1,1714 @@
+﻿{
+    "id":  108,
+    "name":  "Yogures lÃ­quidos",
+    "order":  598,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  413,
+                           "name":  "Yogures lÃ­quidos",
+                           "order":  598,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "86331",
+                                                "slug":  "yogur-liquido-fresa-hacendado-pack-12",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-12",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86331/yogur-liquido-fresa-hacendado-pack-12",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5246df6b92d37bf788da3733179e8d3a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur lÃ­quido de fresa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "1.67",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20613",
+                                                "slug":  "bebida-lactea-fresa-platano-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20613/bebida-lactea-fresa-platano-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f046b855d2fb60c7fc6c10e9bf21b65a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea de fresa y plÃ¡tano Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.50",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20612",
+                                                "slug":  "bebida-lactea-fresa-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20612/bebida-lactea-fresa-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7bcb8d7973ce2f6d56130351102a6b49.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea de fresa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.50",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20629",
+                                                "slug":  "bebida-lactea-pina-coco-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20629/bebida-lactea-pina-coco-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2a1b583c8a2b23c41cf04004b57dc19c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea de piÃ±a y coco Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.50",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "9982",
+                                                "slug":  "bebida-lactea-frutas-bosque-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/9982/bebida-lactea-frutas-bosque-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2958a31bef0535fa62335fb1e1213471.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea de frutas del bosque Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.50",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "7878",
+                                                "slug":  "yogur-liquido-natural-hacendado-con-azucar-cana-pack-12",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-12",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/7878/yogur-liquido-natural-hacendado-con-azucar-cana-pack-12",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b2f3d2bd1ac52ac87c90effa1d4926b4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur lÃ­quido natural Hacendado con azÃºcar de caÃ±a",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "1.67",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15660",
+                                                "slug":  "yogur-liquido-desnatado-pina-coco-hacendado-0-mg-0-sin-azucares-anadidos-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15660/yogur-liquido-desnatado-pina-coco-hacendado-0-mg-0-sin-azucares-anadidos-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/041f59898296337aa8683c4d35b5f0d4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur lÃ­quido piÃ±a y coco Hacendado 0% MG 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.50",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15661",
+                                                "slug":  "yogur-liquido-desnatado-frutos-silvestres-hacendado-0-mg-0-sin-azucares-anadidos-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15661/yogur-liquido-desnatado-frutos-silvestres-hacendado-0-mg-0-sin-azucares-anadidos-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3a42f5d65b5f72e1c0a3409fb1d4b757.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Yogur lÃ­quido frutos silvestres Hacendado 0% MG 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.50",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "9981",
+                                                "slug":  "bebida-lactea-natural-azucarada-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/9981/bebida-lactea-natural-azucarada-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8761b9c14379e95faf67971a4d59eed4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea natural azucarada Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "1.30",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.300",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.50",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21333",
+                                                "slug":  "bebida-lactea-desnatada-sabor-fresa-proteinas-hacendado-0-mg-20-g-proteinas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21333/bebida-lactea-desnatada-sabor-fresa-proteinas-hacendado-0-mg-20-g-proteinas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/01f55b13a295194d7f5a18210fece2ec.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea sabor fresa +ProteÃ­nas Hacendado 0% MG 20 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.28,
+                                                                           "bulk_price":  "4.11",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.108",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "86418",
+                                                "slug":  "batido-lacteo-sabor-chocolate-proteinas-hacendado-30-g-proteinas-brick",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86418/batido-lacteo-sabor-chocolate-proteinas-hacendado-30-g-proteinas-brick",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fd52db5d2656b0f63b0ad7ba075cd614.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Batido lÃ¡cteo sabor chocolate +ProteÃ­nas Hacendado 30 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "3.94",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.940",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "86419",
+                                                "slug":  "batido-lacteo-sabor-vainilla-proteinas-hacendado-30-g-proteinas-brick",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86419/batido-lacteo-sabor-vainilla-proteinas-hacendado-30-g-proteinas-brick",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/442ae61addfecdf91e59ab0f0580105b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Batido lÃ¡cteo sabor vainilla +ProteÃ­nas Hacendado 30 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "3.94",
+                                                                           "unit_price":  "1.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.940",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21378",
+                                                "slug":  "bebida-lactea-desnatada-sabor-tropical-proteinas-hacendado-0-mg-20-g-proteinas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21378/bebida-lactea-desnatada-sabor-tropical-proteinas-hacendado-0-mg-20-g-proteinas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/cd86b146682cd7e39874df8186f21e39.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea sabor tropical +ProteÃ­nas Hacendado 0% MG 20 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.28,
+                                                                           "bulk_price":  "4.11",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.108",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35847",
+                                                "slug":  "bebida-lactea-desnatada-proteinas-sabor-acai-platano-hacendado-0-mg-20-g-proteinas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35847/bebida-lactea-desnatada-proteinas-sabor-acai-platano-hacendado-0-mg-20-g-proteinas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4bd29ee23f79f130f0726341cbbba952.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea sabor aÃ§aÃ­ plÃ¡tano +ProteÃ­nas Hacendado 0% MG 20 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.28,
+                                                                           "bulk_price":  "4.11",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.108",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "12753",
+                                                "slug":  "bebida-lactea-desnatada-sabor-fresa-platano-proteinas-hacendado-0-mg-174-g-proteinas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/12753/bebida-lactea-desnatada-sabor-fresa-platano-proteinas-hacendado-0-mg-174-g-proteinas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4a84b1a833d1cefcc9370344faca4d12.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea sabor fresa y plÃ¡tano +ProteÃ­nas Hacendado 0% MG 0% azÃºcares aÃ±adidos 17,4 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "2.50",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19985",
+                                                "slug":  "bebida-lactea-desnatada-sabor-stracciatella-proteinas-hacendado-0-azucares-anadidos-20-g-proteinas-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19985/bebida-lactea-desnatada-sabor-stracciatella-proteinas-hacendado-0-azucares-anadidos-20-g-proteinas-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/aa9ec0683993f3b23a2fb05ecf487994.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea sabor stracciatella +ProteÃ­nas Hacendado 0% azÃºcares aÃ±adidos 20 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.28,
+                                                                           "bulk_price":  "4.11",
+                                                                           "unit_price":  "1.15",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.108",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21625",
+                                                "slug":  "batido-lacteo-sabor-cafe-proteinas-hacendado-30-g-proteinas-brik",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Brik",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21625/batido-lacteo-sabor-cafe-proteinas-hacendado-30-g-proteinas-brik",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/24f9e5987b2e37c13e32582229924277.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Batido lÃ¡cteo sabor cafÃ© +ProteÃ­nas Hacendado 30 g proteÃ­nas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "4.24",
+                                                                           "unit_price":  "1.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "l",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.243",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "L",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  414,
+                           "name":  "L-Casei",
+                           "order":  598,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "20627",
+                                                "slug":  "bebida-lactea-fresa-l-casei-hacendado-pack-12",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20627/bebida-lactea-fresa-l-casei-hacendado-pack-12",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2fd6b3807affb26b3d81f0ba803fe72e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea de fresa L-casei",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "1.88",
+                                                                           "unit_price":  "2.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.875",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20640",
+                                                "slug":  "bebida-lactea-sabores-l-casei-6-fresaplatano-6-pinacoco-hacendado-pack-12",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20640/bebida-lactea-sabores-l-casei-6-fresaplatano-6-pinacoco-hacendado-pack-12",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/efd7a21285cead1052bbbc1fcdf26b34.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea sabores L-casei",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "1.88",
+                                                                           "unit_price":  "2.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.875",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22126",
+                                                "slug":  "bebida-lactea-natural-azucarada-l-casei-hacendado-pack-12",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22126/bebida-lactea-natural-azucarada-l-casei-hacendado-pack-12",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/826e4c3006a0807aab1eb1d07f9f87f2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea natural azucarada L-casei",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "1.88",
+                                                                           "unit_price":  "2.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "1.875",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20738",
+                                                "slug":  "bebida-lactea-natural-actimel-danone-pack-12",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20738/bebida-lactea-natural-actimel-danone-pack-12",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5d2c6ce8c1904cb76888cffd9d56a6a2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea natural Actimel",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "4.99",
+                                                                           "unit_price":  "5.99",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.992",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20709",
+                                                "slug":  "bebida-lactea-natural-actimel-0-mg-danone-pack-12",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20709/bebida-lactea-natural-actimel-0-mg-danone-pack-12",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/992ca3b2bd7c8d725e3fcb439d659fc7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea natural Actimel 0% MG 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "4.99",
+                                                                           "unit_price":  "5.99",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.992",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21556",
+                                                "slug":  "bebida-lactea-desnatada-fresa-l-casei-0-mg-0-azucares-anadidos-hacendado",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21556/bebida-lactea-desnatada-fresa-l-casei-0-mg-0-azucares-anadidos-hacendado",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0113b74c6184be9747d39c7b302e28ac.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea de fresa L-casei 0% MG 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "2.17",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.167",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21557",
+                                                "slug":  "bebida-lactea-desnatada-natural-l-casei-0-mg-0-azucares-anadidos-hacendado",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21557/bebida-lactea-desnatada-natural-l-casei-0-mg-0-azucares-anadidos-hacendado",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2ca2263ad4f7fbee8f4997c7dcdabaa6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea natural L-casei 0% MG 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.2,
+                                                                           "bulk_price":  "2.17",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  12,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.167",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  866,
+                           "name":  "Colesterol y otros",
+                           "order":  598,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "22002",
+                                                "slug":  "bebida-lactea-fresa-cuidacol-0-azucares-anadidos-hacendado-pack-8",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22002/bebida-lactea-fresa-cuidacol-0-azucares-anadidos-hacendado-pack-8",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a94b2a5486d7dcde2ff1b63013d44d36.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea de fresa Cuidacol 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  0.8,
+                                                                           "bulk_price":  "3.13",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.125",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20941",
+                                                "slug":  "bebida-lactea-fresa-danacol-0-azucares-anadidos-danone-pack-10",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20941/bebida-lactea-fresa-danacol-0-azucares-anadidos-danone-pack-10",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/db4c3f48a494ac8e9d8bebb097766bf6.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea de fresa Danacol 0% azÃºcares aÃ±adidos 0% MG",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "5.45",
+                                                                           "unit_price":  "5.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.450",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        5.90",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "20940",
+                                                "slug":  "bebida-lactea-natural-danacol-0-azucares-anadidos-danone-pack-10",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/20940/bebida-lactea-natural-danacol-0-azucares-anadidos-danone-pack-10",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2ec431d9171081a9496b5e6d7404a090.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea natural Danacol 0% azÃºcares aÃ±adidos 0% MG",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "5.45",
+                                                                           "unit_price":  "5.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.450",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        5.90",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22001",
+                                                "slug":  "bebida-lactea-natural-cuidacol-0-azucares-anadidos-hacendado-pack-8",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22001/bebida-lactea-natural-cuidacol-0-azucares-anadidos-hacendado-pack-8",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/eb0b2d4e909bcc1721066cd39e299e4e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea natural Cuidacol 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  4,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  0.8,
+                                                                           "bulk_price":  "3.13",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.125",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15664",
+                                                "slug":  "bebida-kefir-coco-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15664/bebida-kefir-coco-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9ce6b7cf5fec6c14b1c25c6f142a3d07.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida KÃ©fir de coco Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "4.40",
+                                                                           "unit_price":  "1.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15662",
+                                                "slug":  "bebida-kefir-natural-hacendado-0-mg-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15662/bebida-kefir-natural-hacendado-0-mg-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/700d23ea10748add9c31d5cfdb308633.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida KÃ©fir natural Hacendado 0% MG",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "3.60",
+                                                                           "unit_price":  "0.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.600",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52750",
+                                                "slug":  "bebida-kefir-fresa-platano-hacendado-botella",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Botella",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52750/bebida-kefir-fresa-platano-hacendado-botella",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/dd289147f3d6ee7437c4a9b701adf6ec.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida KÃ©fir de fresa y plÃ¡tano Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "3.60",
+                                                                           "unit_price":  "0.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.600",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21392",
+                                                "slug":  "bebida-lactea-sabor-avena-nueces-cuidacol-0-azucares-anadidos-hacendado",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21392/bebida-lactea-sabor-avena-nueces-cuidacol-0-azucares-anadidos-hacendado",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9a3eca04827d3eecda97245c0908b448.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  11,
+                                                                       "name":  "Postres y yogures",
+                                                                       "level":  0,
+                                                                       "order":  598
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bebida lÃ¡ctea sabor avena y nueces Cuidacol 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "mini botellas",
+                                                                           "unit_size":  0.8,
+                                                                           "bulk_price":  "3.13",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  8,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "4.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.125",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  104,
+                          "name":  "Yogures naturales y sabores"
+                      }
+}

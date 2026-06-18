@@ -1,0 +1,934 @@
+﻿{
+    "id":  90,
+    "name":  "Mermelada y miel",
+    "order":  11,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  379,
+                           "name":  "Mermelada",
+                           "order":  11,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "86755",
+                                                "slug":  "mermelada-fresa-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86755/mermelada-fresa-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/899369e0e11783224596d6489a4228b0.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de fresa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "3.63",
+                                                                           "unit_price":  "1.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.625",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13441",
+                                                "slug":  "mermelada-fresa-monodosis-hacendado-pack-10",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-10",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13441/mermelada-fresa-monodosis-hacendado-pack-10",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/87802292c6f5229c60e21180b35d2e78.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de fresa monodosis Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.025,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "6.00",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15077",
+                                                "slug":  "mermelada-tomate-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15077/mermelada-tomate-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f61d58c4d7425cc934dc90a7c7bfb392.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de tomate Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.44,
+                                                                           "bulk_price":  "4.43",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.432",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "35932",
+                                                "slug":  "mermelada-arandanos-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/35932/mermelada-arandanos-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1cb0e04e2c01974816092f738b1e4f00.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de arÃ¡ndanos Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.33,
+                                                                           "bulk_price":  "5.91",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.910",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "86684",
+                                                "slug":  "mermelada-melocoton-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86684/mermelada-melocoton-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0a09f57773b2ec145bcd50fa9440d424.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de melocotÃ³n Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.44,
+                                                                           "bulk_price":  "3.07",
+                                                                           "unit_price":  "1.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.069",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13444",
+                                                "slug":  "mermelada-melocoton-monodosis-hacendado-pack-10",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-10",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13444/mermelada-melocoton-monodosis-hacendado-pack-10",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f162d40d58d2f7289498e36e18010eaf.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de melocotÃ³n monodosis Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.025,
+                                                                           "unit_name":  "ud.",
+                                                                           "unit_size":  0.25,
+                                                                           "bulk_price":  "6.00",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  10,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15076",
+                                                "slug":  "mermelada-naranja-amarga-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15076/mermelada-naranja-amarga-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3dba91f227b1c8eafe558f325036e7ce.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de naranja amarga Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.44,
+                                                                           "bulk_price":  "3.07",
+                                                                           "unit_price":  "1.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.069",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15068",
+                                                "slug":  "mermelada-albaricoque-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15068/mermelada-albaricoque-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3dfb990a52e65a6a524ad2e720f18ca8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de albaricoque Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.44,
+                                                                           "bulk_price":  "3.75",
+                                                                           "unit_price":  "1.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "67753",
+                                                "slug":  "mermelada-higo-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/67753/mermelada-higo-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e3fe841d12b9cdfedd9fb3cb09040778.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de higo Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.34,
+                                                                           "bulk_price":  "5.74",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.736",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22476",
+                                                "slug":  "mermelada-ciruela-kiwi-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22476/mermelada-ciruela-kiwi-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/709726b054a6427b34435b6e1c9a132b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de ciruela y kiwi Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.34,
+                                                                           "bulk_price":  "5.00",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "86033",
+                                                "slug":  "mermelada-frambuesa-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86033/mermelada-frambuesa-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6ce143e06ac60efcbb769eac77ff1583.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mermelada de frambuesa Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.34,
+                                                                           "bulk_price":  "7.06",
+                                                                           "unit_price":  "2.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.059",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  380,
+                           "name":  "Miel",
+                           "order":  11,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "15436",
+                                                "slug":  "miel-flores-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15436/miel-flores-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/10b4d78d2b3b04be05864bb1ba4f2937.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Miel de flores Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  1.0,
+                                                                           "bulk_price":  "4.80",
+                                                                           "unit_price":  "4.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.800",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15430",
+                                                "slug":  "miel-flores-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15430/miel-flores-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/40708ec8ec0f6164f8adac2d8200562b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Miel de flores Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "6.20",
+                                                                           "unit_price":  "3.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.200",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15448",
+                                                "slug":  "miel-naranjo-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15448/miel-naranjo-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/582e20d61fc8c1886eb4fda7ee348fcd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Miel de naranjo Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.5,
+                                                                           "bulk_price":  "8.40",
+                                                                           "unit_price":  "4.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.400",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  818,
+                           "name":  "Confitura y otros",
+                           "order":  11,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "52749",
+                                                "slug":  "cebolla-caramelizada-hacendado-con-aceite-oliva-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52749/cebolla-caramelizada-hacendado-con-aceite-oliva-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5d20cfb914960bda6a9a576c332c3da9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cebolla caramelizada Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.19,
+                                                                           "bulk_price":  "8.95",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.948",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15093",
+                                                "slug":  "confitura-fresa-hacendado-0-azucares-anadidos-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15093/confitura-fresa-hacendado-0-azucares-anadidos-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/61d7e70d6c4f3ff537231caafc94d1aa.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Confitura de fresa Hacendado 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.38,
+                                                                           "bulk_price":  "4.21",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.211",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15094",
+                                                "slug":  "confitura-melocoton-hacendado-0-azucares-anadidos-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15094/confitura-melocoton-hacendado-0-azucares-anadidos-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/96e0a31447f579cbac22c297e5d7bc30.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  9,
+                                                                       "name":  "AzÃºcar, caramelos y chocolate",
+                                                                       "level":  0,
+                                                                       "order":  11
+                                                                   }
+                                                               ],
+                                                "display_name":  "Confitura de melocotÃ³n Hacendado 0% azÃºcares aÃ±adidos",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.38,
+                                                                           "bulk_price":  "4.21",
+                                                                           "unit_price":  "1.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.211",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  216,
+                          "name":  "AlimentaciÃ³n infantil"
+                      }
+}

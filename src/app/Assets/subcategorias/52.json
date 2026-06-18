@@ -1,0 +1,1234 @@
+﻿{
+    "id":  52,
+    "name":  "BacÃ³n y salchichas",
+    "order":  159,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  303,
+                           "name":  "BacÃ³n",
+                           "order":  159,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "16252",
+                                                "slug":  "bacon-hacendado-cintas",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16252/bacon-hacendado-cintas",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9f4bbcd3b575f55df7aa9cea15ed0266.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "BacÃ³n Hacendado cintas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.13,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.26,
+                                                                           "bulk_price":  "8.46",
+                                                                           "unit_price":  "2.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.462",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21628",
+                                                "slug":  "bacon-ahumado-selva-lonchas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21628/bacon-ahumado-selva-lonchas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d457d5a7acd285343abe503dad001827.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "BacÃ³n ahumado La Selva lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.225,
+                                                                           "bulk_price":  "10.22",
+                                                                           "unit_price":  "2.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.223",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53500",
+                                                "slug":  "bacon-oscar-mayer-lonchas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53500/bacon-oscar-mayer-lonchas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/bd977d11a572cea8180647f16adfffdf.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "BacÃ³n Oscar Mayer lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.15,
+                                                                           "bulk_price":  "15.67",
+                                                                           "unit_price":  "2.35",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "59160",
+                                                "slug":  "bacon-ahumado-sin-corteza-selva-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59160/bacon-ahumado-sin-corteza-selva-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/232a272ef1e45b6cb345adcd9b999f35.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "BacÃ³n ahumado sin corteza La Selva",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "9.65",
+                                                                           "unit_price":  "2.89",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.650",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58220",
+                                                "slug":  "panceta-salada-iberica-hacienda-iberico-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58220/panceta-salada-iberica-hacienda-iberico-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e8def2c47d494dda5c777a09ad68ec64.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Panceta salada ibÃ©rica La Hacienda del ibÃ©rico",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.36,
+                                                                           "bulk_price":  "10.00",
+                                                                           "unit_price":  "3.60",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "59270",
+                                                "slug":  "lomo-back-bacon-hacendado-estilo-britanico-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59270/lomo-back-bacon-hacendado-estilo-britanico-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d33323291804400139699111cbda644e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Lomo back bacon Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "13.27",
+                                                                           "unit_price":  "2.65",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.270",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "29606",
+                                                "slug":  "panceta-curada-sin-corteza-selva-lonchas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/29606/panceta-curada-sin-corteza-selva-lonchas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e36d77fec872a6ca1491b09b9531dea7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Panceta curada sin corteza La Selva lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "13.25",
+                                                                           "unit_price":  "2.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "21549",
+                                                "slug":  "torrezno-precocinado-hacendado-bandeja",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bandeja",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/21549/torrezno-precocinado-hacendado-bandeja",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5108f6b6facdbfc57ce54d4f4d9969d1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Torrezno precocinado Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.42,
+                                                                           "bulk_price":  "17.50",
+                                                                           "unit_price":  "7.35",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "17.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  304,
+                           "name":  "Salchichas",
+                           "order":  159,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "53141",
+                                                "slug":  "salchichas-cocidas-estilo-frankfurt-hacendado-pollo-cerdo-sabor-ahumado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53141/salchichas-cocidas-estilo-frankfurt-hacendado-pollo-cerdo-sabor-ahumado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d3ca58a7c971dab07cb0095a4391f33b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas estilo Frankfurt Hacendado de pollo y cerdo sabor ahumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.176,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.704,
+                                                                           "bulk_price":  "2.56",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "2.557",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        1.90",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53056",
+                                                "slug":  "salchichas-cocidas-hacendado-pollo-pavo-sabor-ahumado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53056/salchichas-cocidas-hacendado-pollo-pavo-sabor-ahumado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/bc448920798e980adcb115f6b1a91d94.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas Hacendado de pollo y pavo sabor ahumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.2,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "3.75",
+                                                                           "unit_price":  "1.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53012",
+                                                "slug":  "salchichas-cocidas-schara-cerdo-ahumadas-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53012/salchichas-cocidas-schara-cerdo-ahumadas-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/89f97bcb8605eac58678430d998e8030.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas Schara de cerdo ahumadas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.17,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.34,
+                                                                           "bulk_price":  "12.50",
+                                                                           "unit_price":  "4.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53030",
+                                                "slug":  "salchichas-cocidas-estilo-viena-con-queso-hacendado-pollo-cerdo-sabor-ahumado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53030/salchichas-cocidas-estilo-viena-con-queso-hacendado-pollo-cerdo-sabor-ahumado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/866ff7ce472d2428ea28b52f90f2b823.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas estilo Viena con queso Hacendado de pollo y cerdo sabor ahumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.2,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "4.25",
+                                                                           "unit_price":  "1.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "52884",
+                                                "slug":  "salchichas-cocidas-con-leche-campofrio-pollo-cerdo-pavo-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/52884/salchichas-cocidas-con-leche-campofrio-pollo-cerdo-pavo-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e5c0f7e1ba0e4de7b00eb90b6fc16d0c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas con leche CampofrÃ­o de pollo, cerdo y pavo",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.17,
+                                                                           "bulk_price":  "7.35",
+                                                                           "unit_price":  "1.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.353",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53015",
+                                                "slug":  "salchichas-cocidas-hot-dog-bocadillo-oscar-mayer-classic-pollo-cerdo-sabor-ahumado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53015/salchichas-cocidas-hot-dog-bocadillo-oscar-mayer-classic-pollo-cerdo-sabor-ahumado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a6b6e3f0bd9a9ca915e2e3c248aceea7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas hot dog bocadillo Oscar Mayer Classic de pollo y cerdo sabor ahumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.275,
+                                                                           "bulk_price":  "6.73",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.728",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53100",
+                                                "slug":  "salchichas-cocidas-estilo-frankfurt-con-queso-hacendado-pollo-cerdo-sabor-ahumado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53100/salchichas-cocidas-estilo-frankfurt-con-queso-hacendado-pollo-cerdo-sabor-ahumado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/be775f03eaaecbee74b87fd5206564dd.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas estilo Frankfurt con queso Hacendado de pollo y cerdo sabor ahumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.16,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.64,
+                                                                           "bulk_price":  "3.05",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "3.047",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53059",
+                                                "slug":  "salchichas-cocidas-bocata-hacendado-pollo-pavo-sabor-ahumado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53059/salchichas-cocidas-bocata-hacendado-pollo-pavo-sabor-ahumado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5d0f719e7d043babbd24d60924135323.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas bocata Hacendado de pollo y pavo sabor ahumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.2,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "5.00",
+                                                                           "unit_price":  "2.00",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53143",
+                                                "slug":  "salchichas-cocidas-bocata-gourmet-hacendado-cerdo-sabor-ahumado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53143/salchichas-cocidas-bocata-gourmet-hacendado-cerdo-sabor-ahumado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/40ccbb2eed565a35c28ada56645d3eac.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas bocata gourmet Hacendado de cerdo sabor ahumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.175,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "7.00",
+                                                                           "unit_price":  "2.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "5815",
+                                                "slug":  "salchichas-cocidas-cerdo-estilo-bratwurst-hacendado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/5815/salchichas-cocidas-cerdo-estilo-bratwurst-hacendado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f834c73bc57b21074624e50fa80e1bb2.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas de cerdo estilo Bratwurst Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.175,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "7.43",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.429",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53048",
+                                                "slug":  "salchichas-cocidas-bocata-queso-hacendado-pollo-cerdo-sabor-ahumado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53048/salchichas-cocidas-bocata-queso-hacendado-pollo-cerdo-sabor-ahumado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/58e71ded2246f4d235f4df2a310fdfe1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas bocata queso Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.175,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "6.00",
+                                                                           "unit_price":  "2.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "6.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53032",
+                                                "slug":  "salchichas-cocidas-bocata-hacendado-pollo-cerdo-sabor-ahumado-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53032/salchichas-cocidas-bocata-hacendado-pollo-cerdo-sabor-ahumado-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6334128b6f334444a582d0e160336def.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas bocata Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.175,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.35,
+                                                                           "bulk_price":  "5.43",
+                                                                           "unit_price":  "1.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "5.429",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53041",
+                                                "slug":  "salchichas-cocidas-frankfurt-selva-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53041/salchichas-cocidas-frankfurt-selva-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d56e302573078dd6ae6af008a0fbf549.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas Frankfurt La Selva",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.46,
+                                                                           "bulk_price":  "5.22",
+                                                                           "unit_price":  "2.40",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.28,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.572",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "53007",
+                                                "slug":  "salchichas-cocidas-estilo-frankfurt-campofrio-sabor-ahumado-pack-4",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/53007/salchichas-cocidas-estilo-frankfurt-campofrio-sabor-ahumado-pack-4",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/4a86d08934403ed05ed425b1606f6274.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas estilo Frankfurt CampofrÃ­o sabor ahumado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.14,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.56,
+                                                                           "bulk_price":  "4.38",
+                                                                           "unit_price":  "2.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  4,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.375",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "11516",
+                                                "slug":  "salchichas-cocidas-estilo-parrillero-hacendado-cerdo-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/11516/salchichas-cocidas-estilo-parrillero-hacendado-cerdo-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a4422aeb427938f9309efa518752f4e8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Salchichas cocidas de cerdo Hacendado estilo parrillero",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.3,
+                                                                           "bulk_price":  "8.67",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "8.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  49,
+                          "name":  "Chopped y mortadela"
+                      }
+}

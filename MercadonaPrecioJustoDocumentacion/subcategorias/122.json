@@ -1,0 +1,1634 @@
+﻿{
+    "id":  122,
+    "name":  "AtÃºn y otras conservas de pescado",
+    "order":  215,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  450,
+                           "name":  "AtÃºn",
+                           "order":  215,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "18086",
+                                                "slug":  "atun-aceite-girasol-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18086/atun-aceite-girasol-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2c06dcbb4643e6b4447d5d064c4eb6a5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn en aceite de girasol Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.9,
+                                                                           "bulk_price":  "7.22",
+                                                                           "unit_price":  "6.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.65,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18055",
+                                                "slug":  "atun-claro-aceite-girasol-hacendado-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18055/atun-claro-aceite-girasol-hacendado-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d8fdd0b8183829db2aa6f531bc008202.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn claro en aceite de girasol Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.06,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "8.75",
+                                                                           "unit_price":  "4.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.36,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18092",
+                                                "slug":  "atun-claro-aceite-girasol-hacendado-pack-3",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-3",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18092/atun-claro-aceite-girasol-hacendado-pack-3",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/05c67043e6c2918b27b0d79ebfb99a7a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn claro en aceite de girasol Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.06,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "11.25",
+                                                                           "unit_price":  "2.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.18,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18030",
+                                                "slug":  "atun-aceite-oliva-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18030/atun-aceite-oliva-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/890912ced7f8be4da5455ca493729892.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.9,
+                                                                           "bulk_price":  "8.56",
+                                                                           "unit_price":  "7.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.65,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.847",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18002",
+                                                "slug":  "atun-claro-aceite-oliva-hacendado-pack-6",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-6",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18002/atun-claro-aceite-oliva-hacendado-pack-6",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f99f0a2b9e478cee5b0e02fac62d4686.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn claro en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.06,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "10.21",
+                                                                           "unit_price":  "4.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.36,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.612",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18071",
+                                                "slug":  "atun-claro-aceite-oliva-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18071/atun-claro-aceite-oliva-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ff946d98e9578c45513cbf77bbf4127d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn claro en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "13.96",
+                                                                           "unit_price":  "1.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.082,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "18.903",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18018",
+                                                "slug":  "atun-claro-natural-hacendado",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18018/atun-claro-natural-hacendado",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/69aa188c64eb23f4855d6739832b09c1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn claro al natural Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.06,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "8.75",
+                                                                           "unit_price":  "4.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.36,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "11.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18031",
+                                                "slug":  "atun-claro-escabeche-blanco-hacendado",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18031/atun-claro-escabeche-blanco-hacendado",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5204877d2125bea45a992fc002e97960.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn claro en escabeche blanco Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.06,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.48,
+                                                                           "bulk_price":  "9.58",
+                                                                           "unit_price":  "4.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  6,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.36,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.778",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18054",
+                                                "slug":  "atun-claro-aceite-oliva-hacendado-bote",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Bote",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18054/atun-claro-aceite-oliva-hacendado-bote",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/666079e35f5efa5f551aba0c2136ea8e.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn claro en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.195,
+                                                                           "bulk_price":  "18.97",
+                                                                           "unit_price":  "3.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.14,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "26.429",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18037",
+                                                "slug":  "atun-salsa-tomate-hacendado-pack-3",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-3",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18037/atun-salsa-tomate-hacendado-pack-3",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/c9071d53ff875259f5093059e17a732b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "AtÃºn en salsa de tomate Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.052,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "8.75",
+                                                                           "unit_price":  "2.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.156,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.462",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18011",
+                                                "slug":  "ventresca-atun-claro-aceite-oliva-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18011/ventresca-atun-claro-aceite-oliva-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5610e6403d50026b3d4ded454fc74dd7.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Ventresca de atÃºn claro en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.111,
+                                                                           "bulk_price":  "29.73",
+                                                                           "unit_price":  "3.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.078,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "42.308",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  864,
+                           "name":  "Bonito",
+                           "order":  215,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "16812",
+                                                "slug":  "migas-bonito-norte-aceite-oliva-hacendado-pack-3",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-3",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/16812/migas-bonito-norte-aceite-oliva-hacendado-pack-3",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/3b949ee5f292d0a72a9e4ecdf293499a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Migas de bonito del norte en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.052,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "12.08",
+                                                                           "unit_price":  "2.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.156,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "18.590",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18116",
+                                                "slug":  "bonito-norte-aceite-oliva-hacendado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18116/bonito-norte-aceite-oliva-hacendado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/ab5f6221766e916ed6f7427b29a9666c.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Bonito del norte en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.073,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.222,
+                                                                           "bulk_price":  "14.41",
+                                                                           "unit_price":  "3.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.146,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "21.918",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18102",
+                                                "slug":  "filetes-bonito-norte-aceite-oliva-hacendado-tarro",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Tarro",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18102/filetes-bonito-norte-aceite-oliva-hacendado-tarro",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b565c6df3e0976c383af67fe0d43f86a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes de bonito del norte en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.4,
+                                                                           "bulk_price":  "20.25",
+                                                                           "unit_price":  "8.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.28,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "28.929",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  451,
+                           "name":  "Caballa y melva",
+                           "order":  215,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "13628",
+                                                "slug":  "filetes-caballa-sur-aceite-oliva-hacendado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13628/filetes-caballa-sur-aceite-oliva-hacendado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a092a30536edf17460eace014bbfdfcf.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes de caballa del sur en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.085,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "11.25",
+                                                                           "unit_price":  "2.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.17,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.883",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "13632",
+                                                "slug":  "filetes-caballa-sur-tomate-hacendado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/13632/filetes-caballa-sur-tomate-hacendado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1e8f32465308a61957c796d36f81054d.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes de caballa del sur en tomate Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.082,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "10.83",
+                                                                           "unit_price":  "2.60",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.17,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.854",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "12794",
+                                                "slug":  "filetes-caballa-sur-contenido-reducido-sal-hacendado-aceite-oliva",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/12794/filetes-caballa-sur-contenido-reducido-sal-hacendado-aceite-oliva",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a95d6e92f16721a1b18a8f918528f400.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes de caballa del sur contenido reducido en sal Hacendado en aceite de oliva",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.085,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "13.33",
+                                                                           "unit_price":  "3.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.17,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "18.824",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18107",
+                                                "slug":  "filetes-melva-aceite-oliva-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18107/filetes-melva-aceite-oliva-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/81891326085ae9267ea256fca9001d73.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes de melva en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "15.42",
+                                                                           "unit_price":  "1.85",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.08,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "23.125",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18114",
+                                                "slug":  "filetes-melva-canutera-con-pimientos-piquillo-hacendado-aceite-oliva-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18114/filetes-melva-canutera-con-pimientos-piquillo-hacendado-aceite-oliva-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/445a01e2f758999022716b69d4adb597.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Filetes de melva canutera con pimientos del piquillo Hacendado en aceite de oliva",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "20.00",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.065,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "27.693",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  455,
+                           "name":  "Sardinas",
+                           "order":  215,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "18225",
+                                                "slug":  "sardinas-aceite-oliva-hacendado-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18225/sardinas-aceite-oliva-hacendado-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/f0d751ea73bcb6ce3505fdc191fce5c8.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Sardinas en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.084,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.234,
+                                                                           "bulk_price":  "9.40",
+                                                                           "unit_price":  "2.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.168,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.096",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18210",
+                                                "slug":  "sardinillas-aceite-oliva-hacendado-6-12-ud-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18210/sardinillas-aceite-oliva-hacendado-6-12-ud-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1f36c7f7b11b4527ca9171efdcef237a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Sardinillas en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.065,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.18,
+                                                                           "bulk_price":  "11.39",
+                                                                           "unit_price":  "2.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.13,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.770",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18214",
+                                                "slug":  "sardinillas-reducidas-sal-aceite-oliva-hacendado-6-12-ud-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18214/sardinillas-reducidas-sal-aceite-oliva-hacendado-6-12-ud-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/50ed9a5e452499dc949cd76af9138024.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Sardinillas reducidas en sal en aceite de oliva Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.065,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.18,
+                                                                           "bulk_price":  "11.39",
+                                                                           "unit_price":  "2.05",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.13,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.770",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18209",
+                                                "slug":  "sardinillas-tomate-hacendado-6-12-ud-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18209/sardinillas-tomate-hacendado-6-12-ud-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/aff82c8f60e81628279ad09c64dba7cc.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Sardinillas en tomate Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.065,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.18,
+                                                                           "bulk_price":  "9.17",
+                                                                           "unit_price":  "1.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.13,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "12.693",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18212",
+                                                "slug":  "sardinillas-picantes-aceite-girasol-hacendado-6-12-ud-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18212/sardinillas-picantes-aceite-girasol-hacendado-6-12-ud-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/0e433275266c537dffe8c7be183ccae9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Sardinillas picantes en aceite de girasol Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.065,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.18,
+                                                                           "bulk_price":  "10.00",
+                                                                           "unit_price":  "1.80",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.13,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.847",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18211",
+                                                "slug":  "sardinillas-escabeche-hacendado-6-10-ud-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18211/sardinillas-escabeche-hacendado-6-10-ud-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/a1e41e90d8bd21c183b579fa8b142160.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Sardinillas en escabeche Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.065,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.18,
+                                                                           "bulk_price":  "10.83",
+                                                                           "unit_price":  "1.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.13,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       },
+                       {
+                           "id":  457,
+                           "name":  "Otras conservas de pescado",
+                           "order":  215,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "18713",
+                                                "slug":  "calamar-salsa-americana-hacendado-pack-3",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18713/calamar-salsa-americana-hacendado-pack-3",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/be78962e131f47461a624d57da86ddc9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Calamar en salsa americana Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.059,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "11.25",
+                                                                           "unit_price":  "2.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.177,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "15.255",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        2.80",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18714",
+                                                "slug":  "calamar-tinta-hacendado-pack-3",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18714/calamar-tinta-hacendado-pack-3",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/67be86dbd75f714dc99d72bc71da27e5.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Calamar en tinta Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.059,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "12.92",
+                                                                           "unit_price":  "3.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.177,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "17.515",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18729",
+                                                "slug":  "tacos-pota-ajillo-hacendado-pack-3",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-3",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18729/tacos-pota-ajillo-hacendado-pack-3",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1dfdcb446d3e87cdbe9bb30e91a73581.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Tacos de pota al ajillo Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.054,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "13.33",
+                                                                           "unit_price":  "3.20",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.162,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "19.754",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "18817",
+                                                "slug":  "salmon-natural-hacendado-pack-3",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-3",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/18817/salmon-natural-hacendado-pack-3",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/132349e85d92574b06ec1ecd52a1cfa4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "SalmÃ³n al natural Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.05,
+                                                                           "unit_name":  "latas",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "14.79",
+                                                                           "unit_price":  "3.55",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  3,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.15,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "23.667",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "23560",
+                                                "slug":  "chipirones-rellenos-enteros-aceite-girasol-hacendado-lata",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Lata",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/23560/chipirones-rellenos-enteros-aceite-girasol-hacendado-lata",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/32e0c0696fccdd8b73eedad6da427e5d.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  14,
+                                                                       "name":  "Conservas, caldos y cremas",
+                                                                       "level":  0,
+                                                                       "order":  215
+                                                                   }
+                                                               ],
+                                                "display_name":  "Chipirones rellenos enteros en aceite de girasol Hacendado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.115,
+                                                                           "bulk_price":  "19.57",
+                                                                           "unit_price":  "2.25",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  0.072,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "31.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  123,
+                          "name":  "Berberechos y mejillones"
+                      }
+}

@@ -4,7 +4,7 @@ import { Observable, BehaviorSubject, forkJoin } from 'rxjs';
 import { map, mergeMap, tap } from 'rxjs/operators';
 
 export interface ProductoPrecioJusto {
-  id: string;
+  idProducto: string;
   nombre: string;
   precio: number;
   imagen: string;
@@ -16,63 +16,105 @@ export interface ProductoPrecioJusto {
 export class CosechadorService {
   private http = inject(HttpClient);
 
-  private proxyUrl = 'https://api.allorigins.win/get?url=';
-  private apiCategorias = 'https://tienda.mercadona.es/api/categories/?lang=es';
+  // Usamos el endpoint público de categorías directamente
+  private baseApi = 'https://tienda.mercadona.es/api/categories';
 
   // Subjects para controlar el progreso desde el componente
   public totalPasillos$ = new BehaviorSubject<number>(0);
   public pasillosProcesados$ = new BehaviorSubject<number>(0);
 
   descargarTodo(): Observable<ProductoPrecioJusto[]> {
-    return this.http.get<{ contents: string }>(`${this.proxyUrl}${encodeURIComponent(this.apiCategorias)}`).pipe(
-      map(res => JSON.parse(res.contents).results),
+    // Primera petición: obtener las categorías principales
+    const urlCategorias = `${this.baseApi}/`;
+
+    return this.http.get<any>(urlCategorias).pipe(
+      // Asumimos que la respuesta es un array de categorías
       mergeMap((categoriasPrincipales: any[]) => {
         const peticiones: Observable<any>[] = [];
 
-        // Extraemos las subcategorías (los pasillos reales)
         categoriasPrincipales.forEach(cat => {
-          cat.categories.forEach((subCat: any) => {
-            const urlPasillo = `https://tienda.mercadona.es/api/categories/${subCat.id}/?lang=es`;
+          // Para cada categoría principal pedimos su detalle (que contiene subcategorías y productos)
+          const urlCategoriaDetalle = `${this.baseApi}/${cat.id}/`;
 
-            peticiones.push(
-              this.http.get<{ contents: string }>(`${this.proxyUrl}${encodeURIComponent(urlPasillo)}`).pipe(
-                map(res => JSON.parse(res.contents)),
-                // Cada vez que un pasillo responde, sumamos1 al contador de progreso
-                tap(() => this.pasillosProcesados$.next(this.pasillosProcesados$.value + 1))
-              )
-            );
-          });
+          peticiones.push(
+            this.http.get<any>(urlCategoriaDetalle).pipe(
+              tap(() => this.pasillosProcesados$.next(this.pasillosProcesados$.value + 1))
+            )
+          );
+
+          // Si la categoría principal ya incluye subcategorías en el primer nivel, también
+          // podríamos iterarlas aquí si fuera necesario. Pero pedimos el detalle siempre para
+          // asegurar que tengamos los productos.
         });
 
-        // Informamos al componente de cuántos pasillos hay en total
         this.totalPasillos$.next(peticiones.length);
         this.pasillosProcesados$.next(0);
 
-        // Lanzamos todas las peticiones en paralelo
         return forkJoin(peticiones);
       }),
       map((todosLosPasillos: any[]) => {
         const productosFinales: ProductoPrecioJusto[] = [];
+        const vistos = new Set<string>();
+        const LIMITE = 10; // límite de productos únicos a obtener
 
-        todosLosPasillos.forEach(pasillo => {
+        // Recorremos con bucles que permitan cortocircuito cuando alcancemos el límite
+        for (let i = 0; i < todosLosPasillos.length && vistos.size < LIMITE; i++) {
+          const pasillo = todosLosPasillos[i];
+
           if (pasillo.categories) {
-            pasillo.categories.forEach((bloque: any) => {
-              bloque.products?.forEach((prod: any) => {
-                productosFinales.push({
-                  id: prod.id,
-                  nombre: prod.display_name,
-                  precio: parseFloat(prod.price_instructions.unit_price),
-                  imagen: prod.photos?.[0]?.regular || ''
-                });
-              });
-            });
-          }
-        });
+            for (let j = 0; j < pasillo.categories.length && vistos.size < LIMITE; j++) {
+              const bloque = pasillo.categories[j];
 
-        // Filtramos duplicados por ID
-        return productosFinales.filter((prod, index, self) =>
-          index === self.findIndex((p) => p.id === prod.id)
-        );
+              if (bloque.products) {
+                for (let k = 0; k < bloque.products.length && vistos.size < LIMITE; k++) {
+                  const prod = bloque.products[k];
+
+                  const id = String(prod.id);
+                  if (vistos.has(id)) continue;
+
+                  const precioRaw = prod.price_instructions?.unit_price ?? prod.price?.unit_price ?? 0;
+                  const precio = typeof precioRaw === 'string' ? parseFloat(precioRaw) : Number(precioRaw);
+
+                  productosFinales.push({
+                    idProducto: id,
+                    nombre: prod.display_name || prod.name || '',
+                    precio: isNaN(precio) ? 0 : precio,
+                    imagen: prod.thumbnail || prod.photos?.[0]?.regular || ''
+                  });
+
+                  vistos.add(id);
+                }
+              }
+
+              // Si ya tenemos el límite, salimos del bucle de bloques
+              if (vistos.size >= LIMITE) break;
+            }
+          }
+
+          // En algunos casos el propio objeto de pasillo puede contener 'products' directamente
+          if (pasillo.products) {
+            for (let p = 0; p < pasillo.products.length && vistos.size < LIMITE; p++) {
+              const prod = pasillo.products[p];
+
+              const id = String(prod.id);
+              if (vistos.has(id)) continue;
+
+              const precioRaw = prod.price_instructions?.unit_price ?? prod.price?.unit_price ?? 0;
+              const precio = typeof precioRaw === 'string' ? parseFloat(precioRaw) : Number(precioRaw);
+
+              productosFinales.push({
+                idProducto: id,
+                nombre: prod.display_name || prod.name || '',
+                precio: isNaN(precio) ? 0 : precio,
+                imagen: prod.thumbnail || prod.photos?.[0]?.regular || ''
+              });
+
+              vistos.add(id);
+            }
+          }
+        }
+
+        return productosFinales;
       })
     );
   }

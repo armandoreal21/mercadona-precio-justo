@@ -20,6 +20,16 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.pidb
+*.psess
+*.vsp
+
 # Visual Studio Code
 .vscode/*
 !.vscode/settings.json
@@ -40,3 +50,52 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Copilot & local indexes / caches
+copilot-chat*/
+CopilotSnapshots/
+CopilotIndices*/
+CopilotIndices.*
+CodeChunks.db
+CodeChunks.db-shm
+CodeChunks.db-wal
+SemanticSymbols.db
+SemanticSymbols.db-shm
+SemanticSymbols.db-wal
+FileContentIndex/
+
+# Databases and caches
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment
+.env
+.env.*
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Misc
+.cache/
+.localhistory/
+.vscode-test/
+.vagrant/
+
+# Build / package
+*.tgz
+
+# Optional: lockfiles (uncomment if you want to ignore lockfiles)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml

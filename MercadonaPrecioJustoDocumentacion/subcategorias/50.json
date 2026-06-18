@@ -1,0 +1,1430 @@
+﻿{
+    "id":  50,
+    "name":  "JamÃ³n serrano",
+    "order":  159,
+    "layout":  1,
+    "published":  true,
+    "is_extended":  false,
+    "categories":  [
+                       {
+                           "id":  298,
+                           "name":  "JamÃ³n serrano",
+                           "order":  159,
+                           "layout":  2,
+                           "published":  true,
+                           "is_extended":  false,
+                           "image":  null,
+                           "subtitle":  null,
+                           "products":  [
+                                            {
+                                                "id":  "59151",
+                                                "slug":  "jamon-serrano-incarlopsa-lonchas-extrafinas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59151/jamon-serrano-incarlopsa-lonchas-extrafinas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/11f69d3855987b8c43d0f810286bf1ed.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n serrano Incarlopsa lonchas extrafinas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "20.42",
+                                                                           "unit_price":  "2.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "20.417",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "59018",
+                                                "slug":  "mini-taquitos-jamon-incarlopsa-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59018/mini-taquitos-jamon-incarlopsa-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d4a9e1f4f839b41f145a056b17f3f701.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Mini taquitos de jamÃ³n Incarlopsa",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.09,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.18,
+                                                                           "bulk_price":  "14.72",
+                                                                           "unit_price":  "2.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "14.723",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "59124",
+                                                "slug":  "jamon-serrano-incarlopsa-lonchas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59124/jamon-serrano-incarlopsa-lonchas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/8cd51bd549863aafc57f255abea88529.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n serrano Incarlopsa lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "16.46",
+                                                                           "unit_price":  "3.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "16.459",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15700",
+                                                "slug":  "jamon-serrano-cortado-maquina-envasado-vacio-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15700/jamon-serrano-cortado-maquina-envasado-vacio-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/6d26633366edf93e61f6a53062aaa0df.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n serrano cortado a mÃ¡quina",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.19,
+                                                                           "bulk_price":  "22.00",
+                                                                           "unit_price":  "4.18",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "22.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "22879",
+                                                "slug":  "jamon-cebo-iberico-cortado-maquina-envasado-vacio-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/22879/jamon-cebo-iberico-cortado-maquina-envasado-vacio-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/49463ba5be44bdee24435f9175d659a9.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de cebo ibÃ©rico cortado a mÃ¡quina",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.19,
+                                                                           "bulk_price":  "54.00",
+                                                                           "unit_price":  "10.26",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "54.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58274",
+                                                "slug":  "jamon-serrano-reserva-cortado-cuchillo-envasado-vacio-paquete",
+                                                "limit":  20,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58274/jamon-serrano-reserva-cortado-cuchillo-envasado-vacio-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fa034a182cb15b78ecb44918885d7c64.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n serrano reserva cortado a tapas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "40.00",
+                                                                           "unit_price":  "3.60",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "40.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58278",
+                                                "slug":  "jamon-cebo-iberico-cortado-cuchillo-envasado-vacio-paquete",
+                                                "limit":  20,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58278/jamon-cebo-iberico-cortado-cuchillo-envasado-vacio-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/984e3962a32d0374118407f2d7edef07.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de cebo ibÃ©rico cortado a tapas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "79.00",
+                                                                           "unit_price":  "7.11",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "79.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58280",
+                                                "slug":  "jamon-bellota-iberico-cortado-cuchillo-envasado-vacio-paquete",
+                                                "limit":  20,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58280/jamon-bellota-iberico-cortado-cuchillo-envasado-vacio-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/963f4b8276888276cddf22b56b94d2c3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de bellota ibÃ©rico cortado a tapas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "143.00",
+                                                                           "unit_price":  "12.87",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "143.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58298",
+                                                "slug":  "jamon-bellota-iberico-100-cortado-cuchillo-envasado-vacio-paquete",
+                                                "limit":  20,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58298/jamon-bellota-iberico-100-cortado-cuchillo-envasado-vacio-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/2dfc4f59d0b884cb0f67e84647a06b17.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de bellota ibÃ©rico 100% cortado a tapas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "168.00",
+                                                                           "unit_price":  "15.12",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "168.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58228",
+                                                "slug":  "jamon-cebo-iberico-50-raza-iberica-hacienda-iberico-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58228/jamon-cebo-iberico-50-raza-iberica-hacienda-iberico-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9e10de93031fe24d586c0bdab256b3e3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de cebo ibÃ©rico 50% raza ibÃ©rica La Hacienda del IbÃ©rico lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "49.00",
+                                                                           "unit_price":  "4.90",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "49.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "59280",
+                                                "slug":  "jamon-serrano-jamcal-medias-lonchas-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  null,
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59280/jamon-serrano-jamcal-medias-lonchas-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/cc030e4d7c42d8a7279a5498854ba6b1.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n serrano Jamcal medias lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.12,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.24,
+                                                                           "bulk_price":  "17.08",
+                                                                           "unit_price":  "4.10",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "17.084",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "86404",
+                                                "slug":  "paleta-curada-lonchas-paletas-marpa-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/86404/paleta-curada-lonchas-paletas-marpa-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/08b26cb262625ec4073ce6a5daf80175.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Paleta curada Paletas Marpa lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "20.83",
+                                                                           "unit_price":  "2.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "20.834",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "59028",
+                                                "slug":  "jamon-trevelez-antonio-alvarez-lonchas-extra-finas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59028/jamon-trevelez-antonio-alvarez-lonchas-extra-finas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/5513997f44d87852326a373071baec5b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de TrevÃ©lez Antonio Ãlvarez lonchas extra finas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "30.83",
+                                                                           "unit_price":  "3.70",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "30.834",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "59071",
+                                                "slug":  "taquitos-jamon-incarlopsa-pack-2",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pack-2",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59071/taquitos-jamon-incarlopsa-pack-2",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d536e150ab381deb37082541dd44ba75.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Taquitos de jamÃ³n Incarlopsa",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  true,
+                                                                           "pack_size":  0.1,
+                                                                           "unit_name":  "paquetes",
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "13.25",
+                                                                           "unit_price":  "2.65",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  2,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "13.250",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58711",
+                                                "slug":  "taco-jamon-curado-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58711/taco-jamon-curado-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/fac296ac2b65148ac00bb901a4599284.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Taco jamÃ³n curado",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.22,
+                                                                           "bulk_price":  "17.50",
+                                                                           "unit_price":  "3.85",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "17.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58307",
+                                                "slug":  "hueso-garron-incarlopsa-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58307/hueso-garron-incarlopsa-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/1f6928a432081cf7c4bb36c66a4dd305.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Hueso garrÃ³n",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.29,
+                                                                           "bulk_price":  "4.00",
+                                                                           "unit_price":  "1.16",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "4.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58230",
+                                                "slug":  "surtido-ibericos-hacienda-iberico-contiene-jamon-cebo-chorizo-cana-lomo-cebo-salchichon-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58230/surtido-ibericos-hacienda-iberico-contiene-jamon-cebo-chorizo-cana-lomo-cebo-salchichon-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/b08cabeafda55ce6da99e8052ef56d4b.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Surtido de ibÃ©ricos La Hacienda del ibÃ©rico lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.2,
+                                                                           "bulk_price":  "32.50",
+                                                                           "unit_price":  "6.50",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "32.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58220",
+                                                "slug":  "panceta-salada-iberica-hacienda-iberico-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58220/panceta-salada-iberica-hacienda-iberico-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/e8def2c47d494dda5c777a09ad68ec64.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Panceta salada ibÃ©rica La Hacienda del ibÃ©rico",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.36,
+                                                                           "bulk_price":  "10.00",
+                                                                           "unit_price":  "3.60",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "10.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "59101",
+                                                "slug":  "cecina-ahumada-natural-embutidos-pajariel-lonchas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/59101/cecina-ahumada-natural-embutidos-pajariel-lonchas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/9fafaca032855566b0a01a80b88fba09.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Cecina ahumada natural Embutidos Pajariel lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.1,
+                                                                           "bulk_price":  "39.50",
+                                                                           "unit_price":  "3.95",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "39.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        4.20",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "15628",
+                                                "slug":  "jamon-serrano-gran-reserva-costa-brava-sin-aditivos-lonchas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/15628/jamon-serrano-gran-reserva-costa-brava-sin-aditivos-lonchas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/397ce752ca6a9b01f9829674a3d5876a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n serrano gran reserva Costa Brava sin aditivos lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  10,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.09,
+                                                                           "bulk_price":  "25.56",
+                                                                           "unit_price":  "2.30",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "25.556",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "14744",
+                                                "slug":  "jamon-teruel-dop-cierzo-lonchas-paquete",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Paquete",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/14744/jamon-teruel-dop-cierzo-lonchas-paquete",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/990a62115daa9a10ad33e1ba1ad427ab.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de Teruel D.O.P El Cierzo lonchas",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  0.12,
+                                                                           "bulk_price":  "28.75",
+                                                                           "unit_price":  "3.45",
+                                                                           "approx_size":  false,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "28.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  "        3.60",
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58293",
+                                                "slug":  "jamon-serrano-incarlopsa-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58293/jamon-serrano-incarlopsa-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/7d4f3e6af6728a424824294cc851940a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n serrano Incarlopsa",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  7.5,
+                                                                           "bulk_price":  "9.56",
+                                                                           "unit_price":  "65.00",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "9.559",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "8566",
+                                                "slug":  "jamon-cebo-iberico-hacienda-iberico-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/8566/jamon-cebo-iberico-hacienda-iberico-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/efb437b4020065924dc768d0c8f8eb2a.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de cebo ibÃ©rico 50% La Hacienda del IbÃ©rico",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  8.5,
+                                                                           "bulk_price":  "18.00",
+                                                                           "unit_price":  "153.00",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "18.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58297",
+                                                "slug":  "jamon-bellota-iberico-100-covap-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58297/jamon-bellota-iberico-100-covap-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/66163c07196791c085e44004b4809de3.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de bellota ibÃ©rico 100% Covap",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  9.0,
+                                                                           "bulk_price":  "56.00",
+                                                                           "unit_price":  "504.00",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "56.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58286",
+                                                "slug":  "jamon-bellota-iberico-50-hacienda-iberico-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58286/jamon-bellota-iberico-50-hacienda-iberico-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/d594adf3a666ff29df9e1d3e5e4bad8d.jpeg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "JamÃ³n de bellota ibÃ©rico 50% La Hacienda del IbÃ©rico",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  8.0,
+                                                                           "bulk_price":  "46.00",
+                                                                           "unit_price":  "368.00",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "46.000",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "58154",
+                                                "slug":  "paleta-cebo-iberica-hacienda-iberico-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/58154/paleta-cebo-iberica-hacienda-iberico-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/42358aee690bf582a9eeea3e7f5b86fe.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Paleta de cebo ibÃ©rica 50% La Hacienda del IbÃ©rico",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  5.0,
+                                                                           "bulk_price":  "18.75",
+                                                                           "unit_price":  "75.00",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "18.750",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            },
+                                            {
+                                                "id":  "19966",
+                                                "slug":  "paleta-cerdo-curada-incarlopsa-pieza",
+                                                "limit":  999,
+                                                "badges":  {
+                                                               "is_water":  false,
+                                                               "requires_age_check":  false
+                                                           },
+                                                "status":  null,
+                                                "packaging":  "Pieza",
+                                                "published":  true,
+                                                "share_url":  "https://tienda.mercadona.es/product/19966/paleta-cerdo-curada-incarlopsa-pieza",
+                                                "thumbnail":  "https://prod-mercadona.imgix.net/images/59521cd2b7bc79c720a50b0990ee5eb4.jpg?fit=crop\u0026h=300\u0026w=300",
+                                                "categories":  [
+                                                                   {
+                                                                       "id":  4,
+                                                                       "name":  "CharcuterÃ­a y quesos",
+                                                                       "level":  0,
+                                                                       "order":  159
+                                                                   }
+                                                               ],
+                                                "display_name":  "Paleta de cerdo curada Incarlopsa",
+                                                "unavailable_from":  null,
+                                                "price_instructions":  {
+                                                                           "iva":  null,
+                                                                           "is_new":  false,
+                                                                           "is_pack":  false,
+                                                                           "pack_size":  null,
+                                                                           "unit_name":  null,
+                                                                           "unit_size":  4.0,
+                                                                           "bulk_price":  "7.50",
+                                                                           "unit_price":  "30.00",
+                                                                           "approx_size":  true,
+                                                                           "size_format":  "kg",
+                                                                           "total_units":  null,
+                                                                           "unit_selector":  true,
+                                                                           "bunch_selector":  false,
+                                                                           "drained_weight":  null,
+                                                                           "selling_method":  0,
+                                                                           "tax_percentage":  "10.000",
+                                                                           "price_decreased":  false,
+                                                                           "reference_price":  "7.500",
+                                                                           "min_bunch_amount":  1.0,
+                                                                           "reference_format":  "kg",
+                                                                           "previous_unit_price":  null,
+                                                                           "increment_bunch_amount":  1.0
+                                                                       },
+                                                "unavailable_weekdays":  [
+
+                                                                         ],
+                                                "is_new_arrival":  false
+                                            }
+                                        ]
+                       }
+                   ],
+    "next_category":  {
+                          "id":  58,
+                          "name":  "PatÃ© y sobrasada"
+                      }
+}
