@@ -14,6 +14,11 @@
  </div>
  </div>
 
+ <!-- current user name moved to top of card -->
+ <div *ngIf="currentName" class="mb-4 text-sm text-slate-200">
+ Tú: <span class="font-semibold text-white">{{ currentName }} <span *ngIf="isCurrentAdmin()" class="text-yellow-300">(admin)</span></span>
+ </div>
+
  <div class="grid md:grid-cols-3 gap-4">
  <div class="md:col-span-2 bg-slate-900 p-4 rounded-xl">
 
@@ -27,47 +32,38 @@
  </ng-template>
 
  <div class="mt-4 flex gap-2 items-center">
-   <ng-container *ngIf="isCurrentAdmin()">
-     <button (click)="cargarProductoAleatorio()" class="bg-yellow-400 text-purple-900 px-3 py-2 rounded-xl font-bold">Siguiente Producto</button>
-     <!--<button (click)="avanzarRonda()" class="bg-cyan-400 text-slate-900 px-3 py-2 rounded-xl font-bold">Finalizar Ronda</button>-->
-     <button (click)="onCalcularPuntuaciones()" [disabled]="!allPlayersHaveApuestas()" class="bg-rose-500 text-white px-3 py-2 rounded-xl font-bold">Calcular puntuaciones</button>
-   </ng-container>
+ <ng-container *ngIf="isCurrentAdmin()">
+ <button (click)="cargarProductoAleatorio()" class="bg-yellow-400 text-purple-900 px-3 py-2 rounded-xl font-bold">Siguiente Producto</button>
+ <!--<button (click)="avanzarRonda()" class="bg-cyan-400 text-slate-900 px-3 py-2 rounded-xl font-bold">Finalizar Ronda</button>-->
+ <button (click)="onCalcularPuntuaciones()" [disabled]="!allPlayersHaveApuestas()" class="bg-rose-500 text-white px-3 py-2 rounded-xl font-bold">Calcular puntuaciones</button>
+ </ng-container>
 
 
-   <button (click)="abrirClasificacion()" class="ml-2 px-3 py-2 bg-slate-700 rounded text-sm">Ver clasificación</button>
-   <button (click)="onRefresh()" class="ml-auto bg-slate-700 px-3 py-2 rounded">Refrescar</button>
-   <!--<div *ngIf="isCurrentAdmin()" class="ml-4 flex items-center gap-2">
-  <button (click)="startTimer(30)" class="px-3 py-2 bg-indigo-600 rounded">Iniciar temporizador30s</button>
-  <div *ngIf="timerRunning" class="text-sm">Tiempo: {{ timerSeconds }}s</div>
-  </div>-->
+ <button (click)="abrirClasificacion()" class="ml-2 px-3 py-2 bg-slate-700 rounded text-sm">Ver clasificación</button>
+ <button (click)="onRefresh()" class="ml-auto bg-slate-700 px-3 py-2 rounded">Refrescar</button>
+ </div>
+
+ <!-- Betting input: always below product area. On md+ it's a row: input then button to the right. On small screens they stack full-width. -->
+ <div class="mt-4">
+ <div class="w-full max-w-lg">
+ <!-- guard currentName and expose as `name` for safe indexing -->
+ <ng-container *ngIf="currentName as name">
+ <div class="flex flex-col md:flex-row md:items-center md:gap-3">
+ <input type="number" [(ngModel)]="apuestas[name]" placeholder="€" class="w-full md:flex-1 text-center bg-slate-700 rounded px-3 py-2" [disabled]="inputsDisabled || sentMap[name]" />
+ <button (click)="enviarApuesta(name)" class="mt-3 md:mt-0 md:ml-2 w-full md:w-auto bg-cyan-400 text-slate-900 px-4 py-2 rounded text-sm" [disabled]="inputsDisabled || sentMap[name]">Enviar</button>
+ </div>
+ <div *ngIf="sentMap[name]" class="mt-2 text-xs text-slate-300">Apuesta enviada</div>
+ </ng-container>
+ </div>
  </div>
 
  </div>
 
+ <!-- right column: simplified players panel (removed individual name/status display) -->
  <div class="bg-slate-800 p-4 rounded-xl">
- <!--<h4 class="font-bold text-lg mb-2">Jugadores</h4>-->
- <ol class="list-decimal list-inside space-y-3">
- <ng-container *ngFor="let j of sala.jugadores">
- <!-- show only the current user's input block for all users (admin will manage others in clasificación) -->
- <li *ngIf="j.nombre === currentName" class="flex items-center justify-between gap-2">
- <div class="flex-1">
- <div class="font-semibold">{{ j.nombre }} <span *ngIf="j.esAdmin" class="text-yellow-300">(admin)</span></div>
- <!--<div class="text-xs text-slate-400">Puntos: <span *ngIf="canSeePoints(j)">{{ j.puntuacion ||0 }}</span><span *ngIf="!canSeePoints(j)">—</span></div>-->
- <div class="text-xs text-slate-400">{{ j.apuesta !== undefined ? 'Apostado' : 'Sin apostar' }}</div>
- </div>
-
- <div class="w-44">
- <ng-container *ngIf="j.nombre === currentName">
- <input type="number" [(ngModel)]="apuestas[j.nombre]" placeholder="€" class="w-full text-center bg-slate-700 rounded px-2 py-1" [disabled]="inputsDisabled || sentMap[j.nombre]" />
- <div class="mt-2 flex gap-2">
- <button (click)="enviarApuesta(j.nombre)" class="bg-cyan-400 text-slate-900 px-2 py-1 rounded text-sm" [disabled]="inputsDisabled || sentMap[j.nombre]">Enviar</button>
- <div *ngIf="sentMap[j.nombre]" class="text-xs text-slate-300 self-center">Enviada</div>
- </div>
- </ng-container>
- </div>
- </li>
- </ng-container>
- </ol>
+ <h4 class="font-bold text-lg mb-2">Jugadores</h4>
+ <div class="text-sm text-slate-300">Total: {{ sala.jugadores.length ||0 }}</div>
+ <!-- if you want later, can list player initials or icons here -->
  </div>
  </div>
 
