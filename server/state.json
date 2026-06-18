@@ -63,36 +63,36 @@
     {
       "codigo": "MAXR9",
       "nombre": "Prueba 4",
-      "productoActualId": 9776,
+      "productoActualId": 35668,
       "productoActual": {
-        "id": "9776",
-        "nombre": "Cerveza 0,0% sin alcohol El Ãguila sin filtrar",
-        "precio": 5.34,
-        "imagen": "https://prod-mercadona.imgix.net/images/4e7260d7e92c0b7666953d09cdfdac5c.jpg?fit=crop&h=300&w=300",
+        "id": "35668",
+        "nombre": "Gel de baÃ±o nutritivo Lactovit piel normal y seca",
+        "precio": 2.95,
+        "imagen": "https://prod-mercadona.imgix.net/images/05053a107955497f1762d614e0481923.jpg?fit=crop&h=300&w=300",
         "descripcion": "",
-        "categoria": "Cerveza sin alcohol",
-        "share_url": "https://tienda.mercadona.es/product/9776/cerveza-00-sin-alcohol-aguila-sin-filtrar-pack-6"
+        "categoria": "Gel y jabÃ³n de manos",
+        "share_url": "https://tienda.mercadona.es/product/35668/gel-bano-nutritivo-lactovit-piel-normal-seca-botella"
       },
       "estado": "esperando_jugadores",
       "jugadores": [
         {
           "nombre": "Vito",
           "esAdmin": false,
-          "puntuacion": 22
+          "puntuacion": 62
         },
         {
           "nombre": "Armando",
           "esAdmin": true,
-          "puntuacion": 27
+          "puntuacion": 49
         },
         {
           "nombre": "Esther",
           "esAdmin": false,
-          "puntuacion": 7
+          "puntuacion": 33
         }
       ],
       "rondasTotales": 10,
-      "rondaActual": 5,
+      "rondaActual": 9,
       "historialRondas": [
         {
           "ronda": 0,
@@ -173,8 +173,132 @@
             }
           ],
           "ts": 1781798541798
+        },
+        {
+          "ronda": 5,
+          "producto": {
+            "id": "9776",
+            "nombre": "Cerveza 0,0% sin alcohol El Ãguila sin filtrar",
+            "precio": 5.34,
+            "imagen": "https://prod-mercadona.imgix.net/images/4e7260d7e92c0b7666953d09cdfdac5c.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Cerveza sin alcohol",
+            "share_url": "https://tienda.mercadona.es/product/9776/cerveza-00-sin-alcohol-aguila-sin-filtrar-pack-6"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 1.3399999999999999
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 7,
+              "delta": 2.34
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 5,
+              "delta": 3.34
+            }
+          ],
+          "ts": 1781801959251
+        },
+        {
+          "ronda": 6,
+          "producto": {
+            "id": "9776",
+            "nombre": "Cerveza 0,0% sin alcohol El Ãguila sin filtrar",
+            "precio": 5.34,
+            "imagen": "https://prod-mercadona.imgix.net/images/4e7260d7e92c0b7666953d09cdfdac5c.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Cerveza sin alcohol",
+            "share_url": "https://tienda.mercadona.es/product/9776/cerveza-00-sin-alcohol-aguila-sin-filtrar-pack-6"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 0.33999999999999986
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 7,
+              "delta": 1.3399999999999999
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 5,
+              "delta": 2.34
+            }
+          ],
+          "ts": 1781802359243
+        },
+        {
+          "ronda": 7,
+          "producto": {
+            "id": "23195",
+            "nombre": "Mascarilla Natural Deliplus todo tipo de cabello",
+            "precio": 2.4,
+            "imagen": "https://prod-mercadona.imgix.net/images/6a520c3d6c821b13129b6ffb7c233106.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Acondicionador y mascarilla",
+            "share_url": "https://tienda.mercadona.es/product/23195/mascarilla-natural-deliplus-tipo-cabello-con-aceite-abisinia-aceites-esenciales-salvia-cedro-97-origen-natural-tarro"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 0.6000000000000001
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 7,
+              "delta": 0.6000000000000001
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 5,
+              "delta": 1.6
+            }
+          ],
+          "ts": 1781802397107
+        },
+        {
+          "ronda": 8,
+          "producto": {
+            "id": "13924",
+            "nombre": "Gel fijador cabello con aceite de oliva Eco style",
+            "precio": 2.85,
+            "imagen": "https://prod-mercadona.imgix.net/images/dfd34409aed0c7081962b37853f32869.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "FijaciÃ³n cabello",
+            "share_url": "https://tienda.mercadona.es/product/13924/gel-fijador-cabello-con-aceite-oliva-eco-style-bote"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 0.1499999999999999,
+              "apuesta": 3
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 7,
+              "delta": 1.85,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 5,
+              "delta": 2.15,
+              "apuesta": 5
+            }
+          ],
+          "ts": 1781802714240
         }
-      ]
+      ],
+      "lastResults": null
     }
   ]
 }

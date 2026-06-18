@@ -34,6 +34,8 @@ export interface Sala {
  rondasTotales?: number;
  rondaActual?: number;
  historialRondas?: HistorialRonda[];
+ // lastResults contiene los resultados de la última llamada a calcularPuntuacionesRonda y sirve para mostrar el modal a todos los clientes
+ lastResults?: { ts: number; price: number; results: ResultadoRonda[] } | null;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -252,7 +254,8 @@ export class SalaService {
  jugadores: [],
  rondasTotales:10,
  rondaActual:0,
- historialRondas: []
+ historialRondas: [],
+ lastResults: null
  };
  salas.push(nueva);
  this.writeAll(salas);
@@ -341,7 +344,7 @@ export class SalaService {
  return true;
  }
 
- calcularPuntuacionesRonda(codigo: string): { nombre: string; puntos: number; delta: number }[] | null {
+ calcularPuntuacionesRonda(codigo: string): { nombre: string; puntos: number; delta: number; apuesta?: number }[] | null {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return null;
@@ -353,20 +356,19 @@ export class SalaService {
  const resultados = jugadoresConApuesta.map(j => ({ nombre: j.nombre, delta: Math.abs(j.apuesta - precioReal), apuesta: j.apuesta }));
  resultados.sort((a, b) => a.delta - b.delta);
  const puntosPorPos = [10,7,5];
- const asignaciones: { nombre: string; puntos: number; delta: number }[] = [];
+ const asignaciones: { nombre: string; puntos: number; delta: number; apuesta?: number }[] = [];
  resultados.forEach((r, idx) => {
  const puntos = idx < puntosPorPos.length ? puntosPorPos[idx] :3;
- asignaciones.push({ nombre: r.nombre, puntos, delta: r.delta });
+ asignaciones.push({ nombre: r.nombre, puntos, delta: r.delta, apuesta: r.apuesta });
  const jugador = sala.jugadores.find(j => j.nombre === r.nombre);
  if (jugador) jugador.puntuacion = (jugador.puntuacion ||0) + puntos;
  });
 
  if (!sala.historialRondas) sala.historialRondas = [];
- sala.historialRondas.push({ ronda: sala.rondaActual ??0, producto: sala.productoActual ? { ...sala.productoActual } : undefined, resultados: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta })), ts: Date.now() });
+ sala.historialRondas.push({ ronda: sala.rondaActual ??0, producto: sala.productoActual ? { ...sala.productoActual } : undefined, resultados: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })), ts: Date.now() });
 
- this.writeAll(salas);
- sala.rondaActual = (sala.rondaActual ||0) +1;
- if ((sala.rondaActual ||0) >= (sala.rondasTotales ||10)) sala.estado = 'finalizada';
+ // persist updated scores and history and expose lastResults to clients so everyone can show modal
+ sala.lastResults = { ts: Date.now(), price: precioReal, results: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })) };
  this.writeAll(salas);
  return asignaciones;
  }
@@ -376,6 +378,16 @@ export class SalaService {
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
  sala.jugadores.forEach(j => delete j.apuesta);
+ this.writeAll(salas);
+ return true;
+ }
+
+ // elimina lastResults del estado para que el modal deje de mostrarse en todos los clientes
+ clearLastResults(codigo: string) {
+ const salas = this.readAll();
+ const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
+ if (!sala) return false;
+ sala.lastResults = null;
  this.writeAll(salas);
  return true;
  }

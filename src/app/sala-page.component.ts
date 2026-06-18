@@ -16,9 +16,12 @@ export class SalaPageComponent implements OnDestroy {
  codigo = '';
  loadError: string | null = null;
  apuestas: Record<string, number | null> = {};
- resultados: { nombre: string; puntos: number; delta: number }[] | null = null;
+ // include apuesta in result so modal can show player's guess and direction
+ resultados: { nombre: string; puntos: number; delta: number; apuesta?: number }[] | null = null;
  resultadosModalVisible = false;
  errorMsg: string | null = null;
+ // store last price for modal display
+ lastPrice: number | null = null;
 
  // timer & UI state
  timerSeconds =0;
@@ -106,27 +109,37 @@ export class SalaPageComponent implements OnDestroy {
  this.sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
  this.apuestas = {};
  this.sentMap = {};
+ this.lastPrice = null;
  if (this.sala) {
  this.sala.jugadores.forEach(j => {
  this.apuestas[j.nombre] = j.apuesta ?? null;
  this.sentMap[j.nombre] = j.apuesta !== undefined;
  });
+ // if the service stored lastResults, show modal to everyone
+ if (this.sala.lastResults && Array.isArray(this.sala.lastResults.results)) {
+ this.resultados = this.sala.lastResults.results;
+ this.lastPrice = typeof this.sala.lastResults.price === 'number' ? this.sala.lastResults.price : null;
+ this.resultadosModalVisible = true;
+ } else {
+ // fallback to previous localStorage mechanism (older clients)
+ try {
+ const raw = localStorage.getItem('mpj_last_results_' + this.codigo);
+ if (raw) {
+ const stored = JSON.parse(raw as string);
+ this.resultados = stored.results || null;
+ this.lastPrice = stored.price || null;
+ this.resultadosModalVisible = !!this.resultados;
+ }
+ } catch (e) {
+ // ignore
+ }
+ }
  }
  this.currentName = this.readCurrentName();
  }
 
  onRefresh(): void {
  this.refreshSala();
- try {
- const raw = localStorage.getItem('mpj_last_results_' + this.codigo);
- if (raw) {
- const stored = JSON.parse(raw as string);
- this.resultados = stored.results || null;
- this.resultadosModalVisible = !!this.resultados;
- }
- } catch (e) {
- // ignore
- }
  }
 
  enviarApuesta(nombre: string): void {
@@ -193,6 +206,7 @@ export class SalaPageComponent implements OnDestroy {
  this.resultadosModalVisible = true;
  return;
  }
+ // resultados are persisted in sala.lastResults by the service; refresh will broadcast to clients
  this.resultados = res;
  this.resultadosModalVisible = true;
  try {
@@ -205,10 +219,24 @@ export class SalaPageComponent implements OnDestroy {
  }
 
  cerrarModal(): void {
+ // hide local modal
  this.resultadosModalVisible = false;
  this.resultados = null;
  this.errorMsg = null;
  try { localStorage.removeItem('mpj_last_results_' + this.codigo); } catch (e) {}
+ // If admin: clear lastResults in shared state and automatically advance + load next product
+ if (this.isCurrentAdmin()) {
+ // clear lastResults for all clients
+ this.salaService.clearLastResults(this.codigo);
+ // advance round
+ this.salaService.avanzarRonda(this.codigo);
+ // load next product
+ this.cargarProductoAleatorio();
+ // re-enable inputs so admin can participate in the new round without refreshing
+ this.inputsDisabled = false;
+ // reset timer state
+ this.stopTimer();
+ }
  this.refreshSala();
  }
 

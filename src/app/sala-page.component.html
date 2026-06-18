@@ -20,7 +20,7 @@
  <div *ngIf="sala.productoActual; else sinProducto">
  <h3 class="text-xl font-bold">{{ sala.productoActual.nombre || sala.productoActual.display_name }}</h3>
  <img *ngIf="sala.productoActual.imagen || sala.productoActual.thumbnail" [src]="sala.productoActual.imagen || sala.productoActual.thumbnail" class="w-full max-w-sm rounded-lg mt-3" />
- <p class="mt-3 text-slate-300">Precio real: <strong class="text-green-300">{{ sala.productoActual.precio | number:'1.2-2' }} €</strong></p>
+ <!--<p class="mt-3 text-slate-300">Precio real: <strong class="text-green-300">{{ sala.productoActual.precio | number:'1.2-2' }} €</strong></p>-->
  </div>
  <ng-template #sinProducto>
  <div class="text-center text-slate-400 p-6">Aún no se ha seleccionado un producto para esta ronda.</div>
@@ -77,9 +77,20 @@
  <div *ngIf="resultadosModalVisible" class="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
  <div class="bg-slate-800 p-6 rounded-xl w-full max-w-lg">
  <h4 class="text-xl font-bold mb-3">Resultados Ronda</h4>
+ <!-- show price only when available (new popup) -->
+ <div *ngIf="lastPrice !== null" class="text-sm text-slate-300 mb-3">Precio real: <strong class="text-green-300">{{ lastPrice | number:'1.2-2' }} €</strong></div>
  <div *ngIf="resultados && resultados.length>0" class="space-y-2">
  <div *ngFor="let r of resultados" class="flex justify-between bg-slate-900 p-2 rounded">
- <div><strong>{{ r.nombre }}</strong> — delta: {{ r.delta | number:'1.2-2' }} €</div>
+ <div>
+ <div class="font-semibold"><strong>{{ r.nombre }}</strong></div>
+ <div class="text-sm text-slate-400">Desviación: {{ r.delta | number:'1.2-2' }} €
+ <span *ngIf="lastPrice !== null && r.apuesta !== undefined">— Apuesta: {{ r.apuesta | number:'1.2-2' }} €
+ <span *ngIf="r.apuesta > lastPrice" class="text-emerald-300"> (arriba {{ (r.apuesta - lastPrice) | number:'1.2-2' }} €)</span>
+ <span *ngIf="r.apuesta < lastPrice" class="text-rose-300"> (abajo {{ (lastPrice - r.apuesta) | number:'1.2-2' }} €)</span>
+ <span *ngIf="r.apuesta === lastPrice"> (exacto)</span>
+ </span>
+ </div>
+ </div>
  <div class="font-bold">+{{ r.puntos }} pts</div>
  </div>
  </div>
