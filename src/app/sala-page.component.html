@@ -74,8 +74,14 @@
  <ul class="space-y-2 max-h-64 overflow-auto">
  <li *ngFor="let r of resultados" class="flex justify-between items-center p-2 bg-slate-900 rounded">
  <div>
- <div class="font-semibold">{{ r.nombre }}</div>
- <div class="text-xs text-slate-400">Apuesta: {{ r.apuesta }} € • Delta: {{ r.delta | number:'1.2-2' }}</div>
+ <div class="font-semibold"><strong>{{ r.nombre }}</strong></div>
+ <div class="text-sm text-slate-400">Desviación: {{ r.delta | number:'1.2-2' }} €
+ <span *ngIf="lastPrice !== null && r.apuesta !== undefined">— Apuesta: {{ r.apuesta | number:'1.2-2' }} €
+ <span *ngIf="r.apuesta > lastPrice" class="text-emerald-300"> (arriba {{ (r.apuesta - lastPrice) | number:'1.2-2' }} €)</span>
+ <span *ngIf="r.apuesta < lastPrice" class="text-rose-300"> (abajo {{ (lastPrice - r.apuesta) | number:'1.2-2' }} €)</span>
+ <span *ngIf="r.apuesta === lastPrice"> (exacto)</span>
+ </span>
+ </div>
  </div>
  <div class="text-yellow-300 font-bold">+{{ r.puntos }}</div>
  </li>
