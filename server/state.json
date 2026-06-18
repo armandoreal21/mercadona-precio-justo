@@ -63,32 +63,32 @@
     {
       "codigo": "MAXR9",
       "nombre": "Prueba 4",
-      "productoActualId": 13525,
+      "productoActualId": 63340,
       "productoActual": {
-        "id": "13525",
-        "nombre": "Estropajo jabonoso Bosque Verde",
-        "precio": 1.1,
-        "imagen": "https://prod-mercadona.imgix.net/images/0b72b88bb90c8ea34a7b910de5c2a0ce.jpg?fit=crop&h=300&w=300",
+        "id": "63340",
+        "nombre": "Pizza masa fina 4 quesos Hacendado ultracongelada",
+        "precio": 2.5,
+        "imagen": "https://prod-mercadona.imgix.net/images/aac1dfef33b7830049b42adcec0954dd.jpg?fit=crop&h=300&w=300",
         "descripcion": "",
-        "categoria": "Estropajo, bayeta y guantes",
-        "share_url": "https://tienda.mercadona.es/product/13525/estropajo-jabonoso-bosque-verde-paquete"
+        "categoria": "Pizzas",
+        "share_url": "https://tienda.mercadona.es/product/63340/pizza-masa-fina-4-quesos-hacendado-ultracongelada"
       },
       "estado": "finalizada",
       "jugadores": [
         {
           "nombre": "Vito",
           "esAdmin": false,
-          "puntuacion": 77
+          "puntuacion": 92
         },
         {
           "nombre": "Armando",
           "esAdmin": true,
-          "puntuacion": 64
+          "puntuacion": 79
         },
         {
           "nombre": "Esther",
           "esAdmin": false,
-          "puntuacion": 47
+          "puntuacion": 61
         }
       ],
       "rondasTotales": 10,
@@ -362,6 +362,72 @@
             }
           ],
           "ts": 1781803378156
+        },
+        {
+          "ronda": 11,
+          "producto": {
+            "id": "13525",
+            "nombre": "Estropajo jabonoso Bosque Verde",
+            "precio": 1.1,
+            "imagen": "https://prod-mercadona.imgix.net/images/0b72b88bb90c8ea34a7b910de5c2a0ce.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Estropajo, bayeta y guantes",
+            "share_url": "https://tienda.mercadona.es/product/13525/estropajo-jabonoso-bosque-verde-paquete"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 0.10000000000000009,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 7,
+              "delta": 0.8999999999999999,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 5,
+              "delta": 3.9,
+              "apuesta": 5
+            }
+          ],
+          "ts": 1781803707184
+        },
+        {
+          "ronda": 11,
+          "producto": {
+            "id": "86418",
+            "nombre": "Batido lÃ¡cteo sabor chocolate +ProteÃ­nas Hacendado 30 g proteÃ­nas",
+            "precio": 1.3,
+            "imagen": "https://prod-mercadona.imgix.net/images/fd52db5d2656b0f63b0ad7ba075cd614.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Yogures lÃ­quidos",
+            "share_url": "https://tienda.mercadona.es/product/86418/batido-lacteo-sabor-chocolate-proteinas-hacendado-30-g-proteinas-brick"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.30000000000000004,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 7,
+              "delta": 0.7,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Vito",
+              "puntos": 5,
+              "delta": 1.7,
+              "apuesta": 3
+            }
+          ],
+          "ts": 1781803814796
         }
       ],
       "lastResults": null

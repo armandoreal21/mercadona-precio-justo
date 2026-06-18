@@ -117,6 +117,12 @@ export class SalaPageComponent implements OnDestroy {
  }
 
  refreshSala(): void {
+ // remember previous ronda to detect advances
+ const prevRonda = this.sala?.rondaActual ?? null;
+ // preserve current user's typed value so it isn't lost on remote updates
+ const myName = this.currentName;
+ const myLocalValue = myName ? this.apuestas[myName] : undefined;
+
  this.sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
  this.apuestas = {};
  this.sentMap = {};
@@ -126,6 +132,15 @@ export class SalaPageComponent implements OnDestroy {
  this.apuestas[j.nombre] = j.apuesta ?? null;
  this.sentMap[j.nombre] = j.apuesta !== undefined;
  });
+ // if the round advanced since last refresh, clear local draft for current user
+ if (prevRonda !== null && this.sala.rondaActual !== prevRonda) {
+ if (myName) this.apuestas[myName] = null;
+ } else {
+ // restore preserved local value for current user if they haven't sent yet
+ if (myName && myLocalValue !== undefined && !this.sentMap[myName]) {
+ this.apuestas[myName] = myLocalValue;
+ }
+ }
  // if the service stored lastResults, show modal to everyone
  if (this.sala.lastResults && Array.isArray(this.sala.lastResults.results)) {
  this.resultados = this.sala.lastResults.results;
