@@ -2,7 +2,9 @@
  <div *ngIf="loadError" class="max-w-2xl mx-auto p-6 bg-red-800 rounded-xl text-white">Error cargando assets: {{ loadError }}</div>
  <div *ngIf="!sala && !loadError" class="max-w-2xl mx-auto p-6 bg-slate-800 rounded-xl">Sala no encontrada</div>
 
- <div *ngIf="sala" class="max-w-3xl mx-auto p-6 bg-slate-800 rounded-3xl shadow-2xl border-4 border-purple-600">
+ <div *ngIf="sala" class="w-full p-6 bg-slate-800 rounded-3xl shadow-2xl border-4 border-purple-600">
+ <!-- inner centered wrapper to keep content centered inside the wide purple container -->
+ <div class="max-w-3xl mx-auto">
  <div class="flex items-center justify-between mb-4">
  <div>
  <h2 class="text-2xl font-black text-yellow-400">Sala: {{ sala.nombre }}</h2>
@@ -15,145 +17,57 @@
  </div>
 
  <!-- current user name moved to top of card -->
- <div *ngIf="currentName" class="mb-4 text-sm text-slate-200">
- Tú: <span class="font-semibold text-white">{{ currentName }} <span *ngIf="isCurrentAdmin()" class="text-yellow-300">(admin)</span></span>
+ <div *ngIf="currentName" class="mb-4 text-sm text-slate-200 text-center">
+ <span class="font-semibold text-white">{{ currentName }} <span *ngIf="isCurrentAdmin()" class="text-yellow-300">(admin)</span></span>
  </div>
 
- <div class="grid md:grid-cols-3 gap-4">
- <div class="md:col-span-2 bg-slate-900 p-4 rounded-xl">
+ <!-- Centered product card: make it narrower so it visually centers inside the purple container -->
+ <div class="flex flex-col items-center gap-4">
+
+ <div class="bg-slate-900 p-6 rounded-xl w-full max-w-lg mx-auto">
 
  <div *ngIf="sala.productoActual; else sinProducto">
- <h3 class="text-xl font-bold">{{ sala.productoActual.nombre || sala.productoActual.display_name }}</h3>
- <img *ngIf="sala.productoActual.imagen || sala.productoActual.thumbnail" [src]="sala.productoActual.imagen || sala.productoActual.thumbnail" class="w-full max-w-sm rounded-lg mt-3" />
- <!--<p class="mt-3 text-slate-300">Precio real: <strong class="text-green-300">{{ sala.productoActual.precio | number:'1.2-2' }} €</strong></p>-->
+ <h3 class="text-xl font-bold text-center">{{ sala.productoActual.nombre || sala.productoActual.display_name }}</h3>
+ <img *ngIf="sala.productoActual.imagen || sala.productoActual.thumbnail" [src]="sala.productoActual.imagen || sala.productoActual.thumbnail" class="w-full max-w-sm rounded-lg mt-3 mx-auto" />
  </div>
  <ng-template #sinProducto>
  <div class="text-center text-slate-400 p-6">Aún no se ha seleccionado un producto para esta ronda.</div>
  </ng-template>
 
- <div class="mt-4">
- <div class="flex flex-col md:flex-row md:items-center gap-2">
- <div class="flex flex-wrap gap-2 md:flex-1">
+ <!-- Actions layout: primary admin action centered, then a responsive row for the other actions -->
+ <div class="mt-4 w-full">
+ <!-- Single responsive row of actions centered on all screen sizes; stack on very small screens -->
+ <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-3">
+ <!-- Primary admin action -->
  <ng-container *ngIf="isCurrentAdmin()">
- <button (click)="cargarProductoAleatorio()" class="w-full md:w-auto bg-yellow-400 text-purple-900 px-3 py-2 rounded-xl font-bold">Siguiente Producto</button>
- <!--<button (click)="avanzarRonda()" class="w-full md:w-auto bg-cyan-400 text-slate-900 px-3 py-2 rounded-xl font-bold">Finalizar Ronda</button>-->
- <button (click)="onCalcularPuntuaciones()" [disabled]="!allPlayersHaveApuestas()" class="w-full md:w-auto bg-rose-500 text-white px-3 py-2 rounded-xl font-bold">Calcular puntuaciones</button>
+ <button (click)="cargarProductoAleatorio()" class="bg-yellow-400 text-purple-900 px-4 py-2 rounded-xl font-bold w-full sm:w-auto">Siguiente Producto</button>
+ <button (click)="onCalcularPuntuaciones()" [disabled]="!allPlayersHaveApuestas()" class="bg-rose-500 text-white px-4 py-2 rounded-xl font-bold w-full sm:w-auto">Calcular puntuaciones</button>
  </ng-container>
 
- <button (click)="abrirClasificacion()" class="w-full md:w-auto px-3 py-2 bg-slate-700 rounded text-sm">Ver clasificación</button>
- </div>
-
- <div class="md:ml-2">
- <button (click)="onRefresh()" class="w-full md:w-auto bg-slate-700 px-3 py-2 rounded">Refrescar</button>
- </div>
+ <!-- Common actions -->
+ <button (click)="abrirClasificacion()" class="bg-slate-700 text-slate-100 px-4 py-2 rounded w-full sm:w-auto">Ver clasificación</button>
+ <button (click)="onRefresh()" class="bg-slate-700 text-slate-100 px-4 py-2 rounded w-full sm:w-auto">Refrescar</button>
  </div>
  </div>
 
- <!-- Betting input: always below product area. On md+ it's a row: input then button to the right. On small screens they stack full-width. -->
- <div class="mt-4">
- <div class="w-full max-w-lg">
- <!-- guard currentName and expose as `name` for safe indexing -->
+ <!-- Betting input: always below product area. On sm+ it's a row: input then button to the right. On small screens they stack full-width. -->
+ <div class="mt-4 w-full max-w-md mx-auto">
  <ng-container *ngIf="currentName as name">
- <div class="flex flex-col md:flex-row md:items-center md:gap-3">
- <input type="number" [(ngModel)]="apuestas[name]" placeholder="€" class="w-full md:flex-1 text-center bg-slate-700 rounded px-3 py-2" [disabled]="inputsDisabled || sentMap[name]" />
- <button (click)="enviarApuesta(name)" class="mt-3 md:mt-0 md:ml-2 w-full md:w-auto bg-cyan-400 text-slate-900 px-4 py-2 rounded text-sm" [disabled]="inputsDisabled || sentMap[name]">Enviar</button>
+ <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3">
+ <input type="number" [(ngModel)]="apuestas[name]" placeholder="€" class="w-full sm:flex-1 text-center bg-slate-700 rounded px-3 py-2" [disabled]="inputsDisabled || sentMap[name]" />
+ <button (click)="enviarApuesta(name)" class="mt-3 sm:mt-0 sm:ml-2 w-full sm:w-auto bg-cyan-400 text-slate-900 px-4 py-2 rounded text-sm" [disabled]="inputsDisabled || sentMap[name]">Enviar</button>
  </div>
- <div *ngIf="sentMap[name]" class="mt-2 text-xs text-slate-300">Apuesta enviada</div>
+ <div *ngIf="sentMap[name]" class="mt-2 text-xs text-slate-300 text-center">Apuesta enviada</div>
  </ng-container>
  </div>
- </div>
 
  </div>
 
- <!-- right column: simplified players panel (removed individual name/status display) -->
- <div class="bg-slate-800 p-4 rounded-xl">
- <h4 class="font-bold text-lg mb-2">Jugadores</h4>
- <div class="text-sm text-slate-300">Total: {{ sala.jugadores.length ||0 }}</div>
- <!-- if you want later, can list player initials or icons here -->
- </div>
+ <!-- simplified players panel below, centered -->
+ <div class="w-full max-w-lg">
+ <div class="bg-slate-800 p-4 rounded-xl mx-auto"></div>
  </div>
 
- <!-- waiting modal (shows to the player after they send their apuesta) -->
- <div *ngIf="esperandoModalVisible" class="fixed inset-0 flex items-center justify-center bg-black/50 z-40">
- <div class="bg-slate-800 p-6 rounded-xl w-full max-w-md">
- <h4 class="text-lg font-bold mb-3">Esperando al resto de concursantes</h4>
- <div *ngIf="!isCurrentAdmin()" class="text-sm text-slate-300 mb-3">Has enviado tu apuesta. Espera a que el administrador calcule las puntuaciones. No podrás cerrar este diálogo hasta entonces.</div>
- <div *ngIf="isCurrentAdmin()" class="text-sm text-slate-300 mb-3">Has enviado tu apuesta. Puedes cerrar este diálogo y calcular las puntuaciones cuando quieras.</div>
- <ul class="space-y-2">
- <li *ngFor="let e of esperandoList" class="flex items-center justify-between bg-slate-900 p-2 rounded">
- <div>{{ e.nombre }}</div>
- <div class="text-sm" [ngClass]="{'text-emerald-300': e.apostado, 'text-rose-300': !e.apostado}">{{ e.apostado ? 'Apostado' : 'Sin apostar' }}</div>
- </li>
- </ul>
- <div class="mt-4 text-right">
- <!-- only admin (or when results exist) may close; non-admins see no button -->
- <button *ngIf="isCurrentAdmin() || (sala && sala.lastResults)" (click)="cerrarEsperandoModal()" class="px-4 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Cerrar</button>
- </div>
- </div>
- </div>
-
- <!-- modal resultados -->
- <div *ngIf="resultadosModalVisible" class="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
- <div class="bg-slate-800 p-6 rounded-xl w-full max-w-lg">
- <h4 class="text-xl font-bold mb-3">Resultados Ronda</h4>
- <!-- show price only when available (new popup) -->
- <div *ngIf="lastPrice !== null" class="text-sm text-slate-300 mb-3">Precio real: <strong class="text-green-300">{{ lastPrice | number:'1.2-2' }} €</strong></div>
- <div *ngIf="resultados && resultados.length>0" class="space-y-2">
- <div *ngFor="let r of resultados" class="flex justify-between bg-slate-900 p-2 rounded">
- <div>
- <div class="font-semibold"><strong>{{ r.nombre }}</strong></div>
- <div class="text-sm text-slate-400">Desviación: {{ r.delta | number:'1.2-2' }} €
- <span *ngIf="lastPrice !== null && r.apuesta !== undefined">— Apuesta: {{ r.apuesta | number:'1.2-2' }} €
- <span *ngIf="r.apuesta > lastPrice" class="text-emerald-300"> (arriba {{ (r.apuesta - lastPrice) | number:'1.2-2' }} €)</span>
- <span *ngIf="r.apuesta < lastPrice" class="text-rose-300"> (abajo {{ (lastPrice - r.apuesta) | number:'1.2-2' }} €)</span>
- <span *ngIf="r.apuesta === lastPrice"> (exacto)</span>
- </span>
- </div>
- </div>
- <div class="font-bold">+{{ r.puntos }} pts</div>
- </div>
- </div>
- <div *ngIf="resultados && resultados.length===0" class="text-slate-400">No hubo apuestas válidas esta ronda.</div>
- <div *ngIf="errorMsg" class="text-red-400 mt-2">{{ errorMsg }}</div>
-
- <div class="mt-4 text-right">
- <button (click)="cerrarModal()" class="px-4 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Cerrar</button>
- </div>
- </div>
- </div>
-
- <!-- modal clasificacion -->
- <div *ngIf="showClasificacion" class="fixed inset-0 flex items-center justify-center bg-black/50 z-60">
- <div class="bg-slate-800 p-6 rounded-xl w-full max-w-md">
- <h4 class="text-lg font-bold mb-3">Clasificación</h4>
- <ol class="list-decimal list-inside space-y-2">
- <li *ngFor="let c of clasificacionList" class="flex items-center justify-between">
- <div class="flex items-center gap-3">
- <div>{{ c.nombre }}</div>
- </div>
- <div class="flex items-center gap-2">
- <div class="font-bold">{{ c.puntos }} pts</div>
- <!-- admin may delete from classification modal -->
- <button *ngIf="isCurrentAdmin()" (click)="onRemovePlayer(c.nombre)" class="text-sm text-red-400 px-2 py-1">Eliminar</button>
- </div>
- </li>
- </ol>
- <div class="mt-4 text-right">
- <button (click)="cerrarClasificacion()" class="px-4 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Cerrar</button>
- </div>
- </div>
- </div>
-
- <!-- custom final choice modal (replace native confirm) -->
- <div *ngIf="showFinalChoiceModal" class="fixed inset-0 flex items-center justify-center bg-black/60 z-70">
- <div class="bg-slate-800 p-6 rounded-xl w-full max-w-md border-2 border-yellow-400">
- <h4 class="text-lg font-bold mb-3">Final de la partida</h4>
- <p class="text-sm text-slate-300 mb-4">Se ha alcanzado la última ronda. ¿Qué deseas hacer con la sala?</p>
- <div class="space-y-2">
- <button (click)="handleDeleteRoom()" class="w-full bg-red-600 text-white px-3 py-2 rounded font-bold">Eliminar sala</button>
- <button (click)="handleRestartGame()" class="w-full bg-emerald-500 text-white px-3 py-2 rounded font-bold">Reiniciar partida (mantener sala)</button>
- <button (click)="handleCancelFinalChoice()" class="w-full bg-slate-700 text-white px-3 py-2 rounded">Cancelar</button>
- </div>
  </div>
  </div>
  </div>
