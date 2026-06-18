@@ -9,8 +9,8 @@
  <div class="text-sm text-slate-300">Código: <span class="font-mono">{{ sala.codigo }}</span></div>
  </div>
  <div class="text-right">
- <div class="text-sm">Ronda {{ sala.rondaActual }} / {{ sala.rondasTotales }}</div>
- <div class="text-xs text-slate-400">Estado: {{ sala.estado }}</div>
+ <div class="text-sm">Ronda {{ sala.rondaActual }} / {{ sala.rondasTotales }} </div>
+ <div class="text-xs text-slate-400">Jugadores: {{ sala.jugadores?.length ||0 }}</div>
  </div>
  </div>
 
@@ -27,25 +27,25 @@
  </ng-template>
 
  <div class="mt-4 flex gap-2 items-center">
- <ng-container *ngIf="isCurrentAdmin()">
- <button (click)="cargarProductoAleatorio()" class="bg-yellow-400 text-purple-900 px-3 py-2 rounded-xl font-bold">Siguiente Producto</button>
- <button (click)="avanzarRonda()" class="bg-cyan-400 text-slate-900 px-3 py-2 rounded-xl font-bold">Finalizar Ronda</button>
- <button (click)="onCalcularPuntuaciones()" [disabled]="!allPlayersHaveApuestas()" class="bg-rose-500 text-white px-3 py-2 rounded-xl font-bold">Calcular puntuaciones</button>
- </ng-container>
+   <ng-container *ngIf="isCurrentAdmin()">
+     <button (click)="cargarProductoAleatorio()" class="bg-yellow-400 text-purple-900 px-3 py-2 rounded-xl font-bold">Siguiente Producto</button>
+     <!--<button (click)="avanzarRonda()" class="bg-cyan-400 text-slate-900 px-3 py-2 rounded-xl font-bold">Finalizar Ronda</button>-->
+     <button (click)="onCalcularPuntuaciones()" [disabled]="!allPlayersHaveApuestas()" class="bg-rose-500 text-white px-3 py-2 rounded-xl font-bold">Calcular puntuaciones</button>
+   </ng-container>
 
- <button (click)="onRefresh()" class="ml-auto bg-slate-700 px-3 py-2 rounded">Refrescar</button>
- <button (click)="abrirClasificacion()" class="ml-2 px-3 py-2 bg-slate-700 rounded text-sm">Ver clasificación</button>
 
- <!--<div *ngIf="isCurrentAdmin()" class="ml-4 flex items-center gap-2">
- <button (click)="startTimer(30)" class="px-3 py-2 bg-indigo-600 rounded">Iniciar temporizador30s</button>
- <div *ngIf="timerRunning" class="text-sm">Tiempo: {{ timerSeconds }}s</div>
- </div>-->
+   <button (click)="abrirClasificacion()" class="ml-2 px-3 py-2 bg-slate-700 rounded text-sm">Ver clasificación</button>
+   <button (click)="onRefresh()" class="ml-auto bg-slate-700 px-3 py-2 rounded">Refrescar</button>
+   <!--<div *ngIf="isCurrentAdmin()" class="ml-4 flex items-center gap-2">
+  <button (click)="startTimer(30)" class="px-3 py-2 bg-indigo-600 rounded">Iniciar temporizador30s</button>
+  <div *ngIf="timerRunning" class="text-sm">Tiempo: {{ timerSeconds }}s</div>
+  </div>-->
  </div>
 
  </div>
 
  <div class="bg-slate-800 p-4 rounded-xl">
- <h4 class="font-bold text-lg mb-2">Jugadores</h4>
+ <!--<h4 class="font-bold text-lg mb-2">Jugadores</h4>-->
  <ol class="list-decimal list-inside space-y-3">
  <ng-container *ngFor="let j of sala.jugadores">
  <!-- show only the current user's input block for all users (admin will manage others in clasificación) -->
