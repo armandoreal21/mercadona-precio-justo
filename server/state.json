@@ -157,6 +157,70 @@
         }
       ],
       "lastResults": null
+    },
+    {
+      "codigo": "NL8DU",
+      "nombre": "Prueba 5",
+      "productoActualId": null,
+      "productoActual": null,
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Héctor",
+          "esAdmin": false,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Carmen",
+          "esAdmin": false,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 3,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "lastResults": null
+    },
+    {
+      "codigo": "J7C5E",
+      "nombre": "Mi sala",
+      "productoActualId": 82655,
+      "productoActual": {
+        "id": "82655",
+        "nombre": "Pan de fibra y sÃ©samo Hacendado",
+        "precio": 1.13,
+        "imagen": "https://prod-mercadona.imgix.net/images/a3392f9e5392dfbc6be285a4864bb40a.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "Pan tostado y rallado",
+        "share_url": "https://tienda.mercadona.es/product/82655/pan-fibra-sesamo-hacendado-paquete"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Carmen",
+          "esAdmin": false,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Héctor",
+          "esAdmin": false,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 3,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "lastResults": null
     }
   ]
 }

@@ -17,3 +17,60 @@ input[type=number]::-webkit-inner-spin-button {
  -webkit-appearance: none; /* Chrome, Safari, Edge */
  margin:0;
 }
+
+/* Theme for Mercadona + gamer accent. Mobile-first responsive styles */
+.mpj-theme {
+ --mpj-bg: #071827; /* deep navy */
+ --mpj-card: #0b2a3a; /* dark card bg */
+ --mpj-accent: #ffd400; /* Mercadona yellow */
+ --mpj-accent-blue: #0057a8; /* Mercadona-like blue */
+ --mpj-accent-2: #00e5ff; /* neon cyan for gamer touch */
+ --mpj-muted: #263845; /* muted panel */
+ background: linear-gradient(180deg, var(--mpj-bg), #051622);
+ color-scheme: dark;
+}
+
+/* Tweak card appearance */
+.mpj-theme .rounded-3xl { border-radius:1rem; }
+.mpj-theme .bg-slate-800 { background-color: var(--mpj-card) !important; }
+.mpj-theme .bg-slate-900 { background-color: #071827 !important; }
+
+/* Replace purple border with yellow accent */
+.mpj-theme .border-purple-600 { border-color: rgba(255,212,0,0.95) !important; }
+
+/* Headings */
+.mpj-theme h2 { color: var(--mpj-accent); }
+.mpj-theme h3 { color: #e6eef7; }
+
+/* Buttons */
+.mpj-theme button { font-weight:700; }
+.mpj-theme .bg-yellow-400 { background-color: var(--mpj-accent) !important; color: #071827 !important; box-shadow:06px18px rgba(255,212,0,0.12); }
+.mpj-theme .bg-cyan-400 { background-color: var(--mpj-accent-2) !important; color: #071827 !important; box-shadow:06px18px rgba(0,229,255,0.06); }
+.mpj-theme .bg-rose-500 { background-color: #ff5a73 !important; }
+.mpj-theme .bg-slate-700 { background-color: rgba(30,45,60,0.65) !important; }
+
+/* Input */
+.mpj-theme input[type=number] { background: rgba(10,28,38,0.7); color: #e6f7ff; border:1px solid rgba(255,255,255,0.04); font-size:1.05rem; }
+
+/* Make action buttons full-width on mobile and visually larger */
+.mpj-theme .flex .sm\:w-auto { width:100%; }
+.mpj-theme .mt-4 .w-full button, .mpj-theme .mt-4 .w-full a { width:100%; }
+
+/* Card padding adjustments for mobile */
+.mpj-theme .max-w-lg { width:100%; padding:0.5rem; }
+
+/* Subtle gamer glow around image/card on larger screens */
+@media (min-width:640px) {
+ .mpj-theme .flex .sm\:w-auto { width: auto; }
+ .mpj-theme .max-w-lg { max-width:28rem; }
+ .mpj-theme .bg-slate-900 { box-shadow:08px40px rgba(0,0,0,0.5); }
+}
+
+@media (min-width:1024px) {
+ .mpj-theme .max-w-3xl { max-width:900px; }
+ .mpj-theme img { max-height:380px; object-fit:contain; }
+ .mpj-theme .bg-slate-900 { border-radius:1.25rem; }
+}
+
+/* Accessibility: increase tap targets on mobile */
+.mpj-theme button, .mpj-theme input { min-height:44px; }

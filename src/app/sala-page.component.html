@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-slate-900 p-4 text-white">
+<div class="min-h-screen bg-slate-900 p-4 text-white mpj-theme">
  <div *ngIf="loadError" class="max-w-2xl mx-auto p-6 bg-red-800 rounded-xl text-white">Error cargando assets: {{ loadError }}</div>
  <div *ngIf="!sala && !loadError" class="max-w-2xl mx-auto p-6 bg-slate-800 rounded-xl">Sala no encontrada</div>
 
@@ -57,7 +57,7 @@
  <input type="number" [(ngModel)]="apuestas[name]" placeholder="€" class="w-full sm:flex-1 text-center bg-slate-700 rounded px-3 py-2" [disabled]="inputsDisabled || sentMap[name]" />
  <button (click)="enviarApuesta(name)" class="mt-3 sm:mt-0 sm:ml-2 w-full sm:w-auto bg-cyan-400 text-slate-900 px-4 py-2 rounded text-sm" [disabled]="inputsDisabled || sentMap[name]">Enviar</button>
  </div>
- <div *ngIf="sentMap[name]" class="mt-2 text-xs text-slate-300 text-center">Apuesta enviada</div>
+ <!--<div *ngIf="sentMap[name]" class="mt-2 text-xs text-slate-300 text-center">Apuesta enviada</div>-->
  </ng-container>
  </div>
 
@@ -65,6 +65,76 @@
 
  <!-- empty players panel removed to eliminate unwanted small square -->
 
+ <!-- Resultados modal -->
+ <div *ngIf="resultadosModalVisible" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+ <div class="absolute inset-0 bg-black/60" (click)="cerrarModal()"></div>
+ <div class="relative max-w-lg w-full bg-slate-800 rounded-xl p-4">
+ <h4 class="text-lg font-bold mb-2">Resultados - Precio real: {{ lastPrice | number:'1.2-2' }} €</h4>
+ <div *ngIf="resultados && resultados.length; else sinResult">
+ <ul class="space-y-2 max-h-64 overflow-auto">
+ <li *ngFor="let r of resultados" class="flex justify-between items-center p-2 bg-slate-900 rounded">
+ <div>
+ <div class="font-semibold">{{ r.nombre }}</div>
+ <div class="text-xs text-slate-400">Apuesta: {{ r.apuesta }} € • Delta: {{ r.delta | number:'1.2-2' }}</div>
+ </div>
+ <div class="text-yellow-300 font-bold">+{{ r.puntos }}</div>
+ </li>
+ </ul>
+ </div>
+ <ng-template #sinResult>
+ <div class="text-center text-slate-400 p-4">No hay resultados disponibles.</div>
+ </ng-template>
+ <div class="mt-4 flex gap-2 justify-end">
+ <button (click)="cerrarModal()" class="px-4 py-2 bg-slate-700 rounded">Cerrar</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Esperando modal (who has/haven't bet) -->
+ <div *ngIf="esperandoModalVisible" class="fixed inset-0 z-40 flex items-center justify-center p-4">
+ <div class="absolute inset-0 bg-black/50" (click)="cerrarEsperandoModal()"></div>
+ <div class="relative max-w-md w-full bg-slate-800 rounded-xl p-4">
+ <h4 class="text-lg font-bold mb-2">Esperando apuestas</h4>
+ <ul class="space-y-2">
+ <li *ngFor="let e of esperandoList" class="flex justify-between items-center p-2 bg-slate-900 rounded">
+ <div class="text-sm">{{ e.nombre }}</div>
+ <div class="text-sm" [class.text-green-400]="e.apostado" [class.text-slate-400]="!e.apostado">{{ e.apostado ? 'Apostado' : 'Sin apostar' }}</div>
+ </li>
+ </ul>
+ <div class="mt-4 flex justify-end">
+ <button (click)="cerrarEsperandoModal()" class="px-4 py-2 bg-slate-700 rounded">Cerrar</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Clasificación modal -->
+ <div *ngIf="showClasificacion" class="fixed inset-0 z-40 flex items-center justify-center p-4">
+ <div class="absolute inset-0 bg-black/50" (click)="cerrarClasificacion()"></div>
+ <div class="relative max-w-md w-full bg-slate-800 rounded-xl p-4">
+ <h4 class="text-lg font-bold mb-2">Clasificación</h4>
+ <ul class="space-y-2 max-h-64 overflow-auto">
+ <li *ngFor="let c of clasificacionList" class="flex justify-between items-center p-2 bg-slate-900 rounded">
+ <div class="font-semibold">{{ c.nombre }}</div>
+ <div class="text-yellow-300 font-bold">{{ c.puntos }}</div>
+ </li>
+ </ul>
+ <div class="mt-4 flex justify-end">
+ <button (click)="cerrarClasificacion()" class="px-4 py-2 bg-slate-700 rounded">Cerrar</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Final choice modal for admin -->
+ <div *ngIf="showFinalChoiceModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+ <div class="absolute inset-0 bg-black/70" (click)="handleCancelFinalChoice()"></div>
+ <div class="relative max-w-md w-full bg-slate-800 rounded-xl p-4">
+ <h4 class="text-lg font-bold mb-2">Fin de la partida</h4>
+ <p class="text-sm text-slate-300">¿Qué deseas hacer con la sala?</p>
+ <div class="mt-4 flex flex-col gap-2">
+ <button (click)="handleRestartGame()" class="px-4 py-2 bg-yellow-400 rounded font-bold">Reiniciar partida</button>
+ <button (click)="handleDeleteRoom()" class="px-4 py-2 bg-rose-500 rounded text-white font-bold">Eliminar sala</button>
+ <button (click)="handleCancelFinalChoice()" class="px-4 py-2 bg-slate-700 rounded">Cancelar</button>
+ </div>
  </div>
  </div>
  </div>
