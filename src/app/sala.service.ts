@@ -394,12 +394,25 @@ export class SalaService {
  resultados.sort((a, b) => a.delta - b.delta);
  const puntosPorPos = [10,7,5];
  const asignaciones: { nombre: string; puntos: number; delta: number; apuesta?: number }[] = [];
- resultados.forEach((r, idx) => {
+
+ // assign points, but if deltas are equal (tie) give same points to all tied players
+ let idx =0;
+ while (idx < resultados.length) {
+ const currentDelta = resultados[idx].delta;
+ // find group size with same delta
+ let j = idx +1;
+ while (j < resultados.length && resultados[j].delta === currentDelta) j++;
+ const groupSize = j - idx;
+ // determine points for this group's starting position
  const puntos = idx < puntosPorPos.length ? puntosPorPos[idx] :3;
- asignaciones.push({ nombre: r.nombre, puntos, delta: r.delta, apuesta: r.apuesta });
- const jugador = sala.jugadores.find(j => j.nombre === r.nombre);
+ for (let k = idx; k < j; k++) {
+ asignaciones.push({ nombre: resultados[k].nombre, puntos, delta: resultados[k].delta, apuesta: resultados[k].apuesta });
+ const jugador = sala.jugadores.find(p => p.nombre === resultados[k].nombre);
  if (jugador) jugador.puntuacion = (jugador.puntuacion ||0) + puntos;
- });
+ }
+ // move index past this group
+ idx = j;
+ }
 
  if (!sala.historialRondas) sala.historialRondas = [];
  sala.historialRondas.push({ ronda: sala.rondaActual ??0, producto: sala.productoActual ? { ...sala.productoActual } : undefined, resultados: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })), ts: Date.now() });
