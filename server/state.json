@@ -63,36 +63,36 @@
     {
       "codigo": "MAXR9",
       "nombre": "Prueba 4",
-      "productoActualId": 63340,
+      "productoActualId": 28908,
       "productoActual": {
-        "id": "63340",
-        "nombre": "Pizza masa fina 4 quesos Hacendado ultracongelada",
-        "precio": 2.5,
-        "imagen": "https://prod-mercadona.imgix.net/images/aac1dfef33b7830049b42adcec0954dd.jpg?fit=crop&h=300&w=300",
+        "id": "28908",
+        "nombre": "Cava brut nature Jaume Serra",
+        "precio": 3.95,
+        "imagen": "https://prod-mercadona.imgix.net/images/30f76c69ce6ebc17e94d7d6a1d69a671.jpg?fit=crop&h=300&w=300",
         "descripcion": "",
-        "categoria": "Pizzas",
-        "share_url": "https://tienda.mercadona.es/product/63340/pizza-masa-fina-4-quesos-hacendado-ultracongelada"
+        "categoria": "Sidra y cava",
+        "share_url": "https://tienda.mercadona.es/product/28908/cava-brut-nature-jaume-serra-botella"
       },
       "estado": "finalizada",
       "jugadores": [
         {
           "nombre": "Vito",
           "esAdmin": false,
-          "puntuacion": 92
+          "puntuacion": 99
         },
         {
           "nombre": "Armando",
           "esAdmin": true,
-          "puntuacion": 79
+          "puntuacion": 89
         },
         {
           "nombre": "Esther",
           "esAdmin": false,
-          "puntuacion": 61
+          "puntuacion": 0
         }
       ],
       "rondasTotales": 10,
-      "rondaActual": 11,
+      "rondaActual": 12,
       "historialRondas": [
         {
           "ronda": 0,
@@ -428,6 +428,33 @@
             }
           ],
           "ts": 1781803814796
+        },
+        {
+          "ronda": 11,
+          "producto": {
+            "id": "63340",
+            "nombre": "Pizza masa fina 4 quesos Hacendado ultracongelada",
+            "precio": 2.5,
+            "imagen": "https://prod-mercadona.imgix.net/images/aac1dfef33b7830049b42adcec0954dd.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Pizzas",
+            "share_url": "https://tienda.mercadona.es/product/63340/pizza-masa-fina-4-quesos-hacendado-ultracongelada"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.5,
+              "apuesta": 3
+            },
+            {
+              "nombre": "Vito",
+              "puntos": 7,
+              "delta": 1.5,
+              "apuesta": 4
+            }
+          ],
+          "ts": 1781804462605
         }
       ],
       "lastResults": null

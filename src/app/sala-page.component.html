@@ -34,6 +34,7 @@
  </ng-container>
 
  <button (click)="onRefresh()" class="ml-auto bg-slate-700 px-3 py-2 rounded">Refrescar</button>
+ <button (click)="abrirClasificacion()" class="ml-2 px-3 py-2 bg-slate-700 rounded text-sm">Ver clasificación</button>
 
  <!--<div *ngIf="isCurrentAdmin()" class="ml-4 flex items-center gap-2">
  <button (click)="startTimer(30)" class="px-3 py-2 bg-indigo-600 rounded">Iniciar temporizador30s</button>
@@ -47,11 +48,11 @@
  <h4 class="font-bold text-lg mb-2">Jugadores</h4>
  <ol class="list-decimal list-inside space-y-3">
  <ng-container *ngFor="let j of sala.jugadores">
- <!-- show all players to admin, otherwise show only the current user's input block -->
- <li *ngIf="isCurrentAdmin() || j.nombre === currentName" class="flex items-center justify-between gap-2">
+ <!-- show only the current user's input block for all users (admin will manage others in clasificación) -->
+ <li *ngIf="j.nombre === currentName" class="flex items-center justify-between gap-2">
  <div class="flex-1">
  <div class="font-semibold">{{ j.nombre }} <span *ngIf="j.esAdmin" class="text-yellow-300">(admin)</span></div>
- <div class="text-xs text-slate-400">Puntos: <span *ngIf="canSeePoints(j)">{{ j.puntuacion ||0 }}</span><span *ngIf="!canSeePoints(j)">—</span></div>
+ <!--<div class="text-xs text-slate-400">Puntos: <span *ngIf="canSeePoints(j)">{{ j.puntuacion ||0 }}</span><span *ngIf="!canSeePoints(j)">—</span></div>-->
  <div class="text-xs text-slate-400">{{ j.apuesta !== undefined ? 'Apostado' : 'Sin apostar' }}</div>
  </div>
 
@@ -61,12 +62,6 @@
  <div class="mt-2 flex gap-2">
  <button (click)="enviarApuesta(j.nombre)" class="bg-cyan-400 text-slate-900 px-2 py-1 rounded text-sm" [disabled]="inputsDisabled || sentMap[j.nombre]">Enviar</button>
  <div *ngIf="sentMap[j.nombre]" class="text-xs text-slate-300 self-center">Enviada</div>
- </div>
- </ng-container>
- <ng-container *ngIf="j.nombre !== currentName">
- <div class="w-full text-center py-2 bg-slate-700 rounded">{{ j.apuesta !== undefined ? 'Apostado' : '—' }}</div>
- <div class="mt-2 text-right">
- <button *ngIf="isCurrentAdmin() && j.nombre !== currentName" (click)="onRemovePlayer(j.nombre)" class="text-sm text-red-400">Eliminar</button>
  </div>
  </ng-container>
  </div>
@@ -121,6 +116,28 @@
 
  <div class="mt-4 text-right">
  <button (click)="cerrarModal()" class="px-4 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Cerrar</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- modal clasificacion -->
+ <div *ngIf="showClasificacion" class="fixed inset-0 flex items-center justify-center bg-black/50 z-60">
+ <div class="bg-slate-800 p-6 rounded-xl w-full max-w-md">
+ <h4 class="text-lg font-bold mb-3">Clasificación</h4>
+ <ol class="list-decimal list-inside space-y-2">
+ <li *ngFor="let c of clasificacionList" class="flex items-center justify-between">
+ <div class="flex items-center gap-3">
+ <div>{{ c.nombre }}</div>
+ </div>
+ <div class="flex items-center gap-2">
+ <div class="font-bold">{{ c.puntos }} pts</div>
+ <!-- admin may delete from classification modal -->
+ <button *ngIf="isCurrentAdmin()" (click)="onRemovePlayer(c.nombre)" class="text-sm text-red-400 px-2 py-1">Eliminar</button>
+ </div>
+ </li>
+ </ol>
+ <div class="mt-4 text-right">
+ <button (click)="cerrarClasificacion()" class="px-4 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Cerrar</button>
  </div>
  </div>
  </div>

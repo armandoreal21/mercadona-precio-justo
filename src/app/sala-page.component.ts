@@ -35,6 +35,9 @@ export class SalaPageComponent implements OnDestroy {
 
  currentName: string | null = null;
  showHistorial = false;
+ // new fields for clasificación feature
+ showClasificacion = false;
+ clasificacionList: { nombre: string; puntos: number }[] = [];
 
  constructor(
  private route: ActivatedRoute,
@@ -93,10 +96,10 @@ export class SalaPageComponent implements OnDestroy {
  }
 
  canSeePoints(j: any): boolean {
- if (this.isCurrentAdmin()) return true;
+ // only allow each player to see their own points inline; admin will use the separate clasificación view
  return j.nombre === this.currentName;
  }
-
+ 
  isCurrentAdmin(): boolean {
  try {
  const raw = localStorage.getItem('mpj_current');
@@ -106,6 +109,17 @@ export class SalaPageComponent implements OnDestroy {
  } catch (e) {
  return false;
  }
+ }
+ 
+ abrirClasificacion(): void {
+ if (!this.sala) return;
+ // build sorted classification (desc by puntos)
+ this.clasificacionList = (this.sala.jugadores || []).map(p => ({ nombre: p.nombre, puntos: p.puntuacion ||0 })).sort((a, b) => b.puntos - a.puntos);
+ this.showClasificacion = true;
+ }
+
+ cerrarClasificacion(): void {
+ this.showClasificacion = false;
  }
 
  private buildEsperandoList() {
@@ -295,6 +309,10 @@ export class SalaPageComponent implements OnDestroy {
  return;
  }
  this.refreshSala();
+ // if clasificación modal is open, rebuild it to reflect deletion
+ if (this.showClasificacion) {
+ this.abrirClasificacion();
+ }
  }
 
  cargarProductoAleatorio(): void {
