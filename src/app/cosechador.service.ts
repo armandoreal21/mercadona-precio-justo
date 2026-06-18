@@ -1,13 +1,16 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, forkJoin } from 'rxjs';
-import { map, mergeMap, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export interface ProductoPrecioJusto {
   idProducto: string;
   nombre: string;
   precio: number;
   imagen: string;
+  descripcion?: string;
+  categoria?: string;
+  share_url?: string;
 }
 
 @Injectable({
@@ -16,106 +19,141 @@ export interface ProductoPrecioJusto {
 export class CosechadorService {
   private http = inject(HttpClient);
 
-  // Usamos el endpoint público de categorías directamente
-  private baseApi = 'https://tienda.mercadona.es/api/categories';
+  // Rutas a los ficheros locales (se asume que se sirven desde "assets")
+  private categoriasPath = 'assets/Categoria.json';
+  private subcategoriasFolder = 'assets/subcategorias';
 
-  // Subjects para controlar el progreso desde el componente
-  public totalPasillos$ = new BehaviorSubject<number>(0);
-  public pasillosProcesados$ = new BehaviorSubject<number>(0);
+  // Historial para previous/next
+  private historial: ProductoPrecioJusto[] = [];
+  private indiceActual = -1;
 
-  descargarTodo(): Observable<ProductoPrecioJusto[]> {
-    // Primera petición: obtener las categorías principales
-    const urlCategorias = `${this.baseApi}/`;
+  constructor() {}
 
-    return this.http.get<any>(urlCategorias).pipe(
-      // Asumimos que la respuesta es un array de categorías
-      mergeMap((categoriasPrincipales: any[]) => {
-        const peticiones: Observable<any>[] = [];
+  // Carga el fichero principal de categorías
+  private cargarCategorias(): Observable<any> {
+    return this.http.get<any>(this.categoriasPath).pipe(
+      catchError(err => throwError(() => new Error('No se pudo cargar Categoria.json: ' + err)))
+    );
+  }
 
-        categoriasPrincipales.forEach(cat => {
-          // Para cada categoría principal pedimos su detalle (que contiene subcategorías y productos)
-          const urlCategoriaDetalle = `${this.baseApi}/${cat.id}/`;
+  // Carga la subcategoria por id desde assets/subcategorias/{id}.json
+  private cargarSubcategoriaPorId(id: number | string): Observable<any> {
+    const path = `${this.subcategoriasFolder}/${id}.json`;
+    return this.http.get<any>(path).pipe(
+      catchError(() => throwError(() => new Error(`No se encontró ${path}`)))
+    );
+  }
 
-          peticiones.push(
-            this.http.get<any>(urlCategoriaDetalle).pipe(
-              tap(() => this.pasillosProcesados$.next(this.pasillosProcesados$.value + 1))
-            )
-          );
+  // Método que devuelve Observable<ProductoPrecioJusto> completo (aleatorio)
+  obtenerProductoAleatorio(): Observable<ProductoPrecioJusto> {
+    return new Observable<ProductoPrecioJusto>((subscriber) => {
+      this.cargarCategorias().subscribe({
+        next: (cats) => {
+          const results = cats?.results || [];
+          const posiblesSubIds: number[] = [];
 
-          // Si la categoría principal ya incluye subcategorías en el primer nivel, también
-          // podríamos iterarlas aquí si fuera necesario. Pero pedimos el detalle siempre para
-          // asegurar que tengamos los productos.
-        });
+          results.forEach((r: any) => {
+            if (Array.isArray(r.categories)) {
+              r.categories.forEach((sc: any) => {
+                if (sc?.id) posiblesSubIds.push(sc.id);
+              });
+            }
+          });
 
-        this.totalPasillos$.next(peticiones.length);
-        this.pasillosProcesados$.next(0);
+          if (posiblesSubIds.length ===0) {
+            subscriber.error(new Error('No hay subcategorías disponibles en Categoria.json'));
+            return;
+          }
 
-        return forkJoin(peticiones);
-      }),
-      map((todosLosPasillos: any[]) => {
-        const productosFinales: ProductoPrecioJusto[] = [];
-        const vistos = new Set<string>();
-        const LIMITE = 10; // límite de productos únicos a obtener
+          const elegido = posiblesSubIds[Math.floor(Math.random() * posiblesSubIds.length)];
 
-        // Recorremos con bucles que permitan cortocircuito cuando alcancemos el límite
-        for (let i = 0; i < todosLosPasillos.length && vistos.size < LIMITE; i++) {
-          const pasillo = todosLosPasillos[i];
+          this.cargarSubcategoriaPorId(elegido).subscribe({
+            next: (subcat) => {
+              // Buscar productos dentro de la estructura de subcat
+              const productos: any[] = [];
 
-          if (pasillo.categories) {
-            for (let j = 0; j < pasillo.categories.length && vistos.size < LIMITE; j++) {
-              const bloque = pasillo.categories[j];
-
-              if (bloque.products) {
-                for (let k = 0; k < bloque.products.length && vistos.size < LIMITE; k++) {
-                  const prod = bloque.products[k];
-
-                  const id = String(prod.id);
-                  if (vistos.has(id)) continue;
-
-                  const precioRaw = prod.price_instructions?.unit_price ?? prod.price?.unit_price ?? 0;
-                  const precio = typeof precioRaw === 'string' ? parseFloat(precioRaw) : Number(precioRaw);
-
-                  productosFinales.push({
-                    idProducto: id,
-                    nombre: prod.display_name || prod.name || '',
-                    precio: isNaN(precio) ? 0 : precio,
-                    imagen: prod.thumbnail || prod.photos?.[0]?.regular || ''
-                  });
-
-                  vistos.add(id);
-                }
+              // Recorrer posibles ubicaciones de productos
+              if (Array.isArray(subcat.products)) {
+                productos.push(...subcat.products);
               }
 
-              // Si ya tenemos el límite, salimos del bucle de bloques
-              if (vistos.size >= LIMITE) break;
-            }
-          }
+              if (Array.isArray(subcat.categories)) {
+                subcat.categories.forEach((b: any) => {
+                  if (Array.isArray(b.products)) productos.push(...b.products);
+                  // Algunas capas pueden tener categories dentro
+                  if (Array.isArray(b.categories)) {
+                    b.categories.forEach((c2: any) => {
+                      if (Array.isArray(c2.products)) productos.push(...c2.products);
+                    });
+                  }
+                });
+              }
 
-          // En algunos casos el propio objeto de pasillo puede contener 'products' directamente
-          if (pasillo.products) {
-            for (let p = 0; p < pasillo.products.length && vistos.size < LIMITE; p++) {
-              const prod = pasillo.products[p];
+              if (productos.length ===0) {
+                subscriber.error(new Error(`No se encontraron productos en la subcategoría ${elegido}`));
+                return;
+              }
 
-              const id = String(prod.id);
-              if (vistos.has(id)) continue;
+              // Elegir un producto aleatorio
+              const prod = productos[Math.floor(Math.random() * productos.length)];
 
-              const precioRaw = prod.price_instructions?.unit_price ?? prod.price?.unit_price ?? 0;
+              const precioRaw = prod?.price_instructions?.unit_price ?? prod?.price?.unit_price ??0;
               const precio = typeof precioRaw === 'string' ? parseFloat(precioRaw) : Number(precioRaw);
 
-              productosFinales.push({
-                idProducto: id,
-                nombre: prod.display_name || prod.name || '',
-                precio: isNaN(precio) ? 0 : precio,
-                imagen: prod.thumbnail || prod.photos?.[0]?.regular || ''
-              });
+              const resultado: ProductoPrecioJusto = {
+                idProducto: String(prod.id ?? prod?.product_id ?? ''),
+                nombre: prod.display_name || prod.name || prod?.slug || '',
+                precio: isNaN(precio) ?0 : precio,
+                imagen: prod.thumbnail || prod.photos?.[0]?.regular || prod.share_url || '',
+                descripcion: prod.description || prod.long_description || '',
+                categoria: subcat.name || undefined,
+                share_url: prod.share_url || undefined
+              };
 
-              vistos.add(id);
-            }
-          }
-        }
+              // Añadir al historial y ajustar índice
+              // Si estamos en medio del historial y pedimos siguiente aleatorio, truncamos el futuro
+              if (this.indiceActual < this.historial.length -1) {
+                this.historial = this.historial.slice(0, this.indiceActual +1);
+              }
 
-        return productosFinales;
-      })
-    );
+              this.historial.push(resultado);
+              this.indiceActual = this.historial.length -1;
+
+              subscriber.next(resultado);
+              subscriber.complete();
+            },
+            error: (err) => subscriber.error(err)
+          });
+        },
+        error: (err) => subscriber.error(err)
+      });
+    });
+  }
+
+  // Obtener el elemento anterior en el historial (si existe)
+  previousFromHistory(): ProductoPrecioJusto | null {
+    if (this.indiceActual >0) {
+      this.indiceActual--;
+      return this.historial[this.indiceActual];
+    }
+    return null;
+  }
+
+  // Obtener el elemento siguiente en el historial si existe (sin generar uno nuevo)
+  nextFromHistory(): ProductoPrecioJusto | null {
+    if (this.indiceActual < this.historial.length -1) {
+      this.indiceActual++;
+      return this.historial[this.indiceActual];
+    }
+    return null;
+  }
+
+  // Exponer el estado del historial para uso externo si es necesario
+  getHistorial(): ProductoPrecioJusto[] {
+    return [...this.historial];
+  }
+
+  getIndiceActual(): number {
+    return this.indiceActual;
   }
 }

@@ -8,80 +8,72 @@ import { Subscription } from 'rxjs';
  standalone: true,
  imports: [CommonModule],
  template: `
- <div style="font-family: sans-serif; max-width:500px; margin:40px auto; padding:20px; border:1px solid #ccc; border-radius:8px; text-align: center;">
- <h2>Cosechador de Mercadona</h2>
- <p>Utiliza esta herramienta para generar tu base de datos local para El Precio Justo.</p>
+ <div style="font-family: sans-serif; max-width:700px; margin:40px auto; padding:20px; border:1px solid #ccc; border-radius:8px; text-align: center;">
+ <h2>Cosechador local (assets)</h2>
+ <p>Se selecciona un producto aleatorio desde los ficheros en <code>assets/</code>.</p>
 
- <div *ngIf="!cargando && !completado">
- <button (click)="iniciarCosecha()" style="background:#00a650;color:white;border:none;padding:10px20px;border-radius:4px;cursor:pointer;">
- Iniciar Captura de Catálogo
+ <div *ngIf="!mostrando">
+ <button (click)="mostrarSiguiente()" style="background:#00a650;color:white;border:none;padding:10px20px;border-radius:4px;cursor:pointer;margin-right:10px;">
+ Siguiente aleatorio
  </button>
  </div>
 
- <div *ngIf="cargando" style="margin:20px0;">
- <p>Procesando pasillos del supermercado...</p>
- <p style="font-weight:bold">{{ pasillosProcesados }} / {{ totalPasillos }}</p>
- <div style="background:#eee;width:100%;height:20px;border-radius:10px;overflow:hidden;">
- <div [style.width.%]="porcentaje" style="background:#00a650;height:100%;transition:width0.2s;"></div>
+ <div *ngIf="mostrando">
+ <div style="display:flex;gap:20px;align-items:flex-start;">
+ <div style="flex:00300px;text-align:left;">
+ <img *ngIf="producto?.imagen" [src]="producto?.imagen" alt="imagen" style="width:100%;border-radius:6px;" />
+ </div>
+ <div style="flex:1;text-align:left;">
+ <h3>{{ producto?.nombre }}</h3>
+ <p style="font-size:18px;font-weight:bold;color:#00a650">{{ producto?.precio | number:'1.2-2' }} €</p>
+ <p><strong>Categoría:</strong> {{ producto?.categoria }}</p>
+ <p *ngIf="producto?.descripcion"><strong>Descripción:</strong> {{ producto?.descripcion }}</p>
+ <p *ngIf="producto?.share_url"><a [href]="producto?.share_url" target="_blank">Ver en tienda</a></p>
+
+ <div style="margin-top:20px;">
+ <button (click)="irAnterior()" [disabled]="!puedeAnterior" style="padding:8px12px;margin-right:8px;">Anterior</button>
+ <button (click)="mostrarSiguiente()" style="padding:8px12px;">Siguiente aleatorio</button>
+ </div>
+ </div>
  </div>
  </div>
 
- <div *ngIf="completado" style="margin-top:20px;color:#00a650;">
- <p>🎉 ¡Captura completada con éxito!</p>
- <p>Se han encontrado <strong>{{ productos.length }}</strong> productos únicos.</p>
- <button (click)="descargarJson()" style="background:#007bff;color:white;border:none;padding:10px20px;border-radius:4px;cursor:pointer;margin-top:10px;">
- 💾 Descargar productos.json
- </button>
- </div>
+ <div *ngIf="error" style="margin-top:16px;color:red">{{ error }}</div>
  </div>
  `
 })
 export class CosechadorComponent implements OnDestroy {
  private cosechadorService = inject(CosechadorService);
-
- productos: ProductoPrecioJusto[] = [];
- cargando = false;
- completado = false;
-
- totalPasillos =0;
- pasillosProcesados =0;
-
  private subs: Subscription[] = [];
 
- get porcentaje(): number {
- return this.totalPasillos >0 ? (this.pasillosProcesados / this.totalPasillos) *100 :0;
+ producto: ProductoPrecioJusto | null = null;
+ mostrando = false;
+ error: string | null = null;
+
+ get puedeAnterior(): boolean {
+ return this.cosechadorService.getIndiceActual() >0;
  }
 
- iniciarCosecha() {
- this.cargando = true;
- this.completado = false;
-
- this.subs.push(this.cosechadorService.totalPasillos$.subscribe(total => this.totalPasillos = total));
- this.subs.push(this.cosechadorService.pasillosProcesados$.subscribe(p => this.pasillosProcesados = p));
-
- this.subs.push(this.cosechadorService.descargarTodo().subscribe({
- next: resultado => {
- this.productos = resultado;
- this.cargando = false;
- this.completado = true;
+ mostrarSiguiente() {
+ this.error = null;
+ this.cosechadorService.obtenerProductoAleatorio().subscribe({
+ next: (p) => {
+ this.producto = p;
+ this.mostrando = true;
  },
- error: err => {
- console.error('Error al cosechar:', err);
- alert('Hubo un error con el proxy de CORS. Inténtalo de nuevo en unos minutos.');
- this.cargando = false;
+ error: (err) => {
+ console.error(err);
+ this.error = err?.message || String(err);
  }
- }));
+ });
  }
 
- descargarJson() {
- const jsonString = JSON.stringify(this.productos, null,2);
- const blob = new Blob([jsonString], { type: 'application/json' });
- const url = window.URL.createObjectURL(blob);
- const a = document.createElement('a');
- a.href = url;
- a.download = 'productos.json';
- a.click();
- window.URL.revokeObjectURL(url);
+ irAnterior() {
+ const anterior = this.cosechadorService.previousFromHistory();
+ if (anterior) {
+ this.producto = anterior;
+ this.mostrando = true;
+ }
  }
 
  ngOnDestroy(): void {
