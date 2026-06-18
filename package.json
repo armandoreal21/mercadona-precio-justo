@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:mercadona-precio-justo": "node dist/mercadona-precio-justo/server/server.mjs"
+    "serve:ssr:mercadona-precio-justo": "node dist/mercadona-precio-justo/server/server.mjs",
+    "postinstall": "npx tailwindcss -i ./src/styles.css -o ./src/tailwind-output.css --minify || true",
+    "ws-server": "node server/ws-server.js"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +40,10 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "tailwindcss": "^3.4.4",
+    "postcss": "^8.4.21",
+    "autoprefixer": "^10.4.14",
+    "ws": "^8.13.0"
   }
 }
