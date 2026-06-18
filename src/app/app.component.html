@@ -64,7 +64,7 @@
  min-height:100%;
  display: flex;
  justify-content: center;
- align-items: center;
+ align-items: flex-start; /* keep content at top to avoid large vertical gap */
  padding:1rem;
  box-sizing: inherit;
  position: relative;
@@ -175,11 +175,7 @@
  }
 </style>
 
-<main class="main">
- <div class="content">
- <app-cosechador></app-cosechador>
- </div>
-</main>
+<!-- Removed the embedded <app-cosechador> component to avoid the unwanted box and extra top spacing. -->
 
 
 <router-outlet />

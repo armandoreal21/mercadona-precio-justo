@@ -7,3 +7,13 @@
  --game-bg: #0b1220;
 }
 body{ @apply bg-slate-900 text-white; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+/* Remove native number input spinner arrows (Chrome, Edge, Safari, Firefox) */
+input[type=number] {
+ -moz-appearance: textfield; /* Firefox */
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+ -webkit-appearance: none; /* Chrome, Safari, Edge */
+ margin:0;
+}
