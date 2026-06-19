@@ -13,6 +13,8 @@ import { AssetLoaderService } from './asset-loader.service';
 })
 export class SalaPageComponent implements OnDestroy {
  sala: Sala | null = null;
+ // product id captured when the 'esperando' modal was opened so we can detect product changes
+ productIdAtEsperandoOpen: any = null;
  codigo = '';
  loadError: string | null = null;
  apuestas: Record<string, number | null> = {};
@@ -164,6 +166,8 @@ export class SalaPageComponent implements OnDestroy {
  this.resultadosModalVisible = true;
  // when results exist, close waiting modal
  this.esperandoModalVisible = false;
+ // also clear the product-at-esperando marker because modal closed due to results
+ this.productIdAtEsperandoOpen = null;
  } else {
  // fallback to previous localStorage mechanism (older clients)
  try {
@@ -207,6 +211,8 @@ export class SalaPageComponent implements OnDestroy {
  // open waiting modal for the sender showing who has/hasn't bet yet
  this.buildEsperandoList();
  this.esperandoModalVisible = true;
+ // record current product id so we can later detect if admin advanced the product
+ this.productIdAtEsperandoOpen = this.sala?.productoActualId ?? null;
  }
 
  allPlayersHaveApuestas(): boolean {
@@ -326,15 +332,19 @@ export class SalaPageComponent implements OnDestroy {
  }
 
  cerrarEsperandoModal(): void {
- // Only admin may close the waiting modal manually; non-admins can only have it auto-closed when results exist
- if (!this.isCurrentAdmin()) {
- // if results already present, allow closing
- if (this.sala && this.sala.lastResults) {
+ // Admin can always close. Non-admins may only close if the current product differs from
+ // the product that was active when they opened the modal (i.e. admin advanced to next product).
+ if (this.isCurrentAdmin()) {
  this.esperandoModalVisible = false;
- }
+ this.productIdAtEsperandoOpen = null;
  return;
  }
+ // non-admins: allow close only when product changed since modal opened
+ const currentPid = this.sala?.productoActualId ?? null;
+ if (this.productIdAtEsperandoOpen !== null && currentPid !== this.productIdAtEsperandoOpen) {
  this.esperandoModalVisible = false;
+ this.productIdAtEsperandoOpen = null;
+ }
  }
 
  onRemovePlayer(nombre: string): void {
@@ -356,8 +366,18 @@ export class SalaPageComponent implements OnDestroy {
  cargarProductoAleatorio(): void {
  this.httpGetRandomProduct().then(p => {
  if (p) {
+ try {
  this.salaService.actualizarProductoObjeto(this.codigo, p);
+ } catch (e) {
+ console.error('Error updating product object', e);
+ }
+ // clear any stored last-results for this room and reset players' apuestas so they can bet on the new product
  try { localStorage.removeItem('mpj_last_results_' + this.codigo); } catch (e) {}
+ try { this.salaService.clearLastResults(this.codigo); } catch (e) {}
+ try { this.salaService.clearApuestas(this.codigo); } catch (e) {}
+ // ensure local UI state allows inputs again
+ this.inputsDisabled = false;
+ this.sentMap = {};
  this.refreshSala();
  }
  });

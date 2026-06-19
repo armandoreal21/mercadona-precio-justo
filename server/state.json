@@ -189,35 +189,32 @@
     {
       "codigo": "J7C5E",
       "nombre": "Mi sala",
-      "productoActualId": 69730,
+      "productoActualId": 8308,
       "productoActual": {
-        "id": "69730",
-        "nombre": "Espinacas cortadas y lavadas",
-        "precio": 1.3,
-        "imagen": "https://prod-mercadona.imgix.net/images/652d843ed52e1271a7babf8d32e43d8f.jpg?fit=crop&h=300&w=300",
+        "id": "8308",
+        "nombre": "Steak Tartar de vacuno marinado",
+        "precio": 5.4,
+        "imagen": "https://prod-mercadona.imgix.net/images/894f148b982484d4dcb8451539723a46.jpg?fit=crop&h=300&w=300",
         "descripcion": "",
-        "categoria": "Verdura",
-        "share_url": "https://tienda.mercadona.es/product/69730/espinacas-cortadas-paquete"
+        "categoria": "Vacuno",
+        "share_url": "https://tienda.mercadona.es/product/8308/steak-tartar-vacuno-marinado-bandeja"
       },
       "estado": "finalizada",
       "jugadores": [
         {
           "nombre": "Armando",
           "esAdmin": true,
-          "puntuacion": 10,
-          "apuesta": 2
+          "puntuacion": 17
         },
         {
           "nombre": "Carmen",
           "esAdmin": false,
-          "puntuacion": 10,
-          "apuesta": 2
+          "puntuacion": 17
         },
         {
           "nombre": "Héctor",
           "esAdmin": false,
-          "puntuacion": 10,
-          "apuesta": 2
+          "puntuacion": 20
         }
       ],
       "rondasTotales": 3,
@@ -226,38 +223,94 @@
         {
           "ronda": 0,
           "producto": {
-            "id": "63593",
-            "nombre": "Pizza jamÃ³n y queso Hacendado",
-            "precio": 2.9,
-            "imagen": "https://prod-mercadona.imgix.net/images/96c6156c4476dd866877878c58e5650a.jpg?fit=crop&h=300&w=300",
+            "id": "53041",
+            "nombre": "Salchichas cocidas Frankfurt La Selva",
+            "precio": 2.4,
+            "imagen": "https://prod-mercadona.imgix.net/images/d56e302573078dd6ae6af008a0fbf549.jpg?fit=crop&h=300&w=300",
             "descripcion": "",
-            "categoria": "Pizzas",
-            "share_url": "https://tienda.mercadona.es/product/63593/pizza-jamon-queso-hacendado-pack-2"
+            "categoria": "BacÃ³n y salchichas",
+            "share_url": "https://tienda.mercadona.es/product/53041/salchichas-cocidas-frankfurt-selva-tarro"
           },
           "resultados": [
             {
               "nombre": "Armando",
               "puntos": 10,
-              "delta": 1.9,
+              "delta": 1.4,
               "apuesta": 1
             },
             {
               "nombre": "Carmen",
               "puntos": 10,
-              "delta": 1.9,
+              "delta": 1.4,
               "apuesta": 1
             },
             {
               "nombre": "Héctor",
               "puntos": 10,
-              "delta": 1.9,
+              "delta": 1.4,
               "apuesta": 1
             }
           ],
-          "ts": 1781855113816
+          "ts": 1781855850766
+        },
+        {
+          "ronda": 1,
+          "producto": {
+            "id": "8308",
+            "nombre": "Steak Tartar de vacuno marinado",
+            "precio": 5.4,
+            "imagen": "https://prod-mercadona.imgix.net/images/894f148b982484d4dcb8451539723a46.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Vacuno",
+            "share_url": "https://tienda.mercadona.es/product/8308/steak-tartar-vacuno-marinado-bandeja"
+          },
+          "resultados": [
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 3.4000000000000004,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 7,
+              "delta": 4.4,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 7,
+              "delta": 4.4,
+              "apuesta": 1
+            }
+          ],
+          "ts": 1781855919946
         }
       ],
-      "lastResults": null,
+      "lastResults": {
+        "ts": 1781855919946,
+        "price": 5.4,
+        "results": [
+          {
+            "nombre": "Héctor",
+            "puntos": 10,
+            "delta": 3.4000000000000004,
+            "apuesta": 2
+          },
+          {
+            "nombre": "Armando",
+            "puntos": 7,
+            "delta": 4.4,
+            "apuesta": 1
+          },
+          {
+            "nombre": "Carmen",
+            "puntos": 7,
+            "delta": 4.4,
+            "apuesta": 1
+          }
+        ]
+      },
       "showClasificacion": false
     }
   ]
