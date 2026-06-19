@@ -117,7 +117,7 @@
            <h4 class="text-lg font-bold mb-2">Clasificación</h4>
            <ul class="space-y-2 max-h-64 overflow-auto">
              <li *ngFor="let c of clasificacionList" class="flex justify-between items-center p-2 bg-slate-900 rounded">
-               <div class="font-semibold">{{ c.nombre }}</div>
+               <div class="font-semibold">{{ c.nombre }} </div>
                <div class="text-yellow-300 font-bold">{{ c.puntos }}</div>
              </li>
            </ul>
@@ -147,7 +147,12 @@
        <div class="text-sm text-slate-300 font-semibold mb-2">Opciones de la partida</div>
        <!-- Primary admin action -->
        <div class="flex gap-2 flex-col sm:flex-row">
-         <button (click)="onCalcularPuntuaciones()" [disabled]="!allPlayersHaveApuestas()" class="w-full sm:w-auto px-3 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Calcular puntuaciones</button>
+         <button (click)="onCalcularPuntuaciones()" [disabled]="!allPlayersHaveApuestas()"
+         [ngClass]="{ 'animate-pulse': allPlayersHaveApuestas(), 'opacity-60 cursor-not-allowed': !allPlayersHaveApuestas() }"
+         class="w-full sm:w-auto px-3 py-2 bg-yellow-400 text-purple-900 rounded font-bold transition-all">
+         Calcular puntuaciones
+         </button>
+         <!--<span *ngIf="allPlayersHaveApuestas()" class="ml-2 inline-block bg-emerald-500 text-white text-xs px-2 py-1 rounded-full">Todos apostaron</span>-->
          <button (click)="cargarProductoAleatorio()" class="bg-slate-700 text-slate-100 px-4 py-2 rounded w-full sm:w-auto">Siguiente Producto</button>
        </div>
        </div>

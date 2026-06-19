@@ -189,37 +189,137 @@
     {
       "codigo": "J7C5E",
       "nombre": "Mi sala",
-      "productoActualId": 39130,
+      "productoActualId": 39900,
       "productoActual": {
-        "id": "39130",
-        "nombre": "Zumo de piÃ±a y uva Hacendado",
-        "precio": 1.65,
-        "imagen": "https://prod-mercadona.imgix.net/images/ed323a439124a96f84da691c64cc48af.jpg?fit=crop&h=300&w=300",
+        "id": "39900",
+        "nombre": "Gazpacho fresco Hacendado",
+        "precio": 2.65,
+        "imagen": "https://prod-mercadona.imgix.net/images/02c2fca38a795d0c30af62b64e676691.jpg?fit=crop&h=300&w=300",
         "descripcion": "",
-        "categoria": "MelocotÃ³n y piÃ±a",
-        "share_url": "https://tienda.mercadona.es/product/39130/zumo-pina-uva-hacendado-pack-6"
+        "categoria": "Gazpacho y cremas",
+        "share_url": "https://tienda.mercadona.es/product/39900/gazpacho-fresco-hacendado-botella"
       },
       "estado": "finalizada",
       "jugadores": [
         {
           "nombre": "Armando",
           "esAdmin": true,
-          "puntuacion": 0
+          "puntuacion": 30
         },
         {
           "nombre": "Carmen",
           "esAdmin": false,
-          "puntuacion": 0
+          "puntuacion": 30
         },
         {
           "nombre": "Héctor",
           "esAdmin": false,
-          "puntuacion": 0
+          "puntuacion": 30
         }
       ],
       "rondasTotales": 3,
-      "rondaActual": 0,
-      "historialRondas": [],
+      "rondaActual": 2,
+      "historialRondas": [
+        {
+          "ronda": 0,
+          "producto": {
+            "id": "22313",
+            "nombre": "Yogur natural Hacendado",
+            "precio": 1,
+            "imagen": "https://prod-mercadona.imgix.net/images/0689561ce98dba5c0b3ad43e69be0f5f.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Yogures naturales y sabores",
+            "share_url": "https://tienda.mercadona.es/product/22313/yogur-natural-hacendado-pack-6"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            }
+          ],
+          "ts": 1781857100579
+        },
+        {
+          "ronda": 1,
+          "producto": {
+            "id": "6321",
+            "nombre": "Nidos al huevo Hacendado",
+            "precio": 1.45,
+            "imagen": "https://prod-mercadona.imgix.net/images/8064cce95f23cceacd05a6fbec87ecb3.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Pasta y fideos",
+            "share_url": "https://tienda.mercadona.es/product/6321/nidos-huevo-hacendado-paquete"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            }
+          ],
+          "ts": 1781857131150
+        },
+        {
+          "ronda": 2,
+          "producto": {
+            "id": "39900",
+            "nombre": "Gazpacho fresco Hacendado",
+            "precio": 2.65,
+            "imagen": "https://prod-mercadona.imgix.net/images/02c2fca38a795d0c30af62b64e676691.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Gazpacho y cremas",
+            "share_url": "https://tienda.mercadona.es/product/39900/gazpacho-fresco-hacendado-botella"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            }
+          ],
+          "ts": 1781857149022
+        }
+      ],
       "lastResults": null,
       "showClasificacion": false
     }
