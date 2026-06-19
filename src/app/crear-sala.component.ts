@@ -30,6 +30,24 @@ import { SalaService } from './sala.service';
  <button (click)="generar()" class="w-full bg-gradient-to-r from-yellow-400 to-amber-500 text-purple-900 font-black text-lg py-3 rounded-xl shadow-lg hover:from-yellow-300 hover:to-amber-400 active:translate-y-0.5 transition uppercase tracking-wider">
  🚀 Generar Sala
  </button>
+ 
+ <!-- server cleanup inactive rooms -->
+ <div class="mt-3">
+ <div *ngIf="!cleanupPreview">
+ <button (click)="checkCleanup()" class="w-full bg-rose-600 text-white font-bold py-2 rounded-xl hover:bg-rose-500 transition">🧹 Comprobar salas inactivas (&gt;1 día)</button>
+ <div *ngIf="cleanupResult" class="mt-2 text-sm text-slate-300">{{ cleanupResult }}</div>
+ </div>
+ <div *ngIf="cleanupPreview" class="mt-2 bg-slate-900 p-3 rounded">
+ <div class="text-sm text-slate-200 mb-2">Se eliminarían {{ cleanupPreview.eliminadas }} sala(s):</div>
+ <ul class="text-xs text-slate-300 space-y-1 max-h-36 overflow-auto">
+ <li *ngFor="let c of cleanupPreview.removedCodes">• {{ c }}</li>
+ </ul>
+ <div class="mt-3 flex gap-2">
+ <button (click)="executeCleanup()" [disabled]="cleaning" class="flex-1 bg-rose-600 text-white font-bold py-2 rounded-xl hover:bg-rose-500 transition">Confirmar eliminación</button>
+ <button (click)="cancelCleanup()" [disabled]="cleaning" class="flex-1 bg-slate-700 text-white font-bold py-2 rounded-xl">Cancelar</button>
+ </div>
+ </div>
+ </div>
  </div>
 
  <div *ngIf="resultado" class="mt-8 pt-6 border-t-2 border-slate-750 text-center">
@@ -49,12 +67,64 @@ import { SalaService } from './sala.service';
 })
 export class CrearSalaComponent {
  nombre = '';
- rondas = 5;
+ rondas =5;
  resultado: any = null;
+ cleanupResult: string | null = null;
+ cleanupPreview: { eliminadas: number; removedCodes: string[] } | null = null;
+ cleaning = false;
  constructor(private sala: SalaService) {}
  generar() {
  if (!this.nombre || !this.nombre.trim()) { this.resultado = { error: 'Introduce un nombre válido' }; return; }
- const rounds = Number(this.rondas) || 5;
+ const rounds = Number(this.rondas) ||5;
  this.resultado = this.sala.crearSala(this.nombre, rounds);
+ }
+
+ async checkCleanup() {
+ this.cleanupResult = null;
+ this.cleanupPreview = null;
+ try {
+ const res = await fetch('http://localhost:3001/cleanup?days=1&dryRun=true', { method: 'POST' });
+ if (!res.ok) throw new Error('Server error');
+ const data = await res.json();
+ if (data && data.ok !== false) {
+ this.cleanupPreview = { eliminadas: data.eliminadas ||0, removedCodes: data.removedCodes || [] };
+ } else {
+ this.cleanupResult = 'No se pudo comprobar en el servidor';
+ }
+ } catch (e) {
+ this.cleanupResult = 'Error comunicando con el servidor de sincronización';
+ }
+ }
+
+ async executeCleanup() {
+ if (!confirm('Confirmar eliminación de las salas inactivas mostradas?')) return;
+ this.cleaning = true;
+ this.cleanupResult = null;
+ try {
+ const res = await fetch('http://localhost:3001/cleanup?days=1&dryRun=false', { method: 'POST' });
+ if (!res.ok) throw new Error('Server error');
+ const data = await res.json();
+ if (data && data.ok !== false) {
+ this.cleanupResult = `Se eliminaron ${data.eliminadas} sala(s).`;
+ // clear preview
+ this.cleanupPreview = null;
+ } else {
+ this.cleanupResult = 'Error al ejecutar limpieza en servidor';
+ }
+ } catch (e) {
+ this.cleanupResult = 'Error comunicando con el servidor de sincronización';
+ } finally {
+ this.cleaning = false;
+ setTimeout(() => this.cleanupResult = null,8000);
+ }
+ }
+
+ cancelCleanup() {
+ this.cleanupPreview = null;
+ }
+
+ // backward-compat alias for older template usage
+ limpiarInactivas() {
+ this.checkCleanup();
  }
 }

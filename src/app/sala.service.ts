@@ -36,6 +36,9 @@ export interface Sala {
  historialRondas?: HistorialRonda[];
  // lastResults contiene los resultados de la última llamada a calcularPuntuacionesRonda y sirve para mostrar el modal a todos los clientes
  lastResults?: { ts: number; price: number; results: ResultadoRonda[] } | null;
+ // timestamps to allow cleanup of stale rooms
+ createdAt?: number;
+ updatedAt?: number;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -194,7 +197,15 @@ export class SalaService {
  const salas: Sala[] = parsed?.salasActivas || [];
  // migration: ensure existing rooms have rondasTotales set (default5)
  let changed = false;
+ const now = Date.now();
+ const twoDaysAgo = now - (2 *24 *60 *60 *1000); // set as older than1 day for testing
  salas.forEach(s => {
+ // If no timestamps set, assign an older timestamp so existing test rooms are considered inactive
+ if (s.createdAt === undefined && s.updatedAt === undefined) {
+ s.createdAt = twoDaysAgo;
+ s.updatedAt = twoDaysAgo;
+ changed = true;
+ }
  if (s.rondasTotales === undefined || s.rondasTotales === null) { s.rondasTotales =5; changed = true; }
  // ensure historialRondas exists
  if (!Array.isArray(s.historialRondas)) s.historialRondas = [];
@@ -259,6 +270,7 @@ export class SalaService {
  while (salas.find(s => s.codigo === codigo)) {
  codigo = this.generarCodigo();
  }
+ const now = Date.now();
  const nueva: Sala = {
  codigo,
  nombre: nombre.trim(),
@@ -269,7 +281,9 @@ export class SalaService {
  rondasTotales: typeof rondas === 'number' && rondaSaneable(rondas) ? Math.max(1, Math.floor(rondas)) :5,
  rondaActual:0,
  historialRondas: [],
- lastResults: null
+ lastResults: null,
+ createdAt: now,
+ updatedAt: now
  };
  salas.push(nueva);
  this.writeAll(salas);
@@ -289,6 +303,7 @@ export class SalaService {
  if (sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase())) return { success: false, error: 'Ya existe un jugador con ese nombre en la sala' };
  const jugador: Jugador = { nombre: nombreJugador.trim(), esAdmin: false, puntuacion:0 };
  sala.jugadores.push(jugador);
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return { sala, success: true };
  }
@@ -302,6 +317,7 @@ export class SalaService {
  const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
  if (!jugador) return { success: false, error: 'Jugador no encontrado' };
  jugador.esAdmin = true;
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return { sala, success: true };
  }
@@ -313,6 +329,7 @@ export class SalaService {
  const idx = sala.jugadores.findIndex(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
  if (idx === -1) return false;
  sala.jugadores.splice(idx,1);
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -327,6 +344,7 @@ export class SalaService {
  sala.productoActual = null;
  sala.lastResults = null;
  sala.jugadores.forEach(j => { j.puntuacion =0; delete j.apuesta; });
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -340,12 +358,30 @@ export class SalaService {
  return true;
  }
 
+ // elimina salas inactivas creadas o sin actualización hace más de `days` días
+ eliminarSalasInactivas(days =1): number {
+ const salas = this.readAll();
+ const now = Date.now();
+ const cutoff = days *24 *60 *60 *1000;
+ const inicial = salas.length;
+ const filtradas = salas.filter(s => {
+ const last = s.updatedAt ?? s.createdAt ??0;
+ // keep salas with no timestamp (conservativa) or recently updated
+ if (!last) return true;
+ return (now - last) <= cutoff;
+ });
+ const eliminadas = inicial - filtradas.length;
+ if (eliminadas >0) this.writeAll(filtradas);
+ return eliminadas;
+ }
+
  actualizarProductoObjeto(codigo: string, producto: any) {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
  sala.productoActual = producto;
  sala.productoActualId = productoidOrNull(producto?.id ?? producto?.idProducto ?? null);
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -355,6 +391,7 @@ export class SalaService {
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
  sala.productoActualId = productoidOrNull(productoId);
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -366,6 +403,7 @@ export class SalaService {
  const jugador = sala.jugadores.find(j => j.nombre === nombreJugador);
  if (!jugador) return false;
  jugador.puntuacion = (jugador.puntuacion ||0) + delta;
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -377,6 +415,7 @@ export class SalaService {
  const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
  if (!jugador) return false;
  jugador.apuesta = Number(apuesta);
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -419,6 +458,7 @@ export class SalaService {
 
  // persist updated scores and history and expose lastResults to clients so everyone can show modal
  sala.lastResults = { ts: Date.now(), price: precioReal, results: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })) };
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return asignaciones;
  }
@@ -428,6 +468,7 @@ export class SalaService {
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
  sala.jugadores.forEach(j => delete j.apuesta);
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -438,6 +479,7 @@ export class SalaService {
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
  sala.lastResults = null;
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -448,6 +490,7 @@ export class SalaService {
  if (!sala) return false;
  sala.rondaActual = (sala.rondaActual ||0) +1;
  if ((sala.rondaActual ||0) >= (sala.rondasTotales ||10)) sala.estado = 'finalizada';
+ sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
@@ -462,5 +505,5 @@ function productoidOrNull(v: any) {
 function rondaSaneable(r: any) {
  if (r === null || r === undefined) return true;
  const n = Number(r);
- return !isNaN(n) && n >0 && n <= 50;
+ return !isNaN(n) && n >0 && n <=50;
 }

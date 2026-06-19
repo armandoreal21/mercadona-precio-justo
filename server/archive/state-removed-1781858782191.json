@@ -1,0 +1,654 @@
+{
+  "removed": [
+    {
+      "codigo": "DVVVQ",
+      "nombre": "Prueba 2",
+      "productoActualId": 39129,
+      "productoActual": {
+        "id": "39129",
+        "nombre": "Zumo de piÃ±a y uva Hacendado",
+        "precio": 1.2,
+        "imagen": "https://prod-mercadona.imgix.net/images/d8dd70c608c6bf3aaebdc10b5f6c53bf.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "MelocotÃ³n y piÃ±a",
+        "share_url": "https://tienda.mercadona.es/product/39129/zumo-pina-uva-hacendado-brick"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 10,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    },
+    {
+      "codigo": "Z8YMQ",
+      "nombre": "Prueba 3",
+      "productoActualId": null,
+      "productoActual": null,
+      "estado": "esperando_jugadores",
+      "jugadores": [],
+      "rondasTotales": 10,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    },
+    {
+      "codigo": "TEKCL",
+      "nombre": "Prueba 4",
+      "productoActualId": 8901,
+      "productoActual": {
+        "id": "8901",
+        "nombre": "Recambios maquinilla de afeitar Deliplus Flection System 6 hojas",
+        "precio": 7,
+        "imagen": "https://prod-mercadona.imgix.net/images/4f5e64948723e1ea2277d1b456269af0.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "Afeitado y cuidado para hombre",
+        "share_url": "https://tienda.mercadona.es/product/8901/recambios-maquinilla-afeitar-deliplus-flection-system-6-hojas-caja"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Vito",
+          "esAdmin": false,
+          "puntuacion": 15
+        },
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 20
+        },
+        {
+          "nombre": "Esther",
+          "esAdmin": false,
+          "puntuacion": 10
+        }
+      ],
+      "rondasTotales": 3,
+      "rondaActual": 2,
+      "historialRondas": [
+        {
+          "ronda": 0,
+          "producto": {
+            "id": "63628",
+            "nombre": "Pizza 4 quesos familiar Hacendado",
+            "precio": 3.4,
+            "imagen": "https://prod-mercadona.imgix.net/images/4dd690c0861c18825f8fd0d6c0792019.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Pizzas",
+            "share_url": "https://tienda.mercadona.es/product/63628/pizza-4-quesos-familiar-hacendado"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 1.6,
+              "apuesta": 5
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 1.6,
+              "apuesta": 5
+            }
+          ],
+          "ts": 1781805454705
+        },
+        {
+          "ronda": 1,
+          "producto": {
+            "id": "86587",
+            "nombre": "Crema de espÃ¡rragos Hacendado",
+            "precio": 1.7,
+            "imagen": "https://prod-mercadona.imgix.net/images/2518e0e73630e79f2af039da7d3dc822.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Gazpacho y cremas",
+            "share_url": "https://tienda.mercadona.es/product/86587/crema-esparragos-hacendado-bol"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.30000000000000004,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 10,
+              "delta": 0.30000000000000004,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Vito",
+              "puntos": 5,
+              "delta": 1.3,
+              "apuesta": 3
+            }
+          ],
+          "ts": 1781805484189
+        }
+      ],
+      "lastResults": null,
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    },
+    {
+      "codigo": "NL8DU",
+      "nombre": "Prueba 5",
+      "productoActualId": null,
+      "productoActual": null,
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Héctor",
+          "esAdmin": false,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Carmen",
+          "esAdmin": false,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 3,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "lastResults": null,
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    },
+    {
+      "codigo": "J7C5E",
+      "nombre": "Mi sala",
+      "productoActualId": 39900,
+      "productoActual": {
+        "id": "39900",
+        "nombre": "Gazpacho fresco Hacendado",
+        "precio": 2.65,
+        "imagen": "https://prod-mercadona.imgix.net/images/02c2fca38a795d0c30af62b64e676691.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "Gazpacho y cremas",
+        "share_url": "https://tienda.mercadona.es/product/39900/gazpacho-fresco-hacendado-botella"
+      },
+      "estado": "finalizada",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 30
+        },
+        {
+          "nombre": "Carmen",
+          "esAdmin": false,
+          "puntuacion": 30
+        },
+        {
+          "nombre": "Héctor",
+          "esAdmin": false,
+          "puntuacion": 30
+        }
+      ],
+      "rondasTotales": 3,
+      "rondaActual": 2,
+      "historialRondas": [
+        {
+          "ronda": 0,
+          "producto": {
+            "id": "22313",
+            "nombre": "Yogur natural Hacendado",
+            "precio": 1,
+            "imagen": "https://prod-mercadona.imgix.net/images/0689561ce98dba5c0b3ad43e69be0f5f.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Yogures naturales y sabores",
+            "share_url": "https://tienda.mercadona.es/product/22313/yogur-natural-hacendado-pack-6"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            }
+          ],
+          "ts": 1781857100579
+        },
+        {
+          "ronda": 1,
+          "producto": {
+            "id": "6321",
+            "nombre": "Nidos al huevo Hacendado",
+            "precio": 1.45,
+            "imagen": "https://prod-mercadona.imgix.net/images/8064cce95f23cceacd05a6fbec87ecb3.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Pasta y fideos",
+            "share_url": "https://tienda.mercadona.es/product/6321/nidos-huevo-hacendado-paquete"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            }
+          ],
+          "ts": 1781857131150
+        },
+        {
+          "ronda": 2,
+          "producto": {
+            "id": "39900",
+            "nombre": "Gazpacho fresco Hacendado",
+            "precio": 2.65,
+            "imagen": "https://prod-mercadona.imgix.net/images/02c2fca38a795d0c30af62b64e676691.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Gazpacho y cremas",
+            "share_url": "https://tienda.mercadona.es/product/39900/gazpacho-fresco-hacendado-botella"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            }
+          ],
+          "ts": 1781857149022
+        }
+      ],
+      "lastResults": null,
+      "showClasificacion": false,
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    }
+  ],
+  "keptBefore": [
+    {
+      "codigo": "XZ5K7",
+      "nombre": "Prueba 1",
+      "productoActualId": 69387,
+      "productoActual": {
+        "id": "69387",
+        "nombre": "Preparado de verdura para cocido",
+        "precio": 2.4,
+        "imagen": "https://prod-mercadona.imgix.net/images/f8640a4e43da7fda63f2025154de30fe.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "Verdura",
+        "share_url": "https://tienda.mercadona.es/product/69387/preparado-verdura-cocido-bandeja"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 30
+        },
+        {
+          "nombre": "Pedro",
+          "esAdmin": false,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 10,
+      "rondaActual": 6,
+      "historialRondas": [],
+      "createdAt": 1781684924366,
+      "updatedAt": 1781858778325
+    },
+    {
+      "codigo": "DVVVQ",
+      "nombre": "Prueba 2",
+      "productoActualId": 39129,
+      "productoActual": {
+        "id": "39129",
+        "nombre": "Zumo de piÃ±a y uva Hacendado",
+        "precio": 1.2,
+        "imagen": "https://prod-mercadona.imgix.net/images/d8dd70c608c6bf3aaebdc10b5f6c53bf.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "MelocotÃ³n y piÃ±a",
+        "share_url": "https://tienda.mercadona.es/product/39129/zumo-pina-uva-hacendado-brick"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 10,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    },
+    {
+      "codigo": "Z8YMQ",
+      "nombre": "Prueba 3",
+      "productoActualId": null,
+      "productoActual": null,
+      "estado": "esperando_jugadores",
+      "jugadores": [],
+      "rondasTotales": 10,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    },
+    {
+      "codigo": "TEKCL",
+      "nombre": "Prueba 4",
+      "productoActualId": 8901,
+      "productoActual": {
+        "id": "8901",
+        "nombre": "Recambios maquinilla de afeitar Deliplus Flection System 6 hojas",
+        "precio": 7,
+        "imagen": "https://prod-mercadona.imgix.net/images/4f5e64948723e1ea2277d1b456269af0.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "Afeitado y cuidado para hombre",
+        "share_url": "https://tienda.mercadona.es/product/8901/recambios-maquinilla-afeitar-deliplus-flection-system-6-hojas-caja"
+      },
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Vito",
+          "esAdmin": false,
+          "puntuacion": 15
+        },
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 20
+        },
+        {
+          "nombre": "Esther",
+          "esAdmin": false,
+          "puntuacion": 10
+        }
+      ],
+      "rondasTotales": 3,
+      "rondaActual": 2,
+      "historialRondas": [
+        {
+          "ronda": 0,
+          "producto": {
+            "id": "63628",
+            "nombre": "Pizza 4 quesos familiar Hacendado",
+            "precio": 3.4,
+            "imagen": "https://prod-mercadona.imgix.net/images/4dd690c0861c18825f8fd0d6c0792019.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Pizzas",
+            "share_url": "https://tienda.mercadona.es/product/63628/pizza-4-quesos-familiar-hacendado"
+          },
+          "resultados": [
+            {
+              "nombre": "Vito",
+              "puntos": 10,
+              "delta": 1.6,
+              "apuesta": 5
+            },
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 1.6,
+              "apuesta": 5
+            }
+          ],
+          "ts": 1781805454705
+        },
+        {
+          "ronda": 1,
+          "producto": {
+            "id": "86587",
+            "nombre": "Crema de espÃ¡rragos Hacendado",
+            "precio": 1.7,
+            "imagen": "https://prod-mercadona.imgix.net/images/2518e0e73630e79f2af039da7d3dc822.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Gazpacho y cremas",
+            "share_url": "https://tienda.mercadona.es/product/86587/crema-esparragos-hacendado-bol"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.30000000000000004,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Esther",
+              "puntos": 10,
+              "delta": 0.30000000000000004,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Vito",
+              "puntos": 5,
+              "delta": 1.3,
+              "apuesta": 3
+            }
+          ],
+          "ts": 1781805484189
+        }
+      ],
+      "lastResults": null,
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    },
+    {
+      "codigo": "NL8DU",
+      "nombre": "Prueba 5",
+      "productoActualId": null,
+      "productoActual": null,
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Héctor",
+          "esAdmin": false,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Carmen",
+          "esAdmin": false,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 3,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "lastResults": null,
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    },
+    {
+      "codigo": "J7C5E",
+      "nombre": "Mi sala",
+      "productoActualId": 39900,
+      "productoActual": {
+        "id": "39900",
+        "nombre": "Gazpacho fresco Hacendado",
+        "precio": 2.65,
+        "imagen": "https://prod-mercadona.imgix.net/images/02c2fca38a795d0c30af62b64e676691.jpg?fit=crop&h=300&w=300",
+        "descripcion": "",
+        "categoria": "Gazpacho y cremas",
+        "share_url": "https://tienda.mercadona.es/product/39900/gazpacho-fresco-hacendado-botella"
+      },
+      "estado": "finalizada",
+      "jugadores": [
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 30
+        },
+        {
+          "nombre": "Carmen",
+          "esAdmin": false,
+          "puntuacion": 30
+        },
+        {
+          "nombre": "Héctor",
+          "esAdmin": false,
+          "puntuacion": 30
+        }
+      ],
+      "rondasTotales": 3,
+      "rondaActual": 2,
+      "historialRondas": [
+        {
+          "ronda": 0,
+          "producto": {
+            "id": "22313",
+            "nombre": "Yogur natural Hacendado",
+            "precio": 1,
+            "imagen": "https://prod-mercadona.imgix.net/images/0689561ce98dba5c0b3ad43e69be0f5f.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Yogures naturales y sabores",
+            "share_url": "https://tienda.mercadona.es/product/22313/yogur-natural-hacendado-pack-6"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0,
+              "apuesta": 1
+            }
+          ],
+          "ts": 1781857100579
+        },
+        {
+          "ronda": 1,
+          "producto": {
+            "id": "6321",
+            "nombre": "Nidos al huevo Hacendado",
+            "precio": 1.45,
+            "imagen": "https://prod-mercadona.imgix.net/images/8064cce95f23cceacd05a6fbec87ecb3.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Pasta y fideos",
+            "share_url": "https://tienda.mercadona.es/product/6321/nidos-huevo-hacendado-paquete"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0.55,
+              "apuesta": 2
+            }
+          ],
+          "ts": 1781857131150
+        },
+        {
+          "ronda": 2,
+          "producto": {
+            "id": "39900",
+            "nombre": "Gazpacho fresco Hacendado",
+            "precio": 2.65,
+            "imagen": "https://prod-mercadona.imgix.net/images/02c2fca38a795d0c30af62b64e676691.jpg?fit=crop&h=300&w=300",
+            "descripcion": "",
+            "categoria": "Gazpacho y cremas",
+            "share_url": "https://tienda.mercadona.es/product/39900/gazpacho-fresco-hacendado-botella"
+          },
+          "resultados": [
+            {
+              "nombre": "Armando",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Carmen",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            },
+            {
+              "nombre": "Héctor",
+              "puntos": 10,
+              "delta": 0.6499999999999999,
+              "apuesta": 2
+            }
+          ],
+          "ts": 1781857149022
+        }
+      ],
+      "lastResults": null,
+      "showClasificacion": false,
+      "createdAt": 1781684924366,
+      "updatedAt": 1781684924366
+    }
+  ]
+}
