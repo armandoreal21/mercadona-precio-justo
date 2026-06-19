@@ -189,128 +189,38 @@
     {
       "codigo": "J7C5E",
       "nombre": "Mi sala",
-      "productoActualId": 8308,
+      "productoActualId": 39130,
       "productoActual": {
-        "id": "8308",
-        "nombre": "Steak Tartar de vacuno marinado",
-        "precio": 5.4,
-        "imagen": "https://prod-mercadona.imgix.net/images/894f148b982484d4dcb8451539723a46.jpg?fit=crop&h=300&w=300",
+        "id": "39130",
+        "nombre": "Zumo de piÃ±a y uva Hacendado",
+        "precio": 1.65,
+        "imagen": "https://prod-mercadona.imgix.net/images/ed323a439124a96f84da691c64cc48af.jpg?fit=crop&h=300&w=300",
         "descripcion": "",
-        "categoria": "Vacuno",
-        "share_url": "https://tienda.mercadona.es/product/8308/steak-tartar-vacuno-marinado-bandeja"
+        "categoria": "MelocotÃ³n y piÃ±a",
+        "share_url": "https://tienda.mercadona.es/product/39130/zumo-pina-uva-hacendado-pack-6"
       },
       "estado": "finalizada",
       "jugadores": [
         {
           "nombre": "Armando",
           "esAdmin": true,
-          "puntuacion": 17
+          "puntuacion": 0
         },
         {
           "nombre": "Carmen",
           "esAdmin": false,
-          "puntuacion": 17
+          "puntuacion": 0
         },
         {
           "nombre": "Héctor",
           "esAdmin": false,
-          "puntuacion": 20
+          "puntuacion": 0
         }
       ],
       "rondasTotales": 3,
-      "rondaActual": 1,
-      "historialRondas": [
-        {
-          "ronda": 0,
-          "producto": {
-            "id": "53041",
-            "nombre": "Salchichas cocidas Frankfurt La Selva",
-            "precio": 2.4,
-            "imagen": "https://prod-mercadona.imgix.net/images/d56e302573078dd6ae6af008a0fbf549.jpg?fit=crop&h=300&w=300",
-            "descripcion": "",
-            "categoria": "BacÃ³n y salchichas",
-            "share_url": "https://tienda.mercadona.es/product/53041/salchichas-cocidas-frankfurt-selva-tarro"
-          },
-          "resultados": [
-            {
-              "nombre": "Armando",
-              "puntos": 10,
-              "delta": 1.4,
-              "apuesta": 1
-            },
-            {
-              "nombre": "Carmen",
-              "puntos": 10,
-              "delta": 1.4,
-              "apuesta": 1
-            },
-            {
-              "nombre": "Héctor",
-              "puntos": 10,
-              "delta": 1.4,
-              "apuesta": 1
-            }
-          ],
-          "ts": 1781855850766
-        },
-        {
-          "ronda": 1,
-          "producto": {
-            "id": "8308",
-            "nombre": "Steak Tartar de vacuno marinado",
-            "precio": 5.4,
-            "imagen": "https://prod-mercadona.imgix.net/images/894f148b982484d4dcb8451539723a46.jpg?fit=crop&h=300&w=300",
-            "descripcion": "",
-            "categoria": "Vacuno",
-            "share_url": "https://tienda.mercadona.es/product/8308/steak-tartar-vacuno-marinado-bandeja"
-          },
-          "resultados": [
-            {
-              "nombre": "Héctor",
-              "puntos": 10,
-              "delta": 3.4000000000000004,
-              "apuesta": 2
-            },
-            {
-              "nombre": "Armando",
-              "puntos": 7,
-              "delta": 4.4,
-              "apuesta": 1
-            },
-            {
-              "nombre": "Carmen",
-              "puntos": 7,
-              "delta": 4.4,
-              "apuesta": 1
-            }
-          ],
-          "ts": 1781855919946
-        }
-      ],
-      "lastResults": {
-        "ts": 1781855919946,
-        "price": 5.4,
-        "results": [
-          {
-            "nombre": "Héctor",
-            "puntos": 10,
-            "delta": 3.4000000000000004,
-            "apuesta": 2
-          },
-          {
-            "nombre": "Armando",
-            "puntos": 7,
-            "delta": 4.4,
-            "apuesta": 1
-          },
-          {
-            "nombre": "Carmen",
-            "puntos": 7,
-            "delta": 4.4,
-            "apuesta": 1
-          }
-        ]
-      },
+      "rondaActual": 0,
+      "historialRondas": [],
+      "lastResults": null,
       "showClasificacion": false
     }
   ]

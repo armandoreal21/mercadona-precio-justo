@@ -24,6 +24,8 @@ export class SalaPageComponent implements OnDestroy {
  errorMsg: string | null = null;
  // store last price for modal display
  lastPrice: number | null = null;
+ // also keep a snapshot of the product associated with the shown results so clients keep the same modal content
+ modalProducto: any | null = null;
  // waiting modal state
  esperandoModalVisible = false;
  esperandoList: { nombre: string; apostado: boolean }[] = [];
@@ -168,6 +170,13 @@ export class SalaPageComponent implements OnDestroy {
  this.esperandoModalVisible = false;
  // also clear the product-at-esperando marker because modal closed due to results
  this.productIdAtEsperandoOpen = null;
+ // persist a local copy so clients keep the modal data even if admin clears shared state later
+ try {
+ const payload = { ts: this.sala.lastResults.ts, price: this.sala.lastResults.price, results: this.sala.lastResults.results, producto: this.sala.productoActual ? { ...this.sala.productoActual } : null };
+ localStorage.setItem('mpj_last_results_' + this.codigo, JSON.stringify(payload));
+ // keep snapshot for this client too
+ this.modalProducto = payload.producto;
+ } catch (e) {}
  } else {
  // fallback to previous localStorage mechanism (older clients)
  try {
@@ -176,6 +185,7 @@ export class SalaPageComponent implements OnDestroy {
  const stored = JSON.parse(raw as string);
  this.resultados = stored.results || null;
  this.lastPrice = stored.price || null;
+ this.modalProducto = stored.producto || null;
  this.resultadosModalVisible = !!this.resultados;
  }
  } catch (e) {
@@ -263,9 +273,12 @@ export class SalaPageComponent implements OnDestroy {
  }
  // resultados are persisted in sala.lastResults by the service; refresh will broadcast to clients
  this.resultados = res;
+ this.lastPrice = null; // will be set during refreshSala via lastResults
  this.resultadosModalVisible = true;
  try {
- localStorage.setItem('mpj_last_results_' + this.codigo, JSON.stringify({ ts: Date.now(), results: res }));
+ // also persist a local copy for the admin so their client keeps the exact snapshot until they close
+ const payload = { ts: Date.now(), price: this.salaService.obtenerSalaPorCodigo(this.codigo)?.productoActual?.precio ?? null, results: res, producto: this.salaService.obtenerSalaPorCodigo(this.codigo)?.productoActual ? { ...this.salaService.obtenerSalaPorCodigo(this.codigo)?.productoActual } : null };
+ localStorage.setItem('mpj_last_results_' + this.codigo, JSON.stringify(payload));
  } catch (e) {}
  this.salaService.clearApuestas(this.codigo);
  this.stopTimer();
@@ -274,9 +287,17 @@ export class SalaPageComponent implements OnDestroy {
  }
 
  cerrarModal(): void {
- // hide local modal
+ // Non-admins cannot close the shared results modal while admin still has lastResults in shared state
+ if (!this.isCurrentAdmin() && this.sala?.lastResults) {
+ this.errorMsg = 'Esperando a que el administrador cierre los resultados';
+ setTimeout(() => (this.errorMsg = null),2000);
+ return;
+ }
+ // hide local modal for this client
  this.resultadosModalVisible = false;
  this.resultados = null;
+ this.lastPrice = null;
+ this.modalProducto = null;
  this.errorMsg = null;
  try { localStorage.removeItem('mpj_last_results_' + this.codigo); } catch (e) {}
  // If admin: clear lastResults in shared state and handle advancing or end-of-game flow
@@ -304,6 +325,19 @@ export class SalaPageComponent implements OnDestroy {
  this.stopTimer();
  }
  this.refreshSala();
+ }
+
+ canCloseResultModal(): boolean {
+ // Admin can always close. Non-admins can only close after admin cleared shared lastResults (so they keep their local copy and close individually)
+ try {
+ return this.isCurrentAdmin() || !(this.sala && this.sala.lastResults);
+ } catch (e) { return false; }
+ }
+
+ // return the product that should be shown while resultados modal is visible; keeps snapshot if modalProducto set
+ displayedProduct() {
+ if (this.resultadosModalVisible && this.modalProducto) return this.modalProducto;
+ return this.sala?.productoActual || null;
  }
 
  handleDeleteRoom(): void {
