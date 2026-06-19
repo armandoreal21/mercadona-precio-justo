@@ -16,6 +16,16 @@
  </div>
  </div>
 
+ <!-- Admin end-of-game quick actions: visible when the room reached the final round -->
+ <div *ngIf="isCurrentAdmin() && ((sala?.rondaActual ??0) +1) >= (sala?.rondasTotales ??0)" class="mb-4 p-3 bg-slate-900 rounded-lg">
+ <div class="text-sm text-slate-300 font-semibold mb-2">Fin de la partida</div>
+ <div class="flex gap-2 flex-col sm:flex-row">
+ <button (click)="handleRestartGame()" class="w-full sm:w-auto px-3 py-2 bg-yellow-400 text-purple-900 rounded font-bold">Reiniciar partida</button>
+ <button (click)="handleDeleteRoom()" class="w-full sm:w-auto px-3 py-2 bg-rose-500 text-white rounded font-bold">Eliminar sala</button>
+ <button (click)="showFinalChoiceModal = true" class="w-full sm:w-auto px-3 py-2 bg-slate-700 text-slate-100 rounded">Opciones</button>
+ </div>
+ </div>
+
  <!-- current user name moved to top of card -->
  <div *ngIf="currentName" class="mb-4 text-sm text-slate-200 text-center">
  <span class="font-semibold text-white">{{ currentName }} <span *ngIf="isCurrentAdmin()" class="text-yellow-300">(admin)</span></span>
