@@ -18,11 +18,7 @@ import { RouterModule } from '@angular/router';
 
  <div class="mobile-toggle">
  <button (click)="toggleMenu()" aria-label="menu">
- <!-- standard hamburger / close SVG -->
- <svg class="icon" viewBox="002424" fill="none" xmlns="http://www.w3.org/2000/svg">
- <path *ngIf="!isMenuOpen" d="M46h16M412h16M418h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
- <path *ngIf="isMenuOpen" d="M618L186M66l1212" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
- </svg>
+ <span class="toggle-icon">{{ isMenuOpen ? '✖' : '☰' }}</span>
  </button>
  </div>
  </div>
@@ -68,6 +64,8 @@ import { RouterModule } from '@angular/router';
  align-items: center;
  gap:0.5rem;
  flex-shrink:0;
+ /* emoji font fallbacks so emojis render consistently on mobile */
+ font-family: Inter, system-ui, -apple-system, 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
  }
 
  .links {
@@ -83,6 +81,7 @@ import { RouterModule } from '@angular/router';
  padding:0.25rem 0.5rem;
  border-radius:0.5rem;
  white-space: nowrap;
+ font-family: Inter, system-ui, -apple-system, 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
  }
 
  .links a.active {
@@ -103,13 +102,13 @@ import { RouterModule } from '@angular/router';
  align-items: center;
  justify-content: center;
  cursor: pointer;
+ color: #fff; /* ensure currentColor used by icon */
  }
 
- .icon {
- width:20px;
- height:20px;
- color: #ffffff;
- display: block;
+ .toggle-icon {
+ font-size:18px;
+ line-height:1;
+ display: inline-block;
  }
 
  /* Mobile menu dropdown */
@@ -145,7 +144,7 @@ import { RouterModule } from '@angular/router';
  padding:0.5rem;
  flex-direction: column;
  gap:0.25rem;
- box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+ box-shadow: 8px 30px rgba(2,6,23,0.6);
  z-index:80;
  }
 
@@ -154,6 +153,7 @@ import { RouterModule } from '@angular/router';
  border-radius:0.5rem;
  color: #e6eef8;
  text-decoration: none;
+ font-family: Inter, system-ui, -apple-system, 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
  }
 
  .mobile-menu a:hover {
