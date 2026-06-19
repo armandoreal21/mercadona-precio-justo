@@ -1,41 +1,49 @@
 {
   "salasActivas": [
     {
-      "codigo": "XZ5K7",
-      "nombre": "Prueba 1",
-      "productoActualId": 69387,
-      "productoActual": {
-        "id": "69387",
-        "nombre": "Preparado de verdura para cocido",
-        "precio": 2.4,
-        "imagen": "https://prod-mercadona.imgix.net/images/f8640a4e43da7fda63f2025154de30fe.jpg?fit=crop&h=300&w=300",
-        "descripcion": "",
-        "categoria": "Verdura",
-        "share_url": "https://tienda.mercadona.es/product/69387/preparado-verdura-cocido-bandeja"
-      },
+      "codigo": "A69WM",
+      "nombre": "Sala Real",
+      "productoActualId": null,
+      "productoActual": null,
       "estado": "esperando_jugadores",
       "jugadores": [
         {
-          "nombre": "Armando",
-          "esAdmin": true,
-          "puntuacion": 30
-        },
-        {
-          "nombre": "Pedro",
-          "esAdmin": false,
-          "puntuacion": 0
-        },
-        {
-          "nombre": "aa",
+          "nombre": "Prueba",
           "esAdmin": false,
           "puntuacion": 0
         }
       ],
-      "rondasTotales": 10,
-      "rondaActual": 6,
+      "rondasTotales": 5,
+      "rondaActual": 0,
       "historialRondas": [],
-      "createdAt": 1781684924366,
-      "updatedAt": 1781858863028
+      "lastResults": null,
+      "createdAt": 1781898067058,
+      "updatedAt": 1781898098074
+    },
+    {
+      "codigo": "AGEW7",
+      "nombre": "Sala 1",
+      "productoActualId": null,
+      "productoActual": null,
+      "estado": "esperando_jugadores",
+      "jugadores": [
+        {
+          "nombre": "Prueba",
+          "esAdmin": false,
+          "puntuacion": 0
+        },
+        {
+          "nombre": "Armando",
+          "esAdmin": true,
+          "puntuacion": 0
+        }
+      ],
+      "rondasTotales": 5,
+      "rondaActual": 0,
+      "historialRondas": [],
+      "lastResults": null,
+      "createdAt": 1781898433445,
+      "updatedAt": 1781898625224
     }
   ]
 }

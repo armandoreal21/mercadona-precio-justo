@@ -93,9 +93,13 @@ export class SalaService {
  private initWebsocket() {
  if (!this.useWebsocket) return;
  try {
- const url = (window as any).__env?.WS_URL || 'ws://localhost:3001';
+ // Use explicit host so mobile devices connect to the same machine serving the frontend
+ const host = (typeof window !== 'undefined' && (window as any).location && (window as any).location.hostname) ? (window as any).location.hostname : 'localhost';
+ const url = (window as any).__env?.WS_URL || `ws://${host}:3001`;
+ console.log('[SalaService] initializing websocket to', url);
  this.ws = new WebSocket(url);
  this.ws.addEventListener('open', () => {
+ console.log('[SalaService] websocket open to', url);
  // solicitar estado actual al servidor
  const msg = { type: 'requestState', clientId: this.clientId };
  this.ws?.send(JSON.stringify(msg));
@@ -143,8 +147,8 @@ export class SalaService {
  console.error('WS parse error', e);
  }
  });
- this.ws.addEventListener('close', () => { this.ws = null; if (this.useWebsocket) setTimeout(() => this.tryReconnect(),2000); });
- this.ws.addEventListener('error', () => { /* ignore errors */ });
+ this.ws.addEventListener('close', () => { console.log('[SalaService] websocket closed'); this.ws = null; if (this.useWebsocket) setTimeout(() => this.tryReconnect(),2000); });
+ this.ws.addEventListener('error', (err) => { console.error('[SalaService] websocket error', err); });
  } catch (e) {
  // ignore websocket init errors
  this.ws = null;
@@ -166,7 +170,8 @@ export class SalaService {
 
  // HTTP fallback to request server state
  requestServerState(): Promise<any> {
- const url = ((window as any).__env?.WS_URL || 'http://localhost:3001').replace(/^ws/, 'http');
+ const host = (typeof window !== 'undefined' && (window as any).location && (window as any).location.hostname) ? (window as any).location.hostname : 'localhost';
+ const url = ((window as any).__env?.WS_URL || `http://${host}:3001`).replace(/^ws/, 'http');
  return this.http.get(url + '/state').pipe(catchError(() => of(null))).toPromise();
  }
 
@@ -242,7 +247,8 @@ export class SalaService {
  this.pendingSync = true;
  // HTTP fallback: try posting to /sync
  try {
- const url = ((window as any).__env?.WS_URL || 'http://localhost:3001').replace(/^ws/, 'http');
+ const host = (typeof window !== 'undefined' && (window as any).location && (window as any).location.hostname) ? (window as any).location.hostname : 'localhost';
+ const url = ((window as any).__env?.WS_URL || `http://${host}:3001`).replace(/^ws/, 'http');
  fetch(url + '/sync', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ clientId: this.clientId, state: { salasActivas: salas } }) }).catch(() => {});
  } catch (e) {}
  }

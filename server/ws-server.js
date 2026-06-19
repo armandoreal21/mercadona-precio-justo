@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const WebSocket = require('ws');
+const os = require('os');
 
 const PORT = process.env.PORT ||3001;
 const STATE_FILE = path.join(__dirname, 'state.json');
@@ -123,8 +124,18 @@ app.post('/cleanup', (req, res) => {
  }
 });
 
-const server = app.listen(PORT, () => {
- console.log(`HTTP+WS server listening on http://localhost:${PORT}`);
+// Start server bound to all interfaces so LAN clients can connect
+const server = app.listen(PORT, '0.0.0.0', () => {
+ // list network addresses
+ const ifaces = os.networkInterfaces();
+ const addrs = [];
+ Object.keys(ifaces).forEach((ifname) => {
+ ifaces[ifname].forEach((iface) => {
+ if (iface.family === 'IPv4' && !iface.internal) addrs.push(iface.address);
+ });
+ });
+ const addrList = addrs.length ? addrs.map(a => `http://${a}:${PORT}`).join(', ') : `http://localhost:${PORT}`;
+ console.log(`HTTP+WS server listening on ${addrList}`);
  // perform a dry-run cleanup at startup to log how many rooms would be removed (does not modify state)
  try {
  const startupDry = cleanupInactiveRooms(Number(process.env.CLEANUP_DAYS_DEFAULT) ||30, true);
@@ -159,7 +170,18 @@ wss.on('connection', (ws) => {
  ws.send(JSON.stringify({ type: 'state', state: currentState, clientId: null }));
 });
 
-console.log(`WS server running on ws://localhost:${PORT} (state file: ${STATE_FILE})`);
+// show one canonical WS URL in logs (if possible)
+(function printWsUrls() {
+ const ifaces = os.networkInterfaces();
+ const wsAddrs = [];
+ Object.keys(ifaces).forEach((ifname) => {
+ ifaces[ifname].forEach((iface) => {
+ if (iface.family === 'IPv4' && !iface.internal) wsAddrs.push(`ws://${iface.address}:${PORT}`);
+ });
+ });
+ if (wsAddrs.length) console.log(`WS server running on ${wsAddrs.join(', ')} (state file: ${STATE_FILE})`);
+ else console.log(`WS server running on ws://localhost:${PORT} (state file: ${STATE_FILE})`);
+})();
 
 // Periodic cleanup job: run non-dry cleanup every CLEANUP_INTERVAL_HOURS hours (default24)
 const CLEANUP_DAYS_DEFAULT = Number(process.env.CLEANUP_DAYS_DEFAULT) ||30;
