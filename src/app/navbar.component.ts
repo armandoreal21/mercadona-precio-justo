@@ -144,7 +144,7 @@ import { RouterModule } from '@angular/router';
  padding:0.5rem;
  flex-direction: column;
  gap:0.25rem;
- box-shadow: 8px 30px rgba(2,6,23,0.6);
+ box-shadow: none; /* removed heavy shadow per request */
  z-index:80;
  }
 
