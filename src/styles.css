@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global fallback styles */
+html, body { height:100%; }
+body {
+ font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ background: linear-gradient(180deg, #f3f7fb, #eef6f8);
+ margin:0;
+}
+
+/* Utility to center app container if needed */
+.app-root { min-height:100vh; display: flex; align-items: center; justify-content: center; }
+
+/* Design tokens */
+:root {
+ --accent-teal: #06b6d4;
+ --accent-indigo: #6366f1;
+ --glass-shadow:8px30px rgba(2,6,23,0.06);
+}
+
+/* Glass background helper for non-tailwind contexts */
+.glass-card {
+ background: rgba(255,255,255,0.7);
+ backdrop-filter: blur(12px);
+ -webkit-backdrop-filter: blur(12px);
+ border:1px solid rgba(255,255,255,0.5);
+ box-shadow: var(--glass-shadow);
+ border-radius:1rem;
+}
+
+/* Price placeholder tweak when using plain CSS (cosechador.component uses internal styles) */
+.price-placeholder {
+ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+ font-weight:800;
+ color: #64748b;
+ background: rgba(241,245,249,0.6);
+ padding:0.625rem0.875rem;
+ border-radius:0.625rem;
+ display: inline-block;
+ font-size:1.75rem;
+ animation: pulse 1.8s cubic-bezier(.4,0,.6,1) infinite;
+}
+
+@keyframes pulse {0% { opacity:1 }50% { opacity:0.6 }100% { opacity:1 } }
+
+/* Confetti layers (used by components that append elements to body) */
+.confetti-container {
+ position: fixed;
+ pointer-events: none;
+ top:0; left:0; right:0;
+ height:0;
+ z-index:9999;
+ overflow: visible;
+}
+.confetti {
+ position: absolute;
+ top:0;
+ width:8px;
+ height:12px;
+ border-radius:2px;
+ box-shadow:2px6px rgba(0,0,0,0.08);
+ transform-origin: center center;
+ animation: confetti-drop 2200ms linear both;
+}
+
+@keyframes confetti-drop {
+0% { transform: translateY(-20vh) rotate(0deg); opacity:1 }
+100% { transform: translateY(120vh) rotate(360deg); opacity:0.85 }
+}
+
+/* Small responsive tweak for the main content area so the card sits nicely */
+.main { width:100%; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; }
+
+/* Small utility to harmonize card spacing on narrow screens */
+.card-wrapper-responsive { max-width:900px; width:100%; padding:1rem; }
