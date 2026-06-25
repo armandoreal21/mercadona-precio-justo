@@ -49,10 +49,9 @@ import { Subscription } from 'rxjs';
  <div class="game-card">
  <div class="panel">
  <div *ngIf="!mostrando" style="text-align:center;padding:40px">
- <h2 style="margin:0012px;color:#042b34">Cosechador local (assets)</h2>
- <p style="color:#6c8a96;margin:0018px">Se selecciona un producto aleatorio desde los ficheros en <code>assets/</code>.</p>
+ <h2 style="margin:0012px;color:#042b34">El precio justo</h2>
  <div style="display:flex;gap:12px;justify-content:center">
- <button class="btn" (click)="mostrarSiguiente()">Mostrar producto</button>
+ <button class="btn" (click)="mostrarSiguiente()">Iniciar Juego</button>
  </div>
  </div>
 
@@ -71,7 +70,7 @@ import { Subscription } from 'rxjs';
  <div class="controls">
  <button class="btn secondary" (click)="irAnterior()" [disabled]="!puedeAnterior">Anterior</button>
  <button class="btn" (click)="mostrarSiguiente()">Siguiente</button>
- <button class="btn secondary" (click)="reveal()">Revelar</button>
+ <button class="btn secondary" (click)="reveal()">Revelar precio</button>
  </div>
  </div>
  </div>
