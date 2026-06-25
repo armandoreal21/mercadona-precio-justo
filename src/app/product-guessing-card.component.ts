@@ -32,12 +32,22 @@ import { Subscription } from 'rxjs';
  </ng-template>
  </div>
 
- <div class="flex gap-3 items-center">
+ <!-- Buttons: responsive wrapping, ensure primary stays visible and readable -->
+ <div class="flex gap-3 items-center flex-wrap sm:flex-nowrap">
  <!-- neutral small pill -->
- <button (click)="irAnterior()" class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50 transition disabled:opacity-50" [disabled]="!puedeAnterior">Anterior</button>
- <button (click)="mostrarSiguiente()" class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50 transition">Siguiente</button>
- <!-- primary reveal pill -->
- <button (click)="reveal()" class="ml-auto px-5 py-2 rounded-full bg-slate-900 text-white font-semibold hover:scale-105 transform transition-shadow duration-200 shadow-md hover:shadow-lg disabled:opacity-50" [disabled]="!currentProduct() || isRevealed()">Revelar Precio</button>
+ <button (click)="irAnterior()"
+ class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50 transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-slate-300"
+ [disabled]="!puedeAnterior">Anterior</button>
+
+ <button (click)="mostrarSiguiente()"
+ class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-slate-300">
+ Siguiente
+ </button>
+
+  <button (click)="reveal()"
+ class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-slate-300"
+ [disabled]="!currentProduct() || isRevealed()">Revelar Precio</button>
+
  </div>
  </div>
 
