@@ -58,15 +58,15 @@ import { Subscription } from 'rxjs';
 
  <div *ngIf="mostrando && producto" class="card-inner">
  <div class="thumb reveal-pulse" (click)="reveal()" [class.pop]="animateReveal" title="Haz clic para revelar el precio">
- <img *ngIf="producto?.imagen" [src]="producto?.imagen" alt="imagen" />
+ <img *ngIf="producto.imagen" [src]="producto.imagen" alt="imagen" />
  </div>
 
  <div class="meta">
- <div class="product-title">{{ producto?.nombre || '—' }}</div>
- <div class="category" *ngIf="producto?.categoria">{{ producto?.categoria }}</div>
- <div class="description" *ngIf="producto?.descripcion">{{ producto?.descripcion }}</div>
+ <div class="product-title">{{ producto.nombre || '—' }}</div>
+ <div class="category" *ngIf="producto.categoria">{{ producto.categoria }}</div>
+ <div class="description" *ngIf="producto.descripcion">{{ producto.descripcion }}</div>
 
- <div [class.price]="true" [class.revealed]="revealed">{{ revealed ? (producto?.precio | number:'1.2-2') + ' €' : '—' }}</div>
+ <div [class.price]="true" [class.revealed]="revealed">{{ revealed ? (producto.precio | number:'1.2-2') + ' €' : '—' }}</div>
 
  <div class="controls">
  <button class="btn secondary" (click)="irAnterior()" [disabled]="!puedeAnterior">Anterior</button>
