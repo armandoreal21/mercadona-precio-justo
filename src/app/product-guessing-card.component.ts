@@ -2,11 +2,12 @@ import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CosechadorService, ProductoPrecioJusto } from './cosechador.service';
 import { Subscription } from 'rxjs';
+import { FixMojibakePipe } from './fix-mojibake.pipe';
 
 @Component({
  selector: 'app-product-guessing-card',
  standalone: true,
- imports: [CommonModule],
+ imports: [CommonModule, FixMojibakePipe],
  template: `
 <div class="max-w-sm mx-auto p-4">
   <!-- Tarjeta con borde biselado, efecto de luz y animación de pulso suave -->
@@ -24,7 +25,7 @@ import { Subscription } from 'rxjs';
     <!-- Título con más personalidad -->
     <div class="relative text-center mb-6">
       <h2 class="text-lg font-black text-white uppercase tracking-tight leading-snug">
-        {{ currentProduct() ? currentProduct()!.nombre : 'CARGANDO PRODUCTO...' }}
+        {{ currentProduct() ? (currentProduct()!.nombre | fixMojibake) : 'CARGANDO PRODUCTO...' }}
       </h2>
     </div>
 
