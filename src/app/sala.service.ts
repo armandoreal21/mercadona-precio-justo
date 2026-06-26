@@ -569,8 +569,12 @@ export class SalaService {
  while (j < resultados.length && resultados[j].delta === currentDelta) j++;
  const groupSize = j - idx;
  // determine points for this group's starting position
- const puntos = idx < puntosPorPos.length ? puntosPorPos[idx] :3;
+ const basePuntos = idx < puntosPorPos.length ? puntosPorPos[idx] :3;
  for (let k = idx; k < j; k++) {
+ // give extra bonus for exact guess
+ const apuestaVal = resultados[k].apuesta;
+ const exactBonus = (typeof apuestaVal === 'number' && apuestaVal === precioReal) ?5 :0;
+ const puntos = basePuntos + exactBonus;
  asignaciones.push({ nombre: resultados[k].nombre, puntos, delta: resultados[k].delta, apuesta: resultados[k].apuesta });
  const jugador = sala.jugadores.find(p => p.nombre === resultados[k].nombre);
  if (jugador) jugador.puntuacion = (jugador.puntuacion ||0) + puntos;
