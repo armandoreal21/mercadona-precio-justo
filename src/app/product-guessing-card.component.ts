@@ -105,7 +105,9 @@ export class ProductGuessingCardComponent implements OnDestroy {
  reveal() {
  if (!this.currentProduct() || this.isRevealed()) return;
  this.isRevealed.set(true);
- this.launchPriceParticles();
+ // Removed confetti/particles because they could overlap the price and leave visual remnants.
+ // If you want the effect back later, re-enable the call below.
+ // this.launchPriceParticles();
  }
 
  launchPriceParticles() {
