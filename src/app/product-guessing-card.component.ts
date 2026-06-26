@@ -8,50 +8,46 @@ import { Subscription } from 'rxjs';
  standalone: true,
  imports: [CommonModule],
  template: `
- <div class="max-w-3xl mx-auto bg-white/70 backdrop-blur-md border border-white/50 p-8 rounded-3xl shadow-2xl flex gap-8 items-start">
+ <div class="max-w-md mx-auto p-4 md:p-6 bg-white/80 backdrop-blur-xl border border-white/40 rounded-[2.5rem] shadow-2xl shadow-slate-200/50">
 
- <!-- Left: image -->
- <div class="w-64 h-64 bg-slate-50 rounded-2xl overflow-hidden flex-shrink-0 flex items-center justify-center">
- <img *ngIf="(currentProduct() && currentProduct()!.imagen)" [src]="currentProduct()!.imagen" alt="Producto" class="w-full h-full object-contain p-4" />
- <div *ngIf="!currentProduct() || !currentProduct()!.imagen" class="text-slate-400">Sin imagen</div>
- </div>
+  <!-- Imagen Premium -->
+  <div class="w-full aspect-square bg-slate-100 rounded-3xl overflow-hidden mb-6 flex items-center justify-center border border-slate-100">
+    <img *ngIf="(currentProduct() && currentProduct()!.imagen)" [src]="currentProduct()!.imagen" alt="Producto" class="w-full h-full object-cover p-6" />
+    <div *ngIf="!currentProduct() || !currentProduct()!.imagen" class="text-slate-400">Sin imagen</div>
+  </div>
 
- <!-- Right: content -->
- <div class="flex flex-col justify-between flex-grow">
- <div>
- <h2 class="text-2xl font-bold text-slate-800">{{ currentProduct() ? currentProduct()!.nombre : 'El precio justo' }}</h2>
- <p class="text-slate-500">{{ currentProduct() && currentProduct()!.categoria ? currentProduct()!.categoria : '' }}</p>
- </div>
+  <!-- Texto Moderno -->
+  <div class="text-center mb-8 px-2">
+    <h2 class="text-2xl font-bold text-slate-800 leading-tight mb-2">{{ currentProduct() ? currentProduct()!.nombre : '¿Cuánto cuesta?' }}</h2>
+    <p class="text-sm font-medium text-slate-400 uppercase tracking-widest">{{ currentProduct() ? currentProduct()!.categoria : 'Selecciona un producto' }}</p>
+  </div>
 
- <div class="py-6">
- <ng-container *ngIf="!isRevealed(); else revealedTpl">
- <div class="text-4xl font-mono text-slate-400 bg-slate-200/50 p-4 rounded-lg inline-block animate-pulse">?.?? €</div>
- </ng-container>
- <ng-template #revealedTpl>
- <div class="text-5xl font-extrabold text-teal-600 animate-fade-in-up">{{ currentProduct() ? (currentProduct()!.precio | number:'1.2-2') + ' €' : '—' }}</div>
- </ng-template>
- </div>
+  <!-- Precio (Estilo App) -->
+  <div class="mb-8 flex justify-center">
+    <div [class]="'px-8 py-4 rounded-2xl font-mono text-4xl font-bold transition-all duration-500 ' + (isRevealed() ? 'bg-teal-50 text-teal-600 scale-105' : 'bg-slate-100 text-slate-400')">
+      {{ isRevealed() ? (currentProduct()!.precio | number:'1.2-2') + ' €' : '?.?? €' }}
+    </div>
+  </div>
 
- <!-- Buttons: responsive wrapping, ensure primary stays visible and readable -->
- <div class="flex gap-3 items-center flex-wrap sm:flex-nowrap">
- <!-- neutral small pill -->
- <button (click)="irAnterior()"
- class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50 transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-slate-300"
- [disabled]="!puedeAnterior">Anterior</button>
+  <!-- Botones Modernos -->
+  <div class="space-y-3">
+    <div class="grid grid-cols-2 gap-3">
+      <button (click)="irAnterior()" [disabled]="!puedeAnterior"
+        class="py-3 rounded-2xl bg-white border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 active:scale-95 transition-all disabled:opacity-30">
+        Anterior
+      </button>
+      <button (click)="mostrarSiguiente()"
+        class="py-3 rounded-2xl bg-white border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 active:scale-95 transition-all">
+        Siguiente
+      </button>
+    </div>
 
- <button (click)="mostrarSiguiente()"
- class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-slate-300">
- Siguiente
- </button>
-
-  <button (click)="reveal()"
- class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-slate-300"
- [disabled]="!currentProduct() || isRevealed()">Revelar Precio</button>
-
- </div>
- </div>
-
- </div>
+    <button (click)="reveal()" [disabled]="!currentProduct() || isRevealed()"
+      class="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 active:scale-[0.98] transition-all shadow-lg shadow-slate-900/20 disabled:bg-slate-300">
+      Revelar Precio
+    </button>
+  </div>
+</div>
  `
 })
 export class ProductGuessingCardComponent implements OnDestroy {
