@@ -13,6 +13,30 @@ import { FixMojibakePipe } from './fix-mojibake.pipe';
   <!-- Tarjeta con borde biselado, efecto de luz y animación de pulso suave -->
   <div class="relative bg-slate-900 border-t border-slate-700 rounded-3xl p-5 shadow-2xl overflow-hidden game-card-glow">
 
+  <style>
+ /* Small scoped styles for header and bullseye animation */
+ .game-header { display:flex; align-items:center; gap:12px; justify-content:center; margin-bottom:12px; }
+ .game-title { color:#c7f9e6; font-weight:900; letter-spacing:1px; text-transform:uppercase; }
+ .game-sub { color:#9ca3af; font-size:12px; text-align:center; }
+
+ .bullseye { position:absolute; right:14px; top:14px; width:48px; height:48px; pointer-events:none; opacity:0.0; transform:scale(0.6); transition:transform420ms cubic-bezier(.2,.9,.2,1), opacity420ms ease-out; }
+ .bullseye.revealed { opacity:1; transform:scale(1.05); }
+
+ .price-anchor { position:relative; }
+
+ /* simple ring when hit */
+ .hit-ring { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(0.6); border-radius:999px; width:140%; height:140%; border:3px solid rgba(34,197,94,0.18); opacity:0; transition:all520ms ease-out; }
+ .hit-ring.show { opacity:1; transform:translate(-50%,-50%) scale(1); }
+ </style>
+
+ <!-- HEADER: titulo + diana icon -->
+ <div class="game-header">
+
+ <div>
+ <div class="game-title">El Precio Justo</div>
+ </div>
+ </div>
+
     <!-- Fondo decorativo con gradiente sutil -->
     <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/20 to-transparent"></div>
 
@@ -32,6 +56,10 @@ import { FixMojibakePipe } from './fix-mojibake.pipe';
     <!-- Marcador de Precio: El centro de atención con escala al revelar -->
     <div class="relative mb-6">
       <div class="text-center p-3 border-2 border-dashed border-slate-700 rounded-xl bg-slate-950/50 price-anchor">
+
+       
+        <div class="hit-ring" [class.show]="isRevealed()"></div>
+
         <div class="text-5xl font-extrabold transition-all duration-500 ease-out"
              [class.scale-110]="isRevealed()"
              [class.text-indigo-400]="!isRevealed()"
