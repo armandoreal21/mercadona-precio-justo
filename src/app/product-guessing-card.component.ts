@@ -8,44 +8,47 @@ import { Subscription } from 'rxjs';
  standalone: true,
  imports: [CommonModule],
  template: `
- <div class="max-w-md mx-auto p-4 md:p-6 bg-white/80 backdrop-blur-xl border border-white/40 rounded-[2.5rem] shadow-2xl shadow-slate-200/50">
+ <div class="max-w-sm mx-auto p-2">
+  <!-- Tarjeta Principal -->
+  <div class="relative bg-slate-900 border-4 border-slate-800 rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden">
 
-  <!-- Imagen Premium -->
-  <div class="w-full aspect-square bg-slate-100 rounded-3xl overflow-hidden mb-6 flex items-center justify-center border border-slate-100">
-    <img *ngIf="(currentProduct() && currentProduct()!.imagen)" [src]="currentProduct()!.imagen" alt="Producto" class="w-full h-full object-cover p-6" />
-    <div *ngIf="!currentProduct() || !currentProduct()!.imagen" class="text-slate-400">Sin imagen</div>
-  </div>
-
-  <!-- Texto Moderno -->
-  <div class="text-center mb-8 px-2">
-    <h2 class="text-2xl font-bold text-slate-800 leading-tight mb-2">{{ currentProduct() ? currentProduct()!.nombre : '¿Cuánto cuesta?' }}</h2>
-    <p class="text-sm font-medium text-slate-400 uppercase tracking-widest">{{ currentProduct() ? currentProduct()!.categoria : 'Selecciona un producto' }}</p>
-  </div>
-
-  <!-- Precio (Estilo App) -->
-  <div class="mb-8 flex justify-center">
-    <div [class]="'px-8 py-4 rounded-2xl font-mono text-4xl font-bold transition-all duration-500 ' + (isRevealed() ? 'bg-teal-50 text-teal-600 scale-105' : 'bg-slate-100 text-slate-400')">
-      {{ isRevealed() ? (currentProduct()!.precio | number:'1.2-2') + ' €' : '?.?? €' }}
-    </div>
-  </div>
-
-  <!-- Botones Modernos -->
-  <div class="space-y-3">
-    <div class="grid grid-cols-2 gap-3">
-      <button (click)="irAnterior()" [disabled]="!puedeAnterior"
-        class="py-3 rounded-2xl bg-white border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 active:scale-95 transition-all disabled:opacity-30">
-        Anterior
-      </button>
-      <button (click)="mostrarSiguiente()"
-        class="py-3 rounded-2xl bg-white border border-slate-200 text-slate-600 font-semibold hover:bg-slate-50 active:scale-95 transition-all">
-        Siguiente
-      </button>
+    <!-- Imagen -->
+    <div class="w-full aspect-square bg-slate-800 rounded-2xl mb-6 flex items-center justify-center border-2 border-slate-700/50">
+      <img *ngIf="(currentProduct() && currentProduct()!.imagen)" [src]="currentProduct()!.imagen" alt="Producto" class="w-full h-full object-contain p-4" />
     </div>
 
-    <button (click)="reveal()" [disabled]="!currentProduct() || isRevealed()"
-      class="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 active:scale-[0.98] transition-all shadow-lg shadow-slate-900/20 disabled:bg-slate-300">
-      Revelar Precio
-    </button>
+    <!-- Contenido -->
+    <div class="text-center mb-6">
+      <h2 class="text-xl font-black text-white uppercase">{{ currentProduct() ? currentProduct()!.nombre : '¿PRECIO?' }}</h2>
+    </div>
+
+    <!-- Marcador de Precio -->
+    <div class="bg-black/40 border-2 border-slate-700 rounded-2xl py-4 mb-8">
+      <div class="text-4xl font-black tracking-tighter transition-all duration-300"
+           [class.text-cyan-400]="!isRevealed()"
+           [class.text-yellow-400]="isRevealed()">
+        {{ isRevealed() ? (currentProduct()!.precio | number:'1.2-2') + ' €' : '?.?? €' }}
+      </div>
+    </div>
+
+    <!-- Botones Estilo Arcade -->
+    <div class="space-y-3">
+      <div class="grid grid-cols-2 gap-3">
+        <button (click)="irAnterior()" [disabled]="!puedeAnterior"
+          class="py-3 rounded-xl bg-slate-800 border-b-4 border-slate-950 text-white font-bold hover:bg-slate-700 active:border-b-0 transition-all disabled:opacity-30">
+          ATRÁS
+        </button>
+        <button (click)="mostrarSiguiente()"
+          class="py-3 rounded-xl bg-slate-800 border-b-4 border-slate-950 text-white font-bold hover:bg-slate-700 active:border-b-0 transition-all">
+          SIGUIENTE
+        </button>
+      </div>
+
+      <button (click)="reveal()" [disabled]="isRevealed()"
+        class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 border-b-4 border-blue-800 text-white font-black text-lg hover:from-cyan-400 hover:to-blue-500 active:border-b-0 active:translate-y-1 transition-all shadow-lg">
+        {{ isRevealed() ? '¡CORRECTO!' : 'REVELAR PRECIO' }}
+      </button>
+    </div>
   </div>
 </div>
  `
