@@ -8,47 +8,52 @@ import { Subscription } from 'rxjs';
  standalone: true,
  imports: [CommonModule],
  template: `
- <div class="max-w-sm mx-auto p-2">
-  <!-- Tarjeta Principal -->
-  <div class="relative bg-slate-900 border-4 border-slate-800 rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden">
+<div class="max-w-sm mx-auto p-4">
+  <!-- Tarjeta con borde biselado y efecto de luz -->
+  <div class="relative bg-slate-900 border-t border-slate-700 rounded-3xl p-5 shadow-2xl overflow-hidden">
 
-    <!-- Imagen -->
-    <div class="w-full aspect-square bg-slate-800 rounded-2xl mb-6 flex items-center justify-center border-2 border-slate-700/50">
-      <img *ngIf="(currentProduct() && currentProduct()!.imagen)" [src]="currentProduct()!.imagen" alt="Producto" class="w-full h-full object-contain p-4" />
+    <!-- Fondo decorativo con gradiente sutil -->
+    <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/20 to-transparent"></div>
+
+    <!-- Imagen con marco estilo "cromo" -->
+    <div class="relative w-full aspect-square bg-slate-950 rounded-2xl mb-6 flex items-center justify-center border border-slate-700">
+      <img *ngIf="(currentProduct() && currentProduct()!.imagen)" [src]="currentProduct()!.imagen" alt="Producto" class="w-full h-full object-contain p-2" />
     </div>
 
-    <!-- Contenido -->
-    <div class="text-center mb-6">
-      <h2 class="text-xl font-black text-white uppercase">{{ currentProduct() ? currentProduct()!.nombre : '¿PRECIO?' }}</h2>
+    <!-- Título con más personalidad -->
+    <div class="relative text-center mb-6">
+      <h2 class="text-lg font-black text-white uppercase tracking-tight leading-snug">
+        {{ currentProduct() ? currentProduct()!.nombre : 'CARGANDO PRODUCTO...' }}
+      </h2>
     </div>
 
-    <!-- Marcador de Precio -->
-    <div class="bg-black/40 border-2 border-slate-700 rounded-2xl py-4 mb-8">
-      <div class="text-4xl font-black tracking-tighter transition-all duration-300"
-           [class.text-cyan-400]="!isRevealed()"
-           [class.text-yellow-400]="isRevealed()">
-        {{ isRevealed() ? (currentProduct()!.precio | number:'1.2-2') + ' €' : '?.?? €' }}
+    <!-- Marcador de Precio: El centro de atención -->
+    <div class="relative mb-6">
+      <div class="text-center p-3 border-2 border-dashed border-slate-700 rounded-xl bg-slate-950/50">
+        <div class="text-5xl font-extrabold"
+             [class.text-indigo-400]="!isRevealed()"
+             [class.text-emerald-400]="isRevealed()">
+          {{ isRevealed() ? (currentProduct()!.precio | number:'1.2-2') + ' €' : '?.??' }}
+        </div>
       </div>
     </div>
 
-    <!-- Botones Estilo Arcade -->
-    <div class="space-y-3">
-      <div class="grid grid-cols-2 gap-3">
-        <button (click)="irAnterior()" [disabled]="!puedeAnterior"
-          class="py-3 rounded-xl bg-slate-800 border-b-4 border-slate-950 text-white font-bold hover:bg-slate-700 active:border-b-0 transition-all disabled:opacity-30">
-          ATRÁS
-        </button>
-        <button (click)="mostrarSiguiente()"
-          class="py-3 rounded-xl bg-slate-800 border-b-4 border-slate-950 text-white font-bold hover:bg-slate-700 active:border-b-0 transition-all">
-          SIGUIENTE
-        </button>
-      </div>
-
-      <button (click)="reveal()" [disabled]="isRevealed()"
-        class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 border-b-4 border-blue-800 text-white font-black text-lg hover:from-cyan-400 hover:to-blue-500 active:border-b-0 active:translate-y-1 transition-all shadow-lg">
-        {{ isRevealed() ? '¡CORRECTO!' : 'REVELAR PRECIO' }}
+    <!-- Botones tipo 'Action Bar' -->
+    <div class="relative flex gap-3">
+      <button (click)="irAnterior()" [disabled]="!puedeAnterior"
+        class="flex-1 py-3 bg-slate-800 text-slate-400 border border-slate-700 rounded-xl font-bold hover:text-white transition-colors">
+        « VOLVER
+      </button>
+      <button (click)="mostrarSiguiente()"
+        class="flex-1 py-3 bg-slate-800 text-slate-400 border border-slate-700 rounded-xl font-bold hover:text-white transition-colors">
+        SIGUIENTE »
       </button>
     </div>
+
+    <button (click)="reveal()" [disabled]="isRevealed()"
+      class="relative w-full mt-3 py-4 bg-indigo-600 text-white font-black text-xl rounded-xl shadow-[0_0_20px_rgba(79,70,229,0.4)] hover:bg-indigo-500 active:scale-[0.99] transition-all">
+      {{ isRevealed() ? '¡BIEN!' : 'REVELAR PRECIO' }}
+    </button>
   </div>
 </div>
  `
