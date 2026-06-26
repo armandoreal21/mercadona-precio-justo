@@ -30,7 +30,7 @@ import { Subscription } from 'rxjs';
 
     <!-- Marcador de Precio: El centro de atención con escala al revelar -->
     <div class="relative mb-6">
-      <div class="text-center p-3 border-2 border-dashed border-slate-700 rounded-xl bg-slate-950/50">
+      <div class="text-center p-3 border-2 border-dashed border-slate-700 rounded-xl bg-slate-950/50 price-anchor">
         <div class="text-5xl font-extrabold transition-all duration-500 ease-out"
              [class.scale-110]="isRevealed()"
              [class.text-indigo-400]="!isRevealed()"
@@ -104,28 +104,50 @@ export class ProductGuessingCardComponent implements OnDestroy {
  reveal() {
  if (!this.currentProduct() || this.isRevealed()) return;
  this.isRevealed.set(true);
- this.launchConfetti();
+ this.launchPriceParticles();
  }
 
- launchConfetti() {
+ launchPriceParticles() {
  try {
- const container = document.createElement('div');
- container.className = 'confetti-container';
- const colors = ['#ffd166', '#06d6a0', '#ef476f', '#118ab2', '#06b6d4'];
- for (let i =0; i <24; i++) {
+ const anchor = document.querySelector('.price-anchor');
+ if (!anchor) return;
+ const rect = anchor.getBoundingClientRect();
+ const priceText = this.currentProduct() ? (this.currentProduct()!.precio.toFixed(2) + ' €') : '€';
+ const symbols = ['€', '¢', '€'];
+ for (let i =0; i <18; i++) {
  const el = document.createElement('div');
- el.className = 'confetti';
- const left = Math.floor(Math.random() *100);
- el.style.left = left + '%';
- el.style.background = colors[Math.floor(Math.random() * colors.length)];
- el.style.transform = `translateY(-20vh) rotate(${Math.floor(Math.random() *360)}deg)`;
- el.style.animationDelay = Math.random() *400 + 'ms';
- el.style.width = Math.random() *10 +6 + 'px';
- el.style.height = Math.random() *18 +8 + 'px';
- container.appendChild(el);
+ el.className = 'price-particle';
+ // choose either symbol or small price fragment
+ el.innerText = Math.random() >0.7 ? priceText : symbols[Math.floor(Math.random() * symbols.length)];
+ el.style.position = 'fixed';
+ // start near the center of the price anchor with some jitter
+ const startX = rect.left + rect.width /2 + (Math.random() -0.5) * rect.width *0.6;
+ const startY = rect.top + rect.height /2 + (Math.random() -0.5) * rect.height *0.2;
+ el.style.left = startX + 'px';
+ el.style.top = startY + 'px';
+ el.style.pointerEvents = 'none';
+ el.style.fontWeight = '800';
+ el.style.color = ['#06d6a0', '#ffd166', '#ef476f', '#06b6d4', '#94a3b8'][Math.floor(Math.random() *5)];
+ el.style.fontSize = (12 + Math.random() *18) + 'px';
+ el.style.opacity = '1';
+ el.style.transform = `translateY(0) rotate(${Math.floor(Math.random() *360)}deg)`;
+ // smooth transform and fade transitions
+ el.style.transition = 'transform900ms cubic-bezier(.2,.9,.2,1), opacity900ms ease-out';
+ el.style.willChange = 'transform, opacity';
+ document.body.appendChild(el);
+ // trigger movement next tick
+ setTimeout(() => {
+ const dx = (Math.random() -0.5) *120; // horizontal drift
+ const dy = -120 - Math.random() *160; // upward motion
+ const rotate = (Math.random() -0.5) *720;
+ el.style.transform = `translate(${dx}px, ${dy}px) rotate(${rotate}deg)`;
+ el.style.opacity = '0';
+ },20 + Math.random() *120);
+ // remove after animation
+ setTimeout(() => {
+ try { el.remove(); } catch (e) { /* ignore */ }
+ },1200 + Math.random() *600);
  }
- document.body.appendChild(container);
- setTimeout(() => container.remove(),2200);
  } catch (e) {
  console.error(e);
  }

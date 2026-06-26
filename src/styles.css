@@ -97,3 +97,19 @@ body {
 .game-card-glow {
   animation: border-pulse 3s infinite ease-in-out;
 }
+
+/* Partículas del precio que aparecen al revelar */
+.price-particle {
+ position: fixed; /* posición controlada desde TS */
+ pointer-events: none;
+ z-index:9999;
+ transform-origin: center;
+ transition: transform900ms cubic-bezier(.2,.9,.2,1), opacity900ms ease-out;
+ text-shadow:02px6px rgba(0,0,0,0.35);
+ will-change: transform, opacity;
+}
+
+/* Ancla visual opcional (no necesaria) */
+.price-anchor {
+ position: relative;
+}
