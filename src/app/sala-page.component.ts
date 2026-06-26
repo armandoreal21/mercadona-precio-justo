@@ -443,15 +443,30 @@ export class SalaPageComponent implements OnDestroy {
  else precioRaw =0;
  }
  const precio = typeof precioRaw === 'string' ? parseFloat(precioRaw) : Number(precioRaw);
- return {
- id: prod && (prod.id || prod.product_id) ? (prod.id || prod.product_id) : '',
- nombre: prod && (prod.display_name || prod.name || prod.slug) ? (prod.display_name || prod.name || prod.slug) : '',
- precio: isNaN(precio) ?0 : precio,
- imagen: (prod && (prod.thumbnail || (prod.photos && prod.photos[0] && prod.photos[0].regular) || prod.share_url)) || '',
- descripcion: prod && (prod.description || prod.long_description) ? (prod.description || prod.long_description) : '',
- categoria: sub && sub.name ? sub.name : undefined,
- share_url: prod && prod.share_url ? prod.share_url : undefined
+ 
+ // helper to fix Latin1->UTF8 mojibake (e.g. 'energÃ©tica' -> 'energética')
+ const fixEncoding = (s: any) => {
+ if (typeof s !== 'string') return s;
+ try {
+ // escape/decode trick to convert ISO-8859-1 mis-decoded UTF-8 sequences
+ // eslint-disable-next-line no-undef
+ return decodeURIComponent(escape(s));
+ } catch (e) {
+ return s;
+ }
  };
+ 
+ const resultado: any = {
+ idProducto: String(prod.id ?? prod?.product_id ?? ''),
+ nombre: fixEncoding(prod.display_name || prod.name || prod?.slug || ''),
+ precio: isNaN(precio) ?0 : precio,
+ imagen: prod.thumbnail || prod.photos?.[0]?.regular || prod.share_url || '',
+ descripcion: fixEncoding(prod.description || prod.long_description || ''),
+ categoria: fixEncoding(sub.name) || undefined,
+ share_url: prod.share_url || undefined
+ };
+ 
+ return resultado;
  } catch (e) {
  console.error(e);
  return null;
