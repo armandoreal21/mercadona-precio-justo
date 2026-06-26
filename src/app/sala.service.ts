@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 export interface Jugador {
@@ -34,9 +34,7 @@ export interface Sala {
  rondasTotales?: number;
  rondaActual?: number;
  historialRondas?: HistorialRonda[];
- // lastResults contiene los resultados de la última llamada a calcularPuntuacionesRonda y sirve para mostrar el modal a todos los clientes
  lastResults?: { ts: number; price: number; results: ResultadoRonda[] } | null;
- // timestamps to allow cleanup of stale rooms
  createdAt?: number;
  updatedAt?: number;
 }
@@ -49,6 +47,10 @@ export class SalaService {
 
  // runtime flag to disable websocket
  private useWebsocket: boolean = true;
+ private useFirebase: boolean = false;
+ private firebaseApp: any = null;
+ private firebaseDb: any = null;
+ private firebaseRefPath = '/state';
 
  private hasLocalStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
  private memoryCache: { salasActivas: Sala[] } | null = null;
@@ -59,18 +61,26 @@ export class SalaService {
  private pendingSync = false;
 
  constructor() {
- // respect runtime flag to disable websocket
  try {
  const env = (window as any).__env;
  if (env && (env.USE_WS === 'false' || env.USE_WS === false)) {
  this.useWebsocket = false;
  }
- } catch (e) { /* ignore */ }
+ if (env && env.FIREBASE_CONFIG) {
+ // initialize but don't await - initFirebase handles async work
+ this.initFirebase(env.FIREBASE_CONFIG);
+ }
+ } catch (e) {
+ // ignore
+ }
 
  // Sólo inicializamos localStorage desde template si estamos en navegador
  if (this.hasLocalStorage) {
  if (!localStorage.getItem(this.storageKey)) {
- this.http.get(this.templatePath).pipe(catchError(() => of(null))).subscribe((res: any) => {
+ this.http
+ .get(this.templatePath)
+ .pipe(catchError(() => of(null)))
+ .subscribe((res: any) => {
  if (res) {
  localStorage.setItem(this.storageKey, JSON.stringify(res));
  } else {
@@ -85,25 +95,97 @@ export class SalaService {
  }
 
  // iniciar websocket solo si está habilitado en runtime y el navegador soporta WebSocket
- if (this.useWebsocket && typeof window !== 'undefined' && typeof WebSocket !== 'undefined') {
+ if (!this.useFirebase && this.useWebsocket && typeof window !== 'undefined' && typeof WebSocket !== 'undefined') {
  this.initWebsocket();
  }
  }
 
+ // ---------- Firebase integration (optional, modular v9 via dynamic import) ----------
+ private async initFirebase(config: any) {
+ try {
+ const firebaseAppMod = await import('firebase/app');
+ const databaseMod = await import('firebase/database');
+ const initializeApp = (firebaseAppMod as any).initializeApp || (firebaseAppMod as any).default?.initializeApp;
+ const getDatabase = (databaseMod as any).getDatabase;
+ const ref = (databaseMod as any).ref;
+ const onValue = (databaseMod as any).onValue;
+ const get = (databaseMod as any).get;
+ const set = (databaseMod as any).set;
+ if (!initializeApp || !getDatabase) {
+ console.warn('Firebase modular APIs not found');
+ return;
+ }
+ this.firebaseApp = initializeApp(config);
+ this.firebaseDb = getDatabase(this.firebaseApp);
+ this.useFirebase = true;
+
+ // If we accumulated local changes before Firebase was ready, push them now
+ try {
+ if (this.pendingSync) {
+ const local = this.readAll();
+ await this.broadcastStateToFirebase(local);
+ this.pendingSync = false;
+ }
+ } catch (e) {
+ // ignore
+ }
+
+ const stateRef = ref(this.firebaseDb, this.firebaseRefPath);
+
+ // listen for changes
+ onValue(stateRef, (snapshot: any) => {
+ try {
+ const val = snapshot && typeof snapshot.val === 'function' ? snapshot.val() : snapshot;
+ const state = (val && typeof val === 'object' && Array.isArray(val.salasActivas)) ? val : { salasActivas: [] };
+ console.debug('[SalaService] firebase onValue, state snapshot:', state);
+ this.suppressBroadcast = true;
+ if (this.hasLocalStorage) {
+ localStorage.setItem(this.storageKey, JSON.stringify(state));
+ } else {
+ this.memoryCache = state;
+ }
+ if (typeof window !== 'undefined') {
+ window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: 'firebase' } }));
+ }
+ } catch (e) {
+ // ignore
+ } finally {
+ this.suppressBroadcast = false;
+ }
+ });
+
+ // initialize DB if empty using local
+ try {
+ const snap = await get(stateRef);
+ const dbVal = snap && typeof snap.val === 'function' ? snap.val() : snap;
+ const local = this.readAll();
+ const serverHas = dbVal && Array.isArray(dbVal.salasActivas) && dbVal.salasActivas.length >0;
+ if (!serverHas && Array.isArray(local) && local.length >0) {
+ await set(stateRef, { salasActivas: local });
+ }
+ } catch (e) {
+ // ignore
+ }
+ } catch (e) {
+ console.warn('Firebase init failed:', (e as any)?.message || e);
+ this.useFirebase = false;
+ this.firebaseApp = null;
+ this.firebaseDb = null;
+ }
+ }
+
+ // ---------- WebSocket fallback (kept for compatibility) ----------
  private initWebsocket() {
  if (!this.useWebsocket) return;
  try {
- // Use explicit host so mobile devices connect to the same machine serving the frontend
  const host = (typeof window !== 'undefined' && (window as any).location && (window as any).location.hostname) ? (window as any).location.hostname : 'localhost';
  const url = (window as any).__env?.WS_URL || `ws://${host}:3001`;
  console.log('[SalaService] initializing websocket to', url);
  this.ws = new WebSocket(url);
  this.ws.addEventListener('open', () => {
  console.log('[SalaService] websocket open to', url);
- // solicitar estado actual al servidor
  const msg = { type: 'requestState', clientId: this.clientId };
- this.ws?.send(JSON.stringify(msg));
- // if we have local changes that weren't synced, push them now
+ try { this.ws?.send(JSON.stringify(msg)); } catch (e) { }
  if (this.pendingSync) {
  try {
  const local = this.readAll();
@@ -112,85 +194,98 @@ export class SalaService {
  } catch (e) { /* ignore */ }
  }
  });
+
  this.ws.addEventListener('message', (ev) => {
  try {
  const data = JSON.parse(String(ev.data));
  if (data?.type === 'state' && data?.state) {
- // actualizar local sin rebroadcast
- if (data.clientId === this.clientId) return; // ignore own
+ if (data.clientId === this.clientId) return;
  this.suppressBroadcast = true;
  try {
  const state = data.state as { salasActivas: Sala[] };
- // if server state is empty but we have local state, push local to server to initialize
  const local = this.readAll();
  const serverHas = Array.isArray(state?.salasActivas) && state.salasActivas.length >0;
  if (!serverHas && Array.isArray(local) && local.length >0) {
- // send our local state to server
- try { this.ws?.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: local } })); } catch (e) {}
+ try { this.ws?.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: local } })); } catch (e) { }
  }
  if (this.hasLocalStorage) {
  localStorage.setItem(this.storageKey, JSON.stringify(state));
  } else {
- // assign the received state to memoryCache
  this.memoryCache = state;
  }
- // notify app that state changed
  if (typeof window !== 'undefined') {
  window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: data.clientId } }));
  }
- } catch (e) {
- // ignore
- }
+ } catch (e) { /* ignore */ }
  this.suppressBroadcast = false;
  }
- } catch (e) {
- console.error('WS parse error', e);
- }
+ } catch (e) { console.error('WS parse error', e); }
  });
+
  this.ws.addEventListener('close', () => { console.log('[SalaService] websocket closed'); this.ws = null; if (this.useWebsocket) setTimeout(() => this.tryReconnect(),2000); });
  this.ws.addEventListener('error', (err) => { console.error('[SalaService] websocket error', err); });
  } catch (e) {
- // ignore websocket init errors
  this.ws = null;
- // schedule reconnect
  setTimeout(() => this.tryReconnect(),2000);
  }
  }
 
  private tryReconnect() {
  if (!this.useWebsocket) return;
- if (this.ws) return; // already connected
- try {
- this.initWebsocket();
- } catch (e) {
- // schedule again
- setTimeout(() => this.tryReconnect(),2000);
- }
+ if (this.ws) return;
+ try { this.initWebsocket(); } catch (e) { setTimeout(() => this.tryReconnect(),2000); }
  }
 
- // HTTP fallback to request server state
- requestServerState(): Promise<any> {
- const host = (typeof window !== 'undefined' && (window as any).location && (window as any).location.hostname) ? (window as any).location.hostname : 'localhost';
- const url = ((window as any).__env?.WS_URL || `http://${host}:3001`).replace(/^ws/, 'http');
- return this.http.get(url + '/state').pipe(catchError(() => of(null))).toPromise();
+ // request server state: uses Firebase when enabled, otherwise return local state
+ async requestServerState(): Promise<any> {
+ if (this.useFirebase && this.firebaseDb) {
+ try {
+ const databaseMod = await import('firebase/database');
+ const ref = (databaseMod as any).ref;
+ const get = (databaseMod as any).get;
+ const stateRef = ref(this.firebaseDb, this.firebaseRefPath);
+ const snap = await get(stateRef);
+ return snap && typeof snap.val === 'function' ? snap.val() : snap;
+ } catch (e) { return null; }
+ }
+ // fallback: return local stored state
+ return { salasActivas: this.readAll() };
+ }
+
+ private async broadcastStateToFirebase(salas: Sala[]) {
+ if (!this.useFirebase || !this.firebaseDb) return;
+ try {
+ const databaseMod = await import('firebase/database');
+ const ref = (databaseMod as any).ref;
+ const set = (databaseMod as any).set;
+ const stateRef = ref(this.firebaseDb, this.firebaseRefPath);
+ console.debug('[SalaService] writing state to firebase, salas count:', salas.length);
+ // Sanitize structure: JSON.stringify removes undefined properties which RTDB rejects
+ const safe = JSON.parse(JSON.stringify({ salasActivas: salas }));
+ await set(stateRef, safe);
+ } catch (e) {
+ console.error('[SalaService] broadcastStateToFirebase error', e);
+ }
  }
 
  private broadcastState(salas: Sala[]) {
- // don't broadcast if we're suppressing or WS disabled
- if (this.suppressBroadcast) { return; }
- if (!this.useWebsocket) { return; }
+ // don't broadcast if we're suppressing
+ if (this.suppressBroadcast) return;
 
- const ws = this.ws as WebSocket | null;
- if (!ws) { return; }
- // check readyState safely
- const ready = (ws as any).readyState;
- if (ready !== (WebSocket as any).OPEN) { return; }
-
- try {
- ws.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: salas } }));
- } catch (e) {
- // ignore send errors
+ // If using Firebase, write to DB
+ if (this.useFirebase && this.firebaseDb) {
+ this.broadcastStateToFirebase(salas);
+ this.pendingSync = false;
+ if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: 'firebase-write' } }));
+ return;
  }
+
+ if (!this.useWebsocket) return;
+ const ws = this.ws as WebSocket | null;
+ if (!ws) return;
+ const ready = (ws as any).readyState;
+ if (ready !== (WebSocket as any).OPEN) return;
+ try { ws.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: salas } })); } catch (e) { }
  }
 
  private readAll(): Sala[] {
@@ -200,25 +295,25 @@ export class SalaService {
  try {
  const parsed = JSON.parse(raw);
  const salas: Sala[] = parsed?.salasActivas || [];
- // migration: ensure existing rooms have rondasTotales set (default5)
  let changed = false;
  const now = Date.now();
- const twoDaysAgo = now - (2 *24 *60 *60 *1000); // set as older than1 day for testing
+ const twoDaysAgo = now - (2 *24 *60 *60 *1000);
  salas.forEach(s => {
- // If no timestamps set, assign an older timestamp so existing test rooms are considered inactive
  if (s.createdAt === undefined && s.updatedAt === undefined) {
  s.createdAt = twoDaysAgo;
  s.updatedAt = twoDaysAgo;
  changed = true;
  }
  if (s.rondasTotales === undefined || s.rondasTotales === null) { s.rondasTotales =5; changed = true; }
- // ensure historialRondas exists
  if (!Array.isArray(s.historialRondas)) s.historialRondas = [];
- // ensure rondaActual exists
  if (s.rondaActual === undefined || s.rondaActual === null) { s.rondaActual =0; changed = true; }
+ // ensure jugadores exists and has sane defaults
+ if (!Array.isArray(s.jugadores)) { s.jugadores = []; changed = true; }
+ else {
+ s.jugadores = s.jugadores.map(j => ({ nombre: (j && j.nombre) ? String(j.nombre) : '', apuesta: (j && typeof j.apuesta !== 'undefined') ? j.apuesta : undefined, esAdmin: !!(j && j.esAdmin), puntuacion: (j && typeof j.puntuacion !== 'undefined') ? j.puntuacion :0 }));
+ }
  });
  if (changed) {
- // persist migration
  localStorage.setItem(this.storageKey, JSON.stringify({ salasActivas: salas }));
  }
  return salas;
@@ -226,9 +321,11 @@ export class SalaService {
  return [];
  }
  }
-
- // fallback memoria
- return this.memoryCache?.salasActivas || [];
+ // fallback memoria: ensure we always return an array
+ if (this.memoryCache && Array.isArray(this.memoryCache.salasActivas)) {
+ return this.memoryCache.salasActivas;
+ }
+ return [];
  }
 
  private writeAll(salas: Sala[]) {
@@ -239,28 +336,26 @@ export class SalaService {
  this.memoryCache.salasActivas = salas;
  }
 
- // If websocket enabled and open, send via WS. Otherwise, use HTTP /sync fallback.
- if (this.useWebsocket && this.ws && this.ws.readyState === WebSocket.OPEN) {
+ console.debug('[SalaService] writeAll: wrote local state, salas count:', salas.length, 'pendingSync:', this.pendingSync, 'useFirebase:', this.useFirebase, 'firebaseDb:', !!this.firebaseDb);
+
+ if (this.useFirebase && this.firebaseDb) {
+ this.broadcastStateToFirebase(salas);
+ this.pendingSync = false;
+ } else if (this.useWebsocket && this.ws && this.ws.readyState === WebSocket.OPEN) {
  this.broadcastState(salas);
  this.pendingSync = false;
  } else {
+ // do not attempt HTTP /sync fallback when running on hosted HTTPS - rely on localStorage or Firebase
  this.pendingSync = true;
- // HTTP fallback: try posting to /sync
- try {
- const host = (typeof window !== 'undefined' && (window as any).location && (window as any).location.hostname) ? (window as any).location.hostname : 'localhost';
- const url = ((window as any).__env?.WS_URL || `http://${host}:3001`).replace(/^ws/, 'http');
- fetch(url + '/sync', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ clientId: this.clientId, state: { salasActivas: salas } }) }).catch(() => {});
- } catch (e) {}
  }
 
- // notify local listeners
  if (typeof window !== 'undefined') {
  window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: this.clientId } }));
  }
  }
 
  generarCodigo(longitud =5): string {
- const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZA23456789'; // evitar I, O,0,1
+ const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZA23456789';
  let codigo = '';
  for (let i =0; i < longitud; i++) codigo += chars[Math.floor(Math.random() * chars.length)];
  return codigo;
@@ -272,10 +367,7 @@ export class SalaService {
  return { sala: null as any, creado: false, error: 'Ya existe una sala con ese nombre' };
  }
  let codigo = this.generarCodigo();
- // asegurar unicidad
- while (salas.find(s => s.codigo === codigo)) {
- codigo = this.generarCodigo();
- }
+ while (salas.find(s => s.codigo === codigo)) { codigo = this.generarCodigo(); }
  const now = Date.now();
  const nueva: Sala = {
  codigo,
@@ -301,7 +393,7 @@ export class SalaService {
  return salas.find(s => s.codigo === (codigo || '').toUpperCase()) || null;
  }
 
- unirASala(codigo: string, nombreJugador: string): { sala?: Sala; success: boolean; error?: string } {
+ async unirASala(codigo: string, nombreJugador: string): Promise<{ sala?: Sala; success: boolean; error?: string }> {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return { success: false, error: 'Sala no encontrada' };
@@ -311,11 +403,18 @@ export class SalaService {
  sala.jugadores.push(jugador);
  sala.updatedAt = Date.now();
  this.writeAll(salas);
+ // if firebase available, ensure state propagated immediately and notify listeners
+ try {
+ if (this.useFirebase && this.firebaseDb) {
+ await this.broadcastStateToFirebase(salas);
+ if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: 'firebase-write' } }));
+ }
+ } catch (e) { /* ignore */ }
  return { sala, success: true };
  }
 
- unirComoAdmin(codigo: string, nombreJugador: string): { sala?: Sala; success: boolean; error?: string } {
- const res = this.unirASala(codigo, nombreJugador);
+ async unirComoAdmin(codigo: string, nombreJugador: string): Promise<{ sala?: Sala; success: boolean; error?: string }> {
+ const res = await this.unirASala(codigo, nombreJugador);
  if (!res.success) return res;
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
@@ -325,6 +424,12 @@ export class SalaService {
  jugador.esAdmin = true;
  sala.updatedAt = Date.now();
  this.writeAll(salas);
+ try {
+ if (this.useFirebase && this.firebaseDb) {
+ await this.broadcastStateToFirebase(salas);
+ if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: 'firebase-write' } }));
+ }
+ } catch (e) { /* ignore */ }
  return { sala, success: true };
  }
 
@@ -379,6 +484,21 @@ export class SalaService {
  const eliminadas = inicial - filtradas.length;
  if (eliminadas >0) this.writeAll(filtradas);
  return eliminadas;
+ }
+
+ // preview helper
+ previewEliminarSalasInactivas(days =1) {
+ const salas = this.readAll();
+ const now = Date.now();
+ const cutoff = days *24 *60 *60 *1000;
+ const removed: any[] = [];
+ const kept: any[] = [];
+ salas.forEach(s => {
+ const last = s.updatedAt ?? s.createdAt ??0;
+ if (!last) { kept.push(s); return; }
+ if ((now - last) > cutoff) removed.push(s); else kept.push(s);
+ });
+ return { eliminadas: removed.length, removedCodes: removed.map(r => r.codigo), removed, kept };
  }
 
  actualizarProductoObjeto(codigo: string, producto: any) {

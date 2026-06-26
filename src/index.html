@@ -8,6 +8,24 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  <!-- Runtime config for SalaService: set USE_WS:false when using Firebase and provide FIREBASE_CONFIG object -->
+  <script>
+  window.__env = window.__env || {};
+  // Disable WebSocket by default on hosted (HTTPS) deployments to avoid mixed-content errors
+  window.__env.USE_WS = false;
+  // Firebase Web app configuration (provided)
+  window.__env.FIREBASE_CONFIG = {
+    projectId: "game-prod-merca",
+    appId: "1:391457721257:web:a3aeba98a5a767809612b8",
+    databaseURL: "https://game-prod-merca-default-rtdb.firebaseio.com",
+    storageBucket: "game-prod-merca.firebasestorage.app",
+    apiKey: "AIzaSyCrtnzzE8DuJSTObN5RMZypDwcDz-IQO3A",
+    authDomain: "game-prod-merca.firebaseapp.com",
+    messagingSenderId: "391457721257",
+    projectNumber: "391457721257",
+    version: "2"
+  };
+  </script>
   <app-root></app-root>
 </body>
 </html>

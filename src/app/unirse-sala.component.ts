@@ -75,9 +75,9 @@ export class UnirseSalaComponent {
 
  let res: any;
  if (this.asAdmin) {
- res = this.sala.unirComoAdmin(this.codigo, this.nombre);
+ res = await (this.sala as any).unirComoAdmin(this.codigo, this.nombre);
  } else {
- res = this.sala.unirASala(this.codigo, this.nombre);
+ res = await (this.sala as any).unirASala(this.codigo, this.nombre);
  }
  if (!res.success) { this.error = res.error || 'Error'; return; }
  // guardar jugador actual en localStorage para identificar permisos

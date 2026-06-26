@@ -31,6 +31,12 @@ import { SalaService } from './sala.service';
  🚀 Generar Sala
  </button>
  
+ <!-- feedback area -->
+ <div *ngIf="resultado" class="mt-4 p-3 rounded bg-slate-900 text-sm">
+ <div *ngIf="resultado.creado" class="text-green-400 font-bold">Sala creada: código {{ resultado.sala?.codigo }}</div>
+ <div *ngIf="resultado.error" class="text-rose-400">Error: {{ resultado.error }}</div>
+ </div>
+ 
  <!-- server cleanup inactive rooms -->
  <div class="mt-3">
  <div *ngIf="!cleanupPreview">
@@ -49,19 +55,6 @@ import { SalaService } from './sala.service';
  </div>
  </div>
  </div>
-
- <div *ngIf="resultado" class="mt-8 pt-6 border-t-2 border-slate-750 text-center">
- <p class="text-slate-400 text-sm font-medium">Código de acceso para tus amigos:</p>
- <div class="mt-2 bg-purple-950 border-2 border-dashed border-purple-400 rounded-2xl p-4 inline-block">
- <span class="text-4xl font-mono font-black text-yellow-300 tracking-widest selection:bg-yellow-400">
- {{ resultado?.sala?.codigo }}
- </span>
- </div>
- <p class="text-xs text-purple-300 mt-2">✨ Comparte este código para empezar a jugar</p>
- <p *ngIf="resultado?.error" class="text-red-400 mt-2">{{ resultado?.error }}</p>
- </div>
-
- </div>
  </div>
  `
 })
@@ -77,22 +70,23 @@ export class CrearSalaComponent {
  if (!this.nombre || !this.nombre.trim()) { this.resultado = { error: 'Introduce un nombre válido' }; return; }
  const rounds = Number(this.rondas) ||5;
  this.resultado = this.sala.crearSala(this.nombre, rounds);
+ // log for debugging
+ try { console.log('crearSala result', this.resultado); } catch (e) {}
  }
 
  async checkCleanup() {
  this.cleanupResult = null;
  this.cleanupPreview = null;
  try {
- const res = await fetch('http://localhost:3001/cleanup?days=1&dryRun=true', { method: 'POST' });
- if (!res.ok) throw new Error('Server error');
- const data = await res.json();
- if (data && data.ok !== false) {
- this.cleanupPreview = { eliminadas: data.eliminadas ||0, removedCodes: data.removedCodes || [] };
+ // use SalaService preview if available
+ if (typeof this.sala['previewEliminarSalasInactivas'] === 'function') {
+ const preview = (this.sala as any).previewEliminarSalasInactivas(1);
+ this.cleanupPreview = { eliminadas: preview.eliminadas ||0, removedCodes: preview.removedCodes || [] };
  } else {
- this.cleanupResult = 'No se pudo comprobar en el servidor';
+ this.cleanupResult = 'No hay soporte para previsualizar limpieza en este entorno';
  }
  } catch (e) {
- this.cleanupResult = 'Error comunicando con el servidor de sincronización';
+ this.cleanupResult = 'Error comprobando salas inactivas';
  }
  }
 
@@ -101,18 +95,11 @@ export class CrearSalaComponent {
  this.cleaning = true;
  this.cleanupResult = null;
  try {
- const res = await fetch('http://localhost:3001/cleanup?days=1&dryRun=false', { method: 'POST' });
- if (!res.ok) throw new Error('Server error');
- const data = await res.json();
- if (data && data.ok !== false) {
- this.cleanupResult = `Se eliminaron ${data.eliminadas} sala(s).`;
- // clear preview
+ const eliminadas = (this.sala as any).eliminarSalasInactivas(1);
+ this.cleanupResult = `Se eliminaron ${eliminadas} sala(s).`;
  this.cleanupPreview = null;
- } else {
- this.cleanupResult = 'Error al ejecutar limpieza en servidor';
- }
  } catch (e) {
- this.cleanupResult = 'Error comunicando con el servidor de sincronización';
+ this.cleanupResult = 'Error al ejecutar limpieza';
  } finally {
  this.cleaning = false;
  setTimeout(() => this.cleanupResult = null,8000);
@@ -123,7 +110,6 @@ export class CrearSalaComponent {
  this.cleanupPreview = null;
  }
 
- // backward-compat alias for older template usage
  limpiarInactivas() {
  this.checkCleanup();
  }

@@ -1,0 +1,7 @@
+# Browserslist configuration used by Angular CLI to determine output target
+# Adjust to control ECMAScript target and features during build
+>0.5%
+last 2 versions
+Firefox ESR
+not dead
+not op_mini all
