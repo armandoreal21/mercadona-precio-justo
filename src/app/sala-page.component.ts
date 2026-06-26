@@ -202,7 +202,7 @@ export class SalaPageComponent implements OnDestroy {
  this.refreshSala();
  }
 
- enviarApuesta(nombre: string): void {
+ async enviarApuesta(nombre: string): Promise<void> {
  if (nombre !== this.currentName) return;
  const val = this.apuestas[nombre];
  if (val === null || val === undefined || isNaN(Number(val))) {
@@ -210,7 +210,7 @@ export class SalaPageComponent implements OnDestroy {
  setTimeout(() => (this.errorMsg = null),2000);
  return;
  }
- const ok = this.salaService.setApuesta(this.codigo, nombre, Number(val));
+ const ok = await this.salaService.setApuesta(this.codigo, nombre, Number(val));
  if (!ok) {
  this.errorMsg = 'No se pudo guardar la apuesta';
  setTimeout(() => (this.errorMsg = null),2000);
@@ -264,7 +264,7 @@ export class SalaPageComponent implements OnDestroy {
  }
 
  this.errorMsg = null;
- const res = this.salaService.calcularPuntuacionesRonda(this.codigo);
+ const res = await this.salaService.calcularPuntuacionesRonda(this.codigo);
  if (res === null) {
  this.errorMsg = 'No hay precio real definido para el producto actual';
  this.resultados = null;
