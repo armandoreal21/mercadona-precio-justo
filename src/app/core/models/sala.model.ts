@@ -62,6 +62,49 @@ export interface EstadoPalabraMasLarga {
   puntosPorGanar?: number;
 }
 
+// ==========================================
+// JUEGO: LA SUBASTA DE RESPUESTAS
+// ==========================================
+
+export type FaseSubasta = 'esperando' | 'respondiendo' | 'seleccion' | 'revelacion';
+
+export interface RespuestaSubastaAportada {
+  jugador: string;
+  equipoId?: string | null;
+  respuesta: string;   // texto tal como lo escribió el jugador
+  clave: string;       // normalizada (sin tildes, minúsculas) para deduplicar
+  ts: number;
+}
+
+export interface RespuestaElegida {
+  clave: string;
+  texto: string;
+}
+
+export interface SeleccionSubasta {
+  grupoId: string;               // nombre del jugador (individual) o id del equipo
+  nombreGrupo: string;
+  elegidas: RespuestaElegida[];  // respuestas que el grupo presenta
+  invalidas: string[];           // claves marcadas como inválidas por el árbitro
+  confirmada: boolean;
+  seleccionadaPor: string;
+}
+
+export interface EstadoSubastaRespuestas {
+  fase: FaseSubasta;
+  dificultad: DificultadPalabras;
+  categoriaId?: string | null;
+  categoria?: string | null;
+  descripcion?: string | null;
+  tiempoLimite: number;
+  tiempoFin?: number;
+  puntosPorRespuesta: number;    // 1 en fácil/media, 2 en difícil
+  puntosEntregados?: boolean;    // evita adjudicar dos veces la misma ronda
+  categoriasUsadas?: string[];   // ids ya jugados en la partida
+  respuestasAportadas?: RespuestaSubastaAportada[];
+  selecciones?: Record<string, SeleccionSubasta>;
+}
+
 export interface Sala {
   codigo: string;
   nombre: string;
@@ -79,6 +122,8 @@ export interface Sala {
   lastResults?: { ts: number; price: number; results: ResultadoRonda[] } | null;
   // Estado específico para "La Palabra Más Larga"
   estadoPalabras?: EstadoPalabraMasLarga | null;
+  // Estado específico para "La Subasta de Respuestas"
+  estadoSubasta?: EstadoSubastaRespuestas | null;
   createdAt?: number;
   updatedAt?: number;
 }

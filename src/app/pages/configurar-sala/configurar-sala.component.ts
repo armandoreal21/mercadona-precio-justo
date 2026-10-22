@@ -279,7 +279,7 @@ export class ConfigurarSalaComponent implements OnInit {
     console.log('[ConfigurarSala] equiposConfig=', equiposConfig);
 
     // Configuración de palabras: SIEMPRE usar defaults (nunca undefined)
-    const configPalabras = this.juegoId === 'palabra-mas-larga' ? {
+    const configPalabras = (this.juegoId === 'palabra-mas-larga' || this.juegoId === 'subasta-respuestas') ? {
       numLetras: Number(this.numLetrasFijo) || 10,
       dificultad: this.dificultadPalabras || 'facil'
     } : undefined;

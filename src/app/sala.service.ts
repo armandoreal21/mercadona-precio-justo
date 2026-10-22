@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras } from './core/models/sala.model';
+import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
@@ -423,6 +423,17 @@ export class SalaService {
       modoPuntuacion: 'por_letras'
     } : undefined;
 
+    // Estado inicial de La Subasta de Respuestas (solo para ese tipo de juego)
+    const estadoSubastaInicial: EstadoSubastaRespuestas | null = tipoJuego === 'subasta-respuestas' ? {
+      fase: 'esperando',
+      dificultad: configPalabras?.dificultad || 'facil',
+      tiempoLimite: 45,
+      puntosPorRespuesta: configPalabras?.dificultad === 'dificil' ? 2 : 1,
+      categoriasUsadas: [],
+      respuestasAportadas: [],
+      selecciones: {}
+    } : null;
+
     const nueva: Sala = {
       codigo,
       nombre: upName,
@@ -438,6 +449,7 @@ export class SalaService {
       historialRondas: [],
       lastResults: null,
       estadoPalabras: estadoPalabrasInicial,
+      estadoSubasta: estadoSubastaInicial,
       createdAt: now,
       updatedAt: now
     };
@@ -665,6 +677,7 @@ export class SalaService {
     sala.productoActual = null;
     sala.lastResults = null;
     sala.estadoPalabras = null;
+    sala.estadoSubasta = null;
     sala.jugadores.forEach(j => { j.puntuacion = 0; delete j.apuesta; });
     sala.updatedAt = Date.now();
     this.writeAll(salas);
@@ -1392,6 +1405,218 @@ export class SalaService {
     const res = calcular(sala);
     this.writeAll(salas);
     return res;
+  }
+
+  // ==========================================
+  // JUEGO: LA SUBASTA DE RESPUESTAS
+  // ==========================================
+
+  /** Clave normalizada para deduplicar respuestas (sin tildes, minúsculas, espacios colapsados). */
+  claveRespuesta(texto: string): string {
+    return (texto || '').trim().replace(/\s+/g, ' ').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
+  /** Aplica una mutación a la sala: transacción en Firebase o escritura local. Devuelve si se aplicó. */
+  private async mutarSala(codigo: string, mutator: (sala: Sala) => boolean): Promise<boolean> {
+    const upCode = (codigo || '').toUpperCase();
+    if (this.useFirebase && this.firebaseDb) {
+      let aplicado = false;
+      await this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        aplicado = mutator(sala);
+        return aplicado ? { salasActivas: salas } : null;
+      });
+      return aplicado;
+    }
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    const ok = mutator(sala);
+    if (ok) this.writeAll(salas);
+    return ok;
+  }
+
+  async iniciarRondaSubasta(
+    codigo: string,
+    cat: { id: string; categoria: string; descripcion?: string },
+    tiempoSegundos: number,
+    dificultad: DificultadPalabras,
+    categoriasUsadas: string[]
+  ): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      sala.estadoSubasta = {
+        fase: 'respondiendo',
+        dificultad,
+        categoriaId: cat.id,
+        categoria: cat.categoria,
+        descripcion: cat.descripcion || null,
+        tiempoLimite: tiempoSegundos,
+        tiempoFin: Date.now() + tiempoSegundos * 1000,
+        puntosPorRespuesta: dificultad === 'dificil' ? 2 : 1,
+        puntosEntregados: false,
+        categoriasUsadas,
+        respuestasAportadas: [],
+        selecciones: {}
+      };
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  actualizarConfigSubasta(codigo: string, config: { dificultad: DificultadPalabras; tiempoSegundos: number }): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      if (!sala.estadoSubasta) {
+        sala.estadoSubasta = {
+          fase: 'esperando',
+          dificultad: config.dificultad,
+          tiempoLimite: config.tiempoSegundos,
+          puntosPorRespuesta: config.dificultad === 'dificil' ? 2 : 1
+        };
+      } else {
+        sala.estadoSubasta.dificultad = config.dificultad;
+        sala.estadoSubasta.tiempoLimite = config.tiempoSegundos;
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async enviarRespuestaSubasta(codigo: string, jugador: string, equipoId: string | undefined, texto: string): Promise<boolean> {
+    const clave = this.claveRespuesta(texto);
+    if (!clave) return false;
+    return this.mutarSala(codigo, (sala) => {
+      const est = sala.estadoSubasta;
+      if (!est || est.fase !== 'respondiendo') return false;
+      est.respuestasAportadas = est.respuestasAportadas || [];
+      const repetida = est.respuestasAportadas.some(
+        r => r.clave === clave && r.jugador.toLowerCase() === jugador.toLowerCase()
+      );
+      if (repetida) return false;
+      est.respuestasAportadas.push({
+        jugador,
+        equipoId: equipoId || null,
+        respuesta: texto.trim().replace(/\s+/g, ' '),
+        clave,
+        ts: Date.now()
+      });
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async pasarASeleccionSubasta(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = sala.estadoSubasta;
+      if (!est || est.fase !== 'respondiendo') return false;
+      est.fase = 'seleccion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async pasarARevelacionSubasta(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = sala.estadoSubasta;
+      if (!est || (est.fase !== 'respondiendo' && est.fase !== 'seleccion')) return false;
+      est.fase = 'revelacion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Añade o quita una respuesta de la selección del grupo (mientras no esté confirmada). */
+  async toggleEleccionSubasta(codigo: string, grupoId: string, nombreGrupo: string, texto: string, usuario: string): Promise<boolean> {
+    const clave = this.claveRespuesta(texto);
+    if (!clave) return false;
+    return this.mutarSala(codigo, (sala) => {
+      const est = sala.estadoSubasta;
+      if (!est || est.fase !== 'seleccion') return false;
+      est.selecciones = est.selecciones || {};
+      const sel = est.selecciones[grupoId] || {
+        grupoId, nombreGrupo, elegidas: [], invalidas: [], confirmada: false, seleccionadaPor: usuario
+      };
+      if (sel.confirmada) return false;
+      sel.elegidas = sel.elegidas || [];
+      const idx = sel.elegidas.findIndex(e => e.clave === clave);
+      if (idx >= 0) sel.elegidas.splice(idx, 1);
+      else sel.elegidas.push({ clave, texto: texto.trim().replace(/\s+/g, ' ') });
+      sel.seleccionadaPor = usuario;
+      est.selecciones[grupoId] = sel;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** El grupo da por cerrada su selección. Cuando todos confirman, pasa a revelación. */
+  async confirmarSeleccionSubasta(codigo: string, grupoId: string, nombreGrupo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = sala.estadoSubasta;
+      if (!est || est.fase !== 'seleccion') return false;
+      est.selecciones = est.selecciones || {};
+      const sel = est.selecciones[grupoId] || {
+        grupoId, nombreGrupo, elegidas: [], invalidas: [], confirmada: false, seleccionadaPor: usuario
+      };
+      sel.confirmada = true;
+      sel.seleccionadaPor = usuario;
+      est.selecciones[grupoId] = sel;
+
+      const gruposEsperados = sala.modoJuego === 'individual'
+        ? (sala.jugadores || []).map(j => j.nombre)
+        : (sala.equipos || []).map(e => e.id);
+      const sels = est.selecciones;
+      const todosConfirmados = gruposEsperados.length > 0 && gruposEsperados.every(g => !!sels[g]?.confirmada);
+      if (todosConfirmados) est.fase = 'revelacion';
+
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Árbitro: marca o desmarca una respuesta presentada como inválida. */
+  async toggleInvalidaSubasta(codigo: string, grupoId: string, clave: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = sala.estadoSubasta;
+      if (!est || est.puntosEntregados) return false;
+      const sel = est.selecciones?.[grupoId];
+      if (!sel) return false;
+      sel.invalidas = sel.invalidas || [];
+      const idx = sel.invalidas.indexOf(clave);
+      if (idx >= 0) sel.invalidas.splice(idx, 1);
+      else sel.invalidas.push(clave);
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Suma puntos: 1 (o 2 en difícil) por cada respuesta válida presentada. Solo una vez por ronda. */
+  async entregarPuntosSubasta(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = sala.estadoSubasta;
+      if (!est || est.puntosEntregados) return false;
+      const pts = est.puntosPorRespuesta || 1;
+
+      Object.values(est.selecciones || {}).forEach(sel => {
+        const invalidas = new Set(sel.invalidas || []);
+        const validas = (sel.elegidas || []).filter(e => !invalidas.has(e.clave)).length;
+        const total = validas * pts;
+        if (total <= 0) return;
+
+        if (sala.modoJuego === 'individual') {
+          const j = sala.jugadores.find(x => x.nombre === sel.grupoId);
+          if (j) j.puntuacion = (j.puntuacion || 0) + total;
+        } else {
+          sala.jugadores.forEach(j => {
+            if (j.equipoId && j.equipoId === sel.grupoId) j.puntuacion = (j.puntuacion || 0) + total;
+          });
+        }
+      });
+
+      est.puntosEntregados = true;
+      sala.updatedAt = Date.now();
+      return true;
+    });
   }
 }
 

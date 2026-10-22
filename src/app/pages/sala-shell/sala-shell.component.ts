@@ -6,11 +6,12 @@ import { SalaService } from '../../sala.service';
 import { Sala, Jugador } from '../../core/models/sala.model';
 import { PrecioJustoComponent } from '../../games/precio-justo/precio-justo.component';
 import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-mas-larga.component';
+import { SubastaRespuestasComponent } from '../../games/subasta-respuestas/subasta-respuestas.component';
 
 @Component({
   selector: 'app-sala-shell',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent],
+  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent, SubastaRespuestasComponent],
   template: `
     <div class="min-h-screen bg-slate-900 p-4 text-white mpj-theme">
       <div *ngIf="!sala" class="max-w-2xl mx-auto p-6 bg-slate-800 rounded-xl text-center">
@@ -144,6 +145,14 @@ import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-
                                  (clasificacionRequested)="abrirClasificacion()"
                                  (endOfGameReached)="onFinPartida()">
           </app-palabra-mas-larga>
+
+          <app-subasta-respuestas *ngSwitchCase="'subasta-respuestas'"
+                                  [sala]="sala"
+                                  [currentName]="currentName"
+                                  [isAdmin]="isCurrentAdmin()"
+                                  (clasificacionRequested)="abrirClasificacion()"
+                                  (endOfGameReached)="onFinPartida()">
+          </app-subasta-respuestas>
 
           <!-- Fallback or future game -->
           <div *ngSwitchDefault class="p-8 text-center bg-slate-900 rounded-xl">
@@ -307,6 +316,8 @@ export class SalaShellComponent implements OnInit, OnDestroy {
         return '🛒 El Precio Justo';
       case 'palabra-mas-larga':
         return '🔤 La Palabra Más Larga';
+      case 'subasta-respuestas':
+        return '🧠 La Subasta de Respuestas';
       default:
         return tipoJuego;
     }

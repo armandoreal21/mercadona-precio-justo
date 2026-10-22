@@ -25,6 +25,19 @@ export const JUEGOS_DISPONIBLES: GameDefinition[] = [
       tiempoSegundos: 45,
       modoPuntuacion: 'por_letras'
     }
+  },
+  {
+    id: 'subasta-respuestas',
+    nombre: 'La Subasta de Respuestas',
+    descripcion: 'Se propone una categoría y todos escribís respuestas. Elegís las mejores, el árbitro valida y cada respuesta válida suma puntos. ¡Por equipos o individual!',
+    icono: '🧠',
+    modosSoportados: ['equipos_multiusuario', 'individual'],
+    minJugadores: 1,
+    configDefecto: {
+      rondasTotales: 5,
+      tiempoSegundos: 45,
+      dificultad: 'facil'
+    }
   }
 ];
 
