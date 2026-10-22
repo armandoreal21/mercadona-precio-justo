@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
  template: `
 <nav class="nav-root">
  <div class="nav-inner">
- <div class="brand">🎯 El Precio Justo</div>
+ <div class="brand">🕹️ PartyBox</div>
 
  <div class="links">
  <a routerLink="/juegos" routerLinkActive="active">👑 Catálogo / Crear Sala</a>
