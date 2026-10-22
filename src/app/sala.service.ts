@@ -42,18 +42,36 @@ export class SalaService {
       // ignore
     }
 
-    // Sólo inicializamos localStorage desde template si estamos en navegador
+    // CRÍTICO: Siempre inicializar localStorage sincronicamente para evitar race conditions
     if (this.hasLocalStorage) {
-      if (!localStorage.getItem(this.storageKey)) {
+      let mustInit = false;
+      try {
+        const existing = localStorage.getItem(this.storageKey);
+        if (!existing) {
+          mustInit = true;
+        }
+      } catch (e) {
+        // localStorage inaccesible, usar memory
+        mustInit = false;
+        this.hasLocalStorage = false;
+      }
+
+      if (mustInit) {
+        // Inicializar inmediatamente con estructura vacía
+        localStorage.setItem(this.storageKey, JSON.stringify({ salasActivas: [] }));
+        
+        // OPCIONALMENTE cargar desde template en background
         this.http
           .get(this.templatePath)
           .pipe(catchError(() => of(null)))
           .subscribe((res: any) => {
-            if (res) {
-              localStorage.setItem(this.storageKey, JSON.stringify(res));
-            } else {
-              // inicializar con estructura vacía
-              localStorage.setItem(this.storageKey, JSON.stringify({ salasActivas: [] }));
+            if (res && Array.isArray(res.salasActivas) && res.salasActivas.length > 0) {
+              // Solo actualizar si template tiene datos válidos
+              try {
+                localStorage.setItem(this.storageKey, JSON.stringify(res));
+              } catch (e) {
+                // ignore
+              }
             }
           });
       }
@@ -272,9 +290,12 @@ export class SalaService {
 
   private readAll(): Sala[] {
     if (this.hasLocalStorage) {
-      const raw = localStorage.getItem(this.storageKey);
-      if (!raw) return [];
       try {
+        const raw = localStorage.getItem(this.storageKey);
+        if (!raw) {
+          console.debug('[SalaService] readAll: localStorage vacío, retornando memoryCache');
+          return this.memoryCache?.salasActivas || [];
+        }
         const parsed = JSON.parse(raw);
         const salas: Sala[] = parsed?.salasActivas || [];
         let changed = false;
@@ -304,11 +325,18 @@ export class SalaService {
           }
         });
         if (changed) {
-          localStorage.setItem(this.storageKey, JSON.stringify({ salasActivas: salas }));
+          try {
+            localStorage.setItem(this.storageKey, JSON.stringify({ salasActivas: salas }));
+          } catch (e) {
+            // ignore si no puedo escribir los cambios
+            console.debug('[SalaService] readAll: no puedo escribir cambios a localStorage');
+          }
         }
         return salas;
-      } catch (e) {
-        return [];
+      } catch (e: any) {
+        console.warn('[SalaService] readAll: ERROR leyendo localStorage, fallback a memoryCache:', e?.message);
+        this.hasLocalStorage = false;
+        return this.memoryCache?.salasActivas || [];
       }
     }
     // fallback memoria: ensure we always return an array
@@ -320,7 +348,17 @@ export class SalaService {
 
   private writeAll(salas: Sala[]) {
     if (this.hasLocalStorage) {
-      localStorage.setItem(this.storageKey, JSON.stringify({ salasActivas: salas }));
+      try {
+        const serialized = JSON.stringify({ salasActivas: salas });
+        console.debug('[SalaService] writeAll: intentando escribir', serialized.length, 'bytes en localStorage');
+        localStorage.setItem(this.storageKey, serialized);
+        console.debug('[SalaService] writeAll: escritura exitosa');
+      } catch (e: any) {
+        console.warn('[SalaService] writeAll: ERROR escribiendo localStorage (posiblemente lleno o inaccesible), fallback a memory:', e?.message);
+        this.hasLocalStorage = false;
+        if (!this.memoryCache) this.memoryCache = { salasActivas: [] };
+        this.memoryCache.salasActivas = salas;
+      }
     } else {
       if (!this.memoryCache) this.memoryCache = { salasActivas: [] };
       this.memoryCache.salasActivas = salas;
@@ -345,7 +383,7 @@ export class SalaService {
   }
 
   generarCodigo(longitud = 5): string {
-    const chars = 'ABCDEFGHJKLMNPQRSTuvwxyZA23456789';
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';  // Solo MAYÚSCULAS (sin I, O, 1, L para evitar confusión)
     let codigo = '';
     for (let i = 0; i < longitud; i++) codigo += chars[Math.floor(Math.random() * chars.length)];
     return codigo;

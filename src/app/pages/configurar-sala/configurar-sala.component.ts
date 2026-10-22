@@ -43,43 +43,7 @@ import { Equipo, DificultadPalabras } from '../../core/models/sala.model';
             </select>
           </div>
 
-          <!-- Ajustes específicos para La Palabra Más Larga: Dificultad y Nº de Letras fijo -->
-          <div *ngIf="juegoId === 'palabra-mas-larga'" class="p-4 bg-slate-900 rounded-2xl border border-slate-700 space-y-3">
-            <div class="text-xs font-bold uppercase tracking-wider text-yellow-400 flex items-center gap-1.5">
-              <span>🔤</span>
-              <span>Ajustes de Palabras (Fijos para toda la partida)</span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Dificultad</label>
-                <select [(ngModel)]="dificultadPalabras"
-                        class="w-full bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-white font-semibold text-xs focus:outline-none focus:border-yellow-400 transition">
-                  <option value="facil">🟢 Fácil (Muchas vocales y letras comunes)</option>
-                  <option value="media">🟡 Media (Equilibrada)</option>
-                  <option value="dificil">🔴 Difícil (Menos vocales y consonantes raras)</option>
-                </select>
-                <p class="text-[10px] text-slate-400 mt-1">
-                  {{ getDescripcionDificultad() }}
-                </p>
-              </div>
-
-              <div>
-                <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Nº de Letras por Ronda</label>
-                <select [(ngModel)]="numLetrasFijo"
-                        class="w-full bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-white font-semibold text-xs focus:outline-none focus:border-yellow-400 transition">
-                  <option [ngValue]="8">8 letras</option>
-                  <option [ngValue]="9">9 letras</option>
-                  <option [ngValue]="10">10 letras (Estándar)</option>
-                  <option [ngValue]="11">11 letras</option>
-                  <option [ngValue]="12">12 letras</option>
-                </select>
-                <p class="text-[10px] text-slate-400 mt-1">
-                  Cantidad fija de fichas que se repartirán en cada ronda.
-                </p>
-              </div>
-            </div>
-          </div>
+          <!-- NOTA: Los ajustes de palabras (dificultad, nº de letras) se configurarán después de crear la sala en la pantalla de administración -->
 
           <!-- Total rounds (specific to precio-justo or round-based games) -->
           <div>
@@ -281,21 +245,37 @@ export class ConfigurarSalaComponent implements OnInit {
   }
 
   async generar() {
+    console.log('[ConfigurarSala] generar() iniciado');
+    console.log('[ConfigurarSala] this.nombre=', this.nombre);
+    console.log('[ConfigurarSala] this.rondas=', this.rondas);
+    console.log('[ConfigurarSala] this.modoSeleccionado=', this.modoSeleccionado);
+    console.log('[ConfigurarSala] this.juegoId=', this.juegoId);
+    console.log('[ConfigurarSala] this.dificultadPalabras=', this.dificultadPalabras);
+    console.log('[ConfigurarSala] this.numLetrasFijo=', this.numLetrasFijo);
+    
     if (!this.nombre || !this.nombre.trim()) {
+      console.error('[ConfigurarSala] ERROR: nombre vacío');
       this.resultado = { error: 'Introduce un nombre válido para la sala' };
       return;
     }
+    
     const rounds = Number(this.rondas) || 5;
+    console.log('[ConfigurarSala] rounds calculadas=', rounds);
+    
     const equiposConfig = this.requiereEquipos() ? this.equipos : undefined;
+    console.log('[ConfigurarSala] equiposConfig=', equiposConfig);
 
+    // Configuración de palabras: SIEMPRE usar defaults (nunca undefined)
     const configPalabras = this.juegoId === 'palabra-mas-larga' ? {
       numLetras: Number(this.numLetrasFijo) || 10,
-      dificultad: this.dificultadPalabras
+      dificultad: this.dificultadPalabras || 'facil'
     } : undefined;
+    console.log('[ConfigurarSala] configPalabras=', configPalabras);
 
     this.creando = true;
     this.resultado = null;
     try {
+      console.log('[ConfigurarSala] Llamando a salaService.crearSala()...');
       this.resultado = await this.salaService.crearSala(
         this.nombre,
         rounds,
@@ -304,7 +284,9 @@ export class ConfigurarSalaComponent implements OnInit {
         equiposConfig,
         configPalabras
       );
+      console.log('[ConfigurarSala] crearSala retornó=', this.resultado);
     } catch (e: any) {
+      console.error('[ConfigurarSala] ERROR en crearSala:', e);
       this.resultado = { error: e?.message || 'Error al crear la sala' };
     } finally {
       this.creando = false;
