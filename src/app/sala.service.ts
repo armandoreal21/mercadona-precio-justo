@@ -1195,7 +1195,7 @@ export class SalaService {
 
       sala.estadoPalabras.palabrasAportadas.push({
         jugador: jugadorNombre,
-        equipoId: equipoId || undefined,
+        equipoId: equipoId || null,  // Firebase rechaza undefined, usar null
         palabra: cleanPalabra,
         longitud: cleanPalabra.length,
         ts: Date.now()

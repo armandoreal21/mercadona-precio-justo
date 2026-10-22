@@ -493,9 +493,11 @@ export class PalabraMasLargaComponent implements OnChanges, OnInit, OnDestroy {
   ngOnInit(): void {
     // Escuchar cambios en el estado de la sala desde otros clientes/fuentes
     this.stateUpdateListener = (event: any) => {
+      console.debug('[PalabraMasLarga] mpj_state_updated received, refrescando sala...');
       if (this.sala) {
         const updatedSala = this.salaService.obtenerSalaPorCodigo(this.sala.codigo);
         if (updatedSala) {
+          console.debug('[PalabraMasLarga] Sala actualizada, palabras aportadas:', updatedSala.estadoPalabras?.palabrasAportadas?.length || 0);
           this.sala = updatedSala;
           this.syncFromSala();
           this.syncTimer();
@@ -667,7 +669,12 @@ export class PalabraMasLargaComponent implements OnChanges, OnInit, OnDestroy {
     if (ok) {
       this.palabraBorrador = '';
       this.errorPalabra = null;
-      // Actualizar vista local inmediata
+      
+      // Esperar a que Firebase/WebSocket actualice el estado antes de refrescar
+      // Pequeño delay para asegurar que la palabra se propagó al estado global
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Actualizar vista local
       this.sala = this.salaService.obtenerSalaPorCodigo(this.sala.codigo);
     } else {
       this.errorPalabra = 'Esa palabra ya fue añadida.';
