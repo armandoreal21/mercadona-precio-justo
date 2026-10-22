@@ -82,7 +82,7 @@ import { Equipo, DificultadPalabras } from '../../core/models/sala.model';
             <div *ngIf="resultado.error" class="text-rose-400">Error: {{ resultado.error }}</div>
           </div>
 
-          <!-- Modal para pedir nombre del admin -->
+          <!-- Modal para pedir nombre del admin y equipo si es necesario -->
           <div *ngIf="showNombreAdminModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
             <div class="absolute inset-0 bg-black/70" (click)="cerrarDialogoAdmin()"></div>
             <div class="relative max-w-sm w-full bg-slate-800 rounded-2xl p-6 border border-slate-700 text-white shadow-2xl">
@@ -95,12 +95,24 @@ import { Equipo, DificultadPalabras } from '../../core/models/sala.model';
                      class="w-full bg-slate-700 border-2 border-slate-600 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-yellow-400 transition mb-4 disabled:opacity-60" 
                      autofocus />
               
+              <!-- Selector de equipo si es modo equipos -->
+              <div *ngIf="requiereEquipos() && equipos.length > 0" class="mb-4">
+                <label class="block text-sm font-bold text-slate-300 mb-2">Selecciona tu equipo:</label>
+                <select [(ngModel)]="equipoAdminSeleccionado"
+                        [disabled]="procesandoAdmin"
+                        class="w-full bg-slate-700 border-2 border-slate-600 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-yellow-400 transition disabled:opacity-60">
+                  <option value="" disabled selected>-- Elige un equipo --</option>
+                  <option *ngFor="let eq of equipos" [value]="eq.id">{{ eq.nombre }}</option>
+                </select>
+              </div>
+              
               <div *ngIf="errorAdmin" class="mb-3 p-2 bg-rose-900/30 border border-rose-600 rounded-lg text-rose-300 text-sm">
                 {{ errorAdmin }}
               </div>
               
               <div class="flex gap-2">
-                <button (click)="entrarComoAdmin()" [disabled]="!nombreAdmin.trim() || procesandoAdmin"
+                <button (click)="entrarComoAdmin()" 
+                        [disabled]="!nombreAdmin.trim() || (requiereEquipos() && !equipoAdminSeleccionado) || procesandoAdmin"
                         class="flex-1 bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 text-slate-900 font-black py-2.5 rounded-lg transition uppercase tracking-wide">
                   {{ procesandoAdmin ? '⏳ Entrando...' : 'Entrar 👉' }}
                 </button>
@@ -173,6 +185,7 @@ export class ConfigurarSalaComponent implements OnInit {
   // Modal para pedir nombre del admin
   showNombreAdminModal = false;
   nombreAdmin = '';
+  equipoAdminSeleccionado = '';  // Nuevo: para seleccionar equipo si es modo equipos
   procesandoAdmin = false;
   errorAdmin: string | null = null;
 
@@ -330,12 +343,14 @@ export class ConfigurarSalaComponent implements OnInit {
 
   mostrarDialogoAdmin(): void {
     this.nombreAdmin = '';
+    this.equipoAdminSeleccionado = '';  // Limpiar selección de equipo
     this.showNombreAdminModal = true;
   }
 
   cerrarDialogoAdmin(): void {
     this.showNombreAdminModal = false;
     this.nombreAdmin = '';
+    this.equipoAdminSeleccionado = '';  // Limpiar selección de equipo
     this.errorAdmin = null;
   }
 
@@ -351,7 +366,9 @@ export class ConfigurarSalaComponent implements OnInit {
     this.errorAdmin = null;
     
     try {
-      const res = await this.salaService.unirComoAdmin(codigo, cleanNombre);
+      // Pasar equipoId solo si el modo requiere equipos
+      const equipoId = this.requiereEquipos() ? this.equipoAdminSeleccionado : undefined;
+      const res = await this.salaService.unirComoAdmin(codigo, cleanNombre, equipoId);
       
       if (!res.success) {
         this.errorAdmin = res.error || 'No se pudo entrar a la sala';
@@ -360,7 +377,7 @@ export class ConfigurarSalaComponent implements OnInit {
       }
       
       try {
-        localStorage.setItem('mpj_current', JSON.stringify({ codigo, nombre: cleanNombre, esAdmin: true }));
+        localStorage.setItem('mpj_current', JSON.stringify({ codigo, nombre: cleanNombre, esAdmin: true, equipoId }));
       } catch (e) {}
       
       this.procesandoAdmin = false;
