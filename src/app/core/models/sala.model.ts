@@ -105,6 +105,41 @@ export interface EstadoSubastaRespuestas {
   selecciones?: Record<string, SeleccionSubasta>;
 }
 
+// ==========================================
+// JUEGO: CÓDIGO SECRETO (solo equipos, 2 equipos)
+// ==========================================
+
+export type FaseCodigoSecreto = 'esperando' | 'jugando' | 'terminado';
+
+/** 'neutra' | 'negra' | id de equipo dueño de la casilla */
+export type BandoCasilla = string;
+
+export interface CasillaCodigoSecreto {
+  idPalabra: string;     // id del JSON palabras.json
+  palabra: string;
+  bando: BandoCasilla;   // solo lo ven los capitanes mientras no esté descubierta
+  descubierta: boolean;
+}
+
+export interface PistaCodigoSecreto {
+  texto: string;         // palabra pista que dice el capitán
+  numero: number;        // cuántas casillas del equipo
+  intentosRestantes: number;
+  equipoId: string;
+}
+
+export interface EstadoCodigoSecreto {
+  fase: FaseCodigoSecreto;
+  casillas: CasillaCodigoSecreto[];       // 25 casillas (5x5)
+  equipoInicialId: string;                // equipo con 9 casillas, empieza
+  turnoEquipoId: string;                  // equipo que tiene el turno
+  capitanes: Record<string, string>;      // equipoId -> nombre del capitán
+  pista: PistaCodigoSecreto | null;       // pista activa del turno
+  palabrasUsadas: string[];               // ids de palabras.json ya jugadas en la sala
+  ganadorEquipoId: string | null;
+  motivoFin?: 'todas_descubiertas' | 'negra' | null;
+}
+
 export interface Sala {
   codigo: string;
   nombre: string;
@@ -124,6 +159,8 @@ export interface Sala {
   estadoPalabras?: EstadoPalabraMasLarga | null;
   // Estado específico para "La Subasta de Respuestas"
   estadoSubasta?: EstadoSubastaRespuestas | null;
+  // Estado específico para "Código Secreto"
+  estadoCodigoSecreto?: EstadoCodigoSecreto | null;
   createdAt?: number;
   updatedAt?: number;
 }

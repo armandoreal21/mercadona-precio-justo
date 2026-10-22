@@ -61,7 +61,7 @@ import { Equipo, DificultadPalabras } from '../../core/models/sala.model';
                      class="flex-1 bg-slate-800 border border-slate-600 rounded-lg px-3 py-1.5 text-sm" />
               <button *ngIf="equipos.length > 2" (click)="quitarEquipo(idx)" class="text-rose-400 hover:text-rose-300 text-xs px-2">✕</button>
             </div>
-            <button (click)="agregarEquipo()" class="text-xs text-cyan-400 hover:text-cyan-300 font-bold">+ Añadir equipo</button>
+            <button *ngIf="juegoId !== 'codigo-secreto'" (click)="agregarEquipo()" class="text-xs text-cyan-400 hover:text-cyan-300 font-bold">+ Añadir equipo</button>
           </div>
 
           <!-- Submit -->
@@ -275,7 +275,9 @@ export class ConfigurarSalaComponent implements OnInit {
     const rounds = Number(this.rondas) || 5;
     console.log('[ConfigurarSala] rounds calculadas=', rounds);
     
-    const equiposConfig = this.requiereEquipos() ? this.equipos : undefined;
+    const equiposConfig = this.requiereEquipos()
+      ? (this.juegoId === 'codigo-secreto' ? this.equipos.slice(0, 2) : this.equipos)
+      : undefined;
     console.log('[ConfigurarSala] equiposConfig=', equiposConfig);
 
     // Configuración de palabras: SIEMPRE usar defaults (nunca undefined)

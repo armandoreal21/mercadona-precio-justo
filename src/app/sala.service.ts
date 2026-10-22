@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas } from './core/models/sala.model';
+import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
@@ -450,6 +450,7 @@ export class SalaService {
       lastResults: null,
       estadoPalabras: estadoPalabrasInicial,
       estadoSubasta: estadoSubastaInicial,
+      estadoCodigoSecreto: tipoJuego === 'codigo-secreto' ? this.estadoCodigoInicial([]) : null,
       createdAt: now,
       updatedAt: now
     };
@@ -678,6 +679,10 @@ export class SalaService {
     sala.lastResults = null;
     sala.estadoPalabras = null;
     sala.estadoSubasta = null;
+    // Las palabras ya jugadas se conservan para que no se repitan en esta sala
+    sala.estadoCodigoSecreto = sala.tipoJuego === 'codigo-secreto'
+      ? this.estadoCodigoInicial(sala.estadoCodigoSecreto?.palabrasUsadas || [])
+      : null;
     sala.jugadores.forEach(j => { j.puntuacion = 0; delete j.apuesta; });
     sala.updatedAt = Date.now();
     this.writeAll(salas);
@@ -1640,6 +1645,190 @@ export class SalaService {
       });
 
       est.puntosEntregados = true;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  // ==========================================
+  // JUEGO: EL CÓDIGO SECRETO (2 equipos + capitanes)
+  // ==========================================
+
+  private estadoCodigoInicial(palabrasUsadas: string[]): EstadoCodigoSecreto {
+    return {
+      fase: 'esperando',
+      casillas: [],
+      equipoInicialId: '',
+      turnoEquipoId: '',
+      capitanes: {},
+      pista: null,
+      palabrasUsadas,
+      ganadorEquipoId: null,
+      motivoFin: null
+    };
+  }
+
+  /** Garantiza que el estado existe con sus campos. Firebase elimina arrays, objetos y nulls vacíos. */
+  private asegurarEstadoCodigo(sala: Sala): EstadoCodigoSecreto {
+    if (!sala.estadoCodigoSecreto) sala.estadoCodigoSecreto = this.estadoCodigoInicial([]);
+    const est = sala.estadoCodigoSecreto;
+    est.casillas = est.casillas || [];
+    est.capitanes = est.capitanes || {};
+    est.palabrasUsadas = est.palabrasUsadas || [];
+    return est;
+  }
+
+  private idsEquiposCodigo(sala: Sala): string[] {
+    return (sala.equipos || []).slice(0, 2).map(e => e.id);
+  }
+
+  private barajar<T>(lista: T[]): T[] {
+    const a = [...lista];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  /** Devuelve el equipo que ya ha descubierto todas sus casillas, o null. */
+  private comprobarGanadorCodigo(est: EstadoCodigoSecreto, equipos: string[]): string | null {
+    for (const id of equipos) {
+      const restantes = est.casillas.filter(c => c.bando === id && !c.descubierta).length;
+      if (restantes === 0) return id;
+    }
+    return null;
+  }
+
+  private terminarCodigo(est: EstadoCodigoSecreto, ganadorId: string, motivo: 'todas_descubiertas' | 'negra'): void {
+    est.fase = 'terminado';
+    est.ganadorEquipoId = ganadorId;
+    est.motivoFin = motivo;
+    est.pista = null;
+  }
+
+  private pasarTurnoCodigo(est: EstadoCodigoSecreto, nuevoEquipoId: string): void {
+    est.turnoEquipoId = nuevoEquipoId;
+    est.pista = null;
+  }
+
+  /** Admin: asigna el capitán de cada equipo. Solo antes de empezar la partida. */
+  async asignarCapitanesCodigo(codigo: string, capitanes: Record<string, string>): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoCodigo(sala);
+      if (est.fase !== 'esperando') return false;
+      const equipos = this.idsEquiposCodigo(sala);
+      if (equipos.length !== 2) return false;
+      const limpio: Record<string, string> = {};
+      equipos.forEach(id => { if (capitanes[id]) limpio[id] = capitanes[id]; });
+      est.capitanes = limpio;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin: arranca la partida con 25 palabras aleatorias que no se hayan usado antes en esta sala. */
+  async iniciarPartidaCodigo(codigo: string, catalogo: { id: string; palabra: string }[]): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoCodigo(sala);
+      const equipos = this.idsEquiposCodigo(sala);
+      if (est.fase !== 'esperando' || equipos.length !== 2) return false;
+      if (!equipos.every(id => !!est.capitanes[id])) return false;
+
+      const usadas = new Set(est.palabrasUsadas);
+      const pool = this.barajar(catalogo.filter(p => !usadas.has(p.id)));
+      if (pool.length < 25) return false;
+      const elegidas = pool.slice(0, 25);
+
+      // Equipo inicial: 9 casillas. El otro: 8. Además 7 neutras y 1 negra.
+      const inicial = equipos[Math.floor(Math.random() * 2)];
+      const otro = equipos.find(id => id !== inicial) as string;
+      const bandos: string[] = [
+        ...Array(9).fill(inicial),
+        ...Array(8).fill(otro),
+        ...Array(7).fill('neutra'),
+        'negra'
+      ];
+      const bandosBarajados = this.barajar(bandos);
+
+      est.casillas = elegidas.map((p, i) => ({
+        idPalabra: p.id,
+        palabra: p.palabra,
+        bando: bandosBarajados[i],
+        descubierta: false
+      }));
+      est.equipoInicialId = inicial;
+      est.turnoEquipoId = inicial;
+      est.pista = null;
+      est.ganadorEquipoId = null;
+      est.motivoFin = null;
+      est.palabrasUsadas = [...est.palabrasUsadas, ...elegidas.map(p => p.id)];
+      est.fase = 'jugando';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Capitán del equipo en turno: da la pista (palabra y número). */
+  async darPistaCodigo(codigo: string, usuario: string, texto: string, numero: number): Promise<boolean> {
+    const limpio = (texto || '').trim().replace(/\s+/g, ' ');
+    if (!limpio || numero < 0 || numero > 9) return false;
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoCodigo(sala);
+      if (est.fase !== 'jugando' || est.pista) return false;
+      if (est.capitanes[est.turnoEquipoId] !== usuario) return false;
+      est.pista = {
+        texto: limpio,
+        numero,
+        intentosRestantes: numero + 1,
+        equipoId: est.turnoEquipoId
+      };
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Miembro del equipo en turno (no capitán) toca una casilla. */
+  async tocarCasillaCodigo(codigo: string, usuario: string, idPalabra: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoCodigo(sala);
+      if (est.fase !== 'jugando' || !est.pista) return false;
+      const equipoTurno = est.turnoEquipoId;
+      const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === usuario.toLowerCase());
+      if (!jugador || jugador.equipoId !== equipoTurno) return false;
+      if (Object.values(est.capitanes).includes(usuario)) return false;
+      const casilla = est.casillas.find(c => c.idPalabra === idPalabra);
+      if (!casilla || casilla.descubierta) return false;
+
+      casilla.descubierta = true;
+      est.pista.intentosRestantes -= 1;
+      const equipos = this.idsEquiposCodigo(sala);
+      const otro = equipos.find(id => id !== equipoTurno) as string;
+
+      if (casilla.bando === 'negra') {
+        this.terminarCodigo(est, otro, 'negra');
+      } else {
+        const ganadorPorCartas = this.comprobarGanadorCodigo(est, equipos);
+        if (ganadorPorCartas) {
+          this.terminarCodigo(est, ganadorPorCartas, 'todas_descubiertas');
+        } else if (casilla.bando !== equipoTurno || est.pista.intentosRestantes <= 0) {
+          this.pasarTurnoCodigo(est, otro);
+        }
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Un miembro del equipo en turno da por terminado su turno voluntariamente. */
+  async terminarTurnoCodigo(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoCodigo(sala);
+      if (est.fase !== 'jugando' || !est.pista) return false;
+      const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === usuario.toLowerCase());
+      if (!jugador || jugador.equipoId !== est.turnoEquipoId) return false;
+      const otro = this.idsEquiposCodigo(sala).find(id => id !== est.turnoEquipoId) as string;
+      this.pasarTurnoCodigo(est, otro);
       sala.updatedAt = Date.now();
       return true;
     });

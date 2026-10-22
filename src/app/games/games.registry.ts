@@ -38,6 +38,17 @@ export const JUEGOS_DISPONIBLES: GameDefinition[] = [
       tiempoSegundos: 45,
       dificultad: 'facil'
     }
+  },
+  {
+    id: 'codigo-secreto',
+    nombre: 'El Código Secreto',
+    descripcion: 'Dos equipos y un tablero de 25 palabras. Los capitanes dan pistas para que su equipo localice sus casillas antes que el rival. ¡Cuidado con la casilla negra!',
+    icono: '🔐',
+    modosSoportados: ['equipos_multiusuario'],
+    minJugadores: 4,
+    configDefecto: {
+      rondasTotales: 1
+    }
   }
 ];
 

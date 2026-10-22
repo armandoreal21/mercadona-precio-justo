@@ -7,11 +7,12 @@ import { Sala, Jugador } from '../../core/models/sala.model';
 import { PrecioJustoComponent } from '../../games/precio-justo/precio-justo.component';
 import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-mas-larga.component';
 import { SubastaRespuestasComponent } from '../../games/subasta-respuestas/subasta-respuestas.component';
+import { CodigoSecretoComponent } from '../../games/codigo-secreto/codigo-secreto.component';
 
 @Component({
   selector: 'app-sala-shell',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent, SubastaRespuestasComponent],
+  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent, SubastaRespuestasComponent, CodigoSecretoComponent],
   template: `
     <div class="min-h-screen bg-slate-900 p-4 text-white mpj-theme">
       <div *ngIf="!sala" class="max-w-2xl mx-auto p-6 bg-slate-800 rounded-xl text-center">
@@ -117,7 +118,7 @@ import { SubastaRespuestasComponent } from '../../games/subasta-respuestas/subas
             </div>
 
             <!-- Admin: Agregar nuevo equipo en caliente -->
-            <div *ngIf="isCurrentAdmin()" class="mt-3 pt-3 border-t border-slate-800 flex gap-2 items-center">
+            <div *ngIf="isCurrentAdmin() && sala.tipoJuego !== 'codigo-secreto'" class="mt-3 pt-3 border-t border-slate-800 flex gap-2 items-center">
               <input type="text" [(ngModel)]="nuevoEquipoNombre" placeholder="Nombre de nuevo equipo..."
                      class="bg-slate-800 border border-slate-600 rounded-lg px-3 py-1 text-xs text-white flex-1 focus:outline-none focus:border-cyan-400" />
               <button (click)="agregarNuevoEquipo()"
@@ -153,6 +154,14 @@ import { SubastaRespuestasComponent } from '../../games/subasta-respuestas/subas
                                   (clasificacionRequested)="abrirClasificacion()"
                                   (endOfGameReached)="onFinPartida()">
           </app-subasta-respuestas>
+
+          <app-codigo-secreto *ngSwitchCase="'codigo-secreto'"
+                              [sala]="sala"
+                              [currentName]="currentName"
+                              [isAdmin]="isCurrentAdmin()"
+                              (clasificacionRequested)="abrirClasificacion()"
+                              (endOfGameReached)="onFinPartida()">
+          </app-codigo-secreto>
 
           <!-- Fallback or future game -->
           <div *ngSwitchDefault class="p-8 text-center bg-slate-900 rounded-xl">
@@ -318,6 +327,8 @@ export class SalaShellComponent implements OnInit, OnDestroy {
         return '🔤 La Palabra Más Larga';
       case 'subasta-respuestas':
         return '🧠 La Subasta de Respuestas';
+      case 'codigo-secreto':
+        return '🔐 El Código Secreto';
       default:
         return tipoJuego;
     }
