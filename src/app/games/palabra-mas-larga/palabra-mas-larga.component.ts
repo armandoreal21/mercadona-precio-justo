@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit, SimpleChanges, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sala, PalabraAportada, ModoPuntuacionPalabras } from '../../core/models/sala.model';
@@ -417,7 +417,7 @@ import { SalaService } from '../../sala.service';
     </div>
   `
 })
-export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
+export class PalabraMasLargaComponent implements OnChanges, OnInit, OnDestroy {
   @Input() sala: Sala | null = null;
   @Input() currentName: string | null = null;
   @Input() isAdmin = false;
@@ -437,6 +437,7 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
   // Temporizador local para fluidez
   segundosRestantes = 45;
   private timerInterval: any = null;
+  private stateUpdateListener: any = null;
 
   get estado() {
     return this.sala?.estadoPalabras || null;
@@ -489,8 +490,28 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     }
   }
 
+  ngOnInit(): void {
+    // Escuchar cambios en el estado de la sala desde otros clientes/fuentes
+    this.stateUpdateListener = (event: any) => {
+      if (this.sala) {
+        const updatedSala = this.salaService.obtenerSalaPorCodigo(this.sala.codigo);
+        if (updatedSala) {
+          this.sala = updatedSala;
+          this.syncFromSala();
+          this.syncTimer();
+        }
+      }
+    };
+    if (typeof window !== 'undefined') {
+      window.addEventListener('mpj_state_updated', this.stateUpdateListener as EventListener);
+    }
+  }
+
   ngOnDestroy(): void {
     this.stopTimer();
+    if (this.stateUpdateListener && typeof window !== 'undefined') {
+      window.removeEventListener('mpj_state_updated', this.stateUpdateListener as EventListener);
+    }
   }
 
   private syncFromSala(): void {

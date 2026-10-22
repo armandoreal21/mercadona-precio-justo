@@ -110,12 +110,42 @@ import { Equipo, DificultadPalabras } from '../../core/models/sala.model';
           <div *ngIf="resultado" class="mt-4 p-4 rounded-xl bg-slate-900 text-sm border border-slate-700">
             <div *ngIf="resultado.creado" class="text-green-400 font-bold flex flex-col gap-2">
               <span>✅ Sala creada con éxito: código <strong class="text-white text-base font-mono tracking-widest bg-slate-800 px-2 py-0.5 rounded">{{ resultado.sala?.codigo }}</strong></span>
-              <button (click)="entrarDirectoComoAdmin()"
+              <button (click)="mostrarDialogoAdmin()"
                       class="mt-2 w-full bg-cyan-400 text-slate-900 font-black py-2.5 rounded-lg hover:bg-cyan-300 transition uppercase tracking-wide">
                 Entrar a la Sala como Admin 👉
               </button>
             </div>
             <div *ngIf="resultado.error" class="text-rose-400">Error: {{ resultado.error }}</div>
+          </div>
+
+          <!-- Modal para pedir nombre del admin -->
+          <div *ngIf="showNombreAdminModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-black/70" (click)="cerrarDialogoAdmin()"></div>
+            <div class="relative max-w-sm w-full bg-slate-800 rounded-2xl p-6 border border-slate-700 text-white shadow-2xl">
+              <h3 class="text-xl font-bold mb-3 text-yellow-400">¿Cuál es tu nombre?</h3>
+              <p class="text-sm text-slate-300 mb-4">Ingresa tu nombre para entrar como administrador de la sala</p>
+              
+              <input [(ngModel)]="nombreAdmin" type="text" placeholder="Tu nombre / nickname"
+                     (keyup.enter)="entrarComoAdmin()"
+                     [disabled]="procesandoAdmin"
+                     class="w-full bg-slate-700 border-2 border-slate-600 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-yellow-400 transition mb-4 disabled:opacity-60" 
+                     autofocus />
+              
+              <div *ngIf="errorAdmin" class="mb-3 p-2 bg-rose-900/30 border border-rose-600 rounded-lg text-rose-300 text-sm">
+                {{ errorAdmin }}
+              </div>
+              
+              <div class="flex gap-2">
+                <button (click)="entrarComoAdmin()" [disabled]="!nombreAdmin.trim() || procesandoAdmin"
+                        class="flex-1 bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 text-slate-900 font-black py-2.5 rounded-lg transition uppercase tracking-wide">
+                  {{ procesandoAdmin ? '⏳ Entrando...' : 'Entrar 👉' }}
+                </button>
+                <button (click)="cerrarDialogoAdmin()" [disabled]="procesandoAdmin"
+                        class="flex-1 bg-slate-700 hover:bg-slate-600 disabled:opacity-60 text-white font-semibold py-2.5 rounded-lg transition">
+                  Cancelar
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Mantenimiento / Limpieza de salas inactivas (como estaba antes en admin) -->
@@ -175,6 +205,12 @@ export class ConfigurarSalaComponent implements OnInit {
 
   resultado: any = null;
   creando = false;
+
+  // Modal para pedir nombre del admin
+  showNombreAdminModal = false;
+  nombreAdmin = '';
+  procesandoAdmin = false;
+  errorAdmin: string | null = null;
 
   // Cleanup section
   cleanupResult: string | null = null;
@@ -310,14 +346,46 @@ export class ConfigurarSalaComponent implements OnInit {
     this.cleanupPreview = null;
   }
 
-  async entrarDirectoComoAdmin() {
+  mostrarDialogoAdmin(): void {
+    this.nombreAdmin = '';
+    this.showNombreAdminModal = true;
+  }
+
+  cerrarDialogoAdmin(): void {
+    this.showNombreAdminModal = false;
+    this.nombreAdmin = '';
+    this.errorAdmin = null;
+  }
+
+  async entrarComoAdmin(): Promise<void> {
+    const cleanNombre = (this.nombreAdmin || '').trim();
+    if (!cleanNombre) {
+      return;
+    }
     if (!this.resultado?.sala?.codigo) return;
     const codigo = this.resultado.sala.codigo;
-    const adminName = 'Admin';
-    await this.salaService.unirComoAdmin(codigo, adminName);
+    
+    this.procesandoAdmin = true;
+    this.errorAdmin = null;
+    
     try {
-      localStorage.setItem('mpj_current', JSON.stringify({ codigo, nombre: adminName, esAdmin: true }));
-    } catch (e) {}
-    this.router.navigate(['/sala', codigo]);
+      const res = await this.salaService.unirComoAdmin(codigo, cleanNombre);
+      
+      if (!res.success) {
+        this.errorAdmin = res.error || 'No se pudo entrar a la sala';
+        this.procesandoAdmin = false;
+        return;
+      }
+      
+      try {
+        localStorage.setItem('mpj_current', JSON.stringify({ codigo, nombre: cleanNombre, esAdmin: true }));
+      } catch (e) {}
+      
+      this.procesandoAdmin = false;
+      this.router.navigate(['/sala', codigo]);
+    } catch (e: any) {
+      this.errorAdmin = 'Error al entrar: ' + (e?.message || 'intenta de nuevo');
+      this.procesandoAdmin = false;
+    }
   }
 }

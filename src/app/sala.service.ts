@@ -107,11 +107,25 @@ export class SalaService {
           const state = (val && typeof val === 'object' && Array.isArray(val.salasActivas)) ? val : { salasActivas: [] };
           console.debug('[SalaService] firebase onValue, state snapshot:', state);
           this.suppressBroadcast = true;
-          if (this.hasLocalStorage) {
-            localStorage.setItem(this.storageKey, JSON.stringify(state));
+          
+          // IMPORTANTE: No sobrescribir localStorage si está más actualizado que Firebase
+          // Esto evita que salas recién creadas en local se pierdan cuando Firebase aún está vacío
+          const local = this.readAll();
+          const serverEmpty = !state?.salasActivas || state.salasActivas.length === 0;
+          const localHasRooms = Array.isArray(local) && local.length > 0;
+          
+          if (serverEmpty && localHasRooms) {
+            // Firebase vacío pero tenemos salas locales → NO sobrescribir, mantener locales
+            console.debug('[SalaService] Firebase vacío pero hay salas locales. Manteniendo estado local.');
           } else {
-            this.memoryCache = state;
+            // Firebase tiene datos o ambos están vacíos → usar Firebase
+            if (this.hasLocalStorage) {
+              localStorage.setItem(this.storageKey, JSON.stringify(state));
+            } else {
+              this.memoryCache = state;
+            }
           }
+          
           if (typeof window !== 'undefined') {
             window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: 'firebase' } }));
           }
@@ -392,31 +406,32 @@ export class SalaService {
 
     localSalas.push(nueva);
     this.writeAll(localSalas);
-
-    // 2. Si Firebase está activo o conectándose, sincronizamos remotamente
-    if (this.useFirebase && this.firebaseDb) {
-      try {
-        const newState = await this.applyTransaction((state) => {
-          const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
-          // Si ya existe otra sala con ese código en firebase, no sobrescribir
-          const yaExiste = salas.find(s => s.codigo === codigo);
-          if (yaExiste) {
-            return state;
-          }
-          salas.push(nueva);
-          return { salasActivas: salas };
-        });
-
-        if (!newState) {
-          // Si falló la transacción pero tenemos conexión, intentar un broadcast directo
-          await this.broadcastStateToFirebase(this.readAll());
-        }
-      } catch (err: any) {
-        console.warn('[SalaService] Error sincronizando nueva sala con Firebase:', err);
-      }
+    
+    // VERIFICAR que la sala está disponible localmente antes de retornar
+    const verified = this.obtenerSalaPorCodigo(codigo);
+    if (!verified) {
+      // Esto no debería pasar, pero si pasa, significaría fallo crítico en localStorage
+      console.error('[SalaService] CRITICAL: Sala creada pero no verificable inmediatamente');
+      return { sala: null as any, creado: false, error: 'Error crítico: sala no verificable' };
     }
 
-    return { sala: nueva, creado: true };
+    // 2. Si Firebase está activo o conectándose, sincronizamos remotamente (en background, no bloqueante)
+    if (this.useFirebase && this.firebaseDb) {
+      // NO esperamos aquí - Fire base se sincroniza en background
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const yaExiste = salas.find(s => s.codigo === codigo);
+        if (yaExiste) {
+          return state;
+        }
+        salas.push(nueva);
+        return { salasActivas: salas };
+      }).catch(err => {
+        console.warn('[SalaService] Error sincronizando nueva sala con Firebase:', err);
+      });
+    }
+
+    return { sala: verified, creado: true };
   }
 
   obtenerSalaPorCodigo(codigo: string): Sala | null {
@@ -468,7 +483,6 @@ export class SalaService {
 
     // 1. Intentar transacción en Firebase si está activo
     if (this.useFirebase && this.firebaseDb) {
-      let roomFound = false;
       let playerExists = false;
 
       try {
@@ -476,10 +490,8 @@ export class SalaService {
           const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
           const sala = salas.find(s => s.codigo === upCode);
           if (!sala) {
-            roomFound = false;
-            return null;
+            return null; // Sala no encontrada en Firebase
           }
-          roomFound = true;
 
           const exists = sala.jugadores && sala.jugadores.some((j: any) => (j.nombre || '').toLowerCase() === trimmedNombreLower);
           if (exists) {
@@ -494,11 +506,13 @@ export class SalaService {
         });
 
         if (newState) {
-          const sala = (newState.salasActivas || []).find(s => s.codigo === upCode);
-          return { sala, success: true };
+          // Firebase tuvo éxito, pero verifica localmente para garantizar
+          const sala = this.obtenerSalaPorCodigo(upCode);
+          if (sala) {
+            return { sala, success: true };
+          }
         }
 
-        // Si la transacción fue cancelada intencionadamente por lógica de negocio
         if (playerExists) {
           return { success: false, error: 'Ya existe un jugador con ese nombre en la sala' };
         }
@@ -529,17 +543,13 @@ export class SalaService {
 
     // 1. Intentar transacción en Firebase si está activo
     if (this.useFirebase && this.firebaseDb) {
-      let roomFound = false;
-
       try {
         const newState = await this.applyTransaction((state) => {
           const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
           const sala = salas.find(s => s.codigo === upCode);
           if (!sala) {
-            roomFound = false;
             return null;
           }
-          roomFound = true;
 
           let jugador = sala.jugadores && sala.jugadores.find((j: any) => (j.nombre || '').toLowerCase() === trimmedNombreLower);
           if (!jugador) {
@@ -554,16 +564,17 @@ export class SalaService {
           return { salasActivas: salas };
         });
 
-        if (newState && roomFound) {
-          const sala = (newState.salasActivas || []).find(s => s.codigo === upCode);
-          return { sala, success: true };
+        if (newState) {
+          const sala = this.obtenerSalaPorCodigo(upCode);
+          if (sala) {
+            return { sala, success: true };
+          }
         }
       } catch (e) {
         console.warn('[SalaService] Error en transacción unirComoAdmin:', e);
       }
     }
 
-    // 2. Fallback local / lectura de caché sincronizada
     const salas = this.readAll();
     const sala = salas.find(s => s.codigo === upCode);
     if (!sala) return { success: false, error: 'Sala no encontrada' };
