@@ -44,7 +44,7 @@ import { Equipo } from '../../core/models/sala.model';
           </div>
 
           <!-- Total rounds (specific to precio-justo or round-based games) -->
-          <div *ngIf="juego?.id === 'precio-justo'">
+          <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Rondas Totales</label>
             <input [(ngModel)]="rondas" type="number" min="1" max="50"
                    class="w-28 bg-slate-700 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-semibold focus:outline-none focus:border-yellow-400 transition" />
@@ -146,17 +146,19 @@ export class ConfigurarSalaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.juegoId = this.route.snapshot.paramMap.get('juegoId') || 'precio-justo';
-    const j = getJuegoById(this.juegoId);
-    if (!j) {
-      this.router.navigate(['/juegos']);
-      return;
-    }
-    this.juego = j;
-    this.modoSeleccionado = j.modosSoportados[0] || 'individual';
-    if (j.configDefecto?.['rondasTotales']) {
-      this.rondas = j.configDefecto['rondasTotales'];
-    }
+    this.route.paramMap.subscribe(params => {
+      this.juegoId = params.get('juegoId') || 'precio-justo';
+      const j = getJuegoById(this.juegoId);
+      if (!j) {
+        this.router.navigate(['/juegos']);
+        return;
+      }
+      this.juego = j;
+      this.modoSeleccionado = j.modosSoportados[0] || 'individual';
+      if (j.configDefecto?.['rondasTotales']) {
+        this.rondas = j.configDefecto['rondasTotales'];
+      }
+    });
   }
 
   requiereEquipos(): boolean {

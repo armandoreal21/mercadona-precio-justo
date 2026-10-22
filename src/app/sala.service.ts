@@ -2,10 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo } from './core/models/sala.model';
+import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
 
-export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo };
+export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras };
 
 @Injectable({ providedIn: 'root' })
 export class SalaService {
@@ -602,6 +602,7 @@ export class SalaService {
  sala.rondaActual =0;
  sala.productoActual = null;
  sala.lastResults = null;
+ sala.estadoPalabras = null;
  sala.jugadores.forEach(j => { j.puntuacion =0; delete j.apuesta; });
  sala.updatedAt = Date.now();
  this.writeAll(salas);
@@ -918,6 +919,368 @@ export class SalaService {
     sala.updatedAt = Date.now();
     this.writeAll(salas);
     return true;
+  }
+
+  // ==========================================
+  // GESTIÓN DE EQUIPOS EN VIVO (Admin)
+  // ==========================================
+  agregarEquipoASala(codigo: string, nombreEquipo: string): boolean {
+    const upCode = (codigo || '').toUpperCase();
+    const cleanNombre = (nombreEquipo || '').trim();
+    if (!cleanNombre) return false;
+
+    const mutator = (s: Sala) => {
+      s.equipos = Array.isArray(s.equipos) ? s.equipos : [];
+      const id = 'eq_' + Math.random().toString(36).slice(2, 7);
+      s.equipos.push({ id, nombre: cleanNombre });
+      s.updatedAt = Date.now();
+    };
+
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        mutator(sala);
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    mutator(sala);
+    this.writeAll(salas);
+    return true;
+  }
+
+  eliminarEquipoDeSala(codigo: string, equipoId: string): boolean {
+    const upCode = (codigo || '').toUpperCase();
+    const mutator = (s: Sala): boolean => {
+      if (!Array.isArray(s.equipos)) return false;
+      // No permitir si hay jugadores asignados a ese equipo
+      const hasPlayers = (s.jugadores || []).some(j => j.equipoId === equipoId);
+      if (hasPlayers) return false;
+      const idx = s.equipos.findIndex(e => e.id === equipoId);
+      if (idx === -1) return false;
+      s.equipos.splice(idx, 1);
+      s.updatedAt = Date.now();
+      return true;
+    };
+
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        const ok = mutator(sala);
+        return ok ? { salasActivas: salas } : null;
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    const ok = mutator(sala);
+    if (ok) this.writeAll(salas);
+    return ok;
+  }
+
+  // ==========================================
+  // JUEGO: LA PALABRA MÁS LARGA (Cifras y Letras)
+  // ==========================================
+
+  iniciarRondaPalabras(codigo: string, letras: string[], tiempoSegundos = 45, modoPuntuacion: ModoPuntuacionPalabras = 'por_letras') {
+    const upCode = (codigo || '').toUpperCase();
+    const now = Date.now();
+    const tiempoFin = now + (tiempoSegundos * 1000);
+
+    const nuevoEstado: EstadoPalabraMasLarga = {
+      fase: 'jugando',
+      letras: letras.map(l => l.toUpperCase()),
+      tiempoLimite: tiempoSegundos,
+      tiempoFin,
+      palabrasAportadas: [],
+      selecciones: {},
+      modoPuntuacion
+    };
+
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        sala.estadoPalabras = nuevoEstado;
+        sala.updatedAt = Date.now();
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    sala.estadoPalabras = nuevoEstado;
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
+
+  cambiarModoPuntuacionPalabras(codigo: string, modo: ModoPuntuacionPalabras) {
+    const upCode = (codigo || '').toUpperCase();
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala || !sala.estadoPalabras) return null;
+        sala.estadoPalabras.modoPuntuacion = modo;
+        sala.updatedAt = Date.now();
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala || !sala.estadoPalabras) return false;
+    sala.estadoPalabras.modoPuntuacion = modo;
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
+
+  pasarAFaseSeleccionPalabras(codigo: string) {
+    const upCode = (codigo || '').toUpperCase();
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala || !sala.estadoPalabras) return null;
+        if (sala.estadoPalabras.fase === 'jugando') {
+          sala.estadoPalabras.fase = 'seleccion';
+          sala.updatedAt = Date.now();
+        }
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala || !sala.estadoPalabras) return false;
+    if (sala.estadoPalabras.fase === 'jugando') {
+      sala.estadoPalabras.fase = 'seleccion';
+      sala.updatedAt = Date.now();
+      this.writeAll(salas);
+    }
+    return true;
+  }
+
+  async enviarPalabraJugador(codigo: string, jugadorNombre: string, equipoId: string | undefined, palabra: string): Promise<boolean> {
+    const upCode = (codigo || '').toUpperCase();
+    const cleanPalabra = (palabra || '').trim().toUpperCase();
+    if (!cleanPalabra) return false;
+
+    const mutator = (sala: Sala): boolean => {
+      if (!sala.estadoPalabras || (sala.estadoPalabras.fase !== 'jugando' && sala.estadoPalabras.fase !== 'esperando')) return false;
+      if (!Array.isArray(sala.estadoPalabras.palabrasAportadas)) {
+        sala.estadoPalabras.palabrasAportadas = [];
+      }
+      const yaExiste = sala.estadoPalabras.palabrasAportadas.some(
+        p => p.palabra === cleanPalabra && p.jugador.toLowerCase() === jugadorNombre.toLowerCase()
+      );
+      if (yaExiste) return false;
+
+      sala.estadoPalabras.palabrasAportadas.push({
+        jugador: jugadorNombre,
+        equipoId: equipoId || undefined,
+        palabra: cleanPalabra,
+        longitud: cleanPalabra.length,
+        ts: Date.now()
+      });
+      sala.updatedAt = Date.now();
+      return true;
+    };
+
+    if (this.useFirebase && this.firebaseDb) {
+      const res = await this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        const ok = mutator(sala);
+        return ok ? { salasActivas: salas } : null;
+      });
+      return !!res;
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    const ok = mutator(sala);
+    if (ok) this.writeAll(salas);
+    return ok;
+  }
+
+  async seleccionarPalabraEquipo(codigo: string, claveGrupo: string, nombreEquipo: string, palabra: string, seleccionador: string): Promise<boolean> {
+    const upCode = (codigo || '').toUpperCase();
+    const cleanPalabra = (palabra || '').trim().toUpperCase();
+
+    const mutator = (sala: Sala): boolean => {
+      if (!sala.estadoPalabras) return false;
+      if (!sala.estadoPalabras.selecciones) sala.estadoPalabras.selecciones = {};
+
+      sala.estadoPalabras.selecciones[claveGrupo] = {
+        equipoId: claveGrupo,
+        nombreEquipo,
+        palabra: cleanPalabra,
+        longitud: cleanPalabra.length,
+        seleccionadaPor: seleccionador,
+        descartada: false
+      };
+
+      // Si todos los grupos esperados ya tienen selección, pasar automáticamente a revelación
+      const gruposEsperados = sala.modoJuego === 'individual'
+        ? (sala.jugadores || []).map(j => j.nombre)
+        : (sala.equipos || []).map(e => e.id);
+
+      const todasListas = gruposEsperados.length > 0 && gruposEsperados.every(gId => !!sala.estadoPalabras?.selecciones[gId]);
+      if (todasListas) {
+        sala.estadoPalabras.fase = 'revelacion';
+      }
+
+      sala.updatedAt = Date.now();
+      return true;
+    };
+
+    if (this.useFirebase && this.firebaseDb) {
+      const res = await this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        const ok = mutator(sala);
+        return ok ? { salasActivas: salas } : null;
+      });
+      return !!res;
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    const ok = mutator(sala);
+    if (ok) this.writeAll(salas);
+    return ok;
+  }
+
+  toggleDescartePalabraAdmin(codigo: string, claveGrupo: string): boolean {
+    const upCode = (codigo || '').toUpperCase();
+    const mutator = (sala: Sala): boolean => {
+      if (!sala.estadoPalabras?.selecciones?.[claveGrupo]) return false;
+      const cur = sala.estadoPalabras.selecciones[claveGrupo];
+      cur.descartada = !cur.descartada;
+      sala.updatedAt = Date.now();
+      return true;
+    };
+
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        const ok = mutator(sala);
+        return ok ? { salasActivas: salas } : null;
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    const ok = mutator(sala);
+    if (ok) this.writeAll(salas);
+    return ok;
+  }
+
+  pasarARevelacionManual(codigo: string): boolean {
+    const upCode = (codigo || '').toUpperCase();
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala || !sala.estadoPalabras) return null;
+        sala.estadoPalabras.fase = 'revelacion';
+        sala.updatedAt = Date.now();
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala || !sala.estadoPalabras) return false;
+    sala.estadoPalabras.fase = 'revelacion';
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
+
+  entregarPuntosPalabras(codigo: string): { ganadores: string[]; puntos: number } | null {
+    const upCode = (codigo || '').toUpperCase();
+
+    const calcular = (sala: Sala): { ganadores: string[]; puntos: number } | null => {
+      if (!sala.estadoPalabras || !sala.estadoPalabras.selecciones) return null;
+      const seleccionesValidas = Object.entries(sala.estadoPalabras.selecciones)
+        .map(([id, s]) => ({ id, ...s }))
+        .filter(s => !s.descartada && s.palabra && s.longitud > 0);
+
+      if (seleccionesValidas.length === 0) {
+        // Todas descartadas o nadie eligió
+        return { ganadores: [], puntos: 0 };
+      }
+
+      // Ordenar por longitud descendente
+      seleccionesValidas.sort((a, b) => b.longitud - a.longitud);
+      const maxLen = seleccionesValidas[0].longitud;
+      const ganadoresEmpatados = seleccionesValidas.filter(s => s.longitud === maxLen);
+
+      const modo = sala.estadoPalabras.modoPuntuacion || 'por_letras';
+      const puntosOtorgados = modo === 'por_letras' ? maxLen : 10;
+
+      // Sumar puntos a los ganadores (en jugadores)
+      const idsGanadores = ganadoresEmpatados.map(g => g.id);
+
+      if (sala.modoJuego === 'individual') {
+        sala.jugadores.forEach(j => {
+          if (idsGanadores.includes(j.nombre)) {
+            j.puntuacion = (j.puntuacion || 0) + puntosOtorgados;
+          }
+        });
+      } else {
+        // Sumar puntos a todos los jugadores que pertenezcan a los equipos ganadores
+        sala.jugadores.forEach(j => {
+          if (j.equipoId && idsGanadores.includes(j.equipoId)) {
+            j.puntuacion = (j.puntuacion || 0) + puntosOtorgados;
+          }
+        });
+      }
+
+      sala.updatedAt = Date.now();
+      return {
+        ganadores: ganadoresEmpatados.map(g => g.nombreEquipo || g.id),
+        puntos: puntosOtorgados
+      };
+    };
+
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        calcular(sala);
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return null;
+    const res = calcular(sala);
+    this.writeAll(salas);
+    return res;
   }
 }
 

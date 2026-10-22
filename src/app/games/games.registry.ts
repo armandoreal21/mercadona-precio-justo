@@ -4,12 +4,26 @@ export const JUEGOS_DISPONIBLES: GameDefinition[] = [
   {
     id: 'precio-justo',
     nombre: 'El Precio Justo',
-    descripcion: 'Adivina el precio de productos del catálogo de Mercadona sin pasarte. ¡El más cercano gana!',
+    descripcion: 'Adivina el precio de productos del catálogo de Mercadona. ¡El más cercano gana!',
     icono: '🛒',
     modosSoportados: ['individual'],
     minJugadores: 1,
     configDefecto: {
       rondasTotales: 5
+    }
+  },
+  {
+    id: 'palabra-mas-larga',
+    nombre: 'La Palabra Más Larga',
+    descripcion: 'Genera letras aleatorias en 45 segundos y encuentra la palabra más larga en español. ¡Compite por equipos o individual!',
+    icono: '🔤',
+    modosSoportados: ['equipos_multiusuario', 'individual'],
+    minJugadores: 1,
+    configDefecto: {
+      rondasTotales: 5,
+      numLetras: 10,
+      tiempoSegundos: 45,
+      modoPuntuacion: 'por_letras'
     }
   }
 ];

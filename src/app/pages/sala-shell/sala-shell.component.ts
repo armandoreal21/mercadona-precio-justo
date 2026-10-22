@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { SalaService } from '../../sala.service';
 import { Sala, Jugador } from '../../core/models/sala.model';
 import { PrecioJustoComponent } from '../../games/precio-justo/precio-justo.component';
+import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-mas-larga.component';
 
 @Component({
   selector: 'app-sala-shell',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent],
+  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent],
   template: `
     <div class="min-h-screen bg-slate-900 p-4 text-white mpj-theme">
       <div *ngIf="!sala" class="max-w-2xl mx-auto p-6 bg-slate-800 rounded-xl text-center">
@@ -65,32 +66,56 @@ import { PrecioJustoComponent } from '../../games/precio-justo/precio-justo.comp
           </div>
 
           <!-- Team mode: Participants grouped by team -->
-          <div *ngIf="sala.modoJuego !== 'individual' && sala.equipos" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
-            <div *ngFor="let eq of sala.equipos" class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-              <div class="font-bold text-sm text-cyan-300 mb-2 flex justify-between">
-                <span>🛡️ {{ eq.nombre }}</span>
-                <span class="text-xs text-slate-400">({{ getJugadoresEquipo(eq.id).length }})</span>
-              </div>
-              <div class="space-y-1.5">
-                <div *ngFor="let j of getJugadoresEquipo(eq.id)"
-                     class="flex justify-between items-center text-xs bg-slate-900/80 p-1.5 rounded-lg">
-                  <span class="font-semibold">{{ j.nombre }}</span>
-                  <div class="flex items-center gap-1">
-                    <!-- Admin team mover -->
-                    <select *ngIf="isCurrentAdmin()" [ngModel]="j.equipoId"
-                            (ngModelChange)="cambiarEquipo(j.nombre, $event)"
-                            class="bg-slate-800 text-slate-200 text-[10px] rounded px-1 py-0.5 border border-slate-600">
-                      <option *ngFor="let targetEq of sala.equipos" [value]="targetEq.id">
-                        → {{ targetEq.nombre }}
-                      </option>
-                    </select>
-                    <button *ngIf="isCurrentAdmin() && !j.esAdmin" (click)="expulsarJugador(j.nombre)"
-                            title="Expulsar" class="text-rose-400 hover:text-rose-300 px-1 font-bold">
-                      ✕
+          <div *ngIf="sala.modoJuego !== 'individual' && sala.equipos">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+              <div *ngFor="let eq of sala.equipos" class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                <div class="font-bold text-sm text-cyan-300 mb-2 flex justify-between items-center">
+                  <span>🛡️ {{ eq.nombre }}</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-400">({{ getJugadoresEquipo(eq.id).length }})</span>
+                    <!-- Eliminar equipo si no tiene participantes (solo Admin) -->
+                    <button *ngIf="isCurrentAdmin() && getJugadoresEquipo(eq.id).length === 0"
+                            (click)="eliminarEquipo(eq.id, eq.nombre)"
+                            title="Eliminar equipo vacío"
+                            class="text-rose-400 hover:text-rose-300 text-xs px-1.5 py-0.5 bg-rose-950/60 rounded border border-rose-800 font-bold">
+                      🗑️
                     </button>
                   </div>
                 </div>
+                <div class="space-y-1.5">
+                  <div *ngFor="let j of getJugadoresEquipo(eq.id)"
+                       class="flex justify-between items-center text-xs bg-slate-900/80 p-1.5 rounded-lg">
+                    <span class="font-semibold">{{ j.nombre }}</span>
+                    <div class="flex items-center gap-1">
+                      <!-- Admin team mover -->
+                      <select *ngIf="isCurrentAdmin()" [ngModel]="j.equipoId"
+                              (ngModelChange)="cambiarEquipo(j.nombre, $event)"
+                              class="bg-slate-800 text-slate-200 text-[10px] rounded px-1 py-0.5 border border-slate-600">
+                        <option *ngFor="let targetEq of sala.equipos" [value]="targetEq.id">
+                          → {{ targetEq.nombre }}
+                        </option>
+                      </select>
+                      <button *ngIf="isCurrentAdmin() && !j.esAdmin" (click)="expulsarJugador(j.nombre)"
+                              title="Expulsar" class="text-rose-400 hover:text-rose-300 px-1 font-bold">
+                        ✕
+                      </button>
+                    </div>
+                  </div>
+                  <div *ngIf="getJugadoresEquipo(eq.id).length === 0" class="text-[11px] text-slate-500 italic py-1 text-center">
+                    Sin participantes aún
+                  </div>
+                </div>
               </div>
+            </div>
+
+            <!-- Admin: Agregar nuevo equipo en caliente -->
+            <div *ngIf="isCurrentAdmin()" class="mt-3 pt-3 border-t border-slate-800 flex gap-2 items-center">
+              <input type="text" [(ngModel)]="nuevoEquipoNombre" placeholder="Nombre de nuevo equipo..."
+                     class="bg-slate-800 border border-slate-600 rounded-lg px-3 py-1 text-xs text-white flex-1 focus:outline-none focus:border-cyan-400" />
+              <button (click)="agregarNuevoEquipo()"
+                      class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs uppercase tracking-wide transition">
+                + Añadir Equipo
+              </button>
             </div>
           </div>
         </div>
@@ -104,6 +129,14 @@ import { PrecioJustoComponent } from '../../games/precio-justo/precio-justo.comp
                             (clasificacionRequested)="abrirClasificacion()"
                             (endOfGameReached)="onFinPartida()">
           </app-precio-justo>
+
+          <app-palabra-mas-larga *ngSwitchCase="'palabra-mas-larga'"
+                                 [sala]="sala"
+                                 [currentName]="currentName"
+                                 [isAdmin]="isCurrentAdmin()"
+                                 (clasificacionRequested)="abrirClasificacion()"
+                                 (endOfGameReached)="onFinPartida()">
+          </app-palabra-mas-larga>
 
           <!-- Fallback or future game -->
           <div *ngSwitchDefault class="p-8 text-center bg-slate-900 rounded-xl">
@@ -179,6 +212,8 @@ export class SalaShellComponent implements OnInit, OnDestroy {
   codigo = '';
   currentName: string | null = null;
 
+  nuevoEquipoNombre = '';
+
   showClasificacion = false;
   clasificacionList: { nombre: string; puntos: number }[] = [];
   showFinalChoiceModal = false;
@@ -249,6 +284,8 @@ export class SalaShellComponent implements OnInit, OnDestroy {
     switch (tipoJuego) {
       case 'precio-justo':
         return '🛒 El Precio Justo';
+      case 'palabra-mas-larga':
+        return '🔤 La Palabra Más Larga';
       default:
         return tipoJuego;
     }
@@ -257,6 +294,23 @@ export class SalaShellComponent implements OnInit, OnDestroy {
   getJugadoresEquipo(equipoId: string): Jugador[] {
     if (!this.sala) return [];
     return this.sala.jugadores.filter(j => j.equipoId === equipoId);
+  }
+
+  agregarNuevoEquipo(): void {
+    if (!this.isCurrentAdmin() || !this.nuevoEquipoNombre.trim()) return;
+    this.salaService.agregarEquipoASala(this.codigo, this.nuevoEquipoNombre);
+    this.nuevoEquipoNombre = '';
+    this.refreshSala();
+  }
+
+  eliminarEquipo(equipoId: string, nombreEquipo: string): void {
+    if (!this.isCurrentAdmin()) return;
+    if (!confirm(`¿Eliminar el equipo "${nombreEquipo}"?`)) return;
+    const ok = this.salaService.eliminarEquipoDeSala(this.codigo, equipoId);
+    if (!ok) {
+      alert('No se puede eliminar un equipo con participantes asignados.');
+    }
+    this.refreshSala();
   }
 
   expulsarJugador(nombre: string): void {

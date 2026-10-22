@@ -80,10 +80,14 @@ export class UnirseSalaComponent {
  return;
  }
  const up = val.trim().toUpperCase();
- const s = this.sala.obtenerSalaPorCodigo(up);
+ this.actualizarEquiposParaCodigo(up);
+ }
+
+ private actualizarEquiposParaCodigo(codigo: string) {
+ const s = this.sala.obtenerSalaPorCodigo(codigo);
  if (s && Array.isArray(s.equipos) && s.equipos.length > 0) {
  this.equiposDisponibles = s.equipos;
- if (!this.equipoSeleccionado) {
+ if (!this.equipoSeleccionado || !s.equipos.some(e => e.id === this.equipoSeleccionado)) {
  this.equipoSeleccionado = s.equipos[0].id;
  }
  } else {
@@ -111,6 +115,9 @@ export class UnirseSalaComponent {
  } catch (e) {
  // ignore
  }
+
+ // Actualizar la lista de equipos tras traer el estado del servidor
+ this.actualizarEquiposParaCodigo(cleanCode);
 
  const equipoId = this.equiposDisponibles.length > 0 ? this.equipoSeleccionado : undefined;
 

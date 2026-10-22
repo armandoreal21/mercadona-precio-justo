@@ -28,6 +28,36 @@ export interface HistorialRonda {
   ts: number;
 }
 
+export interface PalabraAportada {
+  jugador: string;
+  equipoId?: string;
+  palabra: string;
+  longitud: number;
+  ts: number;
+}
+
+export interface SeleccionEquipoPalabra {
+  equipoId: string;
+  nombreEquipo?: string;
+  palabra: string;
+  longitud: number;
+  seleccionadaPor: string;
+  descartada?: boolean;
+}
+
+export type ModoPuntuacionPalabras = 'por_letras' | 'por_ganar';
+
+export interface EstadoPalabraMasLarga {
+  fase: 'esperando' | 'jugando' | 'seleccion' | 'revelacion';
+  letras: string[];
+  tiempoLimite: number; // Segundos (ej. 45)
+  tiempoFin?: number; // Timestamp en ms en el que acaba la cuenta atrás
+  palabrasAportadas: PalabraAportada[];
+  selecciones: Record<string, SeleccionEquipoPalabra>; // clave: equipoId o nombre de jugador
+  modoPuntuacion: ModoPuntuacionPalabras;
+  puntosPorGanar?: number;
+}
+
 export interface Sala {
   codigo: string;
   nombre: string;
@@ -43,6 +73,8 @@ export interface Sala {
   productoActual?: any;
   historialRondas?: HistorialRonda[];
   lastResults?: { ts: number; price: number; results: ResultadoRonda[] } | null;
+  // Estado específico para "La Palabra Más Larga"
+  estadoPalabras?: EstadoPalabraMasLarga | null;
   createdAt?: number;
   updatedAt?: number;
 }
