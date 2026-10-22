@@ -20,38 +20,77 @@ import { SalaService } from '../../sala.service';
           La Palabra Más Larga
         </h3>
         <p class="text-slate-300 text-sm mt-2 max-w-md mx-auto">
-          En cada ronda se sortearán entre 9 y 15 letras con vocales y consonantes.
+          En cada ronda dispondréis de <strong>{{ numLetrasFijo }} letras</strong>.
           ¡Cada participante debe enviar todas las palabras válidas que logre formar antes de que el reloj llegue a 0!
         </p>
 
-        <!-- Configuración de ronda previa por el Admin -->
-        <div *ngIf="isAdmin" class="mt-6 bg-slate-800/80 p-4 rounded-xl border border-slate-700 text-left space-y-3">
-          <div class="text-xs font-bold text-yellow-400 uppercase tracking-wider">Ajustes de la Ronda (Admin)</div>
+        <!-- Indicador de configuración actual (para todos) -->
+        <div class="mt-4 flex flex-wrap justify-center gap-2 text-xs">
+          <span class="bg-slate-800 border border-slate-700 px-3 py-1 rounded-full text-slate-300">
+            Dificultad: <strong class="text-yellow-400 capitalize">{{ getEtiquetaDificultad() }}</strong>
+          </span>
+          <span class="bg-slate-800 border border-slate-700 px-3 py-1 rounded-full text-slate-300">
+            Letras fijas: <strong class="text-cyan-400">{{ numLetrasFijo }}</strong>
+          </span>
+          <span class="bg-slate-800 border border-slate-700 px-3 py-1 rounded-full text-slate-300">
+            Tiempo: <strong class="text-emerald-400">{{ tiempoSegundos }}s</strong>
+          </span>
+        </div>
 
-          <div class="grid grid-cols-2 gap-3">
+        <!-- Panel de Ajustes en la Sala (Solo Admin, permite cambiar dificultad, letras y tiempo en cualquier momento) -->
+        <div *ngIf="isAdmin" class="mt-5 p-4 bg-slate-800/80 rounded-2xl border border-slate-700 text-left space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-bold text-yellow-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>⚙️</span>
+              <span>Ajustes de la Partida (Admin)</span>
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             <div>
-              <label class="block text-[11px] uppercase text-slate-400 font-bold mb-1">Nº Letras (9 - 15)</label>
-              <input type="number" [(ngModel)]="numLetrasConfig" min="9" max="15"
-                     class="w-full bg-slate-700 text-white rounded-lg px-3 py-1.5 font-bold border border-slate-600 focus:outline-none focus:border-yellow-400" />
+              <label class="block text-[11px] uppercase text-slate-400 font-bold mb-1">Dificultad</label>
+              <select [(ngModel)]="dificultadEdit" (ngModelChange)="guardarAjustes()"
+                      class="w-full bg-slate-700 border border-slate-600 rounded-lg px-2.5 py-1.5 text-xs text-white font-semibold focus:outline-none focus:border-yellow-400 transition">
+                <option value="facil">🟢 Fácil</option>
+                <option value="media">🟡 Media</option>
+                <option value="dificil">🔴 Difícil</option>
+              </select>
             </div>
+
             <div>
-              <label class="block text-[11px] uppercase text-slate-400 font-bold mb-1">Tiempo (segundos)</label>
-              <input type="number" [(ngModel)]="tiempoSegundosConfig" min="15" max="120" step="5"
-                     class="w-full bg-slate-700 text-white rounded-lg px-3 py-1.5 font-bold border border-slate-600 focus:outline-none focus:border-yellow-400" />
+              <label class="block text-[11px] uppercase text-slate-400 font-bold mb-1">Nº Letras</label>
+              <select [(ngModel)]="numLetrasEdit" (ngModelChange)="guardarAjustes()"
+                      class="w-full bg-slate-700 border border-slate-600 rounded-lg px-2.5 py-1.5 text-xs text-white font-semibold focus:outline-none focus:border-yellow-400 transition">
+                <option [ngValue]="8">8 letras</option>
+                <option [ngValue]="9">9 letras</option>
+                <option [ngValue]="10">10 letras</option>
+                <option [ngValue]="11">11 letras</option>
+                <option [ngValue]="12">12 letras</option>
+                <option [ngValue]="13">13 letras</option>
+                <option [ngValue]="14">14 letras</option>
+                <option [ngValue]="15">15 letras</option>
+                <option [ngValue]="16">16 letras</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] uppercase text-slate-400 font-bold mb-1">Tiempo (seg)</label>
+              <select [(ngModel)]="tiempoSegundosEdit" (ngModelChange)="guardarAjustes()"
+                      class="w-full bg-slate-700 border border-slate-600 rounded-lg px-2.5 py-1.5 text-xs text-white font-semibold focus:outline-none focus:border-yellow-400 transition">
+                <option [ngValue]="30">30 seg</option>
+                <option [ngValue]="45">45 seg (Estándar)</option>
+                <option [ngValue]="60">60 seg</option>
+                <option [ngValue]="90">90 seg</option>
+              </select>
             </div>
           </div>
 
-          <div>
-            <label class="block text-[11px] uppercase text-slate-400 font-bold mb-1">Sistema de Puntuación</label>
-            <select [(ngModel)]="modoPuntuacionConfig"
-                    class="w-full bg-slate-700 text-white rounded-lg px-3 py-1.5 text-xs font-semibold border border-slate-600">
-              <option value="por_letras">Por Letras (ej: 8 letras = 8 puntos)</option>
-              <option value="por_ganar">Por Victoria (10 puntos al ganador)</option>
-            </select>
-          </div>
+          <p class="text-[10px] text-slate-400 italic">
+            {{ getDescripcionDificultadEdit() }}
+          </p>
 
           <button (click)="iniciarRonda()"
-                  class="w-full mt-3 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-purple-950 font-black py-3 rounded-xl transition uppercase tracking-wider shadow-lg text-base">
+                  class="w-full mt-2 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-purple-950 font-black py-3 rounded-xl transition uppercase tracking-wider shadow-lg text-sm">
             🚀 Iniciar Ronda Ahora
           </button>
         </div>
@@ -120,7 +159,6 @@ import { SalaService } from '../../sala.service';
           <div class="mt-4 pt-3 border-t border-slate-700">
             <div class="flex justify-between items-center mb-2">
               <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Mis aportaciones ({{ misPalabras.length }}):</span>
-              <span class="text-[11px] text-cyan-400">Las más largas valen más</span>
             </div>
             <div class="flex flex-wrap gap-2">
               <div *ngFor="let p of misPalabras"
@@ -156,7 +194,7 @@ import { SalaService } from '../../sala.service';
             Fase de Selección
           </h3>
           <p class="text-sm text-slate-300 mt-1">
-            Revisad la lista completa de palabras de vuestro equipo. Con que <strong>un miembro</strong> elija una palabra, el equipo quedará presentado.
+            Revisad la lista de palabras de vuestro equipo. Con que <strong>un miembro</strong> elija una palabra, el equipo quedará presentado.
           </p>
 
           <!-- Letras de referencia -->
@@ -188,25 +226,43 @@ import { SalaService } from '../../sala.service';
 
               <!-- Estado de selección -->
               <div>
-                <span *ngIf="g.seleccion" class="text-xs bg-emerald-900/80 text-emerald-300 border border-emerald-500/40 px-2 py-1 rounded-lg font-bold flex items-center gap-1">
-                  ✓ Elegida: {{ g.seleccion.palabra }}
-                </span>
-                <span *ngIf="!g.seleccion" class="text-xs bg-amber-950/80 text-amber-300 border border-amber-600/40 px-2 py-1 rounded-lg font-semibold animate-pulse">
-                  ⏳ Pendiente
-                </span>
+                <!-- Si es mi grupo o soy admin neutral: ver detalle. Si es rival: solo saber si ya eligieron -->
+                <ng-container *ngIf="puedeVerDetallesGrupo(g)">
+                  <span *ngIf="g.seleccion" class="text-xs bg-emerald-900/80 text-emerald-300 border border-emerald-500/40 px-2 py-1 rounded-lg font-bold flex items-center gap-1">
+                    ✓ Elegida: {{ g.seleccion.palabra }}
+                  </span>
+                  <span *ngIf="!g.seleccion" class="text-xs bg-amber-950/80 text-amber-300 border border-amber-600/40 px-2 py-1 rounded-lg font-semibold animate-pulse">
+                    ⏳ Pendiente
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="!puedeVerDetallesGrupo(g)">
+                  <span *ngIf="g.seleccion" class="text-xs bg-emerald-900/80 text-emerald-300 border border-emerald-500/40 px-2 py-1 rounded-lg font-bold flex items-center gap-1">
+                    ✓ Palabra elegida 🔒
+                  </span>
+                  <span *ngIf="!g.seleccion" class="text-xs bg-amber-950/80 text-amber-300 border border-amber-600/40 px-2 py-1 rounded-lg font-semibold animate-pulse">
+                    ⏳ Eligiendo...
+                  </span>
+                </ng-container>
               </div>
             </div>
 
-            <!-- Si ya hay selección, mostrar detalle de quién la seleccionó -->
-            <div *ngIf="g.seleccion" class="mb-3 p-3 bg-emerald-950/40 rounded-xl border border-emerald-500/30 text-xs text-emerald-200">
+            <!-- Si ya hay selección: visible solo para los del propio equipo o admin neutral -->
+            <div *ngIf="g.seleccion && puedeVerDetallesGrupo(g)" class="mb-3 p-3 bg-emerald-950/40 rounded-xl border border-emerald-500/30 text-xs text-emerald-200">
               Palabra presentada: <strong class="text-base text-yellow-300 tracking-wider uppercase ml-1">{{ g.seleccion.palabra }}</strong>
               <div class="text-slate-400 text-[11px] mt-0.5">
                 ({{ g.seleccion.longitud }} letras) — Elegida por: <strong class="text-white">{{ g.seleccion.seleccionadaPor }}</strong>
               </div>
             </div>
 
-            <!-- Listado de palabras aportadas ordenadas por longitud descendente -->
-            <div class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
+            <!-- Mensaje censurado/oculto si ya seleccionó el rival -->
+            <div *ngIf="g.seleccion && !puedeVerDetallesGrupo(g)" class="mb-3 p-3 bg-slate-900/80 rounded-xl border border-slate-700 text-xs text-slate-300 flex items-center gap-2">
+              <span>🔒</span>
+              <span>El equipo ya ha presentado su palabra secreta. Se revelará al final.</span>
+            </div>
+
+            <!-- Listado de palabras aportadas -->
+            <!-- CASO 1: Es mi grupo o admin neutral -> puede verlas y elegir -->
+            <div *ngIf="puedeVerDetallesGrupo(g)" class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
               <div *ngFor="let p of g.palabras"
                    class="flex items-center justify-between p-2 rounded-xl text-sm transition"
                    [ngClass]="g.seleccion?.palabra === p.palabra ? 'bg-indigo-900/70 border border-indigo-400 font-bold' : 'bg-slate-900 hover:bg-slate-700/60'">
@@ -220,9 +276,8 @@ import { SalaService } from '../../sala.service';
                   <span class="text-xs bg-slate-800 text-yellow-300 px-2 py-0.5 rounded font-bold font-mono">
                     {{ p.longitud }} ltr
                   </span>
-                  <!-- Botón elegir (disponible si pertenece a mi equipo o si soy admin) -->
-                  <button *ngIf="g.esMiGrupo || isAdmin"
-                          (click)="elegirPalabraEquipo(g.id, g.nombre, p.palabra)"
+                  <!-- Botón elegir -->
+                  <button (click)="elegirPalabraEquipo(g.id, g.nombre, p.palabra)"
                           class="px-2.5 py-1 text-xs rounded-lg font-bold transition"
                           [ngClass]="g.seleccion?.palabra === p.palabra ? 'bg-emerald-500 text-slate-950' : 'bg-indigo-600 hover:bg-indigo-500 text-white'">
                     {{ g.seleccion?.palabra === p.palabra ? 'Elegida' : 'Elegir' }}
@@ -234,6 +289,27 @@ import { SalaService } from '../../sala.service';
                 Nadie de este equipo aportó palabras en esta ronda.
               </div>
             </div>
+
+            <!-- CASO 2: Equipo contrario -> oculto/descifrado con pistas (X letras) sin mostrar la palabra ni autor -->
+            <div *ngIf="!puedeVerDetallesGrupo(g)" class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
+              <div *ngFor="let p of g.palabras"
+                   class="flex items-center justify-between p-2 rounded-xl text-sm bg-slate-900/70 border border-slate-800">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-slate-500 tracking-widest font-bold">
+                    {{ ocultarPalabra(p.longitud) }}
+                  </span>
+                  <span class="text-xs text-slate-500 italic">🔒 Palabra secreta</span>
+                </div>
+                <div class="text-xs bg-slate-800/80 text-slate-400 px-2 py-0.5 rounded font-mono">
+                  {{ p.longitud }} ltr
+                </div>
+              </div>
+
+              <div *ngIf="g.palabras.length === 0" class="text-xs text-slate-500 text-center py-4 italic">
+                El equipo rival no ha conseguido palabras en esta ronda.
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -284,6 +360,9 @@ import { SalaService } from '../../sala.service';
                   <span>{{ r.nombreEquipo }}</span>
                   <span *ngIf="!r.descartada && r.esGanador" class="text-xs bg-yellow-400 text-slate-950 font-black px-2 py-0.5 rounded-full uppercase">
                     ¡Ganador! (+{{ r.puntos }} pts)
+                  </span>
+                  <span *ngIf="!r.descartada && !r.esGanador && r.puntos > 0" class="text-xs bg-indigo-800 text-indigo-200 font-bold px-2 py-0.5 rounded-full uppercase">
+                    Válida (+{{ r.puntos }} pts)
                   </span>
                   <span *ngIf="r.descartada" class="text-xs bg-rose-900 text-rose-200 font-bold px-2 py-0.5 rounded-full uppercase">
                     Descartada por el árbitro
@@ -346,10 +425,10 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
   @Output() clasificacionRequested = new EventEmitter<void>();
   @Output() endOfGameReached = new EventEmitter<void>();
 
-  // Configuración de partida
-  numLetrasConfig = 10;
-  tiempoSegundosConfig = 45;
-  modoPuntuacionConfig: ModoPuntuacionPalabras = 'por_letras';
+  // Variables editables sincronizadas con el estado de la sala
+  dificultadEdit: 'facil' | 'media' | 'dificil' = 'facil';
+  numLetrasEdit = 10;
+  tiempoSegundosEdit = 45;
 
   // Input borrador de palabra
   palabraBorrador = '';
@@ -363,16 +442,72 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     return this.sala?.estadoPalabras || null;
   }
 
+  get numLetrasFijo(): number {
+    return this.estado?.numLetras || 10;
+  }
+
+  get tiempoSegundos(): number {
+    return this.estado?.tiempoLimite || 45;
+  }
+
+  get dificultadActual(): string {
+    return this.estado?.dificultad || 'facil';
+  }
+
+  getEtiquetaDificultad(): string {
+    switch (this.dificultadActual) {
+      case 'facil':
+        return 'Fácil 🟢';
+      case 'media':
+        return 'Media 🟡';
+      case 'dificil':
+        return 'Difícil 🔴';
+      default:
+        return this.dificultadActual;
+    }
+  }
+
+  getDescripcionDificultadEdit(): string {
+    switch (this.dificultadEdit) {
+      case 'facil':
+        return '🟢 Fácil: 50% de vocales y letras amigables (A, E, O, R, S, T, L, N, C, D, M, P, B). Palabras largas más fáciles de hallar.';
+      case 'media':
+        return '🟡 Media: 40% de vocales con distribución clásica y equilibrada.';
+      case 'dificil':
+        return '🔴 Difícil: 33% de vocales y mezcla con consonantes más difíciles (Z, X, J, K, etc.).';
+      default:
+        return '';
+    }
+  }
+
   constructor(private salaService: SalaService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['sala'] && this.sala) {
+      this.syncFromSala();
       this.syncTimer();
     }
   }
 
   ngOnDestroy(): void {
     this.stopTimer();
+  }
+
+  private syncFromSala(): void {
+    if (this.estado) {
+      this.dificultadEdit = (this.estado.dificultad as any) || 'facil';
+      this.numLetrasEdit = this.estado.numLetras || 10;
+      this.tiempoSegundosEdit = this.estado.tiempoLimite || 45;
+    }
+  }
+
+  guardarAjustes(): void {
+    if (!this.isAdmin || !this.sala) return;
+    this.salaService.actualizarConfigPalabras(this.sala.codigo, {
+      dificultad: this.dificultadEdit,
+      numLetras: Number(this.numLetrasEdit) || 10,
+      tiempoSegundos: Number(this.tiempoSegundosEdit) || 45
+    });
   }
 
   private syncTimer() {
@@ -407,21 +542,43 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     }
   }
 
-  // Generador equilibrado de vocales y consonantes
+  /**
+   * Generador de letras según la dificultad configurada en la sala:
+   * - facil: 50% vocales frecuentes, consonantes muy combinables (R, S, T, L, N, C, D, M, P, B).
+   * - media: ~40% vocales, consonantes estándar.
+   * - dificil: ~30-35% vocales, inclusión de consonantes más difíciles (Z, J, X, V, G, Q, K, F).
+   */
   generarLetrasEquilibradas(n: number): string[] {
-    const vocales = 'AAAAAEEEEIIIOOOU';
-    const consonantes = 'BCDFGHJKLMNPQRSTVWXYZ';
-    const letras: string[] = [];
+    const dificultad = this.dificultadActual;
+    let poolVocales = 'AAAAAEEEEIIIOOOU';
+    let poolConsonantes = '';
+    let ratioVocales = 0.42;
 
-    // Aproximadamente 40-45% vocales
-    const cantVocales = Math.max(3, Math.round(n * 0.42));
+    if (dificultad === 'facil') {
+      // Mucho más amigable: letras más comunes del castellano
+      poolVocales = 'AAAAAEEEEIIIOOOU';
+      poolConsonantes = 'RRRSSSSTTTLLLNNNCCCDDDMMPPB';
+      ratioVocales = 0.50; // La mitad vocales para facilitar palabras largas de 6 a 9 letras
+    } else if (dificultad === 'dificil') {
+      poolVocales = 'AAAEEIIOU';
+      poolConsonantes = 'BCDFGHJKLMNPQRSTVWXYZ';
+      ratioVocales = 0.33; // Solo 1/3 de vocales
+    } else {
+      // Media / estándar
+      poolVocales = 'AAAAAEEEEIIIOOOU';
+      poolConsonantes = 'BCDFGHJKLMNPQRSTVZ';
+      ratioVocales = 0.40;
+    }
+
+    const cantVocales = Math.max(2, Math.round(n * ratioVocales));
     const cantConsonantes = n - cantVocales;
 
+    const letras: string[] = [];
     for (let i = 0; i < cantVocales; i++) {
-      letras.push(vocales[Math.floor(Math.random() * vocales.length)]);
+      letras.push(poolVocales[Math.floor(Math.random() * poolVocales.length)]);
     }
     for (let i = 0; i < cantConsonantes; i++) {
-      letras.push(consonantes[Math.floor(Math.random() * consonantes.length)]);
+      letras.push(poolConsonantes[Math.floor(Math.random() * poolConsonantes.length)]);
     }
 
     // Barajar
@@ -430,11 +587,16 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
 
   iniciarRonda(): void {
     if (!this.isAdmin || !this.sala) return;
-    const n = Math.max(9, Math.min(15, Number(this.numLetrasConfig) || 10));
-    const t = Math.max(15, Math.min(120, Number(this.tiempoSegundosConfig) || 45));
-    const letras = this.generarLetrasEquilibradas(n);
+    // Asegurar que si el admin modificó los selectores antes de iniciar, queden guardados
+    this.guardarAjustes();
 
-    this.salaService.iniciarRondaPalabras(this.sala.codigo, letras, t, this.modoPuntuacionConfig);
+    const n = this.numLetrasFijo;
+    const t = this.tiempoSegundos;
+    const letras = this.generarLetrasEquilibradas(n);
+    const modo = this.estado?.modoPuntuacion || 'por_letras';
+    const dif = (this.estado?.dificultad || 'facil') as any;
+
+    this.salaService.iniciarRondaPalabras(this.sala.codigo, letras, t, modo, dif);
   }
 
   finalizarTiempoManual(): void {
@@ -539,6 +701,39 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     });
   }
 
+  /**
+   * Determina si el usuario actual tiene permisos para ver las palabras claras
+   * y la selección de un grupo durante la fase de selección.
+   * Regla:
+   * - Si es su propio grupo: sí.
+   * - Si el administrador NO pertenece a ningún equipo (espectador/árbitro puro): sí.
+   * - Si el administrador está asignado a un equipo: NO puede ver las del equipo contrario.
+   * - Un jugador normal nunca puede ver las del rival.
+   */
+  puedeVerDetallesGrupo(g: { id: string; esMiGrupo: boolean }): boolean {
+    if (g.esMiGrupo) return true;
+
+    if (this.sala?.modoJuego === 'individual') {
+      return false;
+    }
+
+    // Si soy admin, comprobar si tengo un equipo asignado
+    if (this.isAdmin) {
+      const miNombre = (this.currentName || '').toLowerCase();
+      const yo = this.sala?.jugadores.find(j => j.nombre.toLowerCase() === miNombre);
+      const tengoEquipo = !!(yo && yo.equipoId);
+      // Si el admin tiene equipo, solo ve su equipo (no los rivales).
+      // Si el admin no tiene equipo asignado (árbitro puro), puede verlos todos.
+      return !tengoEquipo;
+    }
+
+    return false;
+  }
+
+  ocultarPalabra(longitud: number): string {
+    return '• '.repeat(Math.max(1, longitud)).trim();
+  }
+
   async elegirPalabraEquipo(grupoId: string, nombreGrupo: string, palabra: string): Promise<void> {
     if (!this.sala) return;
     const nombreUsuario = this.currentName || this.sala.jugadores[0]?.nombre || 'Jugador';
@@ -577,12 +772,15 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     if (noDescartados.length > 0) {
       const maxLen = Math.max(...noDescartados.map(l => l.longitud));
       const modo = this.estado.modoPuntuacion || 'por_letras';
-      const pts = modo === 'por_letras' ? maxLen : 10;
 
       lista.forEach(item => {
-        if (!item.descartada && item.longitud === maxLen && maxLen > 0) {
-          item.esGanador = true;
-          item.puntos = pts;
+        if (!item.descartada && item.longitud > 0) {
+          if (item.longitud === maxLen) {
+            item.esGanador = true;
+          }
+          // En modo por_letras cada equipo con palabra válida suma sus letras
+          // En modo por_ganar solo el ganador suma 10 puntos
+          item.puntos = modo === 'por_letras' ? item.longitud : (item.esGanador ? 10 : 0);
         }
       });
     }
@@ -610,8 +808,14 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
       return;
     }
 
-    // Avanzar a la siguiente ronda
+    // Avanzar a la siguiente ronda usando la configuración fija de la partida
     this.salaService.avanzarRonda(this.sala.codigo);
-    this.salaService.iniciarRondaPalabras(this.sala.codigo, this.generarLetrasEquilibradas(this.numLetrasConfig), this.tiempoSegundosConfig, this.modoPuntuacionConfig);
+    this.salaService.iniciarRondaPalabras(
+      this.sala.codigo,
+      this.generarLetrasEquilibradas(this.numLetrasFijo),
+      this.tiempoSegundos,
+      this.estado?.modoPuntuacion || 'por_letras',
+      (this.estado?.dificultad || 'facil') as any
+    );
   }
 }

@@ -2,10 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras } from './core/models/sala.model';
+import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
 
-export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras };
+export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
 @Injectable({ providedIn: 'root' })
 export class SalaService {
@@ -127,8 +127,8 @@ export class SalaService {
  const snap = await get(stateRef);
  const dbVal = snap && typeof snap.val === 'function' ? snap.val() : snap;
  const local = this.readAll();
- const serverHas = dbVal && Array.isArray(dbVal.salasActivas) && dbVal.salasActivas.length >0;
- if (!serverHas && Array.isArray(local) && local.length >0) {
+ const serverHas = dbVal && Array.isArray(dbVal.salasActivas) && dbVal.salasActivas.length > 0;
+ if (!serverHas && Array.isArray(local) && local.length > 0) {
  await set(stateRef, { salasActivas: local });
  }
  } catch (e) {
@@ -172,8 +172,8 @@ export class SalaService {
  try {
  const state = data.state as { salasActivas: Sala[] };
  const local = this.readAll();
- const serverHas = Array.isArray(state?.salasActivas) && state.salasActivas.length >0;
- if (!serverHas && Array.isArray(local) && local.length >0) {
+ const serverHas = Array.isArray(state?.salasActivas) && state.salasActivas.length > 0;
+ if (!serverHas && Array.isArray(local) && local.length > 0) {
  try { this.ws?.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: local } })); } catch (e) { }
  }
  if (this.hasLocalStorage) {
@@ -342,7 +342,8 @@ export class SalaService {
  rondas = 5,
  tipoJuego = 'precio-justo',
  modoJuego: ModoJuego = 'individual',
- equipos?: Equipo[]
+ equipos?: Equipo[],
+ configPalabras?: { numLetras?: number; dificultad?: DificultadPalabras }
  ): Promise<{ sala: Sala; creado: boolean; error?: string }> {
  const upName = nombre.trim();
  const upNameLower = upName.toLowerCase();
@@ -359,6 +360,17 @@ export class SalaService {
  }
 
  const now = Date.now();
+ const estadoPalabrasInicial: EstadoPalabraMasLarga | undefined = tipoJuego === 'palabra-mas-larga' ? {
+   fase: 'esperando',
+   letras: [],
+   numLetras: configPalabras?.numLetras || 10,
+   tiempoLimite: 45,
+   dificultad: configPalabras?.dificultad || 'facil',
+   palabrasAportadas: [],
+   selecciones: {},
+   modoPuntuacion: 'por_letras'
+ } : undefined;
+
  const nueva: Sala = {
  codigo,
  nombre: upName,
@@ -373,6 +385,7 @@ export class SalaService {
  rondaActual: 0,
  historialRondas: [],
  lastResults: null,
+ estadoPalabras: estadoPalabrasInicial,
  createdAt: now,
  updatedAt: now
  };
@@ -990,7 +1003,7 @@ export class SalaService {
   // JUEGO: LA PALABRA MÁS LARGA (Cifras y Letras)
   // ==========================================
 
-  iniciarRondaPalabras(codigo: string, letras: string[], tiempoSegundos = 45, modoPuntuacion: ModoPuntuacionPalabras = 'por_letras') {
+  iniciarRondaPalabras(codigo: string, letras: string[], tiempoSegundos = 45, modoPuntuacion: ModoPuntuacionPalabras = 'por_letras', dificultad: DificultadPalabras = 'facil') {
     const upCode = (codigo || '').toUpperCase();
     const now = Date.now();
     const tiempoFin = now + (tiempoSegundos * 1000);
@@ -998,8 +1011,10 @@ export class SalaService {
     const nuevoEstado: EstadoPalabraMasLarga = {
       fase: 'jugando',
       letras: letras.map(l => l.toUpperCase()),
+      numLetras: letras.length,
       tiempoLimite: tiempoSegundos,
       tiempoFin,
+      dificultad,
       palabrasAportadas: [],
       selecciones: {},
       modoPuntuacion
@@ -1021,6 +1036,47 @@ export class SalaService {
     if (!sala) return false;
     sala.estadoPalabras = nuevoEstado;
     sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
+
+  actualizarConfigPalabras(codigo: string, config: { dificultad: DificultadPalabras; numLetras: number; tiempoSegundos: number }) {
+    const upCode = (codigo || '').toUpperCase();
+    const mutator = (s: Sala) => {
+      if (!s.estadoPalabras) {
+        s.estadoPalabras = {
+          fase: 'esperando',
+          letras: [],
+          numLetras: config.numLetras,
+          tiempoLimite: config.tiempoSegundos,
+          dificultad: config.dificultad,
+          palabrasAportadas: [],
+          selecciones: {},
+          modoPuntuacion: 'por_letras'
+        };
+      } else {
+        // Preservar la fase actual si ya estaba jugando/seleccion/etc.
+        s.estadoPalabras.dificultad = config.dificultad;
+        s.estadoPalabras.numLetras = config.numLetras;
+        s.estadoPalabras.tiempoLimite = config.tiempoSegundos;
+      }
+      s.updatedAt = Date.now();
+    };
+
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        mutator(sala);
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    mutator(sala);
     this.writeAll(salas);
     return true;
   }
@@ -1232,28 +1288,34 @@ export class SalaService {
         return { ganadores: [], puntos: 0 };
       }
 
-      // Ordenar por longitud descendente
+      // Ordenar por longitud descendente para conocer a los ganadores de la ronda
       seleccionesValidas.sort((a, b) => b.longitud - a.longitud);
       const maxLen = seleccionesValidas[0].longitud;
       const ganadoresEmpatados = seleccionesValidas.filter(s => s.longitud === maxLen);
 
       const modo = sala.estadoPalabras.modoPuntuacion || 'por_letras';
-      const puntosOtorgados = modo === 'por_letras' ? maxLen : 10;
 
-      // Sumar puntos a los ganadores (en jugadores)
-      const idsGanadores = ganadoresEmpatados.map(g => g.id);
-
+      // Asignar puntos a cada grupo/jugador con palabra válida (no invalidada)
+      // En modo 'por_letras', cada equipo/jugador suma el número de letras de su palabra válida.
+      // En modo 'por_ganar', solo el/los ganadores reciben 10 puntos (o sus letras).
       if (sala.modoJuego === 'individual') {
-        sala.jugadores.forEach(j => {
-          if (idsGanadores.includes(j.nombre)) {
-            j.puntuacion = (j.puntuacion || 0) + puntosOtorgados;
+        seleccionesValidas.forEach(sel => {
+          const pts = modo === 'por_letras' ? sel.longitud : (sel.longitud === maxLen ? 10 : 0);
+          if (pts > 0) {
+            const j = sala.jugadores.find(jug => jug.nombre === sel.id);
+            if (j) j.puntuacion = (j.puntuacion || 0) + pts;
           }
         });
       } else {
-        // Sumar puntos a todos los jugadores que pertenezcan a los equipos ganadores
-        sala.jugadores.forEach(j => {
-          if (j.equipoId && idsGanadores.includes(j.equipoId)) {
-            j.puntuacion = (j.puntuacion || 0) + puntosOtorgados;
+        // Sumar puntos a todos los jugadores que pertenezcan a los equipos con palabras válidas
+        seleccionesValidas.forEach(sel => {
+          const pts = modo === 'por_letras' ? sel.longitud : (sel.longitud === maxLen ? 10 : 0);
+          if (pts > 0) {
+            sala.jugadores.forEach(j => {
+              if (j.equipoId && j.equipoId === sel.id) {
+                j.puntuacion = (j.puntuacion || 0) + pts;
+              }
+            });
           }
         });
       }
@@ -1261,7 +1323,7 @@ export class SalaService {
       sala.updatedAt = Date.now();
       return {
         ganadores: ganadoresEmpatados.map(g => g.nombreEquipo || g.id),
-        puntos: puntosOtorgados
+        puntos: modo === 'por_letras' ? maxLen : 10
       };
     };
 

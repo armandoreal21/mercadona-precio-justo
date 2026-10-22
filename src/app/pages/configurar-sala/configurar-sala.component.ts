@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SalaService } from '../../sala.service';
 import { getJuegoById } from '../../games/games.registry';
 import { GameDefinition, ModoJuego } from '../../core/models/game.model';
-import { Equipo } from '../../core/models/sala.model';
+import { Equipo, DificultadPalabras } from '../../core/models/sala.model';
 
 @Component({
   selector: 'app-configurar-sala',
@@ -41,6 +41,44 @@ import { Equipo } from '../../core/models/sala.model';
                 {{ getEtiquetaModo(modo) }}
               </option>
             </select>
+          </div>
+
+          <!-- Ajustes específicos para La Palabra Más Larga: Dificultad y Nº de Letras fijo -->
+          <div *ngIf="juegoId === 'palabra-mas-larga'" class="p-4 bg-slate-900 rounded-2xl border border-slate-700 space-y-3">
+            <div class="text-xs font-bold uppercase tracking-wider text-yellow-400 flex items-center gap-1.5">
+              <span>🔤</span>
+              <span>Ajustes de Palabras (Fijos para toda la partida)</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Dificultad</label>
+                <select [(ngModel)]="dificultadPalabras"
+                        class="w-full bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-white font-semibold text-xs focus:outline-none focus:border-yellow-400 transition">
+                  <option value="facil">🟢 Fácil (Muchas vocales y letras comunes)</option>
+                  <option value="media">🟡 Media (Equilibrada)</option>
+                  <option value="dificil">🔴 Difícil (Menos vocales y consonantes raras)</option>
+                </select>
+                <p class="text-[10px] text-slate-400 mt-1">
+                  {{ getDescripcionDificultad() }}
+                </p>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Nº de Letras por Ronda</label>
+                <select [(ngModel)]="numLetrasFijo"
+                        class="w-full bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-white font-semibold text-xs focus:outline-none focus:border-yellow-400 transition">
+                  <option [ngValue]="8">8 letras</option>
+                  <option [ngValue]="9">9 letras</option>
+                  <option [ngValue]="10">10 letras (Estándar)</option>
+                  <option [ngValue]="11">11 letras</option>
+                  <option [ngValue]="12">12 letras</option>
+                </select>
+                <p class="text-[10px] text-slate-400 mt-1">
+                  Cantidad fija de fichas que se repartirán en cada ronda.
+                </p>
+              </div>
+            </div>
           </div>
 
           <!-- Total rounds (specific to precio-justo or round-based games) -->
@@ -131,6 +169,10 @@ export class ConfigurarSalaComponent implements OnInit {
     { id: 'eq2', nombre: 'Equipo Beta', color: '#f43f5e' }
   ];
 
+  // Configuración específica de La Palabra Más Larga
+  dificultadPalabras: DificultadPalabras = 'facil';
+  numLetrasFijo = 10;
+
   resultado: any = null;
   creando = false;
 
@@ -189,6 +231,19 @@ export class ConfigurarSalaComponent implements OnInit {
     }
   }
 
+  getDescripcionDificultad(): string {
+    switch (this.dificultadPalabras) {
+      case 'facil':
+        return 'Aproximadamente 50% vocales y letras más amigables (A, E, O, R, S, L, T). Ideal para encontrar palabras largas fácilmente.';
+      case 'media':
+        return 'Aproximadamente 40% vocales con distribución clásica y equilibrada.';
+      case 'dificil':
+        return 'Aproximadamente 30-35% vocales e inclusión de consonantes más complejas (Z, X, J, K, etc.).';
+      default:
+        return '';
+    }
+  }
+
   async generar() {
     if (!this.nombre || !this.nombre.trim()) {
       this.resultado = { error: 'Introduce un nombre válido para la sala' };
@@ -196,6 +251,11 @@ export class ConfigurarSalaComponent implements OnInit {
     }
     const rounds = Number(this.rondas) || 5;
     const equiposConfig = this.requiereEquipos() ? this.equipos : undefined;
+
+    const configPalabras = this.juegoId === 'palabra-mas-larga' ? {
+      numLetras: Number(this.numLetrasFijo) || 10,
+      dificultad: this.dificultadPalabras
+    } : undefined;
 
     this.creando = true;
     this.resultado = null;
@@ -205,7 +265,8 @@ export class ConfigurarSalaComponent implements OnInit {
         rounds,
         this.juegoId,
         this.modoSeleccionado,
-        equiposConfig
+        equiposConfig,
+        configPalabras
       );
     } catch (e: any) {
       this.resultado = { error: e?.message || 'Error al crear la sala' };

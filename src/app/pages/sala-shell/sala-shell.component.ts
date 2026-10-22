@@ -29,9 +29,16 @@ import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-
               </span>
             </div>
           </div>
-          <div class="text-right">
-            <div class="text-sm">Ronda {{ (sala.rondaActual ?? 0) }} / {{ sala.rondasTotales }}</div>
-            <div class="text-xs text-slate-400">Participantes: {{ sala.jugadores.length || 0 }}</div>
+          <div class="flex items-center gap-4">
+            <button (click)="abrirClasificacion()"
+                    class="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 px-3.5 py-1.5 rounded-xl font-black text-xs uppercase tracking-wide flex items-center gap-1.5 shadow-md transition">
+              <span>🏆</span>
+              <span>Clasificación</span>
+            </button>
+            <div class="text-right">
+              <div class="text-sm">Ronda {{ (sala.rondaActual ?? 0) }} / {{ sala.rondasTotales }}</div>
+              <div class="text-xs text-slate-400">Participantes: {{ sala.jugadores.length || 0 }}</div>
+            </div>
           </div>
         </div>
 
@@ -163,20 +170,34 @@ import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-
         <!-- Clasificación modal -->
         <div *ngIf="showClasificacion" class="fixed inset-0 z-40 flex items-center justify-center p-4">
           <div class="absolute inset-0 bg-black/50" (click)="cerrarClasificacion()"></div>
-          <div class="relative max-w-md w-full bg-slate-800 rounded-xl p-5 border border-slate-700 text-white">
-            <h4 class="text-lg font-bold mb-3 text-yellow-400">🏆 Clasificación General</h4>
-            <ul class="space-y-2 max-h-64 overflow-auto">
+          <div class="relative max-w-md w-full bg-slate-800 rounded-xl p-5 border border-slate-700 text-white shadow-2xl">
+            <h4 class="text-lg font-bold mb-3 text-yellow-400 flex items-center justify-between">
+              <span>🏆 Clasificación {{ sala.modoJuego !== 'individual' ? 'por Equipos' : 'General' }}</span>
+              <span *ngIf="sala.modoJuego !== 'individual'" class="text-xs text-purple-300 bg-purple-900/60 border border-purple-600/40 px-2 py-0.5 rounded-full font-semibold">Equipos</span>
+            </h4>
+            <ul class="space-y-2 max-h-72 overflow-auto">
               <li *ngFor="let c of clasificacionList; let pos = index"
-                  class="flex justify-between items-center p-2.5 bg-slate-900 rounded-lg">
-                <div class="flex items-center gap-2">
-                  <span class="font-black text-slate-500">#{{ pos + 1 }}</span>
-                  <span class="font-semibold">{{ c.nombre }}</span>
+                  class="p-2.5 bg-slate-900 rounded-lg flex flex-col gap-1 border border-slate-700/50">
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center gap-2">
+                    <span class="font-black text-sm"
+                          [ngClass]="pos === 0 ? 'text-yellow-400' : (pos === 1 ? 'text-slate-300' : (pos === 2 ? 'text-amber-600' : 'text-slate-500'))">
+                      #{{ pos + 1 }}
+                    </span>
+                    <span class="font-bold text-sm text-white">{{ c.nombre }}</span>
+                  </div>
+                  <div class="text-yellow-300 font-black text-base">{{ c.puntos }} pts</div>
                 </div>
-                <div class="text-yellow-300 font-bold">{{ c.puntos }} pts</div>
+                <div *ngIf="c.miembros && c.miembros.length" class="text-[11px] text-slate-400 pl-6">
+                  Miembros: {{ c.miembros.join(', ') }}
+                </div>
+              </li>
+              <li *ngIf="clasificacionList.length === 0" class="text-center text-slate-400 py-4 text-xs italic">
+                No hay puntuaciones registradas aún.
               </li>
             </ul>
             <div class="mt-4 flex justify-end">
-              <button (click)="cerrarClasificacion()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold">
+              <button (click)="cerrarClasificacion()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold text-xs transition">
                 Cerrar
               </button>
             </div>
@@ -188,7 +209,7 @@ import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-
           <div class="absolute inset-0 bg-black/70" (click)="showFinalChoiceModal = false"></div>
           <div class="relative max-w-md w-full bg-slate-800 rounded-2xl p-6 border border-slate-700 text-white">
             <h4 class="text-xl font-bold mb-2 text-yellow-400">Fin de la partida</h4>
-            <p class="text-sm text-slate-300 mb-4">¿Qué deseas hacer con la sala?</p>
+            <p class="text-sm text-slate-300 mb-4">¿Qué deseos hacer con la sala?</p>
             <div class="flex flex-col gap-2">
               <button (click)="handleRestartGame()" class="px-4 py-2.5 bg-yellow-400 hover:bg-yellow-300 text-purple-950 rounded-xl font-bold">
                 Reiniciar partida
@@ -215,7 +236,7 @@ export class SalaShellComponent implements OnInit, OnDestroy {
   nuevoEquipoNombre = '';
 
   showClasificacion = false;
-  clasificacionList: { nombre: string; puntos: number }[] = [];
+  clasificacionList: { nombre: string; puntos: number; miembros?: string[] }[] = [];
   showFinalChoiceModal = false;
 
   constructor(
@@ -328,9 +349,32 @@ export class SalaShellComponent implements OnInit, OnDestroy {
 
   abrirClasificacion(): void {
     if (!this.sala) return;
-    this.clasificacionList = (this.sala.jugadores || [])
-      .map(p => ({ nombre: p.nombre, puntos: p.puntuacion || 0 }))
-      .sort((a, b) => b.puntos - a.puntos);
+
+    if (this.sala.modoJuego !== 'individual' && Array.isArray(this.sala.equipos) && this.sala.equipos.length > 0) {
+      // Modo por Equipos: La puntuación del equipo es la suma o puntuación consolidada del equipo
+      this.clasificacionList = this.sala.equipos.map(eq => {
+        const miembros = (this.sala?.jugadores || []).filter(j => j.equipoId === eq.id);
+        // Cada jugador del equipo acumula los mismos puntos del equipo o la suma
+        // En el sistema de puntos de palabra-mas-larga y precio-justo, cada jugador del equipo recibe la puntuación completa.
+        // Tomamos el max o suma representativa (si reciben la misma puntuación, max o promedio coincide, o sumamos si cada uno anota).
+        // Dado que entregarPuntosPalabras asigna `puntosOtorgados` a cada jugador de ese equipo:
+        const puntosEquipo = miembros.length > 0
+          ? Math.max(...miembros.map(m => m.puntuacion || 0))
+          : 0;
+
+        return {
+          nombre: `🛡️ ${eq.nombre}`,
+          puntos: puntosEquipo,
+          miembros: miembros.map(m => m.nombre)
+        };
+      }).sort((a, b) => b.puntos - a.puntos);
+    } else {
+      // Modo Individual: Puntuación individual por jugador
+      this.clasificacionList = (this.sala.jugadores || [])
+        .map(p => ({ nombre: p.nombre, puntos: p.puntuacion || 0 }))
+        .sort((a, b) => b.puntos - a.puntos);
+    }
+
     this.showClasificacion = true;
   }
 

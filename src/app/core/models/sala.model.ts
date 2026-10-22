@@ -47,11 +47,15 @@ export interface SeleccionEquipoPalabra {
 
 export type ModoPuntuacionPalabras = 'por_letras' | 'por_ganar';
 
+export type DificultadPalabras = 'facil' | 'media' | 'dificil';
+
 export interface EstadoPalabraMasLarga {
   fase: 'esperando' | 'jugando' | 'seleccion' | 'revelacion';
   letras: string[];
+  numLetras?: number; // Cantidad fija de letras para la partida (ej: 10)
   tiempoLimite: number; // Segundos (ej. 45)
   tiempoFin?: number; // Timestamp en ms en el que acaba la cuenta atrás
+  dificultad?: DificultadPalabras; // Dificultad fija de la partida
   palabrasAportadas: PalabraAportada[];
   selecciones: Record<string, SeleccionEquipoPalabra>; // clave: equipoId o nombre de jugador
   modoPuntuacion: ModoPuntuacionPalabras;
