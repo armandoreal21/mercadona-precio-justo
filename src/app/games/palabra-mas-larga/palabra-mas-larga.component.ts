@@ -480,7 +480,7 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     }
   }
 
-  constructor(private salaService: SalaService) {}
+  constructor(private salaService: SalaService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['sala'] && this.sala) {
@@ -585,7 +585,7 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     return letras.sort(() => Math.random() - 0.5);
   }
 
-  iniciarRonda(): void {
+  async iniciarRonda(): Promise<void> {
     if (!this.isAdmin || !this.sala) return;
     // Asegurar que si el admin modificó los selectores antes de iniciar, queden guardados
     this.guardarAjustes();
@@ -596,12 +596,13 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     const modo = this.estado?.modoPuntuacion || 'por_letras';
     const dif = (this.estado?.dificultad || 'facil') as any;
 
-    this.salaService.iniciarRondaPalabras(this.sala.codigo, letras, t, modo, dif);
+    await this.salaService.iniciarRondaPalabras(this.sala.codigo, letras, t, modo, dif);
+    this.sala = this.salaService.obtenerSalaPorCodigo(this.sala.codigo);
   }
 
-  finalizarTiempoManual(): void {
+  async finalizarTiempoManual(): Promise<void> {
     if (!this.isAdmin || !this.sala) return;
-    this.salaService.pasarAFaseSeleccionPalabras(this.sala.codigo);
+    await this.salaService.pasarAFaseSeleccionPalabras(this.sala.codigo);
   }
 
   // Validación rápida: ¿las letras de la palabra existen en la tirada generada?
@@ -741,9 +742,9 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     this.sala = this.salaService.obtenerSalaPorCodigo(this.sala.codigo);
   }
 
-  pasarARevelacion(): void {
+  async pasarARevelacion(): Promise<void> {
     if (!this.isAdmin || !this.sala) return;
-    this.salaService.pasarARevelacionManual(this.sala.codigo);
+    await this.salaService.pasarARevelacionManual(this.sala.codigo);
   }
 
   get resultadosPresentados() {
@@ -793,11 +794,11 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     this.salaService.toggleDescartePalabraAdmin(this.sala.codigo, grupoId);
   }
 
-  confirmarPuntosYAvanzar(): void {
+  async confirmarPuntosYAvanzar(): Promise<void> {
     if (!this.isAdmin || !this.sala) return;
 
     // Adjudicar puntos a los ganadores según las palabras no descartadas
-    this.salaService.entregarPuntosPalabras(this.sala.codigo);
+    await this.salaService.entregarPuntosPalabras(this.sala.codigo);
 
     const rondaActual = this.sala.rondaActual ?? 0;
     const rondasTotales = this.sala.rondasTotales ?? 5;
@@ -810,12 +811,12 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
 
     // Avanzar a la siguiente ronda usando la configuración fija de la partida
     this.salaService.avanzarRonda(this.sala.codigo);
-    this.salaService.iniciarRondaPalabras(
+    await this.salaService.iniciarRondaPalabras(
       this.sala.codigo,
       this.generarLetrasEquilibradas(this.numLetrasFijo),
       this.tiempoSegundos,
       this.estado?.modoPuntuacion || 'por_letras',
       (this.estado?.dificultad || 'facil') as any
-    );
+      );
   }
 }
