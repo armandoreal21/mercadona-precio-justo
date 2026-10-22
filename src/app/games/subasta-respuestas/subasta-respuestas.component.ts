@@ -135,6 +135,12 @@ interface GrupoSubasta {
           <p class="text-xs text-slate-400 mt-3">
             Escribe todas las respuestas que se te ocurran. ¡Al finalizar el tiempo se unificarán!
           </p>
+
+          <!-- Botón descartar categoría (solo admin) -->
+          <button *ngIf="isAdmin" (click)="descartarCategoriaActual()" [disabled]="cargando"
+                  class="mt-3 bg-slate-700 hover:bg-slate-600 disabled:opacity-60 text-slate-100 font-semibold py-2 px-4 rounded-lg text-xs uppercase tracking-wider transition">
+            {{ cargando ? '⏳ Cargando nueva categoría...' : '🔄 No me gusta, cambiar' }}
+          </button>
         </div>
 
         <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg">
@@ -539,6 +545,45 @@ export class SubastaRespuestasComponent implements OnChanges, OnInit, OnDestroy 
       dificultad: this.dificultadEdit,
       tiempoSegundos: Number(this.tiempoSegundosEdit) || 45
     });
+  }
+
+  /** Descarta la categoría actual, carga una nueva y reinicia en fase respondiendo (tiempo desde cero). */
+  async descartarCategoriaActual(): Promise<void> {
+    if (!this.isAdmin || !this.sala || !this.estado) return;
+    this.errorCarga = null;
+    this.cargando = true;
+    try {
+      const dif = this.dificultadEdit;
+      const catalogo = await this.cargarCatalogo(dif);
+      if (!catalogo.length) throw new Error('catálogo vacío');
+
+      const usadas = this.estado?.categoriasUsadas || [];
+      const categoriaActualId = this.estado?.categoriaId;
+      // NO añadir la actual a usadas; solo usar las anteriores
+      let pool = catalogo.filter(c => !usadas.includes(c.id) && c.id !== categoriaActualId);
+      if (pool.length === 0) {
+        pool = catalogo.filter(c => c.id !== categoriaActualId);
+      }
+      if (pool.length === 0) {
+        pool = catalogo;
+      }
+      const elegida = pool[Math.floor(Math.random() * pool.length)];
+
+      // Llamar directamente a iniciarRondaSubasta para reiniciar en fase respondiendo
+      await this.salaService.iniciarRondaSubasta(
+        this.sala.codigo,
+        { id: elegida.id, categoria: elegida.categoria, descripcion: elegida.descripcion },
+        Number(this.tiempoSegundosEdit) || 45,
+        dif,
+        usadas  // Mismas categorías usadas (sin la actual ni la nueva)
+      );
+      this.refrescar();
+    } catch (e) {
+      console.error('[SubastaRespuestas] Error descartando categoría', e);
+      this.errorCarga = 'No se pudo cargar una nueva categoría.';
+    } finally {
+      this.cargando = false;
+    }
   }
 
   /** Elige una categoría aleatoria que aún no se haya jugado en esta partida y arranca la ronda. */

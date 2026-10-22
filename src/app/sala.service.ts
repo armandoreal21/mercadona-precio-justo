@@ -1465,6 +1465,32 @@ export class SalaService {
     });
   }
 
+  /** Descarta la categoría actual sin contar como usada, y carga una nueva con el tiempo reiniciado. */
+  async descartarCategoriaSubasta(
+    codigo: string,
+    cat: { id: string; categoria: string; descripcion?: string },
+    tiempoSegundos: number,
+    dificultad: DificultadPalabras,
+    categoriasUsadas: string[]  // NO incluye la actual (que se rechaza)
+  ): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = sala.estadoSubasta;
+      if (!est || est.fase !== 'esperando') return false;
+      // Recargar con nueva categoría, reiniciando tiempo y respuestas
+      est.fase = 'esperando';  // Mantener en esperando
+      est.categoriaId = cat.id;
+      est.categoria = cat.categoria;
+      est.descripcion = cat.descripcion || null;
+      est.tiempoFin = undefined;  // Reiniciar tiempo
+      est.respuestasAportadas = [];
+      est.selecciones = {};
+      est.puntosEntregados = false;
+      est.categoriasUsadas = categoriasUsadas;  // Sin la anterior
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
   actualizarConfigSubasta(codigo: string, config: { dificultad: DificultadPalabras; tiempoSegundos: number }): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       if (!sala.estadoSubasta) {
