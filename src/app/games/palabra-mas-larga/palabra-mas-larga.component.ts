@@ -671,9 +671,19 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
 
     if (esIndividual) {
       return (this.sala.jugadores || []).map(j => {
-        const palabras = (this.estado?.palabrasAportadas || [])
+        const palabrasRaw = (this.estado?.palabrasAportadas || [])
           .filter(p => p.jugador.toLowerCase() === j.nombre.toLowerCase())
           .sort((a, b) => b.longitud - a.longitud);
+
+        // Eliminar duplicados: solo una ocurrencia por palabra
+        const vistas = new Set<string>();
+        const palabras = palabrasRaw.filter(p => {
+          const key = p.palabra.toLowerCase();
+          if (vistas.has(key)) return false;
+          vistas.add(key);
+          return true;
+        });
+
         const seleccion = this.estado?.selecciones?.[j.nombre];
         return {
           id: j.nombre,
@@ -688,9 +698,19 @@ export class PalabraMasLargaComponent implements OnChanges, OnDestroy {
     // Modo equipos
     const equipos = this.sala.equipos || [];
     return equipos.map(eq => {
-      const palabras = (this.estado?.palabrasAportadas || [])
+      const palabrasRaw = (this.estado?.palabrasAportadas || [])
         .filter(p => p.equipoId === eq.id)
         .sort((a, b) => b.longitud - a.longitud);
+
+      // Eliminar duplicados: solo una ocurrencia por palabra
+      const vistas = new Set<string>();
+      const palabras = palabrasRaw.filter(p => {
+        const key = p.palabra.toLowerCase();
+        if (vistas.has(key)) return false;
+        vistas.add(key);
+        return true;
+      });
+
       const seleccion = this.estado?.selecciones?.[eq.id];
       return {
         id: eq.id,
