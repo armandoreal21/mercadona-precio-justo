@@ -92,7 +92,13 @@ export class SalaPageComponent implements OnDestroy {
  return;
  }
 
- const sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
+ // Si Firebase está activo o la sala aún no está en local, intentar sincronizar primero
+ let sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
+ if (!sala) {
+ await this.salaService.requestServerState();
+ sala = this.salaService.obtenerSalaPorCodigo(this.codigo);
+ }
+
  if (!sala) {
  this.router.navigate(['/unirse']);
  return;

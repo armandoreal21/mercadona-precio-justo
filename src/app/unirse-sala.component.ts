@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SalaService } from './sala.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { Equipo } from './core/models/sala.model';
 
 @Component({
  selector: 'app-unirse-sala',
  standalone: true,
- imports: [CommonModule, FormsModule],
+ imports: [CommonModule, FormsModule, RouterModule],
  template: `
  <div class="min-h-screen bg-slate-900 p-4 flex flex-col items-center justify-center text-white">
  <div class="w-full max-w-sm bg-slate-800 rounded-3xl border-4 border-indigo-500 shadow-2xl p-6">
@@ -29,8 +30,17 @@ import { Router } from '@angular/router';
 
  <div>
  <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Código de Sala</label>
- <input [(ngModel)]="codigo" type="text" placeholder="X7R2B" maxlength="5"
+ <input [(ngModel)]="codigo" (ngModelChange)="onCodigoChange($event)" type="text" placeholder="X7R2B" maxlength="5"
  class="w-full bg-slate-700 border-2 border-slate-600 rounded-xl px-4 py-3 text-white font-mono font-black text-2xl text-center uppercase tracking-widest focus:outline-none focus:border-cyan-400 transition" />
+ </div>
+
+ <!-- Si la sala encontrada requiere equipo, selector de equipo -->
+ <div *ngIf="equiposDisponibles.length > 0">
+ <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Selecciona tu Equipo</label>
+ <select [(ngModel)]="equipoSeleccionado"
+ class="w-full bg-slate-700 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white font-bold text-center focus:outline-none focus:border-cyan-400 transition">
+ <option *ngFor="let eq of equiposDisponibles" [value]="eq.id">{{ eq.nombre }}</option>
+ </select>
  </div>
 
  <div class="flex items-center gap-2">
@@ -44,6 +54,12 @@ import { Router } from '@angular/router';
  </div>
 
  <div *ngIf="error" class="mt-3 text-red-400">{{ error }}</div>
+
+ <div class="mt-4 text-center">
+ <a routerLink="/juegos" class="text-xs text-yellow-400 hover:text-yellow-300 font-semibold transition">
+ ¿Quieres crear una nueva sala? Elige un juego 👑
+ </a>
+ </div>
  </div>
  </div>
  `
@@ -53,36 +69,71 @@ export class UnirseSalaComponent {
  codigo = '';
  asAdmin = false;
  error: string | null = null;
+ equiposDisponibles: Equipo[] = [];
+ equipoSeleccionado = '';
+
  constructor(private sala: SalaService, private router: Router) {}
+
+ onCodigoChange(val: string) {
+ if (!val) {
+ this.equiposDisponibles = [];
+ return;
+ }
+ const up = val.trim().toUpperCase();
+ const s = this.sala.obtenerSalaPorCodigo(up);
+ if (s && Array.isArray(s.equipos) && s.equipos.length > 0) {
+ this.equiposDisponibles = s.equipos;
+ if (!this.equipoSeleccionado) {
+ this.equipoSeleccionado = s.equipos[0].id;
+ }
+ } else {
+ this.equiposDisponibles = [];
+ }
+ }
 
  async entrar() {
  this.error = null;
- // try to fetch server state first and wait a short time for sync event
- try {
- if (typeof window !== 'undefined' && typeof (this.sala as any).requestServerState === 'function') {
- try { (this.sala as any).requestServerState(); } catch (e) {}
- // wait for mpj_state_updated or timeout
- await new Promise<void>(resolve => {
- let done = false;
- const onUpdate = () => { if (done) return; done = true; window.removeEventListener('mpj_state_updated', onUpdate as EventListener); resolve(); };
- window.addEventListener('mpj_state_updated', onUpdate as EventListener);
- setTimeout(() => { if (done) return; done = true; window.removeEventListener('mpj_state_updated', onUpdate as EventListener); resolve(); },600);
- });
+ const cleanCode = (this.codigo || '').trim().toUpperCase();
+ const cleanNombre = (this.nombre || '').trim();
+
+ if (!cleanNombre) {
+ this.error = 'Introduce un nombre o nickname';
+ return;
  }
+ if (!cleanCode) {
+ this.error = 'Introduce el código de la sala';
+ return;
+ }
+
+ // Always fetch latest state from server (Firebase / DB) before joining
+ try {
+ await this.sala.requestServerState();
  } catch (e) {
  // ignore
  }
 
+ const equipoId = this.equiposDisponibles.length > 0 ? this.equipoSeleccionado : undefined;
+
  let res: any;
  if (this.asAdmin) {
- res = await (this.sala as any).unirComoAdmin(this.codigo, this.nombre);
+ res = await this.sala.unirComoAdmin(cleanCode, cleanNombre, equipoId);
  } else {
- res = await (this.sala as any).unirASala(this.codigo, this.nombre);
+ res = await this.sala.unirASala(cleanCode, cleanNombre, equipoId);
  }
- if (!res.success) { this.error = res.error || 'Error'; return; }
+
+ if (!res.success) {
+ this.error = res.error || 'Error al unirse';
+ return;
+ }
+
  // guardar jugador actual en localStorage para identificar permisos
  try {
- localStorage.setItem('mpj_current', JSON.stringify({ codigo: res.sala.codigo, nombre: this.nombre, esAdmin: this.asAdmin }));
+ localStorage.setItem('mpj_current', JSON.stringify({
+ codigo: res.sala.codigo,
+ nombre: cleanNombre,
+ esAdmin: this.asAdmin,
+ equipoId
+ }));
  } catch (e) {
  // ignore
  }

@@ -2,42 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo } from './core/models/sala.model';
+import { ModoJuego } from './core/models/game.model';
 
-export interface Jugador {
- nombre: string;
- apuesta?: number;
- esAdmin?: boolean;
- puntuacion?: number;
-}
-
-export interface ResultadoRonda {
- nombre: string;
- puntos: number;
- delta: number;
- apuesta?: number;
-}
-
-export interface HistorialRonda {
- ronda: number;
- producto?: any;
- resultados: ResultadoRonda[];
- ts: number;
-}
-
-export interface Sala {
- codigo: string;
- nombre: string;
- productoActualId?: number | string | null;
- productoActual?: any;
- estado: string;
- jugadores: Jugador[];
- rondasTotales?: number;
- rondaActual?: number;
- historialRondas?: HistorialRonda[];
- lastResults?: { ts: number; price: number; results: ResultadoRonda[] } | null;
- createdAt?: number;
- updatedAt?: number;
-}
+export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo };
 
 @Injectable({ providedIn: 'root' })
 export class SalaService {
@@ -286,9 +254,9 @@ export class SalaService {
  const ready = (ws as any).readyState;
  if (ready !== (WebSocket as any).OPEN) return;
  try { ws.send(JSON.stringify({ type: 'syncState', clientId: this.clientId, state: { salasActivas: salas } })); } catch (e) { }
- }
+  }
 
- private readAll(): Sala[] {
+  private readAll(): Sala[] {
  if (this.hasLocalStorage) {
  const raw = localStorage.getItem(this.storageKey);
  if (!raw) return [];
@@ -297,20 +265,28 @@ export class SalaService {
  const salas: Sala[] = parsed?.salasActivas || [];
  let changed = false;
  const now = Date.now();
- const twoDaysAgo = now - (2 *24 *60 *60 *1000);
+ const twoDaysAgo = now - (2 * 24 * 60 * 60 * 1000);
  salas.forEach(s => {
  if (s.createdAt === undefined && s.updatedAt === undefined) {
  s.createdAt = twoDaysAgo;
  s.updatedAt = twoDaysAgo;
  changed = true;
  }
- if (s.rondasTotales === undefined || s.rondasTotales === null) { s.rondasTotales =5; changed = true; }
+ if (!s.tipoJuego) { s.tipoJuego = 'precio-justo'; changed = true; }
+ if (!s.modoJuego) { s.modoJuego = 'individual'; changed = true; }
+ if (s.rondasTotales === undefined || s.rondasTotales === null) { s.rondasTotales = 5; changed = true; }
  if (!Array.isArray(s.historialRondas)) s.historialRondas = [];
- if (s.rondaActual === undefined || s.rondaActual === null) { s.rondaActual =0; changed = true; }
+ if (s.rondaActual === undefined || s.rondaActual === null) { s.rondaActual = 0; changed = true; }
  // ensure jugadores exists and has sane defaults
  if (!Array.isArray(s.jugadores)) { s.jugadores = []; changed = true; }
  else {
- s.jugadores = s.jugadores.map(j => ({ nombre: (j && j.nombre) ? String(j.nombre) : '', apuesta: (j && typeof j.apuesta !== 'undefined') ? j.apuesta : undefined, esAdmin: !!(j && j.esAdmin), puntuacion: (j && typeof j.puntuacion !== 'undefined') ? j.puntuacion :0 }));
+ s.jugadores = s.jugadores.map(j => ({
+ nombre: (j && j.nombre) ? String(j.nombre) : '',
+ apuesta: (j && typeof j.apuesta !== 'undefined') ? j.apuesta : undefined,
+ esAdmin: !!(j && j.esAdmin),
+ puntuacion: (j && typeof j.puntuacion !== 'undefined') ? j.puntuacion : 0,
+ equipoId: j?.equipoId || undefined
+ }));
  }
  });
  if (changed) {
@@ -354,37 +330,79 @@ export class SalaService {
  }
  }
 
- generarCodigo(longitud =5): string {
- const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZA23456789';
+ generarCodigo(longitud = 5): string {
+ const chars = 'ABCDEFGHJKLMNPQRSTuvwxyZA23456789';
  let codigo = '';
- for (let i =0; i < longitud; i++) codigo += chars[Math.floor(Math.random() * chars.length)];
+ for (let i = 0; i < longitud; i++) codigo += chars[Math.floor(Math.random() * chars.length)];
  return codigo;
  }
 
- crearSala(nombre: string, rondas =5): { sala: Sala; creado: boolean; error?: string } {
- const salas = this.readAll();
- if (salas.find(s => s.nombre.toLowerCase() === nombre.trim().toLowerCase())) {
+ async crearSala(
+ nombre: string,
+ rondas = 5,
+ tipoJuego = 'precio-justo',
+ modoJuego: ModoJuego = 'individual',
+ equipos?: Equipo[]
+ ): Promise<{ sala: Sala; creado: boolean; error?: string }> {
+ const upName = nombre.trim();
+ const upNameLower = upName.toLowerCase();
+
+ // 1. Siempre creamos la sala localmente primero para disponibilidad instantánea en este dispositivo
+ const localSalas = this.readAll();
+ if (localSalas.some(s => s.nombre.toLowerCase() === upNameLower)) {
  return { sala: null as any, creado: false, error: 'Ya existe una sala con ese nombre' };
  }
+
  let codigo = this.generarCodigo();
- while (salas.find(s => s.codigo === codigo)) { codigo = this.generarCodigo(); }
+ while (localSalas.some(s => s.codigo === codigo)) {
+ codigo = this.generarCodigo();
+ }
+
  const now = Date.now();
  const nueva: Sala = {
  codigo,
- nombre: nombre.trim(),
+ nombre: upName,
+ tipoJuego: tipoJuego || 'precio-justo',
+ modoJuego: modoJuego || 'individual',
+ equipos: equipos || undefined,
  productoActualId: null,
  productoActual: null,
  estado: 'esperando_jugadores',
  jugadores: [],
- rondasTotales: typeof rondas === 'number' && rondaSaneable(rondas) ? Math.max(1, Math.floor(rondas)) :5,
- rondaActual:0,
+ rondasTotales: typeof rondas === 'number' && rondaSaneable(rondas) ? Math.max(1, Math.floor(rondas)) : 5,
+ rondaActual: 0,
  historialRondas: [],
  lastResults: null,
  createdAt: now,
  updatedAt: now
  };
+
+ localSalas.push(nueva);
+ this.writeAll(localSalas);
+
+ // 2. Si Firebase está activo o conectándose, sincronizamos remotamente
+ if (this.useFirebase && this.firebaseDb) {
+ try {
+ const newState = await this.applyTransaction((state) => {
+ const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+ // Si ya existe otra sala con ese código en firebase, no sobrescribir
+ const yaExiste = salas.find(s => s.codigo === codigo);
+ if (yaExiste) {
+ return state;
+ }
  salas.push(nueva);
- this.writeAll(salas);
+ return { salasActivas: salas };
+ });
+
+ if (!newState) {
+ // Si falló la transacción pero tenemos conexión, intentar un broadcast directo
+ await this.broadcastStateToFirebase(this.readAll());
+ }
+ } catch (err: any) {
+ console.warn('[SalaService] Error sincronizando nueva sala con Firebase:', err);
+ }
+ }
+
  return { sala: nueva, creado: true };
  }
 
@@ -429,91 +447,154 @@ export class SalaService {
  }
  }
 
- async unirASala(codigo: string, nombreJugador: string): Promise<{ sala?: Sala; success: boolean; error?: string }> {
+ async unirASala(codigo: string, nombreJugador: string, equipoId?: string): Promise<{ sala?: Sala; success: boolean; error?: string }> {
  if (!nombreJugador || !nombreJugador.trim()) return { success: false, error: 'Nombre inválido' };
  const upCode = (codigo || '').toUpperCase();
- // If Firebase available, perform atomic transaction
+ const trimmedNombre = nombreJugador.trim();
+ const trimmedNombreLower = trimmedNombre.toLowerCase();
+
+ // 1. Intentar transacción en Firebase si está activo
  if (this.useFirebase && this.firebaseDb) {
+ let roomFound = false;
+ let playerExists = false;
+
+ try {
  const newState = await this.applyTransaction((state) => {
- const salas = Array.isArray(state.salasActivas) ? state.salasActivas : [];
+ const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
  const sala = salas.find(s => s.codigo === upCode);
- if (!sala) return null;
- const exists = sala.jugadores && sala.jugadores.find((j: any) => (j.nombre || '').toLowerCase() === nombreJugador.trim().toLowerCase());
- if (exists) return null;
- const jugador: Jugador = { nombre: nombreJugador.trim(), esAdmin: false, puntuacion:0 };
+ if (!sala) {
+ roomFound = false;
+ return null;
+ }
+ roomFound = true;
+
+ const exists = sala.jugadores && sala.jugadores.some((j: any) => (j.nombre || '').toLowerCase() === trimmedNombreLower);
+ if (exists) {
+ playerExists = true;
+ return null;
+ }
+ const jugador: Jugador = { nombre: trimmedNombre, esAdmin: false, puntuacion: 0, equipoId };
  sala.jugadores = Array.isArray(sala.jugadores) ? sala.jugadores : [];
  sala.jugadores.push(jugador);
  sala.updatedAt = Date.now();
  return { salasActivas: salas };
  });
- if (!newState) return { success: false, error: 'Sala no encontrada o jugador ya existe' };
+
+ if (newState) {
  const sala = (newState.salasActivas || []).find(s => s.codigo === upCode);
  return { sala, success: true };
  }
- // fallback: local-only flow
+
+ // Si la transacción fue cancelada intencionadamente por lógica de negocio
+ if (playerExists) {
+ return { success: false, error: 'Ya existe un jugador con ese nombre en la sala' };
+ }
+ } catch (e) {
+ console.warn('[SalaService] Error en transacción unirASala:', e);
+ }
+ }
+
+ // 2. Fallback local / lectura de caché sincronizada
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === upCode);
  if (!sala) return { success: false, error: 'Sala no encontrada' };
- if (sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase())) return { success: false, error: 'Ya existe un jugador con ese nombre en la sala' };
- const jugador: Jugador = { nombre: nombreJugador.trim(), esAdmin: false, puntuacion:0 };
+ if (sala.jugadores.find(j => j.nombre.toLowerCase() === trimmedNombreLower)) {
+ return { success: false, error: 'Ya existe un jugador con ese nombre en la sala' };
+ }
+ const jugador: Jugador = { nombre: trimmedNombre, esAdmin: false, puntuacion: 0, equipoId };
  sala.jugadores.push(jugador);
  sala.updatedAt = Date.now();
  this.writeAll(salas);
- try { if (this.useFirebase && this.firebaseDb) { await this.broadcastStateToFirebase(salas); } } catch (e) { /* ignore */ }
  return { sala, success: true };
  }
 
- async unirComoAdmin(codigo: string, nombreJugador: string): Promise<{ sala?: Sala; success: boolean; error?: string }> {
+ async unirComoAdmin(codigo: string, nombreJugador: string, equipoId?: string): Promise<{ sala?: Sala; success: boolean; error?: string }> {
  if (!nombreJugador || !nombreJugador.trim()) return { success: false, error: 'Nombre inválido' };
  const upCode = (codigo || '').toUpperCase();
+ const trimmedNombre = nombreJugador.trim();
+ const trimmedNombreLower = trimmedNombre.toLowerCase();
+
+ // 1. Intentar transacción en Firebase si está activo
  if (this.useFirebase && this.firebaseDb) {
+ let roomFound = false;
+
+ try {
  const newState = await this.applyTransaction((state) => {
- const salas = Array.isArray(state.salasActivas) ? state.salasActivas : [];
+ const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
  const sala = salas.find(s => s.codigo === upCode);
- if (!sala) return null;
- let jugador = sala.jugadores && sala.jugadores.find((j: any) => (j.nombre || '').toLowerCase() === nombreJugador.trim().toLowerCase());
+ if (!sala) {
+ roomFound = false;
+ return null;
+ }
+ roomFound = true;
+
+ let jugador = sala.jugadores && sala.jugadores.find((j: any) => (j.nombre || '').toLowerCase() === trimmedNombreLower);
  if (!jugador) {
- jugador = { nombre: nombreJugador.trim(), esAdmin: true, puntuacion:0 };
+ jugador = { nombre: trimmedNombre, esAdmin: true, puntuacion: 0, equipoId };
  sala.jugadores = Array.isArray(sala.jugadores) ? sala.jugadores : [];
  sala.jugadores.push(jugador);
  } else {
  jugador.esAdmin = true;
+ if (equipoId) jugador.equipoId = equipoId;
  }
  sala.updatedAt = Date.now();
  return { salasActivas: salas };
  });
- if (!newState) return { success: false, error: 'Sala no encontrada' };
+
+ if (newState && roomFound) {
  const sala = (newState.salasActivas || []).find(s => s.codigo === upCode);
  return { sala, success: true };
  }
- const res = await this.unirASala(codigo, nombreJugador);
- if (!res.success) return res;
+ } catch (e) {
+ console.warn('[SalaService] Error en transacción unirComoAdmin:', e);
+ }
+ }
+
+ // 2. Fallback local / lectura de caché sincronizada
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === upCode);
- if (!sala) return { success: false, error: 'Sala no encontrada tras unir' };
- const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
- if (!jugador) return { success: false, error: 'Jugador no encontrado' };
+ if (!sala) return { success: false, error: 'Sala no encontrada' };
+
+ let jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === trimmedNombreLower);
+ if (!jugador) {
+ jugador = { nombre: trimmedNombre, esAdmin: true, puntuacion: 0, equipoId };
+ sala.jugadores.push(jugador);
+ } else {
  jugador.esAdmin = true;
+ if (equipoId) jugador.equipoId = equipoId;
+ }
+
  sala.updatedAt = Date.now();
  this.writeAll(salas);
- try { if (this.useFirebase && this.firebaseDb) { await this.broadcastStateToFirebase(salas); } } catch (e) { /* ignore */ }
  return { sala, success: true };
  }
 
- removePlayer(codigo: string, nombreJugador: string) {
+ cambiarEquipoJugador(codigo: string, nombreJugador: string, nuevoEquipoId: string): boolean {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
- const idx = sala.jugadores.findIndex(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
- if (idx === -1) return false;
- sala.jugadores.splice(idx,1);
+ const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
+ if (!jugador) return false;
+ jugador.equipoId = nuevoEquipoId;
  sala.updatedAt = Date.now();
  this.writeAll(salas);
  return true;
  }
 
- // reiniciar sala para nueva partida: limpiar historial, resetear puntuaciones, rondas y producto
- reiniciarSala(codigo: string) {
+ removePlayer(codigo: string, nombreJugador: string): boolean {
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
+    if (!sala) return false;
+    const idx = sala.jugadores.findIndex(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
+    if (idx === -1) return false;
+    sala.jugadores.splice(idx, 1);
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
+
+  // reiniciar sala para nueva partida: limpiar historial, resetear puntuaciones, rondas y producto
+  reiniciarSala(codigo: string) {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
@@ -569,17 +650,41 @@ export class SalaService {
  }
 
  actualizarProductoObjeto(codigo: string, producto: any) {
- const salas = this.readAll();
- const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
- if (!sala) return false;
- sala.productoActual = producto;
- sala.productoActualId = productoidOrNull(producto?.id ?? producto?.idProducto ?? null);
- sala.updatedAt = Date.now();
- this.writeAll(salas);
- return true;
- }
+    const upCode = (codigo || '').toUpperCase();
+    const pid = productoidOrNull(producto?.id ?? producto?.idProducto ?? null);
 
- actualizarProductoActual(codigo: string, productoId: number) {
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        sala.productoActual = producto;
+        sala.productoActualId = pid;
+        // Limpiar apuestas de los jugadores para el nuevo producto
+        if (Array.isArray(sala.jugadores)) {
+          sala.jugadores.forEach(j => { delete j.apuesta; });
+        }
+        sala.lastResults = null;
+        sala.updatedAt = Date.now();
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    sala.productoActual = producto;
+    sala.productoActualId = pid;
+    if (Array.isArray(sala.jugadores)) {
+      sala.jugadores.forEach(j => { delete j.apuesta; });
+    }
+    sala.lastResults = null;
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
+
+  actualizarProductoActual(codigo: string, productoId: number) {
  const salas = this.readAll();
  const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
  if (!sala) return false;
@@ -601,39 +706,59 @@ export class SalaService {
  return true;
  }
 
- async setApuesta(codigo: string, nombreJugador: string, apuesta: number) {
- const upCode = (codigo || '').toUpperCase();
- // If Firebase available, perform atomic transaction
- if (this.useFirebase && this.firebaseDb) {
- const newState = await this.applyTransaction((state) => {
- const salas = Array.isArray(state.salasActivas) ? state.salasActivas : [];
- const sala = salas.find(s => s.codigo === upCode);
- if (!sala) return null;
- sala.jugadores = Array.isArray(sala.jugadores) ? sala.jugadores : [];
- const jugador = sala.jugadores.find((j: any) => (j.nombre || '').toLowerCase() === nombreJugador.trim().toLowerCase());
- if (!jugador) return null;
- jugador.apuesta = Number(apuesta);
- sala.updatedAt = Date.now();
- return { salasActivas: salas };
- });
- if (!newState) return false;
- const sala = (newState.salasActivas || []).find(s => s.codigo === upCode);
- const jugador = sala?.jugadores?.find((j: any) => (j.nombre || '').toLowerCase() === nombreJugador.trim().toLowerCase());
- return !!jugador && typeof jugador.apuesta !== 'undefined';
- }
- // fallback: local-only flow
- const salas = this.readAll();
- const sala = salas.find(s => s.codigo === upCode);
- if (!sala) return false;
- const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === nombreJugador.trim().toLowerCase());
- if (!jugador) return false;
- jugador.apuesta = Number(apuesta);
- sala.updatedAt = Date.now();
- this.writeAll(salas);
- return true;
- }
+ async setApuesta(codigo: string, nombreJugador: string, apuesta: number): Promise<boolean> {
+    const upCode = (codigo || '').toUpperCase();
+    const cleanNombre = nombreJugador.trim();
+    const cleanNombreLower = cleanNombre.toLowerCase();
+    const cleanApuesta = Number(apuesta);
 
- async calcularPuntuacionesRonda(codigo: string): Promise<{ nombre: string; puntos: number; delta: number; apuesta?: number }[] | null> {
+    // 1. If Firebase available, perform atomic transaction directly on the room
+    if (this.useFirebase && this.firebaseDb) {
+      let retries = 3;
+      while (retries > 0) {
+        try {
+          const newState = await this.applyTransaction((state) => {
+            const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+            const sala = salas.find(s => s.codigo === upCode);
+            if (!sala) return null;
+            sala.jugadores = Array.isArray(sala.jugadores) ? sala.jugadores : [];
+            const jugador = sala.jugadores.find((j: any) => (j.nombre || '').toLowerCase() === cleanNombreLower);
+            if (!jugador) return null;
+            jugador.apuesta = cleanApuesta;
+            sala.updatedAt = Date.now();
+            return { salasActivas: salas };
+          });
+
+          if (newState) {
+            const sala = (newState.salasActivas || []).find(s => s.codigo === upCode);
+            const jugador = sala?.jugadores?.find((j: any) => (j.nombre || '').toLowerCase() === cleanNombreLower);
+            if (jugador && typeof jugador.apuesta !== 'undefined') {
+              return true;
+            }
+          }
+        } catch (e) {
+          console.warn('[SalaService] Error en setApuesta transaction, reintentando...', e);
+        }
+        retries--;
+        if (retries > 0) {
+          await new Promise(r => setTimeout(r, 60 + Math.random() * 80));
+        }
+      }
+    }
+
+    // 2. fallback: local-only flow
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === cleanNombreLower);
+    if (!jugador) return false;
+    jugador.apuesta = cleanApuesta;
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
+
+  async calcularPuntuacionesRonda(codigo: string): Promise<{ nombre: string; puntos: number; delta: number; apuesta?: number }[] | null> {
  const upCode = (codigo || '').toUpperCase();
  // If Firebase available, perform atomic transaction so scores/history/lastResults update atomically
  if (this.useFirebase && this.firebaseDb) {
@@ -654,15 +779,15 @@ export class SalaService {
  resultados.sort((a: any, b: any) => a.delta - b.delta);
  const puntosPorPos = [10,7,5];
  const asignaciones: any[] = [];
- let idx =0;
+ let idx = 0;
  while (idx < resultados.length) {
  const currentDelta = resultados[idx].delta;
- let j = idx +1;
+ let j = idx + 1;
  while (j < resultados.length && resultados[j].delta === currentDelta) j++;
- const basePuntos = idx < puntosPorPos.length ? puntosPorPos[idx] :3;
+ const basePuntos = idx < puntosPorPos.length ? puntosPorPos[idx] : 3;
  for (let k = idx; k < j; k++) {
  const apuestaVal = resultados[k].apuesta;
- const exactBonus = (typeof apuestaVal === 'number' && apuestaVal === precioReal) ?5 :0;
+ const exactBonus = (typeof apuestaVal === 'number' && apuestaVal === precioReal) ? 5 : 0;
  const puntos = basePuntos + exactBonus;
  asignaciones.push({ nombre: resultados[k].nombre, puntos, delta: resultados[k].delta, apuesta: resultados[k].apuesta });
  const jugador = sala.jugadores.find((p: any) => p.nombre === resultados[k].nombre);
@@ -671,7 +796,7 @@ export class SalaService {
  idx = j;
  }
  if (!sala.historialRondas) sala.historialRondas = [];
- sala.historialRondas.push({ ronda: sala.rondaActual ??0, producto: sala.productoActual ? { ...sala.productoActual } : undefined, resultados: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })), ts: Date.now() });
+ sala.historialRondas.push({ ronda: sala.rondaActual ?? 0, producto: sala.productoActual ? { ...sala.productoActual } : undefined, resultados: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })), ts: Date.now() });
  sala.lastResults = { ts: Date.now(), price: precioReal, results: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })) };
  sala.updatedAt = Date.now();
  return { salasActivas: salas };
@@ -692,15 +817,15 @@ export class SalaService {
  resultados.sort((a, b) => a.delta - b.delta);
  const puntosPorPos = [10,7,5];
  const asignaciones: { nombre: string; puntos: number; delta: number; apuesta?: number }[] = [];
- let idx =0;
+ let idx = 0;
  while (idx < resultados.length) {
  const currentDelta = resultados[idx].delta;
- let j = idx +1;
+ let j = idx + 1;
  while (j < resultados.length && resultados[j].delta === currentDelta) j++;
- const basePuntos = idx < puntosPorPos.length ? puntosPorPos[idx] :3;
+ const basePuntos = idx < puntosPorPos.length ? puntosPorPos[idx] : 3;
  for (let k = idx; k < j; k++) {
  const apuestaVal = resultados[k].apuesta;
- const exactBonus = (typeof apuestaVal === 'number' && apuestaVal === precioReal) ?5 :0;
+ const exactBonus = (typeof apuestaVal === 'number' && apuestaVal === precioReal) ? 5 : 0;
  const puntos = basePuntos + exactBonus;
  asignaciones.push({ nombre: resultados[k].nombre, puntos, delta: resultados[k].delta, apuesta: resultados[k].apuesta });
  const jugador = sala.jugadores.find(p => p.nombre === resultados[k].nombre);
@@ -709,7 +834,7 @@ export class SalaService {
  idx = j;
  }
  if (!sala.historialRondas) sala.historialRondas = [];
- sala.historialRondas.push({ ronda: sala.rondaActual ??0, producto: sala.productoActual ? { ...sala.productoActual } : undefined, resultados: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })), ts: Date.now() });
+ sala.historialRondas.push({ ronda: sala.rondaActual ?? 0, producto: sala.productoActual ? { ...sala.productoActual } : undefined, resultados: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })), ts: Date.now() });
  sala.lastResults = { ts: Date.now(), price: precioReal, results: asignaciones.map(a => ({ nombre: a.nombre, puntos: a.puntos, delta: a.delta, apuesta: a.apuesta })) };
  sala.updatedAt = Date.now();
  this.writeAll(salas);
@@ -717,36 +842,83 @@ export class SalaService {
  }
 
  clearApuestas(codigo: string) {
- const salas = this.readAll();
- const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
- if (!sala) return false;
- sala.jugadores.forEach(j => delete j.apuesta);
- sala.updatedAt = Date.now();
- this.writeAll(salas);
- return true;
- }
+    const upCode = (codigo || '').toUpperCase();
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        if (Array.isArray(sala.jugadores)) {
+          sala.jugadores.forEach(j => { delete j.apuesta; });
+        }
+        sala.updatedAt = Date.now();
+        return { salasActivas: salas };
+      });
+    }
 
- // elimina lastResults del estado para que el modal deje de mostrarse en todos los clientes
- clearLastResults(codigo: string) {
- const salas = this.readAll();
- const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
- if (!sala) return false;
- sala.lastResults = null;
- sala.updatedAt = Date.now();
- this.writeAll(salas);
- return true;
- }
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    sala.jugadores.forEach(j => delete j.apuesta);
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
 
- avanzarRonda(codigo: string) {
- const salas = this.readAll();
- const sala = salas.find(s => s.codigo === (codigo || '').toUpperCase());
- if (!sala) return false;
- sala.rondaActual = (sala.rondaActual ||0) +1;
- if ((sala.rondaActual ||0) >= (sala.rondasTotales ||10)) sala.estado = 'finalizada';
- sala.updatedAt = Date.now();
- this.writeAll(salas);
- return true;
- }
+  // elimina lastResults del estado para que el modal deje de mostrarse en todos los clientes
+  clearLastResults(codigo: string) {
+    const upCode = (codigo || '').toUpperCase();
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        sala.lastResults = null;
+        sala.updatedAt = Date.now();
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    sala.lastResults = null;
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
+
+  avanzarRonda(codigo: string) {
+ const upCode = (codigo || '').toUpperCase();
+    if (this.useFirebase && this.firebaseDb) {
+      this.applyTransaction((state) => {
+        const salas = Array.isArray(state?.salasActivas) ? state.salasActivas : [];
+        const sala = salas.find(s => s.codigo === upCode);
+        if (!sala) return null;
+        sala.rondaActual = (sala.rondaActual || 0) + 1;
+        if ((sala.rondaActual || 0) >= (sala.rondasTotales || 10)) sala.estado = 'finalizada';
+        if (Array.isArray(sala.jugadores)) {
+          sala.jugadores.forEach(j => { delete j.apuesta; });
+        }
+        sala.lastResults = null;
+        sala.updatedAt = Date.now();
+        return { salasActivas: salas };
+      });
+    }
+
+    const salas = this.readAll();
+    const sala = salas.find(s => s.codigo === upCode);
+    if (!sala) return false;
+    sala.rondaActual = (sala.rondaActual || 0) + 1;
+    if ((sala.rondaActual || 0) >= (sala.rondasTotales || 10)) sala.estado = 'finalizada';
+    if (Array.isArray(sala.jugadores)) {
+      sala.jugadores.forEach(j => { delete j.apuesta; });
+    }
+    sala.lastResults = null;
+    sala.updatedAt = Date.now();
+    this.writeAll(salas);
+    return true;
+  }
 }
 
 function productoidOrNull(v: any) {

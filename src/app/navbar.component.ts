@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
  <div class="brand">🎯 El Precio Justo</div>
 
  <div class="links">
- <a routerLink="/administrar" routerLinkActive="active">👑 Crear/Admin Sala</a>
+ <a routerLink="/juegos" routerLinkActive="active">👑 Catálogo / Crear Sala</a>
  <a routerLink="/unirse" routerLinkActive="active">🎮 Unirse a Sala</a>
  </div>
 
@@ -24,7 +24,7 @@ import { RouterModule } from '@angular/router';
  </div>
 
  <div *ngIf="isMenuOpen" class="mobile-menu">
- <a routerLink="/administrar" (click)="toggleMenu()">👑 Crear/Admin Sala</a>
+ <a routerLink="/juegos" (click)="toggleMenu()">👑 Catálogo / Crear Sala</a>
  <a routerLink="/unirse" (click)="toggleMenu()">🎮 Unirse a Sala</a>
  </div>
 </nav>
