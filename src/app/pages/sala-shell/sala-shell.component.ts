@@ -54,10 +54,22 @@ import { CodigoSecretoComponent } from '../../games/codigo-secreto/codigo-secret
 
         <!-- Participants & Team Management (Admin control) -->
         <div class="mb-6 bg-slate-900 p-4 rounded-2xl border border-slate-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Participantes en sala</span>
+          <button type="button" (click)="toggleParticipantes()" [disabled]="sala.modoJuego === 'individual'"
+                  class="w-full flex justify-between items-center mb-2 text-left">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">
+              Participantes en sala ({{ sala.jugadores.length || 0 }})
+              <span *ngIf="sala.modoJuego !== 'individual'" class="ml-1 text-slate-300">{{ participantesAbiertos ? '▲' : '▼' }}</span>
+            </span>
             <span *ngIf="sala.modoJuego !== 'individual'" class="text-xs text-purple-300 font-semibold">
               Modo Equipos Activo
+            </span>
+          </button>
+
+          <!-- Resumen cuando está colapsado (solo equipos) -->
+          <div *ngIf="sala.modoJuego !== 'individual' && !participantesAbiertos && sala.equipos"
+               class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-300">
+            <span *ngFor="let eq of sala.equipos">
+              🛡️ {{ eq.nombre }}: <strong class="text-white">{{ getJugadoresEquipo(eq.id).length }}</strong>
             </span>
           </div>
 
@@ -75,7 +87,7 @@ import { CodigoSecretoComponent } from '../../games/codigo-secreto/codigo-secret
           </div>
 
           <!-- Team mode: Participants grouped by team -->
-          <div *ngIf="sala.modoJuego !== 'individual' && sala.equipos">
+          <div *ngIf="sala.modoJuego !== 'individual' && sala.equipos && participantesAbiertos">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
               <div *ngFor="let eq of sala.equipos" class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
                 <div class="font-bold text-sm text-cyan-300 mb-2 flex justify-between items-center">
@@ -253,6 +265,9 @@ export class SalaShellComponent implements OnInit, OnDestroy {
 
   nuevoEquipoNombre = '';
 
+  /** Lista de participantes por equipos: colapsada por defecto para no molestar durante el juego. */
+  participantesAbiertos = false;
+
   showClasificacion = false;
   clasificacionList: { nombre: string; puntos: number; miembros?: string[] }[] = [];
   showFinalChoiceModal = false;
@@ -317,6 +332,10 @@ export class SalaShellComponent implements OnInit, OnDestroy {
     } catch (e) {
       return false;
     }
+  }
+
+  toggleParticipantes(): void {
+    this.participantesAbiertos = !this.participantesAbiertos;
   }
 
   getNombreJuego(tipoJuego: string): string {
