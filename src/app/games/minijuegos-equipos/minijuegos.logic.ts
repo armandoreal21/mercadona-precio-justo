@@ -149,28 +149,51 @@ function generarCodigo(L: number, n: number): Puzle {
 // Símbolos en secuencia: crece la longitud, el número de símbolos
 // de la tabla y aparecen símbolos señuelo (no están en la secuencia).
 // ------------------------------------------------------------------
-function generarSecuencia(L: number, n: number): Puzle {
-  const glifos = ['▲', '●', '■', '★', '◆', '✚', '♠', '♣', '♥', '✦'];
-  const Q = Math.min(2 + L, 7);                 // longitud de la secuencia
-  const S = Math.min(Math.max(Q, 3 + L), 9);    // símbolos distintos en la tabla
-  const simbolos = barajar(glifos).slice(0, S);
-  const digitos = barajar([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, S);
-  const tabla = simbolos.map((s, i) => ({ s, d: digitos[i] }));
-  const seq = Array.from({ length: Q }, () => pick(tabla));
-  const usados = new Set(seq.map(x => x.s));
+// Símbolos complejos: el capitán los ve y tiene que describirlos; el equipo solo conoce la descripción
+const SIMBOLOS_COMPLEJOS: { g: string; desc: string }[] = [
+  { g: '⬡', desc: 'un hexágono vacío' },
+  { g: '✦', desc: 'una estrella de cuatro puntas' },
+  { g: '☯', desc: 'el yin y el yang' },
+  { g: '⌘', desc: 'el símbolo de la tecla comando' },
+  { g: '◈', desc: 'un rombo con otro rombo dentro' },
+  { g: '⧫', desc: 'un rombo negro' },
+  { g: '⬢', desc: 'un hexágono lleno' },
+  { g: '✪', desc: 'una estrella con un círculo en el centro' },
+  { g: '⚑', desc: 'una bandera' },
+  { g: '☽', desc: 'una luna creciente' },
+  { g: '♆', desc: 'el símbolo de Neptuno' },
+  { g: '⚘', desc: 'una flor pequeña' },
+  { g: '⚛', desc: 'un átomo' },
+  { g: '⛨', desc: 'un escudo con una cruz' },
+  { g: '⊛', desc: 'un círculo con una estrella dentro' },
+  { g: '⎈', desc: 'el timón de un barco' },
+  { g: '⌬', desc: 'un hexágono con líneas dentro' },
+  { g: '✹', desc: 'una estrella explosiva' },
+  { g: '⚜', desc: 'una flor de lis' },
+  { g: '⧉', desc: 'dos cuadrados encajados' },
+  { g: '⎔', desc: 'un hexágono de esquinas redondeadas' },
+  { g: '⟁', desc: 'un triángulo hueco' },
+  { g: '✵', desc: 'una estrella de seis puntas' },
+  { g: '♒', desc: 'el signo de Acuario' }
+];
 
-  const textoPar = (m: { s: string; d: number }) => pick([
-    `${m.s} vale ${m.d}.`, `${m.d} es ${m.s}.`, `El símbolo ${m.s} representa el ${m.d}.`
-  ]);
-  // Los símbolos de la secuencia siempre tienen pista. Los señuelos aparecen desde el nivel 2.
-  const pistas = tabla
-    .filter(m => usados.has(m.s) || L >= 2)
-    .map(textoPar);
+// Cada ayudante recibe sus símbolos necesarios y 2 señuelos (símbolos que no aparecen en la secuencia)
+function generarSecuencia(L: number, n: number): Puzle {
+  const D = Math.min(2 + L, 6);                       // símbolos distintos que hacen falta
+  const Q = Math.max(Math.min(2 + L, 7), D);          // longitud de la secuencia
+  const tabla = barajar(SIMBOLOS_COMPLEJOS).slice(0, Math.min(D + 2 * n, SIMBOLOS_COMPLEJOS.length));
+  const necesarios = tabla.slice(0, D).map(s => ({ ...s, valor: rnd(10) }));
+  const señuelos = tabla.slice(D).map(s => ({ ...s, valor: rnd(10) }));
+  const seq = barajar([...necesarios, ...Array.from({ length: Q - D }, () => pick(necesarios))]);
+
+  const lineas: string[][] = Array.from({ length: n }, () => []);
+  necesarios.forEach((s, i) => lineas[i % n].push(`${s.g} vale ${s.valor}.`));
+  señuelos.forEach((s, i) => lineas[i % n].push(`${s.g} vale ${s.valor}.`));
 
   return {
-    panel: { secuencia: seq.map(x => x.s) },
-    pistas: repartir(barajar(pistas), n),
-    solucion: seq.map(x => String(x.d)).join('')
+    panel: { secuencia: seq.map(x => x.g) },
+    pistas: lineas.map(l => barajar(l).join('\n')),
+    solucion: seq.map(x => String(x.valor)).join('')
   };
 }
 
