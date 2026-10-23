@@ -116,6 +116,7 @@ interface PalabraCatalogo {
                    class="flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white font-bold focus:outline-none focus:border-cyan-400" />
             <select [(ngModel)]="pistaNumero"
                     class="bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2.5 text-white font-bold focus:outline-none focus:border-cyan-400">
+              <option [ngValue]="null" disabled>Nº</option>
               <option *ngFor="let n of numeros" [ngValue]="n">{{ n }}</option>
             </select>
             <button (click)="darPista()"
@@ -178,7 +179,7 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
   readonly numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   pistaTexto = '';
-  pistaNumero = 1;
+  pistaNumero: number | null = null;
 
   cargando = false;
   error: string | null = null;
@@ -252,7 +253,7 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
 
   puedoTerminarTurno(): boolean {
     return !!this.estado && this.estado.fase === 'jugando' && !!this.estado.pista
-      && this.miEquipoId() === this.estado.turnoEquipoId;
+      && this.miEquipoId() === this.estado.turnoEquipoId && !this.isCapitanPlayer();
   }
 
   esperaTexto(): string {
@@ -374,6 +375,10 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
       this.error = 'Escribe una pista.';
       return;
     }
+    if (this.pistaNumero === null || this.pistaNumero === undefined) {
+      this.error = 'Elige el número de la pista.';
+      return;
+    }
     // La pista no puede ser una palabra del tablero
     const clave = this.salaService.claveRespuesta(texto);
     const esDelTablero = (this.estado?.casillas || []).some(c => this.salaService.claveRespuesta(c.palabra) === clave);
@@ -384,7 +389,7 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
     const ok = await this.salaService.darPistaCodigo(this.sala.codigo, this.currentName, texto, Number(this.pistaNumero));
     if (ok) {
       this.pistaTexto = '';
-      this.pistaNumero = 1;
+      this.pistaNumero = null;
     } else {
       this.error = 'No se pudo dar la pista.';
     }

@@ -1825,6 +1825,7 @@ export class SalaService {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoCodigo(sala);
       if (est.fase !== 'jugando' || !est.pista) return false;
+      if (Object.values(est.capitanes).includes(usuario)) return false;
       const jugador = sala.jugadores.find(j => j.nombre.toLowerCase() === usuario.toLowerCase());
       if (!jugador || jugador.equipoId !== est.turnoEquipoId) return false;
       const otro = this.idsEquiposCodigo(sala).find(id => id !== est.turnoEquipoId) as string;
