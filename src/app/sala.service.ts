@@ -1780,7 +1780,7 @@ export class SalaService {
       est.pista = {
         texto: limpio,
         numero,
-        intentosRestantes: numero + 1,
+        intentosRestantes: Math.max(1, numero),
         equipoId: est.turnoEquipoId
       };
       sala.updatedAt = Date.now();

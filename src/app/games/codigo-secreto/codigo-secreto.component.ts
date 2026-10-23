@@ -130,12 +130,12 @@ interface PalabraCatalogo {
           {{ esperaTexto() }}
         </div>
         <div *ngIf="puedoTocar()" class="text-center text-sm text-emerald-300 font-semibold">
-          Toca las casillas que creáis que son de vuestro equipo.
+          Toca las casillas que creáis que son de vuestro equipo. Si no os fiáis de la siguiente, pasad el turno.
         </div>
         <div *ngIf="puedoTerminarTurno()" class="text-center">
           <button (click)="terminarTurno()"
                   class="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold px-4 py-2 rounded-lg text-xs uppercase tracking-wider transition">
-            ✋ Terminar turno
+            ⏭️ Pasar turno
           </button>
         </div>
 
