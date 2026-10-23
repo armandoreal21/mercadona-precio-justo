@@ -160,7 +160,7 @@ interface PalabraCatalogo {
                   [disabled]="c.descubierta || !puedoTocar()"
                   class="min-h-[3.5rem] sm:min-h-[4.5rem] rounded-lg border-2 p-1 text-[10px] sm:text-xs font-black uppercase break-words transition disabled:cursor-default"
                   [ngClass]="claseCasilla(c)">
-            {{ mostrarCalavera(c) ? '☠️ ' : '' }}{{ c.palabra }}
+            {{ textoCasilla(c) }}
           </button>
         </div>
 
@@ -171,6 +171,14 @@ interface PalabraCatalogo {
         <p *ngIf="isAdmin && !puedeVerMapa() && estado.fase === 'jugando'" class="text-xs text-slate-500 text-center">
           👑 Como administrador no ves el mapa, salvo que seas capitán.
         </p>
+
+        <!-- Capitán: filtrar casillas de su equipo -->
+        <div *ngIf="puedeVerMapa() && estado.fase === 'jugando'" class="text-center">
+          <button (click)="toggleSoloMiEquipo()"
+                  class="bg-slate-800 hover:bg-slate-700 border border-cyan-600 text-cyan-300 font-semibold px-4 py-2 rounded-lg text-xs uppercase tracking-wider transition">
+            {{ soloMiEquipo ? '👁️ Mostrar todas las casillas' : '🎯 Ver solo mi equipo' }}
+          </button>
+        </div>
 
         <!-- Admin: reiniciar partida en cualquier momento -->
         <div *ngIf="isAdmin && estado.fase === 'jugando'" class="text-center">
@@ -199,6 +207,9 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
 
   pistaTexto = '';
   pistaNumero: number | null = null;
+
+  /** Preferencia local del capitán: ocultar casillas sin descubrir que no son de su equipo. */
+  soloMiEquipo = false;
 
   cargando = false;
   error: string | null = null;
@@ -317,11 +328,35 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
 
   /** La calavera solo la ven los capitanes; el resto ve la casilla negra sin icono. */
   mostrarCalavera(c: CasillaCodigoSecreto): boolean {
-    return c.bando === 'negra' && this.puedeVerMapa();
+    return c.bando === 'negra' && this.puedeVerMapa() && !this.ocultaPorFiltro(c);
+  }
+
+  /** Equipo del que el usuario es capitán (o null). */
+  equipoDeMiCapitania(): string | null {
+    if (!this.currentName || !this.estado?.capitanes) return null;
+    const id = Object.keys(this.estado.capitanes).find(k => this.estado!.capitanes[k] === this.currentName);
+    return id ?? null;
+  }
+
+  /** Con el filtro activo, el capitán no ve las casillas sin descubrir de otros equipos ni las neutras. La negra sí. */
+  ocultaPorFiltro(c: CasillaCodigoSecreto): boolean {
+    return this.soloMiEquipo && this.puedeVerMapa() && !c.descubierta
+      && c.bando !== 'negra' && c.bando !== this.equipoDeMiCapitania();
+  }
+
+  /** Texto visible de la casilla: palabra, guion si está oculta por el filtro, y calavera para capitanes. */
+  textoCasilla(c: CasillaCodigoSecreto): string {
+    if (this.ocultaPorFiltro(c)) return '—';
+    return (this.mostrarCalavera(c) ? '☠️ ' : '') + c.palabra;
+  }
+
+  toggleSoloMiEquipo(): void {
+    this.soloMiEquipo = !this.soloMiEquipo;
   }
 
   claseCasilla(c: CasillaCodigoSecreto): string {
     if (c.descubierta) return this.estiloBando(c.bando, true);
+    if (this.ocultaPorFiltro(c)) return 'bg-slate-800 border-slate-700 text-slate-600';
     if (this.puedeVerMapa() || this.estado?.fase === 'terminado') return this.estiloBando(c.bando, false);
     return 'bg-slate-700 border-slate-500 text-white hover:bg-slate-600';
   }
