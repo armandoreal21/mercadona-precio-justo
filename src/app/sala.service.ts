@@ -1923,12 +1923,16 @@ export class SalaService {
     });
   }
 
-  async iniciarMinijuegos(codigo: string): Promise<boolean> {
+  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       if (est.fase !== 'esperando') return false;
       const equipos = (sala.equipos || []).filter(eq => this.miembrosDeEquipo(sala, eq.id).length > 0).map(eq => eq.id);
-      if (equipos.length === 0 || !equipos.every(id => !!est.capitanes[id])) return false;
+      // Cada equipo necesita un capitán que sea miembro de ese equipo
+      const valido = equipos.length > 0 && equipos.every(id =>
+        !!capitanes[id] && this.miembrosDeEquipo(sala, id).includes(capitanes[id]));
+      if (!valido) return false;
+      est.capitanes = { ...capitanes };
       est.equiposOrden = equipos;
       est.tiposRonda = barajar(TIPOS_MINIJUEGO).slice(0, 5);
       est.puntos = {};

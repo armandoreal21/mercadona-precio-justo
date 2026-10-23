@@ -28,16 +28,13 @@ import { NOMBRE_MINIJUEGO } from './minijuegos.logic';
         </div>
 
         <div *ngIf="isAdmin" class="text-center">
-          <button (click)="guardarCapitanes()"
-                  class="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-semibold mr-2">
-            Guardar capitanes
-          </button>
           <button (click)="iniciar()"
                   class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-5 py-2 rounded-xl uppercase text-xs tracking-wide">
             ▶ Empezar
           </button>
         </div>
         <div *ngIf="!isAdmin" class="text-center text-xs text-slate-500">Esperando a que el admin empiece la partida.</div>
+        <div *ngIf="error" class="p-2 bg-rose-900/30 border border-rose-600 rounded-lg text-rose-300 text-xs text-center">⚠️ {{ error }}</div>
       </div>
 
       <!-- ===================== JUGANDO ===================== -->
@@ -245,21 +242,15 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     }
   }
 
-  async guardarCapitanes(): Promise<void> {
+  async iniciar(): Promise<void> {
     if (!this.sala) return;
     this.error = null;
     if (!this.equipos.every(eq => !!this.capitanBorrador[eq.id])) {
       this.error = 'Elige un capitán para cada equipo.';
       return;
     }
-    await this.salaService.asignarCapitanesMinijuegos(this.sala.codigo, { ...this.capitanBorrador });
-  }
-
-  async iniciar(): Promise<void> {
-    if (!this.sala) return;
-    this.error = null;
-    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo);
-    if (!ok) this.error = 'Guarda un capitán en cada equipo antes de empezar.';
+    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador });
+    if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
 
   async enviar(): Promise<void> {
