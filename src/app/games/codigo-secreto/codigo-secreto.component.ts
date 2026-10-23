@@ -77,6 +77,17 @@ interface PalabraCatalogo {
       <!-- ============================================================== -->
       <div *ngIf="estado && (estado.fase === 'jugando' || estado.fase === 'terminado')" class="w-full max-w-3xl mx-auto space-y-4">
 
+        <!-- Marcador: casillas de cada equipo -->
+        <div class="grid grid-cols-2 gap-3">
+          <div *ngFor="let m of marcadores" class="bg-slate-900 p-3 rounded-xl border-2 text-center" [ngClass]="m.color">
+            <div class="text-xs font-bold uppercase tracking-wider text-slate-400">🛡️ {{ m.nombre }}</div>
+            <div class="text-2xl font-black">
+              {{ m.quedan }}
+              <span class="text-xs text-slate-400 font-semibold">quedan de {{ m.total }} · encontradas {{ m.descubiertas }}</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Cabecera de turno -->
         <div *ngIf="estado.fase === 'jugando'" class="bg-slate-900 p-4 rounded-2xl border-2 text-center" [ngClass]="colorBordeTurno()">
           <div class="text-xs uppercase font-bold text-slate-400 tracking-wider">Turno de</div>
@@ -160,6 +171,14 @@ interface PalabraCatalogo {
         <p *ngIf="isAdmin && !puedeVerMapa() && estado.fase === 'jugando'" class="text-xs text-slate-500 text-center">
           👑 Como administrador no ves el mapa, salvo que seas capitán.
         </p>
+
+        <!-- Admin: reiniciar partida en cualquier momento -->
+        <div *ngIf="isAdmin && estado.fase === 'jugando'" class="text-center">
+          <button (click)="reiniciarPartida()"
+                  class="bg-rose-900/40 hover:bg-rose-800/60 border border-rose-700 text-rose-300 font-semibold px-4 py-2 rounded-lg text-xs uppercase tracking-wider transition">
+            🔄 Reiniciar partida
+          </button>
+        </div>
       </div>
     </div>
   `
@@ -200,6 +219,23 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
   /** Hay algún equipo sin participantes (para el aviso del admin). */
   get hayEquipoSinMiembros(): boolean {
     return this.equipos.some(eq => this.miembros(eq.id).length === 0);
+  }
+
+  /** Marcador por equipo: casillas totales, descubiertas y las que quedan. */
+  get marcadores(): { id: string; nombre: string; total: number; descubiertas: number; quedan: number; color: string }[] {
+    const casillas = this.estado?.casillas || [];
+    return this.equipos.map((eq, i) => {
+      const suyas = casillas.filter(c => c.bando === eq.id);
+      const descubiertas = suyas.filter(c => c.descubierta).length;
+      return {
+        id: eq.id,
+        nombre: eq.nombre,
+        total: suyas.length,
+        descubiertas,
+        quedan: suyas.length - descubiertas,
+        color: i === 0 ? 'border-sky-500 text-sky-300' : 'border-rose-500 text-rose-300'
+      };
+    });
   }
 
   get listoParaEmpezar(): boolean {
@@ -401,6 +437,18 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
     this.error = null;
     const ok = await this.salaService.tocarCasillaCodigo(this.sala.codigo, this.currentName, c.idPalabra);
     if (!ok) this.error = 'No se pudo tocar esa casilla.';
+    this.refrescar();
+  }
+
+  /** Admin: vuelve a la fase de configuración en cualquier momento. Conserva las palabras ya usadas. */
+  async reiniciarPartida(): Promise<void> {
+    if (!this.isAdmin || !this.sala) return;
+    const seguro = window.confirm('¿Reiniciar la partida? Se perderá el tablero actual y habrá que elegir capitanes de nuevo.');
+    if (!seguro) return;
+    this.error = null;
+    this.pistaTexto = '';
+    this.pistaNumero = null;
+    await this.salaService.reiniciarSala(this.sala.codigo);
     this.refrescar();
   }
 
