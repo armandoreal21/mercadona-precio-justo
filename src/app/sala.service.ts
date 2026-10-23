@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada, EstadoMinijuegos, TipoMinijuego } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
-import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT } from './games/minijuegos-equipos/minijuegos.logic';
+import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego } from './games/minijuegos-equipos/minijuegos.logic';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
@@ -1863,6 +1863,7 @@ export class SalaService {
       equipoId, ronda: est.ronda, tipo, nivel: 1, panel: p.panel, pistas: p.pistas, solucion: p.solucion,
       aciertos: 0, errores: 0, inicioMs: ahora, finMs: ahora + est.tiempoTurnoSeg * 1000
     };
+    if (p.estadoInicial !== undefined) est.turno.estadoJ = JSON.stringify(p.estadoInicial);
   }
 
   /** Tras un acierto, sustituye el puzle por otro del siguiente nivel. */
@@ -1874,6 +1875,8 @@ export class SalaService {
     t.pistas = p.pistas;
     t.solucion = p.solucion;
     t.recorrido = [];
+    if (p.estadoInicial !== undefined) t.estadoJ = JSON.stringify(p.estadoInicial);
+    else delete t.estadoJ;
   }
 
   private cerrarTurnoMinijuego(sala: Sala, est: EstadoMinijuegos): void {
@@ -1975,6 +1978,46 @@ export class SalaService {
   async reiniciarMinijuegos(codigo: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       sala.estadoMinijuegos = this.estadoInicialMinijuegos();
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Acción del capitán sobre un juego interactivo (torres, pintar, mezcla, deslizar, balanza). */
+  async accionJuegoMinijuego(codigo: string, usuario: string, accion: any): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || !t.estadoJ) return false;
+      if (est.capitanes[t.equipoId] !== usuario) return false;
+      if (Date.now() >= t.finMs) {
+        this.cerrarTurnoMinijuego(sala, est);
+        sala.updatedAt = Date.now();
+        return true;
+      }
+      const res = aplicarAccionJuego(t.tipo, JSON.parse(t.estadoJ), accion);
+      if (res.ok) t.estadoJ = JSON.stringify(res.estado);
+      sala.updatedAt = Date.now();
+      return res.ok;
+    });
+  }
+
+  /** El capitán pulsa Comprobar: acierto pasa al siguiente puzle; fallo penaliza. */
+  async comprobarJuegoMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || !t.estadoJ) return false;
+      if (est.capitanes[t.equipoId] !== usuario) return false;
+      if (Date.now() >= t.finMs) {
+        this.cerrarTurnoMinijuego(sala, est);
+      } else if (comprobarJuego(t.tipo, JSON.parse(t.estadoJ), t.solucion)) {
+        t.aciertos += 1;
+        this.siguientePuzleMinijuego(sala, est);
+      } else {
+        t.errores += 1;
+        t.finMs -= PENALIZACION_ERROR_MS;
+      }
       sala.updatedAt = Date.now();
       return true;
     });

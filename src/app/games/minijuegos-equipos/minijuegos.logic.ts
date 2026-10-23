@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -10,13 +10,19 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   metro: '🚇 Ruta de metro',
   ecuacion: '➗ Ecuación oculta',
   palabra: '🔤 Palabra desordenada',
-  carrera: '🏁 Orden de llegada'
+  carrera: '🏁 Orden de llegada',
+  torres: '🗼 Torres de Hanói',
+  pinta: '🎨 Pinta el patrón',
+  mezcla: '🧪 Mezcla de colores',
+  deslizante: '🧩 Puzle deslizante',
+  balanza: '⚖️ Balanza'
 };
 
 export interface Puzle {
   panel: any;        // lo que ve el capitán
   pistas: string[];  // piezas para los ayudantes (líneas separadas por \n)
   solucion: any;     // solución (no se muestra en pantalla)
+  estadoInicial?: any; // solo juegos interactivos: estado con el que empieza el capitán
 }
 
 export const SEG_TURNO_DEFAULT = 60;
@@ -54,6 +60,11 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'ecuacion': return generarEcuacion(L, n);
     case 'palabra': return generarPalabra(L, n);
     case 'carrera': return generarCarrera(L, n);
+    case 'torres': return generarTorres(L, n);
+    case 'pinta': return generarPinta(L, n);
+    case 'mezcla': return generarMezcla(L, n);
+    case 'deslizante': return generarDeslizante(L, n);
+    case 'balanza': return generarBalanza(L, n);
   }
 }
 
@@ -549,6 +560,195 @@ function generarCarrera(L: number, n: number): Puzle {
   };
 }
 
+// ------------------------------------------------------------------
+// Juegos interactivos: el capitán manipula algo visible y pulsa Comprobar.
+// El estado se guarda como texto JSON para no perder arrays vacíos en Firebase.
+// ------------------------------------------------------------------
+export const INTERACTIVOS: TipoMinijuego[] = ['torres', 'pinta', 'mezcla', 'deslizante', 'balanza'];
+
+const sumaArr = (a: number[]): number => a.reduce((x, y) => x + y, 0);
+
+// Torres de Hanói: el capitán mueve discos; el equipo conoce la torre final
+function generarTorres(L: number, n: number): Puzle {
+  const discos = Math.min(2 + L, 6);
+  const tamanos = Array.from({ length: discos }, (_, i) => discos - i); // el mayor primero
+  const destino: number[][] = [[], [], []];
+  for (const t of tamanos) destino[rnd(3)].push(t);
+  const inicio: number[][] = [[...tamanos], [], []];
+  const pistas = destino.map((t, i) =>
+    t.length ? `Torre ${i + 1}, de abajo a arriba: ${t.join(', ')}.` : `Torre ${i + 1}: vacía.`);
+  return {
+    panel: { discos },
+    pistas: repartir(barajar(pistas), n),
+    solucion: JSON.stringify(destino),
+    estadoInicial: inicio
+  };
+}
+
+// Pinta el patrón: el capitán colorea la cuadrícula; el equipo ve el dibujo
+const COLORES_PINTA = ['azul', 'rojo', 'verde', 'amarillo'];
+function generarPinta(L: number, n: number): Puzle {
+  const N = Math.min(3 + Math.floor((L - 1) / 2), 5);
+  const objetivo: string[][] = Array.from({ length: N }, () =>
+    Array.from({ length: N }, () => (rnd(4) === 0 ? '' : pick(COLORES_PINTA))));
+  const vacio: string[][] = Array.from({ length: N }, () => Array.from({ length: N }, () => ''));
+  const filas = objetivo.map((celdas, r) => JSON.stringify({ tipo: 'fila', indice: r + 1, celdas }));
+  return {
+    panel: { tamano: N },
+    pistas: repartir(filas, n),
+    solucion: JSON.stringify(objetivo),
+    estadoInicial: vacio
+  };
+}
+
+// Mezcla de colores: hay que añadir las partes exactas de cada color
+const MEZCLA_RGB: Record<string, number[]> = { rojo: [220, 38, 38], azul: [37, 99, 235], amarillo: [250, 204, 21] };
+function generarMezcla(L: number, n: number): Puzle {
+  const total = Math.min(2 + L, 10);
+  let r = 0, a = 0, y = 0;
+  do {
+    r = rnd(total + 1);
+    a = rnd(total - r + 1);
+    y = total - r - a;
+  } while ((r > 0 ? 1 : 0) + (a > 0 ? 1 : 0) + (y > 0 ? 1 : 0) < 2);
+  const rgb = [0, 1, 2].map(k =>
+    Math.round((r * MEZCLA_RGB.rojo[k] + a * MEZCLA_RGB.azul[k] + y * MEZCLA_RGB.amarillo[k]) / total));
+  const plural = (x: number) => (x === 1 ? 'parte' : 'partes');
+  const pistas = [`Rojo: ${r} ${plural(r)}.`, `Azul: ${a} ${plural(a)}.`, `Amarillo: ${y} ${plural(y)}.`];
+  return {
+    panel: { colorObjetivo: `rgb(${rgb.join(',')})`, partes: total },
+    pistas: repartir(barajar(pistas), n),
+    solucion: JSON.stringify({ rojo: r, azul: a, amarillo: y }),
+    estadoInicial: { rojo: 0, azul: 0, amarillo: 0 }
+  };
+}
+
+// Puzle deslizante: el tablero se mezcla con movimientos legales
+function generarDeslizante(L: number, n: number): Puzle {
+  const N = L <= 2 ? 3 : 4;
+  const final = Array.from({ length: N * N - 1 }, (_, i) => i + 1).concat([0]);
+  const tablero = [...final];
+  let blank = N * N - 1;
+  let prev = -1;
+  for (let k = 0; k < 300; k++) {
+    const r = Math.floor(blank / N), c = blank % N;
+    const vec: number[] = [];
+    if (r > 0) vec.push(blank - N);
+    if (r < N - 1) vec.push(blank + N);
+    if (c > 0) vec.push(blank - 1);
+    if (c < N - 1) vec.push(blank + 1);
+    const opts = vec.filter(v => v !== prev);
+    const to = pick(opts.length ? opts : vec);
+    [tablero[blank], tablero[to]] = [tablero[to], tablero[blank]];
+    prev = blank;
+    blank = to;
+  }
+  const filas = Array.from({ length: N }, (_, r) =>
+    JSON.stringify({ tipo: 'fila', indice: r + 1, celdas: final.slice(r * N, r * N + N) }));
+  return {
+    panel: { tamano: N },
+    pistas: repartir(filas, n),
+    solucion: JSON.stringify(final),
+    estadoInicial: tablero
+  };
+}
+
+// Balanza: hay que repartir los objetos para que las dos bandejas pesen lo mismo
+const ICONOS_BALANZA = ['🍎', '🧱', '📦', '🍐', '🥔', '🪨', '🧃', '🍋'];
+function generarBalanza(L: number, n: number): Puzle {
+  const k = Math.min(3 + Math.floor((L - 1) / 2), 6);
+  const izqN = 1 + rnd(k - 1);
+  const derN = k - izqN;
+  let pIzq: number[] = [];
+  let S = 0;
+  do {
+    pIzq = Array.from({ length: izqN }, () => 1 + rnd(9));
+    S = sumaArr(pIzq);
+  } while (S < derN);
+  // La suma de la izquierda se reparte en partes positivas para la derecha
+  const cortes = new Set<number>();
+  while (cortes.size < derN - 1) cortes.add(1 + rnd(S - 1));
+  const cs = [0, ...[...cortes].sort((x, y) => x - y), S];
+  const pDer = Array.from({ length: derN }, (_, i) => cs[i + 1] - cs[i]);
+  const pesos = [...pIzq, ...pDer];
+  const iconos = barajar(ICONOS_BALANZA).slice(0, k);
+  const items = barajar(Array.from({ length: k }, (_, i) => i)).map(i => ({ id: i, icono: iconos[i] }));
+  const pistas = pesos.map((p, i) => `${iconos[i]} pesa ${p}.`);
+  return {
+    panel: { items },
+    pistas: repartir(barajar(pistas), n),
+    solucion: JSON.stringify(pesos),
+    estadoInicial: { mesa: items.map(x => x.id), izq: [], der: [] }
+  };
+}
+
+/** Aplica una acción del capitán sobre el estado del juego interactivo. */
+export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any): { estado: any; ok: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  switch (tipo) {
+    case 'torres': {
+      const de = accion.de, a = accion.a;
+      if (de === a || !e[de] || !e[de].length) return { estado: e, ok: false };
+      const disco = e[de][e[de].length - 1];
+      if (e[a].length && e[a][e[a].length - 1] < disco) return { estado: e, ok: false };
+      e[de].pop();
+      e[a].push(disco);
+      return { estado: e, ok: true };
+    }
+    case 'pinta': {
+      const orden = ['', ...COLORES_PINTA];
+      const r = accion.r, c = accion.c;
+      e[r][c] = orden[(orden.indexOf(e[r][c]) + 1) % orden.length];
+      return { estado: e, ok: true };
+    }
+    case 'mezcla': {
+      const color = accion.color;
+      if (!['rojo', 'azul', 'amarillo'].includes(color)) return { estado: e, ok: false };
+      e[color] = Math.min(10, Math.max(0, e[color] + (accion.delta > 0 ? 1 : -1)));
+      return { estado: e, ok: true };
+    }
+    case 'deslizante': {
+      const N = Math.round(Math.sqrt(e.length));
+      const i = accion.indice, b = e.indexOf(0);
+      const ri = Math.floor(i / N), ci = i % N, rb = Math.floor(b / N), cb = b % N;
+      const adyacente = (ri === rb && Math.abs(ci - cb) === 1) || (ci === cb && Math.abs(ri - rb) === 1);
+      if (!adyacente) return { estado: e, ok: false };
+      [e[i], e[b]] = [e[b], e[i]];
+      return { estado: e, ok: true };
+    }
+    case 'balanza': {
+      const id = accion.id;
+      e.mesa = e.mesa.filter((x: number) => x !== id);
+      e.izq = e.izq.filter((x: number) => x !== id);
+      e.der = e.der.filter((x: number) => x !== id);
+      if (accion.lado === 'izq') e.izq.push(id);
+      else if (accion.lado === 'der') e.der.push(id);
+      else e.mesa.push(id);
+      return { estado: e, ok: true };
+    }
+  }
+  return { estado: e, ok: false };
+}
+
+/** Comprueba si el estado del juego interactivo es la solución. */
+export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: string): boolean {
+  const sol = JSON.parse(solucionTxt);
+  switch (tipo) {
+    case 'torres':
+    case 'pinta':
+    case 'deslizante':
+      return JSON.stringify(estado) === JSON.stringify(sol);
+    case 'mezcla':
+      return estado.rojo === sol.rojo && estado.azul === sol.azul && estado.amarillo === sol.amarillo;
+    case 'balanza': {
+      if (estado.mesa.length > 0) return false;
+      const pesoDe = (ids: number[]) => sumaArr(ids.map((id: number) => sol[id]));
+      return pesoDe(estado.izq) === pesoDe(estado.der) && estado.izq.length > 0 && estado.der.length > 0;
+    }
+  }
+  return false;
+}
+
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
   const texto = (respuesta || '').trim();
@@ -563,6 +763,12 @@ export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: 
       return Number(texto) === Number(solucion);
     case 'palabra':
       return normalizarPalabra(texto) === normalizarPalabra(String(solucion));
+    case 'torres':
+    case 'pinta':
+    case 'mezcla':
+    case 'deslizante':
+    case 'balanza':
+      return false; // se resuelven con Comprobar, no con respuesta escrita
     case 'mapa': {
       const muros: boolean[][] = solucion.muros;
       const N = solucion.tamano;

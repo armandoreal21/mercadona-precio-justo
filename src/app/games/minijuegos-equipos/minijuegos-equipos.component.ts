@@ -136,6 +136,71 @@ interface CeldaMapa { texto: string; clase: string; }
                       [class.border-yellow-400]="c === t.panel.objetivo" [class.border-slate-600]="c !== t.panel.objetivo">{{ c }}</span>
               </div>
             </div>
+            <div *ngSwitchCase="'torres'" class="space-y-3">
+              <div class="text-xs text-slate-400">{{ esCapitan ? 'Toca una torre para coger su disco y otra para dejarlo. Un disco grande no puede ir sobre uno pequeño.' : 'El capitán mueve los discos.' }}</div>
+              <div class="flex items-end justify-center gap-4 py-2">
+                <button *ngFor="let torre of estadoJuego; let i = index" (click)="tocarTorre(i)" [disabled]="!esCapitan"
+                        class="flex flex-col-reverse items-center gap-1 w-28 min-h-[12rem] px-2 py-2 rounded-xl border-2"
+                        [ngClass]="torreSeleccionada === i ? 'border-yellow-400 bg-slate-800' : 'border-slate-700 bg-slate-900'">
+                  <div *ngFor="let d of torre" class="h-4 rounded-full bg-cyan-500" [style.width.%]="35 + d * 65 / t.panel.discos"></div>
+                  <span class="text-xs text-slate-400 mb-1">Torre {{ i + 1 }}</span>
+                </button>
+              </div>
+            </div>
+            <div *ngSwitchCase="'pinta'" class="space-y-3">
+              <div class="text-xs text-slate-400">{{ esCapitan ? 'Toca una casilla para cambiar su color.' : 'El capitán pinta la cuadrícula.' }}</div>
+              <div class="grid gap-1 mx-auto" [style.grid-template-columns]="'repeat(' + t.panel.tamano + ', 2.75rem)'">
+                <ng-container *ngFor="let fila of estadoJuego; let r = index">
+                  <button *ngFor="let celda of fila; let c = index" (click)="pintar(r, c)" [disabled]="!esCapitan"
+                          class="w-11 h-11 rounded-lg border-2 border-slate-700" [ngClass]="colorPintura(celda)"></button>
+                </ng-container>
+              </div>
+            </div>
+            <div *ngSwitchCase="'mezcla'" class="space-y-3">
+              <div class="flex items-center justify-center gap-6">
+                <div class="text-center">
+                  <div class="w-20 h-20 rounded-2xl border-2 border-slate-600 mx-auto" [style.background]="t.panel.colorObjetivo"></div>
+                  <div class="text-xs text-slate-400 mt-1">Objetivo</div>
+                </div>
+                <div class="text-center">
+                  <div class="w-20 h-20 rounded-2xl border-2 border-slate-600 mx-auto" [style.background]="colorMezcla()"></div>
+                  <div class="text-xs text-slate-400 mt-1">Tu mezcla</div>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-2 text-center">
+                <div *ngFor="let c of ['rojo', 'azul', 'amarillo']" class="space-y-1">
+                  <div class="text-xs text-slate-300 capitalize">{{ c }}: {{ estadoJuego[c] }}</div>
+                  <div *ngIf="esCapitan" class="flex justify-center gap-1">
+                    <button (click)="cambiarMezcla(c, -1)" class="w-8 h-8 rounded bg-slate-800 border border-slate-600">−</button>
+                    <button (click)="cambiarMezcla(c, 1)" class="w-8 h-8 rounded bg-slate-800 border border-slate-600">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngSwitchCase="'deslizante'" class="space-y-3">
+              <div class="text-xs text-slate-400">{{ esCapitan ? 'Toca una ficha que esté junto al hueco para deslizarla.' : 'El capitán desliza las fichas.' }}</div>
+              <div class="grid gap-1 mx-auto" [style.grid-template-columns]="'repeat(' + t.panel.tamano + ', 3rem)'">
+                <button *ngFor="let v of estadoJuego; let i = index" (click)="deslizar(i)" [disabled]="!esCapitan || v === 0"
+                        class="w-12 h-12 rounded-lg font-black text-lg" [ngClass]="v === 0 ? 'bg-slate-950' : 'bg-cyan-600 text-white'">{{ v === 0 ? '' : v }}</button>
+              </div>
+            </div>
+            <div *ngSwitchCase="'balanza'" class="space-y-3">
+              <div class="text-xs text-slate-400">{{ esCapitan ? 'Toca un objeto para cambiarlo de sitio: mesa → izquierda → derecha → mesa. Las dos bandejas tienen que pesar lo mismo y no puede quedar nada en la mesa.' : 'El capitán reparte los objetos en la balanza.' }}</div>
+              <div class="flex flex-wrap justify-center gap-2 min-h-[3rem]">
+                <button *ngFor="let it of itemsMesa" (click)="cambiarLado(it.id)" [disabled]="!esCapitan"
+                        class="px-3 py-2 rounded-xl bg-slate-800 border-2 border-slate-600 text-xl">{{ it.icono }}</button>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="rounded-xl border-2 border-sky-500 p-2 min-h-[4rem]">
+                  <div class="text-xs text-sky-300 mb-1">Izquierda</div>
+                  <button *ngFor="let it of itemsIzq" (click)="cambiarLado(it.id)" [disabled]="!esCapitan" class="text-xl mr-1">{{ it.icono }}</button>
+                </div>
+                <div class="rounded-xl border-2 border-rose-500 p-2 min-h-[4rem]">
+                  <div class="text-xs text-rose-300 mb-1">Derecha</div>
+                  <button *ngFor="let it of itemsDer" (click)="cambiarLado(it.id)" [disabled]="!esCapitan" class="text-xl mr-1">{{ it.icono }}</button>
+                </div>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -147,9 +212,16 @@ interface CeldaMapa { texto: string; clase: string; }
           </ng-container>
         </div>
 
+        <div *ngIf="esCapitan && esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700">
+          <button (click)="comprobar()"
+                  class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2 rounded-lg uppercase text-xs tracking-wide">
+            ✅ Comprobar
+          </button>
+        </div>
+
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado'" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -189,8 +261,19 @@ interface CeldaMapa { texto: string; clase: string; }
               <div class="text-[11px] text-slate-500">Oscuro = muro · Claro = paso libre</div>
             </div>
 
+            <!-- Pista visual de pinta y deslizante: filas dibujadas -->
+            <div *ngIf="t.tipo === 'pinta' || t.tipo === 'deslizante'" class="space-y-2">
+              <div *ngFor="let f of filasPista" class="flex items-center gap-2">
+                <span class="text-xs text-slate-400 w-14">Fila {{ f.indice }}</span>
+                <div class="flex gap-1">
+                  <div *ngFor="let c of f.celdas" class="w-8 h-8 rounded flex items-center justify-center text-xs font-black"
+                       [ngClass]="t.tipo === 'pinta' ? colorPintura(c) : (c === 0 ? 'bg-slate-950' : 'bg-cyan-600 text-white')">{{ t.tipo === 'deslizante' && c !== 0 ? c : '' }}</div>
+                </div>
+              </div>
+            </div>
+
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -364,6 +447,135 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       case 'negro': return 'bg-slate-900 border border-slate-500';
       case 'naranja': return 'bg-orange-500';
       default: return 'bg-slate-500';
+    }
+  }
+
+  // ----- Juegos interactivos: torres, pinta, mezcla, deslizante y balanza -----
+  torreSeleccionada: number | null = null;
+  private cacheEstadoTxt = '';
+  private cacheEstado: any = null;
+
+  esInteractivo(tipo: string): boolean {
+    return ['torres', 'pinta', 'mezcla', 'deslizante', 'balanza'].includes(tipo);
+  }
+
+  /** Estado actual del juego interactivo (solo se parsea cuando cambia). */
+  get estadoJuego(): any {
+    const txt = this.est?.turno?.estadoJ;
+    if (!txt) return null;
+    if (txt !== this.cacheEstadoTxt) {
+      this.cacheEstadoTxt = txt;
+      this.cacheEstado = JSON.parse(txt);
+    }
+    return this.cacheEstado;
+  }
+
+  /** Filas de la pista visual (pinta y deslizante). */
+  get filasPista(): any[] {
+    return this.miPista.split('\n').map(linea => {
+      try {
+        return JSON.parse(linea);
+      } catch {
+        return null;
+      }
+    }).filter((f: any) => !!f && f.tipo === 'fila');
+  }
+
+  get itemsMesa(): any[] {
+    return this.itemsDe('mesa');
+  }
+
+  get itemsIzq(): any[] {
+    return this.itemsDe('izq');
+  }
+
+  get itemsDer(): any[] {
+    return this.itemsDe('der');
+  }
+
+  private itemsDe(lado: 'mesa' | 'izq' | 'der'): any[] {
+    const st = this.estadoJuego;
+    const items: any[] = this.est?.turno?.panel?.items || [];
+    if (!st) return [];
+    return (st[lado] as number[]).map(id => items.find(x => x.id === id)).filter(x => !!x);
+  }
+
+  colorPintura(c: string): string {
+    switch (c) {
+      case 'azul': return 'bg-sky-600';
+      case 'rojo': return 'bg-rose-600';
+      case 'verde': return 'bg-emerald-600';
+      case 'amarillo': return 'bg-amber-300';
+      default: return 'bg-slate-800';
+    }
+  }
+
+  /** Color de la mezcla actual, con la misma fórmula que el generador. */
+  colorMezcla(): string {
+    const st = this.estadoJuego;
+    if (!st) return 'rgb(60,60,70)';
+    const total = st.rojo + st.azul + st.amarillo;
+    if (total === 0) return 'rgb(60,60,70)';
+    const R = [220, 38, 38], A = [37, 99, 235], Y = [250, 204, 21];
+    const rgb = [0, 1, 2].map(k => Math.round((st.rojo * R[k] + st.azul * A[k] + st.amarillo * Y[k]) / total));
+    return `rgb(${rgb.join(',')})`;
+  }
+
+  tocarTorre(i: number): void {
+    if (!this.esCapitan) return;
+    const st = this.estadoJuego;
+    if (!st) return;
+    if (this.torreSeleccionada === null) {
+      if (st[i].length) this.torreSeleccionada = i;
+      return;
+    }
+    if (this.torreSeleccionada === i) {
+      this.torreSeleccionada = null;
+      return;
+    }
+    const de = this.torreSeleccionada;
+    this.torreSeleccionada = null;
+    this.accion({ de, a: i });
+  }
+
+  pintar(r: number, c: number): void {
+    if (this.esCapitan) this.accion({ r, c });
+  }
+
+  cambiarMezcla(color: string, delta: number): void {
+    if (this.esCapitan) this.accion({ color, delta });
+  }
+
+  deslizar(indice: number): void {
+    if (this.esCapitan) this.accion({ indice });
+  }
+
+  cambiarLado(id: number): void {
+    if (!this.esCapitan) return;
+    const st = this.estadoJuego;
+    if (!st) return;
+    const lado = st.mesa.includes(id) ? 'izq' : st.izq.includes(id) ? 'der' : 'mesa';
+    this.accion({ id, lado });
+  }
+
+  private async accion(a: any): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionJuegoMinijuego(this.sala.codigo, this.currentName, a);
+    if (!ok) this.error = 'Ese movimiento no es válido.';
+  }
+
+  async comprobar(): Promise<void> {
+    if (!this.sala || !this.currentName || !this.esCapitan) return;
+    this.error = null;
+    const antes = this.est?.turno?.errores ?? 0;
+    const ok = await this.salaService.comprobarJuegoMinijuego(this.sala.codigo, this.currentName);
+    if (!ok) {
+      this.error = 'No puedes comprobar ahora.';
+      return;
+    }
+    if ((this.est?.turno?.errores ?? antes) > antes) {
+      this.error = 'Todavía no es la solución: se restan 5 segundos.';
     }
   }
 
