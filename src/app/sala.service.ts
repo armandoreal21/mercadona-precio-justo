@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada, EstadoMinijuegos, TipoMinijuego } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
-import { TIPOS_MINIJUEGO, generarMinijuego, validarRespuesta, barajar, TIEMPO_TURNO_MS, PENALIZACION_ERROR_MS, MAX_ERRORES } from './games/minijuegos-equipos/minijuegos.logic';
+import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT } from './games/minijuegos-equipos/minijuegos.logic';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
@@ -1827,8 +1827,8 @@ export class SalaService {
 
   private estadoInicialMinijuegos(): EstadoMinijuegos {
     return {
-      fase: 'esperando', ronda: 1, totalRondas: 5, tiposRonda: [], equiposOrden: [],
-      capitanes: {}, turno: null, resultados: [], puntos: {}, tiempoTotalMs: {}, ganadorEquipoId: null
+      fase: 'esperando', ronda: 1, totalRondas: 5, tiempoTurnoSeg: SEG_TURNO_DEFAULT, tiposRonda: [], equiposOrden: [],
+      capitanes: {}, turno: null, resultados: [], puntos: {}, aciertosTotales: {}, ganadorEquipoId: null
     };
   }
 
@@ -1840,7 +1840,8 @@ export class SalaService {
     est.equiposOrden = est.equiposOrden || [];
     est.resultados = est.resultados || [];
     est.puntos = est.puntos || {};
-    est.tiempoTotalMs = est.tiempoTotalMs || {};
+    est.aciertosTotales = est.aciertosTotales || {};
+    est.tiempoTurnoSeg = est.tiempoTurnoSeg || SEG_TURNO_DEFAULT;
     return est;
   }
 
@@ -1848,22 +1849,37 @@ export class SalaService {
     return sala.jugadores.filter(j => j.equipoId === equipoId).map(j => j.nombre);
   }
 
+  private ayudantesDe(sala: Sala, est: EstadoMinijuegos, equipoId: string): number {
+    const capitan = est.capitanes[equipoId];
+    // Si el capitán es el único del equipo, él recibe todas las pistas
+    return Math.max(1, this.miembrosDeEquipo(sala, equipoId).filter(n => n !== capitan).length);
+  }
+
   private abrirTurnoMinijuego(sala: Sala, est: EstadoMinijuegos, equipoId: string): void {
     const tipo: TipoMinijuego = est.tiposRonda[est.ronda - 1];
-    const capitan = est.capitanes[equipoId];
-    const ayudantes = this.miembrosDeEquipo(sala, equipoId).filter(n => n !== capitan).length;
-    // Si el capitán es el único del equipo, él recibe todas las pistas
-    const gen = generarMinijuego(tipo, Math.max(1, ayudantes));
+    const p = generarPuzle(tipo, 1, this.ayudantesDe(sala, est, equipoId));
+    const ahora = Date.now();
     est.turno = {
-      equipoId, ronda: est.ronda, tipo, panel: gen.panel, pistas: gen.pistas, solucion: gen.solucion,
-      errores: 0, inicioMs: Date.now(), limiteMs: TIEMPO_TURNO_MS, estado: 'activo', tiempoMs: 0
+      equipoId, ronda: est.ronda, tipo, nivel: 1, panel: p.panel, pistas: p.pistas, solucion: p.solucion,
+      aciertos: 0, errores: 0, inicioMs: ahora, finMs: ahora + est.tiempoTurnoSeg * 1000
     };
+  }
+
+  /** Tras un acierto, sustituye el puzle por otro del siguiente nivel. */
+  private siguientePuzleMinijuego(sala: Sala, est: EstadoMinijuegos): void {
+    const t = est.turno!;
+    const p = generarPuzle(t.tipo, t.nivel + 1, this.ayudantesDe(sala, est, t.equipoId));
+    t.nivel += 1;
+    t.panel = p.panel;
+    t.pistas = p.pistas;
+    t.solucion = p.solucion;
+    t.recorrido = [];
   }
 
   private cerrarTurnoMinijuego(sala: Sala, est: EstadoMinijuegos): void {
     const t = est.turno!;
-    est.resultados.push({ ronda: t.ronda, equipoId: t.equipoId, tipo: t.tipo, estado: t.estado, tiempoMs: t.tiempoMs, errores: t.errores });
-    est.tiempoTotalMs[t.equipoId] = (est.tiempoTotalMs[t.equipoId] || 0) + t.tiempoMs;
+    est.resultados.push({ ronda: t.ronda, equipoId: t.equipoId, tipo: t.tipo, aciertos: t.aciertos, errores: t.errores });
+    est.aciertosTotales[t.equipoId] = (est.aciertosTotales[t.equipoId] || 0) + t.aciertos;
 
     const equipos = est.equiposOrden;
     const delaRonda = est.resultados.filter(r => r.ronda === est.ronda);
@@ -1873,21 +1889,14 @@ export class SalaService {
       return;
     }
 
-    // Ronda completa: se concede el punto
-    const efectivo = (r: { estado: string; tiempoMs: number; errores: number }) =>
-      r.estado === 'resuelto' ? r.tiempoMs + r.errores * PENALIZACION_ERROR_MS : Infinity;
+    // Ronda completa: gana el equipo con más aciertos; si empatan, el de menos errores
     if (equipos.length === 1) {
-      if (delaRonda[0].estado === 'resuelto') est.puntos[equipos[0]] = (est.puntos[equipos[0]] || 0) + 1;
+      if (delaRonda[0].aciertos >= 1) est.puntos[equipos[0]] = (est.puntos[equipos[0]] || 0) + 1;
     } else {
-      const ordenados = [...delaRonda].sort((x, y) => {
-        const ex = efectivo(x), ey = efectivo(y);
-        return ex === ey ? 0 : ex < ey ? -1 : 1;
-      });
-      const [a, b] = ordenados;
-      if (efectivo(a) !== Infinity && efectivo(a) !== efectivo(b)) {
+      const [a, b] = [...delaRonda].sort((x, y) => (y.aciertos - x.aciertos) || (x.errores - y.errores));
+      if (a.aciertos !== b.aciertos || a.errores !== b.errores) {
         est.puntos[a.equipoId] = (est.puntos[a.equipoId] || 0) + 1;
       }
-      void b;
     }
 
     if (est.ronda >= est.totalRondas) {
@@ -1909,8 +1918,8 @@ export class SalaService {
       est.ganadorEquipoId = empatados[0];
       return;
     }
-    const [x, y] = [...empatados].sort((a, b) => (est.tiempoTotalMs[a] || 0) - (est.tiempoTotalMs[b] || 0));
-    est.ganadorEquipoId = (est.tiempoTotalMs[x] || 0) === (est.tiempoTotalMs[y] || 0) ? null : x;
+    const [x, y] = [...empatados].sort((a, b) => (est.aciertosTotales[b] || 0) - (est.aciertosTotales[a] || 0));
+    est.ganadorEquipoId = (est.aciertosTotales[x] || 0) === (est.aciertosTotales[y] || 0) ? null : x;
   }
 
   async asignarCapitanesMinijuegos(codigo: string, capitanes: Record<string, string>): Promise<boolean> {
@@ -1923,7 +1932,7 @@ export class SalaService {
     });
   }
 
-  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>): Promise<boolean> {
+  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[]): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       if (est.fase !== 'esperando') return false;
@@ -1934,10 +1943,13 @@ export class SalaService {
       if (!valido) return false;
       est.capitanes = { ...capitanes };
       est.equiposOrden = equipos;
-      est.tiposRonda = barajar(TIPOS_MINIJUEGO).slice(0, 5);
+      est.tiempoTurnoSeg = Math.min(300, Math.max(15, Math.round(tiempoSeg || SEG_TURNO_DEFAULT)));
+      const elegidos = (juegos || []).filter(j => TIPOS_MINIJUEGO.includes(j));
+      if (elegidos.length === 0) return false;
+      est.tiposRonda = this.tiposParaRondas(elegidos, est.totalRondas);
       est.puntos = {};
-      est.tiempoTotalMs = {};
-      equipos.forEach(id => { est.puntos[id] = 0; est.tiempoTotalMs[id] = 0; });
+      est.aciertosTotales = {};
+      equipos.forEach(id => { est.puntos[id] = 0; est.aciertosTotales[id] = 0; });
       est.resultados = [];
       est.ronda = 1;
       est.ganadorEquipoId = null;
@@ -1948,9 +1960,77 @@ export class SalaService {
     });
   }
 
+  /** Las rondas salen de los juegos marcados. Con 5 o más marcados no se repite ninguno; con menos, se repiten sin dos seguidos cuando se puede. */
+  private tiposParaRondas(elegidos: TipoMinijuego[], rondas: number): TipoMinijuego[] {
+    if (elegidos.length >= rondas) return barajar(elegidos).slice(0, rondas);
+    const res: TipoMinijuego[] = [...barajar(elegidos)];
+    while (res.length < rondas) {
+      const ultimo = res[res.length - 1];
+      const candidatos = elegidos.length > 1 ? elegidos.filter(t => t !== ultimo) : elegidos;
+      res.push(barajar(candidatos)[0]);
+    }
+    return res.slice(0, rondas);
+  }
+
   async reiniciarMinijuegos(codigo: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       sala.estadoMinijuegos = this.estadoInicialMinijuegos();
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** El capitán mueve el robot una casilla. El servidor comprueba muros y meta. */
+  async moverMinijuego(codigo: string, usuario: string, direccion: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || t.tipo !== 'mapa') return false;
+      if (est.capitanes[t.equipoId] !== usuario) return false;
+      if (!['U', 'D', 'L', 'R'].includes(direccion)) return false;
+      if (Date.now() >= t.finMs) {
+        this.cerrarTurnoMinijuego(sala, est);
+        sala.updatedAt = Date.now();
+        return true;
+      }
+      const sol = t.solucion;
+      const N: number = sol.tamano;
+      const delta = (d: string): [number, number] =>
+        d === 'U' ? [-1, 0] : d === 'D' ? [1, 0] : d === 'L' ? [0, -1] : [0, 1];
+      let r = sol.inicio[0], c = sol.inicio[1];
+      for (const d of t.recorrido || []) {
+        const [a, b] = delta(d);
+        r += a;
+        c += b;
+      }
+      const [dr, dc] = delta(direccion);
+      const nr = r + dr, nc = c + dc;
+      if (nr < 0 || nc < 0 || nr >= N || nc >= N) return false;
+      if (sol.muros[nr][nc]) {
+        // Choque con un muro: error, penalización y vuelta a la S
+        t.errores += 1;
+        t.finMs -= PENALIZACION_ERROR_MS;
+        t.recorrido = [];
+      } else {
+        t.recorrido = [...(t.recorrido || []), direccion];
+        if (nr === sol.meta[0] && nc === sol.meta[1]) {
+          t.aciertos += 1;
+          this.siguientePuzleMinijuego(sala, est);
+        }
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Quita el último paso del camino del robot. */
+  async deshacerMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || t.tipo !== 'mapa') return false;
+      if (est.capitanes[t.equipoId] !== usuario) return false;
+      t.recorrido = (t.recorrido || []).slice(0, -1);
       sala.updatedAt = Date.now();
       return true;
     });
@@ -1960,23 +2040,17 @@ export class SalaService {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const t = est.turno;
-      if (est.fase !== 'jugando' || !t || t.estado !== 'activo') return false;
+      if (est.fase !== 'jugando' || !t) return false;
       if (est.capitanes[t.equipoId] !== usuario) return false;
-      if (Date.now() >= t.inicioMs + t.limiteMs) {
-        t.estado = 'fallido';
-        t.tiempoMs = t.limiteMs;
+      if (Date.now() >= t.finMs) {
         this.cerrarTurnoMinijuego(sala, est);
       } else if (validarRespuesta(t.tipo, t.solucion, respuesta)) {
-        t.estado = 'resuelto';
-        t.tiempoMs = Date.now() - t.inicioMs;
-        this.cerrarTurnoMinijuego(sala, est);
+        t.aciertos += 1;
+        this.siguientePuzleMinijuego(sala, est);
       } else {
         t.errores += 1;
-        if (t.errores >= MAX_ERRORES) {
-          t.estado = 'fallido';
-          t.tiempoMs = Date.now() - t.inicioMs;
-          this.cerrarTurnoMinijuego(sala, est);
-        }
+        t.finMs -= PENALIZACION_ERROR_MS;
+        t.recorrido = [];
       }
       sala.updatedAt = Date.now();
       return true;
@@ -1987,10 +2061,8 @@ export class SalaService {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const t = est.turno;
-      if (est.fase !== 'jugando' || !t || t.estado !== 'activo') return false;
-      if (Date.now() < t.inicioMs + t.limiteMs) return false;
-      t.estado = 'fallido';
-      t.tiempoMs = t.limiteMs;
+      if (est.fase !== 'jugando' || !t) return false;
+      if (Date.now() < t.finMs) return false;
       this.cerrarTurnoMinijuego(sala, est);
       sala.updatedAt = Date.now();
       return true;
