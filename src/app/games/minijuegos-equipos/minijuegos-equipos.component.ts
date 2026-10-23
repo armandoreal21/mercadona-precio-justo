@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sala, EstadoMinijuegos } from '../../core/models/sala.model';
 import { SalaService } from '../../sala.service';
-import { NOMBRE_MINIJUEGO, SEG_TURNO_DEFAULT } from './minijuegos.logic';
+import { NOMBRE_MINIJUEGO, SEG_TURNO_DEFAULT, TIPOS_MINIJUEGO } from './minijuegos.logic';
 
 interface LineaMapa { eje: 'fila' | 'columna'; indice: number; muros: boolean[]; }
 interface LineaMetro { tipo: 'linea' | 'hecho'; color?: string; estaciones?: string[]; texto?: string; cerrada?: boolean; }
@@ -31,6 +31,22 @@ interface CeldaMapa { texto: string; clase: string; }
             <option *ngFor="let m of miembros(eq.id)" [ngValue]="m">{{ m }}</option>
           </select>
           <span *ngIf="!isAdmin" class="text-xs text-slate-300">Capitán: {{ est?.capitanes?.[eq.id] || 'pendiente' }}</span>
+        </div>
+
+        <div *ngIf="isAdmin" class="space-y-1">
+          <button type="button" (click)="juegosAbiertos = !juegosAbiertos" class="w-full flex justify-between items-center text-left">
+            <span class="text-sm text-white">🎲 Juegos que pueden salir <span class="text-xs text-slate-400">({{ juegosMarcadosCount }}/{{ todosLosJuegos.length }})</span></span>
+            <span class="text-xs text-slate-400">{{ juegosAbiertos ? '▲' : '▼' }}</span>
+          </button>
+          <ng-container *ngIf="juegosAbiertos">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+              <label *ngFor="let j of todosLosJuegos" class="flex items-center gap-2 text-xs text-slate-200">
+                <input type="checkbox" [(ngModel)]="juegosMarcados[j]" class="accent-cyan-500" />
+                {{ nombreMinijuego[j] }}
+              </label>
+            </div>
+            <div class="text-[11px] text-slate-500">Con 5 o más marcados no se repite ninguno. Con menos, alguno se repetirá.</div>
+          </ng-container>
         </div>
 
         <div *ngIf="isAdmin" class="flex items-center justify-between gap-2">
@@ -101,6 +117,25 @@ interface CeldaMapa { texto: string; clase: string; }
               </div>
             </div>
             <div *ngSwitchCase="'codigo'" class="text-sm text-slate-200">Introduce el código de {{ t.panel.longitud }} dígitos.</div>
+            <div *ngSwitchCase="'ecuacion'" class="flex items-center justify-center gap-3 text-3xl font-black">
+              <span class="px-4 py-2 rounded-xl bg-slate-800 border-2 border-slate-600">{{ t.panel.ecuacion[0] }}</span>
+              <span class="px-4 py-2 rounded-xl bg-cyan-700 border-2 border-cyan-400">{{ t.panel.ecuacion[1] }}</span>
+              <span class="px-4 py-2 rounded-xl bg-slate-800 border-2 border-slate-600">{{ t.panel.ecuacion[2] }}</span>
+              <span class="text-slate-400">= ?</span>
+            </div>
+            <div *ngSwitchCase="'palabra'" class="space-y-2">
+              <div class="text-xs text-slate-400">Ordena estas letras para formar una palabra:</div>
+              <div class="flex flex-wrap justify-center gap-2">
+                <span *ngFor="let l of t.panel.letras" class="w-10 h-10 rounded-lg bg-slate-800 border-2 border-cyan-500 flex items-center justify-center font-black text-lg">{{ l }}</span>
+              </div>
+            </div>
+            <div *ngSwitchCase="'carrera'" class="space-y-2">
+              <div class="text-xs text-slate-400">Corredores. ¿En qué posición llegó <b>{{ t.panel.objetivo }}</b>?</div>
+              <div class="flex flex-wrap justify-center gap-2">
+                <span *ngFor="let c of t.panel.corredores" class="px-3 py-2 rounded-xl bg-slate-800 border-2 font-bold"
+                      [class.border-yellow-400]="c === t.panel.objetivo" [class.border-slate-600]="c !== t.panel.objetivo">{{ c }}</span>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -205,6 +240,13 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   respuesta = '';
   error: string | null = null;
   ahora = Date.now();
+  readonly todosLosJuegos = TIPOS_MINIJUEGO;
+  juegosAbiertos = false;
+  juegosMarcados: Record<string, boolean> = Object.fromEntries(TIPOS_MINIJUEGO.map(t => [t, true]));
+
+  get juegosMarcadosCount(): number {
+    return TIPOS_MINIJUEGO.filter(t => this.juegosMarcados[t]).length;
+  }
   capitanBorrador: Record<string, string> = {};
   segundosBorrador = SEG_TURNO_DEFAULT;
 
@@ -413,6 +455,9 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     switch (tipo) {
       case 'cableado': return 'Número del cable';
       case 'metro': return 'Número de transbordos';
+      case 'ecuacion': return 'Resultado';
+      case 'carrera': return 'Posición (número)';
+      case 'palabra': return 'Escribe la palabra';
       default: return 'Respuesta';
     }
   }
@@ -442,7 +487,12 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       this.error = 'Elige un capitán para cada equipo.';
       return;
     }
-    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador));
+    const elegidos = TIPOS_MINIJUEGO.filter(t => this.juegosMarcados[t]);
+    if (elegidos.length === 0) {
+      this.error = 'Marca al menos un juego.';
+      return;
+    }
+    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos);
     if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
 
