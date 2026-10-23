@@ -436,9 +436,13 @@ export class SalaShellComponent implements OnInit, OnDestroy {
     this.showFinalChoiceModal = true;
   }
 
-  handleRestartGame(): void {
+  async handleRestartGame(): Promise<void> {
     this.showFinalChoiceModal = false;
-    this.salaService.reiniciarSala(this.codigo);
+    if (this.sala?.tipoJuego === 'preguntas-anonimas') {
+      await this.salaService.reiniciarPreguntasAnonimas(this.codigo);
+    } else {
+      this.salaService.reiniciarSala(this.codigo);
+    }
     this.refreshSala();
   }
 

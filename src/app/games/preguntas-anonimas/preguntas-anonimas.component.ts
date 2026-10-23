@@ -138,10 +138,6 @@ interface PreguntaCatalogo {
                   class="flex-1 bg-cyan-500 hover:bg-cyan-400 disabled:bg-slate-600 text-slate-950 font-black py-2 rounded-lg uppercase text-xs tracking-wide transition">
             ➡️ Siguiente pregunta
           </button>
-          <button (click)="reiniciar()"
-                  class="flex-1 bg-orange-500 hover:bg-orange-400 text-slate-950 font-black py-2 rounded-lg uppercase text-xs tracking-wide transition">
-            🔄 Reiniciar juego
-          </button>
         </div>
         <div *ngIf="!isAdmin && numeroPregunta >= totalPreguntas" class="text-center text-sm text-slate-400">
           Fin de las preguntas.
@@ -292,14 +288,5 @@ export class PreguntasAnonimasComponent {
     if (!this.sala || !this.isAdmin) return;
     this.error = null;
     await this.salaService.siguientePreguntaAnonima(this.sala.codigo);
-  }
-
-  async reiniciar(): Promise<void> {
-    if (!this.sala || !this.isAdmin) return;
-    if (!window.confirm('¿Reiniciar el juego? Se borrarán las preguntas y respuestas.')) return;
-    this.error = null;
-    this.miPregunta = '';
-    this.miRespuesta = '';
-    await this.salaService.reiniciarPreguntasAnonimas(this.sala.codigo);
   }
 }
