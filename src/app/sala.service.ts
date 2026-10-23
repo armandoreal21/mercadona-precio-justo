@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto } from './core/models/sala.model';
+import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
@@ -1815,6 +1815,161 @@ export class SalaService {
           this.pasarTurnoCodigo(est, otro);
         }
       }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  // ====================================================================
+  // JUEGO: PREGUNTAS ANÓNIMAS
+  // ====================================================================
+
+  private normalizarClaveRespuesta(texto: string): string {
+    const base = texto
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[.!?¡¿,;:]+/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (['si', 's', 'yes', 'y'].includes(base)) return 'si';
+    if (['no', 'n', 'nope'].includes(base)) return 'no';
+    if (['ns', 'nc', 'nsnc', 'ns nc', 'ns/nc'].includes(base)) return 'nsnc';
+    return base;
+  }
+
+  private etiquetaRespuesta(clave: string, original: string): string {
+    if (clave === 'si') return 'Sí';
+    if (clave === 'no') return 'No';
+    if (clave === 'nsnc') return 'NS/NC';
+    const limpio = original.trim();
+    return limpio.charAt(0).toUpperCase() + limpio.slice(1);
+  }
+
+  private agruparRespuestasPreguntas(textos: string[]): RespuestaAgrupada[] {
+    const grupos = new Map<string, { texto: string; cantidad: number }>();
+    for (const t of textos) {
+      const clave = this.normalizarClaveRespuesta(t);
+      if (!clave) continue;
+      const g = grupos.get(clave);
+      if (g) g.cantidad++;
+      else grupos.set(clave, { texto: this.etiquetaRespuesta(clave, t), cantidad: 1 });
+    }
+    const total = textos.length || 1;
+    return Array.from(grupos.values())
+      .map(g => ({ texto: g.texto, cantidad: g.cantidad, porcentaje: Math.round((g.cantidad / total) * 100) }))
+      .sort((a, b) => b.cantidad - a.cantidad);
+  }
+
+  private estadoInicialPreguntasAnonimas(): EstadoPreguntasAnonimas {
+    return {
+      fase: 'haciendo-preguntas',
+      preguntas: [],
+      respuestas: [],
+      indexPreguntaActual: 0,
+      respuestasAgrupadas: {}
+    };
+  }
+
+  private asegurarEstadoPreguntasAnonimas(sala: Sala): EstadoPreguntasAnonimas {
+    if (!sala.estadoPreguntasAnonimas) {
+      sala.estadoPreguntasAnonimas = this.estadoInicialPreguntasAnonimas();
+    }
+    // Firebase elimina los arrays vacíos y los objetos vacíos al guardar
+    const est = sala.estadoPreguntasAnonimas;
+    est.preguntas = est.preguntas || [];
+    est.respuestas = est.respuestas || [];
+    est.respuestasAgrupadas = est.respuestasAgrupadas || {};
+    return est;
+  }
+
+  private abrirRespuestasPreguntasAnonimas(est: EstadoPreguntasAnonimas): void {
+    const lista = est.preguntas;
+    for (let i = lista.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [lista[i], lista[j]] = [lista[j], lista[i]];
+    }
+    lista.forEach((p, i) => (p.index = i));
+    est.fase = 'respondiendo';
+    est.indexPreguntaActual = 0;
+  }
+
+  private cerrarPreguntaActualAnonima(est: EstadoPreguntasAnonimas): void {
+    const idx = est.indexPreguntaActual;
+    const textos = est.respuestas.filter(r => r.indexPregunta === idx).map(r => r.respuesta);
+    est.respuestasAgrupadas[idx] = this.agruparRespuestasPreguntas(textos);
+    if (idx < est.preguntas.length - 1) {
+      est.indexPreguntaActual = idx + 1;
+    } else {
+      est.fase = 'revision';
+      est.indexPreguntaActual = 0;
+    }
+  }
+
+  async aportarPreguntaAnonima(codigo: string, usuario: string, texto: string): Promise<boolean> {
+    const limpio = texto.trim();
+    if (!limpio) return false;
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoPreguntasAnonimas(sala);
+      if (est.fase !== 'haciendo-preguntas') return false;
+      if (est.preguntas.some(p => p.idJugador === usuario)) return false;
+      est.preguntas.push({ idJugador: usuario, pregunta: limpio, index: est.preguntas.length });
+      // Cuando todos han aportado, empiezan las respuestas automáticamente
+      if (est.preguntas.length >= sala.jugadores.length) {
+        this.abrirRespuestasPreguntasAnonimas(est);
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async iniciarRespuestasPreguntasAnonimas(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoPreguntasAnonimas(sala);
+      if (est.fase !== 'haciendo-preguntas' || est.preguntas.length < 2) return false;
+      this.abrirRespuestasPreguntasAnonimas(est);
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async responderPreguntaAnonima(codigo: string, usuario: string, respuesta: string): Promise<boolean> {
+    const limpio = respuesta.trim();
+    if (!limpio) return false;
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoPreguntasAnonimas(sala);
+      if (est.fase !== 'respondiendo') return false;
+      const idx = est.indexPreguntaActual;
+      if (est.respuestas.some(r => r.idJugador === usuario && r.indexPregunta === idx)) return false;
+      est.respuestas.push({ idJugador: usuario, indexPregunta: idx, respuesta: limpio });
+      const respondieron = est.respuestas.filter(r => r.indexPregunta === idx).length;
+      if (respondieron >= sala.jugadores.length) {
+        this.cerrarPreguntaActualAnonima(est);
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin: en respuestas cierra la pregunta actual con lo que haya; en revisión pasa a la siguiente. */
+  async siguientePreguntaAnonima(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoPreguntasAnonimas(sala);
+      if (est.fase === 'respondiendo') {
+        this.cerrarPreguntaActualAnonima(est);
+      } else if (est.fase === 'revision') {
+        if (est.indexPreguntaActual >= est.preguntas.length - 1) return false;
+        est.indexPreguntaActual += 1;
+      } else {
+        return false;
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async reiniciarPreguntasAnonimas(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      sala.estadoPreguntasAnonimas = this.estadoInicialPreguntasAnonimas();
       sala.updatedAt = Date.now();
       return true;
     });

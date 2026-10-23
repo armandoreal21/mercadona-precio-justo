@@ -8,11 +8,12 @@ import { PrecioJustoComponent } from '../../games/precio-justo/precio-justo.comp
 import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-mas-larga.component';
 import { SubastaRespuestasComponent } from '../../games/subasta-respuestas/subasta-respuestas.component';
 import { CodigoSecretoComponent } from '../../games/codigo-secreto/codigo-secreto.component';
+import { PreguntasAnonimasComponent } from '../../games/preguntas-anonimas/preguntas-anonimas.component';
 
 @Component({
   selector: 'app-sala-shell',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent, SubastaRespuestasComponent, CodigoSecretoComponent],
+  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent, SubastaRespuestasComponent, CodigoSecretoComponent, PreguntasAnonimasComponent],
   template: `
     <div class="min-h-screen bg-slate-900 p-4 text-white mpj-theme">
       <div *ngIf="!sala" class="max-w-2xl mx-auto p-6 bg-slate-800 rounded-xl text-center">
@@ -174,6 +175,12 @@ import { CodigoSecretoComponent } from '../../games/codigo-secreto/codigo-secret
                               (clasificacionRequested)="abrirClasificacion()"
                               (endOfGameReached)="onFinPartida()">
           </app-codigo-secreto>
+
+          <app-preguntas-anonimas *ngSwitchCase="'preguntas-anonimas'"
+                                  [sala]="sala"
+                                  [currentName]="currentName"
+                                  [isAdmin]="isCurrentAdmin()">
+          </app-preguntas-anonimas>
 
           <!-- Fallback or future game -->
           <div *ngSwitchDefault class="p-8 text-center bg-slate-900 rounded-xl">
@@ -348,6 +355,8 @@ export class SalaShellComponent implements OnInit, OnDestroy {
         return '🧠 La Subasta de Respuestas';
       case 'codigo-secreto':
         return '🔐 El Código Secreto';
+      case 'preguntas-anonimas':
+        return '💬 Preguntas Anónimas';
       default:
         return tipoJuego;
     }

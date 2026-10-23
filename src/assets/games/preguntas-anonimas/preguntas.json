@@ -1,0 +1,47 @@
+{
+  "categories": [
+    { "id": "habitos", "name": "👤 Hábitos y Manías Cotidianas" },
+    { "id": "verguenzas", "name": "🙈 Vergüenzas y Secretos Inocentes" },
+    { "id": "dilemas", "name": "⚖️ Dilemas Absurdos" },
+    { "id": "reflexiones", "name": "💭 Reflexiones de Sofá" },
+    { "id": "picante", "name": "🔥 Picante / Compromiso Ligero" },
+    { "id": "opiniones", "name": "🎭 Opiniones Impopulares" }
+  ],
+  "questions": [
+    { "id": 1, "category_id": "habitos", "text": "¿Cada cuántos días cambias las sábanas de la cama?", "suggested_type": "text", "intensity": 1 },
+    { "id": 2, "category_id": "habitos", "text": "¿Cuál es el alimento más caducado que te has comido a sabiendas?", "suggested_type": "text", "intensity": 1 },
+    { "id": 3, "category_id": "habitos", "text": "¿Qué es lo primero que miras en el móvil al despertarte?", "suggested_type": "text", "intensity": 1 },
+    { "id": 4, "category_id": "habitos", "text": "¿Duermes con calcetines puestos?", "suggested_type": "binary", "intensity": 1 },
+    { "id": 5, "category_id": "habitos", "text": "¿Te lavas las manos antes o después de usar el baño en casa?", "suggested_type": "text", "intensity": 1 },
+    { "id": 6, "category_id": "habitos", "text": "¿Has comido alguna vez directamente de la olla o la sartén?", "suggested_type": "binary", "intensity": 1 },
+    { "id": 7, "category_id": "habitos", "text": "¿Cuál es tu manía más rara en el sofá o en la cama?", "suggested_type": "text", "intensity": 1 },
+    { "id": 8, "category_id": "habitos", "text": "¿Cuándo fue la última vez que limpiaste bajo la cama?", "suggested_type": "text", "intensity": 1 },
+
+    { "id": 9, "category_id": "verguenzas", "text": "¿Qué es lo más ridículo que has hecho para gustarle a alguien?", "suggested_type": "text", "intensity": 2 },
+    { "id": 10, "category_id": "verguenzas", "text": "¿A qué edad descubriste algo obvio que todo el mundo sabía menos tú?", "suggested_type": "text", "intensity": 2 },
+    { "id": 11, "category_id": "verguenzas", "text": "¿Cuál ha sido la mentira más tonta que has dicho para librarte de un plan?", "suggested_type": "text", "intensity": 2 },
+    { "id": 12, "category_id": "verguenzas", "text": "¿Alguna vez te has tropezado en público de forma épica?", "suggested_type": "binary", "intensity": 2 },
+    { "id": 13, "category_id": "verguenzas", "text": "¿Qué canción avergonzante te encanta escuchar en privado?", "suggested_type": "text", "intensity": 2 },
+
+    { "id": 14, "category_id": "dilemas", "text": "Por 10.000€, ¿te raparías las cejas mañana mismo?", "suggested_type": "binary", "intensity": 2 },
+    { "id": 15, "category_id": "dilemas", "text": "Si pudieras hacer que un objeto cotidiano hablara, ¿cuál elegirías?", "suggested_type": "text", "intensity": 1 },
+    { "id": 16, "category_id": "dilemas", "text": "¿Preferirías viajar 100 años al pasado o 100 años al futuro?", "suggested_type": "binary", "intensity": 2 },
+    { "id": 17, "category_id": "dilemas", "text": "¿Preferirías poder volar o ser invisible?", "suggested_type": "binary", "intensity": 1 },
+    { "id": 18, "category_id": "dilemas", "text": "¿Preferirías no volver a usar champú o no volver a usar desodorante?", "suggested_type": "binary", "intensity": 2 },
+
+    { "id": 19, "category_id": "reflexiones", "text": "¿Qué consejo le darías a tu yo de 15 años?", "suggested_type": "text", "intensity": 2 },
+    { "id": 20, "category_id": "reflexiones", "text": "¿Cuál es tu mayor miedo irracional?", "suggested_type": "text", "intensity": 2 },
+    { "id": 21, "category_id": "reflexiones", "text": "¿Qué recuerdo de tu infancia mantienes intacto y muy especial?", "suggested_type": "text", "intensity": 2 },
+    { "id": 22, "category_id": "reflexiones", "text": "¿En qué momento te sentiste verdaderamente adulto?", "suggested_type": "text", "intensity": 2 },
+
+    { "id": 23, "category_id": "picante", "text": "¿Cuál ha sido tu peor experiencia en una primera cita?", "suggested_type": "text", "intensity": 2 },
+    { "id": 24, "category_id": "picante", "text": "¿Qué es lo más romántico (o cursi) que has hecho jamás?", "suggested_type": "text", "intensity": 2 },
+    { "id": 25, "category_id": "picante", "text": "¿Has besado a alguien que después te arrepentiste?", "suggested_type": "binary", "intensity": 2 },
+    { "id": 26, "category_id": "picante", "text": "¿Cuál fue tu primer beso y cómo fue?", "suggested_type": "text", "intensity": 2 },
+
+    { "id": 27, "category_id": "opiniones", "text": "¿Qué comida famosa todo el mundo ama pero tú no soportas?", "suggested_type": "text", "intensity": 1 },
+    { "id": 28, "category_id": "opiniones", "text": "¿Qué moda actual te parece completamente ridícula?", "suggested_type": "text", "intensity": 1 },
+    { "id": 29, "category_id": "opiniones", "text": "¿Qué serie o película famosa está sobrevalorada?", "suggested_type": "text", "intensity": 1 },
+    { "id": 30, "category_id": "opiniones", "text": "¿La piña en la pizza es un crimen?", "suggested_type": "binary", "intensity": 1 }
+  ]
+}

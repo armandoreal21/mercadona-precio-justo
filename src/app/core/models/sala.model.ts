@@ -140,6 +140,38 @@ export interface EstadoCodigoSecreto {
   motivoFin?: 'todas_descubiertas' | 'negra' | null;
 }
 
+// ==========================================
+// JUEGO: PREGUNTAS ANÓNIMAS (solo individual)
+// ==========================================
+
+export type FasePreguntasAnonimas = 'esperando' | 'haciendo-preguntas' | 'respondiendo' | 'revision';
+
+export interface PreguntaAportada {
+  idJugador: string;           // hash anónimo interno
+  pregunta: string;
+  index: number;               // orden en el que aparece
+}
+
+export interface RespuestaAportada {
+  idJugador: string;           // hash anónimo interno
+  indexPregunta: number;
+  respuesta: string;
+}
+
+export interface RespuestaAgrupada {
+  texto: string;
+  cantidad: number;
+  porcentaje: number;
+}
+
+export interface EstadoPreguntasAnonimas {
+  fase: FasePreguntasAnonimas;
+  preguntas: PreguntaAportada[];
+  respuestas: RespuestaAportada[];
+  indexPreguntaActual: number;  // para la revisión
+  respuestasAgrupadas: Record<number, RespuestaAgrupada[]>; // indexPregunta -> array de respuestas agrupadas
+}
+
 export interface Sala {
   codigo: string;
   nombre: string;
@@ -161,6 +193,8 @@ export interface Sala {
   estadoSubasta?: EstadoSubastaRespuestas | null;
   // Estado específico para "Código Secreto"
   estadoCodigoSecreto?: EstadoCodigoSecreto | null;
+  // Estado específico para "Preguntas Anónimas"
+  estadoPreguntasAnonimas?: EstadoPreguntasAnonimas | null;
   createdAt?: number;
   updatedAt?: number;
 }

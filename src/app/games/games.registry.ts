@@ -49,6 +49,17 @@ export const JUEGOS_DISPONIBLES: GameDefinition[] = [
     configDefecto: {
       rondasTotales: 1
     }
+  },
+  {
+    id: 'preguntas-anonimas',
+    nombre: 'Preguntas Anónimas',
+    descripcion: 'Cada jugador aporta una pregunta y todos responden de forma anónima. Las respuestas iguales se agrupan y el admin pasa de pregunta en pregunta. Sin puntos, solo para descubrir cosas de tu grupo.',
+    icono: '💬',
+    modosSoportados: ['individual'],
+    minJugadores: 2,
+    configDefecto: {
+      rondasTotales: 1
+    }
   }
 ];
 
