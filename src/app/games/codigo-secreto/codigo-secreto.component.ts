@@ -160,7 +160,7 @@ interface PalabraCatalogo {
                   [disabled]="c.descubierta || !puedoTocar()"
                   class="min-h-[3.5rem] sm:min-h-[4.5rem] rounded-lg border-2 p-1 text-[10px] sm:text-xs font-black uppercase break-words transition disabled:cursor-default"
                   [ngClass]="claseCasilla(c)">
-            {{ c.palabra }}
+            {{ mostrarCalavera(c) ? '☠️ ' : '' }}{{ c.palabra }}
           </button>
         </div>
 
@@ -315,6 +315,11 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
     return this.indiceEquipo(this.estado.turnoEquipoId) === 0 ? 'border-sky-500' : 'border-rose-500';
   }
 
+  /** La calavera solo la ven los capitanes; el resto ve la casilla negra sin icono. */
+  mostrarCalavera(c: CasillaCodigoSecreto): boolean {
+    return c.bando === 'negra' && this.puedeVerMapa();
+  }
+
   claseCasilla(c: CasillaCodigoSecreto): string {
     if (c.descubierta) return this.estiloBando(c.bando, true);
     if (this.puedeVerMapa() || this.estado?.fase === 'terminado') return this.estiloBando(c.bando, false);
@@ -330,8 +335,8 @@ export class CodigoSecretoComponent implements OnInit, OnDestroy {
     }
     if (bando === 'negra') {
       return revelada
-        ? 'bg-black border-rose-500 text-rose-400 ring-2 ring-rose-500 shadow-lg shadow-rose-600/50'
-        : 'bg-slate-900 border-rose-600 text-rose-300';
+        ? 'bg-black border-4 border-white text-white ring-2 ring-white/60 shadow-xl shadow-white/40'
+        : 'bg-black border-2 border-dashed border-white/80 text-white/90';
     }
     if (this.indiceEquipo(bando) === 0) {
       return revelada
