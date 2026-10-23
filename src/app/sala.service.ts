@@ -2,8 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada } from './core/models/sala.model';
+import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada, EstadoMinijuegos, TipoMinijuego } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
+import { TIPOS_MINIJUEGO, generarMinijuego, validarRespuesta, barajar, TIEMPO_TURNO_MS, PENALIZACION_ERROR_MS, MAX_ERRORES } from './games/minijuegos-equipos/minijuegos.logic';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
@@ -1815,6 +1816,178 @@ export class SalaService {
           this.pasarTurnoCodigo(est, otro);
         }
       }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  // ====================================================================
+  // JUEGO: MINIJUEGOS POR EQUIPOS
+  // ====================================================================
+
+  private estadoInicialMinijuegos(): EstadoMinijuegos {
+    return {
+      fase: 'esperando', ronda: 1, totalRondas: 5, tiposRonda: [], equiposOrden: [],
+      capitanes: {}, turno: null, resultados: [], puntos: {}, tiempoTotalMs: {}, ganadorEquipoId: null
+    };
+  }
+
+  private asegurarEstadoMinijuegos(sala: Sala): EstadoMinijuegos {
+    if (!sala.estadoMinijuegos) sala.estadoMinijuegos = this.estadoInicialMinijuegos();
+    const est = sala.estadoMinijuegos;
+    est.capitanes = est.capitanes || {};
+    est.tiposRonda = est.tiposRonda || [];
+    est.equiposOrden = est.equiposOrden || [];
+    est.resultados = est.resultados || [];
+    est.puntos = est.puntos || {};
+    est.tiempoTotalMs = est.tiempoTotalMs || {};
+    return est;
+  }
+
+  private miembrosDeEquipo(sala: Sala, equipoId: string): string[] {
+    return sala.jugadores.filter(j => j.equipoId === equipoId).map(j => j.nombre);
+  }
+
+  private abrirTurnoMinijuego(sala: Sala, est: EstadoMinijuegos, equipoId: string): void {
+    const tipo: TipoMinijuego = est.tiposRonda[est.ronda - 1];
+    const capitan = est.capitanes[equipoId];
+    const ayudantes = this.miembrosDeEquipo(sala, equipoId).filter(n => n !== capitan).length;
+    // Si el capitán es el único del equipo, él recibe todas las pistas
+    const gen = generarMinijuego(tipo, Math.max(1, ayudantes));
+    est.turno = {
+      equipoId, ronda: est.ronda, tipo, panel: gen.panel, pistas: gen.pistas, solucion: gen.solucion,
+      errores: 0, inicioMs: Date.now(), limiteMs: TIEMPO_TURNO_MS, estado: 'activo', tiempoMs: 0
+    };
+  }
+
+  private cerrarTurnoMinijuego(sala: Sala, est: EstadoMinijuegos): void {
+    const t = est.turno!;
+    est.resultados.push({ ronda: t.ronda, equipoId: t.equipoId, tipo: t.tipo, estado: t.estado, tiempoMs: t.tiempoMs, errores: t.errores });
+    est.tiempoTotalMs[t.equipoId] = (est.tiempoTotalMs[t.equipoId] || 0) + t.tiempoMs;
+
+    const equipos = est.equiposOrden;
+    const delaRonda = est.resultados.filter(r => r.ronda === est.ronda);
+    const pendiente = equipos.find(e => !delaRonda.some(r => r.equipoId === e));
+    if (pendiente) {
+      this.abrirTurnoMinijuego(sala, est, pendiente);
+      return;
+    }
+
+    // Ronda completa: se concede el punto
+    const efectivo = (r: { estado: string; tiempoMs: number; errores: number }) =>
+      r.estado === 'resuelto' ? r.tiempoMs + r.errores * PENALIZACION_ERROR_MS : Infinity;
+    if (equipos.length === 1) {
+      if (delaRonda[0].estado === 'resuelto') est.puntos[equipos[0]] = (est.puntos[equipos[0]] || 0) + 1;
+    } else {
+      const ordenados = [...delaRonda].sort((x, y) => {
+        const ex = efectivo(x), ey = efectivo(y);
+        return ex === ey ? 0 : ex < ey ? -1 : 1;
+      });
+      const [a, b] = ordenados;
+      if (efectivo(a) !== Infinity && efectivo(a) !== efectivo(b)) {
+        est.puntos[a.equipoId] = (est.puntos[a.equipoId] || 0) + 1;
+      }
+      void b;
+    }
+
+    if (est.ronda >= est.totalRondas) {
+      est.fase = 'terminado';
+      est.turno = null;
+      this.determinarGanadorMinijuegos(est);
+      return;
+    }
+    est.ronda += 1;
+    // Empieza el equipo que no empezó la ronda anterior
+    this.abrirTurnoMinijuego(sala, est, equipos[(est.ronda - 1) % equipos.length]);
+  }
+
+  private determinarGanadorMinijuegos(est: EstadoMinijuegos): void {
+    const equipos = est.equiposOrden;
+    const maxPuntos = Math.max(0, ...equipos.map(e => est.puntos[e] || 0));
+    const empatados = equipos.filter(e => (est.puntos[e] || 0) === maxPuntos);
+    if (empatados.length === 1) {
+      est.ganadorEquipoId = empatados[0];
+      return;
+    }
+    const [x, y] = [...empatados].sort((a, b) => (est.tiempoTotalMs[a] || 0) - (est.tiempoTotalMs[b] || 0));
+    est.ganadorEquipoId = (est.tiempoTotalMs[x] || 0) === (est.tiempoTotalMs[y] || 0) ? null : x;
+  }
+
+  async asignarCapitanesMinijuegos(codigo: string, capitanes: Record<string, string>): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      if (est.fase !== 'esperando') return false;
+      est.capitanes = { ...capitanes };
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async iniciarMinijuegos(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      if (est.fase !== 'esperando') return false;
+      const equipos = (sala.equipos || []).filter(eq => this.miembrosDeEquipo(sala, eq.id).length > 0).map(eq => eq.id);
+      if (equipos.length === 0 || !equipos.every(id => !!est.capitanes[id])) return false;
+      est.equiposOrden = equipos;
+      est.tiposRonda = barajar(TIPOS_MINIJUEGO).slice(0, 5);
+      est.puntos = {};
+      est.tiempoTotalMs = {};
+      equipos.forEach(id => { est.puntos[id] = 0; est.tiempoTotalMs[id] = 0; });
+      est.resultados = [];
+      est.ronda = 1;
+      est.ganadorEquipoId = null;
+      est.fase = 'jugando';
+      this.abrirTurnoMinijuego(sala, est, equipos[0]);
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async reiniciarMinijuegos(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      sala.estadoMinijuegos = this.estadoInicialMinijuegos();
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async resolverMinijuego(codigo: string, usuario: string, respuesta: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || t.estado !== 'activo') return false;
+      if (est.capitanes[t.equipoId] !== usuario) return false;
+      if (Date.now() >= t.inicioMs + t.limiteMs) {
+        t.estado = 'fallido';
+        t.tiempoMs = t.limiteMs;
+        this.cerrarTurnoMinijuego(sala, est);
+      } else if (validarRespuesta(t.tipo, t.solucion, respuesta)) {
+        t.estado = 'resuelto';
+        t.tiempoMs = Date.now() - t.inicioMs;
+        this.cerrarTurnoMinijuego(sala, est);
+      } else {
+        t.errores += 1;
+        if (t.errores >= MAX_ERRORES) {
+          t.estado = 'fallido';
+          t.tiempoMs = Date.now() - t.inicioMs;
+          this.cerrarTurnoMinijuego(sala, est);
+        }
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  async expirarTurnoMinijuego(codigo: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || t.estado !== 'activo') return false;
+      if (Date.now() < t.inicioMs + t.limiteMs) return false;
+      t.estado = 'fallido';
+      t.tiempoMs = t.limiteMs;
+      this.cerrarTurnoMinijuego(sala, est);
       sala.updatedAt = Date.now();
       return true;
     });

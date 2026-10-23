@@ -172,6 +172,46 @@ export interface EstadoPreguntasAnonimas {
   respuestasAgrupadas: Record<number, RespuestaAgrupada[]>; // indexPregunta -> array de respuestas agrupadas
 }
 
+export type TipoMinijuego = 'secuencia' | 'cableado' | 'mapa' | 'codigo' | 'metro';
+export type EstadoTurnoMinijuego = 'activo' | 'resuelto' | 'fallido';
+
+export interface TurnoMinijuego {
+  equipoId: string;
+  ronda: number;
+  tipo: TipoMinijuego;
+  panel: any;
+  pistas: string[];
+  solucion: any;
+  errores: number;
+  inicioMs: number;
+  limiteMs: number;
+  estado: EstadoTurnoMinijuego;
+  tiempoMs: number;
+}
+
+export interface ResultadoTurnoMinijuego {
+  ronda: number;
+  equipoId: string;
+  tipo: TipoMinijuego;
+  estado: EstadoTurnoMinijuego;
+  tiempoMs: number;
+  errores: number;
+}
+
+export interface EstadoMinijuegos {
+  fase: 'esperando' | 'jugando' | 'terminado';
+  ronda: number;
+  totalRondas: number;
+  tiposRonda: TipoMinijuego[];
+  equiposOrden: string[];
+  capitanes: Record<string, string>;
+  turno: TurnoMinijuego | null;
+  resultados: ResultadoTurnoMinijuego[];
+  puntos: Record<string, number>;
+  tiempoTotalMs: Record<string, number>;
+  ganadorEquipoId: string | null;
+}
+
 export interface Sala {
   codigo: string;
   nombre: string;
@@ -195,6 +235,8 @@ export interface Sala {
   estadoCodigoSecreto?: EstadoCodigoSecreto | null;
   // Estado específico para "Preguntas Anónimas"
   estadoPreguntasAnonimas?: EstadoPreguntasAnonimas | null;
+  // Estado específico para "Minijuegos por equipos"
+  estadoMinijuegos?: EstadoMinijuegos | null;
   createdAt?: number;
   updatedAt?: number;
 }

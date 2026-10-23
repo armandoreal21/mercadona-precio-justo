@@ -9,11 +9,12 @@ import { PalabraMasLargaComponent } from '../../games/palabra-mas-larga/palabra-
 import { SubastaRespuestasComponent } from '../../games/subasta-respuestas/subasta-respuestas.component';
 import { CodigoSecretoComponent } from '../../games/codigo-secreto/codigo-secreto.component';
 import { PreguntasAnonimasComponent } from '../../games/preguntas-anonimas/preguntas-anonimas.component';
+import { MinijuegosEquiposComponent } from '../../games/minijuegos-equipos/minijuegos-equipos.component';
 
 @Component({
   selector: 'app-sala-shell',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent, SubastaRespuestasComponent, CodigoSecretoComponent, PreguntasAnonimasComponent],
+  imports: [CommonModule, RouterModule, FormsModule, PrecioJustoComponent, PalabraMasLargaComponent, SubastaRespuestasComponent, CodigoSecretoComponent, PreguntasAnonimasComponent, MinijuegosEquiposComponent],
   template: `
     <div class="min-h-screen bg-slate-900 p-4 text-white mpj-theme">
       <div *ngIf="!sala" class="max-w-2xl mx-auto p-6 bg-slate-800 rounded-xl text-center">
@@ -181,6 +182,12 @@ import { PreguntasAnonimasComponent } from '../../games/preguntas-anonimas/pregu
                                   [currentName]="currentName"
                                   [isAdmin]="isCurrentAdmin()">
           </app-preguntas-anonimas>
+
+          <app-minijuegos-equipos *ngSwitchCase="'minijuegos-equipos'"
+                                  [sala]="sala"
+                                  [currentName]="currentName"
+                                  [isAdmin]="isCurrentAdmin()">
+          </app-minijuegos-equipos>
 
           <!-- Fallback or future game -->
           <div *ngSwitchDefault class="p-8 text-center bg-slate-900 rounded-xl">
@@ -357,6 +364,8 @@ export class SalaShellComponent implements OnInit, OnDestroy {
         return '🔐 El Código Secreto';
       case 'preguntas-anonimas':
         return '💬 Preguntas Anónimas';
+      case 'minijuegos-equipos':
+        return '🧩 Minijuegos por Equipos';
       default:
         return tipoJuego;
     }

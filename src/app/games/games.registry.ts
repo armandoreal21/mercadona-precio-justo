@@ -60,6 +60,17 @@ export const JUEGOS_DISPONIBLES: GameDefinition[] = [
     configDefecto: {
       rondasTotales: 1
     }
+  },
+  {
+    id: 'minijuegos-equipos',
+    nombre: 'Minijuegos por Equipos',
+    descripcion: 'Un capitán resuelve un minijuego con ayuda de su equipo. Mientras, el otro equipo observa. Cinco rondas con minijuegos distintos: gana quien lo resuelva antes.',
+    icono: '🧩',
+    modosSoportados: ['equipos_multiusuario'],
+    minJugadores: 1,
+    configDefecto: {
+      rondasTotales: 5
+    }
   }
 ];
 
