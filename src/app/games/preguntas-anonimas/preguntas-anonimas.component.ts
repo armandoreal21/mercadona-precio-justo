@@ -51,10 +51,23 @@ interface PreguntaCatalogo {
         <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
           <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Catálogo de ideas</div>
           <div class="flex flex-col sm:flex-row gap-2">
+            <select [(ngModel)]="ambitoFiltro" (ngModelChange)="cambiarAmbito()"
+                    class="bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-cyan-400">
+              <option value="">Pareja y general</option>
+              <option value="pareja">Solo en pareja</option>
+              <option value="general">Solo en general</option>
+            </select>
             <select [(ngModel)]="categoriaFiltro" (ngModelChange)="recalcularMuestra()"
                     class="bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-cyan-400">
               <option value="">Todas las categorías</option>
-              <option *ngFor="let c of categorias" [value]="c.id">{{ c.name }}</option>
+              <option *ngFor="let c of categoriasFiltradas" [value]="c.id">{{ c.name }}</option>
+            </select>
+            <select [(ngModel)]="nivelFiltro" (ngModelChange)="recalcularMuestra()"
+                    class="bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-cyan-400">
+              <option value="">Todos los niveles</option>
+              <option value="1">🟢 Suave</option>
+              <option value="2">🟡 Medio</option>
+              <option value="3">🔴 Comprometido</option>
             </select>
             <input [(ngModel)]="textoFiltro" (ngModelChange)="recalcularMuestra()" placeholder="Buscar..."
                    class="flex-1 bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-cyan-400" />
@@ -68,6 +81,7 @@ interface PreguntaCatalogo {
             <button *ngFor="let p of muestra"
                     (click)="elegirSugerencia(p.text)"
                     class="text-left text-xs p-2 bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 text-slate-200 transition">
+              <span class="block text-[10px] text-slate-500 mt-0.5">{{ etiquetaNivel(p.intensity) }}</span>
               {{ p.text }}
             </button>
           </div>
@@ -157,9 +171,12 @@ export class PreguntasAnonimasComponent {
 
   readonly categorias: { id: string; name: string }[] = (preguntasData as any).categories;
   private readonly catalogo: PreguntaCatalogo[] = (preguntasData as any).questions;
+  private readonly niveles: { value: number; name: string }[] = (preguntasData as any).intensity_levels;
 
   categoriaFiltro = '';
   textoFiltro = '';
+  nivelFiltro = '';
+  ambitoFiltro = '';
   muestra: PreguntaCatalogo[] = [];
 
   miPregunta = '';
@@ -235,7 +252,9 @@ export class PreguntasAnonimasComponent {
   get preguntasFiltradas(): PreguntaCatalogo[] {
     return this.catalogo.filter(p =>
       (!this.categoriaFiltro || p.category_id === this.categoriaFiltro) &&
-      (!this.textoFiltro || p.text.toLowerCase().includes(this.textoFiltro.toLowerCase()))
+      (!this.textoFiltro || p.text.toLowerCase().includes(this.textoFiltro.toLowerCase())) &&
+      (!this.nivelFiltro || p.intensity === Number(this.nivelFiltro)) &&
+      (!this.ambitoFiltro || this.ambitoDe(p.category_id) === this.ambitoFiltro)
     );
   }
 
@@ -247,6 +266,25 @@ export class PreguntasAnonimasComponent {
       [copia[i], copia[j]] = [copia[j], copia[i]];
     }
     this.muestra = copia.slice(0, 12);
+  }
+
+  /** Ámbito de una categoría: las que terminan en _general son individuales; el resto, en pareja. */
+  ambitoDe(categoriaId: string): string {
+    return categoriaId.endsWith('_general') ? 'general' : 'pareja';
+  }
+
+  get categoriasFiltradas(): { id: string; name: string }[] {
+    return this.categorias.filter(c => !this.ambitoFiltro || this.ambitoDe(c.id) === this.ambitoFiltro);
+  }
+
+  cambiarAmbito(): void {
+    this.categoriaFiltro = '';
+    this.recalcularMuestra();
+  }
+
+  etiquetaNivel(n: number): string {
+    const nivel = this.niveles.find(l => l.value === n);
+    return nivel ? nivel.name : '';
   }
 
   elegirSugerencia(texto: string): void {
