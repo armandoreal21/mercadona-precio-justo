@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -17,6 +17,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   deslizante: '🧩 Puzle deslizante',
   fraude: '🏭 Fraude en la cadena',
   reactor: '☢️ Reactor en peligro',
+  puntero: '🎯 Puntero láser',
   balanza: '⚖️ Balanza'
 };
 
@@ -69,6 +70,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'balanza': return generarBalanza(L, n);
     case 'fraude': return generarFraude(L, n);
     case 'reactor': return generarReactor(L, n);
+    case 'puntero': return generarPuntero(L, n);
   }
 }
 
@@ -1054,6 +1056,113 @@ export function aplicarControlReactor(estado: any, controlId: string, owner: num
   return { estado: e, ok: true, completado: alertas.every(a => a.resuelta) };
 }
 
+/** Puntero láser: el cursor debe llegar a la diana. Cada control (eje X, eje Y, potencia) lo tiene una persona distinta, y rotan tras cada acierto. */
+/** Puntero láser con laberinto y minas (desde el nivel 2). Siempre hay un camino sin minas hasta la diana. */
+function generarPuntero(L: number, n: number): Puzle {
+  const N = Math.min(5 + L, 9);
+  const laberinto = L >= 2;
+  const densidad = laberinto ? Math.min(0.1 + 0.04 * L, 0.3) : 0;
+  const numMinas = laberinto ? Math.min(1 + L, 6) : 0;
+  for (let intento = 0; intento < 400; intento++) {
+    const muros: boolean[][] = Array.from({ length: N }, () => Array.from({ length: N }, () => Math.random() < densidad));
+    const libres: { x: number; y: number }[] = [];
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) if (!muros[y][x]) libres.push({ x, y });
+    if (libres.length < 4) continue;
+    const inicio = pick(libres);
+    const lejanos = libres.filter(c => Math.abs(c.x - inicio.x) + Math.abs(c.y - inicio.y) >= Math.floor(N / 2) + 1);
+    if (!lejanos.length) continue;
+    const target = pick(lejanos);
+    const candidatas = libres.filter(c => !(c.x === inicio.x && c.y === inicio.y) && !(c.x === target.x && c.y === target.y));
+    const minas = barajar(candidatas).slice(0, numMinas);
+    if (!caminoPuntero(N, muros, inicio, target, minas)) continue;
+    return {
+      panel: { n: N },
+      pistas: Array.from({ length: n }, () => ''),
+      solucion: null,
+      estadoInicial: { n: N, target, inicio, cursor: { ...inicio }, rot: 0, muros, minas, aviso: null }
+    };
+  }
+  // Si no sale una combinación válida, tablero abierto y sin minas
+  const inicio = { x: 0, y: 0 };
+  const target = { x: N - 1, y: N - 1 };
+  return {
+    panel: { n: N },
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { n: N, target, inicio, cursor: { ...inicio }, rot: 0, muros: Array.from({ length: N }, () => Array(N).fill(false)), minas: [], aviso: null }
+  };
+}
+
+/** ¿Se puede llegar a la diana sin pisar muros ni minas? */
+function caminoPuntero(N: number, muros: boolean[][], ini: { x: number; y: number }, fin: { x: number; y: number }, minas: { x: number; y: number }[]): boolean {
+  const bloqueada = (x: number, y: number) => muros[y][x] || minas.some(m => m.x === x && m.y === y);
+  const visto = new Set<string>([`${ini.x},${ini.y}`]);
+  const cola: { x: number; y: number }[] = [ini];
+  while (cola.length) {
+    const c = cola.shift()!;
+    if (c.x === fin.x && c.y === fin.y) return true;
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      const nx = c.x + dx, ny = c.y + dy;
+      if (nx < 0 || ny < 0 || nx >= N || ny >= N || bloqueada(nx, ny)) continue;
+      const k = `${nx},${ny}`;
+      if (visto.has(k)) continue;
+      visto.add(k);
+      cola.push({ x: nx, y: ny });
+    }
+  }
+  return false;
+}
+
+function generarPunteroAntiguo(L: number, n: number): Puzle {
+  const N = Math.min(5 + L, 9);
+  const target = { x: rnd(N), y: rnd(N) };
+  let cursor = { x: rnd(N), y: rnd(N) };
+  while (cursor.x === target.x && cursor.y === target.y) cursor = { x: rnd(N), y: rnd(N) };
+  return {
+    panel: { n: N },
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { n: N, target, cursor, potencia: 1, rot: 0 }
+  };
+}
+
+/** Mueve el cursor del puntero. Solo puede moverlo la persona que tiene ese control en este momento. */
+/** Mueve el cursor del puntero casilla a casilla. Los muros lo paran y las minas lo devuelven a la salida. */
+export function aplicarAccionPuntero(estado: any, mov: string, owner: number, nDuenos: number): { estado: any; ok: boolean; completado?: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  const boton = mov === 'izq' ? 0 : mov === 'der' ? 1 : mov === 'arriba' ? 2 : mov === 'abajo' ? 3 : -1;
+  if (boton < 0 || ((e.rot || 0) + boton) % nDuenos !== owner) return { estado: e, ok: false };
+  e.aviso = null;
+  const dx = mov === 'izq' ? -1 : mov === 'der' ? 1 : 0;
+  const dy = mov === 'arriba' ? -1 : mov === 'abajo' ? 1 : 0;
+  const N = e.n;
+  const nx = e.cursor.x + dx, ny = e.cursor.y + dy;
+  if (nx < 0 || ny < 0 || nx >= N || ny >= N) return { estado: e, ok: true, completado: false };
+  if (e.muros?.[ny]?.[nx]) {
+    e.aviso = 'muro';
+    return { estado: e, ok: true, completado: false };
+  }
+  e.cursor = { x: nx, y: ny };
+  if ((e.minas || []).some((m: any) => m.x === nx && m.y === ny)) {
+    e.cursor = { ...(e.inicio || e.cursor) };
+    e.aviso = 'mina';
+  }
+  return { estado: e, ok: true, completado: e.cursor.x === e.target.x && e.cursor.y === e.target.y };
+}
+
+export function aplicarAccionPunteroAntigua(estado: any, mov: string, owner: number, nDuenos: number): { estado: any; ok: boolean; completado?: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  const rol = mov === 'izq' || mov === 'der' ? 0 : (mov === 'arriba' || mov === 'abajo') ? 1 : mov === 'potencia' ? 2 : -1;
+  if (rol < 0 || ((e.rot || 0) + rol) % nDuenos !== owner) return { estado: e, ok: false };
+  const N = e.n;
+  if (mov === 'izq') e.cursor.x = Math.max(0, e.cursor.x - e.potencia);
+  else if (mov === 'der') e.cursor.x = Math.min(N - 1, e.cursor.x + e.potencia);
+  else if (mov === 'arriba') e.cursor.y = Math.max(0, e.cursor.y - e.potencia);
+  else if (mov === 'abajo') e.cursor.y = Math.min(N - 1, e.cursor.y + e.potencia);
+  else e.potencia = (e.potencia % 3) + 1;
+  return { estado: e, ok: true, completado: e.cursor.x === e.target.x && e.cursor.y === e.target.y };
+}
+
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */
 export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any, solucion?: any): { estado: any; ok: boolean; fallo?: boolean; completado?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
@@ -1134,7 +1243,7 @@ export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: st
 
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
-  if (tipo === 'fraude' || tipo === 'reactor') return false; // se decide con botones, no con respuesta escrita
+  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero') return false; // se decide con botones, no con respuesta escrita
   const texto = (respuesta || '').trim();
   switch (tipo) {
     case 'secuencia':

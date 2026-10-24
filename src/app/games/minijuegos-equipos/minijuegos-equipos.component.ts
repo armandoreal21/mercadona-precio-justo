@@ -24,6 +24,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   deslizante: { resumen: 'Puzle de fichas numeradas con un hueco. Hay que deslizarlas hasta ordenarlas.', ejemplo: 'Ejemplo: toca una ficha que esté junto al hueco para moverla.' },
   fraude: { resumen: 'Pasan piezas por la cinta. Sin ver las especificaciones, decide si cada pieza se ACEPTA o se RECHAZA según las normas que os dictan vuestros compañeros. Las normas cambian a mitad de cinta.', ejemplo: 'Ejemplo: "Se RECHAZAN las piezas de forma cuadrada y con arandela." Pieza cuadrada con arandela → Rechazar.' },
   reactor: { resumen: 'El reactor se está quedando sin presión. El capitán ve las alertas; cada persona tiene sus propios controles y hay que girarlos a la posición correcta. Cada alerta necesita dos controles de personas distintas.', ejemplo: 'Ejemplo: "Fuga en Refrigeración" necesita la Válvula 2 en la posición 3 y el Interruptor 5 en la posición 1.' },
+  puntero: { resumen: 'Hay que llevar el cursor láser a la diana antes de que acabe el tiempo. El capitán ve el mapa; cada persona tiene uno o varios botones, y los controles rotan tras cada acierto.', ejemplo: 'Ejemplo: "¡X a la derecha! ¡Y arriba! ¡Cuidado con la mina!"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -316,6 +317,20 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </ng-container>
               </div>
             </div>
+            <div *ngSwitchCase="'puntero'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el mapa, no tienes mandos. Dirige a tu equipo: quién mueve qué.' : 'El capitán ve el mapa y os dirige.' }}</div>
+              <div class="flex flex-col items-center gap-2">
+                <div class="grid gap-1" [style.grid-template-columns]="'repeat(' + punteroN + ', 2.5rem)'">
+                  <div *ngFor="let c of punteroCeldas" class="w-10 h-10 rounded-md flex items-center justify-center text-lg border transition-colors" [ngClass]="c.clase">{{ c.icono }}</div>
+                </div>
+                <div class="text-xs text-slate-300">{{ punteroDentro ? '¡Encima de la diana!' : 'Aún no' }}</div>
+                <div *ngIf="punteroAviso" class="text-xs font-black text-rose-300">{{ punteroAviso }}</div>
+                <div class="text-[11px] text-slate-400">🏁 salida · 🎯 diana · 💣 mina (vuelve a la salida) · casilla oscura = muro</div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                <div *ngFor="let h of punteroTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.rol }}: <b class="text-white">{{ h.nombre }}</b></div>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -336,7 +351,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -423,10 +438,21 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
 
+            <div *ngIf="t.tipo === 'puntero' && misRolesPuntero.length" class="space-y-3">
+              <div class="text-xs text-slate-400">Tu control. Mueve solo cuando tu capitán te lo pida.</div>
+              <div *ngFor="let r of misRolesPuntero; trackBy: trackRolId" class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-2">
+                
+                
+                <div class="flex flex-wrap gap-2">
+                  <button *ngFor="let b of r.botones" (click)="pulsarPuntero(b.mov)" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">{{ b.texto }}</button>
+                </div>
+              </div>
+            </div>
+
             <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -636,6 +662,106 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     this.error = null;
     const ok = await this.salaService.accionControlMinijuego(this.sala.codigo, this.currentName, id);
     if (!ok) this.error = 'No se pudo girar el control.';
+  }
+
+  /** Diana del puntero láser: tablero, cursor y potencia. */
+  readonly punteroRoles = [
+    { id: 0, nombre: '◀ Izquierda', botones: [{ mov: 'izq', texto: '◀ Izquierda' }] },
+    { id: 1, nombre: 'Derecha ▶', botones: [{ mov: 'der', texto: 'Derecha ▶' }] },
+    { id: 2, nombre: '▲ Arriba', botones: [{ mov: 'arriba', texto: '▲ Arriba' }] },
+    { id: 3, nombre: '▼ Abajo', botones: [{ mov: 'abajo', texto: '▼ Abajo' }] }
+  ];
+
+  get punteroN(): number {
+    return this.estadoJuego?.n ?? 5;
+  }
+
+  get punteroDentro(): boolean {
+    const s = this.estadoJuego;
+    return !!s && s.cursor?.x === s.target?.x && s.cursor?.y === s.target?.y;
+  }
+
+/** Casillas del tablero: muros, minas, salida, diana y cursor. */
+  get punteroCeldas(): { icono: string; clase: string }[] {
+    const s = this.estadoJuego;
+    const N = this.punteroN;
+    const celdas: { icono: string; clase: string }[] = [];
+    for (let y = 0; y < N; y++) {
+      for (let x = 0; x < N; x++) {
+        const muro = !!s?.muros?.[y]?.[x];
+        const mina = (s?.minas || []).some((m: any) => m.x === x && m.y === y);
+        const diana = s?.target?.x === x && s?.target?.y === y;
+        const cursor = s?.cursor?.x === x && s?.cursor?.y === y;
+        const salida = s?.inicio?.x === x && s?.inicio?.y === y;
+        let icono = '';
+        if (cursor) icono = '🔴';
+        else if (diana) icono = '🎯';
+        else if (mina) icono = '💣';
+        else if (salida) icono = '🏁';
+        const clase = muro ? 'bg-slate-950 border-slate-800' : (diana ? 'bg-emerald-900/60 border-emerald-500' : 'bg-slate-800 border-slate-700');
+        celdas.push({ icono, clase });
+      }
+    }
+    return celdas;
+  }
+
+  get punteroAviso(): string {
+    const a = this.estadoJuego?.aviso;
+    return a === 'mina' ? '💥 ¡Mina! Vuelta a la salida' : a === 'muro' ? '🧱 Muro: el cursor se para' : '';
+  }
+
+  get punteroCeldasAntiguo(): { icono: string; clase: string }[] {
+    const s = this.estadoJuego;
+    const N = this.punteroN;
+    const celdas: { icono: string; clase: string }[] = [];
+    for (let y = 0; y < N; y++) {
+      for (let x = 0; x < N; x++) {
+        const esDiana = s?.target?.x === x && s?.target?.y === y;
+        const esCursor = s?.cursor?.x === x && s?.cursor?.y === y;
+        celdas.push({
+          icono: esCursor ? '🔴' : (esDiana ? '🎯' : ''),
+          clase: esDiana ? 'bg-emerald-900/60 border-emerald-500' : 'bg-slate-800 border-slate-700'
+        });
+      }
+    }
+    return celdas;
+  }
+
+  /** Lista de quién tiene cada control ahora mismo (lo ve todo el equipo). */
+  get punteroTitulares(): { rol: string; nombre: string }[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s) return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    return this.punteroRoles.map(r => ({ rol: r.nombre, nombre: duenos[((s.rot || 0) + r.id) % duenos.length] || '—' }));
+  }
+
+  /** Controles que tiene este jugador ahora mismo. */
+  get misRolesPuntero(): any[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'puntero') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    const yo = duenos.indexOf(this.currentName || '');
+    if (yo < 0) return [];
+    return this.punteroRoles
+      .filter(r => ((s.rot || 0) + r.id) % duenos.length === yo);
+  }
+
+  private duenosPuntero(equipoId: string): string[] {
+    const ayudantes = this.ayudantes(equipoId);
+    return ayudantes.length ? ayudantes : [this.est?.capitanes?.[equipoId] || ''];
+  }
+
+  trackRolId(_: number, r: any): number {
+    return r.id;
+  }
+
+  async pulsarPuntero(mov: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionPunteroMinijuego(this.sala.codigo, this.currentName, mov);
+    if (!ok) this.error = 'Ese control no es tuyo ahora.';
   }
 
   /** Posición donde empieza la normativa B en la cinta (pieza indexada desde 0). */

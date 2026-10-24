@@ -172,7 +172,7 @@ export interface EstadoPreguntasAnonimas {
   respuestasAgrupadas: Record<number, RespuestaAgrupada[]>; // indexPregunta -> array de respuestas agrupadas
 }
 
-export type TipoMinijuego = 'secuencia' | 'cableado' | 'mapa' | 'codigo' | 'metro' | 'ecuacion' | 'palabra' | 'carrera' | 'torres' | 'pinta' | 'mezcla' | 'deslizante' | 'balanza' | 'fraude' | 'reactor';
+export type TipoMinijuego = 'secuencia' | 'cableado' | 'mapa' | 'codigo' | 'metro' | 'ecuacion' | 'palabra' | 'carrera' | 'torres' | 'pinta' | 'mezcla' | 'deslizante' | 'balanza' | 'fraude' | 'reactor' | 'puntero';
 
 export interface TurnoMinijuego {
   equipoId: string;
