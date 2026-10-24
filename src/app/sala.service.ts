@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada, EstadoMinijuegos, TipoMinijuego } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
-import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor, aplicarAccionPuntero, aplicarSemaforo, aplicarBarco } from './games/minijuegos-equipos/minijuegos.logic';
+import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor, aplicarAccionPuntero, aplicarSemaforo, aplicarBarco, aplicarCocina } from './games/minijuegos-equipos/minijuegos.logic';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
@@ -2243,6 +2243,49 @@ export class SalaService {
       }
       if (res.completado) {
         // Puerto alcanzado: acierto y los remos rotan a otras personas
+        const rot = (res.estado.rot || 0) + 1;
+        t.aciertos += 1;
+        this.siguientePuzleMinijuego(sala, est);
+        const sig = JSON.parse(t.estadoJ || '{}');
+        sig.rot = rot;
+        t.estadoJ = JSON.stringify(sig);
+      } else {
+        t.estadoJ = JSON.stringify(res.estado);
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+/** Un compañero añade un ingrediente o ajusta un fuego. Solo el capitán puede servir. */
+  async accionCocinaMinijuego(codigo: string, usuario: string, accion: any): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || !t.iniciado || !t.estadoJ || t.tipo !== 'cocina') return false;
+      if (Date.now() >= t.finMs) {
+        this.cerrarTurnoMinijuego(sala, est);
+        sala.updatedAt = Date.now();
+        return true;
+      }
+      const capitan = est.capitanes[t.equipoId];
+      const ayudantes = this.miembrosDeEquipo(sala, t.equipoId).filter(nombre => nombre !== capitan);
+      const duenos = ayudantes.length ? ayudantes : [capitan];
+      let owner = -1;
+      if (accion.tipo === 'servir') {
+        if (usuario !== capitan) return false;
+      } else {
+        owner = duenos.indexOf(usuario);
+        if (owner < 0) return false;
+      }
+      const res = aplicarCocina(JSON.parse(t.estadoJ), accion, owner, duenos.length);
+      if (!res.ok) return false;
+      if (res.error) {
+        t.errores += 1;
+        t.finMs -= PENALIZACION_ERROR_MS;
+      }
+      if (res.completado) {
+        // Plato servido en su punto: acierto y se prepara una receta nueva con los controles rotados
         const rot = (res.estado.rot || 0) + 1;
         t.aciertos += 1;
         this.siguientePuzleMinijuego(sala, est);

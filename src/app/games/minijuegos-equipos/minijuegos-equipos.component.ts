@@ -27,6 +27,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   puntero: { resumen: 'Hay que llevar el cursor láser a la diana antes de que acabe el tiempo. El capitán ve el mapa; cada persona tiene uno o varios botones, y los controles rotan tras cada acierto.', ejemplo: 'Ejemplo: "¡X a la derecha! ¡Y arriba! ¡Cuidado con la mina!"' },
   semaforo: { resumen: 'Hay un cruce con coches que llegan de cuatro calles. Cada persona controla un semáforo y el tráfico avanza con cada cambio de luz. Si dos coches se cruzan sin verde, chocan.', ejemplo: 'Ejemplo: "¡Norte, verde! ¡Sur, rojo, que viene uno del Este!"' },
   barco: { resumen: 'Un barco avanza por un canal con rocas. Los remos de avance lo llevan una fila más abajo; los de atrás, una fila más arriba. Una roca hace perder 5 segundos; la orilla solo frena el barco. Llegar al puerto es el acierto.', ejemplo: 'Ejemplo: "¡Derecha! ¡Izquierda! ¡Cuidado, roca a la derecha!"' },
+  cocina: { resumen: 'Hay que preparar un plato: añadir los ingredientes en el orden de la receta y dejar cada fuego en su punto. Cada persona tiene un ingrediente o un fuego. Solo el capitán sirve, y un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate ahora! ¡Fuego 2, sube una! ¡Sirve, que ya está!"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -378,6 +379,26 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div *ngFor="let h of barcoTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.remo }}: <b class="text-white">{{ h.nombre }}</b></div>
               </div>
             </div>
+            <div *ngSwitchCase="'cocina'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves la receta. Dile a cada persona qué añadir o qué fuego subir o bajar. Tú sirves.' : 'El capitán ve la receta y os dirige.' }}</div>
+              <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-1 text-sm">
+                <div class="text-xs font-black text-slate-300 uppercase">Receta (en este orden)</div>
+                <div *ngFor="let ing of cocinaIngredientes; let i = index" [ngClass]="i < cocinaAnadidos ? 'text-emerald-300' : 'text-slate-200'">{{ i < cocinaAnadidos ? '✓' : '○' }} {{ i + 1 }}. {{ ing }} → <b>Fuego {{ cocinaSartenes[i] + 1 }}</b></div>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div *ngFor="let o of cocinaFuegosIdx" class="bg-slate-950 rounded-xl p-2 border border-slate-700 text-center">
+                  <div class="font-black text-white">Fuego {{ o + 1 }}</div>
+                  <div class="text-slate-300">nivel {{ cocinaFuegos[o] }} → objetivo <b>{{ cocinaObjetivos[o] }}</b></div>
+                  <div [ngClass]="cocinaFuegos[o] === cocinaObjetivos[o] ? 'text-emerald-300' : 'text-amber-200'">{{ cocinaFuegos[o] === cocinaObjetivos[o] ? '✓ en su punto' : '○ ajustar' }}</div>
+                </div>
+              </div>
+              <div *ngIf="esCapitan" class="text-center">
+                <button (click)="accionCocina({ tipo: 'servir' })" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 rounded-lg">🍽️ Servir</button>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div *ngFor="let h of cocinaTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.nombre }}: <b class="text-white">{{ h.persona }}</b></div>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -398,7 +419,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -485,6 +506,26 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
 
+            <div *ngIf="t.tipo === 'cocina' && misControlesCocina.length" class="space-y-3">
+              <div class="text-xs text-slate-400">Tus controles. Cuando tu capitán te lo pida, añade o ajusta.</div>
+              <div *ngFor="let c of misControlesCocina; trackBy: trackCocina" class="bg-slate-950 rounded-xl p-3 border border-slate-700 flex items-center gap-3 flex-wrap">
+                <ng-container *ngIf="esIngrediente(c.id); else fuego">
+                  <div class="flex gap-2 w-full">
+                    <button (click)="accionCocina({ tipo: 'ingrediente', i: c.id, sarten: 0 })" class="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">{{ c.nombre }} → Fuego 1</button>
+                    <button (click)="accionCocina({ tipo: 'ingrediente', i: c.id, sarten: 1 })" class="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">{{ c.nombre }} → Fuego 2</button>
+                  </div>
+                </ng-container>
+                <ng-template #fuego>
+                  <div class="text-sm font-black text-white">{{ c.nombre }}</div>
+                  <span class="text-xs text-slate-300">nivel {{ nivelDe(c.id) }}</span>
+                  <div class="ml-auto flex gap-2">
+                    <button (click)="accionCocina({ tipo: 'fuego', f: indiceFuego(c.id), delta: -1 })" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">▼</button>
+                    <button (click)="accionCocina({ tipo: 'fuego', f: indiceFuego(c.id), delta: 1 })" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">▲</button>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+
             <div *ngIf="t.tipo === 'barco' && misRemos.length" class="space-y-3">
               <div class="text-xs text-slate-400">Tu remo. Rema cuando tu capitán te lo pida.</div>
               <div *ngFor="let r of misRemos; trackBy: trackRemo" class="bg-slate-950 rounded-xl p-3 border border-slate-700">
@@ -514,7 +555,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -826,7 +867,80 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (!ok) this.error = 'Ese control no es tuyo ahora.';
   }
 
-/** Canal del barco: ancho, filas y rocas. */
+/** Cocina: ingredientes y fuegos. */
+  readonly cocinaFuegosIdx = [0, 1];
+
+  get cocinaIngredientes(): string[] {
+    return this.estadoJuego?.ingredientes || [];
+  }
+
+  get cocinaObjetivos(): number[] {
+    return this.estadoJuego?.objetivos || [0, 0];
+  }
+
+  get cocinaFuegos(): number[] {
+    return this.estadoJuego?.fuegos || [0, 0];
+  }
+
+  get cocinaSartenes(): number[] {
+    return this.estadoJuego?.sartenes || [];
+  }
+
+  get cocinaAnadidos(): number {
+    return this.estadoJuego?.anadidos ?? 0;
+  }
+
+  /** Todos los controles de la cocina: primero los ingredientes, después los fuegos. */
+  get cocinaControles(): { id: number; nombre: string }[] {
+    const ings = this.cocinaIngredientes.map((nombre, i) => ({ id: i, nombre }));
+    const fuegos = this.cocinaFuegosIdx.map(f => ({ id: this.cocinaIngredientes.length + f, nombre: `Fuego ${f + 1}` }));
+    return [...ings, ...fuegos];
+  }
+
+  /** Quién tiene cada control ahora mismo (lo ve todo el equipo). */
+  get cocinaTitulares(): { nombre: string; persona: string }[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'cocina') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    return this.cocinaControles.map(c => ({ nombre: c.nombre, persona: duenos[((s.rot || 0) + c.id) % duenos.length] || '—' }));
+  }
+
+  /** Controles que tiene este jugador ahora mismo. */
+  get misControlesCocina(): { id: number; nombre: string }[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'cocina') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    const yo = duenos.indexOf(this.currentName || '');
+    if (yo < 0) return [];
+    return this.cocinaControles.filter(c => ((s.rot || 0) + c.id) % duenos.length === yo);
+  }
+
+  esIngrediente(id: number): boolean {
+    return id < this.cocinaIngredientes.length;
+  }
+
+  indiceFuego(id: number): number {
+    return id - this.cocinaIngredientes.length;
+  }
+
+  nivelDe(id: number): number {
+    return this.cocinaFuegos[this.indiceFuego(id)] ?? 0;
+  }
+
+  trackCocina(_: number, c: any): number {
+    return c.id;
+  }
+
+  async accionCocina(accion: any): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionCocinaMinijuego(this.sala.codigo, this.currentName, accion);
+    if (!ok) this.error = 'No se pudo hacer esa acción.';
+  }
+
+  /** Canal del barco: ancho, filas y rocas. */
   get barcoW(): number {
     return this.estadoJuego?.W ?? 5;
   }

@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -20,6 +20,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   puntero: '🎯 Puntero láser',
   semaforo: '🚦 Semáforo de cruce',
   barco: '🚤 Barco por el canal',
+  cocina: '🍳 Cocina a cuatro manos',
   balanza: '⚖️ Balanza'
 };
 
@@ -75,6 +76,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'puntero': return generarPuntero(L, n);
     case 'semaforo': return generarSemaforo(L, n);
     case 'barco': return generarBarco(L, n);
+    case 'cocina': return generarCocina(L, n);
   }
 }
 
@@ -1300,6 +1302,50 @@ export function aplicarBarco(estado: any, lado: string, owner: number, nDuenos: 
   return { estado: e, ok: true, bloqueo: false, completado: ny === e.H - 1 };
 }
 
+// ------------------------------------------------------------------
+// Cocina a cuatro manos: los ingredientes se añaden en el orden de la receta y cada fuego
+// debe quedar en su punto. Cada ingrediente y cada fuego lo controla una persona. Solo el capitán sirve.
+// ------------------------------------------------------------------
+const INGREDIENTES_COCINA = ['Tomate', 'Cebolla', 'Pimiento', 'Huevo', 'Arroz', 'Queso'];
+
+function generarCocina(L: number, n: number): Puzle {
+  const K = Math.min(2 + Math.floor((L - 1) / 2), 4);
+  const ingredientes = barajar(INGREDIENTES_COCINA).slice(0, K);
+  const objetivos = [1 + rnd(3), 1 + rnd(3)];
+  const sartenes = ingredientes.map(() => rnd(2));
+  return {
+    panel: { ingredientes, objetivos },
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { ingredientes, objetivos, sartenes, anadidos: 0, fuegos: [0, 0], rot: 0 }
+  };
+}
+
+/** Acciones: añadir un ingrediente, subir/bajar un fuego o servir. Cada control solo lo mueve su dueño. */
+export function aplicarCocina(estado: any, accion: any, owner: number, nDuenos: number): { estado: any; ok: boolean; error?: boolean; completado?: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  const K = e.ingredientes.length;
+  const duenoDe = (c: number) => ((e.rot || 0) + c) % nDuenos;
+  if (accion.tipo === 'servir') {
+    const listo = e.anadidos === K && e.fuegos[0] === e.objetivos[0] && e.fuegos[1] === e.objetivos[1];
+    return { estado: e, ok: true, error: !listo, completado: listo };
+  }
+  if (accion.tipo === 'ingrediente') {
+    const i = accion.i;
+    if (i < 0 || i >= K || duenoDe(i) !== owner) return { estado: e, ok: false };
+    if (i !== e.anadidos || accion.sarten !== e.sartenes[i]) return { estado: e, ok: true, error: true, completado: false };
+    e.anadidos += 1;
+    return { estado: e, ok: true, error: false, completado: false };
+  }
+  if (accion.tipo === 'fuego') {
+    const f = accion.f;
+    if (f < 0 || f > 1 || duenoDe(K + f) !== owner) return { estado: e, ok: false };
+    e.fuegos[f] = Math.max(0, Math.min(3, e.fuegos[f] + accion.delta));
+    return { estado: e, ok: true, error: false, completado: false };
+  }
+  return { estado: e, ok: false };
+}
+
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */
 export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any, solucion?: any): { estado: any; ok: boolean; fallo?: boolean; completado?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
@@ -1380,7 +1426,7 @@ export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: st
 
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
-  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco') return false; // se decide con botones, no con respuesta escrita
+  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco' || tipo === 'cocina') return false; // se decide con botones, no con respuesta escrita
   const texto = (respuesta || '').trim();
   switch (tipo) {
     case 'secuencia':
