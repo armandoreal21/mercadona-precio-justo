@@ -1306,18 +1306,24 @@ export function aplicarBarco(estado: any, lado: string, owner: number, nDuenos: 
 // Cocina a cuatro manos: los ingredientes se añaden en el orden de la receta y cada fuego
 // debe quedar en su punto. Cada ingrediente y cada fuego lo controla una persona. Solo el capitán sirve.
 // ------------------------------------------------------------------
-const INGREDIENTES_COCINA = ['Tomate', 'Cebolla', 'Pimiento', 'Huevo', 'Arroz', 'Queso'];
+const INGREDIENTES_COCINA = ['Tomate', 'Cebolla', 'Zanahoria', 'Huevo', 'Arroz', 'Queso'];
 
 function generarCocina(L: number, n: number): Puzle {
   const K = Math.min(2 + Math.floor((L - 1) / 2), 4);
   const ingredientes = barajar(INGREDIENTES_COCINA).slice(0, K);
-  const objetivos = [1 + rnd(3), 1 + rnd(3)];
+  const objetivos = [1 + rnd(9), 1 + rnd(9)];
   const sartenes = ingredientes.map(() => rnd(2));
+  // Fuegos: arrancan en un nivel distinto del objetivo, así siempre hay que ajustarlos
+  const fuegosIniciales = objetivos.map(o => {
+    let v = rnd(10);
+    while (v === o) v = rnd(10);
+    return v;
+  });
   return {
     panel: { ingredientes, objetivos },
     pistas: Array.from({ length: n }, () => ''),
     solucion: null,
-    estadoInicial: { ingredientes, objetivos, sartenes, anadidos: 0, fuegos: [0, 0], rot: 0 }
+    estadoInicial: { ingredientes, objetivos, sartenes, anadidos: 0, fuegos: fuegosIniciales, rot: 0 }
   };
 }
 
@@ -1326,22 +1332,20 @@ export function aplicarCocina(estado: any, accion: any, owner: number, nDuenos: 
   const e = JSON.parse(JSON.stringify(estado));
   const K = e.ingredientes.length;
   const duenoDe = (c: number) => ((e.rot || 0) + c) % nDuenos;
-  if (accion.tipo === 'servir') {
-    const listo = e.anadidos === K && e.fuegos[0] === e.objetivos[0] && e.fuegos[1] === e.objetivos[1];
-    return { estado: e, ok: true, error: !listo, completado: listo };
-  }
+  // El plato sale solo cuando todos los ingredientes están echados y cada fuego está en su punto
+  const listo = () => e.anadidos === K && e.fuegos[0] === e.objetivos[0] && e.fuegos[1] === e.objetivos[1];
   if (accion.tipo === 'ingrediente') {
     const i = accion.i;
     if (i < 0 || i >= K || duenoDe(i) !== owner) return { estado: e, ok: false };
     if (i !== e.anadidos || accion.sarten !== e.sartenes[i]) return { estado: e, ok: true, error: true, completado: false };
     e.anadidos += 1;
-    return { estado: e, ok: true, error: false, completado: false };
+    return { estado: e, ok: true, error: false, completado: listo() };
   }
   if (accion.tipo === 'fuego') {
     const f = accion.f;
     if (f < 0 || f > 1 || duenoDe(K + f) !== owner) return { estado: e, ok: false };
-    e.fuegos[f] = Math.max(0, Math.min(3, e.fuegos[f] + accion.delta));
-    return { estado: e, ok: true, error: false, completado: false };
+    e.fuegos[f] = Math.max(0, Math.min(9, e.fuegos[f] + accion.delta));
+    return { estado: e, ok: true, error: false, completado: listo() };
   }
   return { estado: e, ok: false };
 }

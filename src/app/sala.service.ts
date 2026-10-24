@@ -2257,7 +2257,7 @@ export class SalaService {
     });
   }
 
-/** Un compañero añade un ingrediente o ajusta un fuego. Solo el capitán puede servir. */
+/** Un compañero añade un ingrediente o ajusta un fuego. El plato sale solo cuando está listo. */
   async accionCocinaMinijuego(codigo: string, usuario: string, accion: any): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
@@ -2271,13 +2271,8 @@ export class SalaService {
       const capitan = est.capitanes[t.equipoId];
       const ayudantes = this.miembrosDeEquipo(sala, t.equipoId).filter(nombre => nombre !== capitan);
       const duenos = ayudantes.length ? ayudantes : [capitan];
-      let owner = -1;
-      if (accion.tipo === 'servir') {
-        if (usuario !== capitan) return false;
-      } else {
-        owner = duenos.indexOf(usuario);
-        if (owner < 0) return false;
-      }
+      const owner = duenos.indexOf(usuario);
+      if (owner < 0) return false;
       const res = aplicarCocina(JSON.parse(t.estadoJ), accion, owner, duenos.length);
       if (!res.ok) return false;
       if (res.error) {

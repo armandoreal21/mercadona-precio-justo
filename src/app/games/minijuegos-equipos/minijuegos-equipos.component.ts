@@ -27,7 +27,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   puntero: { resumen: 'Hay que llevar el cursor láser a la diana antes de que acabe el tiempo. El capitán ve el mapa; cada persona tiene uno o varios botones, y los controles rotan tras cada acierto.', ejemplo: 'Ejemplo: "¡X a la derecha! ¡Y arriba! ¡Cuidado con la mina!"' },
   semaforo: { resumen: 'Hay un cruce con coches que llegan de cuatro calles. Cada persona controla un semáforo y el tráfico avanza con cada cambio de luz. Si dos coches se cruzan sin verde, chocan.', ejemplo: 'Ejemplo: "¡Norte, verde! ¡Sur, rojo, que viene uno del Este!"' },
   barco: { resumen: 'Un barco avanza por un canal con rocas. Los remos de avance lo llevan una fila más abajo; los de atrás, una fila más arriba. Una roca hace perder 5 segundos; la orilla solo frena el barco. Llegar al puerto es el acierto.', ejemplo: 'Ejemplo: "¡Derecha! ¡Izquierda! ¡Cuidado, roca a la derecha!"' },
-  cocina: { resumen: 'Hay que preparar un plato: añadir los ingredientes en el orden de la receta y dejar cada fuego en su punto. Cada persona tiene un ingrediente o un fuego. Solo el capitán sirve, y un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate ahora! ¡Fuego 2, sube una! ¡Sirve, que ya está!"' },
+  cocina: { resumen: 'Hay que preparar un plato: echar los ingredientes en el orden de la receta, cada uno en su sartén, y dejar cada fuego en su punto. El plato sale solo cuando está listo. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate en el fuego 1! ¡Fuego 2, sube una! ¡Ya está, sale el plato!"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -380,21 +380,31 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
             <div *ngSwitchCase="'cocina'" class="space-y-3">
-              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves la receta. Dile a cada persona qué añadir o qué fuego subir o bajar. Tú sirves.' : 'El capitán ve la receta y os dirige.' }}</div>
-              <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-1 text-sm">
-                <div class="text-xs font-black text-slate-300 uppercase">Receta (en este orden)</div>
-                <div *ngFor="let ing of cocinaIngredientes; let i = index" [ngClass]="i < cocinaAnadidos ? 'text-emerald-300' : 'text-slate-200'">{{ i < cocinaAnadidos ? '✓' : '○' }} {{ i + 1 }}. {{ ing }} → <b>Fuego {{ cocinaSartenes[i] + 1 }}</b></div>
-              </div>
-              <div class="grid grid-cols-2 gap-2 text-xs">
-                <div *ngFor="let o of cocinaFuegosIdx" class="bg-slate-950 rounded-xl p-2 border border-slate-700 text-center">
-                  <div class="font-black text-white">Fuego {{ o + 1 }}</div>
-                  <div class="text-slate-300">nivel {{ cocinaFuegos[o] }} → objetivo <b>{{ cocinaObjetivos[o] }}</b></div>
-                  <div [ngClass]="cocinaFuegos[o] === cocinaObjetivos[o] ? 'text-emerald-300' : 'text-amber-200'">{{ cocinaFuegos[o] === cocinaObjetivos[o] ? '✓ en su punto' : '○ ajustar' }}</div>
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Dile a cada persona qué ingrediente echar y en qué sartén. El plato sale solo cuando está listo.' : 'El capitán os dirige.' }}</div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div *ngFor="let p of cocinaSartenesVista; trackBy: trackPan" class="rounded-2xl border-2 p-3 space-y-2 bg-slate-900" [ngClass]="p.nivel === p.objetivo ? 'border-emerald-500' : 'border-slate-600'">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-black text-white">🍳 Fuego {{ p.idx + 1 }}</span>
+                    <span [ngClass]="p.nivel === p.objetivo ? 'text-emerald-300' : 'text-amber-200'">{{ p.nivel === p.objetivo ? '✓ en su punto' : 'ajustar' }}</span>
+                  </div>
+                  <div class="flex justify-center gap-0.5 flex-wrap">
+                    <span *ngFor="let k of llamaSlots" class="w-3.5 h-3.5 rounded-full border" [ngClass]="k < p.nivel ? 'bg-orange-500 border-orange-300' : 'bg-slate-950 border-slate-700'"></span>
+                  </div>
+                  <div class="text-center text-[11px] text-slate-300">nivel {{ p.nivel }} · objetivo <b class="text-white">{{ p.objetivo }}</b></div>
+                  <div class="flex flex-wrap justify-center gap-1 min-h-[2.5rem]">
+                    <span *ngFor="let ing of p.ingredientes" class="px-2 py-1 rounded-lg text-xs border" [ngClass]="ing.anadido ? 'bg-emerald-900/60 border-emerald-500 text-emerald-200' : 'bg-slate-800 border-slate-600 text-slate-400'">{{ ing.orden }}. {{ ing.icono }} {{ ing.nombre }} {{ ing.anadido ? '✓' : '' }}</span>
+                  </div>
                 </div>
               </div>
-              <div *ngIf="esCapitan" class="text-center">
-                <button (click)="accionCocina({ tipo: 'servir' })" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 rounded-lg">🍽️ Servir</button>
+
+              <div class="flex flex-wrap items-center justify-center gap-1 text-xs">
+                <ng-container *ngFor="let o of cocinaOrdenVista; let last = last">
+                  <span class="px-2 py-1 rounded-full border" [ngClass]="o.anadido ? 'border-emerald-500 text-emerald-200' : 'border-slate-600 text-slate-300'">{{ o.orden }} {{ o.icono }} → F{{ o.sarten + 1 }}</span>
+                  <span *ngIf="!last" class="text-slate-500">›</span>
+                </ng-container>
               </div>
+
               <div class="grid grid-cols-2 gap-2 text-xs">
                 <div *ngFor="let h of cocinaTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.nombre }}: <b class="text-white">{{ h.persona }}</b></div>
               </div>
@@ -507,20 +517,28 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
 
             <div *ngIf="t.tipo === 'cocina' && misControlesCocina.length" class="space-y-3">
-              <div class="text-xs text-slate-400">Tus controles. Cuando tu capitán te lo pida, añade o ajusta.</div>
-              <div *ngFor="let c of misControlesCocina; trackBy: trackCocina" class="bg-slate-950 rounded-xl p-3 border border-slate-700 flex items-center gap-3 flex-wrap">
+              <div class="text-xs text-slate-400">Tus controles. Cuando tu capitán te lo pida, echa o ajusta.</div>
+              <div *ngFor="let c of misControlesCocina; trackBy: trackCocina" class="bg-slate-900 rounded-2xl p-4 border-2 border-slate-700 flex items-center gap-3 flex-wrap">
                 <ng-container *ngIf="esIngrediente(c.id); else fuego">
+                  <div class="w-full flex items-center gap-3">
+                    <div class="text-4xl">{{ iconoIngrediente(c.nombre) }}</div>
+                    <div class="text-base font-black text-white">{{ c.nombre }}</div>
+                  </div>
                   <div class="flex gap-2 w-full">
-                    <button (click)="accionCocina({ tipo: 'ingrediente', i: c.id, sarten: 0 })" class="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">{{ c.nombre }} → Fuego 1</button>
-                    <button (click)="accionCocina({ tipo: 'ingrediente', i: c.id, sarten: 1 })" class="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">{{ c.nombre }} → Fuego 2</button>
+                    <button (click)="accionCocina({ tipo: 'ingrediente', i: c.id, sarten: 0 })" class="flex-1 bg-orange-500 hover:bg-orange-400 text-slate-950 font-black px-3 py-3 rounded-xl text-sm">🍳 Fuego 1</button>
+                    <button (click)="accionCocina({ tipo: 'ingrediente', i: c.id, sarten: 1 })" class="flex-1 bg-orange-500 hover:bg-orange-400 text-slate-950 font-black px-3 py-3 rounded-xl text-sm">🍳 Fuego 2</button>
                   </div>
                 </ng-container>
                 <ng-template #fuego>
-                  <div class="text-sm font-black text-white">{{ c.nombre }}</div>
-                  <span class="text-xs text-slate-300">nivel {{ nivelDe(c.id) }}</span>
-                  <div class="ml-auto flex gap-2">
-                    <button (click)="accionCocina({ tipo: 'fuego', f: indiceFuego(c.id), delta: -1 })" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">▼</button>
-                    <button (click)="accionCocina({ tipo: 'fuego', f: indiceFuego(c.id), delta: 1 })" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">▲</button>
+                  <div class="flex-1">
+                    <div class="text-base font-black text-white">🍳 {{ c.nombre }}</div>
+                    <div class="flex flex-wrap gap-1 mt-2">
+                      <span *ngFor="let k of llamaSlots" class="w-5 h-5 rounded-full border-2" [ngClass]="k < nivelDe(c.id) ? 'bg-orange-500 border-orange-300' : 'bg-slate-950 border-slate-700'"></span>
+                    </div>
+                  </div>
+                  <div class="flex gap-2">
+                    <button (click)="accionCocina({ tipo: 'fuego', f: indiceFuego(c.id), delta: -1 })" class="w-12 h-12 rounded-full bg-slate-700 hover:bg-slate-600 text-white font-black text-xl">−</button>
+                    <button (click)="accionCocina({ tipo: 'fuego', f: indiceFuego(c.id), delta: 1 })" class="w-12 h-12 rounded-full bg-orange-500 hover:bg-orange-400 text-slate-950 font-black text-xl">+</button>
                   </div>
                 </ng-template>
               </div>
@@ -880,6 +898,46 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   get cocinaFuegos(): number[] {
     return this.estadoJuego?.fuegos || [0, 0];
+  }
+
+  /** Niveles de llama de un fuego (3 posiciones). */
+  readonly llamaSlots = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+  readonly cocinaIconos: Record<string, string> = { Tomate: '🍅', Cebolla: '🧅', Zanahoria: '🥕', Huevo: '🥚', Arroz: '🍚', Queso: '🧀' };
+
+  iconoIngrediente(nombre: string): string {
+    return this.cocinaIconos[nombre] || '🥄';
+  }
+
+  objetivoDe(id: number): number {
+    return this.cocinaObjetivos[this.indiceFuego(id)] ?? 0;
+  }
+
+  /** Cada sartén con su nivel, su objetivo y los ingredientes que van dentro, en orden. */
+  get cocinaSartenesVista(): any[] {
+    return [0, 1].map(p => ({
+      idx: p,
+      nivel: this.cocinaFuegos[p] ?? 0,
+      objetivo: this.cocinaObjetivos[p] ?? 0,
+      ingredientes: this.cocinaIngredientes
+        .map((nombre, i) => ({ nombre, icono: this.iconoIngrediente(nombre), orden: i + 1, anadido: i < this.cocinaAnadidos, i }))
+        .filter(x => this.cocinaSartenes[x.i] === p)
+    }));
+  }
+
+  /** Orden de la receta con la sartén de cada ingrediente. */
+  get cocinaOrdenVista(): any[] {
+    return this.cocinaIngredientes.map((nombre, i) => ({
+      nombre,
+      icono: this.iconoIngrediente(nombre),
+      orden: i + 1,
+      sarten: this.cocinaSartenes[i] ?? 0,
+      anadido: i < this.cocinaAnadidos
+    }));
+  }
+
+  trackPan(_: number, p: any): number {
+    return p.idx;
   }
 
   get cocinaSartenes(): number[] {
