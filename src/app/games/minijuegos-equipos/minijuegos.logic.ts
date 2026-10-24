@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -16,6 +16,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   mezcla: '🧪 Mezcla de colores',
   deslizante: '🧩 Puzle deslizante',
   fraude: '🏭 Fraude en la cadena',
+  reactor: '☢️ Reactor en peligro',
   balanza: '⚖️ Balanza'
 };
 
@@ -67,6 +68,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'deslizante': return generarDeslizante(L, n);
     case 'balanza': return generarBalanza(L, n);
     case 'fraude': return generarFraude(L, n);
+    case 'reactor': return generarReactor(L, n);
   }
 }
 
@@ -865,6 +867,84 @@ function generarFraudeV1(L: number, n: number): Puzle {
   };
 }
 
+// ------------------------------------------------------------------
+// Reactor: alertas que hay que resolver girando controles de distintas personas.
+// Cada alerta exige dos controles reales de dueños distintos (uno, si solo hay una persona).
+// Cada ayudante tiene al menos un control real y uno falso, que no afecta a ninguna alerta.
+// El capitán ve las alertas; cada ayudante ve sus controles y sus pistas. La presión es el tiempo.
+// ------------------------------------------------------------------
+export const POSICIONES_REACTOR = 3;
+const PROBLEMAS_REACTOR = ['Sobrecalentamiento en', 'Pérdida de presión en', 'Fuga en', 'Cortocircuito en'];
+const MODULOS_REACTOR = ['el Módulo B', 'el Motor 1', 'Refrigeración', 'el Motor 2', 'la Turbina', 'el Compresor', 'la Bomba principal', 'el Núcleo'];
+const CONTROLES_REACTOR = [
+  { nombre: 'Válvula', icono: '🔧' }, { nombre: 'Interruptor', icono: '🔘' }, { nombre: 'Palanca', icono: '🕹️' },
+  { nombre: 'Compuerta', icono: '🚪' }, { nombre: 'Regulador', icono: '🎚️' }, { nombre: 'Purga', icono: '💧' }
+];
+
+interface ControlReactor { id: string; nombre: string; icono: string; owner: number; pos: number; real: boolean; }
+interface AlertaReactor { id: string; texto: string; aparecerEn: number; resuelta: boolean; reqs: { control: string; pos: number }[]; }
+
+function generarReactor(L: number, n: number): Puzle {
+  const porNivel = Math.min(2 + Math.floor((L - 1) / 2), 4);
+  const A = Math.min(6, Math.max(n === 1 ? 1 : Math.ceil(n / 2), porNivel));
+  const req = n === 1 ? 1 : 2;
+  const reales = A * req;
+  const textos = barajar(PROBLEMAS_REACTOR.flatMap(p => MODULOS_REACTOR.map(m => `${p} ${m}`)));
+  const alertas: AlertaReactor[] = Array.from({ length: A }, (_, j) => ({
+    id: `A${j + 1}`, texto: textos[j], aparecerEn: j * 12, resuelta: false, reqs: []
+  }));
+  const controles: ControlReactor[] = [];
+  const pistas: object[][] = Array.from({ length: n }, () => []);
+
+  // Controles reales: el reparto en círculo garantiza que todas las personas tengan alguno
+  for (let i = 0; i < reales; i++) {
+    const id = `C${i + 1}`;
+    const owner = i % n;
+    const { nombre, icono } = CONTROLES_REACTOR[i % CONTROLES_REACTOR.length];
+    const etiqueta = `${nombre} ${i + 1}`;
+    const objetivo = rnd(POSICIONES_REACTOR);
+    const pos = (objetivo + 1 + rnd(POSICIONES_REACTOR - 1)) % POSICIONES_REACTOR;
+    controles.push({ id, nombre: etiqueta, icono, owner, pos, real: true });
+    const alerta = alertas[Math.floor(i / req)];
+    alerta.reqs.push({ control: id, pos: objetivo });
+    pistas[owner].push({ control: id, nombre: etiqueta, alerta: alerta.texto, pos: objetivo + 1 });
+  }
+
+  // Controles falsos: uno por persona, con una pista sobre una alerta que no existe en la sala
+  const falsas = textos.slice(A);
+  for (let o = 0; o < n; o++) {
+    const id = `F${o + 1}`;
+    const k = reales + o;
+    const { nombre, icono } = CONTROLES_REACTOR[k % CONTROLES_REACTOR.length];
+    const etiqueta = `${nombre} ${k + 1}`;
+    controles.push({ id, nombre: etiqueta, icono, owner: o, pos: rnd(POSICIONES_REACTOR), real: false });
+    pistas[o].push({ control: id, nombre: etiqueta, alerta: falsas[o % falsas.length], pos: rnd(POSICIONES_REACTOR) + 1 });
+  }
+
+  return {
+    panel: { alertas: alertas.map(a => ({ id: a.id, texto: a.texto, aparecerEn: a.aparecerEn })) },
+    pistas: pistas.map(l => barajar(l).map(x => JSON.stringify(x)).join('\n')),
+    solucion: null,
+    estadoInicial: { t0: null, controles, alertas }
+  };
+}
+
+/** Gira un control del reactor. Solo puede girarlo su dueño. Indica si todas las alertas quedan resueltas. */
+export function aplicarControlReactor(estado: any, controlId: string, owner: number, ahora: number): { estado: any; ok: boolean; completado?: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  const control = (e.controles || []).find((c: ControlReactor) => c.id === controlId);
+  if (!control || control.owner !== owner) return { estado: e, ok: false };
+  control.pos = (control.pos + 1) % POSICIONES_REACTOR;
+  const controles: ControlReactor[] = e.controles;
+  const alertas: AlertaReactor[] = e.alertas;
+  for (const a of alertas) {
+    // Una alerta solo se resuelve cuando ya ha aparecido, y se queda resuelta
+    if (a.resuelta || typeof e.t0 !== 'number' || ahora - e.t0 < a.aparecerEn * 1000) continue;
+    a.resuelta = a.reqs.every(r => controles.find(c => c.id === r.control)?.pos === r.pos);
+  }
+  return { estado: e, ok: true, completado: alertas.every(a => a.resuelta) };
+}
+
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */
 export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any, solucion?: any): { estado: any; ok: boolean; fallo?: boolean; completado?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
@@ -945,7 +1025,7 @@ export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: st
 
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
-  if (tipo === 'fraude') return false; // se decide con Aceptar / Rechazar, no con respuesta escrita
+  if (tipo === 'fraude' || tipo === 'reactor') return false; // se decide con botones, no con respuesta escrita
   const texto = (respuesta || '').trim();
   switch (tipo) {
     case 'secuencia':

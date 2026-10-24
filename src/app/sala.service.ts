@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada, EstadoMinijuegos, TipoMinijuego } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
-import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego } from './games/minijuegos-equipos/minijuegos.logic';
+import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor } from './games/minijuegos-equipos/minijuegos.logic';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
@@ -1994,7 +1994,7 @@ export class SalaService {
     t.pistas = p.pistas;
     t.solucion = p.solucion;
     t.recorrido = [];
-    if (p.estadoInicial !== undefined) t.estadoJ = JSON.stringify(p.estadoInicial);
+    if (p.estadoInicial !== undefined) t.estadoJ = JSON.stringify(this.conTiempo(p.estadoInicial));
     else delete t.estadoJ;
   }
 
@@ -2105,9 +2105,46 @@ export class SalaService {
       t.iniciado = true;
       t.inicioMs = Date.now();
       t.finMs = t.inicioMs + est.tiempoTurnoSeg * 1000;
+      if (t.tipo === 'reactor' && t.estadoJ) {
+        const st = JSON.parse(t.estadoJ);
+        if (st.t0 === null) { st.t0 = t.inicioMs; t.estadoJ = JSON.stringify(st); }
+      }
       sala.updatedAt = Date.now();
       return true;
     });
+  }
+
+  /** Un ayudante gira uno de SUS controles del reactor. El capitán no toca controles. */
+  async accionControlMinijuego(codigo: string, usuario: string, controlId: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || !t.iniciado || !t.estadoJ || t.tipo !== 'reactor') return false;
+      if (Date.now() >= t.finMs) {
+        this.cerrarTurnoMinijuego(sala, est);
+        sala.updatedAt = Date.now();
+        return true;
+      }
+      const capitan = est.capitanes[t.equipoId];
+      const ayudantes = this.miembrosDeEquipo(sala, t.equipoId).filter(nombre => nombre !== capitan);
+      const duenos = ayudantes.length ? ayudantes : [capitan];
+      const owner = duenos.indexOf(usuario);
+      if (owner < 0) return false;
+      const res = aplicarControlReactor(JSON.parse(t.estadoJ), controlId, owner, Date.now());
+      if (!res.ok) return false;
+      t.estadoJ = JSON.stringify(res.estado);
+      if (res.completado) {
+        t.aciertos += 1;
+        this.siguientePuzleMinijuego(sala, est);
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Solo en el reactor: las alertas aparecen respecto al momento en que empieza cada puzle. */
+  private conTiempo(estado: any): any {
+    return estado && estado.t0 === null ? { ...estado, t0: Date.now() } : estado;
   }
 
   async reiniciarMinijuegos(codigo: string): Promise<boolean> {

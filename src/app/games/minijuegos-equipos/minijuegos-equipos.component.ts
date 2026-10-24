@@ -23,6 +23,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   mezcla: { resumen: 'Hay que mezclar colores hasta igualar el objetivo. El capitán sube o baja cada color.', ejemplo: 'Ejemplo: más azul y menos rojo para igualar el color objetivo.' },
   deslizante: { resumen: 'Puzle de fichas numeradas con un hueco. Hay que deslizarlas hasta ordenarlas.', ejemplo: 'Ejemplo: toca una ficha que esté junto al hueco para moverla.' },
   fraude: { resumen: 'Pasan piezas por la cinta. Sin ver las especificaciones, decide si cada pieza se ACEPTA o se RECHAZA según las normas que os dictan vuestros compañeros. Las normas cambian a mitad de cinta.', ejemplo: 'Ejemplo: "Se RECHAZAN las piezas de forma cuadrada y con arandela." Pieza cuadrada con arandela → Rechazar.' },
+  reactor: { resumen: 'El reactor se está quedando sin presión. El capitán ve las alertas; cada persona tiene sus propios controles y hay que girarlos a la posición correcta. Cada alerta necesita dos controles de personas distintas.', ejemplo: 'Ejemplo: "Fuga en Refrigeración" necesita la Válvula 2 en la posición 3 y el Interruptor 5 en la posición 1.' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -284,6 +285,31 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <button (click)="decidir('rechazar')" class="bg-rose-500 hover:bg-rose-400 text-white font-black px-6 py-3 rounded-xl uppercase text-sm tracking-wide">❌ Rechazar</button>
               </div>
             </div>
+            <div *ngSwitchCase="'reactor'" class="space-y-4">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves las alertas, no los controles. Dicta a tu equipo qué mover y quién.' : 'El capitán ve las alertas. Vosotros tenéis los controles.' }}</div>
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs font-black"><span>PRESIÓN</span><span>{{ presionPct | number:'1.0-0' }}%</span></div>
+                <div class="h-3 w-full bg-slate-800 rounded-full overflow-hidden">
+                  <div class="h-full transition-all" [ngClass]="presionPct < 25 ? 'bg-rose-500' : 'bg-cyan-400'" [style.width.%]="presionPct"></div>
+                </div>
+              </div>
+              <div class="grid gap-2">
+                <ng-container *ngFor="let a of alertasReactor">
+                  <div *ngIf="a.activa" class="flex items-center justify-between gap-2 px-3 py-2 rounded-xl border-2 transition"
+                       [ngClass]="a.resuelta ? 'border-emerald-500 bg-emerald-950/40' : 'border-rose-500 bg-rose-950/40 animate-pulse'">
+                    <div>
+                      <div class="text-sm font-bold text-white">{{ a.resuelta ? '✅' : '🚨' }} {{ a.texto }}</div>
+                      <div class="text-[11px] text-slate-300">Necesita {{ a.total }} controles · {{ a.listos }}/{{ a.total }} bien</div>
+                    </div>
+                    <span class="text-xs font-black" [ngClass]="a.resuelta ? 'text-emerald-300' : 'text-rose-300'">{{ a.resuelta ? 'RESUELTA' : 'ACTIVA' }}</span>
+                  </div>
+                  <div *ngIf="!a.activa" class="flex items-center justify-between px-3 py-2 rounded-xl border border-slate-700 bg-slate-900 opacity-60">
+                    <span class="text-sm text-slate-400">⏳ Próxima alerta</span>
+                    <span class="text-xs text-slate-500">en {{ a.faltan }} s</span>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -304,7 +330,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -374,10 +400,29 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
 
+            <div *ngIf="t.tipo === 'reactor' && miOwner >= 0" class="space-y-3">
+              <div class="text-xs text-slate-400">Tus controles. Gira cada uno hasta la posición que te indique tu pista.</div>
+              <div *ngFor="let c of controlesMios" class="flex flex-wrap items-center gap-3 bg-slate-950 rounded-xl px-3 py-2 border border-slate-700">
+                <div>
+                  <div class="text-sm font-black text-white">{{ c.icono }} {{ c.nombre }}</div>
+                  <div *ngIf="pistaDe(c) as p" class="text-[11px] text-slate-300">Sirve para: <b>{{ p.alerta }}</b> · posición objetivo <b>{{ p.pos }}</b></div>
+                </div>
+                <div class="flex gap-1">
+                  <span *ngFor="let k of posiciones" class="w-6 h-6 rounded-full text-xs font-black flex items-center justify-center border-2"
+                        [ngClass]="k === c.pos ? 'bg-cyan-400 text-slate-950 border-cyan-300' : (pistaDe(c)?.pos - 1 === k ? 'border-yellow-400 text-yellow-300' : 'border-slate-700 text-slate-500')">{{ k + 1 }}</span>
+                </div>
+                <button (click)="tocarControl(c.id)" class="ml-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-1 rounded-lg text-xs uppercase">↻ Girar</button>
+              </div>
+              <div class="text-xs text-slate-400 pt-1">Tus pistas:</div>
+              <div *ngFor="let p of pistasReactorMias" class="text-sm text-slate-200 bg-slate-800 rounded-lg px-3 py-2">
+                {{ p.nombre }} → posición <b>{{ p.pos }}</b> para: <b>{{ p.alerta }}</b>
+              </div>
+            </div>
+
             <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -501,6 +546,67 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return this.miPista.split('\n').map(l => {
       try { return JSON.parse(l); } catch { return null; }
     }).filter(r => !!r);
+  }
+
+  /** Posiciones posibles de un control del reactor. */
+  readonly posiciones = [0, 1, 2];
+
+  /** Dueño del reactor (ayudante) de este jugador: su posición entre los ayudantes, o -1. */
+  get miOwner(): number {
+    const t = this.est?.turno;
+    if (!t) return -1;
+    const ayudantes = this.ayudantes(t.equipoId);
+    const i = ayudantes.indexOf(this.currentName || '');
+    if (i >= 0) return i;
+    return this.esCapitan && ayudantes.length === 0 ? 0 : -1;
+  }
+
+  get controlesMios(): any[] {
+    const owner = this.miOwner;
+    return (this.estadoJuego?.controles || []).filter((c: any) => c.owner === owner);
+  }
+
+  get pistasReactorMias(): any[] {
+    return this.miPistaBase.split('\n').map(l => {
+      try { return JSON.parse(l); } catch { return null; }
+    }).filter(p => !!p);
+  }
+
+  /** Presión del turno: tiempo que queda sobre el total. */
+  get presionPct(): number {
+    const t = this.est?.turno;
+    if (!t || !t.inicioMs || !t.finMs) return 100;
+    const total = t.finMs - t.inicioMs;
+    if (total <= 0) return 100;
+    return Math.max(0, Math.min(100, ((t.finMs - this.ahora) / total) * 100));
+  }
+
+  /** Alertas del reactor con su estado en este momento. */
+  get alertasReactor(): any[] {
+    if (this.est?.turno?.tipo !== 'reactor') return [];
+    const st = this.estadoJuego;
+    const t0 = typeof st?.t0 === 'number' ? st.t0 : null;
+    const transcurrido = t0 === null ? 0 : (this.ahora - t0) / 1000;
+    return (st?.alertas || []).map((a: any) => ({
+      texto: a.texto,
+      resuelta: a.resuelta,
+      activa: transcurrido >= a.aparecerEn,
+      faltan: Math.max(0, Math.ceil(a.aparecerEn - transcurrido)),
+      total: (a.reqs || []).length,
+      listos: (a.reqs || []).filter((r: any) => (st?.controles || []).find((c: any) => c.id === r.control)?.pos === r.pos).length
+    }));
+  }
+
+/** Pista que corresponde a un control concreto de este ayudante (qué alerta sirve y en qué posición). */
+  pistaDe(c: any): any {
+    return this.pistasReactorMias.find(p => p.control === c.id) || null;
+  }
+
+  async tocarControl(id: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionControlMinijuego(this.sala.codigo, this.currentName, id);
+    if (!ok) this.error = 'No se pudo girar el control.';
   }
 
   /** Posición donde empieza la normativa B en la cinta (pieza indexada desde 0). */
