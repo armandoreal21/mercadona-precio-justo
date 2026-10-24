@@ -57,6 +57,9 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             <span class="text-xs text-slate-400">{{ juegosAbiertos ? '▲' : '▼' }}</span>
           </button>
           <ng-container *ngIf="juegosAbiertos">
+            <button type="button" (click)="toggleTodosJuegos()" class="text-xs text-cyan-300 hover:text-cyan-200 underline">
+              {{ juegosMarcadosCount === todosLosJuegos.length ? 'Deseleccionar todo' : 'Seleccionar todo' }}
+            </button>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
               <label *ngFor="let j of todosLosJuegos" class="flex items-center gap-2 text-xs text-slate-200">
                 <input type="checkbox" [(ngModel)]="juegosMarcados[j]" class="accent-cyan-500" />
@@ -476,6 +479,12 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   readonly todosLosJuegos = TIPOS_MINIJUEGO;
   juegosAbiertos = false;
   juegosMarcados: Record<string, boolean> = Object.fromEntries(TIPOS_MINIJUEGO.map(t => [t, true]));
+
+/** Marca todos los juegos, o los desmarca si ya estaban todos marcados. */
+  toggleTodosJuegos(): void {
+    const todosMarcados = this.juegosMarcadosCount === this.todosLosJuegos.length;
+    for (const j of this.todosLosJuegos) this.juegosMarcados[j] = !todosMarcados;
+  }
 
   get juegosMarcadosCount(): number {
     return TIPOS_MINIJUEGO.filter(t => this.juegosMarcados[t]).length;
