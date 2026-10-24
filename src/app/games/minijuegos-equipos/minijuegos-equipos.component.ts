@@ -28,6 +28,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   semaforo: { resumen: 'Hay un cruce con coches que llegan de cuatro calles. Cada persona controla un semáforo y el tráfico avanza con cada cambio de luz. Si dos coches se cruzan sin verde, chocan.', ejemplo: 'Ejemplo: "¡Norte, verde! ¡Sur, rojo, que viene uno del Este!"' },
   barco: { resumen: 'Un barco avanza por un canal con rocas. Los remos de avance lo llevan una fila más abajo; los de atrás, una fila más arriba. Una roca hace perder 5 segundos; la orilla solo frena el barco. Llegar al puerto es el acierto.', ejemplo: 'Ejemplo: "¡Derecha! ¡Izquierda! ¡Cuidado, roca a la derecha!"' },
   cocina: { resumen: 'Hay que preparar un plato: echar los ingredientes en el orden de la receta, cada uno en su sartén, y dejar cada fuego en su punto. El plato sale solo cuando está listo. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate en el fuego 1! ¡Fuego 2, sube una! ¡Ya está, sale el plato!"' },
+  grua: { resumen: 'Hay que llevar una caja del suelo a la zona de destino con una grúa. Cada persona tiene un control: mover el gancho, subir o bajar el cable, o agarrar y soltar. Los edificios solo se cruzan con el cable arriba. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Adelante! ¡Bajar cable, que ya estamos encima! ¡Pinza, agarra!"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -409,6 +410,16 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div *ngFor="let h of cocinaTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.nombre }}: <b class="text-white">{{ h.persona }}</b></div>
               </div>
             </div>
+            <div *ngSwitchCase="'grua'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves la obra. Dile a cada persona qué mover y cuándo.' : 'El capitán ve la obra y os dirige.' }}</div>
+              <div class="grid gap-1 mx-auto" [style.grid-template-columns]="'repeat(' + gruaW + ', 2.5rem)'">
+                <div *ngFor="let c of gruaCeldas" class="w-10 h-10 rounded-md flex items-center justify-center text-lg border" [ngClass]="c.clase">{{ c.icono }}</div>
+              </div>
+              <div class="text-xs text-slate-300 text-center">Cable: <b>{{ gruaAltura }}</b>/2 · Caja: <b>{{ gruaCaja }}</b></div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div *ngFor="let h of gruaTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.nombre }}: <b class="text-white">{{ h.persona }}</b></div>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -429,7 +440,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -516,6 +527,13 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
 
+            <div *ngIf="t.tipo === 'grua' && misControlesGrua.length" class="space-y-3">
+              <div class="text-xs text-slate-400">Tus controles. Muévelos cuando tu capitán te lo pida.</div>
+              <div *ngFor="let c of misControlesGrua; trackBy: trackGrua" class="bg-slate-950 rounded-xl p-3 border border-slate-700">
+                <button (click)="accionGrua(c.accion)" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-4 py-3 rounded-lg text-sm">{{ c.nombre }}</button>
+              </div>
+            </div>
+
             <div *ngIf="t.tipo === 'cocina' && misControlesCocina.length" class="space-y-3">
               <div class="text-xs text-slate-400">Tus controles. Cuando tu capitán te lo pida, echa o ajusta.</div>
               <div *ngFor="let c of misControlesCocina; trackBy: trackCocina" class="bg-slate-900 rounded-2xl p-4 border-2 border-slate-700 flex items-center gap-3 flex-wrap">
@@ -573,7 +591,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -885,7 +903,86 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (!ok) this.error = 'Ese control no es tuyo ahora.';
   }
 
-/** Cocina: ingredientes y fuegos. */
+/** Grúa: controles, tablero y estado. */
+  readonly gruaControles = [
+    { accion: 'izq', nombre: '◀ Izquierda' },
+    { accion: 'der', nombre: 'Derecha ▶' },
+    { accion: 'adel', nombre: '▲ Adelante' },
+    { accion: 'atras', nombre: '▼ Atrás' },
+    { accion: 'subir', nombre: '⬆ Subir cable' },
+    { accion: 'bajar', nombre: '⬇ Bajar cable' },
+    { accion: 'pinza', nombre: '🤏 Agarrar / soltar' }
+  ];
+
+  get gruaW(): number {
+    return this.estadoJuego?.W ?? 5;
+  }
+
+  get gruaH(): number {
+    return this.estadoJuego?.H ?? 5;
+  }
+
+  get gruaAltura(): number {
+    return this.estadoJuego?.z ?? 0;
+  }
+
+  get gruaCaja(): string {
+    return this.estadoJuego?.pinza ? 'agarrada' : 'en el suelo';
+  }
+
+  get gruaCeldas(): { icono: string; clase: string }[] {
+    const s = this.estadoJuego;
+    const celdas: { icono: string; clase: string }[] = [];
+    for (let y = 0; y < this.gruaH; y++) {
+      for (let x = 0; x < this.gruaW; x++) {
+        const gancho = s?.x === x && s?.y === y;
+        const caja = s?.bx === x && s?.by === y;
+        const destino = s?.tx === x && s?.ty === y;
+        const edificio = (s?.edificios || []).some((b: any) => b.x === x && b.y === y);
+        let icono = '';
+        if (gancho) icono = s?.pinza ? '📦' : '🏗️';
+        else if (caja) icono = '📦';
+        else if (destino) icono = '🎯';
+        else if (edificio) icono = '🏢';
+        const clase = edificio ? 'bg-slate-700 border-slate-500' : (destino ? 'bg-emerald-900/60 border-emerald-500' : 'bg-slate-800 border-slate-700');
+        celdas.push({ icono, clase });
+      }
+    }
+    return celdas;
+  }
+
+  /** Quién tiene cada control ahora mismo (lo ve todo el equipo). */
+  get gruaTitulares(): { nombre: string; persona: string }[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'grua') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    return this.gruaControles.map((c, i) => ({ nombre: c.nombre, persona: duenos[((s.rot || 0) + i) % duenos.length] || '—' }));
+  }
+
+  /** Controles que tiene este jugador ahora mismo. */
+  get misControlesGrua(): { accion: string; nombre: string }[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'grua') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    const yo = duenos.indexOf(this.currentName || '');
+    if (yo < 0) return [];
+    return this.gruaControles.filter((c, i) => ((s.rot || 0) + i) % duenos.length === yo);
+  }
+
+  trackGrua(_: number, c: any): string {
+    return c.accion;
+  }
+
+  async accionGrua(accion: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionGruaMinijuego(this.sala.codigo, this.currentName, accion);
+    if (!ok) this.error = 'Ese control no es tuyo ahora.';
+  }
+
+  /** Cocina: ingredientes y fuegos. */
   readonly cocinaFuegosIdx = [0, 1];
 
   get cocinaIngredientes(): string[] {

@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -21,6 +21,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   semaforo: '🚦 Semáforo de cruce',
   barco: '🚤 Barco por el canal',
   cocina: '🍳 Cocina a cuatro manos',
+  grua: '🏗️ Grúa de carga',
   balanza: '⚖️ Balanza'
 };
 
@@ -77,6 +78,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'semaforo': return generarSemaforo(L, n);
     case 'barco': return generarBarco(L, n);
     case 'cocina': return generarCocina(L, n);
+    case 'grua': return generarGrua(L, n);
   }
 }
 
@@ -1350,6 +1352,127 @@ export function aplicarCocina(estado: any, accion: any, owner: number, nDuenos: 
   return { estado: e, ok: false };
 }
 
+// ------------------------------------------------------------------
+// Grúa de carga: llevar la caja del suelo a la zona de destino. Cada control (mover, cable, pinza) lo tiene
+// una persona. Los edificios (altura 2) solo se cruzan con el cable arriba. Soltar fuera del destino es un error.
+// ------------------------------------------------------------------
+const GRUA_ACCIONES = ['izq', 'der', 'adel', 'atras', 'subir', 'bajar', 'pinza'];
+const GRUA_W = 5;
+const GRUA_H = 5;
+const GRUA_ALTURA_EDIFICIO = 2;
+
+function esEdificio(e: any, x: number, y: number): boolean {
+  return (e.edificios || []).some((b: any) => b.x === x && b.y === y);
+}
+
+/** Un paso de la grúa. Devuelve el nuevo estado, si hubo error (penalización) y si la caja está entregada. */
+function pasoGrua(estado: any, accion: string): { estado: any; error: boolean; completado: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  const dir: Record<string, [number, number]> = { izq: [-1, 0], der: [1, 0], adel: [0, -1], atras: [0, 1] };
+  const sinCambio = { estado: e, error: false, completado: false };
+  const error = { estado: e, error: true, completado: false };
+  if (dir[accion]) {
+    const [dx, dy] = dir[accion];
+    const nx = e.x + dx;
+    const ny = e.y + dy;
+    if (nx < 0 || ny < 0 || nx >= GRUA_W || ny >= GRUA_H) return sinCambio;
+    if (esEdificio(e, nx, ny) && e.z < GRUA_ALTURA_EDIFICIO) return error;
+    e.x = nx;
+    e.y = ny;
+    if (e.pinza) {
+      e.bx = nx;
+      e.by = ny;
+    }
+    return sinCambio;
+  }
+  if (accion === 'subir') {
+    if (e.z < GRUA_ALTURA_EDIFICIO) e.z += 1;
+    return sinCambio;
+  }
+  if (accion === 'bajar') {
+    if (e.z <= 0) return sinCambio;
+    if (esEdificio(e, e.x, e.y) && e.z - 1 < GRUA_ALTURA_EDIFICIO) return error;
+    e.z -= 1;
+    return sinCambio;
+  }
+  if (accion === 'pinza') {
+    if (!e.pinza) {
+      // Agarrar: solo a nivel del suelo y encima de la caja
+      if (e.z !== 0 || e.x !== e.bx || e.y !== e.by) return error;
+      e.pinza = true;
+      return sinCambio;
+    }
+    // Soltar: solo a nivel del suelo y fuera de un edificio
+    if (e.z !== 0 || esEdificio(e, e.x, e.y)) return error;
+    e.pinza = false;
+    e.bx = e.x;
+    e.by = e.y;
+    const entregada = e.x === e.tx && e.y === e.ty;
+    return { estado: e, error: !entregada, completado: entregada };
+  }
+  return sinCambio;
+}
+
+/** ¿Se puede entregar la caja siguiendo las reglas? Se comprueba antes de crear el tablero. */
+function resolubleGrua(estado: any): boolean {
+  const clave = (e: any) => `${e.x},${e.y},${e.z},${e.pinza},${e.bx},${e.by}`;
+  const visto = new Set<string>([clave(estado)]);
+  const cola: any[] = [estado];
+  while (cola.length) {
+    const e = cola.shift()!;
+    for (const accion of GRUA_ACCIONES) {
+      const r = pasoGrua(e, accion);
+      if (r.completado) return true;
+      if (r.error) continue;
+      const k = clave(r.estado);
+      if (visto.has(k)) continue;
+      visto.add(k);
+      cola.push(r.estado);
+    }
+  }
+  return false;
+}
+
+function generarGrua(L: number, n: number): Puzle {
+  const numEdificios = L >= 2 ? Math.min(1 + L, 5) : 0;
+  for (let intento = 0; intento < 300; intento++) {
+    const libres: { x: number; y: number }[] = [];
+    for (let y = 0; y < GRUA_H; y++) for (let x = 0; x < GRUA_W; x++) if (!(x === 0 && y === 0)) libres.push({ x, y });
+    const mezcla = barajar(libres);
+    const edificios = mezcla.slice(0, numEdificios);
+    const resto = mezcla.slice(numEdificios);
+    if (resto.length < 2) continue;
+    const caja = resto[0];
+    const destino = resto[1];
+    const estado = {
+      W: GRUA_W, H: GRUA_H, x: 0, y: 0, z: GRUA_ALTURA_EDIFICIO, pinza: false,
+      bx: caja.x, by: caja.y, tx: destino.x, ty: destino.y, edificios, rot: 0, panel: null
+    };
+    if (!resolubleGrua(estado)) continue;
+    return {
+      panel: { W: GRUA_W, H: GRUA_H },
+      pistas: Array.from({ length: n }, () => ''),
+      solucion: null,
+      estadoInicial: estado
+    };
+  }
+  // Sin edificios, siempre se puede entregar la caja
+  return {
+    panel: { W: GRUA_W, H: GRUA_H },
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { W: GRUA_W, H: GRUA_H, x: 0, y: 0, z: GRUA_ALTURA_EDIFICIO, pinza: false, bx: 0, by: 4, tx: 4, ty: 4, edificios: [], rot: 0, panel: null }
+  };
+}
+
+/** Un control de la grúa. Solo puede moverlo la persona que lo tiene en este momento. */
+export function aplicarGrua(estado: any, accion: string, owner: number, nDuenos: number): { estado: any; ok: boolean; error?: boolean; completado?: boolean } {
+  const c = GRUA_ACCIONES.indexOf(accion);
+  if (c < 0 || ((estado.rot || 0) + c) % nDuenos !== owner) return { estado: JSON.parse(JSON.stringify(estado)), ok: false };
+  const r = pasoGrua(estado, accion);
+  return { estado: r.estado, ok: true, error: r.error, completado: r.completado };
+}
+
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */
 export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any, solucion?: any): { estado: any; ok: boolean; fallo?: boolean; completado?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
@@ -1430,7 +1553,7 @@ export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: st
 
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
-  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco' || tipo === 'cocina') return false; // se decide con botones, no con respuesta escrita
+  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco' || tipo === 'cocina' || tipo === 'grua') return false; // se decide con botones, no con respuesta escrita
   const texto = (respuesta || '').trim();
   switch (tipo) {
     case 'secuencia':
