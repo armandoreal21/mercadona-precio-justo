@@ -415,7 +415,17 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               <div class="grid gap-1 mx-auto" [style.grid-template-columns]="'repeat(' + gruaW + ', 2.5rem)'">
                 <div *ngFor="let c of gruaCeldas" class="w-10 h-10 rounded-md flex items-center justify-center text-lg border" [ngClass]="c.clase">{{ c.icono }}</div>
               </div>
-              <div class="text-xs text-slate-300 text-center">Cable: <b>{{ gruaAltura }}</b>/2 · Caja: <b>{{ gruaCaja }}</b></div>
+              <div class="flex items-center gap-3 bg-slate-950 rounded-xl p-3 border border-slate-700">
+                <div class="flex flex-col gap-1">
+                  <div *ngFor="let nivel of gruaNiveles" class="w-16 h-5 rounded text-[10px] flex items-center justify-center" [ngClass]="gruaAltura === nivel ? 'bg-cyan-400 text-slate-950 font-black' : 'bg-slate-800 text-slate-500'">{{ nivel === 2 ? 'Alto' : nivel === 1 ? 'Medio' : 'Suelo' }}</div>
+                </div>
+                <div class="text-xs text-slate-200 space-y-1">
+                  <div>🏗️ Cable: <b>{{ gruaTextoAltura }}</b></div>
+                  <div>📦 Caja: <b>{{ gruaCaja }}</b></div>
+                  <div class="text-cyan-200">💡 {{ gruaPista }}</div>
+                </div>
+              </div>
+              <div class="text-[11px] text-slate-400 text-center">🏗️ gancho · 📦 caja · 🎯 entrega · 🏢 edificio (solo se cruza con el cable arriba)</div>
               <div class="grid grid-cols-2 gap-2 text-xs">
                 <div *ngFor="let h of gruaTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.nombre }}: <b class="text-white">{{ h.persona }}</b></div>
               </div>
@@ -528,6 +538,17 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
 
             <div *ngIf="t.tipo === 'grua' && misControlesGrua.length" class="space-y-3">
+              <div class="flex items-center gap-3 bg-slate-950 rounded-xl p-3 border border-slate-700">
+                <div class="flex flex-col gap-1">
+                  <div *ngFor="let nivel of gruaNiveles" class="w-16 h-5 rounded text-[10px] flex items-center justify-center" [ngClass]="gruaAltura === nivel ? 'bg-cyan-400 text-slate-950 font-black' : 'bg-slate-800 text-slate-500'">{{ nivel === 2 ? 'Alto' : nivel === 1 ? 'Medio' : 'Suelo' }}</div>
+                </div>
+                <div class="text-xs text-slate-200 space-y-1">
+                  <div>🏗️ Cable: <b>{{ gruaTextoAltura }}</b></div>
+                  <div>📦 Caja: <b>{{ gruaCaja }}</b></div>
+                  <div class="text-cyan-200">💡 {{ gruaPista }}</div>
+                </div>
+              </div>
+
               <div class="text-xs text-slate-400">Tus controles. Muévelos cuando tu capitán te lo pida.</div>
               <div *ngFor="let c of misControlesGrua; trackBy: trackGrua" class="bg-slate-950 rounded-xl p-3 border border-slate-700">
                 <button (click)="accionGrua(c.accion)" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-4 py-3 rounded-lg text-sm">{{ c.nombre }}</button>
@@ -924,6 +945,27 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   get gruaAltura(): number {
     return this.estadoJuego?.z ?? 0;
+  }
+
+  /** Niveles del cable, de arriba abajo. */
+  readonly gruaNiveles = [2, 1, 0];
+
+  get gruaTextoAltura(): string {
+    return this.gruaAltura === 2 ? 'Alto' : this.gruaAltura === 1 ? 'Medio' : 'Suelo';
+  }
+
+  /** Qué toca hacer ahora mismo, según el estado de la grúa. */
+  get gruaPista(): string {
+    const s = this.estadoJuego;
+    if (!s) return '';
+    if (s.pinza) {
+      return s.z > 0
+        ? 'Llevas la caja colgando. Baja el cable hasta el suelo para poder soltarla.'
+        : 'Llevas la caja. Llévala a la zona 🎯 y suelta la pinza con el cable abajo.';
+    }
+    return s.z > 0
+      ? 'Pinza libre y cable arriba. Para agarrar la caja: mueve el gancho encima de ella y baja el cable.'
+      : 'Pinza libre y cable abajo. Mueve el gancho encima de la caja y agarra.';
   }
 
   get gruaCaja(): string {
