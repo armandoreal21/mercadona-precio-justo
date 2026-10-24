@@ -19,7 +19,7 @@ export class SalaService {
   private useFirebase: boolean = false;
   private firebaseApp: any = null;
   private firebaseDb: any = null;
-  private firebaseRefPath = '/state';
+  private firebaseRefPath = '/salas';
 
   private hasLocalStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
   private memoryCache: { salasActivas: Sala[] } | null = null;
@@ -28,6 +28,8 @@ export class SalaService {
   private clientId = Math.random().toString(36).slice(2);
   private suppressBroadcast = false;
   private pendingSync = false;
+  /** Firma de cada sala tal como está en Firebase: sirve para escribir solo lo que cambia. */
+  private firmasEnviadas: Record<string, string> = {};
 
   constructor() {
     try {
@@ -123,15 +125,16 @@ export class SalaService {
       onValue(stateRef, (snapshot: any) => {
         try {
           const val = snapshot && typeof snapshot.val === 'function' ? snapshot.val() : snapshot;
-          const state = (val && typeof val === 'object' && Array.isArray(val.salasActivas)) ? val : { salasActivas: [] };
+          const state = this.estadoDesdeSalas(val);
           console.debug('[SalaService] firebase onValue, state snapshot:', state);
+          this.firmasEnviadas = this.firmasDe(state.salasActivas);
           this.suppressBroadcast = true;
           
           // IMPORTANTE: No sobrescribir localStorage si está más actualizado que Firebase
           // Esto evita que salas recién creadas en local se pierdan cuando Firebase aún está vacío
           const local = this.readAll();
           const serverEmpty = !state?.salasActivas || state.salasActivas.length === 0;
-          const localHasRooms = Array.isArray(local) && local.length > 0;
+          const localHasRooms = false; // el servidor es la única fuente de verdad
           
           if (serverEmpty && localHasRooms) {
             // Firebase vacío pero tenemos salas locales → NO sobrescribir, mantener locales
@@ -162,7 +165,7 @@ export class SalaService {
         const local = this.readAll();
         const serverHas = dbVal && Array.isArray(dbVal.salasActivas) && dbVal.salasActivas.length > 0;
         if (!serverHas && Array.isArray(local) && local.length > 0) {
-          await set(stateRef, { salasActivas: local });
+          // Sin siembra desde local: las copias locales ya no pueden resucitar salas
         }
       } catch (e) {
         // ignore
@@ -263,7 +266,7 @@ export class SalaService {
       console.debug('[SalaService] writing state to firebase, salas count:', salas.length);
       // Sanitize structure: JSON.stringify removes undefined properties which RTDB rejects
       const safe = JSON.parse(JSON.stringify({ salasActivas: salas }));
-      await set(stateRef, safe);
+      await this.sincronizarSalas(salas);
     } catch (e) {
       console.error('[SalaService] broadcastStateToFirebase error', e);
     }
@@ -492,7 +495,123 @@ export class SalaService {
   }
 
   // ---------- Firebase transaction helper to avoid lost updates ----------
-  private async applyTransaction(mutator: (state: { salasActivas: Sala[] }) => { salasActivas: Sala[] } | null) {
+  // ---------- Escritura por salas: un nodo por sala en /salas ----------
+
+  private colaEscrituras: Promise<unknown> = Promise.resolve();
+
+  /** Ejecuta las escrituras de una en una. Si una se queda colgada, la cola sigue a los 15 s. */
+  private enCola<T>(tarea: () => Promise<T>, maxMs = 15000): Promise<T> {
+    const limite = new Promise<never>((_, rej) => setTimeout(() => rej(new Error('timeout escritura Firebase')), maxMs));
+    const r = this.colaEscrituras.then(() => Promise.race([tarea(), limite]));
+    this.colaEscrituras = r.catch(() => undefined);
+    return r;
+  }
+
+  /** Forma canónica para comparar: ignora el orden de claves, los vacíos y null/undefined (como hace RTDB). */
+  private canonico(v: any): string | undefined {
+    if (v === null || v === undefined || typeof v === 'function') return undefined;
+    if (Array.isArray(v)) {
+      const items = v.map(x => this.canonico(x)).filter((x): x is string => x !== undefined);
+      return items.length ? '[' + items.join(',') + ']' : undefined;
+    }
+    if (typeof v === 'object') {
+      const partes: string[] = [];
+      Object.keys(v).sort().forEach(k => {
+        const c = this.canonico(v[k]);
+        if (c !== undefined) partes.push(JSON.stringify(k) + ':' + c);
+      });
+      return partes.length ? '{' + partes.join(',') + '}' : undefined;
+    }
+    if (typeof v === 'number' && !isFinite(v)) return undefined;
+    return JSON.stringify(v);
+  }
+
+  /** Firma de una sala. Ignora updatedAt: un cambio que solo toca la marca de tiempo no se escribe. */
+  private firmaSala(s: Sala): string {
+    return this.canonico({ ...s, updatedAt: undefined }) || '';
+  }
+
+  private firmasDe(salas: Sala[]): Record<string, string> {
+    const out: Record<string, string> = {};
+    (salas || []).forEach(s => { if (s && s.codigo) out[s.codigo] = this.firmaSala(s); });
+    return out;
+  }
+
+  /** Lista de salas a partir del nodo /salas (un hijo por sala). */
+  private estadoDesdeSalas(val: any): { salasActivas: Sala[]; borradas: Record<string, number> } {
+    const lista = val && typeof val === 'object' ? (Object.values(val).filter(Boolean) as Sala[]) : [];
+    return { salasActivas: lista, borradas: {} };
+  }
+
+  private guardarLocal(salas: Sala[]): void {
+    if (this.hasLocalStorage) {
+      try {
+        localStorage.setItem(this.storageKey, JSON.stringify({ salasActivas: salas }));
+        return;
+      } catch (e) { /* sin localStorage: se usa memoria */ }
+    }
+    this.memoryCache = { salasActivas: salas };
+  }
+
+  /** Escribe solo las salas que cambian respecto a lo que hay en Firebase, y borra las que desaparecen. */
+  private async sincronizarSalas(salas: Sala[]): Promise<void> {
+    const databaseMod = await import('firebase/database');
+    const ref = (databaseMod as any).ref;
+    const update = (databaseMod as any).update;
+    await this.enCola(async () => {
+      const nuevas = this.firmasDe(salas);
+      const cambios: Record<string, any> = {};
+      salas.forEach(s => {
+        if (s && s.codigo && this.firmasEnviadas[s.codigo] !== nuevas[s.codigo]) cambios[s.codigo] = JSON.parse(JSON.stringify(s));
+      });
+      Object.keys(this.firmasEnviadas).forEach(codigo => {
+        if (!(codigo in nuevas)) cambios[codigo] = null;
+      });
+      if (Object.keys(cambios).length === 0) return;
+      await update(ref(this.firebaseDb, this.firebaseRefPath), cambios);
+      this.firmasEnviadas = nuevas;
+    });
+  }
+
+  /** Lee /salas, aplica la mutación y escribe solo las salas que cambian. */
+  private async applyTransaction(mutator: (state: { salasActivas: Sala[] }) => { salasActivas: Sala[] } | null): Promise<{ salasActivas: Sala[] } | null> {
+    if (!this.useFirebase || !this.firebaseDb) return null;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const get = (databaseMod as any).get;
+      const update = (databaseMod as any).update;
+      return await this.enCola(async () => {
+        const snap: any = await get(ref(this.firebaseDb, this.firebaseRefPath));
+        const val = snap && typeof snap.val === 'function' ? snap.val() : null;
+        const actual: Sala[] = this.estadoDesdeSalas(val).salasActivas;
+        const resultado = mutator({ salasActivas: JSON.parse(JSON.stringify(actual)) as Sala[] });
+        if (resultado === null) return null;
+        const nuevas = this.firmasDe(resultado.salasActivas);
+        const antes = this.firmasDe(actual);
+        const cambios: Record<string, any> = {};
+        resultado.salasActivas.forEach(s => {
+          if (antes[s.codigo] !== nuevas[s.codigo]) cambios[s.codigo] = JSON.parse(JSON.stringify(s));
+        });
+        actual.forEach(s => {
+          if (!(s.codigo in nuevas)) cambios[s.codigo] = null;
+        });
+        if (Object.keys(cambios).length > 0) {
+          await update(ref(this.firebaseDb, this.firebaseRefPath), cambios);
+        }
+        this.firmasEnviadas = nuevas;
+        this.guardarLocal(resultado.salasActivas);
+        if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: 'firebase-transaction' } }));
+        return { salasActivas: resultado.salasActivas };
+      });
+    } catch (e) {
+      console.error('[SalaService] applyTransaction error', e);
+      return null;
+    }
+  }
+
+  /** Versión anterior (transacción sobre todo el estado). Sin uso: se elimina tras probar. */
+  private async applyTransactionAntigua(mutator: (state: { salasActivas: Sala[] }) => { salasActivas: Sala[] } | null) {
     if (!this.useFirebase || !this.firebaseDb) return null;
     try {
       const databaseMod = await import('firebase/database');
