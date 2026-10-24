@@ -188,6 +188,8 @@ export interface TurnoMinijuego {
   finMs: number;
   recorrido?: string[];
   estadoJ?: string;
+  /** false mientras el capitán no ha pulsado Empezar: el reloj no corre y no se puede responder. */
+  iniciado?: boolean;
 }
 
 export interface ResultadoTurnoMinijuego {

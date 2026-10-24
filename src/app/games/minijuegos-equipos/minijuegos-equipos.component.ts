@@ -9,6 +9,22 @@ interface LineaMapa { eje: 'fila' | 'columna'; indice: number; muros: boolean[];
 interface LineaMetro { tipo: 'linea' | 'hecho'; color?: string; estaciones?: string[]; texto?: string; cerrada?: boolean; }
 interface CeldaMapa { texto: string; clase: string; }
 
+const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
+  secuencia: { resumen: 'Os mostramos una secuencia de símbolos. Hay que decir cuál va después.', ejemplo: 'Ejemplo: ▲ ● ▲ ● ▲ → la respuesta es ●' },
+  cableado: { resumen: 'Hay varios cables. El capitán toca el que indica la pista.', ejemplo: 'Ejemplo: si la pista dice "corta el cable 3", se toca el cable nº 3.' },
+  mapa: { resumen: 'El robot sale de la S y tiene que llegar a la G sin chocar con muros. El capitán lo mueve con las flechas.', ejemplo: 'Ejemplo: tus pistas indican dónde hay muros. Avanza solo por casillas libres.' },
+  codigo: { resumen: 'Hay que introducir un código de dígitos. Cada pista da un dígito.', ejemplo: 'Ejemplo: "primer dígito: el doble de 4" → 8.' },
+  metro: { resumen: 'Hay que calcular los transbordos mínimos entre dos estaciones usando el mapa de líneas.', ejemplo: 'Ejemplo: de Origen a Destino con un transbordo → respuesta: 1.' },
+  ecuacion: { resumen: 'Hay que resolver una operación cuyo resultado falta.', ejemplo: 'Ejemplo: 7 + 5 = ? → 12.' },
+  palabra: { resumen: 'Os dan letras desordenadas. Hay que ordenarlas para formar una palabra.', ejemplo: 'Ejemplo: A-S-O-C → CASO.' },
+  carrera: { resumen: 'Hay corredores y un objetivo. Hay que decir en qué posición llegó.', ejemplo: 'Ejemplo: si el objetivo llegó 2º → respuesta: 2.' },
+  torres: { resumen: 'Hay que pasar todos los discos a otra torre. Un disco grande nunca va sobre uno pequeño.', ejemplo: 'Ejemplo: toca la torre de origen y después la de destino.' },
+  pinta: { resumen: 'Hay que pintar la cuadrícula igual que el patrón de la pista. El capitán toca las casillas para cambiar su color.', ejemplo: 'Ejemplo: la fila 1 de la pista es azul, rojo, azul.' },
+  mezcla: { resumen: 'Hay que mezclar colores hasta igualar el objetivo. El capitán sube o baja cada color.', ejemplo: 'Ejemplo: más azul y menos rojo para igualar el color objetivo.' },
+  deslizante: { resumen: 'Puzle de fichas numeradas con un hueco. Hay que deslizarlas hasta ordenarlas.', ejemplo: 'Ejemplo: toca una ficha que esté junto al hueco para moverla.' },
+  balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
+};
+
 @Component({
   selector: 'app-minijuegos-equipos',
   standalone: true,
@@ -66,7 +82,31 @@ interface CeldaMapa { texto: string; clase: string; }
       </div>
 
       <!-- ===================== JUGANDO ===================== -->
-      <ng-container *ngIf="est && est.fase === 'jugando' && est.turno as t">
+      <div *ngIf="est && est.fase === 'jugando' && est.turno && !est.turno.iniciado" class="bg-slate-900 p-5 rounded-2xl border-2 border-cyan-500 space-y-4">
+        <div class="text-center space-y-1">
+          <div class="text-xs uppercase text-slate-400 tracking-wider">Siguiente turno</div>
+          <div class="text-xl font-black text-white">🛡️ {{ nombreEquipo(est.turno.equipoId) }}</div>
+          <div class="text-sm text-cyan-300">🧩 {{ nombreMinijuego[est.turno.tipo] }}</div>
+        </div>
+        <div class="text-sm text-slate-200">{{ instruccionActual.resumen }}</div>
+        <div class="text-xs text-slate-300 bg-slate-800 rounded-lg p-3">{{ instruccionActual.ejemplo }}</div>
+        <div class="text-xs text-slate-400 text-center">⏱️ {{ est.tiempoTurnoSeg }} segundos. El reloj empieza cuando el capitán pulse Empezar.</div>
+        <div *ngIf="puedeEmpezar()" class="text-center">
+          <button (click)="empezarTurno()"
+                  class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-6 py-3 rounded-xl uppercase text-sm tracking-wide">
+            ▶ Empezar turno
+          </button>
+        </div>
+        <div *ngIf="!puedeEmpezar() && enEquipoActivo" class="text-center text-sm text-amber-300 animate-pulse">
+          ⏳ Esperad a que el capitán dé la salida cuando estéis listos.
+        </div>
+        <div *ngIf="!enEquipoActivo && miEquipoId" class="text-center text-sm text-slate-400">
+          👀 Observas el turno del otro equipo. Empezará cuando su capitán lo indique.
+        </div>
+        <div *ngIf="error" class="p-2 bg-rose-900/30 border border-rose-600 rounded-lg text-rose-300 text-xs text-center">⚠️ {{ error }}</div>
+      </div>
+
+      <ng-container *ngIf="est && est.fase === 'jugando' && est.turno?.iniciado && est.turno as t">
         <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 flex flex-wrap justify-between gap-2 text-xs">
           <span class="font-bold text-cyan-300">Ronda {{ est.ronda }} de {{ est.totalRondas }}</span>
           <span class="text-slate-300">{{ nombreMinijuego[t.tipo] }} · nivel {{ t.nivel }}</span>
@@ -690,6 +730,24 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (this.sala && t && this.ahora >= t.finMs) {
       this.salaService.expirarTurnoMinijuego(this.sala.codigo);
     }
+  }
+
+  /** Resumen y ejemplo del minijuego del turno actual. */
+  get instruccionActual(): { resumen: string; ejemplo: string } {
+    return INSTRUCCIONES[this.est?.turno?.tipo || ''] || { resumen: '', ejemplo: '' };
+  }
+
+  /** Empezar lo pulsa el capitán del equipo en turno; el admin también, como respaldo. */
+  puedeEmpezar(): boolean {
+    const t = this.est?.turno;
+    return !!t && !t.iniciado && (this.esCapitan || this.isAdmin);
+  }
+
+  async empezarTurno(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.empezarTurnoMinijuego(this.sala.codigo, this.currentName);
+    if (!ok) this.error = 'No se pudo empezar el turno.';
   }
 
   async iniciar(): Promise<void> {

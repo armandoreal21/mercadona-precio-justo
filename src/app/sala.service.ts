@@ -1980,7 +1980,7 @@ export class SalaService {
     const ahora = Date.now();
     est.turno = {
       equipoId, ronda: est.ronda, tipo, nivel: 1, panel: p.panel, pistas: p.pistas, solucion: p.solucion,
-      aciertos: 0, errores: 0, inicioMs: ahora, finMs: ahora + est.tiempoTurnoSeg * 1000
+      aciertos: 0, errores: 0, inicioMs: ahora, finMs: Number.MAX_SAFE_INTEGER, iniciado: false
     };
     if (p.estadoInicial !== undefined) est.turno.estadoJ = JSON.stringify(p.estadoInicial);
   }
@@ -2092,6 +2092,22 @@ export class SalaService {
       res.push(barajar(candidatos)[0]);
     }
     return res.slice(0, rondas);
+  }
+
+  /** El capitán del equipo en turno (o el admin, como respaldo) pulsa Empezar: arranca el reloj del turno. */
+  async empezarTurnoMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || t.iniciado) return false;
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (est.capitanes[t.equipoId] !== usuario && !esAdmin) return false;
+      t.iniciado = true;
+      t.inicioMs = Date.now();
+      t.finMs = t.inicioMs + est.tiempoTurnoSeg * 1000;
+      sala.updatedAt = Date.now();
+      return true;
+    });
   }
 
   async reiniciarMinijuegos(codigo: string): Promise<boolean> {
