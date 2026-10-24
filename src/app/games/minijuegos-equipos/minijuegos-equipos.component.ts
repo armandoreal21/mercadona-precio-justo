@@ -22,6 +22,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   pinta: { resumen: 'Hay que pintar la cuadrícula igual que el patrón de la pista. El capitán toca las casillas para cambiar su color.', ejemplo: 'Ejemplo: la fila 1 de la pista es azul, rojo, azul.' },
   mezcla: { resumen: 'Hay que mezclar colores hasta igualar el objetivo. El capitán sube o baja cada color.', ejemplo: 'Ejemplo: más azul y menos rojo para igualar el color objetivo.' },
   deslizante: { resumen: 'Puzle de fichas numeradas con un hueco. Hay que deslizarlas hasta ordenarlas.', ejemplo: 'Ejemplo: toca una ficha que esté junto al hueco para moverla.' },
+  fraude: { resumen: 'Pasan piezas por la cinta. Sin ver las especificaciones, decide si cada pieza se ACEPTA o se RECHAZA según las normas que os dictan vuestros compañeros. Las normas cambian a mitad de cinta.', ejemplo: 'Ejemplo: "Se RECHAZAN las piezas de forma cuadrada y con arandela." Pieza cuadrada con arandela → Rechazar.' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -241,6 +242,48 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </div>
               </div>
             </div>
+            <div *ngSwitchCase="'fraude'" class="space-y-4">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Decide sin mirar las especificaciones: acepta o rechaza cada pieza según lo que os dicten vuestras normas.' : 'El capitán decide cada pieza. Vosotros tenéis las normas: dictadlas.' }}</div>
+              <div *ngIf="cambioNormaActivo" class="text-center text-xs font-black text-amber-300 bg-amber-950/50 border border-amber-600/40 rounded-lg py-1">🔔 Cambio de normativa: ahora aplican las normas nuevas</div>
+
+              <!-- Cinta transportadora -->
+              <div class="overflow-x-auto rounded-xl bg-slate-950 border-y-4 border-slate-700 py-4 px-3">
+                <div class="flex items-end gap-3 min-w-max">
+                  <ng-container *ngFor="let p of piezasFraude; let i = index">
+                    <div *ngIf="i === cambioFraude" class="flex flex-col items-center gap-1 px-1">
+                      <div class="h-20 border-l-2 border-dashed border-amber-400"></div>
+                      <div class="text-[10px] font-black text-amber-300 whitespace-nowrap">⚠ NORMA B</div>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 transition-all"
+                         [ngClass]="i === idxFraude ? 'opacity-100 scale-110' : (i < idxFraude ? 'opacity-40' : 'opacity-75')">
+                      <div class="text-yellow-300 text-lg leading-none h-5" *ngIf="i === idxFraude">▼</div>
+                      <div class="h-5" *ngIf="i !== idxFraude"></div>
+                      <div class="relative w-16 h-16 flex items-center justify-center">
+                        <div class="w-14 h-14 shadow-lg"
+                             [ngClass]="formaClase(p) + ' ' + colorClase(p)"
+                             [style.clip-path]="p.forma === 'triangular' ? 'polygon(50% 0, 100% 100%, 0 100%)' : null"></div>
+                        <div *ngIf="p.arandela" class="absolute w-6 h-6 rounded-full border-4 border-white/90"></div>
+                        <div *ngIf="i < idxFraude" class="absolute -top-1 -right-1 bg-emerald-500 text-slate-950 text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center">✓</div>
+                      </div>
+                      <div class="text-[10px] text-slate-400 font-bold">{{ i + 1 }}</div>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+              <!-- Leyenda -->
+              <div class="flex flex-wrap justify-center items-center gap-3 text-[11px] text-slate-400">
+                <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm bg-slate-400 inline-block"></span> cuadrada</span>
+                <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-slate-400 inline-block"></span> redonda</span>
+                <span class="flex items-center gap-1"><span class="w-0 h-0 border-l-[6px] border-r-[6px] border-b-[10px] border-l-transparent border-r-transparent border-b-slate-400 inline-block"></span> triangular</span>
+                <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full border-2 border-slate-300 inline-block"></span> con arandela</span>
+              </div>
+
+              <div *ngIf="esCapitan" class="flex justify-center gap-3">
+                <button (click)="decidir('aceptar')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-6 py-3 rounded-xl uppercase text-sm tracking-wide">✅ Aceptar</button>
+                <button (click)="decidir('rechazar')" class="bg-rose-500 hover:bg-rose-400 text-white font-black px-6 py-3 rounded-xl uppercase text-sm tracking-wide">❌ Rechazar</button>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -261,7 +304,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -273,6 +316,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
           <div *ngIf="!esCapitan || soloCapitan" class="bg-slate-900 p-4 rounded-2xl border border-cyan-700 space-y-2">
             <div class="text-xs uppercase text-cyan-300 font-bold">Tu pista (solo para ti)</div>
+            <div *ngIf="t.tipo === 'fraude'" class="inline-block text-xs font-bold px-2 py-1 rounded-lg bg-slate-800 border border-slate-600">{{ etiquetaNorma }}</div>
 
             <!-- Pista visual del metro: líneas dibujadas -->
             <div *ngIf="t.tipo === 'metro'" class="space-y-3">
@@ -312,8 +356,28 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
 
+            <div *ngIf="t.tipo === 'fraude'" class="space-y-2">
+              <div *ngFor="let r of reglasFraude" class="flex flex-wrap items-center gap-3 bg-slate-950 rounded-xl px-3 py-2 border border-slate-700">
+                <span class="text-xs font-black uppercase" [ngClass]="r.v === 'A' ? 'text-emerald-300' : 'text-rose-300'">{{ r.v === 'A' ? 'Aceptar si' : 'Rechazar si' }}</span>
+                <span *ngIf="r.forma" class="flex items-center gap-1 text-xs font-bold text-white">
+                  <span class="w-5 h-5 bg-slate-300 inline-block" [ngClass]="formaClase(r)" [style.clip-path]="r.forma === 'triangular' ? 'polygon(50% 0, 100% 100%, 0 100%)' : null"></span>
+                  {{ r.forma }}
+                </span>
+                <span *ngIf="r.color" class="flex items-center gap-1 text-xs font-bold text-white">
+                  <span class="w-5 h-5 rounded-full inline-block" [ngClass]="colorClase(r)"></span>
+                  {{ r.color }}
+                </span>
+                <span *ngIf="r.arandela !== undefined" class="flex items-center gap-1 text-xs font-bold text-white">
+                  <span class="w-5 h-5 rounded-full border-4 inline-block" [ngClass]="r.arandela ? 'border-white' : 'border-slate-500 border-dashed'"></span>
+                  {{ r.arandela ? 'con arandela' : 'sin arandela' }}
+                </span>
+              </div>
+            </div>
+
+            <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
+
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -424,13 +488,67 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return !!t && this.esCapitan && this.ayudantes(t.equipoId).length === 0;
   }
 
+  /** Pista que ve este jugador. En el fraude, solo las normas vigentes en cada momento. */
   get miPista(): string {
+    const base = this.miPistaBase;
+    if (this.est?.turno?.tipo !== 'fraude') return base;
+    const norma = this.cambioNormaActivo ? 'B' : 'A';
+    return base.split('\n').filter(l => { try { return JSON.parse(l).n === norma; } catch { return true; } }).join('\n');
+  }
+
+  /** Normas del fraude que ve este ayudante, ya parseadas (solo las vigentes). */
+  get reglasFraude(): any[] {
+    return this.miPista.split('\n').map(l => {
+      try { return JSON.parse(l); } catch { return null; }
+    }).filter(r => !!r);
+  }
+
+  /** Posición donde empieza la normativa B en la cinta (pieza indexada desde 0). */
+  get cambioFraude(): number {
+    return this.estadoJuego?.cambio ?? -1;
+  }
+
+  /** Forma de la pieza como clase visual. */
+  formaClase(p: any): string {
+    if (p.forma === 'cuadrada') return 'rounded-md';
+    if (p.forma === 'redonda') return 'rounded-full';
+    return '';
+  }
+
+  /** Color de la pieza como clase visual. */
+  colorClase(p: any): string {
+    switch (p.color) {
+      case 'azul': return 'bg-sky-500';
+      case 'rojo': return 'bg-rose-500';
+      case 'verde': return 'bg-emerald-500';
+      default: return 'bg-slate-500';
+    }
+  }
+
+  get etiquetaNorma(): string {
+    const c = this.estadoJuego?.cambio ?? 0;
+    return this.cambioNormaActivo ? `📘 Normativa B: piezas ${c + 1} en adelante` : `📗 Normativa A: piezas 1 a ${c}`;
+  }
+
+  get piezasFraude(): any[] {
+    return this.est?.turno?.panel?.piezas || [];
+  }
+
+  get idxFraude(): number {
+    return this.estadoJuego?.idx ?? 0;
+  }
+
+  get cambioNormaActivo(): boolean {
+    return this.est?.turno?.tipo === 'fraude' && (this.estadoJuego?.idx ?? 0) >= (this.estadoJuego?.cambio ?? Infinity);
+  }
+
+  get miPistaBase(): string {
     const t = this.est?.turno;
     if (!t) return '';
     const ayudantes = this.ayudantes(t.equipoId);
     if (ayudantes.length === 0) return t.pistas[0] || '';
     const i = ayudantes.indexOf(this.currentName || '');
-    return i >= 0 ? (t.pistas[i] || '') : '';
+    return i >= 0 && t.pistas.length ? (t.pistas[i % t.pistas.length] || '') : '';
   }
 
   /** Líneas del mapa que le tocan a este jugador (ya parseadas). */
@@ -741,6 +859,19 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   puedeEmpezar(): boolean {
     const t = this.est?.turno;
     return !!t && !t.iniciado && (this.esCapitan || this.isAdmin);
+  }
+
+  /** Decisión del capitán en el fraude: aceptar o rechazar la pieza que está en la cinta. */
+  async decidir(d: 'aceptar' | 'rechazar'): Promise<void> {
+    if (!this.sala || !this.currentName || !this.esCapitan) return;
+    this.error = null;
+    const antes = this.est?.turno?.errores ?? 0;
+    const ok = await this.salaService.accionJuegoMinijuego(this.sala.codigo, this.currentName, { decision: d });
+    if (!ok) {
+      this.error = 'No puedes decidir ahora.';
+      return;
+    }
+    if ((this.est?.turno?.errores ?? antes) > antes) this.error = 'Decisión incorrecta: se restan 5 segundos.';
   }
 
   async empezarTurno(): Promise<void> {

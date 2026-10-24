@@ -2130,8 +2130,10 @@ export class SalaService {
         sala.updatedAt = Date.now();
         return true;
       }
-      const res = aplicarAccionJuego(t.tipo, JSON.parse(t.estadoJ), accion);
+      const res = aplicarAccionJuego(t.tipo, JSON.parse(t.estadoJ), accion, t.solucion);
       if (res.ok) t.estadoJ = JSON.stringify(res.estado);
+      if (res.fallo) { t.errores += 1; t.finMs -= PENALIZACION_ERROR_MS; }
+      if (res.completado) { t.aciertos += 1; this.siguientePuzleMinijuego(sala, est); }
       sala.updatedAt = Date.now();
       return res.ok;
     });

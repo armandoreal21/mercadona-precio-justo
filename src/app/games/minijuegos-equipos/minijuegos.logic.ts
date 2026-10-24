@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -15,6 +15,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   pinta: '🎨 Pinta el patrón',
   mezcla: '🧪 Mezcla de colores',
   deslizante: '🧩 Puzle deslizante',
+  fraude: '🏭 Fraude en la cadena',
   balanza: '⚖️ Balanza'
 };
 
@@ -65,6 +66,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'mezcla': return generarMezcla(L, n);
     case 'deslizante': return generarDeslizante(L, n);
     case 'balanza': return generarBalanza(L, n);
+    case 'fraude': return generarFraude(L, n);
   }
 }
 
@@ -705,9 +707,178 @@ function generarBalanza(L: number, n: number): Puzle {
   };
 }
 
+// ------------------------------------------------------------------
+// Fraude en la cadena de montaje: el capitán decide (aceptar o rechazar) cada pieza de la cinta
+// según las normas que le dictan sus compañeros. Hay dos normativas: la A rige hasta la mitad de
+// la cinta y la B desde ahí hasta el final (cambio de normativa por pieza, no por tiempo).
+// Cada ayudante recibe fragmentos de ambas normativas, repartidos entre todos.
+// ------------------------------------------------------------------
+const FORMAS_FRAUDE = ['cuadrada', 'redonda', 'triangular'];
+const COLORES_FRAUDE = ['azul', 'rojo', 'verde'];
+
+interface PiezaFraude { forma: string; color: string; arandela: boolean; }
+type ReglaFraude = Partial<PiezaFraude>;
+
+function coincideRegla(r: ReglaFraude, p: PiezaFraude): boolean {
+  return (r.forma === undefined || r.forma === p.forma)
+    && (r.color === undefined || r.color === p.color)
+    && (r.arandela === undefined || r.arandela === p.arandela);
+}
+
+function textoRegla(r: ReglaFraude): string {
+  const condiciones: string[] = [];
+  if (r.forma !== undefined) condiciones.push(`de forma ${r.forma}`);
+  if (r.color !== undefined) condiciones.push(`de color ${r.color}`);
+  if (r.arandela !== undefined) condiciones.push(r.arandela ? 'con arandela' : 'sin arandela');
+  return `Se RECHAZAN las piezas ${condiciones.join(' y ')}.`;
+}
+
+function reglaAleatoria(): ReglaFraude {
+  const todas: ('forma' | 'color' | 'arandela')[] = ['forma', 'color', 'arandela'];
+  const r: ReglaFraude = {};
+  for (const c of barajar(todas).slice(0, 1 + rnd(2))) {
+    if (c === 'forma') r.forma = pick(FORMAS_FRAUDE);
+    else if (c === 'color') r.color = pick(COLORES_FRAUDE);
+    else r.arandela = Math.random() < 0.5;
+  }
+  return r;
+}
+
+// ------------------------------------------------------------------
+// Fraude v2: cada pieza tiene un veredicto fijo en su tramo (A o B), y cada veredicto queda
+// explicado por una regla real (ACEPTAR o RECHAZAR) que la cubre. Piezas del mismo tipo comparten
+// veredicto, así nunca hay contradicciones. Las pistas falsas son reglas que no coinciden con
+// ninguna pieza de la cinta: parecen normas, pero no cambian la solución.
+// ------------------------------------------------------------------
+type VeredictoFraude = 'R' | 'A';
+interface ReglaFraudeV2 extends Partial<PiezaFraude> { v: VeredictoFraude; }
+
+/** Todas las reglas posibles de 1 a 3 atributos. */
+function todasLasReglas(): Partial<PiezaFraude>[] {
+  const res: Partial<PiezaFraude>[] = [];
+  for (const f of [undefined, ...FORMAS_FRAUDE]) {
+    for (const c of [undefined, ...COLORES_FRAUDE]) {
+      for (const a of [undefined, true, false]) {
+        const r: Partial<PiezaFraude> = {};
+        if (f !== undefined) r.forma = f;
+        if (c !== undefined) r.color = c;
+        if (a !== undefined) r.arandela = a;
+        if (Object.keys(r).length > 0) res.push(r);
+      }
+    }
+  }
+  return res;
+}
+
+function generarFraude(L: number, n: number): Puzle {
+  const P = Math.min(4 + L, 9);
+  const cambio = Math.max(1, Math.floor(P / 2));
+  const tramos: [number, number][] = [[0, cambio], [cambio, P]];
+  const piezas: PiezaFraude[] = Array.from({ length: P }, () => ({
+    forma: pick(FORMAS_FRAUDE), color: pick(COLORES_FRAUDE), arandela: Math.random() < 0.5
+  }));
+
+  // Mismo tipo de pieza, mismo veredicto
+  const veredictoPorTipo = new Map<string, VeredictoFraude>();
+  const veredictos: VeredictoFraude[] = piezas.map(p => {
+    const clave = `${p.forma}|${p.color}|${p.arandela}`;
+    if (!veredictoPorTipo.has(clave)) veredictoPorTipo.set(clave, Math.random() < 0.5 ? 'R' : 'A');
+    return veredictoPorTipo.get(clave)!;
+  });
+
+  // Una regla es válida para un tramo si no contradice el veredicto de ninguna pieza de ese tramo
+  const consistente = (r: Partial<PiezaFraude>, v: VeredictoFraude, seg: number[]): boolean =>
+    seg.every(i => !coincideRegla(r, piezas[i]) || veredictos[i] === v);
+
+  const normas: ReglaFraudeV2[][] = [[], []];
+  tramos.forEach(([ini, fin], s) => {
+    const seg = Array.from({ length: fin - ini }, (_, k) => ini + k);
+    const lista = normas[s];
+    // 1) Cada pieza del tramo queda explicada por una regla de su propio veredicto
+    for (const i of seg) {
+      const p = piezas[i];
+      const v = veredictos[i];
+      if (lista.some(r => r.v === v && coincideRegla(r, p))) continue;
+      const candidatas = todasLasReglas().filter(r => coincideRegla(r, p) && consistente(r, v, seg));
+      lista.push({ ...pick(candidatas), v });
+    }
+    // 2) Reglas extra para que cada ayudante reciba al menos una real de cada tramo
+    const minimo = Math.max(2, n);
+    while (lista.length < minimo) {
+      const i = pick(seg);
+      const candidatas = todasLasReglas().filter(r => coincideRegla(r, piezas[i]) && consistente(r, veredictos[i], seg));
+      lista.push({ ...pick(candidatas), v: veredictos[i] });
+    }
+  });
+
+  // Pistas falsas: reglas que no coinciden con ninguna pieza de la cinta
+  const falsas = todasLasReglas().filter(r => !piezas.some(p => coincideRegla(r, p)));
+  const porAyudante: string[][] = Array.from({ length: n }, () => []);
+  normas[0].forEach((r, j) => porAyudante[j % n].push(JSON.stringify({ n: 'A', ...r })));
+  normas[1].forEach((r, j) => porAyudante[j % n].push(JSON.stringify({ n: 'B', ...r })));
+  for (let i = 0; i < n; i++) {
+    const f = pick(falsas);
+    porAyudante[i].push(JSON.stringify({ n: Math.random() < 0.5 ? 'A' : 'B', ...f, v: Math.random() < 0.5 ? 'R' : 'A' }));
+  }
+
+  return {
+    panel: { piezas, cambio },
+    pistas: porAyudante.map(l => barajar(l).join('\n')),
+    solucion: veredictos.map(v => v === 'R'),
+    estadoInicial: { idx: 0, cambio }
+  };
+}
+
+function generarFraudeV1(L: number, n: number): Puzle {
+  const P = Math.min(4 + L, 9);
+  const cambio = Math.max(1, Math.floor(P / 2));
+  const numReglas = Math.max(2, n);
+  let piezas: PiezaFraude[] = [];
+  let normaA: ReglaFraude[] = [];
+  let normaB: ReglaFraude[] = [];
+  let solucion: boolean[] = [];
+  for (let intento = 0; intento < 200; intento++) {
+    normaA = Array.from({ length: numReglas }, () => reglaAleatoria());
+    normaB = Array.from({ length: numReglas }, () => reglaAleatoria());
+    piezas = Array.from({ length: P }, () => ({
+      forma: pick(FORMAS_FRAUDE), color: pick(COLORES_FRAUDE), arandela: Math.random() < 0.5
+    }));
+    // true = rechazar. Cada pieza se juzga con la normativa vigente cuando llega a la cinta.
+    solucion = piezas.map((p, i) => (i < cambio ? normaA : normaB).some(r => coincideRegla(r, p)));
+    const hayRechazoA = solucion.slice(0, cambio).some(x => x);
+    const hayRechazoB = solucion.slice(cambio).some(x => x);
+    if (hayRechazoA && hayRechazoB && solucion.some(x => !x)) break;
+  }
+  // Cada ayudante recibe al menos una regla real de cada normativa y, ademas, una pista falsa
+  // (una regla que no cambia la solucion). Nadie se queda sin pistas, tenga o no normas reales.
+  const porAyudante: string[][] = Array.from({ length: n }, () => []);
+  normaA.forEach((r, j) => porAyudante[j % n].push(JSON.stringify({ n: 'A', ...r })));
+  normaB.forEach((r, j) => porAyudante[j % n].push(JSON.stringify({ n: 'B', ...r })));
+  for (let i = 0; i < n; i++) {
+    porAyudante[i].push(JSON.stringify({ n: Math.random() < 0.5 ? 'A' : 'B', ...reglaAleatoria() }));
+  }
+  return {
+    panel: { piezas, cambio },
+    pistas: porAyudante.map(l => barajar(l).join('\n')),
+    solucion,
+    estadoInicial: { idx: 0, cambio }
+  };
+}
+
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */
-export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any): { estado: any; ok: boolean } {
+export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any, solucion?: any): { estado: any; ok: boolean; fallo?: boolean; completado?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
+  if (tipo === 'fraude') {
+    const i = e.idx;
+    const decision = accion?.decision;
+    if ((decision !== 'aceptar' && decision !== 'rechazar') || !Array.isArray(solucion) || i >= solucion.length) {
+      return { estado: e, ok: false };
+    }
+    const acierto = (decision === 'rechazar') === (solucion[i] === true);
+    if (!acierto) return { estado: e, ok: true, fallo: true };
+    e.idx = i + 1;
+    return { estado: e, ok: true, completado: e.idx >= solucion.length };
+  }
   switch (tipo) {
     case 'torres': {
       const de = accion.de, a = accion.a;
@@ -774,6 +945,7 @@ export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: st
 
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
+  if (tipo === 'fraude') return false; // se decide con Aceptar / Rechazar, no con respuesta escrita
   const texto = (respuesta || '').trim();
   switch (tipo) {
     case 'secuencia':
