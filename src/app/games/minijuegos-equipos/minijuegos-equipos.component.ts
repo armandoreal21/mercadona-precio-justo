@@ -25,6 +25,8 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   fraude: { resumen: 'Pasan piezas por la cinta. Sin ver las especificaciones, decide si cada pieza se ACEPTA o se RECHAZA según las normas que os dictan vuestros compañeros. Las normas cambian a mitad de cinta.', ejemplo: 'Ejemplo: "Se RECHAZAN las piezas de forma cuadrada y con arandela." Pieza cuadrada con arandela → Rechazar.' },
   reactor: { resumen: 'El reactor se está quedando sin presión. El capitán ve las alertas; cada persona tiene sus propios controles y hay que girarlos a la posición correcta. Cada alerta necesita dos controles de personas distintas.', ejemplo: 'Ejemplo: "Fuga en Refrigeración" necesita la Válvula 2 en la posición 3 y el Interruptor 5 en la posición 1.' },
   puntero: { resumen: 'Hay que llevar el cursor láser a la diana antes de que acabe el tiempo. El capitán ve el mapa; cada persona tiene uno o varios botones, y los controles rotan tras cada acierto.', ejemplo: 'Ejemplo: "¡X a la derecha! ¡Y arriba! ¡Cuidado con la mina!"' },
+  semaforo: { resumen: 'Hay un cruce con coches que llegan de cuatro calles. Cada persona controla un semáforo y el tráfico avanza con cada cambio de luz. Si dos coches se cruzan sin verde, chocan.', ejemplo: 'Ejemplo: "¡Norte, verde! ¡Sur, rojo, que viene uno del Este!"' },
+  barco: { resumen: 'Un barco avanza por un canal con rocas. Los remos de avance lo llevan una fila más abajo; los de atrás, una fila más arriba. Una roca hace perder 5 segundos; la orilla solo frena el barco. Llegar al puerto es el acierto.', ejemplo: 'Ejemplo: "¡Derecha! ¡Izquierda! ¡Cuidado, roca a la derecha!"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -331,6 +333,51 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div *ngFor="let h of punteroTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.rol }}: <b class="text-white">{{ h.nombre }}</b></div>
               </div>
             </div>
+            <div *ngSwitchCase="'semaforo'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el cruce. Dile a cada persona qué luz cambiar y cuándo.' : 'El capitán ve el cruce y os dirige.' }}</div>
+              <div class="grid grid-cols-3 gap-2 w-64 mx-auto text-center text-xs">
+                <div></div>
+                <div class="bg-slate-950 rounded-xl p-2 border border-slate-700">
+                  <div class="font-black text-white">Norte</div>
+                  <span class="inline-block w-5 h-5 rounded-full my-1" [ngClass]="colorLuz(semaforoLuces[0])"></span>
+                  <div class="text-slate-300">🚗 {{ semaforoColas[0] }}</div>
+                </div>
+                <div></div>
+                <div class="bg-slate-950 rounded-xl p-2 border border-slate-700">
+                  <div class="font-black text-white">Oeste</div>
+                  <span class="inline-block w-5 h-5 rounded-full my-1" [ngClass]="colorLuz(semaforoLuces[3])"></span>
+                  <div class="text-slate-300">🚗 {{ semaforoColas[3] }}</div>
+                </div>
+                <div class="bg-slate-800 rounded-xl border-2 border-dashed border-slate-600 flex items-center justify-center text-slate-500 min-h-[5rem]">cruce</div>
+                <div class="bg-slate-950 rounded-xl p-2 border border-slate-700">
+                  <div class="font-black text-white">Este</div>
+                  <span class="inline-block w-5 h-5 rounded-full my-1" [ngClass]="colorLuz(semaforoLuces[2])"></span>
+                  <div class="text-slate-300">🚗 {{ semaforoColas[2] }}</div>
+                </div>
+                <div></div>
+                <div class="bg-slate-950 rounded-xl p-2 border border-slate-700">
+                  <div class="font-black text-white">Sur</div>
+                  <span class="inline-block w-5 h-5 rounded-full my-1" [ngClass]="colorLuz(semaforoLuces[1])"></span>
+                  <div class="text-slate-300">🚗 {{ semaforoColas[1] }}</div>
+                </div>
+                <div></div>
+              </div>
+              <div class="text-xs text-slate-300 text-center">Pasados: <b>{{ semaforoPasados }}</b>/{{ semaforoTotal }} · Choques: <b>{{ semaforoChoques }}</b></div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div *ngFor="let h of semaforoTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.aprox }}: <b class="text-white">{{ h.nombre }}</b></div>
+              </div>
+            </div>
+            <div *ngSwitchCase="'barco'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el canal. Dile a cada persona cuándo remar a babor o a estribor.' : 'El capitán ve el canal y os dirige.' }}</div>
+              <div class="grid gap-1 mx-auto" [style.grid-template-columns]="'repeat(' + barcoW + ', 2.5rem)'">
+                <div *ngFor="let c of barcoCeldas" class="w-10 h-10 rounded-md flex items-center justify-center text-lg border" [ngClass]="c.clase">{{ c.icono }}</div>
+              </div>
+              <div class="text-xs text-slate-300 text-center">Avance: <b>{{ barcoProgreso }}%</b> · Bloqueos: <b>{{ barcoBloqueos }}</b></div>
+              <div *ngIf="barcoAviso" class="text-xs font-black text-rose-300 text-center">{{ barcoAviso }}</div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div *ngFor="let h of barcoTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.remo }}: <b class="text-white">{{ h.nombre }}</b></div>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -351,7 +398,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -438,6 +485,21 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
 
+            <div *ngIf="t.tipo === 'barco' && misRemos.length" class="space-y-3">
+              <div class="text-xs text-slate-400">Tu remo. Rema cuando tu capitán te lo pida.</div>
+              <div *ngFor="let r of misRemos; trackBy: trackRemo" class="bg-slate-950 rounded-xl p-3 border border-slate-700">
+                <button (click)="remar(r.lado)" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-4 py-3 rounded-lg text-sm">{{ r.texto }}</button>
+              </div>
+            </div>
+
+            <div *ngIf="t.tipo === 'semaforo' && misAproximaciones.length" class="space-y-3">
+              <div class="text-xs text-slate-400">Tu semáforo. Cámbialo cuando tu capitán te lo pida.</div>
+              <div *ngFor="let a of misAproximaciones; trackBy: trackIdx" class="bg-slate-950 rounded-xl p-3 border border-slate-700 flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full" [ngClass]="colorLuz(semaforoLuces[a])"></span>
+                <button (click)="cambiarSemaforo(a)" class="ml-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-2 rounded-lg text-sm">Cambiar luz</button>
+              </div>
+            </div>
+
             <div *ngIf="t.tipo === 'puntero' && misRolesPuntero.length" class="space-y-3">
               <div class="text-xs text-slate-400">Tu control. Mueve solo cuando tu capitán te lo pida.</div>
               <div *ngFor="let r of misRolesPuntero; trackBy: trackRolId" class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-2">
@@ -452,7 +514,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -762,6 +824,153 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     this.error = null;
     const ok = await this.salaService.accionPunteroMinijuego(this.sala.codigo, this.currentName, mov);
     if (!ok) this.error = 'Ese control no es tuyo ahora.';
+  }
+
+/** Canal del barco: ancho, filas y rocas. */
+  get barcoW(): number {
+    return this.estadoJuego?.W ?? 5;
+  }
+
+  get barcoH(): number {
+    return this.estadoJuego?.H ?? 5;
+  }
+
+  get barcoBloqueos(): number {
+    return this.estadoJuego?.bloqueos ?? 0;
+  }
+
+  get barcoProgreso(): number {
+    const y = this.estadoJuego?.barco?.y ?? 0;
+    return Math.round((y / Math.max(1, this.barcoH - 1)) * 100);
+  }
+
+  get barcoCeldas(): { icono: string; clase: string }[] {
+    const s = this.estadoJuego;
+    const W = this.barcoW;
+    const H = this.barcoH;
+    const celdas: { icono: string; clase: string }[] = [];
+    for (let y = 0; y < H; y++) {
+      for (let x = 0; x < W; x++) {
+        const barco = s?.barco?.x === x && s?.barco?.y === y;
+        const roca = (s?.rocas || []).some((r: any) => r.x === x && r.y === y);
+        const puerto = y === H - 1;
+        let icono = '';
+        if (barco) icono = '🚤';
+        else if (roca) icono = '🪨';
+        else if (puerto) icono = '⚓';
+        const g = s?.golpe;
+        const golpeRoca = g?.tipo === 'roca' && g.x === x && g.y === y;
+        const golpeOrilla = g?.tipo === 'orilla' && ((g.lado === 'izquierda' && x === 0) || (g.lado === 'derecha' && x === W - 1) || (g.lado === 'arriba' && y === 0) || (g.lado === 'abajo' && y === H - 1));
+        if (golpeRoca) icono = '💥';
+        let clase = roca ? 'bg-slate-700 border-slate-600' : 'bg-sky-900/60 border-sky-800';
+        if (golpeRoca) clase = 'bg-rose-900/70 border-rose-500 animate-pulse';
+        if (golpeOrilla) clase = 'bg-rose-900/50 border-rose-500 animate-pulse';
+        celdas.push({ icono, clase });
+      }
+    }
+    return celdas;
+  }
+
+  /** Aviso del último golpe del barco. */
+  get barcoAviso(): string {
+    const g = this.estadoJuego?.golpe;
+    return g?.tipo === 'roca' ? '💥 ¡Roca! -5 s' : g?.tipo === 'orilla' ? '🧱 Orilla: el barco se frena' : '';
+  }
+
+  readonly barcoRemos = [
+    { lado: 'derecha', nombre: 'Derecha', texto: '🛶 Derecha' },
+    { lado: 'izquierda', nombre: 'Izquierda', texto: '🛶 Izquierda' },
+    { lado: 'izquierda_atras', nombre: 'Izquierda atrás', texto: '🔙 Izquierda atrás' },
+    { lado: 'derecha_atras', nombre: 'Derecha atrás', texto: '🔙 Derecha atrás' }
+  ];
+
+  /** Quién tiene cada remo ahora mismo (lo ve todo el equipo). */
+  get barcoTitulares(): { remo: string; nombre: string }[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'barco') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    return this.barcoRemos.map((r, i) => ({ remo: r.nombre, nombre: duenos[((s.rot || 0) + i) % duenos.length] || '—' }));
+  }
+
+  /** Remos que controla este jugador ahora mismo. */
+  get misRemos(): { lado: string; texto: string }[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'barco') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    const yo = duenos.indexOf(this.currentName || '');
+    if (yo < 0) return [];
+    return this.barcoRemos.filter((r, i) => ((s.rot || 0) + i) % duenos.length === yo);
+  }
+
+  trackRemo(_: number, r: any): string {
+    return r.lado;
+  }
+
+  async remar(lado: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionBarcoMinijuego(this.sala.codigo, this.currentName, lado);
+    if (!ok) this.error = 'Ese remo no es tuyo ahora.';
+  }
+
+/** Aproximaciones del cruce, en el mismo orden que el estado (0 Norte, 1 Sur, 2 Este, 3 Oeste). */
+  readonly semaforoAprox = ['Norte', 'Sur', 'Este', 'Oeste'];
+
+  get semaforoLuces(): string[] {
+    return this.estadoJuego?.luces || [];
+  }
+
+  get semaforoColas(): number[] {
+    return this.estadoJuego?.colas || [0, 0, 0, 0];
+  }
+
+  get semaforoPasados(): number {
+    return this.estadoJuego?.pasados ?? 0;
+  }
+
+  get semaforoChoques(): number {
+    return this.estadoJuego?.choques ?? 0;
+  }
+
+  get semaforoTotal(): number {
+    return this.est?.turno?.panel?.total ?? 0;
+  }
+
+  /** Quién tiene cada semáforo ahora mismo (lo ve todo el equipo). */
+  get semaforoTitulares(): { aprox: string; nombre: string }[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'semaforo') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    return this.semaforoAprox.map((aprox, a) => ({ aprox, nombre: duenos[((s.rot || 0) + a) % duenos.length] || '—' }));
+  }
+
+  /** Semáforos que controla este jugador ahora mismo. */
+  get misAproximaciones(): number[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'semaforo') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    const yo = duenos.indexOf(this.currentName || '');
+    if (yo < 0) return [];
+    return [0, 1, 2, 3].filter(a => ((s.rot || 0) + a) % duenos.length === yo);
+  }
+
+  colorLuz(l: string | undefined): string {
+    return l === 'verde' ? 'bg-emerald-500' : l === 'ambar' ? 'bg-amber-400' : 'bg-rose-500';
+  }
+
+  trackIdx(_: number, a: number): number {
+    return a;
+  }
+
+  async cambiarSemaforo(a: number): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionSemaforoMinijuego(this.sala.codigo, this.currentName, a);
+    if (!ok) this.error = 'Ese semáforo no es tuyo ahora.';
   }
 
   /** Posición donde empieza la normativa B en la cinta (pieza indexada desde 0). */

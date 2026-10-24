@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -18,6 +18,8 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   fraude: '🏭 Fraude en la cadena',
   reactor: '☢️ Reactor en peligro',
   puntero: '🎯 Puntero láser',
+  semaforo: '🚦 Semáforo de cruce',
+  barco: '🚤 Barco por el canal',
   balanza: '⚖️ Balanza'
 };
 
@@ -71,6 +73,8 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'fraude': return generarFraude(L, n);
     case 'reactor': return generarReactor(L, n);
     case 'puntero': return generarPuntero(L, n);
+    case 'semaforo': return generarSemaforo(L, n);
+    case 'barco': return generarBarco(L, n);
   }
 }
 
@@ -1163,6 +1167,139 @@ export function aplicarAccionPunteroAntigua(estado: any, mov: string, owner: num
   return { estado: e, ok: true, completado: e.cursor.x === e.target.x && e.cursor.y === e.target.y };
 }
 
+// ------------------------------------------------------------------
+// Semáforo de cruce: 4 aproximaciones (0 Norte, 1 Sur, 2 Este, 3 Oeste).
+// Cada cambio de luz hace avanzar el tráfico un paso. Un coche en verde cruza.
+// Si un coche sin verde coincide con uno que cruza del eje contrario, choca (-5 s y desaparece).
+// Si los dos ejes cruzan a la vez, choca el horizontal.
+// ------------------------------------------------------------------
+const ORDEN_LUZ = ['rojo', 'verde', 'ambar'];
+
+function generarSemaforo(L: number, n: number): Puzle {
+  const K = Math.min(6 + 2 * (L - 1), 14);
+  const llegadas = Array.from({ length: K }, () => rnd(4));
+  return {
+    panel: { total: K },
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { luces: ['rojo', 'rojo', 'rojo', 'rojo'], colas: [0, 0, 0, 0], pendientes: llegadas, porPaso: L >= 3 ? 2 : 1, pasados: 0, choques: 0, rot: 0 }
+  };
+}
+
+/** Cambia una luz y avanza el tráfico un paso. Solo puede cambiarla la persona que tiene ese semáforo. */
+export function aplicarSemaforo(estado: any, a: number, owner: number, nDuenos: number): { estado: any; ok: boolean; completado?: boolean; choque?: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  if (a < 0 || a > 3 || ((e.rot || 0) + a) % nDuenos !== owner) return { estado: e, ok: false };
+  e.luces[a] = ORDEN_LUZ[(ORDEN_LUZ.indexOf(e.luces[a]) + 1) % ORDEN_LUZ.length];
+  for (let i = 0; i < e.porPaso && e.pendientes.length; i++) e.colas[e.pendientes.shift()]++;
+  const eje = (x: number) => (x < 2 ? 0 : 1);
+  let choque = false;
+  const cruza = [0, 1, 2, 3].map(x => e.colas[x] > 0 && e.luces[x] === 'verde');
+  // 1) Coches sin verde que coinciden con uno que cruza del eje contrario: chocan y desaparecen
+  for (let x = 0; x < 4; x++) {
+    if (e.colas[x] > 0 && !cruza[x] && [0, 1, 2, 3].some(y => cruza[y] && eje(y) !== eje(x))) {
+      e.colas[x]--;
+      e.choques++;
+      choque = true;
+    }
+  }
+  // 2) Los dos ejes cruzando a la vez: choca el horizontal
+  if ((cruza[0] || cruza[1]) && (cruza[2] || cruza[3])) {
+    const h = cruza[2] ? 2 : 3;
+    e.colas[h]--;
+    e.choques++;
+    choque = true;
+    cruza[h] = false;
+  }
+  // 3) Los que cruzan, pasan
+  for (let x = 0; x < 4; x++) {
+    if (cruza[x]) {
+      e.colas[x]--;
+      e.pasados++;
+    }
+  }
+  const completado = e.pendientes.length === 0 && e.colas.every((c: number) => c === 0);
+  return { estado: e, ok: true, completado, choque };
+}
+
+// ------------------------------------------------------------------
+// Barco por el canal: cada remada avanza una fila. Babor empuja el barco a la derecha y
+// estribor, a la izquierda. Una roca o una orilla bloquea la remada (-5 s). Llegar al puerto es el acierto.
+// ------------------------------------------------------------------
+/** Remos del barco: los de avance bajan una fila; los de atrás, una fila hacia arriba. dx = columna que se mueve. */
+const BARCO_REMOS = [
+  { lado: 'derecha', dx: 1, dy: 1 },
+  { lado: 'izquierda', dx: -1, dy: 1 },
+  { lado: 'izquierda_atras', dx: -1, dy: -1 },
+  { lado: 'derecha_atras', dx: 1, dy: -1 }
+];
+
+function generarBarco(L: number, n: number): Puzle {
+  const W = 5;
+  const H = Math.min(5 + L, 9);
+  const densidad = Math.min(0.08 + 0.04 * L, 0.3);
+  const ini = { x: 2, y: 0 };
+  for (let intento = 0; intento < 400; intento++) {
+    const rocas: { x: number; y: number }[] = [];
+    for (let y = 1; y <= H - 2; y++) for (let x = 0; x < W; x++) if (Math.random() < densidad) rocas.push({ x, y });
+    if (!caminoBarco(W, H, ini.x, rocas)) continue;
+    return {
+      panel: { W, H },
+      pistas: Array.from({ length: n }, () => ''),
+      solucion: null,
+      estadoInicial: { W, H, barco: ini, rocas, rot: 0, bloqueos: 0 }
+    };
+  }
+  return {
+    panel: { W, H },
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { W, H, barco: ini, rocas: [], rot: 0, bloqueos: 0 }
+  };
+}
+
+/** ¿Existe una ruta del barco hasta el puerto sin pisar rocas ni salir del canal? */
+function caminoBarco(W: number, H: number, x0: number, rocas: { x: number; y: number }[]): boolean {
+  let alcanzables: number[] = [x0];
+  for (let y = 1; y < H; y++) {
+    const siguientes = new Set<number>();
+    for (const x of alcanzables) {
+      for (const nx of [x - 1, x + 1]) {
+        if (nx < 0 || nx >= W || rocas.some(r => r.x === nx && r.y === y)) continue;
+        siguientes.add(nx);
+      }
+    }
+    if (siguientes.size === 0) return false;
+    alcanzables = [...siguientes];
+  }
+  return true;
+}
+
+/** Una remada de babor (derecha) o estribor (izquierda). Solo puede remar la persona que tiene ese remo. */
+export function aplicarBarco(estado: any, lado: string, owner: number, nDuenos: number): { estado: any; ok: boolean; bloqueo?: boolean; completado?: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  const rol = BARCO_REMOS.findIndex(r => r.lado === lado);
+  if (rol < 0 || ((e.rot || 0) + rol) % nDuenos !== owner) return { estado: e, ok: false };
+  const remo = BARCO_REMOS[rol];
+  const nx = e.barco.x + remo.dx;
+  const ny = e.barco.y + remo.dy;
+  const orilla = nx < 0 || nx >= e.W || ny < 0 || ny >= e.H;
+  const roca = (e.rocas || []).some((r: any) => r.x === nx && r.y === ny);
+  e.golpe = null;
+  if (orilla) {
+    const lado = nx < 0 ? 'izquierda' : nx >= e.W ? 'derecha' : ny < 0 ? 'arriba' : 'abajo';
+    e.golpe = { tipo: 'orilla', lado };
+    return { estado: e, ok: true, bloqueo: false, completado: false };
+  }
+  if (roca) {
+    e.bloqueos += 1;
+    e.golpe = { tipo: 'roca', x: nx, y: ny };
+    return { estado: e, ok: true, bloqueo: true, completado: false };
+  }
+  e.barco = { x: nx, y: ny };
+  return { estado: e, ok: true, bloqueo: false, completado: ny === e.H - 1 };
+}
+
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */
 export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any, solucion?: any): { estado: any; ok: boolean; fallo?: boolean; completado?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
@@ -1243,7 +1380,7 @@ export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: st
 
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
-  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero') return false; // se decide con botones, no con respuesta escrita
+  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco') return false; // se decide con botones, no con respuesta escrita
   const texto = (respuesta || '').trim();
   switch (tipo) {
     case 'secuencia':
