@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sala, EstadoMinijuegos } from '../../core/models/sala.model';
 import { SalaService } from '../../sala.service';
-import { NOMBRE_MINIJUEGO, SEG_TURNO_DEFAULT, TIPOS_MINIJUEGO } from './minijuegos.logic';
+import { NOMBRE_MINIJUEGO, SEG_TURNO_DEFAULT, TIPOS_MINIJUEGO, PROTOCOLO_REACTOR } from './minijuegos.logic';
 
 interface LineaMapa { eje: 'fila' | 'columna'; indice: number; muros: boolean[]; }
 interface LineaMetro { tipo: 'linea' | 'hecho'; color?: string; estaciones?: string[]; texto?: string; cerrada?: boolean; }
@@ -299,7 +299,10 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                        [ngClass]="a.resuelta ? 'border-emerald-500 bg-emerald-950/40' : 'border-rose-500 bg-rose-950/40 animate-pulse'">
                     <div>
                       <div class="text-sm font-bold text-white">{{ a.resuelta ? '✅' : '🚨' }} {{ a.texto }}</div>
-                      <div class="text-[11px] text-slate-300">Necesita {{ a.total }} controles · {{ a.listos }}/{{ a.total }} bien</div>
+                      <div class="text-[11px] text-slate-300 space-y-0.5">
+                        <div *ngFor="let r of a.chuleta" [ngClass]="r.ok ? 'text-emerald-300' : 'text-amber-200'">{{ r.ok ? '✓' : '○' }} {{ r.tipo }} → posición <b>{{ r.pos }}</b></div>
+                        <div class="text-slate-400">{{ a.listos }}/{{ a.total }} bien · activa hace {{ a.hace }} s</div>
+                      </div>
                     </div>
                     <span class="text-xs font-black" [ngClass]="a.resuelta ? 'text-emerald-300' : 'text-rose-300'">{{ a.resuelta ? 'RESUELTA' : 'ACTIVA' }}</span>
                   </div>
@@ -401,21 +404,19 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
 
             <div *ngIf="t.tipo === 'reactor' && miOwner >= 0" class="space-y-3">
-              <div class="text-xs text-slate-400">Tus controles. Gira cada uno hasta la posición que te indique tu pista.</div>
+              <div class="text-xs text-slate-400">Tus controles. Tu capitán te dirá a qué posición ponerlo. Gira hasta esa posición.</div>
               <div *ngFor="let c of controlesMios" class="flex flex-wrap items-center gap-3 bg-slate-950 rounded-xl px-3 py-2 border border-slate-700">
                 <div>
                   <div class="text-sm font-black text-white">{{ c.icono }} {{ c.nombre }}</div>
-                  <div *ngIf="pistaDe(c) as p" class="text-[11px] text-slate-300">Sirve para: <b>{{ p.alerta }}</b> · posición objetivo <b>{{ p.pos }}</b></div>
+                  <div *ngIf="c.alerta" class="text-[11px] text-cyan-200">Pertenece a: <b>{{ c.alerta }}</b></div>
+                  
+                  
                 </div>
                 <div class="flex gap-1">
                   <span *ngFor="let k of posiciones" class="w-6 h-6 rounded-full text-xs font-black flex items-center justify-center border-2"
-                        [ngClass]="k === c.pos ? 'bg-cyan-400 text-slate-950 border-cyan-300' : (pistaDe(c)?.pos - 1 === k ? 'border-yellow-400 text-yellow-300' : 'border-slate-700 text-slate-500')">{{ k + 1 }}</span>
+                        [ngClass]="k === c.pos ? 'bg-cyan-400 text-slate-950 border-cyan-300' : 'border-slate-600 text-slate-300'">{{ k + 1 }}</span>
                 </div>
                 <button (click)="tocarControl(c.id)" class="ml-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-1 rounded-lg text-xs uppercase">↻ Girar</button>
-              </div>
-              <div class="text-xs text-slate-400 pt-1">Tus pistas:</div>
-              <div *ngFor="let p of pistasReactorMias" class="text-sm text-slate-200 bg-slate-800 rounded-lg px-3 py-2">
-                {{ p.nombre }} → posición <b>{{ p.pos }}</b> para: <b>{{ p.alerta }}</b>
               </div>
             </div>
 
@@ -592,6 +593,10 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       resuelta: a.resuelta,
       activa: transcurrido >= a.aparecerEn,
       faltan: Math.max(0, Math.ceil(a.aparecerEn - transcurrido)),
+      hace: Math.max(0, Math.floor(transcurrido - a.aparecerEn)),
+      chuleta: (a.reqs || []).map((r: any) => { const c = (st?.controles || []).find((x: any) => x.id === r.control); return { tipo: c?.tipo, pos: r.pos + 1, ok: c?.pos === r.pos }; }),
+      requisito: (() => { const p = PROTOCOLO_REACTOR.find(x => x.tipo === a.tipo); return p ? `${p.icono} ${(a.reqs || []).length} ${p.control}${(a.reqs || []).length > 1 ? 's' : ''} en la posición ${p.pos}` : ''; })(),
+      tipo: a.tipo,
       total: (a.reqs || []).length,
       listos: (a.reqs || []).filter((r: any) => (st?.controles || []).find((c: any) => c.id === r.control)?.pos === r.pos).length
     }));
@@ -600,6 +605,21 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 /** Pista que corresponde a un control concreto de este ayudante (qué alerta sirve y en qué posición). */
   pistaDe(c: any): any {
     return this.pistasReactorMias.find(p => p.control === c.id) || null;
+  }
+
+/** Todas las pistas que hablan de un control concreto de este ayudante. */
+  pistasDe(c: any): any[] {
+    return this.pistasReactorMias.filter(p => p.control === c.id);
+  }
+
+  /** Una posición está descartada si alguna pista de ese control dice que NO está ahí. */
+  excluidaDe(c: any, k: number): boolean {
+    return this.pistasDe(c).some(p => p.excluye === k + 1);
+  }
+
+/** Protocolo de seguridad (visible para todos). */
+  get protocolo(): any[] {
+    return PROTOCOLO_REACTOR;
   }
 
   async tocarControl(id: string): Promise<void> {

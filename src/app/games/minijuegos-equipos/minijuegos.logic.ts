@@ -881,10 +881,117 @@ const CONTROLES_REACTOR = [
   { nombre: 'Compuerta', icono: '🚪' }, { nombre: 'Regulador', icono: '🎚️' }, { nombre: 'Purga', icono: '💧' }
 ];
 
-interface ControlReactor { id: string; nombre: string; icono: string; owner: number; pos: number; real: boolean; }
-interface AlertaReactor { id: string; texto: string; aparecerEn: number; resuelta: boolean; reqs: { control: string; pos: number }[]; }
+interface ControlReactor { id: string; nombre: string; icono: string; owner: number; pos: number; real: boolean; tipo?: string; alerta?: string; }
+interface AlertaReactor { id: string; texto: string; aparecerEn: number; resuelta: boolean; reqs: { control: string; pos: number }[]; tipo?: string; }
 
+/** Protocolo de seguridad: cada tipo de alerta pide controles de un tipo concreto en una posición fija. Es visible para todos. */
+export const PROTOCOLO_REACTOR: { tipo: string; problema: string; control: string; pos: number; icono: string; motivo: string }[] = [
+  { tipo: 'Temperatura', problema: 'Sobrecalentamiento en', control: 'Válvula', pos: 3, icono: '🔥', motivo: 'abrir el refrigerante al máximo' },
+  { tipo: 'Presión', problema: 'Pérdida de presión en', control: 'Válvula', pos: 1, icono: '💧', motivo: 'cerrar para retener la presión' },
+  { tipo: 'Fuga', problema: 'Fuga en', control: 'Compuerta', pos: 2, icono: '🌊', motivo: 'sellar el conducto' },
+  { tipo: 'Eléctrico', problema: 'Cortocircuito en', control: 'Interruptor', pos: 1, icono: '⚡', motivo: 'cortar la corriente' }
+];
+const TIPOS_CONTROL_REACTOR = ['Válvula', 'Compuerta', 'Interruptor', 'Palanca'];
+const ICONO_CONTROL_REACTOR: Record<string, string> = { 'Válvula': '🔧', 'Compuerta': '🚪', 'Interruptor': '🔘', 'Palanca': '🕹️' };
+
+// Chuleta: cada alerta pide varios controles, de tipos distintos y en posiciones concretas.
+// Esa información solo la tiene el capitán. Cada ayudante ve su control y espera su orden.
 function generarReactor(L: number, n: number): Puzle {
+  const E = 2 + (L >= 3 ? 1 : 0);                             // controles que pide cada alerta
+  const porNivel = Math.min(1 + Math.floor((L - 1) / 2), 3);  // alertas a la vez
+  const A = Math.min(4, Math.max(Math.ceil(n / E), porNivel));
+  const modulos = barajar(MODULOS_REACTOR);
+  const problemas = barajar(PROBLEMAS_REACTOR);
+  const alertas: AlertaReactor[] = Array.from({ length: A }, (_, j) => ({
+    id: `A${j + 1}`,
+    texto: `${problemas[j % problemas.length]} ${modulos[j % modulos.length]}`,
+    aparecerEn: j * 12,
+    resuelta: false,
+    reqs: []
+  }));
+
+  const controles: ControlReactor[] = [];
+  const reales = A * E;
+  // Cada alerta pide tipos distintos: un solo tipo de control por alerta (una sola compuerta, una sola válvula...)
+  const tiposPorAlerta = alertas.map(() => barajar(TIPOS_CONTROL_REACTOR).slice(0, E));
+  for (let i = 0; i < reales; i++) {
+    const alerta = alertas[Math.floor(i / E)];
+    const tipo = tiposPorAlerta[Math.floor(i / E)][i % E];
+    const id = `C${i + 1}`;
+    const objetivo = rnd(POSICIONES_REACTOR);
+    const pos = (objetivo + 1 + rnd(POSICIONES_REACTOR - 1)) % POSICIONES_REACTOR;
+    controles.push({ id, nombre: `${tipo} ${i + 1}`, icono: ICONO_CONTROL_REACTOR[tipo], owner: i % n, pos, real: true, tipo, alerta: alerta.texto });
+    alerta.reqs.push({ control: id, pos: objetivo });
+  }
+
+  // Controles extra (uno por persona): su alerta no aparece en la pantalla del capitán
+  const todosTextos = PROBLEMAS_REACTOR.flatMap(p => MODULOS_REACTOR.map(m => `${p} ${m}`));
+  const fuera = barajar(todosTextos).filter(t => !alertas.some(a => a.texto === t));
+  for (let o = 0; o < n; o++) {
+    const k = reales + o;
+    const tipo = pick(TIPOS_CONTROL_REACTOR);
+    controles.push({ id: `F${o + 1}`, nombre: `${tipo} ${k + 1}`, icono: ICONO_CONTROL_REACTOR[tipo], owner: o, pos: rnd(POSICIONES_REACTOR), real: false, tipo, alerta: fuera[o % fuera.length] });
+  }
+
+  return {
+    panel: { alertas: alertas.map(a => ({ id: a.id, texto: a.texto, aparecerEn: a.aparecerEn })) },
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { t0: null, controles, alertas }
+  };
+}
+
+function generarReactorProtocolo(L: number, n: number): Puzle {
+  const porNivel = Math.min(2 + Math.floor((L - 1) / 2), 4);
+  const A = Math.min(4, Math.max(n === 1 ? 1 : Math.ceil(n / 2), porNivel));
+  const req = n === 1 ? 1 : 2;
+  const reales = A * req;
+  const modulos = barajar(MODULOS_REACTOR);
+
+  // Alertas: cada una pide 'req' controles del tipo que marca el protocolo, en su posición
+  const alertas: AlertaReactor[] = Array.from({ length: A }, (_, j) => {
+    const p = PROTOCOLO_REACTOR[j % PROTOCOLO_REACTOR.length];
+    return { id: `A${j + 1}`, texto: `${p.problema} ${modulos[j % modulos.length]}`, tipo: p.tipo, aparecerEn: j * 12, resuelta: false, reqs: [] };
+  });
+
+  const controles: ControlReactor[] = [];
+  const pistas: object[][] = Array.from({ length: n }, () => []);
+
+  // Controles reales: repartidos en círculo, así todas las personas tienen alguno
+  for (let i = 0; i < reales; i++) {
+    const id = `C${i + 1}`;
+    const owner = i % n;
+    const alerta = alertas[Math.floor(i / req)];
+    const p = PROTOCOLO_REACTOR.find(x => x.tipo === alerta.tipo)!;
+    const etiqueta = `${p.control} ${i + 1}`;
+    const objetivo = p.pos - 1;
+    const pos = (objetivo + 1 + rnd(2)) % POSICIONES_REACTOR;
+    controles.push({ id, nombre: etiqueta, icono: ICONO_CONTROL_REACTOR[p.control], owner, pos, real: true, tipo: p.control });
+    alerta.reqs.push({ control: id, pos: objetivo });
+    pistas[owner].push({ control: id, nombre: etiqueta, alerta: alerta.texto });
+  }
+
+  // Controles falsos: uno por persona, con una pista sobre una alerta que no está en la sala
+  const todos = PROTOCOLO_REACTOR.flatMap(p => MODULOS_REACTOR.map(m => `${p.problema} ${m}`));
+  const fuera = barajar(todos).filter(t => !alertas.some(a => a.texto === t));
+  for (let o = 0; o < n; o++) {
+    const id = `F${o + 1}`;
+    const k = reales + o;
+    const tipo = TIPOS_CONTROL_REACTOR[k % TIPOS_CONTROL_REACTOR.length];
+    const etiqueta = `${tipo} ${k + 1}`;
+    controles.push({ id, nombre: etiqueta, icono: ICONO_CONTROL_REACTOR[tipo], owner: o, pos: rnd(POSICIONES_REACTOR), real: false, tipo });
+    pistas[o].push({ control: id, nombre: etiqueta, alerta: fuera[o % fuera.length] });
+  }
+
+  return {
+    panel: { alertas: alertas.map(a => ({ id: a.id, texto: a.texto, tipo: a.tipo, aparecerEn: a.aparecerEn })) },
+    pistas: pistas.map(l => barajar(l).map(x => JSON.stringify(x)).join('\n')),
+    solucion: null,
+    estadoInicial: { t0: null, controles, alertas }
+  };
+}
+
+function generarReactorAntiguo(L: number, n: number): Puzle {
   const porNivel = Math.min(2 + Math.floor((L - 1) / 2), 4);
   const A = Math.min(6, Math.max(n === 1 ? 1 : Math.ceil(n / 2), porNivel));
   const req = n === 1 ? 1 : 2;
@@ -907,7 +1014,8 @@ function generarReactor(L: number, n: number): Puzle {
     controles.push({ id, nombre: etiqueta, icono, owner, pos, real: true });
     const alerta = alertas[Math.floor(i / req)];
     alerta.reqs.push({ control: id, pos: objetivo });
-    pistas[owner].push({ control: id, nombre: etiqueta, alerta: alerta.texto, pos: objetivo + 1 });
+    pistas[owner].push({ control: id, nombre: etiqueta, alerta: alerta.texto, excluye: (objetivo + 1) % POSICIONES_REACTOR + 1 });
+    pistas[owner].push({ control: id, nombre: etiqueta, alerta: alerta.texto, excluye: (objetivo + 2) % POSICIONES_REACTOR + 1 });
   }
 
   // Controles falsos: uno por persona, con una pista sobre una alerta que no existe en la sala
@@ -918,7 +1026,8 @@ function generarReactor(L: number, n: number): Puzle {
     const { nombre, icono } = CONTROLES_REACTOR[k % CONTROLES_REACTOR.length];
     const etiqueta = `${nombre} ${k + 1}`;
     controles.push({ id, nombre: etiqueta, icono, owner: o, pos: rnd(POSICIONES_REACTOR), real: false });
-    pistas[o].push({ control: id, nombre: etiqueta, alerta: falsas[o % falsas.length], pos: rnd(POSICIONES_REACTOR) + 1 });
+    pistas[o].push({ control: id, nombre: etiqueta, alerta: falsas[o % falsas.length], excluye: rnd(POSICIONES_REACTOR) + 1 });
+    pistas[o].push({ control: id, nombre: etiqueta, alerta: falsas[(o + 1) % falsas.length], excluye: rnd(POSICIONES_REACTOR) + 1 });
   }
 
   return {
