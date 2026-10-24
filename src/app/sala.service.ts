@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada, EstadoMinijuegos, TipoMinijuego } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
-import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor, aplicarAccionPuntero, aplicarSemaforo, aplicarBarco, aplicarCocina, aplicarGrua } from './games/minijuegos-equipos/minijuegos.logic';
+import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor, aplicarAccionPuntero, aplicarSemaforo, aplicarBarco, aplicarCocina, aplicarGrua, aplicarQuienVaPrimero, nuevaEtapaQVP } from './games/minijuegos-equipos/minijuegos.logic';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
@@ -2325,6 +2325,39 @@ export class SalaService {
         const sig = JSON.parse(t.estadoJ || '{}');
         sig.rot = rot;
         t.estadoJ = JSON.stringify(sig);
+      } else {
+        t.estadoJ = JSON.stringify(res.estado);
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+/** El capitán pulsa un botón del módulo. Un fallo resta 5 segundos. */
+  async accionQuienVaPrimeroMinijuego(codigo: string, usuario: string, boton: number): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || !t.iniciado || !t.estadoJ || t.tipo !== 'quien') return false;
+      if (Date.now() >= t.finMs) {
+        this.cerrarTurnoMinijuego(sala, est);
+        sala.updatedAt = Date.now();
+        return true;
+      }
+      if (est.capitanes[t.equipoId] !== usuario) return false;
+      const res = aplicarQuienVaPrimero(JSON.parse(t.estadoJ), boton);
+      if (!res.ok) return false;
+      if (res.error) {
+        t.errores += 1;
+        t.finMs -= PENALIZACION_ERROR_MS;
+      }
+      if (res.acierto) {
+        // Módulo resuelto: acierto, el manual se reparte de otra forma y aparece un módulo nuevo
+        const e = res.estado;
+        e.rot = (e.rot || 0) + 1;
+        e.etapa = nuevaEtapaQVP();
+        t.aciertos += 1;
+        t.estadoJ = JSON.stringify(e);
       } else {
         t.estadoJ = JSON.stringify(res.estado);
       }

@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua', 'quien'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -22,6 +22,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   barco: '🚤 Barco por el canal',
   cocina: '🍳 Cocina a cuatro manos',
   grua: '🏗️ Grúa de carga',
+  quien: '🔤 Quién va primero',
   balanza: '⚖️ Balanza'
 };
 
@@ -79,6 +80,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'barco': return generarBarco(L, n);
     case 'cocina': return generarCocina(L, n);
     case 'grua': return generarGrua(L, n);
+    case 'quien': return generarQuienVaPrimero(L, n);
   }
 }
 
@@ -1473,6 +1475,94 @@ export function aplicarGrua(estado: any, accion: string, owner: number, nDuenos:
   return { estado: r.estado, ok: true, error: r.error, completado: r.completado };
 }
 
+// ------------------------------------------------------------------
+// Quién va primero: la pantalla muestra una palabra. El manual (repartido entre los ayudantes, sin repetir)
+// dice qué botón leer y en qué orden pulsar. Solo el capitán pulsa.
+// ------------------------------------------------------------------
+/** Tabla 1: palabra de pantalla -> posición del botón a leer (1-6, por filas). */
+const QVP_PANTALLA: { palabra: string; pos: number }[] = [
+  { palabra: 'PRÓXIMA', pos: 3 }, { palabra: 'VOY', pos: 2 }, { palabra: 'PRIMERO', pos: 6 },
+  { palabra: 'HAYA', pos: 2 }, { palabra: 'VAYA', pos: 6 }, { palabra: 'VA', pos: 3 },
+  { palabra: 'ESPERA', pos: 5 }, { palabra: 'RÁPIDO', pos: 4 }, { palabra: 'MONITOR', pos: 6 },
+  { palabra: 'ÚLTIMA', pos: 3 }, { palabra: 'SÍ', pos: 6 }, { palabra: 'DALE', pos: 4 },
+  { palabra: 'HAY', pos: 4 }, { palabra: 'OTRA', pos: 5 }, { palabra: 'BIEN', pos: 5 },
+  { palabra: 'PALABRA', pos: 6 }, { palabra: 'NADA', pos: 4 }, { palabra: 'BAYA', pos: 6 },
+  { palabra: 'LISTO', pos: 4 }, { palabra: 'OKAY', pos: 4 }, { palabra: 'BUENO', pos: 1 },
+  { palabra: 'NO', pos: 6 }, { palabra: 'ALLÁ', pos: 5 }, { palabra: 'EXPLOTÓ', pos: 4 },
+  { palabra: 'AHÍ', pos: 3 }, { palabra: 'HALLA', pos: 6 }, { palabra: 'VALLA', pos: 4 },
+  { palabra: 'OTRO', pos: 6 }
+];
+
+/** Tabla 2: etiqueta del botón -> orden de pulsado (se pulsa la primera palabra de la lista que esté en el módulo). */
+const QVP_BOTONES: { etiqueta: string; lista: string[] }[] = [
+  { etiqueta: 'ESPERA', lista: ['LISTO', 'VA', '¿ÉSTA?', 'VALE', 'NO ESTÁ', '¿ESA?', 'OKAY', 'OTRO', 'ESPERA', 'NO', '¿QUÉ?', 'ESTA', '¿CÓMO?', 'NO ES'] },
+  { etiqueta: '¿QUÉ?', lista: ['NO ESTÁ', 'VA', 'LISTO', 'VALE', 'NO', 'OKAY', '¿CÓMO?', 'ESTA', 'NO ES', 'ESPERA', 'OTRO', '¿ÉSTA?', '¿ESA?', '¿QUÉ?'] },
+  { etiqueta: 'NO', lista: ['OTRO', 'ESTA', 'NO ES', '¿QUÉ?', '¿ÉSTA?', 'ESPERA', 'OKAY', 'LISTO', '¿CÓMO?', 'NO ESTÁ', '¿ESA?', 'VA', 'NO', 'VALE'] },
+  { etiqueta: 'OTRO', lista: ['NO ES', 'OKAY', 'VA', 'VALE', 'OTRO', '¿ESA?', 'ESPERA', '¿CÓMO?', 'NO', '¿ÉSTA?', 'NO ESTÁ', 'ESTA', 'LISTO', '¿QUÉ?'] },
+  { etiqueta: '¿CÓMO?', lista: ['ESTA', 'OKAY', 'VA', 'VALE', 'LISTO', 'OTRO', 'NO', '¿ESA?', 'NO ESTÁ', '¿ÉSTA?', 'NO ES', '¿QUÉ?', '¿CÓMO?', 'ESPERA'] },
+  { etiqueta: 'LISTO', lista: ['VA', 'OKAY', 'ESTA', 'VALE', '¿QUÉ?', '¿ÉSTA?', '¿ESA?', 'ESPERA', '¿CÓMO?', 'LISTO', 'NO ESTÁ', 'OTRO', 'NO', 'NO ES'] },
+  { etiqueta: '¿ÉSTA?', lista: ['ESTA', '¿ÉSTA?', 'NO ESTÁ', '¿CÓMO?', 'ESPERA', 'OTRO', 'VALE', 'NO', 'VA', '¿QUÉ?', 'NO ES', 'LISTO', '¿ESA?', 'OKAY'] },
+  { etiqueta: 'ESTA', lista: ['ESPERA', '¿CÓMO?', 'NO ESTÁ', '¿ÉSTA?', 'VA', 'LISTO', 'OKAY', 'NO', '¿ESA?', 'OTRO', 'ESTA', 'VALE', 'NO ES', '¿QUÉ?'] },
+  { etiqueta: 'NO ESTÁ', lista: ['OKAY', 'NO ESTÁ', '¿QUÉ?', 'NO', 'VALE', 'LISTO', 'OTRO', '¿ÉSTA?', 'ESTA', 'NO ES', '¿ESA?', 'ESPERA', 'VA', '¿CÓMO?'] },
+  { etiqueta: 'OKAY', lista: ['LISTO', '¿CÓMO?', 'ESPERA', '¿ESA?', 'NO', '¿ÉSTA?', 'OKAY', 'VALE', 'NO ESTÁ', 'ESTA', 'OTRO', 'VA', '¿QUÉ?'] },
+  { etiqueta: 'VALE', lista: ['OTRO', 'ESPERA', 'VA', '¿ÉSTA?', '¿CÓMO?', '¿ESA?', 'NO', 'NO ES', 'NO ESTÁ', 'VALE', 'OKAY', '¿QUÉ?', 'LISTO'] },
+  { etiqueta: 'VA', lista: ['VALE', 'NO', '¿QUÉ?', 'LISTO', 'ESTA', '¿CÓMO?', 'NO ES', 'VA', 'NO ESTÁ', 'ESPERA', 'OTRO', '¿ESA?', '¿ÉSTA?', 'OKAY'] },
+  { etiqueta: 'NO ES', lista: ['ESTA', 'NO', 'OTRO', 'VA', 'LISTO', 'NO ESTÁ', '¿QUÉ?', '¿ESA?', '¿ÉSTA?', 'NO ES', '¿CÓMO?', 'ESPERA', 'OKAY', 'VALE'] },
+  { etiqueta: '¿ESA?', lista: ['OKAY', 'VALE', 'LISTO', 'ESPERA', '¿ESA?', 'VA', '¿CÓMO?', 'ESTA', 'OTRO', 'NO ESTÁ', '¿QUÉ?', '¿ÉSTA?', 'NO', 'NO ES'] },
+  { etiqueta: 'OK', lista: ['DALE', '¿DÓNDE?', 'BUENO', 'ÉSTA', 'BIEN', 'RÁPIDO', 'ESTÁ', 'YA ESTÁ', 'SÍ', 'OK', '¿CUÁL?', '¿SEGURO?', 'OTRA', 'NO SÉ'] },
+  { etiqueta: '¿DÓNDE?', lista: ['BUENO', 'BIEN', '¿SEGURO?', 'RÁPIDO', 'SÍ', 'OTRA', '¿CUÁL?', 'YA ESTÁ', 'OK', 'NO SÉ', 'ÉSTA', 'DALE', 'ESTÁ', '¿DÓNDE?'] },
+  { etiqueta: 'BUENO', lista: ['¿CUÁL?', '¿DÓNDE?', 'RÁPIDO', 'BUENO', 'BIEN', 'ESTÁ', 'DALE', 'NO SÉ', 'ÉSTA', 'OK', 'SÍ', 'YA ESTÁ', '¿SEGURO?', 'OTRA'] },
+  { etiqueta: 'ÉSTA', lista: ['OK', 'ÉSTA', 'ESTÁ', 'BIEN', '¿CUÁL?', '¿DÓNDE?', 'NO SÉ', 'BUENO', 'SÍ', 'RÁPIDO', 'DALE', 'OTRA', '¿SEGURO?', 'YA ESTÁ'] },
+  { etiqueta: 'ESTÁ', lista: ['OTRA', 'NO SÉ', 'ESTÁ', 'RÁPIDO', 'SÍ', 'DALE', 'BUENO', 'YA ESTÁ', 'ÉSTA', '¿SEGURO?', 'BIEN', '¿CUÁL?', '¿DÓNDE?', 'OK'] },
+  { etiqueta: 'NO SÉ', lista: ['RÁPIDO', 'DALE', 'BIEN', 'SÍ', 'ÉSTA', 'ESTÁ', '¿CUÁL?', 'OTRA', 'NO SÉ', 'OK', '¿SEGURO?', 'YA ESTÁ', '¿DÓNDE?', 'BUENO'] },
+  { etiqueta: 'RÁPIDO', lista: ['RÁPIDO', 'BUENO', '¿DÓNDE?', 'OK', 'OTRA', 'YA ESTÁ', '¿CUÁL?', 'BIEN', 'DALE', '¿SEGURO?', 'ÉSTA', 'NO SÉ', 'SÍ', 'ESTÁ'] },
+  { etiqueta: '¿CUÁL?', lista: ['ESTÁ', 'NO SÉ', '¿DÓNDE?', 'ÉSTA', 'BIEN', '¿CUÁL?', 'OTRA', 'OK', 'RÁPIDO', 'DALE', '¿SEGURO?', 'BUENO', 'YA ESTÁ', 'SÍ'] },
+  { etiqueta: 'SÍ', lista: ['OK', 'YA ESTÁ', 'ÉSTA', 'BUENO', 'NO SÉ', 'OTRA', '¿CUÁL?', '¿SEGURO?', '¿DÓNDE?', 'RÁPIDO', 'ESTÁ', 'BIEN', 'SÍ', 'DALE'] },
+  { etiqueta: 'OTRA', lista: ['DALE', 'RÁPIDO', 'BIEN', 'SÍ', 'BUENO', 'ESTÁ', 'ÉSTA', 'YA ESTÁ', '¿SEGURO?', 'OK', 'NO SÉ', '¿DÓNDE?', '¿CUÁL?', 'OTRA'] },
+  { etiqueta: 'BIEN', lista: ['SÍ', 'RÁPIDO', '¿CUÁL?', 'BUENO', 'YA ESTÁ', 'DALE', 'BIEN', '¿SEGURO?', 'OTRA', '¿DÓNDE?', 'ESTÁ', 'ÉSTA', 'NO SÉ', 'OK'] },
+  { etiqueta: 'YA ESTÁ', lista: ['¿DÓNDE?', 'NO SÉ', 'OTRA', '¿CUÁL?', 'OK', 'ESTÁ', 'DALE', 'SÍ', 'ÉSTA', 'BIEN', 'YA ESTÁ', 'RÁPIDO', 'BUENO', '¿SEGURO?'] },
+  { etiqueta: 'DALE', lista: ['¿DÓNDE?', 'OTRA', '¿SEGURO?', 'ÉSTA', 'OK', 'YA ESTÁ', 'RÁPIDO', 'ESTÁ', 'DALE', 'NO SÉ', 'SÍ', 'BIEN', 'BUENO', '¿CUÁL?'] },
+  { etiqueta: '¿SEGURO?', lista: ['ÉSTA', 'BIEN', 'NO SÉ', 'ESTÁ', 'YA ESTÁ', 'OTRA', '¿CUÁL?', 'SÍ', 'RÁPIDO', 'OK', '¿SEGURO?', 'DALE', '¿DÓNDE?', 'BUENO'] }
+];
+
+/** Qué botón pulsar: la primera palabra de la lista que esté en el módulo. -1 si no hay ninguna. */
+function objetivoQVP(pantalla: string, botones: string[]): number {
+  const p1 = QVP_PANTALLA.find(e => e.palabra === pantalla);
+  if (!p1) return -1;
+  const etiqueta = botones[p1.pos - 1];
+  const p2 = QVP_BOTONES.find(e => e.etiqueta === etiqueta);
+  if (!p2) return -1;
+  const destino = p2.lista.find(w => botones.includes(w));
+  return destino === undefined ? -1 : botones.indexOf(destino);
+}
+
+/** Un módulo nuevo: pantalla y botones, con una pulsación correcta posible. */
+export function nuevaEtapaQVP(): { pantalla: string; botones: string[]; objetivo: number } {
+  for (;;) {
+    const pantalla = pick(QVP_PANTALLA).palabra;
+    const botones = barajar(QVP_BOTONES.map(b => b.etiqueta)).slice(0, 6);
+    const objetivo = objetivoQVP(pantalla, botones);
+    if (objetivo >= 0) return { pantalla, botones, objetivo };
+  }
+}
+
+function generarQuienVaPrimero(L: number, n: number): Puzle {
+  return {
+    panel: {},
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { etapa: nuevaEtapaQVP(), rot: 0, manual1: QVP_PANTALLA, manual2: QVP_BOTONES }
+  };
+}
+
+/** El capitán pulsa un botón. Si es el correcto es un acierto (el módulo cambia). Si no, es un error. */
+export function aplicarQuienVaPrimero(estado: any, boton: number): { estado: any; ok: boolean; error?: boolean; acierto?: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  if (!e.etapa) return { estado: e, ok: false };
+  if (boton === e.etapa.objetivo) return { estado: e, ok: true, error: false, acierto: true };
+  return { estado: e, ok: true, error: true, acierto: false };
+}
+
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */
 export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any, solucion?: any): { estado: any; ok: boolean; fallo?: boolean; completado?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
@@ -1553,7 +1643,7 @@ export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: st
 
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
-  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco' || tipo === 'cocina' || tipo === 'grua') return false; // se decide con botones, no con respuesta escrita
+  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco' || tipo === 'cocina' || tipo === 'grua' || tipo === 'quien') return false; // se decide con botones, no con respuesta escrita
   const texto = (respuesta || '').trim();
   switch (tipo) {
     case 'secuencia':

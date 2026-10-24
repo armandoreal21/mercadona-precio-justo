@@ -29,6 +29,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   barco: { resumen: 'Un barco avanza por un canal con rocas. Los remos de avance lo llevan una fila más abajo; los de atrás, una fila más arriba. Una roca hace perder 5 segundos; la orilla solo frena el barco. Llegar al puerto es el acierto.', ejemplo: 'Ejemplo: "¡Derecha! ¡Izquierda! ¡Cuidado, roca a la derecha!"' },
   cocina: { resumen: 'Hay que preparar un plato: echar los ingredientes en el orden de la receta, cada uno en su sartén, y dejar cada fuego en su punto. El plato sale solo cuando está listo. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate en el fuego 1! ¡Fuego 2, sube una! ¡Ya está, sale el plato!"' },
   grua: { resumen: 'Hay que llevar una caja del suelo a la zona de destino con una grúa. Cada persona tiene un control: mover el gancho, subir o bajar el cable, o agarrar y soltar. Los edificios solo se cruzan con el cable arriba. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Adelante! ¡Bajar cable, que ya estamos encima! ¡Pinza, agarra!"' },
+  quien: { resumen: 'La pantalla muestra una palabra y el módulo tiene seis botones. El manual está repartido entre el equipo: cada persona tiene una parte. Hay que averiguar qué botón pulsar en cada etapa, y solo el capitán pulsa. Un fallo resta 5 segundos.', ejemplo: 'Ejemplo: "La pantalla dice MONITOR. ¿Quién tiene MONITOR? Posición 6. ¿Qué botón hay en la 6? VA. ¿Quién tiene VA?"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -430,6 +431,16 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div *ngFor="let h of gruaTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.nombre }}: <b class="text-white">{{ h.persona }}</b></div>
               </div>
             </div>
+            <div *ngSwitchCase="'quien'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves la pantalla y los botones. Pregunta a tu equipo y pulsa.' : 'El capitán ve el módulo y os dirige.' }}</div>
+              <div class="text-center text-xs text-slate-400">Aciertos: <b class="text-white">{{ t.aciertos }}</b> · Sigue hasta que se acabe el tiempo</div>
+              <div *ngIf="qvpEtapa as et" class="space-y-3">
+                <div class="bg-slate-950 rounded-xl p-4 border-2 border-cyan-500 text-center text-2xl font-black text-white tracking-widest">{{ et.pantalla }}</div>
+                <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
+                  <button *ngFor="let b of et.botones; let i = index" (click)="pulsarQVP(i)" [disabled]="!esCapitan" class="bg-slate-800 hover:bg-slate-700 disabled:opacity-60 border-2 border-slate-600 text-white font-black py-4 rounded-xl text-sm">{{ b }}</button>
+                </div>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -450,7 +461,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -537,6 +548,18 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
 
+            <div *ngIf="t.tipo === 'quien' && (misEntradasQVP.pantalla.length || misEntradasQVP.botones.length)" class="space-y-3">
+              <div class="text-xs text-slate-400">Tu parte del manual. Cuando el capitán diga una palabra o una etiqueta, respóndele con lo que tengas.</div>
+              <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-1 text-xs">
+                <div class="font-black text-slate-300 uppercase">Pantalla → botón a leer</div>
+                <div *ngFor="let e of misEntradasQVP.pantalla" class="text-slate-200"><b class="text-white">{{ e.palabra }}</b> → botón en la posición <b>{{ e.pos }}</b></div>
+              </div>
+              <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-2 text-xs">
+                <div class="font-black text-slate-300 uppercase">Etiqueta → orden de pulsado</div>
+                <div *ngFor="let e of misEntradasQVP.botones" class="text-slate-200"><b class="text-white">{{ e.etiqueta }}</b>: <span class="text-slate-300">{{ e.lista.join(', ') }}</span></div>
+              </div>
+            </div>
+
             <div *ngIf="t.tipo === 'grua' && misControlesGrua.length" class="space-y-3">
               <div class="flex items-center gap-3 bg-slate-950 rounded-xl p-3 border border-slate-700">
                 <div class="flex flex-col gap-1">
@@ -612,7 +635,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -924,7 +947,44 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (!ok) this.error = 'Ese control no es tuyo ahora.';
   }
 
-/** Grúa: controles, tablero y estado. */
+/** Quién va primero: etapa actual, pantalla y parte del manual que tiene cada persona. */
+  get qvpEtapa(): any {
+    const s = this.estadoJuego;
+    return s?.etapa ?? null;
+  }
+
+  get qvpTotal(): number {
+    return this.estadoJuego?.etapas?.length ?? 0;
+  }
+
+  get qvpActual(): number {
+    return (this.estadoJuego?.etapa ?? 0) + 1;
+  }
+
+  /** Cada entrada del manual pertenece a una sola persona (sin repetir). */
+  get misEntradasQVP(): { pantalla: any[]; botones: any[] } {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    const vacio = { pantalla: [], botones: [] };
+    if (!t || !s || t.tipo !== 'quien') return vacio;
+    const duenos = this.duenosPuntero(t.equipoId);
+    const yo = duenos.indexOf(this.currentName || '');
+    if (yo < 0) return vacio;
+    const n = duenos.length;
+    return {
+      pantalla: (s.manual1 || []).filter((_: any, i: number) => ((s.rot || 0) + i) % n === yo),
+      botones: (s.manual2 || []).filter((_: any, i: number) => ((s.rot || 0) + i) % n === yo)
+    };
+  }
+
+  async pulsarQVP(boton: number): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionQuienVaPrimeroMinijuego(this.sala.codigo, this.currentName, boton);
+    if (!ok) this.error = 'Solo el capitán puede pulsar.';
+  }
+
+  /** Grúa: controles, tablero y estado. */
   readonly gruaControles = [
     { accion: 'izq', nombre: '◀ Izquierda' },
     { accion: 'der', nombre: 'Derecha ▶' },
