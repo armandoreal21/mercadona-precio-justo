@@ -478,7 +478,6 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                   <g *ngFor="let c of simonCunas">
                     <path [attr.d]="c.d" [attr.fill]="simonRelleno(c.color)" [attr.filter]="simonIluminado === c.color ? 'url(#simonResplandor)' : null" stroke="#020617" stroke-width="2.5" class="cursor-pointer transition-colors duration-150" (click)="pulsarSimon(c.color)"/>
                     <path [attr.d]="c.d" fill="url(#simonReflejo)" class="pointer-events-none"/>
-                    <text [attr.x]="c.lx" [attr.y]="c.ly" text-anchor="middle" dominant-baseline="middle" fill="#0f172a" stroke="rgba(255,255,255,0.35)" stroke-width="0.6" paint-order="stroke" font-weight="900" font-size="13" class="pointer-events-none">{{ c.color }}</text>
                   </g>
                   <circle cx="100" cy="100" r="22" fill="url(#simonCentro)" stroke="#475569" stroke-width="2"/>
                   <circle cx="100" cy="100" r="8" [attr.fill]="simonIluminado ? '#f8fafc' : '#334155'" [attr.filter]="simonIluminado ? 'url(#simonResplandor)' : null"/>
