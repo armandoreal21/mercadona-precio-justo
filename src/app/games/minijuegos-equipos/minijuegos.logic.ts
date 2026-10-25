@@ -1549,7 +1549,7 @@ function manualQVP(nDuenos: number): { manual1: any[]; manual2: any[] } {
   const k = activosQVP(nDuenos);
   const pantallas = barajar(QVP_BANCO_PANTALLA).slice(0, k);
   const etiquetas = barajar(QVP_BANCO_ETIQUETAS).slice(0, k);
-  const manual1 = pantallas.map(palabra => ({ palabra, pos: 1 + rnd(6) }));
+  const manual1 = pantallas.map(palabra => ({ palabra, pos: 1 + rnd(9) }));
   const manual2 = etiquetas.map(etiqueta => ({
     etiqueta,
     lista: barajar(etiquetas.filter(x => x !== etiqueta)).slice(0, 14)
@@ -1574,7 +1574,7 @@ export function nuevaEtapaQVP(nDuenos: number): { etapa: any; manual1: any[]; ma
     const { manual1, manual2 } = manualQVP(nDuenos);
     for (let intento = 0; intento < 200; intento++) {
       const pantalla = pick(manual1).palabra;
-      const botones = barajar(manual2.map((m: any) => m.etiqueta)).slice(0, 6);
+      const botones = barajar(manual2.map((m: any) => m.etiqueta)).slice(0, 9);
       const objetivo = objetivoQVP(pantalla, botones, manual1, manual2);
       if (objetivo >= 0) return { etapa: { pantalla, botones, objetivo }, manual1, manual2 };
     }

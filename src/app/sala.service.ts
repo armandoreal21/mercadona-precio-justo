@@ -2360,6 +2360,7 @@ export class SalaService {
         e.etapa = nueva.etapa;
         e.manual1 = nueva.manual1;
         e.manual2 = nueva.manual2;
+        e.exito = { t: Date.now(), boton };
         t.aciertos += 1;
         t.estadoJ = JSON.stringify(e);
       } else {
