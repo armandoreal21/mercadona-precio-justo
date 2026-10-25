@@ -156,17 +156,17 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               <div class="text-xs text-slate-400">
                 Llega desde <b>S</b> hasta <b>G</b>. Usa las flechas para marcar el camino. Tu equipo te dirá dónde hay muros.
               </div>
-              <div class="grid gap-1 mx-auto w-full max-w-xs" [style.grid-template-columns]="'repeat(' + t.panel.tamano + ', minmax(0, 1fr))'">
-                <div *ngFor="let c of celdasMapa" class="aspect-square w-full rounded-lg flex items-center justify-center text-sm font-black" [ngClass]="c.clase">
+              <div class="grid gap-1.5 mx-auto w-full max-w-xs p-3 rounded-2xl bg-slate-950/80 border border-slate-700 shadow-[inset_0_0_20px_rgba(0,0,0,0.6)]" [style.grid-template-columns]="'repeat(' + t.panel.tamano + ', minmax(0, 1fr))'">
+                <div *ngFor="let c of celdasMapa" class="aspect-square w-full rounded-xl border flex items-center justify-center text-base font-black transition-all duration-200" [ngClass]="c.clase">
                   {{ c.texto }}
                 </div>
               </div>
               <div *ngIf="esCapitan" class="flex flex-col items-center gap-1">
-                <button (click)="mover('U')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 w-12 h-10 rounded-lg text-lg">⬆️</button>
+                <button (click)="mover('U')" class="group w-14 h-12 rounded-2xl bg-gradient-to-b from-slate-700 to-slate-800 border border-slate-500 shadow-lg text-cyan-300 text-xl font-black hover:brightness-125 active:scale-95 transition">↑</button>
                 <div class="flex gap-1">
-                  <button (click)="mover('L')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 w-12 h-10 rounded-lg text-lg">⬅️</button>
-                  <button (click)="mover('D')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 w-12 h-10 rounded-lg text-lg">⬇️</button>
-                  <button (click)="mover('R')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 w-12 h-10 rounded-lg text-lg">➡️</button>
+                  <button (click)="mover('L')" class="w-14 h-12 rounded-2xl bg-gradient-to-b from-slate-700 to-slate-800 border border-slate-500 shadow-lg text-cyan-300 text-xl font-black hover:brightness-125 active:scale-95 transition">←</button>
+                  <button (click)="mover('D')" class="w-14 h-12 rounded-2xl bg-gradient-to-b from-slate-700 to-slate-800 border border-slate-500 shadow-lg text-cyan-300 text-xl font-black hover:brightness-125 active:scale-95 transition">↓</button>
+                  <button (click)="mover('R')" class="w-14 h-12 rounded-2xl bg-gradient-to-b from-slate-700 to-slate-800 border border-slate-500 shadow-lg text-cyan-300 text-xl font-black hover:brightness-125 active:scale-95 transition">→</button>
                 </div>
                 <button (click)="deshacer()" class="text-xs text-slate-400 hover:text-slate-200 mt-1">↩️ Deshacer último paso</button>
               </div>
@@ -1827,15 +1827,26 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const [ir, ic] = [t.panel.inicio[0] - 1, t.panel.inicio[1] - 1];
     const [gr, gc] = [t.panel.meta[0] - 1, t.panel.meta[1] - 1];
     const golpe = this.mapaGolpe;
+    // Casillas por las que ha pasado el robot (el camino marcado)
+    const trail = new Set<string>();
+    let tr = ir, tc = ic;
+    for (const d of (t.recorrido || [])) {
+      const [a, b] = this.delta(d);
+      tr += a;
+      tc += b;
+      trail.add(`${tr},${tc}`);
+    }
     const [rr, rc] = this.posicionRobot();
     const celdas: CeldaMapa[] = [];
     for (let r = 0; r < N; r++) {
       for (let c = 0; c < N; c++) {
         const esRobot = r === rr && c === rc;
         let texto = esRobot ? '🤖' : (r === ir && c === ic) ? 'S' : (r === gr && c === gc) ? 'G' : '';
-        let clase = esRobot ? 'bg-yellow-300 text-slate-900' :
-          (r === gr && c === gc) ? 'bg-emerald-600 text-white' :
-          (r === ir && c === ic) ? 'bg-cyan-600 text-white' : 'bg-slate-800 text-slate-400';
+        let clase = esRobot ? 'bg-gradient-to-br from-yellow-200 to-amber-400 text-slate-900 border-yellow-100 shadow-[0_0_18px_rgba(250,204,21,0.7)] scale-105 z-10' :
+          (r === gr && c === gc) ? 'bg-gradient-to-br from-emerald-400 to-emerald-700 text-white border-emerald-300 shadow-[0_0_14px_rgba(52,211,153,0.6)]' :
+          (r === ir && c === ic) ? 'bg-gradient-to-br from-cyan-400 to-cyan-700 text-white border-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.5)]' :
+          trail.has(`${r},${c}`) ? 'bg-gradient-to-br from-cyan-900/70 to-slate-900 text-cyan-300 border-cyan-700/60' :
+          'bg-gradient-to-br from-slate-800 to-slate-900 text-slate-500 border-slate-700/50';
         // Choque reciente: el muro se marca en rojo y el robot muestra los segundos perdidos
         if (golpe && golpe.r === r && golpe.c === c) {
           texto = '💥';
