@@ -1405,7 +1405,11 @@ export function aplicarCocina(estado: any, accion: any, owner: number, nDuenos: 
   if (accion.tipo === 'ingrediente') {
     const i = accion.i;
     if (i < 0 || i >= K || duenoDe(i) !== owner) return { estado: e, ok: false };
-    if (i !== e.anadidos || accion.sarten !== e.sartenes[i]) return { estado: e, ok: true, error: true, completado: false };
+    if (i !== e.anadidos || accion.sarten !== e.sartenes[i]) {
+      // Qué ingrediente y en qué sartén falló, para que el panel lo muestre
+      e.fallo = { t: Date.now(), i, sarten: accion.sarten };
+      return { estado: e, ok: true, error: true, completado: false };
+    }
     e.anadidos += 1;
     return { estado: e, ok: true, error: false, completado: listo() };
   }

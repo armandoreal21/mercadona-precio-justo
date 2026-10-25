@@ -397,7 +397,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Dile a cada persona qué ingrediente echar y en qué sartén. El plato sale solo cuando está listo.' : 'El capitán os dirige.' }}</div>
 
               <div class="grid grid-cols-2 gap-3">
-                <div *ngFor="let p of cocinaSartenesVista; trackBy: trackPan" class="rounded-2xl border-2 p-3 space-y-2 bg-slate-900" [ngClass]="p.nivel === p.objetivo ? 'border-emerald-500' : 'border-slate-600'">
+                <div *ngFor="let p of cocinaSartenesVista; trackBy: trackPan" class="rounded-2xl border-2 p-3 space-y-2 bg-slate-900" [ngClass]="cocinaFalloS === p.idx ? 'border-rose-500 animate-pulse' : (p.nivel === p.objetivo ? 'border-emerald-500' : 'border-slate-600')">
                   <div class="flex items-center justify-between text-xs">
                     <span class="font-black text-white">🍳 Fuego {{ p.idx + 1 }}</span>
                     <span [ngClass]="p.nivel === p.objetivo ? 'text-emerald-300' : 'text-amber-200'">{{ p.nivel === p.objetivo ? '✓ en su punto' : 'ajustar' }}</span>
@@ -407,15 +407,24 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                   </div>
                   <div class="text-center text-[11px] text-slate-300">nivel {{ p.nivel }} · objetivo <b class="text-white">{{ p.objetivo }}</b></div>
                   <div class="flex flex-wrap justify-center gap-1 min-h-[2.5rem]">
-                    <span *ngFor="let ing of p.ingredientes" class="px-2 py-1 rounded-lg text-xs border" [ngClass]="ing.anadido ? 'bg-emerald-900/60 border-emerald-500 text-emerald-200' : 'bg-slate-800 border-slate-600 text-slate-400'">{{ ing.orden }}. {{ ing.icono }} {{ ing.nombre }} {{ ing.anadido ? '✓' : '' }}</span>
+                    <div *ngFor="let ing of p.ingredientes" class="relative flex flex-col items-center justify-center w-14 py-1.5 rounded-xl border-2 transition-all duration-300" [ngClass]="cocinaFalloI === ing.i ? 'bg-rose-900/70 border-rose-500 animate-pulse' : (ing.anadido ? 'border-emerald-500 bg-emerald-900/30' : (ing.orden === cocinaAnadidos + 1 ? 'border-cyan-300 bg-slate-950 shadow-[0_0_14px_rgba(34,211,238,0.45)] animate-pulse' : 'border-slate-700 bg-slate-950/60 opacity-70'))"><span class="text-2xl leading-none">{{ ing.icono }}</span><span class="text-[10px] text-slate-300 mt-1">{{ ing.nombre }}</span><span *ngIf="ing.anadido" class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-emerald-500 text-slate-950 text-[11px] font-black flex items-center justify-center">✓</span></div>
                   </div>
                 </div>
               </div>
 
-              <div class="flex flex-wrap items-center justify-center gap-1 text-xs">
-                <ng-container *ngFor="let o of cocinaOrdenVista; let last = last">
-                  <span class="px-2 py-1 rounded-full border" [ngClass]="o.anadido ? 'border-emerald-500 text-emerald-200' : 'border-slate-600 text-slate-300'">{{ o.orden }} {{ o.icono }} → F{{ o.sarten + 1 }}</span>
-                  <span *ngIf="!last" class="text-slate-500">›</span>
+              <div class="flex flex-wrap items-stretch justify-center gap-2 pt-2">
+                <ng-container *ngFor="let o of cocinaOrdenVista; let last = last; trackBy: trackOrden">
+                  <div class="flex items-center gap-2">
+                    <div class="relative flex flex-col items-center justify-center w-16 py-2 rounded-xl border-2 transition-all duration-300"
+                         [ngClass]="o.anadido ? 'border-emerald-500 bg-emerald-900/30' : (o.orden === cocinaAnadidos + 1 ? 'border-cyan-300 bg-slate-950 shadow-[0_0_14px_rgba(34,211,238,0.45)] animate-pulse' : 'border-slate-700 bg-slate-950/60 opacity-70')">
+                      <span class="text-2xl leading-none">{{ o.icono }}</span>
+                      <span class="text-[10px] text-slate-300 mt-1">{{ o.nombre }}</span>
+                      <span class="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-slate-800 border border-slate-500 text-[10px] font-black flex items-center justify-center text-white">{{ o.orden }}</span>
+                      <span class="absolute -bottom-2 px-1.5 rounded-full text-[10px] font-black" [ngClass]="o.sarten === 0 ? 'bg-amber-500 text-slate-950' : 'bg-sky-500 text-slate-950'">F{{ o.sarten + 1 }}</span>
+                      <span *ngIf="o.anadido" class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-emerald-500 text-slate-950 text-[11px] font-black flex items-center justify-center">✓</span>
+                    </div>
+                    <span *ngIf="!last" class="text-slate-500 text-lg">›</span>
+                  </div>
                 </ng-container>
               </div>
 
@@ -1132,6 +1141,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   simonColorFallo: string | null = null;
   qvpBotonFallo: number | null = null;
   qvpExitoActivo = false;
+  cocinaFalloI: number | null = null;
+  cocinaFalloS: number | null = null;
   private qvpExitoVisto = 0;
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
@@ -1149,10 +1160,14 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       this.simonFalloActivo = true;
       this.simonColorFallo = f.color ?? null;
       this.qvpBotonFallo = f.boton ?? null;
+      this.cocinaFalloI = f.i ?? null;
+      this.cocinaFalloS = f.sarten ?? null;
       setTimeout(() => {
         this.simonFalloActivo = false;
         this.simonColorFallo = null;
         this.qvpBotonFallo = null;
+        this.cocinaFalloI = null;
+        this.cocinaFalloS = null;
       }, 1500);
     }
   }
@@ -1372,6 +1387,10 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       sarten: this.cocinaSartenes[i] ?? 0,
       anadido: i < this.cocinaAnadidos
     }));
+  }
+
+  trackOrden(_: number, o: any): number {
+    return o.orden;
   }
 
   trackPan(_: number, p: any): number {
