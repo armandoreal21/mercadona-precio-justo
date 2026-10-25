@@ -141,7 +141,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
         <div *ngIf="puedeVerPanel()" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
           <div class="text-xs uppercase text-slate-400 tracking-wider">Panel</div>
           <ng-container [ngSwitch]="t.tipo">
-            <div *ngSwitchCase="'secuencia'" class="text-2xl font-black text-center tracking-widest">{{ t.panel.secuencia.join('  ') }}</div>
+            <div *ngSwitchCase="'secuencia'" class="text-2xl font-black text-center tracking-widest" style="font-variant-emoji: text">{{ t.panel.secuencia.join('  ') }}</div>
             <div *ngSwitchCase="'cableado'" class="space-y-3">
               <div class="text-xs text-slate-400">Toca el cable que hay que cortar.</div>
               <div class="flex items-end justify-center gap-2 sm:gap-3 py-2 flex-wrap">

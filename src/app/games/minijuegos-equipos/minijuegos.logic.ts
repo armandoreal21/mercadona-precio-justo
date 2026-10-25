@@ -168,45 +168,86 @@ function generarCodigo(L: number, n: number): Puzle {
 // de la tabla y aparecen símbolos señuelo (no están en la secuencia).
 // ------------------------------------------------------------------
 // Símbolos complejos: el capitán los ve y tiene que describirlos; el equipo solo conoce la descripción
-const SIMBOLOS_COMPLEJOS: { g: string; desc: string }[] = [
+const SIMBOLOS_MANUALES: { g: string; desc: string }[] = [
   { g: '⬡', desc: 'un hexágono vacío' },
   { g: '✦', desc: 'una estrella de cuatro puntas' },
-  { g: '☯', desc: 'el yin y el yang' },
   { g: '⌘', desc: 'el símbolo de la tecla comando' },
   { g: '◈', desc: 'un rombo con otro rombo dentro' },
   { g: '⧫', desc: 'un rombo negro' },
   { g: '⬢', desc: 'un hexágono lleno' },
   { g: '✪', desc: 'una estrella con un círculo en el centro' },
-  { g: '⚑', desc: 'una bandera' },
   { g: '☽', desc: 'una luna creciente' },
-  { g: '♆', desc: 'el símbolo de Neptuno' },
-  { g: '⚘', desc: 'una flor pequeña' },
-  { g: '⚛', desc: 'un átomo' },
-  { g: '⛨', desc: 'un escudo con una cruz' },
   { g: '⊛', desc: 'un círculo con una estrella dentro' },
   { g: '⎈', desc: 'el timón de un barco' },
   { g: '⌬', desc: 'un hexágono con líneas dentro' },
   { g: '✹', desc: 'una estrella explosiva' },
-  { g: '⚜', desc: 'una flor de lis' },
   { g: '⧉', desc: 'dos cuadrados encajados' },
   { g: '⎔', desc: 'un hexágono de esquinas redondeadas' },
   { g: '⟁', desc: 'un triángulo hueco' },
   { g: '✵', desc: 'una estrella de seis puntas' },
-  { g: '♒', desc: 'el signo de Acuario' }
+  { g: 'Ϙ', desc: 'una Q con cola hacia abajo' },
+  { g: 'Ѧ', desc: 'una A con barra cruzada' },
+  { g: 'Ѽ', desc: 'una omega con un trazo encima' },
+  { g: 'Ѯ', desc: 'una X con cola' },
+  { g: 'Ѱ', desc: 'una psi' },
+  { g: 'Ѿ', desc: 'una O con un trazo encima' },
+  { g: 'Ҋ', desc: 'una N con cola' },
+  { g: 'Ҁ', desc: 'una Q con dos trazos' },
+  { g: 'Ꙋ', desc: 'una U con rabo' },
+  { g: 'Ꙗ', desc: 'una I con cola' },
+  { g: 'Ѡ', desc: 'una W cerrada' },
+  { g: 'ǂ', desc: 'una barra con dos puntos' },
+  { g: 'Ϟ', desc: 'una Q con dos rayas' },
+  { g: 'Ϡ', desc: 'una Ϡ con un punto' },
+  { g: 'Ϫ', desc: 'una S con un punto' },
+  { g: 'Ϭ', desc: 'una C con dos cruces' },
+  { g: '⊗', desc: 'una cruz dentro de un círculo' },
+  { g: '⊕', desc: 'un más dentro de un círculo' },
+  { g: '⋈', desc: 'dos triángulos enfrentados' },
+  { g: '✣', desc: 'una cruz de cuatro flechas' },
+  { g: '⧖', desc: 'dos triángulos unidos por la punta' }
 ];
+
+/** Símbolos de rangos de Unicode sin color (sin emojis ni letras latinas). */
+function rangoSimbolos(desde: number, hasta: number, excluir: number[] = []): { g: string; desc: string }[] {
+  const res: { g: string; desc: string }[] = [];
+  for (let cp = desde; cp <= hasta; cp++) {
+    if (excluir.includes(cp)) continue;
+    res.push({ g: String.fromCodePoint(cp), desc: '' });
+  }
+  return res;
+}
+
+// Catálogo completo: los manuales + letras cirílicas arcaicas + figuras geométricas, sin repetir
+const SIMBOLOS_COMPLEJOS: { g: string; desc: string }[] = (() => {
+  const todos = [
+    ...SIMBOLOS_MANUALES,
+    ...rangoSimbolos(0x0460, 0x0481),
+    ...rangoSimbolos(0x048A, 0x04FF),
+    ...rangoSimbolos(0x0500, 0x052F),
+    ...rangoSimbolos(0x25A0, 0x25FF, [0x25AA, 0x25AB, 0x25B6, 0x25C0, 0x25FB, 0x25FC, 0x25FD, 0x25FE])
+  ];
+  const vistos = new Set<string>();
+  return todos.filter(s => {
+    if (vistos.has(s.g)) return false;
+    vistos.add(s.g);
+    return true;
+  });
+})();
 
 // Cada ayudante recibe sus símbolos necesarios y 2 señuelos (símbolos que no aparecen en la secuencia)
 function generarSecuencia(L: number, n: number): Puzle {
   const D = Math.min(2 + L, 6);                       // símbolos distintos que hacen falta
   const Q = Math.max(Math.min(2 + L, 7), D);          // longitud de la secuencia
-  const tabla = barajar(SIMBOLOS_COMPLEJOS).slice(0, Math.min(D + 2 * n, SIMBOLOS_COMPLEJOS.length));
-  const necesarios = tabla.slice(0, D).map(s => ({ ...s, valor: rnd(10) }));
-  const señuelos = tabla.slice(D).map(s => ({ ...s, valor: rnd(10) }));
+  // Cada ayudante ve al menos 10 símbolos (sin repetir). Desde 10 personas, el catálogo se reparte entre todos.
+  const T = Math.min(SIMBOLOS_COMPLEJOS.length, n >= 10 ? 120 : 10 * n);
+  const tabla = barajar(SIMBOLOS_COMPLEJOS).slice(0, T);
+  const conValor = tabla.map(s => ({ ...s, valor: rnd(10) }));
+  const necesarios = conValor.slice(0, D);
   const seq = barajar([...necesarios, ...Array.from({ length: Q - D }, () => pick(necesarios))]);
 
   const lineas: string[][] = Array.from({ length: n }, () => []);
-  necesarios.forEach((s, i) => lineas[i % n].push(`${s.g} vale ${s.valor}.`));
-  señuelos.forEach((s, i) => lineas[i % n].push(`${s.g} vale ${s.valor}.`));
+  conValor.forEach((s, k) => lineas[k % n].push(`${s.g} vale ${s.valor}.`));
 
   return {
     panel: { secuencia: seq.map(x => x.g) },
