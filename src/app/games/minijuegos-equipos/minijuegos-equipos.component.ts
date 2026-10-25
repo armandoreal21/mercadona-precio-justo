@@ -402,8 +402,8 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                     <span class="font-black text-white">🍳 Fuego {{ p.idx + 1 }}</span>
                     <span [ngClass]="p.nivel === p.objetivo ? 'text-emerald-300' : 'text-amber-200'">{{ p.nivel === p.objetivo ? '✓ en su punto' : 'ajustar' }}</span>
                   </div>
-                  <div class="flex justify-center gap-0.5 flex-wrap">
-                    <span *ngFor="let k of llamaSlots" class="w-3.5 h-3.5 rounded-full border" [ngClass]="k < p.nivel ? 'bg-orange-500 border-orange-300' : 'bg-slate-950 border-slate-700'"></span>
+                  <div class="flex gap-0.5 w-full px-1">
+                    <span *ngFor="let k of llamaSlots" class="flex-1 h-3 rounded-sm border transition-all duration-300" [ngClass]="k === p.objetivo - 1 ? 'border-yellow-300 ring-2 ring-yellow-300/50 ' + (k < p.nivel ? 'bg-orange-500' : 'bg-slate-950') : (k < p.nivel ? 'bg-orange-500 border-orange-300' : 'bg-slate-950 border-slate-700')"></span>
                   </div>
                   <div class="text-center text-[11px] text-slate-300">nivel {{ p.nivel }} · objetivo <b class="text-white">{{ p.objetivo }}</b></div>
                   <div class="flex flex-wrap justify-center gap-1 min-h-[2.5rem]">
