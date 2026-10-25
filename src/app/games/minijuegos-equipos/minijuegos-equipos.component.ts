@@ -1783,19 +1783,36 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const N: number = t.panel.tamano;
     const [ir, ic] = [t.panel.inicio[0] - 1, t.panel.inicio[1] - 1];
     const [gr, gc] = [t.panel.meta[0] - 1, t.panel.meta[1] - 1];
+    const golpe = this.mapaGolpe;
     const [rr, rc] = this.posicionRobot();
     const celdas: CeldaMapa[] = [];
     for (let r = 0; r < N; r++) {
       for (let c = 0; c < N; c++) {
         const esRobot = r === rr && c === rc;
-        const texto = esRobot ? '🤖' : (r === ir && c === ic) ? 'S' : (r === gr && c === gc) ? 'G' : '';
-        const clase = esRobot ? 'bg-yellow-300 text-slate-900' :
+        let texto = esRobot ? '🤖' : (r === ir && c === ic) ? 'S' : (r === gr && c === gc) ? 'G' : '';
+        let clase = esRobot ? 'bg-yellow-300 text-slate-900' :
           (r === gr && c === gc) ? 'bg-emerald-600 text-white' :
           (r === ir && c === ic) ? 'bg-cyan-600 text-white' : 'bg-slate-800 text-slate-400';
+        // Choque reciente: el muro se marca en rojo y el robot muestra los segundos perdidos
+        if (golpe && golpe.r === r && golpe.c === c) {
+          texto = '💥';
+          clase = 'bg-rose-700 text-white ring-2 ring-rose-400 animate-pulse';
+        }
+        if (esRobot && golpe) {
+          texto = '−5 s';
+          clase = 'bg-rose-600 text-white text-[10px] font-black animate-pulse';
+        }
         celdas.push({ texto, clase });
       }
     }
     return celdas;
+  }
+
+  /** Último choque con un muro, mientras sigue siendo reciente (1,5 s). */
+  get mapaGolpe(): { r: number; c: number } | null {
+    const g = (this.est?.turno as any)?.golpe;
+    if (!g || this.ahora - g.t > 1500) return null;
+    return { r: g.r, c: g.c };
   }
 
   /** Posición del robot tras aplicar el camino marcado (sin muros: el equipo vigila eso). */
@@ -1823,9 +1840,6 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const antes = t.errores;
     this.error = null;
     await this.salaService.moverMinijuego(this.sala.codigo, this.currentName, d);
-    if ((this.est?.turno?.errores ?? antes) > antes) {
-      this.error = 'Choque con un muro: se restan 5 segundos y el robot vuelve a la S.';
-    }
   }
 
   async deshacer(): Promise<void> {

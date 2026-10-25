@@ -2483,8 +2483,11 @@ export class SalaService {
         t.errores += 1;
         t.finMs -= PENALIZACION_ERROR_MS;
         t.recorrido = [];
+        // Dónde chocó, para que el tablero lo muestre un momento
+        (t as any).golpe = { r: nr, c: nc, t: Date.now() };
       } else {
         t.recorrido = [...(t.recorrido || []), direccion];
+        (t as any).golpe = null;
         if (nr === sol.meta[0] && nc === sol.meta[1]) {
           t.aciertos += 1;
           this.siguientePuzleMinijuego(sala, est);
