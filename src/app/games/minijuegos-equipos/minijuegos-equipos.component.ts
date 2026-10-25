@@ -616,7 +616,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
               <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-2 text-xs">
                 <div class="font-black text-slate-300 uppercase">Etiqueta → orden de pulsado</div>
-                <div *ngFor="let e of misEntradasQVP.botones" class="bg-slate-900 rounded-xl p-2 space-y-1"><div class="font-black text-white">{{ e.etiqueta }}</div><div class="flex flex-wrap gap-1"><span *ngFor="let w of e.lista; let k = index" class="px-2 py-0.5 rounded-md text-[11px]" [ngClass]="k === 0 ? 'bg-cyan-500 text-slate-950 font-black' : 'bg-slate-800 text-slate-300'">{{ k + 1 }} {{ w }}</span></div></div>
+                <details *ngFor="let e of misEntradasQVP.botones" class="bg-slate-900 rounded-xl px-3 py-2 group"><summary class="flex items-center justify-between cursor-pointer list-none"><span class="font-black text-white">{{ e.etiqueta }}</span><span class="text-[11px] text-slate-400 group-open:hidden">ver orden ▾</span></summary><div class="flex flex-wrap gap-1 mt-2"><span *ngFor="let w of e.lista; let k = index" class="px-2 py-0.5 rounded-md text-[11px]" [ngClass]="k === 0 ? 'bg-cyan-500 text-slate-950 font-black' : 'bg-slate-800 text-slate-300'"><span class="text-[9px] text-slate-500 mr-1">{{ k + 1 }}</span>{{ w }}</span></div></details>
               </div>
             </div>
 
