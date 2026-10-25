@@ -30,6 +30,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   cocina: { resumen: 'Hay que preparar un plato: echar los ingredientes en el orden de la receta, cada uno en su sartén, y dejar cada fuego en su punto. El plato sale solo cuando está listo. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate en el fuego 1! ¡Fuego 2, sube una! ¡Ya está, sale el plato!"' },
   grua: { resumen: 'Hay que llevar una caja del suelo a la zona de destino con una grúa. Cada persona tiene un control: mover el gancho, subir o bajar el cable, o agarrar y soltar. Los edificios solo se cruzan con el cable arriba. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Adelante! ¡Bajar cable, que ya estamos encima! ¡Pinza, agarra!"' },
   quien: { resumen: 'La pantalla muestra una palabra y el módulo tiene seis botones. El manual está repartido entre el equipo: cada persona tiene una parte. Hay que averiguar qué botón pulsar en cada etapa, y solo el capitán pulsa. Un fallo resta 5 segundos.', ejemplo: 'Ejemplo: "La pantalla dice MONITOR. ¿Quién tiene MONITOR? Posición 6. ¿Qué botón hay en la 6? VA. ¿Quién tiene VA?"' },
+  simon: { resumen: 'El módulo muestra un código y una secuencia de destellos de colores. Cada destello hay que responderlo con el color que indica la tabla de ese código. La tabla está repartida: cada persona tiene un color. Solo el capitán pulsa; un error resta 5 segundos.', ejemplo: 'Ejemplo: "Código 263: el destello rojo se responde con el azul. ¿Quién tiene el rojo?"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -441,6 +442,17 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </div>
               </div>
             </div>
+            <div *ngSwitchCase="'simon'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el código y los destellos. Pregunta a tu equipo y pulsa.' : 'El capitán ve el módulo y os dirige.' }}</div>
+              <div class="text-center text-xs text-slate-400">Código <b class="text-white text-base">{{ simonCodigo }}</b> · Aciertos: <b class="text-white">{{ t.aciertos }}</b></div>
+              <div class="flex justify-center gap-2">
+                <span *ngFor="let c of simonSecuencia; let i = index" class="w-10 h-10 rounded-full flex items-center justify-center text-lg border-2" [ngClass]="i < simonPulsadas ? 'border-emerald-500 opacity-40' : 'border-slate-500'">{{ simonEmoji(c) }}</span>
+              </div>
+              <div class="text-center text-[11px] text-slate-400">Pulsadas: {{ simonPulsadas }}/{{ simonSecuencia.length }}</div>
+              <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
+                <button *ngFor="let c of simonColores" (click)="pulsarSimon(c)" [disabled]="!esCapitan" class="font-black py-4 rounded-xl border-2 text-slate-950 disabled:opacity-60" [ngClass]="simonClaseBoton(c)">{{ simonEmoji(c) }} {{ c }}</button>
+              </div>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -461,7 +473,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -545,6 +557,13 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                         [ngClass]="k === c.pos ? 'bg-cyan-400 text-slate-950 border-cyan-300' : 'border-slate-600 text-slate-300'">{{ k + 1 }}</span>
                 </div>
                 <button (click)="tocarControl(c.id)" class="ml-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-1 rounded-lg text-xs uppercase">↻ Girar</button>
+              </div>
+            </div>
+
+            <div *ngIf="t.tipo === 'simon' && misFilasSimon.length" class="space-y-3">
+              <div class="text-xs text-slate-400">Tu parte de la tabla para el código <b class="text-white">{{ simonCodigo }}</b>. Cuando el capitán pregunte por un color, respóndele.</div>
+              <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-2 text-sm">
+                <div *ngFor="let f of misFilasSimon" class="text-slate-200">{{ simonEmoji(f.entrada) }} {{ f.entrada }} → <b class="text-white">{{ simonEmoji(f.salida) }} {{ f.salida }}</b></div>
               </div>
             </div>
 
@@ -635,7 +654,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -945,6 +964,49 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     this.error = null;
     const ok = await this.salaService.accionPunteroMinijuego(this.sala.codigo, this.currentName, mov);
     if (!ok) this.error = 'Ese control no es tuyo ahora.';
+  }
+
+/** Simón dice: código, destellos y tabla propia de cada persona. */
+  readonly simonColores = ['Rojo', 'Azul', 'Verde', 'Amarillo'];
+
+  get simonCodigo(): string {
+    return this.estadoJuego?.codigo ?? '';
+  }
+
+  get simonSecuencia(): string[] {
+    return this.estadoJuego?.secuencia ?? [];
+  }
+
+  get simonPulsadas(): number {
+    return this.estadoJuego?.pulsadas ?? 0;
+  }
+
+  simonEmoji(c: string): string {
+    const mapa: Record<string, string> = { Rojo: '🔴', Azul: '🔵', Verde: '🟢', Amarillo: '🟡' };
+    return mapa[c] ?? '⚪';
+  }
+
+  simonClaseBoton(c: string): string {
+    return c === 'Rojo' ? 'bg-rose-400 border-rose-300' : c === 'Azul' ? 'bg-sky-400 border-sky-300' : c === 'Verde' ? 'bg-emerald-400 border-emerald-300' : 'bg-amber-300 border-amber-200';
+  }
+
+  /** Filas de la tabla que tiene este jugador (cada fila pertenece a una sola persona). */
+  get misFilasSimon(): any[] {
+    const t = this.est?.turno;
+    const s = this.estadoJuego;
+    if (!t || !s || t.tipo !== 'simon') return [];
+    const duenos = this.duenosPuntero(t.equipoId);
+    const yo = duenos.indexOf(this.currentName || '');
+    if (yo < 0) return [];
+    const n = duenos.length;
+    return (s.tabla || []).filter((_: any, k: number) => ((s.rot || 0) + k) % n === yo);
+  }
+
+  async pulsarSimon(color: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.error = null;
+    const ok = await this.salaService.accionSimonMinijuego(this.sala.codigo, this.currentName, color);
+    if (!ok) this.error = 'Solo el capitán puede pulsar.';
   }
 
 /** Quién va primero: etapa actual, pantalla y parte del manual que tiene cada persona. */

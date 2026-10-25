@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada, EstadoMinijuegos, TipoMinijuego } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
-import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor, aplicarAccionPuntero, aplicarSemaforo, aplicarBarco, aplicarCocina, aplicarGrua, aplicarQuienVaPrimero, nuevaEtapaQVP } from './games/minijuegos-equipos/minijuegos.logic';
+import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor, aplicarAccionPuntero, aplicarSemaforo, aplicarBarco, aplicarCocina, aplicarGrua, aplicarQuienVaPrimero, nuevaEtapaQVP, aplicarSimon } from './games/minijuegos-equipos/minijuegos.logic';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
@@ -2361,6 +2361,36 @@ export class SalaService {
       } else {
         t.estadoJ = JSON.stringify(res.estado);
       }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+/** El capitán pulsa un color. Un error resta 5 segundos y reinicia la secuencia. */
+  async accionSimonMinijuego(codigo: string, usuario: string, color: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t = est.turno;
+      if (est.fase !== 'jugando' || !t || !t.iniciado || !t.estadoJ || t.tipo !== 'simon') return false;
+      if (Date.now() >= t.finMs) {
+        this.cerrarTurnoMinijuego(sala, est);
+        sala.updatedAt = Date.now();
+        return true;
+      }
+      if (est.capitanes[t.equipoId] !== usuario) return false;
+      const previo = JSON.parse(t.estadoJ);
+      const res = aplicarSimon(previo, color);
+      if (!res.ok) return false;
+      if (res.error) {
+        t.errores += 1;
+        t.finMs -= PENALIZACION_ERROR_MS;
+      }
+      if (res.acierto) {
+        // Secuencia completa: módulo nuevo y el reparto de la tabla gira
+        res.estado.rot = (previo.rot || 0) + 1;
+        t.aciertos += 1;
+      }
+      t.estadoJ = JSON.stringify(res.estado);
       sala.updatedAt = Date.now();
       return true;
     });

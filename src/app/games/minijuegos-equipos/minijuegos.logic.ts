@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua', 'quien'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua', 'quien', 'simon'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -23,6 +23,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   cocina: '🍳 Cocina a cuatro manos',
   grua: '🏗️ Grúa de carga',
   quien: '🔤 Quién va primero',
+  simon: '🔴 Simón dice',
   balanza: '⚖️ Balanza'
 };
 
@@ -81,6 +82,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'cocina': return generarCocina(L, n);
     case 'grua': return generarGrua(L, n);
     case 'quien': return generarQuienVaPrimero(L, n);
+    case 'simon': return generarSimon(L, n);
   }
 }
 
@@ -1563,6 +1565,47 @@ export function aplicarQuienVaPrimero(estado: any, boton: number): { estado: any
   return { estado: e, ok: true, error: true, acierto: false };
 }
 
+// ------------------------------------------------------------------
+// Simón dice: el módulo muestra un código y una secuencia de destellos. Cada destello se responde con el
+// color que dice la tabla de ese código. La tabla se reparte entre el equipo: cada persona tiene un color.
+// Solo el capitán pulsa.
+// ------------------------------------------------------------------
+const SIMON_COLORES = ['Rojo', 'Azul', 'Verde', 'Amarillo'];
+
+function nuevoModuloSimon(longitud: number): any {
+  const codigo = String(100 + rnd(900));
+  const salidas = barajar(SIMON_COLORES);
+  const tabla = SIMON_COLORES.map((entrada, k) => ({ entrada, salida: salidas[k] }));
+  const secuencia = Array.from({ length: longitud }, () => pick(SIMON_COLORES));
+  return { codigo, tabla, secuencia, pulsadas: 0 };
+}
+
+function generarSimon(L: number, n: number): Puzle {
+  return {
+    panel: {},
+    pistas: Array.from({ length: n }, () => ''),
+    solucion: null,
+    estadoInicial: { ...nuevoModuloSimon(2), rot: 0 }
+  };
+}
+
+/** El capitán pulsa un color. Si es el correcto avanza; si no, reinicia la secuencia (error). */
+export function aplicarSimon(estado: any, color: string): { estado: any; ok: boolean; error?: boolean; acierto?: boolean } {
+  const e = JSON.parse(JSON.stringify(estado));
+  const entrada = e.secuencia[e.pulsadas];
+  const esperado = e.tabla.find((f: any) => f.entrada === entrada)?.salida;
+  if (!esperado) return { estado: e, ok: false };
+  if (color !== esperado) {
+    e.pulsadas = 0;
+    return { estado: e, ok: true, error: true, acierto: false };
+  }
+  e.pulsadas += 1;
+  if (e.pulsadas < e.secuencia.length) return { estado: e, ok: true, error: false, acierto: false };
+  // Secuencia completa: módulo nuevo con una secuencia más larga (hasta 5)
+  const siguiente = nuevoModuloSimon(Math.min(e.secuencia.length + 1, 5));
+  return { estado: siguiente, ok: true, error: false, acierto: true };
+}
+
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */
 export function aplicarAccionJuego(tipo: TipoMinijuego, estado: any, accion: any, solucion?: any): { estado: any; ok: boolean; fallo?: boolean; completado?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
@@ -1643,7 +1686,7 @@ export function comprobarJuego(tipo: TipoMinijuego, estado: any, solucionTxt: st
 
 /** Comprueba la respuesta según el tipo de puzle. */
 export function validarRespuesta(tipo: TipoMinijuego, solucion: any, respuesta: string): boolean {
-  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco' || tipo === 'cocina' || tipo === 'grua' || tipo === 'quien') return false; // se decide con botones, no con respuesta escrita
+  if (tipo === 'fraude' || tipo === 'reactor' || tipo === 'puntero' || tipo === 'semaforo' || tipo === 'barco' || tipo === 'cocina' || tipo === 'grua' || tipo === 'quien' || tipo === 'simon') return false; // se decide con botones, no con respuesta escrita
   const texto = (respuesta || '').trim();
   switch (tipo) {
     case 'secuencia':
