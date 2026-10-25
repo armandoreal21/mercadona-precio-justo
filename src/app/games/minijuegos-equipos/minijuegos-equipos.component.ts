@@ -454,14 +454,34 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               <div class="max-w-xs mx-auto space-y-1"><div class="h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300" [style.width.%]="simonProgreso"></div></div><div class="text-center text-[11px] text-slate-400">Destello {{ simonPulsadas + 1 }} de {{ simonSecuencia.length }}</div></div>
               <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
                 <svg viewBox="0 0 200 200" class="col-span-2 justify-self-center w-64 h-64 drop-shadow-2xl" [style.pointer-events]="esCapitan ? 'auto' : 'none'">
-                  <circle cx="100" cy="100" r="99" fill="#1e293b"/>
-                  <circle cx="100" cy="100" r="95" fill="#020617"/>
+                  <defs>
+                    <radialGradient id="simonBisel" cx="50%" cy="40%" r="60%">
+                      <stop offset="0%" stop-color="#64748b"/>
+                      <stop offset="60%" stop-color="#1e293b"/>
+                      <stop offset="100%" stop-color="#020617"/>
+                    </radialGradient>
+                    <radialGradient id="simonCentro" cx="40%" cy="35%" r="70%">
+                      <stop offset="0%" stop-color="#475569"/>
+                      <stop offset="100%" stop-color="#0f172a"/>
+                    </radialGradient>
+                    <linearGradient id="simonReflejo" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+                      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+                    </linearGradient>
+                    <filter id="simonResplandor" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur stdDeviation="4" result="halo"/>
+                      <feMerge><feMergeNode in="halo"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                  <circle cx="100" cy="100" r="99" fill="url(#simonBisel)"/>
+                  <circle cx="100" cy="100" r="94" fill="#020617"/>
                   <g *ngFor="let c of simonCunas">
-                    <path [attr.d]="c.d" [attr.fill]="simonRelleno(c.color)" stroke="#020617" stroke-width="3" class="cursor-pointer transition-colors duration-150" (click)="pulsarSimon(c.color)"/>
-                    <text [attr.x]="c.lx" [attr.y]="c.ly" text-anchor="middle" dominant-baseline="middle" fill="#0f172a" font-weight="900" font-size="13" class="pointer-events-none">{{ c.color }}</text>
+                    <path [attr.d]="c.d" [attr.fill]="simonRelleno(c.color)" [attr.filter]="simonIluminado === c.color ? 'url(#simonResplandor)' : null" stroke="#020617" stroke-width="2.5" class="cursor-pointer transition-colors duration-150" (click)="pulsarSimon(c.color)"/>
+                    <path [attr.d]="c.d" fill="url(#simonReflejo)" class="pointer-events-none"/>
+                    <text [attr.x]="c.lx" [attr.y]="c.ly" text-anchor="middle" dominant-baseline="middle" fill="#0f172a" stroke="rgba(255,255,255,0.35)" stroke-width="0.6" paint-order="stroke" font-weight="900" font-size="13" class="pointer-events-none">{{ c.color }}</text>
                   </g>
-                  <circle cx="100" cy="100" r="22" fill="#020617" stroke="#334155" stroke-width="3"/>
-                  <circle cx="100" cy="100" r="8" [attr.fill]="simonIluminado ? '#f8fafc' : '#334155'"/>
+                  <circle cx="100" cy="100" r="22" fill="url(#simonCentro)" stroke="#475569" stroke-width="2"/>
+                  <circle cx="100" cy="100" r="8" [attr.fill]="simonIluminado ? '#f8fafc' : '#334155'" [attr.filter]="simonIluminado ? 'url(#simonResplandor)' : null"/>
                 </svg>
               </div>
             </div>
