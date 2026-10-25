@@ -257,7 +257,127 @@ function generarSecuencia(L: number, n: number): Puzle {
 }
 
 // ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// Cableado colaborativo: el capitán ve la regla y los cables numerados, sin atributos.
+// Cada ayudante recibe datos verdaderos sobre los cables (color, grosor o conexión), sin repetir.
+// Solo cruzando los datos del equipo se identifica el cable que cumple la regla.
+// ------------------------------------------------------------------
+const CABLE_COLORES = ['rojo', 'azul', 'verde', 'amarillo', 'blanco', 'negro', 'naranja'];
+const CABLE_GROSORES = ['grueso', 'fino'];
+interface CableAtributos { color: string; grosor: string; conectado: boolean; }
+
+// Cableado v2: el color se ve; los atributos ocultos los reparte el equipo por tipo de dato.
+const CABLE_OCULTOS: Record<string, string[]> = {
+  grosor: ['grueso', 'fino'],
+  conectado: ['conectado', 'desconectado'],
+  aislado: ['aislado', 'sin aislar']
+};
+const CLAVES_OCULTAS = ['grosor', 'conectado', 'aislado'];
+
+function fraseCable(k: string, v: string, num: number): string {
+  if (k === 'grosor') return `El cable ${num} es ${v}.`;
+  if (k === 'conectado') return v === 'conectado' ? `El cable ${num} está conectado.` : `El cable ${num} NO está conectado.`;
+  return v === 'aislado' ? `El cable ${num} está aislado.` : `El cable ${num} NO está aislado.`;
+}
+
 function generarCableado(L: number, n: number): Puzle {
+  const W = Math.min(3 + L, 9);
+  const h = Math.min(L, 3);
+  const claves = barajar(CLAVES_OCULTAS).slice(0, h);
+  const tFull: Record<string, string> = { color: pick(CABLE_COLORES) };
+  CLAVES_OCULTAS.forEach(k => { tFull[k] = pick(CABLE_OCULTOS[k]); });
+  const cumple = (c: Record<string, string>) => c.color === tFull.color && claves.every(k => c[k] === tFull[k]);
+
+  const objetivo = rnd(W);
+  const cables: Record<string, string>[] = [];
+  for (let i = 0; i < W; i++) {
+    if (i === objetivo) { cables.push({ ...tFull }); continue; }
+    const c: Record<string, string> = { color: pick(CABLE_COLORES) };
+    CLAVES_OCULTAS.forEach(k => { c[k] = pick(CABLE_OCULTOS[k]); });
+    if (cumple(c)) c.color = pick(CABLE_COLORES.filter(x => x !== tFull.color));
+    cables.push(c);
+  }
+  // Señuelo: otro cable del mismo color que falla un atributo oculto (no se puede resolver solo por color)
+  const senuelo = (objetivo + 1) % W;
+  cables[senuelo].color = tFull.color;
+  const otro = CABLE_OCULTOS[claves[0]].find(v => v !== tFull[claves[0]])!;
+  cables[senuelo][claves[0]] = otro;
+
+  // Datos verdaderos: los atributos del objetivo y, para cada cable del mismo color, un dato que lo descarte
+  const hechos: { i: number; k: string }[] = claves.map(k => ({ i: objetivo, k }));
+  cables.forEach((c, i) => {
+    if (i === objetivo || c.color !== tFull.color) return;
+    const k = claves.find(kk => c[kk] !== tFull[kk])!;
+    hechos.push({ i, k });
+  });
+  // Si hay menos datos que personas, se añaden datos verdaderos
+  const posibles: { i: number; k: string }[] = [];
+  for (let i = 0; i < W; i++) CLAVES_OCULTAS.forEach(k => posibles.push({ i, k }));
+  for (const d of barajar(posibles)) {
+    if (hechos.length >= n) break;
+    if (!hechos.some(x => x.i === d.i && x.k === d.k)) hechos.push(d);
+  }
+
+  // Reparto: cada atributo lo tiene una persona; si hay más personas que atributos, se reparten los datos
+  const lineas: string[][] = Array.from({ length: n }, () => []);
+  hechos.forEach((d, idx) => {
+    const pos = claves.indexOf(d.k);
+    const persona = n <= claves.length && pos >= 0 ? pos % n : idx % n;
+    lineas[persona].push(fraseCable(d.k, cables[d.i][d.k], d.i + 1));
+  });
+
+  const palabras = [tFull.color.toUpperCase(), ...claves.map(k => tFull[k].toUpperCase())];
+  return {
+    panel: { cables: cables.map((c, i) => ({ n: i + 1, color: c.color })), regla: `Corta el cable ${palabras[0]} que sea ${palabras.slice(1).join(' y ')}.` },
+    pistas: lineas.map(l => barajar(l).join('\n')),
+    solucion: objetivo + 1
+  };
+}
+
+function generarCableadoV1(L: number, n: number): Puzle {
+  const W = Math.min(4 + Math.floor((L - 1) / 2), 8);
+  const claves: (keyof CableAtributos)[] = Math.random() < 0.5 ? ['color', 'grosor'] : ['color', 'conectado'];
+  const t: CableAtributos = { color: pick(CABLE_COLORES), grosor: pick(CABLE_GROSORES), conectado: Math.random() < 0.5 };
+  const objetivo = rnd(W);
+  const cables: CableAtributos[] = [];
+  for (let i = 0; i < W; i++) {
+    if (i === objetivo) { cables.push({ ...t }); continue; }
+    const c: CableAtributos = { color: pick(CABLE_COLORES), grosor: pick(CABLE_GROSORES), conectado: Math.random() < 0.5 };
+    // Ningún otro cable puede cumplir la regla: si la cumple, cambia de color
+    if (claves.every(k => c[k] === t[k])) c.color = pick(CABLE_COLORES.filter(x => x !== t.color));
+    cables.push(c);
+  }
+
+  // Datos verdaderos: los atributos del cable objetivo, y para cada otro cable un dato que lo descarte
+  const datos: { i: number; k: keyof CableAtributos }[] = claves.map(k => ({ i: objetivo, k }));
+  cables.forEach((c, i) => {
+    if (i === objetivo) return;
+    const k = claves.find(kk => c[kk] !== t[kk])!;
+    datos.push({ i, k });
+  });
+  // Si hay menos datos que personas, se añaden datos verdaderos de otros atributos
+  const todos: { i: number; k: keyof CableAtributos }[] = [];
+  for (let i = 0; i < W; i++) for (const k of ['color', 'grosor', 'conectado'] as (keyof CableAtributos)[]) todos.push({ i, k });
+  for (const d of barajar(todos)) {
+    if (datos.length >= n) break;
+    if (!datos.some(x => x.i === d.i && x.k === d.k)) datos.push(d);
+  }
+
+  const frase = (d: { i: number; k: keyof CableAtributos }): string => {
+    const c = cables[d.i];
+    const num = d.i + 1;
+    if (d.k === 'conectado') return c.conectado ? `El cable ${num} está conectado.` : `El cable ${num} NO está conectado.`;
+    return `El cable ${num} es ${c[d.k]}.`;
+  };
+  const palabras = claves.map(k => (k === 'conectado' ? (t.conectado ? 'CONECTADO' : 'DESCONECTADO') : String(t[k]).toUpperCase()));
+  return {
+    panel: { cables: Array.from({ length: W }, (_, i) => i + 1), regla: `Corta el cable ${palabras.join(' y ')}.` },
+    pistas: repartir(barajar(datos.map(frase)), n),
+    solucion: objetivo + 1
+  };
+}
+
+function generarCableadoAntiguo(L: number, n: number): Puzle {
   const COLORES = ['rojo', 'azul', 'verde', 'amarillo', 'blanco', 'negro', 'naranja'];
   const W = Math.min(5 + 2 * Math.floor((L - 1) / 2), 9);
   const hilos = Array.from({ length: W }, () => pick(COLORES));

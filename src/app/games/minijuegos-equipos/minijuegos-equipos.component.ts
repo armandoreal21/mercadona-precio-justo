@@ -151,12 +151,13 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
             </div>
             <div *ngSwitchCase="'cableado'" class="space-y-3">
-              <div class="text-xs text-slate-400">Toca el cable que hay que cortar.</div>
+              <div class="rounded-2xl border border-rose-500/40 bg-rose-950/20 px-4 py-3 text-center"><div class="text-[10px] uppercase tracking-[0.3em] text-rose-300/80">Regla</div><div class="text-base font-black text-white mt-1">{{ t.panel.regla }}</div></div>
+              <div class="text-xs text-slate-400 text-center">Pregunta a tu equipo qué cable cumple la regla. Toca el que te digan.</div>
               <div class="flex items-end justify-center gap-2 sm:gap-3 py-2 flex-wrap">
-                <button *ngFor="let h of t.panel.hilos; let i = index" (click)="cortar(i + 1)" [disabled]="!esCapitan"
+                <button *ngFor="let c of t.panel.cables" (click)="cortar(c.n)" [disabled]="!esCapitan"
                         class="flex flex-col items-center gap-2 group disabled:cursor-default">
-                  <span class="w-5 sm:w-6 h-40 sm:h-48 rounded-full shadow-lg transition group-enabled:group-hover:scale-y-105" [ngClass]="colorCable(h)"></span>
-                  <span class="text-xs font-black text-slate-300">{{ i + 1 }}</span>
+                  <span class="w-4 sm:w-5 h-40 sm:h-48 rounded-full shadow-lg transition group-enabled:group-hover:scale-y-105 group-enabled:group-hover:brightness-125" [ngClass]="colorCable(c.color)"></span>
+                  <span class="w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-500 flex items-center justify-center text-sm font-black text-white">{{ c.n }}</span>
                 </button>
               </div>
             </div>
