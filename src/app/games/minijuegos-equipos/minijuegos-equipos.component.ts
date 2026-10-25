@@ -30,7 +30,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   cocina: { resumen: 'Hay que preparar un plato: echar los ingredientes en el orden de la receta, cada uno en su sartén, y dejar cada fuego en su punto. El plato sale solo cuando está listo. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate en el fuego 1! ¡Fuego 2, sube una! ¡Ya está, sale el plato!"' },
   grua: { resumen: 'Hay que llevar una caja del suelo a la zona de destino con una grúa. Cada persona tiene un control: mover el gancho, subir o bajar el cable, o agarrar y soltar. Los edificios solo se cruzan con el cable arriba. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Adelante! ¡Bajar cable, que ya estamos encima! ¡Pinza, agarra!"' },
   quien: { resumen: 'La pantalla muestra una palabra y el módulo tiene seis botones. El manual está repartido entre el equipo: cada persona tiene una parte. Hay que averiguar qué botón pulsar en cada etapa, y solo el capitán pulsa. Un fallo resta 5 segundos.', ejemplo: 'Ejemplo: "La pantalla dice MONITOR. ¿Quién tiene MONITOR? Posición 6. ¿Qué botón hay en la 6? VA. ¿Quién tiene VA?"' },
-  simon: { resumen: 'El módulo muestra un código y una secuencia de destellos de colores. Cada destello hay que responderlo con el color que indica la tabla de ese código. La tabla está repartida: cada persona tiene un color. Solo el capitán pulsa; un error resta 5 segundos.', ejemplo: 'Ejemplo: "Código 263: el destello rojo se responde con el azul. ¿Quién tiene el rojo?"' },
+  simon: { resumen: 'El módulo muestra un código y una secuencia de destellos de colores. Cada destello hay que responderlo con el color que indica la tabla de ese código. Hay códigos parecidos que sirven de trampa: hay que mirar siempre el código que dice el capitán. Solo el capitán pulsa; un error resta 5 segundos.', ejemplo: 'Ejemplo: "Código 263: el destello rojo se responde con el azul. ¿Quién tiene el rojo?"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
 
@@ -444,7 +444,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
             <div *ngSwitchCase="'simon'" class="space-y-3">
               <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el código y los destellos. Pregunta a tu equipo y pulsa.' : 'El capitán ve el módulo y os dirige.' }}</div>
-              <div class="text-center text-xs text-slate-400">Código <b class="text-white text-base">{{ simonCodigo }}</b> · Aciertos: <b class="text-white">{{ t.aciertos }}</b></div>
+              <div class="text-center text-xs text-slate-400">Di en voz alta el código: <b class="text-white text-base">{{ simonCodigo }}</b> · Aciertos: <b class="text-white">{{ t.aciertos }}</b></div>
               <div class="flex justify-center gap-2">
                 <span *ngFor="let c of simonSecuencia; let i = index" class="w-10 h-10 rounded-full flex items-center justify-center text-lg border-2" [ngClass]="i < simonPulsadas ? 'border-emerald-500 opacity-40' : 'border-slate-500'">{{ simonEmoji(c) }}</span>
               </div>
@@ -561,11 +561,13 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
 
             <div *ngIf="t.tipo === 'simon' && misFilasSimon.length" class="space-y-3">
-              <div class="text-xs text-slate-400">Tu parte de la tabla para el código <b class="text-white">{{ simonCodigo }}</b>. Cuando el capitán pregunte por un color, respóndele.</div>
+              <div class="text-xs text-slate-400">Tu parte de la tabla. Cuando el capitán diga un código y un color, mira solo las filas de ese código.</div>
               <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-2 text-sm">
-                <div *ngFor="let f of misFilasSimon" class="text-slate-200">{{ simonEmoji(f.entrada) }} {{ f.entrada }} → <b class="text-white">{{ simonEmoji(f.salida) }} {{ f.salida }}</b></div>
+                <div *ngFor="let f of misFilasSimon" class="text-slate-200"><b class="text-cyan-300">{{ f.codigo }}</b> · {{ simonEmoji(f.entrada) }} {{ f.entrada }} → <b class="text-white">{{ simonEmoji(f.salida) }} {{ f.salida }}</b></div>
               </div>
             </div>
+
+            <div *ngIf="t.tipo === 'simon' && !misFilasSimon.length" class="text-sm text-slate-300">Ahora mismo no tienes filas en la tabla. Espera a que el capitán pida un código.</div>
 
             <div *ngIf="t.tipo === 'quien' && (misEntradasQVP.pantalla.length || misEntradasQVP.botones.length)" class="space-y-3">
               <div class="text-xs text-slate-400">Tu parte del manual. Cuando el capitán diga una palabra o una etiqueta, respóndele con lo que tengas.</div>
@@ -999,7 +1001,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const yo = duenos.indexOf(this.currentName || '');
     if (yo < 0) return [];
     const n = duenos.length;
-    return (s.tabla || []).filter((_: any, k: number) => ((s.rot || 0) + k) % n === yo);
+    return (s.filas || []).filter((_: any, k: number) => ((s.rot || 0) + k) % n === yo);
   }
 
   async pulsarSimon(color: string): Promise<void> {

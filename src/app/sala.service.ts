@@ -2379,7 +2379,8 @@ export class SalaService {
       }
       if (est.capitanes[t.equipoId] !== usuario) return false;
       const previo = JSON.parse(t.estadoJ);
-      const res = aplicarSimon(previo, color);
+      const nDuenos = Math.max(1, this.miembrosDeEquipo(sala, t.equipoId).filter(nombre => nombre !== est.capitanes[t.equipoId]).length);
+      const res = aplicarSimon(previo, color, nDuenos);
       if (!res.ok) return false;
       if (res.error) {
         t.errores += 1;

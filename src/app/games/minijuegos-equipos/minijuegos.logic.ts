@@ -1572,12 +1572,29 @@ export function aplicarQuienVaPrimero(estado: any, boton: number): { estado: any
 // ------------------------------------------------------------------
 const SIMON_COLORES = ['Rojo', 'Azul', 'Verde', 'Amarillo'];
 
-function nuevoModuloSimon(longitud: number): any {
+/** Un código parecido al real (cambia un dígo) para que sirva de trampa. */
+function codigoSenuelo(base: string, usados: string[]): string {
+  for (;;) {
+    const pos = rnd(3);
+    const cand = base.slice(0, pos) + String(rnd(10)) + base.slice(pos + 1);
+    if (cand !== base && !usados.includes(cand)) return cand;
+  }
+}
+
+function nuevoModuloSimon(longitud: number, nDuenos: number): any {
   const codigo = String(100 + rnd(900));
-  const salidas = barajar(SIMON_COLORES);
-  const tabla = SIMON_COLORES.map((entrada, k) => ({ entrada, salida: salidas[k] }));
+  const senuelos = Math.min(longitud - 1, 2);
+  const codigos = [codigo];
+  const totalCodigos = Math.max(1 + senuelos, Math.ceil(nDuenos / 4));
+  while (codigos.length < totalCodigos) codigos.push(codigoSenuelo(codigo, codigos));
+  // Todas las filas de todos los códigos, mezcladas: cada persona tiene filas de varios códigos
+  const filas: { codigo: string; entrada: string; salida: string }[] = [];
+  for (const c of codigos) {
+    const salidas = barajar(SIMON_COLORES);
+    SIMON_COLORES.forEach((entrada, k) => filas.push({ codigo: c, entrada, salida: salidas[k] }));
+  }
   const secuencia = Array.from({ length: longitud }, () => pick(SIMON_COLORES));
-  return { codigo, tabla, secuencia, pulsadas: 0 };
+  return { codigo, filas: barajar(filas), secuencia, pulsadas: 0 };
 }
 
 function generarSimon(L: number, n: number): Puzle {
@@ -1585,15 +1602,15 @@ function generarSimon(L: number, n: number): Puzle {
     panel: {},
     pistas: Array.from({ length: n }, () => ''),
     solucion: null,
-    estadoInicial: { ...nuevoModuloSimon(2), rot: 0 }
+    estadoInicial: { ...nuevoModuloSimon(2, n), rot: 0 }
   };
 }
 
 /** El capitán pulsa un color. Si es el correcto avanza; si no, reinicia la secuencia (error). */
-export function aplicarSimon(estado: any, color: string): { estado: any; ok: boolean; error?: boolean; acierto?: boolean } {
+export function aplicarSimon(estado: any, color: string, nDuenos: number): { estado: any; ok: boolean; error?: boolean; acierto?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
   const entrada = e.secuencia[e.pulsadas];
-  const esperado = e.tabla.find((f: any) => f.entrada === entrada)?.salida;
+  const esperado = e.filas.find((f: any) => f.codigo === e.codigo && f.entrada === entrada)?.salida;
   if (!esperado) return { estado: e, ok: false };
   if (color !== esperado) {
     e.pulsadas = 0;
@@ -1602,7 +1619,7 @@ export function aplicarSimon(estado: any, color: string): { estado: any; ok: boo
   e.pulsadas += 1;
   if (e.pulsadas < e.secuencia.length) return { estado: e, ok: true, error: false, acierto: false };
   // Secuencia completa: módulo nuevo con una secuencia más larga (hasta 5)
-  const siguiente = nuevoModuloSimon(Math.min(e.secuencia.length + 1, 5));
+  const siguiente = nuevoModuloSimon(Math.min(e.secuencia.length + 1, 5), nDuenos);
   return { estado: siguiente, ok: true, error: false, acierto: true };
 }
 
