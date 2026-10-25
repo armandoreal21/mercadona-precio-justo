@@ -239,8 +239,8 @@ const SIMBOLOS_COMPLEJOS: { g: string; desc: string }[] = (() => {
 function generarSecuencia(L: number, n: number): Puzle {
   const D = Math.min(2 + L, 6);                       // símbolos distintos que hacen falta
   const Q = Math.max(Math.min(2 + L, 7), D);          // longitud de la secuencia
-  // Cada ayudante ve al menos 10 símbolos (sin repetir). Desde 10 personas, el catálogo se reparte entre todos.
-  const T = Math.min(SIMBOLOS_COMPLEJOS.length, n >= 10 ? 120 : 10 * n);
+  // Cada ayudante ve 10 símbolos como mínimo (sin repetir). Solo si el catálogo no alcanza, se reduce el número por persona.
+  const T = Math.min(SIMBOLOS_COMPLEJOS.length, 10 * n);
   const tabla = barajar(SIMBOLOS_COMPLEJOS).slice(0, T);
   const conValor = tabla.map(s => ({ ...s, valor: rnd(10) }));
   const necesarios = conValor.slice(0, D);

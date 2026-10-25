@@ -141,7 +141,15 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
         <div *ngIf="puedeVerPanel()" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
           <div class="text-xs uppercase text-slate-400 tracking-wider">Panel</div>
           <ng-container [ngSwitch]="t.tipo">
-            <div *ngSwitchCase="'secuencia'" class="text-2xl font-black text-center tracking-widest" style="font-variant-emoji: text">{{ t.panel.secuencia.join('  ') }}</div>
+            <div *ngSwitchCase="'secuencia'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">Memoriza el orden y pide a tu equipo el valor de cada símbolo.</div>
+              <div class="flex flex-wrap justify-center gap-2">
+                <div *ngFor="let s of t.panel.secuencia; let i = index" class="flex flex-col items-center gap-1">
+                  <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 border border-cyan-500/40 shadow-[0_0_14px_rgba(34,211,238,0.2)] flex items-center justify-center text-2xl text-white" style="font-variant-emoji: text">{{ s }}</div>
+                  <span class="text-[10px] text-slate-500">{{ i + 1 }}</span>
+                </div>
+              </div>
+            </div>
             <div *ngSwitchCase="'cableado'" class="space-y-3">
               <div class="text-xs text-slate-400">Toca el cable que hay que cortar.</div>
               <div class="flex items-end justify-center gap-2 sm:gap-3 py-2 flex-wrap">
@@ -694,8 +702,22 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
             <div *ngIf="t.tipo === 'fraude' && !reglasFraude.length" class="text-sm text-white whitespace-pre-line">{{ miPista || 'No tienes normas en este tramo.' }}</div>
 
+            <!-- Símbolos de la secuencia: tarjetas con su valor -->
+            <div *ngIf="t.tipo === 'secuencia'" class="space-y-3">
+              <div class="text-xs text-slate-400">Cuando el capitán pida un símbolo, dile su valor.</div>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div *ngFor="let s of simbolosMios" class="flex items-center gap-3 bg-slate-950 rounded-xl p-2 border border-slate-700">
+                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 border border-slate-600 flex items-center justify-center text-xl text-white" style="font-variant-emoji: text">{{ s.g }}</div>
+                  <div class="flex-1 text-right">
+                    <div class="text-[10px] uppercase text-slate-500">vale</div>
+                    <div class="text-xl font-black text-cyan-300">{{ s.valor }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && t.tipo !== 'secuencia'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -1631,6 +1653,14 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   /** Etiqueta de las líneas que le tocan a este ayudante (p. ej. "fila 3"). */
   get etiquetaLineasMapa(): string {
     return this.lineasMapa.map(l => `${l.eje === 'fila' ? 'fila' : 'columna'} ${l.indice}`).join(', ');
+  }
+
+  /** Símbolos de la secuencia que ve este ayudante, con su valor (se lee la pista "X vale N."). */
+  get simbolosMios(): { g: string; valor: string }[] {
+    return this.miPista.split('\n').map(l => {
+      const m = /^(.+) vale (\d+)\.$/.exec(l.trim());
+      return m ? { g: m[1], valor: m[2] } : null;
+    }).filter((x): x is { g: string; valor: string } => !!x);
   }
 
   /** Líneas del mapa que le tocan a este jugador (ya parseadas). */
