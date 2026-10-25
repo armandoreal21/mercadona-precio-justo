@@ -382,10 +382,10 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div *ngFor="let h of semaforoTitulares" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-slate-200">{{ h.aprox }}: <b class="text-white">{{ h.nombre }}</b></div>
               </div>
             </div>
-            <div *ngSwitchCase="'barco'" class="space-y-3">
+            <div *ngSwitchCase="'barco'" class="space-y-3 flex flex-col items-center">
               <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el canal. Dile a cada persona cuándo remar a babor o a estribor.' : 'El capitán ve el canal y os dirige.' }}</div>
-              <div class="grid gap-1 mx-auto" [style.grid-template-columns]="'repeat(' + barcoW + ', 2.5rem)'">
-                <div *ngFor="let c of barcoCeldas" class="w-10 h-10 rounded-md flex items-center justify-center text-lg border" [ngClass]="c.clase">{{ c.icono }}</div>
+              <div class="grid gap-1.5 w-full max-w-xs p-3 rounded-2xl bg-slate-950/80 border border-slate-700 shadow-[inset_0_0_20px_rgba(0,0,0,0.6)]" [style.grid-template-columns]="'repeat(' + barcoW + ', minmax(0, 1fr))'">
+                <div *ngFor="let c of barcoCeldas" class="aspect-square w-full rounded-xl border flex items-center justify-center text-lg transition-all duration-200" [ngClass]="c.clase">{{ c.icono }}</div>
               </div>
               <div class="text-xs text-slate-300 text-center">Avance: <b>{{ barcoProgreso }}%</b> · Bloqueos: <b>{{ barcoBloqueos }}</b></div>
               <div *ngIf="barcoAviso" class="text-xs font-black text-rose-300 text-center">{{ barcoAviso }}</div>
@@ -1472,7 +1472,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
         const golpeRoca = g?.tipo === 'roca' && g.x === x && g.y === y;
         const golpeOrilla = g?.tipo === 'orilla' && ((g.lado === 'izquierda' && x === 0) || (g.lado === 'derecha' && x === W - 1) || (g.lado === 'arriba' && y === 0) || (g.lado === 'abajo' && y === H - 1));
         if (golpeRoca) icono = '💥';
-        let clase = roca ? 'bg-slate-700 border-slate-600' : 'bg-sky-900/60 border-sky-800';
+        let clase = roca ? 'bg-gradient-to-br from-slate-600 to-slate-800 border-slate-500 shadow-inner' : 'bg-gradient-to-br from-sky-900/80 to-slate-900 border-sky-800/70';
         if (golpeRoca) clase = 'bg-rose-900/70 border-rose-500 animate-pulse';
         if (golpeOrilla) clase = 'bg-rose-900/50 border-rose-500 animate-pulse';
         celdas.push({ icono, clase });
