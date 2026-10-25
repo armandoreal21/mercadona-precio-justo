@@ -2345,6 +2345,7 @@ export class SalaService {
         return true;
       }
       if (est.capitanes[t.equipoId] !== usuario) return false;
+      const nDuenos = Math.max(1, this.miembrosDeEquipo(sala, t.equipoId).filter(nombre => nombre !== est.capitanes[t.equipoId]).length);
       const res = aplicarQuienVaPrimero(JSON.parse(t.estadoJ), boton);
       if (!res.ok) return false;
       if (res.error) {
@@ -2355,7 +2356,10 @@ export class SalaService {
         // Módulo resuelto: acierto, el manual se reparte de otra forma y aparece un módulo nuevo
         const e = res.estado;
         e.rot = (e.rot || 0) + 1;
-        e.etapa = nuevaEtapaQVP();
+        const nueva = nuevaEtapaQVP(nDuenos);
+        e.etapa = nueva.etapa;
+        e.manual1 = nueva.manual1;
+        e.manual2 = nueva.manual2;
         t.aciertos += 1;
         t.estadoJ = JSON.stringify(e);
       } else {

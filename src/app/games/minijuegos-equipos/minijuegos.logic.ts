@@ -1527,33 +1527,67 @@ const QVP_BOTONES: { etiqueta: string; lista: string[] }[] = [
   { etiqueta: '¿SEGURO?', lista: ['ÉSTA', 'BIEN', 'NO SÉ', 'ESTÁ', 'YA ESTÁ', 'OTRA', '¿CUÁL?', 'SÍ', 'RÁPIDO', 'OK', '¿SEGURO?', 'DALE', '¿DÓNDE?', 'BUENO'] }
 ];
 
+/** Banco de palabras de pantalla (intermedio, sin repeticiones). */
+const QVP_BANCO_PANTALLA: string[] = [
+  'PRÓXIMA', 'VOY', 'PRIMERO', 'HAYA', 'VAYA', 'VA', 'ESPERA', 'RÁPIDO', 'MONITOR', 'ÚLTIMA', 'SÍ', 'DALE', 'HAY', 'OTRA', 'BIEN', 'PALABRA', 'NADA', 'BAYA', 'LISTO', 'OKAY', 'BUENO', 'NO', 'ALLÁ', 'EXPLOTÓ', 'AHÍ', 'HALLA', 'VALLA', 'OTRO',
+  'CASA', 'MESA', 'PERRO', 'GATO', 'LIBRO', 'PUERTA', 'VENTANA', 'CALLE', 'COCHE', 'TREN', 'BARCO', 'AVIÓN', 'FUEGO', 'AGUA', 'TIERRA', 'CIELO', 'SOL', 'LUNA', 'ESTRELLA', 'NUBE', 'LLUVIA', 'VIENTO', 'NIEVE', 'FLOR', 'ÁRBOL', 'HOJA', 'PIEDRA', 'ARENA', 'RÍO', 'MAR', 'MONTE', 'VALLE', 'BOSQUE', 'CAMINO', 'PUENTE', 'TORRE', 'MURO', 'TECHO', 'SUELO', 'LLAVE', 'CAJA', 'BOLSA', 'PAPEL', 'LÁPIZ', 'TINTA', 'LETRA', 'NÚMERO', 'SUMA', 'RESTA', 'TIEMPO', 'MINUTO', 'HORA', 'DÍA', 'NOCHE', 'MAÑANA', 'AYER', 'HOY', 'SIEMPRE', 'NUNCA', 'ALGO', 'NADIE', 'TODO', 'POCO', 'MUCHO', 'GRANDE', 'PEQUEÑO', 'ROJO', 'AZUL', 'VERDE', 'NEGRO', 'BLANCO', 'DULCE', 'AGRIO', 'FRÍO', 'CALOR', 'FUERTE', 'SUAVE', 'LENTO', 'ALTO', 'BAJO', 'DENTRO', 'FUERA', 'ARRIBA', 'ABAJO', 'DELANTE', 'DETRÁS', 'CERCA', 'LEJOS', 'JUNTO', 'SOLO', 'PRONTO', 'TARDE'
+];
+
+/** Banco de etiquetas de botón (intermedio, sin repeticiones). */
+const QVP_BANCO_ETIQUETAS: string[] = [
+  'ESPERA', '¿QUÉ?', 'NO', 'OTRO', '¿CÓMO?', 'LISTO', '¿ÉSTA?', 'ESTA', 'NO ESTÁ', 'OKAY', 'VALE', 'VA', 'NO ES', '¿ESA?', 'OK', '¿DÓNDE?', 'BUENO', 'ÉSTA', 'ESTÁ', 'NO SÉ', 'RÁPIDO', '¿CUÁL?', 'SÍ', 'OTRA', 'BIEN', 'YA ESTÁ', 'DALE', '¿SEGURO?',
+  '¿CUÁNTO?', '¿QUIÉN?', '¿CUÁNDO?', '¿POR QUÉ?', 'AQUÍ', 'ALLÍ', 'AHORA', 'LUEGO', 'ANTES', 'DESPUÉS', 'SIEMPRE', 'NUNCA', 'MUY', 'MÁS', 'MENOS', 'TODO', 'NADA', 'ALGO', 'NADIE', 'ALGUIEN', 'SÍ NO', 'CLARO', 'QUIZÁ', 'SEGURO', 'MAL', 'MEJOR', 'PEOR', 'VALE YA', 'ESPERA YA', 'SALE', 'ENTRA', 'MIRA', 'VEN', 'VE', 'SUBE', 'BAJA', 'PARA', 'SIGUE', 'GIRA', 'PULSA', 'CORTA', 'ABRE', 'CIERRA', 'ROJO', 'AZUL', 'VERDE', 'NEGRO', 'BLANCO', 'ALTO', 'BAJO', 'DENTRO', 'FUERA', 'ARRIBA', 'ABAJO', 'CERCA', 'LEJOS', 'JUNTO', 'SOLO', 'PRONTO', 'TARDE', 'DULCE', 'AGRIO', 'FRÍO', 'CALOR', 'FUERTE', 'SUAVE', 'LENTO', 'SALTA', 'CAE', 'SUENA', 'CALLA', 'TOCA', 'LLAMA', 'ESCUCHA', 'LEE', 'ESCRIBE', 'CUENTA', 'DIME', 'PIDE', 'DA', 'TOMA', 'DEJA', 'GUARDA', 'BORRA', 'REPITE', 'ESTO', 'ESO', 'AQUELLO', 'ELLA', 'ÉL', 'NOSOTROS', 'USTEDES', 'UNO', 'DOS', 'TRES', 'CUATRO', 'CINCO', 'SEIS', 'SIETE', 'OCHO'
+];
+
+/** Número de palabras activas: 15 por persona, hasta el máximo del banco (a partir de 8 personas se reparte más fino). */
+function activosQVP(nDuenos: number): number {
+  return Math.min(QVP_BANCO_PANTALLA.length, QVP_BANCO_ETIQUETAS.length, 15 * Math.max(1, nDuenos));
+}
+
+/** Genera un manual nuevo: pantallas con su posición y etiquetas con su lista de orden (solo etiquetas activas). */
+function manualQVP(nDuenos: number): { manual1: any[]; manual2: any[] } {
+  const k = activosQVP(nDuenos);
+  const pantallas = barajar(QVP_BANCO_PANTALLA).slice(0, k);
+  const etiquetas = barajar(QVP_BANCO_ETIQUETAS).slice(0, k);
+  const manual1 = pantallas.map(palabra => ({ palabra, pos: 1 + rnd(6) }));
+  const manual2 = etiquetas.map(etiqueta => ({
+    etiqueta,
+    lista: barajar(etiquetas.filter(x => x !== etiqueta)).slice(0, 14)
+  }));
+  return { manual1, manual2 };
+}
+
 /** Qué botón pulsar: la primera palabra de la lista que esté en el módulo. -1 si no hay ninguna. */
-function objetivoQVP(pantalla: string, botones: string[]): number {
-  const p1 = QVP_PANTALLA.find(e => e.palabra === pantalla);
+function objetivoQVP(pantalla: string, botones: string[], manual1: any[], manual2: any[]): number {
+  const p1 = manual1.find((e: any) => e.palabra === pantalla);
   if (!p1) return -1;
   const etiqueta = botones[p1.pos - 1];
-  const p2 = QVP_BOTONES.find(e => e.etiqueta === etiqueta);
+  const p2 = manual2.find((e: any) => e.etiqueta === etiqueta);
   if (!p2) return -1;
-  const destino = p2.lista.find(w => botones.includes(w));
+  const destino = p2.lista.find((w: string) => botones.includes(w));
   return destino === undefined ? -1 : botones.indexOf(destino);
 }
 
-/** Un módulo nuevo: pantalla y botones, con una pulsación correcta posible. */
-export function nuevaEtapaQVP(): { pantalla: string; botones: string[]; objetivo: number } {
+/** Un módulo nuevo con su manual: pantalla y botones, con una pulsación correcta posible. */
+export function nuevaEtapaQVP(nDuenos: number): { etapa: any; manual1: any[]; manual2: any[] } {
   for (;;) {
-    const pantalla = pick(QVP_PANTALLA).palabra;
-    const botones = barajar(QVP_BOTONES.map(b => b.etiqueta)).slice(0, 6);
-    const objetivo = objetivoQVP(pantalla, botones);
-    if (objetivo >= 0) return { pantalla, botones, objetivo };
+    const { manual1, manual2 } = manualQVP(nDuenos);
+    for (let intento = 0; intento < 200; intento++) {
+      const pantalla = pick(manual1).palabra;
+      const botones = barajar(manual2.map((m: any) => m.etiqueta)).slice(0, 6);
+      const objetivo = objetivoQVP(pantalla, botones, manual1, manual2);
+      if (objetivo >= 0) return { etapa: { pantalla, botones, objetivo }, manual1, manual2 };
+    }
   }
 }
 
 function generarQuienVaPrimero(L: number, n: number): Puzle {
+  const nueva = nuevaEtapaQVP(n);
   return {
     panel: {},
     pistas: Array.from({ length: n }, () => ''),
     solucion: null,
-    estadoInicial: { etapa: nuevaEtapaQVP(), rot: 0, manual1: QVP_PANTALLA, manual2: QVP_BOTONES }
+    estadoInicial: { etapa: nueva.etapa, rot: 0, manual1: nueva.manual1, manual2: nueva.manual2 }
   };
 }
 
