@@ -444,16 +444,16 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
             <div *ngSwitchCase="'simon'" class="space-y-3">
               <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el código y los destellos. Pregunta a tu equipo y pulsa.' : 'El capitán ve el módulo y os dirige.' }}</div>
-              <div class="text-center text-xs text-slate-400">Di en voz alta el color y el código de cada destello · Aciertos: <b class="text-white">{{ t.aciertos }}</b></div>
+              <div class="flex items-center justify-center gap-3 text-xs"><span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-600 text-slate-200">Di en voz alta: color + código</span><span class="px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400 text-cyan-200 font-black">Aciertos {{ t.aciertos }}</span></div>
               <div class="flex justify-center gap-2">
                 <div *ngFor="let c of simonSecuencia; let i = index" class="flex flex-col items-center gap-1">
-                  <span class="w-10 h-10 rounded-full flex items-center justify-center text-lg border-2" [ngClass]="i < simonPulsadas ? 'border-emerald-500 opacity-40' : 'border-slate-500'">{{ simonEmoji(c.color) }}</span>
+                  <span class="relative w-14 h-14 rounded-full border-4 flex items-center justify-center transition-all duration-300" [ngClass]="[simonFondoColor(c.color), i < simonPulsadas ? 'border-emerald-400 opacity-40 scale-90' : (i === simonPulsadas ? 'border-white animate-pulse' : 'border-slate-700 opacity-70')]"><span *ngIf="i < simonPulsadas" class="text-white text-2xl font-black">✓</span></span>
                   <span class="text-xs font-black text-white">{{ c.codigo }}</span>
                 </div>
               </div>
-              <div class="text-center text-[11px] text-slate-400">Pulsadas: {{ simonPulsadas }}/{{ simonSecuencia.length }}</div>
+              <div class="max-w-xs mx-auto space-y-1"><div class="h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300" [style.width.%]="simonProgreso"></div></div><div class="text-center text-[11px] text-slate-400">Destello {{ simonPulsadas + 1 }} de {{ simonSecuencia.length }}</div></div>
               <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
-                <button *ngFor="let c of simonColores" (click)="pulsarSimon(c)" [disabled]="!esCapitan" class="font-black py-4 rounded-xl border-2 text-slate-950 disabled:opacity-60" [ngClass]="simonClaseBoton(c)">{{ simonEmoji(c) }} {{ c }}</button>
+                <button *ngFor="let c of simonColores" (click)="pulsarSimon(c)" [disabled]="!esCapitan" class="relative font-black py-5 rounded-2xl text-slate-950 text-lg border-2 shadow-lg transition-transform duration-150 hover:brightness-110 active:scale-95 disabled:opacity-60 disabled:active:scale-100" [ngClass]="simonClaseBoton(c)"><span class="inline-block w-5 h-5 rounded-full bg-slate-950/25 align-middle mr-2"></span>{{ c }}</button>
               </div>
             </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
@@ -564,9 +564,16 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
 
             <div *ngIf="t.tipo === 'simon' && misFilasSimon.length" class="space-y-3">
-              <div class="text-xs text-slate-400">Tu parte de la tabla. Cuando el capitán diga un código y un color, mira solo las filas de ese código.</div>
-              <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-2 text-sm">
-                <div *ngFor="let f of misFilasSimon" class="text-slate-200"><b class="text-cyan-300">{{ f.codigo }}</b> · {{ simonEmoji(f.entrada) }} {{ f.entrada }} → <b class="text-white">{{ simonEmoji(f.salida) }} {{ f.salida }}</b></div>
+              <div class="text-xs text-slate-400">Tu parte. Cuando el capitán diga un código y un color, busca ese código y mira el color que le toca.</div>
+              <div *ngFor="let g of simonGruposAyudante; trackBy: trackSimonGrupo" class="bg-slate-950 rounded-2xl border-2 border-slate-700 p-3 space-y-2">
+                <div class="text-center text-2xl font-black text-cyan-300 tracking-widest">{{ g.codigo }}</div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div *ngFor="let f of g.filas" class="flex items-center justify-center gap-2 bg-slate-900 rounded-xl py-2">
+                    <div class="flex flex-col items-center"><span class="text-2xl">{{ simonEmoji(f.entrada) }}</span><span class="text-[10px] text-slate-400">{{ f.entrada }}</span></div>
+                    <span class="text-slate-400 font-black">→</span>
+                    <div class="flex flex-col items-center"><span class="text-2xl">{{ simonEmoji(f.salida) }}</span><span class="text-[10px] font-bold text-white">{{ f.salida }}</span></div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1007,6 +1014,36 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (yo < 0) return [];
     const n = duenos.length;
     return (s.filas || []).filter((_: any, k: number) => ((s.rot || 0) + k) % n === yo);
+  }
+
+  /** Filas del jugador agrupadas por código (en orden) y ordenadas por color dentro de cada grupo. */
+  get simonGruposAyudante(): { codigo: string; filas: any[] }[] {
+    const orden = this.simonColores;
+    const grupos = new Map<string, any[]>();
+    for (const f of this.misFilasSimon) {
+      if (!grupos.has(f.codigo)) grupos.set(f.codigo, []);
+      grupos.get(f.codigo)!.push(f);
+    }
+    return [...grupos.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([codigo, filas]) => ({ codigo, filas: [...filas].sort((x, y) => orden.indexOf(x.entrada) - orden.indexOf(y.entrada)) }));
+  }
+
+  trackSimonGrupo(_: number, g: any): string {
+    return g.codigo;
+  }
+
+  /** Color de fondo y brillo de cada destello. */
+  simonFondoColor(c: string): string {
+    return c === 'Rojo' ? 'bg-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.7)]'
+      : c === 'Azul' ? 'bg-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.7)]'
+      : c === 'Verde' ? 'bg-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.7)]'
+      : 'bg-amber-300 shadow-[0_0_20px_rgba(252,211,77,0.7)]';
+  }
+
+  get simonProgreso(): number {
+    const total = this.simonSecuencia.length || 1;
+    return Math.round((this.simonPulsadas / total) * 100);
   }
 
   async pulsarSimon(color: string): Promise<void> {
