@@ -1593,8 +1593,9 @@ function nuevoModuloSimon(longitud: number, nDuenos: number): any {
     const salidas = barajar(SIMON_COLORES);
     SIMON_COLORES.forEach((entrada, k) => filas.push({ codigo: c, entrada, salida: salidas[k] }));
   }
-  const secuencia = Array.from({ length: longitud }, () => pick(SIMON_COLORES));
-  return { codigo, filas: barajar(filas), secuencia, pulsadas: 0 };
+  // Cada destello tiene su color y su código (puede ser el real o un señuelo)
+  const secuencia = Array.from({ length: longitud }, () => ({ color: pick(SIMON_COLORES), codigo: pick(codigos) }));
+  return { filas: barajar(filas), secuencia, pulsadas: 0 };
 }
 
 function generarSimon(L: number, n: number): Puzle {
@@ -1609,8 +1610,10 @@ function generarSimon(L: number, n: number): Puzle {
 /** El capitán pulsa un color. Si es el correcto avanza; si no, reinicia la secuencia (error). */
 export function aplicarSimon(estado: any, color: string, nDuenos: number): { estado: any; ok: boolean; error?: boolean; acierto?: boolean } {
   const e = JSON.parse(JSON.stringify(estado));
-  const entrada = e.secuencia[e.pulsadas];
-  const esperado = e.filas.find((f: any) => f.codigo === e.codigo && f.entrada === entrada)?.salida;
+  const bruto = e.secuencia[e.pulsadas];
+  // Compatibilidad: módulos en curso creados antes, con destellos sin código
+  const destello = typeof bruto === 'string' ? { color: bruto, codigo: e.codigo } : bruto;
+  const esperado = e.filas.find((f: any) => f.codigo === destello.codigo && f.entrada === destello.color)?.salida;
   if (!esperado) return { estado: e, ok: false };
   if (color !== esperado) {
     e.pulsadas = 0;

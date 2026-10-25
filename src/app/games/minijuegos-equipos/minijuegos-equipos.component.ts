@@ -444,9 +444,12 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
             <div *ngSwitchCase="'simon'" class="space-y-3">
               <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el código y los destellos. Pregunta a tu equipo y pulsa.' : 'El capitán ve el módulo y os dirige.' }}</div>
-              <div class="text-center text-xs text-slate-400">Di en voz alta el código: <b class="text-white text-base">{{ simonCodigo }}</b> · Aciertos: <b class="text-white">{{ t.aciertos }}</b></div>
+              <div class="text-center text-xs text-slate-400">Di en voz alta el color y el código de cada destello · Aciertos: <b class="text-white">{{ t.aciertos }}</b></div>
               <div class="flex justify-center gap-2">
-                <span *ngFor="let c of simonSecuencia; let i = index" class="w-10 h-10 rounded-full flex items-center justify-center text-lg border-2" [ngClass]="i < simonPulsadas ? 'border-emerald-500 opacity-40' : 'border-slate-500'">{{ simonEmoji(c) }}</span>
+                <div *ngFor="let c of simonSecuencia; let i = index" class="flex flex-col items-center gap-1">
+                  <span class="w-10 h-10 rounded-full flex items-center justify-center text-lg border-2" [ngClass]="i < simonPulsadas ? 'border-emerald-500 opacity-40' : 'border-slate-500'">{{ simonEmoji(c.color) }}</span>
+                  <span class="text-xs font-black text-white">{{ c.codigo }}</span>
+                </div>
               </div>
               <div class="text-center text-[11px] text-slate-400">Pulsadas: {{ simonPulsadas }}/{{ simonSecuencia.length }}</div>
               <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
@@ -975,8 +978,10 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return this.estadoJuego?.codigo ?? '';
   }
 
-  get simonSecuencia(): string[] {
-    return this.estadoJuego?.secuencia ?? [];
+  get simonSecuencia(): any[] {
+    const s = this.estadoJuego;
+    // Compatibilidad: partidas en curso con destellos antiguos (solo color)
+    return (s?.secuencia ?? []).map((x: any) => (typeof x === 'string' ? { color: x, codigo: s?.codigo ?? '' } : x));
   }
 
   get simonPulsadas(): number {
