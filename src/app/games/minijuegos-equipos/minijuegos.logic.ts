@@ -1307,19 +1307,40 @@ function generarBarco(L: number, n: number): Puzle {
   };
 }
 
-/** ¿Existe una ruta del barco hasta el puerto sin pisar rocas ni salir del canal? */
+/** ¿Todas las casillas a las que puede llegar el barco (con los cuatro remos) pueden llegar al puerto? Si no, habría callejones sin salida. */
 function caminoBarco(W: number, H: number, x0: number, rocas: { x: number; y: number }[]): boolean {
-  let alcanzables: number[] = [x0];
-  for (let y = 1; y < H; y++) {
-    const siguientes = new Set<number>();
-    for (const x of alcanzables) {
-      for (const nx of [x - 1, x + 1]) {
-        if (nx < 0 || nx >= W || rocas.some(r => r.x === nx && r.y === y)) continue;
-        siguientes.add(nx);
+  const libre = (x: number, y: number) => x >= 0 && x < W && y >= 0 && y < H && !rocas.some(r => r.x === x && r.y === y);
+  const movs = [[1, 1], [-1, 1], [-1, -1], [1, -1]];
+  const clave = (x: number, y: number) => `${x},${y}`;
+  // Casillas alcanzables desde el inicio
+  const alcanzables = new Map<string, { x: number; y: number }>();
+  const cola: { x: number; y: number }[] = [{ x: x0, y: 0 }];
+  alcanzables.set(clave(x0, 0), { x: x0, y: 0 });
+  while (cola.length) {
+    const c = cola.shift()!;
+    for (const [dx, dy] of movs) {
+      const nx = c.x + dx, ny = c.y + dy;
+      if (!libre(nx, ny) || alcanzables.has(clave(nx, ny))) continue;
+      alcanzables.set(clave(nx, ny), { x: nx, y: ny });
+      cola.push({ x: nx, y: ny });
+    }
+  }
+  // Desde cada una de ellas debe poder llegarse al puerto (fila H - 1)
+  for (const origen of alcanzables.values()) {
+    const visto = new Set<string>([clave(origen.x, origen.y)]);
+    const pila = [origen];
+    let llega = origen.y === H - 1;
+    while (pila.length && !llega) {
+      const c = pila.pop()!;
+      for (const [dx, dy] of movs) {
+        const nx = c.x + dx, ny = c.y + dy;
+        if (!libre(nx, ny) || visto.has(clave(nx, ny))) continue;
+        if (ny === H - 1) { llega = true; break; }
+        visto.add(clave(nx, ny));
+        pila.push({ x: nx, y: ny });
       }
     }
-    if (siguientes.size === 0) return false;
-    alcanzables = [...siguientes];
+    if (!llega) return false;
   }
   return true;
 }

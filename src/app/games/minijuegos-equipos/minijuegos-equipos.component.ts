@@ -385,7 +385,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             <div *ngSwitchCase="'barco'" class="space-y-3 flex flex-col items-center">
               <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el canal. Dile a cada persona cuándo remar a babor o a estribor.' : 'El capitán ve el canal y os dirige.' }}</div>
               <div class="grid gap-1.5 w-full max-w-xs p-3 rounded-2xl bg-slate-950/80 border border-slate-700 shadow-[inset_0_0_20px_rgba(0,0,0,0.6)]" [style.grid-template-columns]="'repeat(' + barcoW + ', minmax(0, 1fr))'">
-                <div *ngFor="let c of barcoCeldas" class="aspect-square w-full rounded-xl border flex items-center justify-center text-lg transition-all duration-200" [ngClass]="c.clase">{{ c.icono }}</div>
+                <div *ngFor="let c of barcoCeldas" class="aspect-square w-full border flex items-center justify-center text-lg transition-all duration-200" [ngClass]="c.clase">{{ c.icono }}</div>
               </div>
               <div class="text-xs text-slate-300 text-center">Avance: <b>{{ barcoProgreso }}%</b> · Bloqueos: <b>{{ barcoBloqueos }}</b></div>
               <div *ngIf="barcoAviso" class="text-xs font-black text-rose-300 text-center">{{ barcoAviso }}</div>
@@ -693,8 +693,8 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
             <div *ngIf="t.tipo === 'barco' && misRemos.length" class="space-y-3">
               <div class="text-xs text-slate-400">Tu remo. Rema cuando tu capitán te lo pida.</div>
-              <div *ngFor="let r of misRemos; trackBy: trackRemo" class="bg-slate-950 rounded-xl p-3 border border-slate-700">
-                <button (click)="remar(r.lado)" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-4 py-3 rounded-lg text-sm">{{ r.texto }}</button>
+              <div *ngFor="let r of misRemos; trackBy: trackRemo" class="w-full max-w-sm mx-auto">
+                <button (click)="remar(r.lado)" class="group w-full flex items-center justify-center gap-4 py-4 rounded-2xl bg-gradient-to-br from-cyan-400 to-cyan-600 text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.35)] active:scale-95 transition hover:brightness-110"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-slate-950/25 text-3xl font-black">{{ flechaRemo(r.lado) }}</span><span class="text-base font-black">{{ r.texto }}</span></button>
               </div>
             </div>
 
@@ -1466,15 +1466,15 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
         const puerto = y === H - 1;
         let icono = '';
         if (barco) icono = '🚤';
-        else if (roca) icono = '🪨';
+        else if (roca) icono = '';
         else if (puerto) icono = '⚓';
         const g = s?.golpe;
         const golpeRoca = g?.tipo === 'roca' && g.x === x && g.y === y;
         const golpeOrilla = g?.tipo === 'orilla' && ((g.lado === 'izquierda' && x === 0) || (g.lado === 'derecha' && x === W - 1) || (g.lado === 'arriba' && y === 0) || (g.lado === 'abajo' && y === H - 1));
         if (golpeRoca) icono = '💥';
-        let clase = roca ? 'bg-gradient-to-br from-slate-600 to-slate-800 border-slate-500 shadow-inner' : 'bg-gradient-to-br from-sky-900/80 to-slate-900 border-sky-800/70';
-        if (golpeRoca) clase = 'bg-rose-900/70 border-rose-500 animate-pulse';
-        if (golpeOrilla) clase = 'bg-rose-900/50 border-rose-500 animate-pulse';
+        let clase = roca ? 'bg-gradient-to-br from-slate-500 via-slate-600 to-slate-800 border-slate-400/50 rounded-[42%_38%_46%_40%] shadow-[inset_-4px_-6px_10px_rgba(0,0,0,0.55),inset_3px_3px_6px_rgba(255,255,255,0.14)]' : 'bg-gradient-to-br from-sky-900/80 to-slate-900 border-sky-800/70 rounded-xl';
+        if (golpeRoca) clase = 'bg-rose-900/70 border-rose-500 rounded-xl animate-pulse';
+        if (golpeOrilla) clase = 'bg-rose-900/50 border-rose-500 rounded-xl animate-pulse';
         celdas.push({ icono, clase });
       }
     }
@@ -1488,10 +1488,10 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   }
 
   readonly barcoRemos = [
-    { lado: 'derecha', nombre: 'Derecha', texto: '🛶 Derecha' },
-    { lado: 'izquierda', nombre: 'Izquierda', texto: '🛶 Izquierda' },
-    { lado: 'izquierda_atras', nombre: 'Izquierda atrás', texto: '🔙 Izquierda atrás' },
-    { lado: 'derecha_atras', nombre: 'Derecha atrás', texto: '🔙 Derecha atrás' }
+    { lado: 'derecha', nombre: 'Derecha', texto: 'Derecha' },
+    { lado: 'izquierda', nombre: 'Izquierda', texto: 'Izquierda' },
+    { lado: 'izquierda_atras', nombre: 'Izquierda atrás', texto: 'Izquierda atrás' },
+    { lado: 'derecha_atras', nombre: 'Derecha atrás', texto: 'Derecha atrás' }
   ];
 
   /** Quién tiene cada remo ahora mismo (lo ve todo el equipo). */
@@ -1516,6 +1516,11 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   trackRemo(_: number, r: any): string {
     return r.lado;
+  }
+
+  /** Flecha de la dirección en la que avanza el barco con cada remo. */
+  flechaRemo(lado: string): string {
+    return lado === 'derecha' ? '↘' : lado === 'izquierda' ? '↙' : lado === 'izquierda_atras' ? '↖' : '↗';
   }
 
   async remar(lado: string): Promise<void> {
