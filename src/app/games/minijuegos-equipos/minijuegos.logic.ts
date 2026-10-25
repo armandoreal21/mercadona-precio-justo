@@ -1562,6 +1562,7 @@ export function aplicarQuienVaPrimero(estado: any, boton: number): { estado: any
   const e = JSON.parse(JSON.stringify(estado));
   if (!e.etapa) return { estado: e, ok: false };
   if (boton === e.etapa.objetivo) return { estado: e, ok: true, error: false, acierto: true };
+  e.fallo = { t: Date.now(), boton };
   return { estado: e, ok: true, error: true, acierto: false };
 }
 

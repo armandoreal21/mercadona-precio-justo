@@ -434,11 +434,11 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
             <div *ngSwitchCase="'quien'" class="space-y-3">
               <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves la pantalla y los botones. Pregunta a tu equipo y pulsa.' : 'El capitán ve el módulo y os dirige.' }}</div>
-              <div class="text-center text-xs text-slate-400">Aciertos: <b class="text-white">{{ t.aciertos }}</b> · Sigue hasta que se acabe el tiempo</div>
+              <div class="flex items-center justify-center gap-2 text-xs"><span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)]"></span><span class="text-slate-300">Aciertos <b class="text-white">{{ t.aciertos }}</b> · sigue hasta que se acabe el tiempo</span></div>
               <div *ngIf="qvpEtapa as et" class="space-y-3">
-                <div class="bg-slate-950 rounded-xl p-4 border-2 border-cyan-500 text-center text-2xl font-black text-white tracking-widest">{{ et.pantalla }}</div>
+                <div class="relative rounded-2xl border-4 border-slate-700 bg-gradient-to-b from-slate-950 to-slate-900 p-5 shadow-[0_0_30px_rgba(34,211,238,0.25)] text-center"><div class="text-[10px] uppercase tracking-[0.3em] text-cyan-500/70 mb-1">pantalla</div><div class="font-mono text-3xl font-black text-cyan-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.9)] tracking-widest">{{ et.pantalla }}</div></div>
                 <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
-                  <button *ngFor="let b of et.botones; let i = index" (click)="pulsarQVP(i)" [disabled]="!esCapitan" class="bg-slate-800 hover:bg-slate-700 disabled:opacity-60 border-2 border-slate-600 text-white font-black py-4 rounded-xl text-sm">{{ b }}</button>
+                  <button *ngFor="let b of et.botones; let i = index" (click)="pulsarQVP(i)" [disabled]="!esCapitan" class="relative rounded-2xl border-2 py-4 px-2 font-black text-white shadow-lg hover:brightness-125 active:scale-95 transition disabled:opacity-60 disabled:active:scale-100" [ngClass]="qvpBotonFallo === i ? 'bg-rose-700 border-rose-400 animate-pulse' : 'bg-slate-800 border-slate-500'"><span class="absolute top-1 left-2 text-[10px] text-slate-400">{{ i + 1 }}</span>{{ b }}</button>
                 </div>
               </div>
             </div>
@@ -610,13 +610,13 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
             <div *ngIf="t.tipo === 'quien' && (misEntradasQVP.pantalla.length || misEntradasQVP.botones.length)" class="space-y-3">
               <div class="text-xs text-slate-400">Tu parte del manual. Cuando el capitán diga una palabra o una etiqueta, respóndele con lo que tengas.</div>
-              <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-1 text-xs">
-                <div class="font-black text-slate-300 uppercase">Pantalla → botón a leer</div>
-                <div *ngFor="let e of misEntradasQVP.pantalla" class="text-slate-200"><b class="text-white">{{ e.palabra }}</b> → botón en la posición <b>{{ e.pos }}</b></div>
+              <div class="bg-slate-950 rounded-xl p-2 border border-slate-700 grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-xs">
+                <div class="font-black text-slate-300 uppercase col-span-full">Pantalla → botón a leer</div>
+                <div *ngFor="let e of misEntradasQVP.pantalla" class="bg-slate-900 rounded-lg px-2 py-1.5 flex items-center justify-between gap-2"><span class="font-black text-white text-sm truncate">{{ e.palabra }}</span><div class="grid grid-cols-2 gap-[2px] shrink-0"><span *ngFor="let k of [1, 2, 3, 4, 5, 6]" class="w-2.5 h-2.5 rounded-[2px] border" [ngClass]="k === e.pos ? 'bg-cyan-400 border-cyan-200' : 'border-slate-600'"></span></div></div>
               </div>
               <div class="bg-slate-950 rounded-xl p-3 border border-slate-700 space-y-2 text-xs">
                 <div class="font-black text-slate-300 uppercase">Etiqueta → orden de pulsado</div>
-                <div *ngFor="let e of misEntradasQVP.botones" class="text-slate-200"><b class="text-white">{{ e.etiqueta }}</b>: <span class="text-slate-300">{{ e.lista.join(', ') }}</span></div>
+                <div *ngFor="let e of misEntradasQVP.botones" class="bg-slate-900 rounded-xl p-2 space-y-1"><div class="font-black text-white">{{ e.etiqueta }}</div><div class="flex flex-wrap gap-1"><span *ngFor="let w of e.lista; let k = index" class="px-2 py-0.5 rounded-md text-[11px]" [ngClass]="k === 0 ? 'bg-cyan-500 text-slate-950 font-black' : 'bg-slate-800 text-slate-300'">{{ k + 1 }} {{ w }}</span></div></div>
               </div>
             </div>
 
@@ -1089,6 +1089,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   private simonFalloVisto = 0;
   simonFalloActivo = false;
   simonColorFallo: string | null = null;
+  qvpBotonFallo: number | null = null;
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
   ngDoCheck(): void {
@@ -1096,10 +1097,12 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (f?.t && f.t !== this.simonFalloVisto && Date.now() - f.t < 2000) {
       this.simonFalloVisto = f.t;
       this.simonFalloActivo = true;
-      this.simonColorFallo = f.color;
+      this.simonColorFallo = f.color ?? null;
+      this.qvpBotonFallo = f.boton ?? null;
       setTimeout(() => {
         this.simonFalloActivo = false;
         this.simonColorFallo = null;
+        this.qvpBotonFallo = null;
       }, 1500);
     }
   }
