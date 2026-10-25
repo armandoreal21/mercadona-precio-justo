@@ -453,7 +453,16 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               </div>
               <div class="max-w-xs mx-auto space-y-1"><div class="h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300" [style.width.%]="simonProgreso"></div></div><div class="text-center text-[11px] text-slate-400">Destello {{ simonPulsadas + 1 }} de {{ simonSecuencia.length }}</div></div>
               <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
-                <button *ngFor="let c of simonColores" (click)="pulsarSimon(c)" [disabled]="!esCapitan" class="relative font-black py-5 rounded-2xl text-slate-950 text-lg border-2 shadow-lg transition-transform duration-150 hover:brightness-110 active:scale-95 disabled:opacity-60 disabled:active:scale-100" [ngClass]="simonClaseBoton(c)"><span class="inline-block w-5 h-5 rounded-full bg-slate-950/25 align-middle mr-2"></span>{{ c }}</button>
+                <svg viewBox="0 0 200 200" class="col-span-2 justify-self-center w-64 h-64 drop-shadow-2xl" [style.pointer-events]="esCapitan ? 'auto' : 'none'">
+                  <circle cx="100" cy="100" r="99" fill="#1e293b"/>
+                  <circle cx="100" cy="100" r="95" fill="#020617"/>
+                  <g *ngFor="let c of simonCunas">
+                    <path [attr.d]="c.d" [attr.fill]="simonRelleno(c.color)" stroke="#020617" stroke-width="3" class="cursor-pointer transition-colors duration-150" (click)="pulsarSimon(c.color)"/>
+                    <text [attr.x]="c.lx" [attr.y]="c.ly" text-anchor="middle" dominant-baseline="middle" fill="#0f172a" font-weight="900" font-size="13" class="pointer-events-none">{{ c.color }}</text>
+                  </g>
+                  <circle cx="100" cy="100" r="22" fill="#020617" stroke="#334155" stroke-width="3"/>
+                  <circle cx="100" cy="100" r="8" [attr.fill]="simonIluminado ? '#f8fafc' : '#334155'"/>
+                </svg>
               </div>
             </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
@@ -1033,6 +1042,23 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return g.codigo;
   }
 
+  /** Cuñas del aparato de Simón (cuatro cuartos del círculo). */
+  readonly simonCunas = [
+    { color: 'Rojo', d: 'M100,100 L100,5 A95,95 0 0 0 5,100 Z', lx: 52, ly: 52 },
+    { color: 'Azul', d: 'M100,100 L195,100 A95,95 0 0 0 100,5 Z', lx: 148, ly: 52 },
+    { color: 'Verde', d: 'M100,100 L5,100 A95,95 0 0 0 100,195 Z', lx: 52, ly: 148 },
+    { color: 'Amarillo', d: 'M100,100 L100,195 A95,95 0 0 0 195,100 Z', lx: 148, ly: 148 }
+  ];
+
+  /** Color que se está iluminando ahora mismo (tras pulsar). */
+  simonIluminado: string | null = null;
+
+  simonRelleno(c: string): string {
+    const base: Record<string, string> = { Rojo: '#e11d48', Azul: '#0284c7', Verde: '#059669', Amarillo: '#ca8a04' };
+    const vivo: Record<string, string> = { Rojo: '#fda4af', Azul: '#7dd3fc', Verde: '#6ee7b7', Amarillo: '#fde047' };
+    return this.simonIluminado === c ? vivo[c] : base[c];
+  }
+
   /** Color de fondo y brillo de cada destello. */
   simonFondoColor(c: string): string {
     return c === 'Rojo' ? 'bg-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.7)]'
@@ -1049,6 +1075,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   async pulsarSimon(color: string): Promise<void> {
     if (!this.sala || !this.currentName) return;
     this.error = null;
+    this.simonIluminado = color;
+    setTimeout(() => (this.simonIluminado = null), 300);
     const ok = await this.salaService.accionSimonMinijuego(this.sala.codigo, this.currentName, color);
     if (!ok) this.error = 'Solo el capitán puede pulsar.';
   }
