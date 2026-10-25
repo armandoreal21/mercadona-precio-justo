@@ -514,9 +514,26 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
           </button>
         </div>
 
+        <!-- Respuesta de Símbolos en secuencia: flechas y teclado, con el error dentro del propio panel -->
+        <div *ngIf="esCapitan && t.tipo === 'secuencia'" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div class="text-xs text-emerald-300 font-bold text-center">Escribe el valor de cada símbolo, en orden:</div>
+          <div class="flex justify-center gap-2 flex-wrap">
+            <div *ngFor="let d of digitosSecuencia; let i = index" class="flex flex-col items-center gap-1">
+              <button (click)="ajustarDigito(i, 1)" class="w-10 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-cyan-300 font-black">▲</button>
+              <div (click)="tocarDigito(i)" class="w-12 h-14 rounded-2xl border-2 flex items-center justify-center text-2xl font-black cursor-pointer transition-all duration-200"
+                   [ngClass]="falloSecuencia ? 'border-rose-500 bg-rose-950/50 text-rose-300 animate-pulse' : (digitoActivo === i ? 'border-cyan-300 bg-slate-950 text-white shadow-[0_0_14px_rgba(34,211,238,0.5)]' : 'border-cyan-500/50 bg-slate-950 text-white')">{{ d }}</div>
+              <button (click)="ajustarDigito(i, -1)" class="w-10 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-cyan-300 font-black">▼</button>
+            </div>
+          </div>
+          <div class="grid grid-cols-5 gap-2 max-w-xs mx-auto" *ngIf="mostrarTecladoSecuencia">
+            <button *ngFor="let n of [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]" (click)="pulsarDigito(n)" class="h-10 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-black active:scale-95 transition">{{ n }}</button>
+          </div>
+          <button (click)="enviarSecuencia()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2 rounded-lg uppercase text-xs tracking-wide">Enviar</button>
+        </div>
+
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && t.tipo !== 'secuencia' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -2034,6 +2051,51 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
 
+  /** Dígitos de la respuesta de Símbolos en secuencia (uno por símbolo). */
+  digitosRespuesta: number[] = [];
+  digitoActivo = 0;
+  falloSecuencia = false;
+  /** Teclado numérico para Símbolos en secuencia. Desactivado de momento: se activa cuando haga falta. */
+  mostrarTecladoSecuencia = false;
+
+  get digitosSecuencia(): number[] {
+    const n = this.est?.turno?.panel?.secuencia?.length ?? 0;
+    while (this.digitosRespuesta.length < n) this.digitosRespuesta.push(0);
+    if (this.digitosRespuesta.length > n) this.digitosRespuesta.length = n;
+    return this.digitosRespuesta;
+  }
+
+  ajustarDigito(i: number, delta: number): void {
+    const d = this.digitosSecuencia;
+    d[i] = (d[i] + delta + 10) % 10;
+  }
+
+  tocarDigito(i: number): void {
+    this.digitoActivo = i;
+  }
+
+  pulsarDigito(n: number): void {
+    const d = this.digitosSecuencia;
+    if (!d.length) return;
+    d[this.digitoActivo] = n;
+    this.digitoActivo = Math.min(d.length - 1, this.digitoActivo + 1);
+  }
+
+  /** Error visual dentro del panel de respuesta, durante un momento. */
+  marcarFalloSecuencia(): void {
+    this.falloSecuencia = true;
+    setTimeout(() => (this.falloSecuencia = false), 1200);
+  }
+
+  async enviarSecuencia(): Promise<void> {
+    this.respuesta = this.digitosSecuencia.join('');
+    await this.enviar();
+    if (!this.falloSecuencia) {
+      this.digitosRespuesta = [];
+      this.digitoActivo = 0;
+    }
+  }
+
   async enviar(): Promise<void> {
     if (!this.sala || !this.currentName) return;
     const t = this.est?.turno;
@@ -2048,7 +2110,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (!ok) {
       this.error = 'No puedes responder ahora.';
     } else if ((this.est?.turno?.errores ?? antes) > antes) {
-      this.error = 'Respuesta incorrecta: se restan 5 segundos.';
+      if (t?.tipo === 'secuencia') this.marcarFalloSecuencia();
+      else this.error = 'Respuesta incorrecta: se restan 5 segundos.';
     } else if ((this.est?.turno?.aciertos ?? aciertosAntes) > aciertosAntes) {
       this.error = null;
     }
