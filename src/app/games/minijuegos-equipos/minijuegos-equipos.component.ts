@@ -149,7 +149,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </button>
               </div>
             </div>
-            <div *ngSwitchCase="'mapa'" class="space-y-3">
+            <div *ngSwitchCase="'mapa'" class="space-y-3 flex flex-col items-center">
               <div class="text-xs text-slate-400">
                 Llega desde <b>S</b> hasta <b>G</b>. Usa las flechas para marcar el camino. Tu equipo te dirá dónde hay muros.
               </div>
