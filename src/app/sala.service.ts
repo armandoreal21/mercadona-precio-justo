@@ -2054,7 +2054,7 @@ export class SalaService {
     });
   }
 
-  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[]): Promise<boolean> {
+  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       if (est.fase !== 'esperando') return false;
@@ -2066,6 +2066,7 @@ export class SalaService {
       est.capitanes = { ...capitanes };
       est.equiposOrden = equipos;
       est.tiempoTurnoSeg = Math.min(300, Math.max(15, Math.round(tiempoSeg || SEG_TURNO_DEFAULT)));
+      (est as any).mostrarMetaAyudantes = !!mostrarMeta;
       const elegidos = (juegos || []).filter(j => TIPOS_MINIJUEGO.includes(j));
       if (elegidos.length === 0) return false;
       est.tiposRonda = this.tiposParaRondas(elegidos, est.totalRondas);

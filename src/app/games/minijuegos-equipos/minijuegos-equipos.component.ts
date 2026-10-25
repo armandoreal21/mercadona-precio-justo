@@ -78,6 +78,9 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
         </div>
 
         <div *ngIf="isAdmin" class="flex items-center justify-between gap-2">
+          <label class="flex items-center gap-2 text-sm text-white"><input type="checkbox" [(ngModel)]="mostrarMetaBorrador" class="accent-cyan-500" />🗺️ En el mapa, los ayudantes ven la S y la G</label>
+        </div>
+        <div *ngIf="isAdmin" class="flex items-center justify-between gap-2">
           <span class="text-sm text-white">⏱️ Segundos por turno</span>
           <input type="number" min="15" max="300" [(ngModel)]="segundosBorrador"
                  class="w-24 bg-slate-800 border border-slate-600 rounded-lg px-2 py-1 text-white text-sm text-center" />
@@ -153,8 +156,8 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               <div class="text-xs text-slate-400">
                 Llega desde <b>S</b> hasta <b>G</b>. Usa las flechas para marcar el camino. Tu equipo te dirá dónde hay muros.
               </div>
-              <div class="grid gap-1 mx-auto" [style.grid-template-columns]="'repeat(' + t.panel.tamano + ', 2.75rem)'">
-                <div *ngFor="let c of celdasMapa" class="w-11 h-11 rounded-lg flex items-center justify-center text-sm font-black" [ngClass]="c.clase">
+              <div class="grid gap-1 mx-auto w-full max-w-xs" [style.grid-template-columns]="'repeat(' + t.panel.tamano + ', minmax(0, 1fr))'">
+                <div *ngFor="let c of celdasMapa" class="aspect-square w-full rounded-lg flex items-center justify-center text-sm font-black" [ngClass]="c.clase">
                   {{ c.texto }}
                 </div>
               </div>
@@ -536,14 +539,11 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
 
             <!-- Pista visual del mapa -->
-            <div *ngIf="t.tipo === 'mapa'" class="space-y-3">
-              <div *ngFor="let l of lineasMapa" class="space-y-1">
-                <div class="text-xs text-slate-300">{{ l.eje === 'fila' ? 'Fila' : 'Columna' }} {{ l.indice }}</div>
-                <div class="flex gap-1">
-                  <div *ngFor="let m of l.muros" class="w-7 h-7 rounded" [ngClass]="m ? 'bg-slate-950 border border-slate-700' : 'bg-cyan-200/70'"></div>
-                </div>
+            <div *ngIf="t.tipo === 'mapa'" class="space-y-2 flex flex-col items-center">
+              <div class="grid gap-[3px] w-full max-w-xs" [style.grid-template-columns]="'repeat(' + tableroMapaN + ', minmax(0, 1fr))'">
+                <div *ngFor="let c of tableroAyudante" class="aspect-square w-full rounded flex items-center justify-center text-[11px] font-black" [ngClass]="c.clase">{{ c.texto }}</div>
               </div>
-              <div class="text-[11px] text-slate-500">Oscuro = muro · Claro = paso libre</div>
+              <div class="text-[11px] text-slate-500">Solo ves tu parte: el resto está tapado. Oscuro = muro · Claro = paso libre</div>
             </div>
 
             <!-- Pista visual de pinta y deslizante: filas dibujadas -->
@@ -760,6 +760,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   }
   capitanBorrador: Record<string, string> = {};
   segundosBorrador = SEG_TURNO_DEFAULT;
+  /** Si los ayudantes del mapa ven la S y la G (lo decide el admin al empezar). */
+  mostrarMetaBorrador = true;
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1590,6 +1592,47 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return i >= 0 && t.pistas.length ? (t.pistas[i % t.pistas.length] || '') : '';
   }
 
+  /** Tablero que ve el ayudante: el tamaño completo, pero solo se descubren las casillas de sus líneas. */
+  get tableroAyudante(): CeldaMapa[] {
+    const t = this.est?.turno;
+    if (!t || t.tipo !== 'mapa') return [];
+    const N: number = t.panel.tamano;
+    const verMeta = !!(this.est as any)?.mostrarMetaAyudantes;
+    const [ir, ic] = [t.panel.inicio[0] - 1, t.panel.inicio[1] - 1];
+    const [gr, gc] = [t.panel.meta[0] - 1, t.panel.meta[1] - 1];
+    const conocida = new Map<string, boolean>();
+    for (const l of this.lineasMapa) {
+      const k = l.indice - 1;
+      l.muros.forEach((m, i) => {
+        const r = l.eje === 'fila' ? k : i;
+        const c = l.eje === 'fila' ? i : k;
+        conocida.set(`${r},${c}`, m);
+      });
+    }
+    const celdas: CeldaMapa[] = [];
+    for (let r = 0; r < N; r++) {
+      for (let c = 0; c < N; c++) {
+        const visible = conocida.has(`${r},${c}`);
+        let texto = '';
+        let clase = 'bg-slate-900 border border-slate-800';
+        if (verMeta && r === ir && c === ic) { texto = 'S'; clase = 'bg-cyan-600 text-white'; }
+        else if (verMeta && r === gr && c === gc) { texto = 'G'; clase = 'bg-emerald-600 text-white'; }
+        else if (visible) clase = conocida.get(`${r},${c}`) ? 'bg-slate-950 border border-slate-700' : 'bg-cyan-200/70';
+        celdas.push({ texto, clase });
+      }
+    }
+    return celdas;
+  }
+
+  get tableroMapaN(): number {
+    return this.est?.turno?.panel?.tamano ?? 4;
+  }
+
+  /** Etiqueta de las líneas que le tocan a este ayudante (p. ej. "fila 3"). */
+  get etiquetaLineasMapa(): string {
+    return this.lineasMapa.map(l => `${l.eje === 'fila' ? 'fila' : 'columna'} ${l.indice}`).join(', ');
+  }
+
   /** Líneas del mapa que le tocan a este jugador (ya parseadas). */
   get lineasMapa(): LineaMapa[] {
     return this.miPista.split('\n').map(linea => {
@@ -1946,7 +1989,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       this.error = 'Marca al menos un juego.';
       return;
     }
-    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos);
+    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador);
     if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
 
