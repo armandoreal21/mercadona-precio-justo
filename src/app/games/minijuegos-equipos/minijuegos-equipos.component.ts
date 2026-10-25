@@ -321,8 +321,8 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                     <div>
                       <div class="text-sm font-bold text-white">{{ a.resuelta ? '✅' : '🚨' }} {{ a.texto }}</div>
                       <div class="text-[11px] text-slate-300 space-y-0.5">
-                        <div *ngFor="let r of a.chuleta" [ngClass]="r.ok ? 'text-emerald-300' : 'text-amber-200'">{{ r.ok ? '✓' : '○' }} {{ r.tipo }} → posición <b>{{ r.pos }}</b></div>
-                        <div class="text-slate-400">{{ a.listos }}/{{ a.total }} bien · activa hace {{ a.hace }} s</div>
+                        <div *ngFor="let r of a.chuleta" class="inline-flex items-center gap-2 px-2 py-1 rounded-lg border mr-1 mb-1" [ngClass]="r.ok ? 'border-emerald-500 bg-emerald-900/40 text-emerald-200' : 'border-slate-600 bg-slate-900 text-slate-300'"><span class="w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-black" [ngClass]="r.ok ? 'bg-emerald-500 text-slate-950' : 'bg-slate-700 text-slate-300'">{{ r.pos }}</span>{{ r.tipo }}</div>
+                        <div class="space-y-1"><div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-emerald-400 to-emerald-300 transition-all duration-300" [style.width.%]="a.total ? (a.listos / a.total) * 100 : 0"></div></div><div class="text-[10px] text-slate-400">{{ a.listos }}/{{ a.total }} bien · activa hace {{ a.hace }} s</div></div>
                       </div>
                     </div>
                     <span class="text-xs font-black" [ngClass]="a.resuelta ? 'text-emerald-300' : 'text-rose-300'">{{ a.resuelta ? 'RESUELTA' : 'ACTIVA' }}</span>
@@ -620,9 +620,9 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </div>
                 <div class="flex gap-1">
                   <span *ngFor="let k of posiciones" class="w-6 h-6 rounded-full text-xs font-black flex items-center justify-center border-2"
-                        [ngClass]="k === c.pos ? 'bg-cyan-400 text-slate-950 border-cyan-300' : 'border-slate-600 text-slate-300'">{{ k + 1 }}</span>
+                        [ngClass]="k === c.pos ? 'bg-gradient-to-br from-cyan-300 to-cyan-500 text-slate-950 border-cyan-200 shadow-[0_0_12px_rgba(34,211,238,0.6)] scale-110' : 'border-slate-600 text-slate-400 bg-slate-900'">{{ k + 1 }}</span>
                 </div>
-                <button (click)="tocarControl(c.id)" class="ml-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-1 rounded-lg text-xs uppercase">↻ Girar</button>
+                <button (click)="tocarControl(c.id)" class="ml-auto bg-gradient-to-br from-cyan-400 to-cyan-600 hover:brightness-110 text-slate-950 font-black px-4 py-2 rounded-xl text-xs uppercase shadow-[0_0_14px_rgba(34,211,238,0.4)] active:scale-95 transition">↻ Girar</button>
               </div>
             </div>
 
