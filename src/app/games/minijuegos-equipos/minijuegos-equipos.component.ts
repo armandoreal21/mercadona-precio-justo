@@ -447,11 +447,12 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               <div class="flex items-center justify-center gap-3 text-xs"><span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-600 text-slate-200">{{ simonResueltos > 0 ? 'Repite todo desde el principio' : 'Pulsa el primer destello' }}</span><span class="px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400 text-cyan-200 font-black">Aciertos {{ t.aciertos }}</span></div>
               <div class="flex justify-center gap-2">
                 <div *ngFor="let c of simonSecuencia; let i = index" class="flex flex-col items-center gap-1">
-                  <span class="relative w-14 h-14 rounded-full border-4 flex items-center justify-center transition-all duration-300" [ngClass]="[simonFondoColor(c.color), simonFalloActivo ? 'border-rose-500 animate-pulse' : (i < simonResueltos ? 'border-emerald-400 opacity-40 scale-90' : (i === simonResueltos ? 'border-white animate-pulse' : 'border-slate-700 opacity-70'))]"><span *ngIf="i < simonResueltos" class="text-white text-2xl font-black">✓</span></span>
+                  <span class="relative w-14 h-14 rounded-full border-4 flex items-center justify-center transition-all duration-300" [ngClass]="[simonFondoColor(c.color), simonFalloActivo ? 'border-rose-500 animate-pulse' : (i === simonPulsadas ? 'border-white ring-4 ring-white/40 animate-pulse scale-110' : (i < simonResueltos ? 'border-emerald-400' : (i === simonResueltos ? 'border-slate-300' : 'border-slate-700 opacity-50')))]"></span>
                   <span class="text-xs font-black text-white">{{ c.codigo }}</span>
+                  <span class="w-8 h-1 rounded-full" [ngClass]="i < simonResueltos ? 'bg-emerald-400' : 'bg-transparent'"></span>
                 </div>
               </div>
-              <div class="max-w-xs mx-auto space-y-1"><div class="h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300" [style.width.%]="simonProgreso"></div></div><div class="text-center text-[11px] text-slate-400">Destello {{ simonResueltos + 1 }} de {{ simonSecuencia.length }}</div></div>
+              <div class="text-center text-xs text-slate-300">{{ simonPasoTexto }}</div>
               <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
                 <svg viewBox="0 0 200 200" class="col-span-2 justify-self-center w-64 h-64 drop-shadow-2xl" [class.ring-4]="simonFalloActivo" [class.ring-rose-500]="simonFalloActivo" [class.rounded-full]="simonFalloActivo" [style.pointer-events]="esCapitan ? 'auto' : 'none'">
                   <defs>
@@ -1021,6 +1022,14 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   get simonResueltos(): number {
     return this.estadoJuego?.resueltos ?? 0;
+  }
+
+  /** Texto del paso actual de la cadena para el capitán. */
+  get simonPasoTexto(): string {
+    const r = this.simonResueltos;
+    const p = this.simonPulsadas;
+    if (r === 0) return 'Responde el destello 1';
+    return `Paso ${p + 1} de ${r + 1}: responde el destello ${p + 1}${p === r ? ' (nuevo)' : ''}`;
   }
 
   get simonPulsadas(): number {
