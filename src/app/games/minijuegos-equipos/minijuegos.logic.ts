@@ -1595,7 +1595,7 @@ function nuevoModuloSimon(longitud: number, nDuenos: number): any {
   }
   // Cada destello tiene su color y su código (puede ser el real o un señuelo)
   const secuencia = Array.from({ length: longitud }, () => ({ color: pick(SIMON_COLORES), codigo: pick(codigos) }));
-  return { filas: barajar(filas), secuencia, pulsadas: 0 };
+  return { filas: barajar(filas), secuencia, pulsadas: 0, resueltos: 0 };
 }
 
 function generarSimon(L: number, n: number): Puzle {
@@ -1617,11 +1617,16 @@ export function aplicarSimon(estado: any, color: string, nDuenos: number): { est
   if (!esperado) return { estado: e, ok: false };
   if (color !== esperado) {
     e.pulsadas = 0;
+    e.fallo = { t: Date.now(), color };
     return { estado: e, ok: true, error: true, acierto: false };
   }
+  // Cadena: para cada destello nuevo hay que pulsar desde el principio las respuestas de todos los ya resueltos
   e.pulsadas += 1;
-  if (e.pulsadas < e.secuencia.length) return { estado: e, ok: true, error: false, acierto: false };
-  // Secuencia completa: módulo nuevo con una secuencia más larga (hasta 5)
+  if (e.pulsadas <= (e.resueltos ?? 0)) return { estado: e, ok: true, error: false, acierto: false };
+  e.resueltos = (e.resueltos ?? 0) + 1;
+  e.pulsadas = 0;
+  if (e.resueltos < e.secuencia.length) return { estado: e, ok: true, error: false, acierto: false };
+  // Todos los destellos resueltos: módulo nuevo con una secuencia más larga (hasta 5)
   const siguiente = nuevoModuloSimon(Math.min(e.secuencia.length + 1, 5), nDuenos);
   return { estado: siguiente, ok: true, error: false, acierto: true };
 }

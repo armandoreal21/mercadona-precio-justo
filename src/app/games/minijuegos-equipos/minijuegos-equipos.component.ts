@@ -444,16 +444,16 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
             <div *ngSwitchCase="'simon'" class="space-y-3">
               <div class="text-xs text-slate-400 text-center">{{ esCapitan ? 'Ves el código y los destellos. Pregunta a tu equipo y pulsa.' : 'El capitán ve el módulo y os dirige.' }}</div>
-              <div class="flex items-center justify-center gap-3 text-xs"><span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-600 text-slate-200">Di en voz alta: color + código</span><span class="px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400 text-cyan-200 font-black">Aciertos {{ t.aciertos }}</span></div>
+              <div class="flex items-center justify-center gap-3 text-xs"><span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-600 text-slate-200">{{ simonResueltos > 0 ? 'Repite todo desde el principio' : 'Pulsa el primer destello' }}</span><span class="px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400 text-cyan-200 font-black">Aciertos {{ t.aciertos }}</span></div>
               <div class="flex justify-center gap-2">
                 <div *ngFor="let c of simonSecuencia; let i = index" class="flex flex-col items-center gap-1">
-                  <span class="relative w-14 h-14 rounded-full border-4 flex items-center justify-center transition-all duration-300" [ngClass]="[simonFondoColor(c.color), i < simonPulsadas ? 'border-emerald-400 opacity-40 scale-90' : (i === simonPulsadas ? 'border-white animate-pulse' : 'border-slate-700 opacity-70')]"><span *ngIf="i < simonPulsadas" class="text-white text-2xl font-black">✓</span></span>
+                  <span class="relative w-14 h-14 rounded-full border-4 flex items-center justify-center transition-all duration-300" [ngClass]="[simonFondoColor(c.color), simonFalloActivo ? 'border-rose-500 animate-pulse' : (i < simonResueltos ? 'border-emerald-400 opacity-40 scale-90' : (i === simonResueltos ? 'border-white animate-pulse' : 'border-slate-700 opacity-70'))]"><span *ngIf="i < simonResueltos" class="text-white text-2xl font-black">✓</span></span>
                   <span class="text-xs font-black text-white">{{ c.codigo }}</span>
                 </div>
               </div>
-              <div class="max-w-xs mx-auto space-y-1"><div class="h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300" [style.width.%]="simonProgreso"></div></div><div class="text-center text-[11px] text-slate-400">Destello {{ simonPulsadas + 1 }} de {{ simonSecuencia.length }}</div></div>
+              <div class="max-w-xs mx-auto space-y-1"><div class="h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300" [style.width.%]="simonProgreso"></div></div><div class="text-center text-[11px] text-slate-400">Destello {{ simonResueltos + 1 }} de {{ simonSecuencia.length }}</div></div>
               <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
-                <svg viewBox="0 0 200 200" class="col-span-2 justify-self-center w-64 h-64 drop-shadow-2xl" [style.pointer-events]="esCapitan ? 'auto' : 'none'">
+                <svg viewBox="0 0 200 200" class="col-span-2 justify-self-center w-64 h-64 drop-shadow-2xl" [class.ring-4]="simonFalloActivo" [class.ring-rose-500]="simonFalloActivo" [class.rounded-full]="simonFalloActivo" [style.pointer-events]="esCapitan ? 'auto' : 'none'">
                   <defs>
                     <radialGradient id="simonBisel" cx="50%" cy="40%" r="60%">
                       <stop offset="0%" stop-color="#64748b"/>
@@ -1019,6 +1019,10 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return (s?.secuencia ?? []).map((x: any) => (typeof x === 'string' ? { color: x, codigo: s?.codigo ?? '' } : x));
   }
 
+  get simonResueltos(): number {
+    return this.estadoJuego?.resueltos ?? 0;
+  }
+
   get simonPulsadas(): number {
     return this.estadoJuego?.pulsadas ?? 0;
   }
@@ -1072,9 +1076,29 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   /** Color que se está iluminando ahora mismo (tras pulsar). */
   simonIluminado: string | null = null;
 
+  /** Fallo reciente de Simón: se muestra un momento para que todos lo vean. */
+  private simonFalloVisto = 0;
+  simonFalloActivo = false;
+  simonColorFallo: string | null = null;
+
+  /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
+  ngDoCheck(): void {
+    const f = this.estadoJuego?.fallo;
+    if (f?.t && f.t !== this.simonFalloVisto && Date.now() - f.t < 2000) {
+      this.simonFalloVisto = f.t;
+      this.simonFalloActivo = true;
+      this.simonColorFallo = f.color;
+      setTimeout(() => {
+        this.simonFalloActivo = false;
+        this.simonColorFallo = null;
+      }, 1500);
+    }
+  }
+
   simonRelleno(c: string): string {
     const base: Record<string, string> = { Rojo: '#e11d48', Azul: '#0284c7', Verde: '#059669', Amarillo: '#ca8a04' };
     const vivo: Record<string, string> = { Rojo: '#fda4af', Azul: '#7dd3fc', Verde: '#6ee7b7', Amarillo: '#fde047' };
+    if (this.simonColorFallo === c) return '#ef4444';
     return this.simonIluminado === c ? vivo[c] : base[c];
   }
 
@@ -1088,7 +1112,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   get simonProgreso(): number {
     const total = this.simonSecuencia.length || 1;
-    return Math.round((this.simonPulsadas / total) * 100);
+    return Math.round((this.simonResueltos / total) * 100);
   }
 
   async pulsarSimon(color: string): Promise<void> {
