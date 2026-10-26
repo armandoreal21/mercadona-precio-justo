@@ -1992,6 +1992,7 @@ export class SalaService {
   private abrirTurnoMinijuego(sala: Sala, est: EstadoMinijuegos, equipoId: string): void {
     const tipo: TipoMinijuego = est.tiposRonda[est.ronda - 1];
     if (tipo === 'palabras') { this.crearTurnoPalabras(sala, est); return; }
+    if (tipo === 'subasta') { this.crearTurnoSubasta(sala, est); return; }
     const p = generarPuzle(tipo, 1, this.ayudantesDe(sala, est, equipoId));
     const ahora = Date.now();
     est.turno = {
@@ -2017,7 +2018,7 @@ export class SalaService {
   private cerrarTurnoMinijuego(sala: Sala, est: EstadoMinijuegos): void {
     const t = est.turno!;
     // El turno de palabras se cierra con su propio flujo (cerrarMinijuegoPalabras)
-    if ((t as any).tipo === 'palabras') return;
+    if ((t as any).tipo === 'palabras' || (t as any).tipo === 'subasta') return;
     est.resultados.push({ ronda: t.ronda, equipoId: t.equipoId, tipo: t.tipo, aciertos: t.aciertos, errores: t.errores });
     est.aciertosTotales[t.equipoId] = (est.aciertosTotales[t.equipoId] || 0) + t.aciertos;
 
@@ -2072,13 +2073,13 @@ export class SalaService {
     });
   }
 
-  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false, configPalabras?: { rondas: number; tiempoSeg: number; numLetras: number; dificultad: string }): Promise<boolean> {
+  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false, configPalabras?: { rondas: number; tiempoSeg: number; numLetras: number; dificultad: string }, configSubasta?: { rondas: number; tiempoSeg: number; dificultad: string; catalogo: { id: string; categoria: string; descripcion: string }[] }): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       if (est.fase !== 'esperando') return false;
       const equipos = (sala.equipos || []).filter(eq => this.miembrosDeEquipo(sala, eq.id).length > 0).map(eq => eq.id);
       // Cada equipo necesita un capitán que sea miembro de ese equipo
-      const valido = equipos.length > 0 && ((juegos || []).every(j => j === 'palabras') || equipos.every(id =>
+      const valido = equipos.length > 0 && ((juegos || []).every(j => j === 'palabras' || j === 'subasta') || equipos.every(id =>
         !!capitanes[id] && this.miembrosDeEquipo(sala, id).includes(capitanes[id])));
       if (!valido) return false;
       est.capitanes = { ...capitanes };
@@ -2086,6 +2087,7 @@ export class SalaService {
       est.tiempoTurnoSeg = Math.min(300, Math.max(15, Math.round(tiempoSeg || SEG_TURNO_DEFAULT)));
       (est as any).mostrarMetaAyudantes = !!mostrarMeta;
       (est as any).palabrasCfg = configPalabras || (est as any).palabrasCfg || { rondas: 3, tiempoSeg: 45, numLetras: 10, dificultad: 'facil' };
+      (est as any).subastaCfg = configSubasta || (est as any).subastaCfg || { rondas: 3, tiempoSeg: 45, dificultad: 'facil', catalogo: [] };
       const elegidos = (juegos || []).filter(j => TIPOS_MINIJUEGO.includes(j));
       if (elegidos.length === 0) return false;
       est.tiposRonda = this.tiposParaRondas(elegidos, est.totalRondas);
@@ -2585,6 +2587,224 @@ export class SalaService {
     equipos.forEach(e => {
       const g = P?.ganadas?.[e] || 0;
       est.resultados.push({ ronda: est.ronda, equipoId: e, tipo: 'palabras' as any, aciertos: g, errores: 0 });
+      est.aciertosTotales[e] = (est.aciertosTotales[e] || 0) + g;
+      if (max > 0 && g === max) est.puntos[e] = (est.puntos[e] || 0) + 1;
+    });
+    est.turno = null;
+    if (est.ronda >= est.totalRondas) {
+      est.fase = 'terminado';
+      this.determinarGanadorMinijuegos(est);
+      return;
+    }
+    est.ronda += 1;
+    this.abrirTurnoMinijuego(sala, est, equipos[(est.ronda - 1) % equipos.length]);
+  }
+
+  // ====================================================================
+  // MINIJUEGO: LA SUBASTA DE RESPUESTAS (todos los equipos a la vez)
+  // Misma mecánica que el juego original. Cada respuesta válida suma 1 (2 en difícil).
+  // ====================================================================
+
+  private subastaDe(est: EstadoMinijuegos): any | null {
+    const t: any = est.turno;
+    if (!t || t.tipo !== 'subasta' || !t.subasta) return null;
+    const S = t.subasta;
+    S.respuestas = S.respuestas || [];
+    S.selecciones = S.selecciones || {};
+    S.ganadas = S.ganadas || {};
+    S.usadas = S.usadas || [];
+    return S;
+  }
+
+  private claveSubasta(texto: string): string {
+    return (texto || '').trim().replace(/\s+/g, ' ').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
+  /** Elige una categoría que no se haya jugado en la partida y, si se puede, distinta de `evitar`. */
+  private elegirCategoriaSubasta(est: EstadoMinijuegos, usadas: string[], evitar?: string): { id: string; categoria: string; descripcion: string } {
+    const cat: any[] = (est as any).subastaCfg?.catalogo || [];
+    let pool = cat.filter(c => !usadas.includes(c.id) && c.id !== evitar);
+    if (pool.length === 0) pool = cat.filter(c => c.id !== evitar);
+    if (pool.length === 0) pool = cat;
+    if (pool.length === 0) return { id: 'vacio', categoria: '(sin categorías)', descripcion: '' };
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  private crearTurnoSubasta(sala: Sala, est: EstadoMinijuegos): void {
+    const cfg = (est as any).subastaCfg || { rondas: 3, tiempoSeg: 45, dificultad: 'facil', catalogo: [] };
+    const cat = this.elegirCategoriaSubasta(est, []);
+    const ahora = Date.now();
+    const tiempo = cfg.tiempoSeg;
+    est.turno = {
+      equipoId: 'todos', ronda: est.ronda, tipo: 'subasta', nivel: 1, panel: {}, pistas: [], solucion: null,
+      aciertos: 0, errores: 0, inicioMs: ahora, finMs: Number.MAX_SAFE_INTEGER, iniciado: true,
+      subasta: {
+        ronda: 1, total: cfg.rondas, tiempoSeg: tiempo, dificultad: cfg.dificultad,
+        puntosPorRespuesta: cfg.dificultad === 'dificil' ? 2 : 1,
+        categoria: cat, usadas: [], tiempoFin: ahora + tiempo * 1000,
+        fase: 'respondiendo', respuestas: [], selecciones: {}, ganadas: {}
+      }
+    } as any;
+  }
+
+  /** Un jugador escribe una respuesta para su equipo mientras dura la ronda. */
+  async aportarRespuestaSubastaMinijuego(codigo: string, usuario: string, texto: string): Promise<boolean> {
+    const limpio = (texto || '').trim().replace(/\s+/g, ' ');
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const S = this.subastaDe(est);
+      if (!S || S.fase !== 'respondiendo' || Date.now() >= S.tiempoFin) return false;
+      const j = sala.jugadores.find(x => x.nombre === usuario);
+      if (!j || !j.equipoId || limpio.length < 2) return false;
+      const clave = this.claveSubasta(limpio);
+      if (S.respuestas.some((r: any) => r.jugador === usuario && r.clave === clave)) return false;
+      S.respuestas.push({ jugador: usuario, equipoId: j.equipoId, respuesta: limpio, clave });
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin: descarta la categoría antes de que nadie responda. No se quema: sale otra distinta. */
+  async descartarCategoriaSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const S = this.subastaDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!S || !esAdmin || S.fase !== 'respondiendo' || S.respuestas.length > 0) return false;
+      S.categoria = this.elegirCategoriaSubasta(est, S.usadas, S.categoria?.id);
+      S.tiempoFin = Date.now() + S.tiempoSeg * 1000;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Pasa a selección cuando se acaba el tiempo (cualquiera lo puede pedir) o el admin lo fuerza. */
+  async pasarASeleccionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const S = this.subastaDe(est);
+      if (!S || S.fase !== 'respondiendo') return false;
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (Date.now() < S.tiempoFin && !esAdmin) return false;
+      S.fase = 'seleccion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Cada equipo marca o desmarca las respuestas que presenta (mientras no haya confirmado). */
+  async toggleEleccionSubastaMinijuego(codigo: string, usuario: string, clave: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const S = this.subastaDe(est);
+      if (!S || S.fase !== 'seleccion') return false;
+      const j = sala.jugadores.find(x => x.nombre === usuario);
+      if (!j || !j.equipoId) return false;
+      const sel = S.selecciones[j.equipoId] || { elegidas: [], invalidas: [], confirmada: false };
+      if (sel.confirmada) return false;
+      sel.elegidas = sel.elegidas || [];
+      const idx = sel.elegidas.findIndex((e: any) => e.clave === clave);
+      if (idx >= 0) {
+        sel.elegidas.splice(idx, 1);
+      } else {
+        const resp = S.respuestas.find((r: any) => r.equipoId === j.equipoId && r.clave === clave);
+        if (!resp) return false;
+        sel.elegidas.push({ clave, texto: resp.respuesta });
+      }
+      S.selecciones[j.equipoId] = sel;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** El equipo da por cerrada su selección. Cuando todos confirman, pasa a revelación. */
+  async confirmarSeleccionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const S = this.subastaDe(est);
+      if (!S || S.fase !== 'seleccion') return false;
+      const j = sala.jugadores.find(x => x.nombre === usuario);
+      if (!j || !j.equipoId) return false;
+      const sel = S.selecciones[j.equipoId] || { elegidas: [], invalidas: [], confirmada: false };
+      sel.confirmada = true;
+      S.selecciones[j.equipoId] = sel;
+      if (est.equiposOrden.every(e => !!S.selecciones[e]?.confirmada)) S.fase = 'revelacion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin: pasa a revelación aunque algún equipo no haya confirmado. */
+  async pasarARevelacionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const S = this.subastaDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!S || !esAdmin || S.fase !== 'seleccion') return false;
+      S.fase = 'revelacion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin (árbitro): invalida o recupera una respuesta presentada. */
+  async toggleInvalidaSubastaMinijuego(codigo: string, usuario: string, equipoId: string, clave: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const S = this.subastaDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!S || !esAdmin || S.fase !== 'revelacion' || !S.selecciones[equipoId]) return false;
+      const sel = S.selecciones[equipoId];
+      sel.invalidas = sel.invalidas || [];
+      const idx = sel.invalidas.indexOf(clave);
+      if (idx >= 0) sel.invalidas.splice(idx, 1); else sel.invalidas.push(clave);
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Puntos de un equipo en la ronda: respuestas válidas por puntos por respuesta. */
+  private puntosSubastaEquipo(S: any, equipoId: string): number {
+    const sel = S.selecciones[equipoId];
+    if (!sel) return 0;
+    const invalidas = new Set(sel.invalidas || []);
+    const validas = (sel.elegidas || []).filter((e: any) => !invalidas.has(e.clave)).length;
+    return validas * S.puntosPorRespuesta;
+  }
+
+  /** Admin: cierra la ronda interna (gana el equipo con más puntos, o ambos si empatan) y pasa a la siguiente. */
+  async avanzarRondaSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const S = this.subastaDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!S || !esAdmin || S.fase !== 'revelacion') return false;
+      const puntos = est.equiposOrden.map(e => ({ id: e, p: this.puntosSubastaEquipo(S, e) }));
+      const max = Math.max(0, ...puntos.map(x => x.p));
+      if (max > 0) puntos.filter(x => x.p === max).forEach(x => { S.ganadas[x.id] = (S.ganadas[x.id] || 0) + 1; });
+      S.usadas.push(S.categoria.id);
+      if (S.ronda < S.total) {
+        S.ronda += 1;
+        S.categoria = this.elegirCategoriaSubasta(est, S.usadas);
+        S.tiempoFin = Date.now() + S.tiempoSeg * 1000;
+        S.fase = 'respondiendo';
+        S.respuestas = [];
+        S.selecciones = {};
+      } else {
+        this.cerrarMinijuegoRondasInternas(sala, est, S.ganadas);
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Cierre común: 1 punto para el equipo con más rondas internas ganadas; empate, 1 para cada uno. */
+  private cerrarMinijuegoRondasInternas(sala: Sala, est: EstadoMinijuegos, ganadas: Record<string, number>): void {
+    const equipos = est.equiposOrden;
+    const max = Math.max(0, ...equipos.map(e => ganadas[e] || 0));
+    equipos.forEach(e => {
+      const g = ganadas[e] || 0;
+      est.resultados.push({ ronda: est.ronda, equipoId: e, tipo: 'subasta' as any, aciertos: g, errores: 0 });
       est.aciertosTotales[e] = (est.aciertosTotales[e] || 0) + g;
       if (max > 0 && g === max) est.puntos[e] = (est.puntos[e] || 0) + 1;
     });

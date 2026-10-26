@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua', 'quien', 'simon', 'palabras'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua', 'quien', 'simon', 'palabras', 'subasta'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -25,6 +25,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   quien: '🔤 Quién va primero',
   simon: '🔴 Simón dice',
   palabras: '🔤 La Palabra Más Larga',
+  subasta: '🧠 La Subasta de Respuestas',
   balanza: '⚖️ Balanza'
 };
 
@@ -85,6 +86,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'quien': return generarQuienVaPrimero(L, n);
     case 'simon': return generarSimon(L, n);
     case 'palabras': return { panel: {}, pistas: Array.from({ length: n }, () => ''), solucion: null };
+    case 'subasta': return { panel: {}, pistas: Array.from({ length: n }, () => ''), solucion: null };
   }
 }
 

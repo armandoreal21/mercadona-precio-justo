@@ -1,6 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 import { Sala, EstadoMinijuegos } from '../../core/models/sala.model';
 import { SalaService } from '../../sala.service';
 import { NOMBRE_MINIJUEGO, SEG_TURNO_DEFAULT, TIPOS_MINIJUEGO, PROTOCOLO_REACTOR, ganadoresRondaPalabras, validarLetrasPalabras } from './minijuegos.logic';
@@ -30,6 +33,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   cocina: { resumen: 'Hay que preparar un plato: echar los ingredientes en el orden de la receta, cada uno en su sartén, y dejar cada fuego en su punto. El plato sale solo cuando está listo. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate en el fuego 1! ¡Fuego 2, sube una! ¡Ya está, sale el plato!"' },
   grua: { resumen: 'Hay que llevar una caja del suelo a la zona de destino con una grúa. Cada persona tiene un control: mover el gancho, subir o bajar el cable, o agarrar y soltar. Los edificios solo se cruzan con el cable arriba. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Adelante! ¡Bajar cable, que ya estamos encima! ¡Pinza, agarra!"' },
   quien: { resumen: 'La pantalla muestra una palabra y el módulo tiene seis botones. El manual está repartido entre el equipo: cada persona tiene una parte. Hay que averiguar qué botón pulsar en cada etapa, y solo el capitán pulsa. Un fallo resta 5 segundos.', ejemplo: 'Ejemplo: "La pantalla dice MONITOR. ¿Quién tiene MONITOR? Posición 6. ¿Qué botón hay en la 6? VA. ¿Quién tiene VA?"' },
+  subasta: { resumen: 'Se propone una categoría y todos escribís respuestas a la vez. Cada equipo elige las suyas y confirma; el árbitro (admin) invalida las que no valgan. Cada respuesta válida suma punto (2 en difícil). El equipo con más puntos gana la ronda interna.', ejemplo: 'Ejemplo: categoría "Animales de granja": todos escribís lo que se os ocurra, eligís las mejores y confirmáis.' },
   palabras: { resumen: 'Todos los equipos buscan la palabra más larga con las letras que aparecen en pantalla, a la vez. Hay varias rondas internas; el equipo que gane más rondas suma el punto del minijuego. Si las palabras se empatan, ganan los dos equipos esa ronda.', ejemplo: 'Ejemplo: "Con las letras A, R, T, O, S, E, N, I, L, P, todos escribid la palabra más larga que podáis formar."' },
   simon: { resumen: 'El módulo muestra un código y una secuencia de destellos de colores. Cada destello hay que responderlo con el color que indica la tabla de ese código. Hay códigos parecidos que sirven de trampa: hay que mirar siempre el código que dice el capitán. Solo el capitán pulsa; un error resta 5 segundos.', ejemplo: 'Ejemplo: "Código 263: el destello rojo se responde con el azul. ¿Quién tiene el rojo?"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
@@ -95,6 +99,20 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </label>
             <label class="flex flex-col gap-1 text-slate-300">Dificultad
               <select [(ngModel)]="dificultadPalabrasBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option value="facil">Fácil</option><option value="media">Media</option><option value="dificil">Difícil</option></select>
+            </label>
+          </div>
+        </div>
+        <div *ngIf="isAdmin" class="space-y-2">
+          <div class="text-sm text-white">🧠 La Subasta de Respuestas: configuración</div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+            <label class="flex flex-col gap-1 text-slate-300">Rondas internas
+              <select [(ngModel)]="rondasSubastaBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option [ngValue]="1">1</option><option [ngValue]="2">2</option><option [ngValue]="3">3</option><option [ngValue]="4">4</option><option [ngValue]="5">5</option></select>
+            </label>
+            <label class="flex flex-col gap-1 text-slate-300">Tiempo por ronda
+              <select [(ngModel)]="tiempoSubastaBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option [ngValue]="30">30 s</option><option [ngValue]="45">45 s</option><option [ngValue]="60">60 s</option><option [ngValue]="90">90 s</option></select>
+            </label>
+            <label class="flex flex-col gap-1 text-slate-300">Dificultad
+              <select [(ngModel)]="dificultadSubastaBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option value="facil">Fácil</option><option value="media">Media</option><option value="dificil">Difícil</option></select>
             </label>
           </div>
         </div>
@@ -575,6 +593,64 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </div>
               </ng-container>
             </div>
+              <div *ngSwitchCase="'subasta'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">Todos los equipos juegan a la vez. Ronda interna {{ subastaS?.ronda }} de {{ subastaS?.total }}.</div>
+              <div class="flex justify-center gap-2 flex-wrap text-xs">
+                <span *ngFor="let eq of subastaEquipos" class="px-3 py-1 rounded-full bg-slate-800 border border-slate-600 text-slate-200">{{ eq.nombre }} · ganadas <b class="text-white">{{ eq.ganadas }}</b><ng-container *ngIf="subastaS?.fase === 'seleccion'"> · <b [ngClass]="eq.confirmada ? 'text-emerald-300' : 'text-amber-300'">{{ eq.confirmada ? '✓ confirmado' : 'seleccionando…' }}</b></ng-container></span>
+              </div>
+              <ng-container *ngIf="subastaS?.fase === 'respondiendo'">
+                <div class="text-center">
+                  <div class="text-[10px] uppercase tracking-widest text-slate-400">Categoría</div>
+                  <div class="text-xl font-black text-yellow-300">{{ subastaS.categoria?.categoria }}</div>
+                  <div *ngIf="subastaS.categoria?.descripcion" class="text-xs text-slate-300 mt-1">{{ subastaS.categoria.descripcion }}</div>
+                </div>
+                <div class="text-center text-3xl font-black text-yellow-400">{{ subastaSegundos }}s</div>
+                <div *ngIf="palabrasMiEquipo" class="flex gap-2 max-w-md mx-auto">
+                  <input [(ngModel)]="respuestaSub" (keyup.enter)="enviarRespuestaSub()" autocomplete="off" placeholder="Escribe una respuesta" class="flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-bold focus:outline-none focus:border-cyan-400" />
+                  <button (click)="enviarRespuestaSub()" class="bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black px-4 rounded-xl">Añadir</button>
+                </div>
+                <div *ngIf="errorRespSub" class="text-rose-300 text-xs text-center">{{ errorRespSub }}</div>
+                <div *ngIf="!palabrasMiEquipo" class="text-center text-xs text-slate-400">Solo los jugadores de un equipo pueden aportar respuestas.</div>
+                <div class="flex flex-wrap justify-center gap-2">
+                  <span *ngFor="let r of subastaMisPropias" class="px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 text-emerald-300 font-bold">{{ r.respuesta }}</span>
+                </div>
+                <div *ngIf="isAdmin && subastaS.respuestas.length === 0" class="text-center">
+                  <button (click)="descartarCategoriaSubastaMin()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg">Cambiar categoría</button>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="subastaS?.fase === 'seleccion'">
+                <div class="text-center text-sm text-slate-300">Elige las respuestas que presenta tu equipo y confirma.</div>
+                <div *ngIf="palabrasMiEquipo" class="flex flex-col gap-2 max-w-md mx-auto">
+                  <button *ngFor="let r of subastaMisRespuestas" (click)="toggleRespuestaSub(r.clave)" [disabled]="subastaMiConfirmado" class="flex justify-between items-center px-3 py-2 rounded-xl border-2 transition disabled:opacity-70" [ngClass]="subastaElegida(r.clave) ? 'bg-emerald-900/50 border-emerald-400' : 'bg-slate-900 border-slate-700 hover:border-cyan-400'">
+                    <span class="font-bold text-cyan-300">{{ r.respuesta }}</span>
+                    <span class="text-emerald-300 font-black">{{ subastaElegida(r.clave) ? '✓' : '' }}</span>
+                  </button>
+                  <button *ngIf="!subastaMiConfirmado" (click)="confirmarSubastaMin()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2 rounded-xl uppercase text-xs">Confirmar selección</button>
+                  <div *ngIf="subastaMiConfirmado" class="text-center text-emerald-300 text-sm font-bold">✓ Selección confirmada</div>
+                </div>
+                <div *ngIf="!palabrasMiEquipo" class="text-center text-xs text-slate-400">Los equipos están eligiendo…</div>
+                <div *ngIf="isAdmin" class="text-center">
+                  <button (click)="pasarRevelacionSubastaMin()" class="text-xs bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black px-4 py-2 rounded-lg">Revelar</button>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="subastaS?.fase === 'revelacion'">
+                <div *ngFor="let eq of subastaEquipos" class="p-4 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700 shadow-lg">
+                  <div class="flex justify-between items-center">
+                    <div class="font-bold text-white">{{ eq.nombre }}</div>
+                    <div class="px-3 py-1 rounded-full bg-yellow-400 text-slate-950 text-sm font-black shadow">{{ eq.puntos }} pts</div>
+                  </div>
+                  <div class="flex flex-wrap gap-2 mt-2">
+                    <span *ngFor="let e of eq.elegidas" (click)="isAdmin && invalidarSubastaMin(eq.id, e.clave)" [class.cursor-pointer]="isAdmin" [class.hover:brightness-125]="isAdmin" [class.active:scale-95]="isAdmin" class="flex items-center gap-2 px-2 py-1 rounded-xl border-2 text-sm font-bold transition select-none" [ngClass]="eq.invalidas.includes(e.clave) ? 'border-rose-600 bg-rose-950/40 text-rose-300' : 'border-emerald-500 bg-emerald-950/30 text-emerald-100'" [title]="isAdmin ? (eq.invalidas.includes(e.clave) ? 'Toca para recuperar' : 'Toca para invalidar') : ''">
+                      <span class="w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-black" [ngClass]="eq.invalidas.includes(e.clave) ? 'bg-rose-600 text-white' : 'bg-emerald-500 text-slate-950'">{{ eq.invalidas.includes(e.clave) ? '✕' : '✓' }}</span>
+                      <span [class.line-through]="eq.invalidas.includes(e.clave)">{{ e.texto }}</span>
+                    </span>
+                  </div>
+                </div>
+                <div *ngIf="isAdmin" class="text-center">
+                  <button (click)="siguienteRondaSubastaMin()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 rounded-xl uppercase text-xs">Siguiente ronda interna</button>
+                </div>
+              </ng-container>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -813,7 +889,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && t.tipo !== 'secuencia' && t.tipo !== 'palabras'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && t.tipo !== 'secuencia' && t.tipo !== 'palabras' && t.tipo !== 'subasta'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -888,6 +964,14 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   palabraPal = '';
   palabraErrPal: string | null = null;
   private palabrasSeleccionPedida = false;
+  // La Subasta de Respuestas dentro del minijuego
+  private http = inject(HttpClient);
+  rondasSubastaBorrador = 3;
+  tiempoSubastaBorrador = 45;
+  dificultadSubastaBorrador: 'facil' | 'media' | 'dificil' = 'facil';
+  respuestaSub = '';
+  errorRespSub: string | null = null;
+  private subastaSeleccionPedida = false;
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1225,6 +1309,13 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
   ngDoCheck(): void {
+    // La Subasta de Respuestas: al acabar el tiempo pasa a selección (una sola vez)
+    const S = this.subastaS;
+    if (S?.fase === 'respondiendo' && Date.now() >= S.tiempoFin && !this.subastaSeleccionPedida && this.sala && this.currentName) {
+      this.subastaSeleccionPedida = true;
+      this.salaService.pasarASeleccionSubastaMinijuego(this.sala.codigo, this.currentName);
+    }
+    if (S?.fase === 'respondiendo' && Date.now() < S.tiempoFin) this.subastaSeleccionPedida = false;
     // La Palabra Más Larga: al acabar el tiempo de la ronda interna pasa a selección (una sola vez)
     const P = this.palabrasP;
     if (P?.fase === 'jugando' && Date.now() >= P.tiempoFin && !this.palabrasSeleccionPedida && this.sala && this.currentName) {
@@ -1325,6 +1416,127 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       sel: (P.selecciones || {})[id],
       gana: ganadores.includes(id)
     }));
+  }
+
+  /** Datos de La Subasta de Respuestas dentro del minijuego. */
+  get subastaS(): any | null {
+    const t: any = this.est?.turno;
+    if (!t || t.tipo !== 'subasta' || !t.subasta) return null;
+    const S = t.subasta;
+    S.respuestas = S.respuestas || [];
+    S.selecciones = S.selecciones || {};
+    S.ganadas = S.ganadas || {};
+    return S;
+  }
+
+  get subastaSegundos(): number {
+    const S = this.subastaS;
+    if (!S) return 0;
+    return Math.max(0, Math.ceil((S.tiempoFin - this.ahora) / 1000));
+  }
+
+  /** Respuestas de mi equipo, sin repetir. */
+  get subastaMisRespuestas(): any[] {
+    const S = this.subastaS;
+    const eq = this.palabrasMiEquipo;
+    if (!S || !eq) return [];
+    const vistas = new Set<string>();
+    return S.respuestas.filter((r: any) => {
+      if (r.equipoId !== eq || vistas.has(r.clave)) return false;
+      vistas.add(r.clave);
+      return true;
+    });
+  }
+
+  /** Respuestas que he escrito yo (durante la escritura, cada uno ve solo las suyas). */
+  get subastaMisPropias(): any[] {
+    const S = this.subastaS;
+    if (!S) return [];
+    return S.respuestas.filter((r: any) => r.jugador === this.currentName);
+  }
+
+  subastaElegida(clave: string): boolean {
+    const S = this.subastaS;
+    const eq = this.palabrasMiEquipo;
+    return !!S && !!eq && (S.selecciones[eq]?.elegidas || []).some((e: any) => e.clave === clave);
+  }
+
+  get subastaMiConfirmado(): boolean {
+    const S = this.subastaS;
+    const eq = this.palabrasMiEquipo;
+    return !!S && !!eq && !!S.selecciones[eq]?.confirmada;
+  }
+
+  /** Equipos con sus puntos y su selección (la revelación la ven todos). */
+  get subastaEquipos(): any[] {
+    const S = this.subastaS;
+    if (!S || !this.sala) return [];
+    return (this.est?.equiposOrden || []).map((id: string) => {
+      const sel = S.selecciones[id] || {};
+      const elegidas = sel.elegidas || [];
+      const invalidas: string[] = sel.invalidas || [];
+      const validas = elegidas.filter((e: any) => !invalidas.includes(e.clave)).length;
+      return {
+        id,
+        nombre: this.sala?.equipos?.find(e => e.id === id)?.nombre ?? id,
+        ganadas: (S.ganadas || {})[id] || 0,
+        confirmada: !!sel.confirmada,
+        elegidas,
+        invalidas,
+        puntos: validas * S.puntosPorRespuesta
+      };
+    });
+  }
+
+  async enviarRespuestaSub(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    const texto = (this.respuestaSub || '').trim();
+    if (texto.length < 2) { this.errorRespSub = 'La respuesta debe tener al menos 2 letras.'; return; }
+    this.errorRespSub = null;
+    const ok = await this.salaService.aportarRespuestaSubastaMinijuego(this.sala.codigo, this.currentName, texto);
+    if (ok) this.respuestaSub = '';
+    else this.errorRespSub = 'Esa respuesta ya la has añadido.';
+  }
+
+  async toggleRespuestaSub(clave: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.toggleEleccionSubastaMinijuego(this.sala.codigo, this.currentName, clave);
+  }
+
+  async confirmarSubastaMin(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.confirmarSeleccionSubastaMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  async pasarRevelacionSubastaMin(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.pasarARevelacionSubastaMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  async invalidarSubastaMin(equipoId: string, clave: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.toggleInvalidaSubastaMinijuego(this.sala.codigo, this.currentName, equipoId, clave);
+  }
+
+  async siguienteRondaSubastaMin(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.avanzarRondaSubastaMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  async descartarCategoriaSubastaMin(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.descartarCategoriaSubastaMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  /** Carga las categorías de la dificultad elegida (mismo fichero que el juego original). */
+  private async cargarCatalogoSubasta(): Promise<{ id: string; categoria: string; descripcion: string }[]> {
+    try {
+      const lista = await firstValueFrom(this.http.get<any[]>(`assets/games/subasta-respuestas/categorias_${this.dificultadSubastaBorrador}.json`));
+      return lista.map(c => ({ id: c.id, categoria: c.categoria, descripcion: c.descripcion || '' }));
+    } catch {
+      this.error = 'No se pudieron cargar las categorías de la subasta.';
+      return [];
+    }
   }
 
   /** Selección del equipo del jugador actual (la ven todos los miembros del equipo). */
@@ -2258,7 +2470,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       this.error = 'Marca al menos un juego.';
       return;
     }
-    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador, { rondas: Number(this.rondasPalabrasBorrador), tiempoSeg: Number(this.tiempoPalabrasBorrador), numLetras: Number(this.numLetrasPalabrasBorrador), dificultad: this.dificultadPalabrasBorrador });
+    const catalogoSub = elegidos.includes('subasta') ? await this.cargarCatalogoSubasta() : [];
+    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador, { rondas: Number(this.rondasPalabrasBorrador), tiempoSeg: Number(this.tiempoPalabrasBorrador), numLetras: Number(this.numLetrasPalabrasBorrador), dificultad: this.dificultadPalabrasBorrador }, { rondas: Number(this.rondasSubastaBorrador), tiempoSeg: Number(this.tiempoSubastaBorrador), dificultad: this.dificultadSubastaBorrador, catalogo: catalogoSub });
     if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
 
