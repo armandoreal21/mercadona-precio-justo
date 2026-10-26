@@ -310,6 +310,11 @@ function generarCableado(L: number, n: number): Puzle {
     const k = claves.find(kk => c[kk] !== tFull[kk])!;
     hechos.push({ i, k });
   });
+  // Cada cable recibe al menos un dato verdadero, aunque no sea de la regla: hay que filtrar, no solo cruzar
+  for (let i = 0; i < W; i++) {
+    const k = pick(CLAVES_OCULTAS);
+    if (!hechos.some(x => x.i === i && x.k === k)) hechos.push({ i, k });
+  }
   // Si hay menos datos que personas, se añaden datos verdaderos
   const posibles: { i: number; k: string }[] = [];
   for (let i = 0; i < W; i++) CLAVES_OCULTAS.forEach(k => posibles.push({ i, k }));
