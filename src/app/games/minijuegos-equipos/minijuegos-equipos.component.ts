@@ -612,7 +612,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div *ngIf="errorRespSub" class="text-rose-300 text-xs text-center">{{ errorRespSub }}</div>
                 <div *ngIf="!palabrasMiEquipo" class="text-center text-xs text-slate-400">Solo los jugadores de un equipo pueden aportar respuestas.</div>
                 <div class="flex flex-wrap justify-center gap-2">
-                  <span *ngFor="let r of subastaMisPropias" class="px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 text-emerald-300 font-bold">{{ r.respuesta }}</span>
+                  <span *ngFor="let r of subastaMisPropias; trackBy: trackClaveSub" class="px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 text-emerald-300 font-bold">{{ r.respuesta }}</span>
                 </div>
                 <div *ngIf="isAdmin && subastaS.respuestas.length === 0" class="text-center">
                   <button (click)="descartarCategoriaSubastaMin()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg">Cambiar categoría</button>
@@ -621,7 +621,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               <ng-container *ngIf="subastaS?.fase === 'seleccion'">
                 <div class="text-center text-sm text-slate-300">Elige las respuestas que presenta tu equipo y confirma.</div>
                 <div *ngIf="palabrasMiEquipo" class="flex flex-col gap-2 max-w-md mx-auto">
-                  <button *ngFor="let r of subastaMisRespuestas" (click)="toggleRespuestaSub(r.clave)" [disabled]="subastaMiConfirmado" class="flex justify-between items-center px-3 py-2 rounded-xl border-2 transition disabled:opacity-70" [ngClass]="subastaElegida(r.clave) ? 'bg-emerald-900/50 border-emerald-400' : 'bg-slate-900 border-slate-700 hover:border-cyan-400'">
+                  <button *ngFor="let r of subastaMisRespuestas; trackBy: trackClaveSub" (click)="toggleRespuestaSub(r.clave)" [disabled]="subastaMiConfirmado" class="flex justify-between items-center px-3 py-2 rounded-xl border-2 transition disabled:opacity-70" [ngClass]="subastaElegida(r.clave) ? 'bg-emerald-900/50 border-emerald-400' : 'bg-slate-900 border-slate-700 hover:border-cyan-400'">
                     <span class="font-bold text-cyan-300">{{ r.respuesta }}</span>
                     <span class="text-emerald-300 font-black">{{ subastaElegida(r.clave) ? '✓' : '' }}</span>
                   </button>
@@ -634,13 +634,13 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </div>
               </ng-container>
               <ng-container *ngIf="subastaS?.fase === 'revelacion'">
-                <div *ngFor="let eq of subastaEquipos" class="p-4 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700 shadow-lg">
+                <div *ngFor="let eq of subastaEquipos; trackBy: trackEquipoSub" class="p-4 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700 shadow-lg">
                   <div class="flex justify-between items-center">
                     <div class="font-bold text-white">{{ eq.nombre }}</div>
                     <div class="px-3 py-1 rounded-full bg-yellow-400 text-slate-950 text-sm font-black shadow">{{ eq.puntos }} pts</div>
                   </div>
                   <div class="flex flex-wrap gap-2 mt-2">
-                    <span *ngFor="let e of eq.elegidas" (click)="isAdmin && invalidarSubastaMin(eq.id, e.clave)" [class.cursor-pointer]="isAdmin" [class.hover:brightness-125]="isAdmin" [class.active:scale-95]="isAdmin" class="flex items-center gap-2 px-2 py-1 rounded-xl border-2 text-sm font-bold transition select-none" [ngClass]="eq.invalidas.includes(e.clave) ? 'border-rose-600 bg-rose-950/40 text-rose-300' : 'border-emerald-500 bg-emerald-950/30 text-emerald-100'" [title]="isAdmin ? (eq.invalidas.includes(e.clave) ? 'Toca para recuperar' : 'Toca para invalidar') : ''">
+                    <span *ngFor="let e of eq.elegidas; trackBy: trackClaveSub" (click)="isAdmin && invalidarSubastaMin(eq.id, e.clave)" [class.cursor-pointer]="isAdmin" class="flex items-center gap-2 px-2 py-1 rounded-xl border-2 text-sm font-bold transition select-none" [ngClass]="eq.invalidas.includes(e.clave) ? 'border-rose-600 bg-rose-950/40 text-rose-300' : 'border-emerald-500 bg-emerald-950/30 text-emerald-100'" [title]="isAdmin ? (eq.invalidas.includes(e.clave) ? 'Toca para recuperar' : 'Toca para invalidar') : ''">
                       <span class="w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-black" [ngClass]="eq.invalidas.includes(e.clave) ? 'bg-rose-600 text-white' : 'bg-emerald-500 text-slate-950'">{{ eq.invalidas.includes(e.clave) ? '✕' : '✓' }}</span>
                       <span [class.line-through]="eq.invalidas.includes(e.clave)">{{ e.texto }}</span>
                     </span>
@@ -894,7 +894,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
           </div>
         </ng-container>
 
-        <div *ngIf="!enEquipoActivo && miEquipoId" class="text-center text-sm text-slate-400">
+        <div *ngIf="!enEquipoActivo && miEquipoId && t.tipo !== 'palabras' && t.tipo !== 'subasta'" class="text-center text-sm text-slate-400">
           👀 Observas el turno del otro equipo. Después te toca a ti, con otra versión de este minijuego.
         </div>
 
@@ -1419,6 +1419,15 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   }
 
   /** Datos de La Subasta de Respuestas dentro del minijuego. */
+  /** trackBy: mantiene los mismos elementos del DOM aunque los datos se recalculen (evita parpadeos y clics perdidos). */
+  trackEquipoSub(_: number, eq: any): string {
+    return eq.id;
+  }
+
+  trackClaveSub(_: number, x: any): string {
+    return x.clave ?? x.texto ?? '';
+  }
+
   get subastaS(): any | null {
     const t: any = this.est?.turno;
     if (!t || t.tipo !== 'subasta' || !t.subasta) return null;
@@ -1445,7 +1454,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       if (r.equipoId !== eq || vistas.has(r.clave)) return false;
       vistas.add(r.clave);
       return true;
-    });
+    }).sort((a: any, b: any) => a.respuesta.localeCompare(b.respuesta, 'es', { sensitivity: 'base' }));
   }
 
   /** Respuestas que he escrito yo (durante la escritura, cada uno ve solo las suyas). */
