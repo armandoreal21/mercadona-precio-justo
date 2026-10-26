@@ -1,6 +1,6 @@
 import { TipoMinijuego } from '../../core/models/sala.model';
 
-export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua', 'quien', 'simon'];
+export const TIPOS_MINIJUEGO: TipoMinijuego[] = ['secuencia', 'cableado', 'mapa', 'codigo', 'metro', 'ecuacion', 'palabra', 'carrera', 'torres', 'pinta', 'mezcla', 'deslizante', 'balanza', 'fraude', 'reactor', 'puntero', 'semaforo', 'barco', 'cocina', 'grua', 'quien', 'simon', 'palabras'];
 
 export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   secuencia: '🔣 Símbolos en secuencia',
@@ -24,6 +24,7 @@ export const NOMBRE_MINIJUEGO: Record<TipoMinijuego, string> = {
   grua: '🏗️ Grúa de carga',
   quien: '🔤 Quién va primero',
   simon: '🔴 Simón dice',
+  palabras: '🔤 La Palabra Más Larga',
   balanza: '⚖️ Balanza'
 };
 
@@ -83,6 +84,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'grua': return generarGrua(L, n);
     case 'quien': return generarQuienVaPrimero(L, n);
     case 'simon': return generarSimon(L, n);
+    case 'palabras': return { panel: {}, pistas: Array.from({ length: n }, () => ''), solucion: null };
   }
 }
 
@@ -1855,6 +1857,42 @@ export function aplicarSimon(estado: any, color: string, nDuenos: number): { est
   // Todos los destellos resueltos: módulo nuevo con una secuencia más larga (hasta 5)
   const siguiente = nuevoModuloSimon(Math.min(e.secuencia.length + 1, 5), nDuenos);
   return { estado: siguiente, ok: true, error: false, acierto: true };
+}
+
+// ------------------------------------------------------------------
+// La Palabra Más Larga dentro de los minijuegos: todos los equipos juegan a la vez, con las mismas reglas del juego original.
+// ------------------------------------------------------------------
+/** Letras de una ronda, con la misma regla de dificultad que el juego original. */
+export function generarLetrasPalabras(n: number, dificultad: 'facil' | 'media' | 'dificil'): string[] {
+  let pv = 'AAAAAEEEEIIIOOOU';
+  let pc = 'BCDFGHJKLMNPQRSTVZ';
+  let ratio = 0.4;
+  if (dificultad === 'facil') { pc = 'RRRSSSSTTTLLLNNNCCCDDDMMPPB'; ratio = 0.5; }
+  else if (dificultad === 'dificil') { pv = 'AAAEEIIOU'; pc = 'BCDFGHJKLMNPQRSTVWXYZ'; ratio = 0.33; }
+  const nv = Math.max(2, Math.round(n * ratio));
+  const letras: string[] = [];
+  for (let i = 0; i < nv; i++) letras.push(pick(pv.split('')));
+  for (let i = 0; i < n - nv; i++) letras.push(pick(pc.split('')));
+  return barajar(letras);
+}
+
+/** ¿Puede formarse la palabra con las letras disponibles? (cada letra se usa una vez) */
+export function validarLetrasPalabras(palabra: string, letras: string[]): boolean {
+  const pool = [...letras];
+  for (const ch of palabra.toUpperCase()) {
+    const i = pool.indexOf(ch);
+    if (i === -1) return false;
+    pool.splice(i, 1);
+  }
+  return true;
+}
+
+/** Equipos ganadores de una ronda interna: los de palabra más larga (no descartada). Empate: ganan todos. */
+export function ganadoresRondaPalabras(selecciones: Record<string, { longitud: number; descartada: boolean }>): string[] {
+  const validas = Object.entries(selecciones).filter(([, s]) => s && !s.descartada && s.longitud > 0);
+  if (validas.length === 0) return [];
+  const max = Math.max(...validas.map(([, s]) => s.longitud));
+  return validas.filter(([, s]) => s.longitud === max).map(([id]) => id);
 }
 
 /** Aplica una acción del capitán sobre el estado del juego interactivo. */

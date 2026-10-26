@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Sala, EstadoMinijuegos } from '../../core/models/sala.model';
 import { SalaService } from '../../sala.service';
-import { NOMBRE_MINIJUEGO, SEG_TURNO_DEFAULT, TIPOS_MINIJUEGO, PROTOCOLO_REACTOR } from './minijuegos.logic';
+import { NOMBRE_MINIJUEGO, SEG_TURNO_DEFAULT, TIPOS_MINIJUEGO, PROTOCOLO_REACTOR, ganadoresRondaPalabras, validarLetrasPalabras } from './minijuegos.logic';
 
 interface LineaMapa { eje: 'fila' | 'columna'; indice: number; muros: boolean[]; }
 interface LineaMetro { tipo: 'linea' | 'hecho'; color?: string; estaciones?: string[]; texto?: string; cerrada?: boolean; }
@@ -30,6 +30,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   cocina: { resumen: 'Hay que preparar un plato: echar los ingredientes en el orden de la receta, cada uno en su sartén, y dejar cada fuego en su punto. El plato sale solo cuando está listo. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Tomate en el fuego 1! ¡Fuego 2, sube una! ¡Ya está, sale el plato!"' },
   grua: { resumen: 'Hay que llevar una caja del suelo a la zona de destino con una grúa. Cada persona tiene un control: mover el gancho, subir o bajar el cable, o agarrar y soltar. Los edificios solo se cruzan con el cable arriba. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Adelante! ¡Bajar cable, que ya estamos encima! ¡Pinza, agarra!"' },
   quien: { resumen: 'La pantalla muestra una palabra y el módulo tiene seis botones. El manual está repartido entre el equipo: cada persona tiene una parte. Hay que averiguar qué botón pulsar en cada etapa, y solo el capitán pulsa. Un fallo resta 5 segundos.', ejemplo: 'Ejemplo: "La pantalla dice MONITOR. ¿Quién tiene MONITOR? Posición 6. ¿Qué botón hay en la 6? VA. ¿Quién tiene VA?"' },
+  palabras: { resumen: 'Todos los equipos buscan la palabra más larga con las letras que aparecen en pantalla, a la vez. Hay varias rondas internas; el equipo que gane más rondas suma el punto del minijuego. Si las palabras se empatan, ganan los dos equipos esa ronda.', ejemplo: 'Ejemplo: "Con las letras A, R, T, O, S, E, N, I, L, P, todos escribid la palabra más larga que podáis formar."' },
   simon: { resumen: 'El módulo muestra un código y una secuencia de destellos de colores. Cada destello hay que responderlo con el color que indica la tabla de ese código. Hay códigos parecidos que sirven de trampa: hay que mirar siempre el código que dice el capitán. Solo el capitán pulsa; un error resta 5 segundos.', ejemplo: 'Ejemplo: "Código 263: el destello rojo se responde con el azul. ¿Quién tiene el rojo?"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
 };
@@ -79,6 +80,23 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
 
         <div *ngIf="isAdmin" class="flex items-center justify-between gap-2">
           <label class="flex items-center gap-2 text-sm text-white"><input type="checkbox" [(ngModel)]="mostrarMetaBorrador" class="accent-cyan-500" />🗺️ En el mapa, los ayudantes ven la S y la G</label>
+        </div>
+        <div *ngIf="isAdmin" class="space-y-2">
+          <div class="text-sm text-white">🔤 La Palabra Más Larga: configuración</div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <label class="flex flex-col gap-1 text-slate-300">Rondas internas
+              <select [(ngModel)]="rondasPalabrasBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option [ngValue]="1">1</option><option [ngValue]="2">2</option><option [ngValue]="3">3</option><option [ngValue]="4">4</option><option [ngValue]="5">5</option></select>
+            </label>
+            <label class="flex flex-col gap-1 text-slate-300">Letras
+              <select [(ngModel)]="numLetrasPalabrasBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option [ngValue]="8">8</option><option [ngValue]="10">10</option><option [ngValue]="12">12</option></select>
+            </label>
+            <label class="flex flex-col gap-1 text-slate-300">Tiempo por ronda
+              <select [(ngModel)]="tiempoPalabrasBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option [ngValue]="30">30 s</option><option [ngValue]="45">45 s</option><option [ngValue]="60">60 s</option><option [ngValue]="90">90 s</option></select>
+            </label>
+            <label class="flex flex-col gap-1 text-slate-300">Dificultad
+              <select [(ngModel)]="dificultadPalabrasBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option value="facil">Fácil</option><option value="media">Media</option><option value="dificil">Difícil</option></select>
+            </label>
+          </div>
         </div>
         <div *ngIf="isAdmin" class="flex items-center justify-between gap-2">
           <span class="text-sm text-white">⏱️ Segundos por turno</span>
@@ -506,6 +524,57 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </svg>
               </div>
             </div>
+              <div *ngSwitchCase="'palabras'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">Todos los equipos juegan a la vez. Ronda interna {{ palabrasP?.ronda }} de {{ palabrasP?.total }}.</div>
+              <div class="flex justify-center gap-2 flex-wrap text-xs">
+                <span *ngFor="let eq of palabrasEquipos" class="px-3 py-1 rounded-full bg-slate-800 border border-slate-600 text-slate-200">{{ eq.nombre }} · ganadas <b class="text-white">{{ eq.ganadas }}</b><ng-container *ngIf="palabrasP?.fase === 'seleccion'"> · <b [ngClass]="eq.sel ? 'text-emerald-300' : 'text-amber-300'">{{ eq.sel ? '✓ ha elegido' : 'eligiendo…' }}</b></ng-container></span>
+              </div>
+              <ng-container *ngIf="palabrasP?.fase === 'jugando'">
+                <div class="text-center text-3xl font-black text-yellow-400">{{ palabrasSegundos }}s</div>
+                <div class="flex flex-wrap justify-center gap-2">
+                  <div *ngFor="let l of palabrasP.letras" class="w-11 h-12 bg-gradient-to-b from-amber-200 to-amber-400 text-slate-950 font-black text-2xl rounded-xl flex items-center justify-center shadow">{{ l }}</div>
+                </div>
+                <div *ngIf="palabrasMiEquipo" class="flex gap-2 max-w-md mx-auto">
+                  <input [(ngModel)]="palabraPal" (keyup.enter)="enviarPalabraPal()" autocomplete="off" placeholder="Escribe una palabra" class="flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-bold uppercase focus:outline-none focus:border-cyan-400" />
+                  <button (click)="enviarPalabraPal()" class="bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black px-4 rounded-xl">Añadir</button>
+                </div>
+                <div *ngIf="palabraErrPal" class="text-rose-300 text-xs text-center">{{ palabraErrPal }}</div>
+                <div *ngIf="!palabrasMiEquipo" class="text-center text-xs text-slate-400">Solo los jugadores de un equipo pueden aportar palabras.</div>
+                <div class="flex flex-wrap justify-center gap-2">
+                  <span *ngFor="let a of palabrasMisAportes" class="px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 text-emerald-300 font-bold">{{ a.palabra }}</span>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="palabrasP?.fase === 'seleccion'">
+                <div class="text-center text-sm text-slate-300">Elige la palabra que presenta tu equipo.</div>
+                <div *ngIf="palabrasMiEquipo" class="flex flex-col gap-2 max-w-md mx-auto">
+                  <button *ngFor="let a of palabrasMisAportesEquipo" (click)="elegirPalabraPal(a.palabra)" class="flex justify-between items-center px-3 py-2 rounded-xl border-2 transition" [ngClass]="palabrasSeleccionEquipo?.palabra === a.palabra ? 'bg-emerald-900/50 border-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.35)]' : 'bg-slate-900 border-slate-700 hover:border-cyan-400'">
+                    <span class="font-mono font-bold text-cyan-300">{{ a.palabra }}</span>
+                    <span class="text-xs text-slate-400">{{ a.longitud }} letras</span>
+                  </button>
+                </div>
+                <div *ngIf="palabrasSeleccionEquipo" class="text-center text-sm text-emerald-300 font-bold">✓ Vuestro equipo presenta <span class="font-mono text-white">{{ palabrasSeleccionEquipo.palabra }}</span> (elegida por {{ palabrasSeleccionEquipo.seleccionadaPor }})
+                </div>
+                <div *ngIf="!palabrasMiEquipo" class="text-center text-xs text-slate-400">Los equipos están eligiendo…</div>
+                <div *ngIf="isAdmin" class="text-center">
+                  <button (click)="pasarRevelacionPal()" class="text-xs bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black px-4 py-2 rounded-lg">Revelar</button>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="palabrasP?.fase === 'revelacion'">
+                <div *ngFor="let eq of palabrasEquipos" class="flex justify-between items-center gap-2 px-4 py-3 rounded-xl bg-slate-900 border-2" [ngClass]="eq.sel?.descartada ? 'border-rose-600 opacity-60' : (eq.gana ? 'border-yellow-400' : 'border-slate-700')">
+                  <div>
+                    <div class="font-bold text-white">{{ eq.nombre }}</div>
+                    <div *ngIf="eq.sel" class="text-xs text-slate-400">por {{ eq.sel.seleccionadaPor }}</div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-mono font-black text-lg text-cyan-300" [class.line-through]="eq.sel?.descartada">{{ eq.sel?.palabra || '— sin palabra —' }}</span>
+                    <button *ngIf="isAdmin && eq.sel" (click)="toggleDescartePal(eq.id)" class="text-xs px-2 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold">{{ eq.sel.descartada ? 'Recuperar' : 'Invalidar' }}</button>
+                  </div>
+                </div>
+                <div *ngIf="isAdmin" class="text-center">
+                  <button (click)="avanzarRondaPal()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 rounded-xl uppercase text-xs">Siguiente ronda interna</button>
+                </div>
+              </ng-container>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -744,7 +813,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
 
             <!-- Pista de texto para el resto de minijuegos -->
-            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && t.tipo !== 'secuencia'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
+            <div *ngIf="t.tipo !== 'mapa' && t.tipo !== 'metro' && t.tipo !== 'pinta' && t.tipo !== 'deslizante' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && t.tipo !== 'secuencia' && t.tipo !== 'palabras'" class="text-sm text-white whitespace-pre-line">{{ miPista }}</div>
             <div class="text-xs text-slate-500">Dásela a tu capitán. Solo él ve el panel y responde.</div>
           </div>
         </ng-container>
@@ -811,6 +880,14 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   segundosBorrador = SEG_TURNO_DEFAULT;
   /** Si los ayudantes del mapa ven la S y la G (lo decide el admin al empezar). */
   mostrarMetaBorrador = true;
+  /** Configuración de La Palabra Más Larga dentro de los minijuegos (la elige el admin). */
+  rondasPalabrasBorrador = 3;
+  numLetrasPalabrasBorrador = 10;
+  tiempoPalabrasBorrador = 45;
+  dificultadPalabrasBorrador: 'facil' | 'media' | 'dificil' = 'facil';
+  palabraPal = '';
+  palabraErrPal: string | null = null;
+  private palabrasSeleccionPedida = false;
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1148,6 +1225,13 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
   ngDoCheck(): void {
+    // La Palabra Más Larga: al acabar el tiempo de la ronda interna pasa a selección (una sola vez)
+    const P = this.palabrasP;
+    if (P?.fase === 'jugando' && Date.now() >= P.tiempoFin && !this.palabrasSeleccionPedida && this.sala && this.currentName) {
+      this.palabrasSeleccionPedida = true;
+      this.salaService.pasarASeleccionPalabrasMinijuego(this.sala.codigo, this.currentName);
+    }
+    if (P?.fase === 'jugando' && Date.now() < P.tiempoFin) this.palabrasSeleccionPedida = false;
     // Acierto nuevo de Quién va primero: pantalla en verde un segundo
     const ex = this.estadoJuego?.exito;
     if (ex?.t && ex.t !== this.qvpExitoVisto && Date.now() - ex.t < 2000) {
@@ -1191,6 +1275,108 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   get simonProgreso(): number {
     const total = this.simonSecuencia.length || 1;
     return Math.round((this.simonResueltos / total) * 100);
+  }
+
+  /** Datos de La Palabra Más Larga dentro del minijuego (turno simultáneo). */
+  get palabrasP(): any | null {
+    const t: any = this.est?.turno;
+    return t && t.tipo === 'palabras' ? t.palabras : null;
+  }
+
+  get palabrasSegundos(): number {
+    const P = this.palabrasP;
+    if (!P) return 0;
+    return Math.max(0, Math.ceil((P.tiempoFin - this.ahora) / 1000));
+  }
+
+  get palabrasMiEquipo(): string | null {
+    const yo = this.sala?.jugadores.find(j => j.nombre === this.currentName);
+    return yo?.equipoId ?? null;
+  }
+
+  get palabrasMisAportes(): any[] {
+    const P = this.palabrasP;
+    if (!P) return [];
+    return (P.aportes || []).filter((a: any) => a.jugador === this.currentName);
+  }
+
+  /** Palabras aportadas por mi equipo, sin repetir. */
+  get palabrasMisAportesEquipo(): any[] {
+    const P = this.palabrasP;
+    const eq = this.palabrasMiEquipo;
+    if (!P || !eq) return [];
+    const vistas = new Set<string>();
+    return (P.aportes || []).filter((a: any) => {
+      if (a.equipoId !== eq || vistas.has(a.palabra)) return false;
+      vistas.add(a.palabra);
+      return true;
+    }).sort((x: any, y: any) => y.longitud - x.longitud);
+  }
+
+  /** Un equipo por fila, con sus rondas internas ganadas y su palabra seleccionada. */
+  get palabrasEquipos(): any[] {
+    const P = this.palabrasP;
+    if (!P || !this.sala) return [];
+    const ganadores = ganadoresRondaPalabras(P.selecciones || {});
+    return (this.est?.equiposOrden || []).map((id: string) => ({
+      id,
+      nombre: this.sala?.equipos?.find(e => e.id === id)?.nombre ?? id,
+      ganadas: (P.ganadas || {})[id] || 0,
+      sel: (P.selecciones || {})[id],
+      gana: ganadores.includes(id)
+    }));
+  }
+
+  /** Selección del equipo del jugador actual (la ven todos los miembros del equipo). */
+  get palabrasSeleccionEquipo(): any | null {
+    const P = this.palabrasP;
+    const eq = this.palabrasMiEquipo;
+    return P && eq ? ((P.selecciones || {})[eq] || null) : null;
+  }
+
+  async enviarPalabraPal(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    const p = (this.palabraPal || '').trim().toUpperCase();
+    if (!p) return;
+    const P = this.palabrasP;
+    if (!P || !validarLetrasPalabras(p, P.letras)) {
+      this.palabraErrPal = 'Usa solo las letras de la pantalla.';
+      return;
+    }
+    this.palabraErrPal = null;
+    const ok = await this.salaService.aportarPalabraMinijuego(this.sala.codigo, this.currentName, p);
+    if (ok) this.palabraPal = '';
+    else this.palabraErrPal = 'Esa palabra no vale o ya la has añadido.';
+  }
+
+  async elegirPalabraPal(palabra: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    // Pulsar la palabra ya elegida la quita
+    if (this.palabrasSeleccionEquipo?.palabra === palabra) {
+      await this.quitarSeleccionPal();
+      return;
+    }
+    await this.salaService.seleccionarPalabraPorEquipoMinijuego(this.sala.codigo, this.currentName, palabra);
+  }
+
+  async quitarSeleccionPal(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.quitarSeleccionPalabraMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  async pasarRevelacionPal(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.pasarARevelacionPalabrasMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  async toggleDescartePal(equipoId: string): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.toggleDescartePalabrasMinijuego(this.sala.codigo, this.currentName, equipoId);
+  }
+
+  async avanzarRondaPal(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.avanzarRondaPalabrasMinijuego(this.sala.codigo, this.currentName);
   }
 
   async pulsarSimon(color: string): Promise<void> {
@@ -2072,7 +2258,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       this.error = 'Marca al menos un juego.';
       return;
     }
-    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador);
+    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador, { rondas: Number(this.rondasPalabrasBorrador), tiempoSeg: Number(this.tiempoPalabrasBorrador), numLetras: Number(this.numLetrasPalabrasBorrador), dificultad: this.dificultadPalabrasBorrador });
     if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
 

@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras, EstadoSubastaRespuestas, EstadoCodigoSecreto, EstadoPreguntasAnonimas, RespuestaAgrupada, EstadoMinijuegos, TipoMinijuego } from './core/models/sala.model';
 import { ModoJuego } from './core/models/game.model';
-import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor, aplicarAccionPuntero, aplicarSemaforo, aplicarBarco, aplicarCocina, aplicarGrua, aplicarQuienVaPrimero, nuevaEtapaQVP, aplicarSimon } from './games/minijuegos-equipos/minijuegos.logic';
+import { TIPOS_MINIJUEGO, generarPuzle, validarRespuesta, barajar, PENALIZACION_ERROR_MS, SEG_TURNO_DEFAULT, aplicarAccionJuego, comprobarJuego, aplicarControlReactor, aplicarAccionPuntero, aplicarSemaforo, aplicarBarco, aplicarCocina, aplicarGrua, aplicarQuienVaPrimero, nuevaEtapaQVP, aplicarSimon, generarLetrasPalabras, validarLetrasPalabras, ganadoresRondaPalabras } from './games/minijuegos-equipos/minijuegos.logic';
 
 export { Sala, Jugador, ResultadoRonda, HistorialRonda, Equipo, EstadoPalabraMasLarga, PalabraAportada, SeleccionEquipoPalabra, ModoPuntuacionPalabras, DificultadPalabras };
 
@@ -1974,8 +1974,24 @@ export class SalaService {
     return Math.max(1, this.miembrosDeEquipo(sala, equipoId).filter(n => n !== capitan).length);
   }
 
+  /** Crea el turno simultáneo de La Palabra Más Larga con la configuración que eligió el admin. */
+  private crearTurnoPalabras(sala: Sala, est: EstadoMinijuegos): void {
+    const cfg = (est as any).palabrasCfg || { rondas: 3, tiempoSeg: 45, numLetras: 10, dificultad: 'facil' };
+    const ahora = Date.now();
+    est.turno = {
+      equipoId: 'todos', ronda: est.ronda, tipo: 'palabras', nivel: 1, panel: {}, pistas: [], solucion: null,
+      aciertos: 0, errores: 0, inicioMs: ahora, finMs: Number.MAX_SAFE_INTEGER, iniciado: true,
+      palabras: {
+        ronda: 1, total: cfg.rondas, numLetras: cfg.numLetras, dificultad: cfg.dificultad, tiempoSeg: cfg.tiempoSeg,
+        letras: generarLetrasPalabras(cfg.numLetras, cfg.dificultad), tiempoFin: ahora + cfg.tiempoSeg * 1000,
+        fase: 'jugando', aportes: [], selecciones: {}, ganadas: {}
+      }
+    } as any;
+  }
+
   private abrirTurnoMinijuego(sala: Sala, est: EstadoMinijuegos, equipoId: string): void {
     const tipo: TipoMinijuego = est.tiposRonda[est.ronda - 1];
+    if (tipo === 'palabras') { this.crearTurnoPalabras(sala, est); return; }
     const p = generarPuzle(tipo, 1, this.ayudantesDe(sala, est, equipoId));
     const ahora = Date.now();
     est.turno = {
@@ -2000,6 +2016,8 @@ export class SalaService {
 
   private cerrarTurnoMinijuego(sala: Sala, est: EstadoMinijuegos): void {
     const t = est.turno!;
+    // El turno de palabras se cierra con su propio flujo (cerrarMinijuegoPalabras)
+    if ((t as any).tipo === 'palabras') return;
     est.resultados.push({ ronda: t.ronda, equipoId: t.equipoId, tipo: t.tipo, aciertos: t.aciertos, errores: t.errores });
     est.aciertosTotales[t.equipoId] = (est.aciertosTotales[t.equipoId] || 0) + t.aciertos;
 
@@ -2054,19 +2072,20 @@ export class SalaService {
     });
   }
 
-  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false): Promise<boolean> {
+  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false, configPalabras?: { rondas: number; tiempoSeg: number; numLetras: number; dificultad: string }): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       if (est.fase !== 'esperando') return false;
       const equipos = (sala.equipos || []).filter(eq => this.miembrosDeEquipo(sala, eq.id).length > 0).map(eq => eq.id);
       // Cada equipo necesita un capitán que sea miembro de ese equipo
-      const valido = equipos.length > 0 && equipos.every(id =>
-        !!capitanes[id] && this.miembrosDeEquipo(sala, id).includes(capitanes[id]));
+      const valido = equipos.length > 0 && ((juegos || []).every(j => j === 'palabras') || equipos.every(id =>
+        !!capitanes[id] && this.miembrosDeEquipo(sala, id).includes(capitanes[id])));
       if (!valido) return false;
       est.capitanes = { ...capitanes };
       est.equiposOrden = equipos;
       est.tiempoTurnoSeg = Math.min(300, Math.max(15, Math.round(tiempoSeg || SEG_TURNO_DEFAULT)));
       (est as any).mostrarMetaAyudantes = !!mostrarMeta;
+      (est as any).palabrasCfg = configPalabras || (est as any).palabrasCfg || { rondas: 3, tiempoSeg: 45, numLetras: 10, dificultad: 'facil' };
       const elegidos = (juegos || []).filter(j => TIPOS_MINIJUEGO.includes(j));
       if (elegidos.length === 0) return false;
       est.tiposRonda = this.tiposParaRondas(elegidos, est.totalRondas);
@@ -2401,6 +2420,182 @@ export class SalaService {
       sala.updatedAt = Date.now();
       return true;
     });
+  }
+
+  // ====================================================================
+  // MINIJUEGO: LA PALABRA MÁS LARGA (todos los equipos a la vez)
+  // Las rondas internas son el juego original; el minijuego suma 1 punto al final.
+  // ====================================================================
+
+  private palabrasDe(est: EstadoMinijuegos): any | null {
+    const t: any = est.turno;
+    if (!t || t.tipo !== 'palabras' || !t.palabras) return null;
+    // Firebase elimina las listas y objetos vacíos al guardar: se restauran aquí
+    t.palabras.aportes = t.palabras.aportes || [];
+    t.palabras.selecciones = t.palabras.selecciones || {};
+    t.palabras.ganadas = t.palabras.ganadas || {};
+    return t.palabras;
+  }
+
+  /** Abre el turno de palabras (todos los equipos juegan a la vez). Solo admin. */
+  async abrirTurnoPalabrasMinijuego(codigo: string, usuario: string, rondasPalabras: number, tiempoSeg: number, numLetras: number, dificultad: 'facil' | 'media' | 'dificil'): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!esAdmin || est.fase !== 'jugando') return false;
+      const ahora = Date.now();
+      const tiempo = Math.min(120, Math.max(15, Math.round(tiempoSeg || 45)));
+      const letras = Math.min(16, Math.max(8, Math.round(numLetras || 10)));
+      const total = Math.min(10, Math.max(1, Math.round(rondasPalabras || 3)));
+      (est as any).palabrasCfg = { rondas: total, tiempoSeg: tiempo, numLetras: letras, dificultad };
+      est.turno = {
+        equipoId: 'todos', ronda: est.ronda, tipo: 'palabras', nivel: 1, panel: {}, pistas: [], solucion: null,
+        aciertos: 0, errores: 0, inicioMs: ahora, finMs: Number.MAX_SAFE_INTEGER, iniciado: true,
+        palabras: {
+          ronda: 1, total, numLetras: letras, dificultad, tiempoSeg: tiempo,
+          letras: generarLetrasPalabras(letras, dificultad), tiempoFin: ahora + tiempo * 1000,
+          fase: 'jugando', aportes: [], selecciones: {}, ganadas: {}
+        }
+      } as any;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Un jugador añade una palabra a su equipo mientras dura la ronda interna. */
+  async aportarPalabraMinijuego(codigo: string, usuario: string, palabra: string): Promise<boolean> {
+    const clean = (palabra || '').trim().toUpperCase();
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.palabrasDe(est);
+      if (!P || P.fase !== 'jugando' || Date.now() >= P.tiempoFin) return false;
+      const j = sala.jugadores.find(x => x.nombre === usuario);
+      if (!j || !j.equipoId) return false;
+      if (clean.length < 2 || !validarLetrasPalabras(clean, P.letras)) return false;
+      if (P.aportes.some((a: any) => a.jugador === usuario && a.palabra === clean)) return false;
+      P.aportes.push({ jugador: usuario, equipoId: j.equipoId, palabra: clean, longitud: clean.length });
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Pasa a selección cuando se acaba el tiempo (cualquiera lo puede pedir) o el admin lo fuerza. */
+  async pasarASeleccionPalabrasMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.palabrasDe(est);
+      if (!P || P.fase !== 'jugando') return false;
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (Date.now() < P.tiempoFin && !esAdmin) return false;
+      P.fase = 'seleccion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Cada equipo elige una de sus palabras aportadas. */
+  async seleccionarPalabraPorEquipoMinijuego(codigo: string, usuario: string, palabra: string): Promise<boolean> {
+    const clean = (palabra || '').trim().toUpperCase();
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.palabrasDe(est);
+      if (!P || P.fase !== 'seleccion') return false;
+      const j = sala.jugadores.find(x => x.nombre === usuario);
+      if (!j || !j.equipoId) return false;
+      const aporte = P.aportes.find((a: any) => a.palabra === clean && a.equipoId === j.equipoId);
+      if (!aporte) return false;
+      P.selecciones[j.equipoId] = { equipoId: j.equipoId, palabra: clean, longitud: clean.length, seleccionadaPor: usuario, descartada: false };
+      if (est.equiposOrden.every(e => !!P.selecciones[e])) P.fase = 'revelacion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Quita la palabra elegida por el equipo del jugador (solo durante la selección). */
+  async quitarSeleccionPalabraMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.palabrasDe(est);
+      if (!P || P.fase !== 'seleccion') return false;
+      const j = sala.jugadores.find(x => x.nombre === usuario);
+      if (!j || !j.equipoId || !P.selecciones[j.equipoId]) return false;
+      delete P.selecciones[j.equipoId];
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin: pasa a revelación (aunque algún equipo no haya elegido). */
+  async pasarARevelacionPalabrasMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.palabrasDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!P || !esAdmin || P.fase !== 'seleccion') return false;
+      P.fase = 'revelacion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin: invalida o recupera la palabra de un equipo durante la revelación. */
+  async toggleDescartePalabrasMinijuego(codigo: string, usuario: string, equipoId: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.palabrasDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!P || !esAdmin || P.fase !== 'revelacion' || !P.selecciones[equipoId]) return false;
+      P.selecciones[equipoId].descartada = !P.selecciones[equipoId].descartada;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin: cierra la ronda interna, suma ganadas y pasa a la siguiente (o cierra el minijuego). */
+  async avanzarRondaPalabrasMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.palabrasDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!P || !esAdmin || P.fase !== 'revelacion') return false;
+      for (const id of ganadoresRondaPalabras(P.selecciones)) {
+        P.ganadas[id] = (P.ganadas[id] || 0) + 1;
+      }
+      if (P.ronda < P.total) {
+        const cfg = (est as any).palabrasCfg || { numLetras: P.numLetras, dificultad: P.dificultad, tiempoSeg: P.tiempoSeg };
+        P.ronda += 1;
+        P.letras = generarLetrasPalabras(cfg.numLetras, cfg.dificultad);
+        P.tiempoFin = Date.now() + cfg.tiempoSeg * 1000;
+        P.fase = 'jugando';
+        P.aportes = [];
+        P.selecciones = {};
+      } else {
+        this.cerrarMinijuegoPalabras(sala, est);
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Cierre del minijuego: 1 punto para el equipo con más rondas internas ganadas; empate, 1 para cada uno. */
+  private cerrarMinijuegoPalabras(sala: Sala, est: EstadoMinijuegos): void {
+    const P = this.palabrasDe(est);
+    const equipos = est.equiposOrden;
+    const max = Math.max(0, ...equipos.map(e => (P?.ganadas?.[e] || 0)));
+    equipos.forEach(e => {
+      const g = P?.ganadas?.[e] || 0;
+      est.resultados.push({ ronda: est.ronda, equipoId: e, tipo: 'palabras' as any, aciertos: g, errores: 0 });
+      est.aciertosTotales[e] = (est.aciertosTotales[e] || 0) + g;
+      if (max > 0 && g === max) est.puntos[e] = (est.puntos[e] || 0) + 1;
+    });
+    est.turno = null;
+    if (est.ronda >= est.totalRondas) {
+      est.fase = 'terminado';
+      this.determinarGanadorMinijuegos(est);
+      return;
+    }
+    est.ronda += 1;
+    this.abrirTurnoMinijuego(sala, est, equipos[(est.ronda - 1) % equipos.length]);
   }
 
   async reiniciarMinijuegos(codigo: string): Promise<boolean> {
