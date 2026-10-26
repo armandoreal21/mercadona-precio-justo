@@ -2090,6 +2090,7 @@ export class SalaService {
       (est as any).palabrasCfg = configPalabras || (est as any).palabrasCfg || { rondas: 3, tiempoSeg: 45, numLetras: 10, dificultad: 'facil' };
       (est as any).subastaCfg = configSubasta || (est as any).subastaCfg || { rondas: 3, tiempoSeg: 45, dificultad: 'facil', catalogo: [] };
       (est as any).precioCfg = configPrecio || (est as any).precioCfg || { rondas: 3, tiempoSeg: 45, productos: [] };
+      (est as any).precioUsados = [];
       const elegidos = (juegos || []).filter(j => TIPOS_MINIJUEGO.includes(j));
       if (elegidos.length === 0) return false;
       est.tiposRonda = this.tiposParaRondas(elegidos, est.totalRondas);
@@ -2843,10 +2844,21 @@ export class SalaService {
       aciertos: 0, errores: 0, inicioMs: ahora, finMs: Number.MAX_SAFE_INTEGER, iniciado: true,
       precio: {
         ronda: 1, total: cfg.rondas, tiempoSeg: cfg.tiempoSeg, productos: cfg.productos,
-        producto: cfg.productos[0] ?? null, tiempoFin: ahora + cfg.tiempoSeg * 1000,
+        producto: this.siguienteProductoPrecio(est), tiempoFin: ahora + cfg.tiempoSeg * 1000,
         fase: 'apostando', apuestas: {}, puntos: {}, ultimo: null
       }
     } as any;
+  }
+
+  /** Siguiente producto que aún no ha salido en esta partida. Nunca se repite. */
+  private siguienteProductoPrecio(est: EstadoMinijuegos): any | null {
+    const cfg = (est as any).precioCfg || { productos: [] };
+    (est as any).precioUsados = (est as any).precioUsados || [];
+    const usados: string[] = (est as any).precioUsados;
+    const libre = (cfg.productos || []).find((p: any) => !usados.includes(String(p.id)));
+    if (!libre) return null;
+    usados.push(String(libre.id));
+    return libre;
   }
 
   /** Un jugador pone su apuesta una sola vez y sin ver las de los demás. */
@@ -2910,7 +2922,7 @@ export class SalaService {
       if (!P || !esAdmin || P.fase !== 'revelacion') return false;
       if (P.ronda < P.total) {
         P.ronda += 1;
-        P.producto = (P.productos || [])[P.ronda - 1] ?? P.producto;
+        P.producto = this.siguienteProductoPrecio(est) ?? P.producto;
         P.apuestas = {};
         P.ultimo = null;
         P.tiempoFin = Date.now() + P.tiempoSeg * 1000;

@@ -666,7 +666,15 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             <div *ngSwitchCase="'precio'" class="space-y-3">
               <div class="text-xs text-slate-400 text-center">Individual: todos adivináis a la vez. Ronda {{ precioP?.ronda }} de {{ precioP?.total }}.</div>
               <div class="flex justify-center gap-2 flex-wrap text-xs">
-                <span *ngFor="let j of precioJugadores; trackBy: trackNombre" class="px-3 py-1 rounded-full bg-slate-800 border border-slate-600 text-slate-200">{{ j.nombre }} · <b class="text-white">{{ j.puntos }}</b> pts<ng-container *ngIf="precioP?.fase === 'apostando'"> · <b [ngClass]="j.apostado ? 'text-emerald-300' : 'text-amber-300'">{{ j.apostado ? '✓ apostado' : 'pendiente' }}</b></ng-container></span>
+                <button (click)="precioClasifAbierta = !precioClasifAbierta" class="w-full flex items-center justify-between gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl px-4 py-2 text-sm"><span class="font-bold text-white">🏆 Clasificación</span><span class="text-xs text-slate-300">{{ precioApostados }}/{{ precioJugadores.length }} han apostado · {{ precioClasifAbierta ? '▲' : '▼' }}</span></button>
+                <div *ngIf="precioClasifAbierta" class="fixed inset-0 z-50 flex items-center justify-center p-4"><div class="absolute inset-0 bg-black/60" (click)="precioClasifAbierta = false"></div><div class="relative w-full max-w-md bg-slate-900 border border-slate-600 rounded-2xl p-4 shadow-2xl"><div class="flex items-center justify-between mb-3"><span class="font-black text-white">🏆 Clasificación</span><button (click)="precioClasifAbierta = false" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-white">✕</button></div><div class="max-h-[60vh] overflow-y-auto space-y-1 pr-1">
+                  <div *ngFor="let j of precioRanking; let i = index; trackBy: trackNombre" class="flex items-center gap-3 px-3 py-2 rounded-xl bg-slate-900 border border-slate-800">
+                    <span class="w-7 text-center font-black text-slate-300">{{ i < 3 ? ['🥇', '🥈', '🥉'][i] : (i + 1) }}</span>
+                    <span class="flex-1 font-bold text-white truncate">{{ j.nombre }}</span>
+                    <span class="text-xs" [ngClass]="j.apostado ? 'text-emerald-300' : 'text-amber-300'">{{ j.apostado ? '✓' : '…' }}</span>
+                    <span class="font-black text-yellow-300 w-12 text-right">{{ j.puntos }}</span>
+                  </div>
+                </div></div></div>
               </div>
               <ng-container *ngIf="precioP?.fase === 'apostando'">
                 <div class="text-center text-3xl font-black text-yellow-400">{{ precioSegundos }}s</div>
@@ -1026,6 +1034,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   apuestaPre: number | null = null;
   apuestaErrPre: string | null = null;
   private precioCalculoPedido = false;
+  precioClasifAbierta = false;
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1634,6 +1643,15 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return this.sala.jugadores.every(j => (P.apuestas || {})[j.nombre] !== undefined);
   }
 
+  /** Jugadores ordenados por puntos (y por nombre si empatan) para la clasificación. */
+  get precioRanking(): any[] {
+    return [...this.precioJugadores].sort((a, b) => (b.puntos - a.puntos) || a.nombre.localeCompare(b.nombre, 'es'));
+  }
+
+  get precioApostados(): number {
+    return this.precioJugadores.filter(j => j.apostado).length;
+  }
+
   async terminarTiempoPre(): Promise<void> {
     if (!this.sala || !this.currentName) return;
     await this.salaService.calcularRondaPrecioMinijuego(this.sala.codigo, this.currentName);
@@ -1657,6 +1675,47 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   trackNombreRes(_: number, r: any): string {
     return r.nombre;
+  }
+
+  /** Pool de productos sin repetir: cubre las rondas de El Precio Justo de toda la partida (rondas x rondas totales). */
+  private async cargarPoolPrecio(rondas: number): Promise<any[]> {
+    const n = Math.min(40, Math.max(1, rondas) * Math.max(1, Number(this.est?.totalRondas ?? 5)));
+    const out: any[] = [];
+    const vistos = new Set<string>();
+    const cache = new Map<number, any[]>();
+    try {
+      const cats: any = await fetch('assets/Categoria.json').then(r => r.json());
+      const subIds: number[] = [];
+      (cats?.results || []).forEach((r: any) => (r.categories || []).forEach((sc: any) => { if (sc?.id) subIds.push(sc.id); }));
+      let intentos = 0;
+      while (out.length < n && subIds.length && intentos < n * 6) {
+        intentos++;
+        const sid = subIds[Math.floor(Math.random() * subIds.length)];
+        if (!cache.has(sid)) {
+          const sub: any = await fetch('assets/subcategorias/' + sid + '.json').then(r => r.json());
+          const productos: any[] = [...(sub.products || [])];
+          (sub.categories || []).forEach((b: any) => {
+            productos.push(...(b.products || []));
+            (b.categories || []).forEach((c2: any) => productos.push(...(c2.products || [])));
+          });
+          cache.set(sid, productos);
+        }
+        const libres = (cache.get(sid) || []).filter((p: any) => p && !vistos.has(String(p.id)));
+        if (!libres.length) continue;
+        const prod = libres[Math.floor(Math.random() * libres.length)];
+        vistos.add(String(prod.id));
+        const precio = Number(prod.price_instructions?.unit_price ?? prod.price?.unit_price ?? 0);
+        out.push({
+          id: String(prod.id),
+          nombre: this.arreglarTexto(prod.display_name || prod.name || ''),
+          precio: isNaN(precio) ? 0 : precio,
+          imagen: prod.thumbnail || prod.photos?.[0]?.regular || ''
+        });
+      }
+    } catch {
+      this.error = 'No se pudieron cargar los productos del Precio Justo.';
+    }
+    return out;
   }
 
   /** Corrige el texto de Mercadona (vienen con la codificación mal interpretada, p. ej. Ã³ en vez de ó). */
@@ -2638,7 +2697,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       return;
     }
     const catalogoSub = elegidos.includes('subasta') ? await this.cargarCatalogoSubasta() : [];
-    const catalogoPrecio = elegidos.includes('precio') ? await this.cargarProductosPrecio(Number(this.rondasPrecioBorrador)) : [];
+    const catalogoPrecio = elegidos.includes('precio') ? await this.cargarPoolPrecio(Number(this.rondasPrecioBorrador)) : [];
     const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador, { rondas: Number(this.rondasPalabrasBorrador), tiempoSeg: Number(this.tiempoPalabrasBorrador), numLetras: Number(this.numLetrasPalabrasBorrador), dificultad: this.dificultadPalabrasBorrador }, { rondas: Number(this.rondasSubastaBorrador), tiempoSeg: Number(this.tiempoSubastaBorrador), dificultad: this.dificultadSubastaBorrador, catalogo: catalogoSub }, { rondas: Number(this.rondasPrecioBorrador), tiempoSeg: Number(this.tiempoPrecioBorrador), productos: catalogoPrecio });
     if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
