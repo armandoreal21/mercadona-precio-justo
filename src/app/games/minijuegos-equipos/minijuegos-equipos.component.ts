@@ -679,6 +679,9 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                   <button (click)="enviarApuestaPre()" class="bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black px-4 rounded-xl">Enviar</button>
                 </div>
                 <div *ngIf="apuestaErrPre" class="text-rose-300 text-xs text-center">{{ apuestaErrPre }}</div>
+                <div *ngIf="isAdmin" class="text-center">
+                  <button (click)="terminarTiempoPre()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg">⏭ Terminar tiempo ya</button>
+                </div>
                 <div *ngIf="precioMiApuesta !== undefined" class="text-center text-sm text-emerald-300 font-bold">✓ Apuesta enviada: {{ precioMiApuesta | number:'1.2-2' }} €</div>
               </ng-container>
               <ng-container *ngIf="precioP?.fase === 'revelacion'">
@@ -1362,11 +1365,11 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   ngDoCheck(): void {
     // El Precio Justo: al acabar el tiempo de la ronda se calcula (una sola vez)
     const PR = this.precioP;
-    if (PR?.fase === 'apostando' && Date.now() >= PR.tiempoFin && !this.precioCalculoPedido && this.sala && this.currentName) {
+    if (PR?.fase === 'apostando' && (Date.now() >= PR.tiempoFin || this.precioTodosApostaron) && !this.precioCalculoPedido && this.sala && this.currentName) {
       this.precioCalculoPedido = true;
       this.salaService.calcularRondaPrecioMinijuego(this.sala.codigo, this.currentName);
     }
-    if (PR?.fase === 'apostando' && Date.now() < PR.tiempoFin) this.precioCalculoPedido = false;
+    if (PR?.fase === 'apostando' && Date.now() < PR.tiempoFin && !this.precioTodosApostaron) this.precioCalculoPedido = false;
     // La Subasta de Respuestas: al acabar el tiempo pasa a selección (una sola vez)
     const S = this.subastaS;
     if (S?.fase === 'respondiendo' && Date.now() >= S.tiempoFin && !this.subastaSeleccionPedida && this.sala && this.currentName) {
@@ -1624,6 +1627,18 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     }));
   }
 
+  /** True cuando todos los jugadores de la sala ya han apostado en esta ronda. */
+  get precioTodosApostaron(): boolean {
+    const P = this.precioP;
+    if (!P || !this.sala || !this.sala.jugadores.length) return false;
+    return this.sala.jugadores.every(j => (P.apuestas || {})[j.nombre] !== undefined);
+  }
+
+  async terminarTiempoPre(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.calcularRondaPrecioMinijuego(this.sala.codigo, this.currentName);
+  }
+
   async enviarApuestaPre(): Promise<void> {
     if (!this.sala || !this.currentName || this.apuestaPre === null) return;
     this.apuestaErrPre = null;
@@ -1642,6 +1657,12 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   trackNombreRes(_: number, r: any): string {
     return r.nombre;
+  }
+
+  /** Corrige el texto de Mercadona (vienen con la codificación mal interpretada, p. ej. Ã³ en vez de ó). */
+  private arreglarTexto(s: any): any {
+    if (typeof s !== 'string') return s;
+    try { return decodeURIComponent(escape(s)); } catch { return s; }
   }
 
   /** Productos aleatorios del catálogo de Mercadona (mismo origen que El Precio Justo). */
@@ -1663,7 +1684,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
         const precio = Number(prod.price_instructions?.unit_price ?? prod.price?.unit_price ?? 0);
         out.push({
           id: String(prod.id ?? ''),
-          nombre: prod.display_name || prod.name || '',
+          nombre: this.arreglarTexto(prod.display_name || prod.name || ''),
           precio: isNaN(precio) ? 0 : precio,
           imagen: prod.thumbnail || prod.photos?.[0]?.regular || ''
         });

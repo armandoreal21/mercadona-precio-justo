@@ -2872,7 +2872,8 @@ export class SalaService {
       const P = this.precioDe(est);
       if (!P || P.fase !== 'apostando') return false;
       const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
-      if (Date.now() < P.tiempoFin && !esAdmin) return false;
+      const todosApostaron = sala.jugadores.length > 0 && sala.jugadores.every(j => P.apuestas[j.nombre] !== undefined);
+      if (Date.now() < P.tiempoFin && !esAdmin && !todosApostaron) return false;
       const real = Number(P.producto?.precio ?? 0);
       const lista = Object.entries(P.apuestas).map(([nombre, apuesta]) => ({
         nombre, apuesta: Number(apuesta), delta: Math.abs(Number(apuesta) - real)
