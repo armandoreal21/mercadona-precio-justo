@@ -1993,6 +1993,7 @@ export class SalaService {
     const tipo: TipoMinijuego = est.tiposRonda[est.ronda - 1];
     if (tipo === 'palabras') { this.crearTurnoPalabras(sala, est); return; }
     if (tipo === 'subasta') { this.crearTurnoSubasta(sala, est); return; }
+    if (tipo === 'precio') { this.crearTurnoPrecio(sala, est); return; }
     const p = generarPuzle(tipo, 1, this.ayudantesDe(sala, est, equipoId));
     const ahora = Date.now();
     est.turno = {
@@ -2018,7 +2019,7 @@ export class SalaService {
   private cerrarTurnoMinijuego(sala: Sala, est: EstadoMinijuegos): void {
     const t = est.turno!;
     // El turno de palabras se cierra con su propio flujo (cerrarMinijuegoPalabras)
-    if ((t as any).tipo === 'palabras' || (t as any).tipo === 'subasta') return;
+    if ((t as any).tipo === 'palabras' || (t as any).tipo === 'subasta' || (t as any).tipo === 'precio') return;
     est.resultados.push({ ronda: t.ronda, equipoId: t.equipoId, tipo: t.tipo, aciertos: t.aciertos, errores: t.errores });
     est.aciertosTotales[t.equipoId] = (est.aciertosTotales[t.equipoId] || 0) + t.aciertos;
 
@@ -2073,13 +2074,13 @@ export class SalaService {
     });
   }
 
-  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false, configPalabras?: { rondas: number; tiempoSeg: number; numLetras: number; dificultad: string }, configSubasta?: { rondas: number; tiempoSeg: number; dificultad: string; catalogo: { id: string; categoria: string; descripcion: string }[] }): Promise<boolean> {
+  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false, configPalabras?: { rondas: number; tiempoSeg: number; numLetras: number; dificultad: string }, configSubasta?: { rondas: number; tiempoSeg: number; dificultad: string; catalogo: { id: string; categoria: string; descripcion: string }[] }, configPrecio?: { rondas: number; tiempoSeg: number; productos: any[] }): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       if (est.fase !== 'esperando') return false;
       const equipos = (sala.equipos || []).filter(eq => this.miembrosDeEquipo(sala, eq.id).length > 0).map(eq => eq.id);
       // Cada equipo necesita un capitán que sea miembro de ese equipo
-      const valido = equipos.length > 0 && ((juegos || []).every(j => j === 'palabras' || j === 'subasta') || equipos.every(id =>
+      const valido = equipos.length > 0 && ((juegos || []).every(j => j === 'palabras' || j === 'subasta' || j === 'precio') || equipos.every(id =>
         !!capitanes[id] && this.miembrosDeEquipo(sala, id).includes(capitanes[id])));
       if (!valido) return false;
       est.capitanes = { ...capitanes };
@@ -2088,6 +2089,7 @@ export class SalaService {
       (est as any).mostrarMetaAyudantes = !!mostrarMeta;
       (est as any).palabrasCfg = configPalabras || (est as any).palabrasCfg || { rondas: 3, tiempoSeg: 45, numLetras: 10, dificultad: 'facil' };
       (est as any).subastaCfg = configSubasta || (est as any).subastaCfg || { rondas: 3, tiempoSeg: 45, dificultad: 'facil', catalogo: [] };
+      (est as any).precioCfg = configPrecio || (est as any).precioCfg || { rondas: 3, tiempoSeg: 45, productos: [] };
       const elegidos = (juegos || []).filter(j => TIPOS_MINIJUEGO.includes(j));
       if (elegidos.length === 0) return false;
       est.tiposRonda = this.tiposParaRondas(elegidos, est.totalRondas);
@@ -2816,6 +2818,128 @@ export class SalaService {
     }
     est.ronda += 1;
     this.abrirTurnoMinijuego(sala, est, equipos[(est.ronda - 1) % equipos.length]);
+  }
+
+  // ====================================================================
+  // MINIJUEGO: EL PRECIO JUSTO (individual, todos a la vez)
+  // Puntuación del juego original: 10/7/5 y 3 al resto, +5 si se acierta exacto.
+  // Gana quien más puntos acumula; su equipo suma el punto (reparto si hay empate entre equipos).
+  // ====================================================================
+
+  private precioDe(est: EstadoMinijuegos): any | null {
+    const t: any = est.turno;
+    if (!t || t.tipo !== 'precio' || !t.precio) return null;
+    const P = t.precio;
+    P.apuestas = P.apuestas || {};
+    P.puntos = P.puntos || {};
+    return P;
+  }
+
+  private crearTurnoPrecio(sala: Sala, est: EstadoMinijuegos): void {
+    const cfg = (est as any).precioCfg || { rondas: 3, tiempoSeg: 45, productos: [] };
+    const ahora = Date.now();
+    est.turno = {
+      equipoId: 'todos', ronda: est.ronda, tipo: 'precio', nivel: 1, panel: {}, pistas: [], solucion: null,
+      aciertos: 0, errores: 0, inicioMs: ahora, finMs: Number.MAX_SAFE_INTEGER, iniciado: true,
+      precio: {
+        ronda: 1, total: cfg.rondas, tiempoSeg: cfg.tiempoSeg, productos: cfg.productos,
+        producto: cfg.productos[0] ?? null, tiempoFin: ahora + cfg.tiempoSeg * 1000,
+        fase: 'apostando', apuestas: {}, puntos: {}, ultimo: null
+      }
+    } as any;
+  }
+
+  /** Un jugador pone su apuesta una sola vez y sin ver las de los demás. */
+  async apostarPrecioMinijuego(codigo: string, usuario: string, valor: number): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.precioDe(est);
+      if (!P || P.fase !== 'apostando' || Date.now() >= P.tiempoFin) return false;
+      if (!sala.jugadores.some(j => j.nombre === usuario)) return false;
+      if (P.apuestas[usuario] !== undefined) return false;
+      const v = Number(valor);
+      if (isNaN(v) || v < 0) return false;
+      P.apuestas[usuario] = v;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Calcula la ronda: al acabar el tiempo (cualquiera lo pide) o cuando el admin lo fuerza. */
+  async calcularRondaPrecioMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.precioDe(est);
+      if (!P || P.fase !== 'apostando') return false;
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (Date.now() < P.tiempoFin && !esAdmin) return false;
+      const real = Number(P.producto?.precio ?? 0);
+      const lista = Object.entries(P.apuestas).map(([nombre, apuesta]) => ({
+        nombre, apuesta: Number(apuesta), delta: Math.abs(Number(apuesta) - real)
+      }));
+      lista.sort((a, b) => a.delta - b.delta);
+      const base = [10, 7, 5];
+      const resultados: any[] = [];
+      let idx = 0;
+      while (idx < lista.length) {
+        const d = lista[idx].delta;
+        let j = idx + 1;
+        while (j < lista.length && lista[j].delta === d) j++;
+        const pBase = idx < base.length ? base[idx] : 3;
+        for (let k = idx; k < j; k++) {
+          const pts = pBase + (lista[k].apuesta === real ? 5 : 0);
+          P.puntos[lista[k].nombre] = (P.puntos[lista[k].nombre] || 0) + pts;
+          resultados.push({ nombre: lista[k].nombre, apuesta: lista[k].apuesta, delta: lista[k].delta, puntos: pts });
+        }
+        idx = j;
+      }
+      P.ultimo = { precioReal: real, resultados };
+      P.fase = 'revelacion';
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Admin: pasa a la siguiente ronda interna con otro producto, o cierra el minijuego. */
+  async avanzarRondaPrecioMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.precioDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!P || !esAdmin || P.fase !== 'revelacion') return false;
+      if (P.ronda < P.total) {
+        P.ronda += 1;
+        P.producto = (P.productos || [])[P.ronda - 1] ?? P.producto;
+        P.apuestas = {};
+        P.ultimo = null;
+        P.tiempoFin = Date.now() + P.tiempoSeg * 1000;
+        P.fase = 'apostando';
+      } else {
+        this.cerrarMinijuegoPrecio(sala, est);
+      }
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Gana el jugador con más puntos acumulados. Su equipo suma 1; si hay varios equipos empatados, el punto se reparte. */
+  private cerrarMinijuegoPrecio(sala: Sala, est: EstadoMinijuegos): void {
+    const P = this.precioDe(est);
+    const puntos: Record<string, number> = P?.puntos || {};
+    const top = Math.max(0, ...Object.values(puntos).map(Number));
+    const ganadores = Object.keys(puntos).filter(n => top > 0 && puntos[n] === top);
+    const equipos = [...new Set(ganadores.map(n => sala.jugadores.find(j => j.nombre === n)?.equipoId).filter((e): e is string => !!e))];
+    const k = equipos.length;
+    if (k > 0) equipos.forEach(e => { est.puntos[e] = (est.puntos[e] || 0) + 1 / k; });
+    est.equiposOrden.forEach(e => est.resultados.push({ ronda: est.ronda, equipoId: e, tipo: 'precio' as any, aciertos: 0, errores: 0 }));
+    est.turno = null;
+    if (est.ronda >= est.totalRondas) {
+      est.fase = 'terminado';
+      this.determinarGanadorMinijuegos(est);
+      return;
+    }
+    est.ronda += 1;
+    this.abrirTurnoMinijuego(sala, est, est.equiposOrden[(est.ronda - 1) % est.equiposOrden.length]);
   }
 
   async reiniciarMinijuegos(codigo: string): Promise<boolean> {

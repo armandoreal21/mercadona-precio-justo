@@ -34,6 +34,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   grua: { resumen: 'Hay que llevar una caja del suelo a la zona de destino con una grúa. Cada persona tiene un control: mover el gancho, subir o bajar el cable, o agarrar y soltar. Los edificios solo se cruzan con el cable arriba. Un error resta 5 segundos.', ejemplo: 'Ejemplo: "¡Adelante! ¡Bajar cable, que ya estamos encima! ¡Pinza, agarra!"' },
   quien: { resumen: 'La pantalla muestra una palabra y el módulo tiene seis botones. El manual está repartido entre el equipo: cada persona tiene una parte. Hay que averiguar qué botón pulsar en cada etapa, y solo el capitán pulsa. Un fallo resta 5 segundos.', ejemplo: 'Ejemplo: "La pantalla dice MONITOR. ¿Quién tiene MONITOR? Posición 6. ¿Qué botón hay en la 6? VA. ¿Quién tiene VA?"' },
   subasta: { resumen: 'Se propone una categoría y todos escribís respuestas a la vez. Cada equipo elige las suyas y confirma; el árbitro (admin) invalida las que no valgan. Cada respuesta válida suma punto (2 en difícil). El equipo con más puntos gana la ronda interna.', ejemplo: 'Ejemplo: categoría "Animales de granja": todos escribís lo que se os ocurra, eligís las mejores y confirmáis.' },
+  precio: { resumen: 'Todos adivináis el precio de un producto del catálogo. Cada uno pone su apuesta sin ver las de los demás. Puntúan los más cercanos, con bonus por acertar exacto. Gana quien más puntos acumule; su equipo suma el punto del minijuego.', ejemplo: 'Ejemplo: "Yo digo 2,50 €." Si el precio real es 2,40 €, sumas 10 puntos si eres el más cercano.' },
   palabras: { resumen: 'Todos los equipos buscan la palabra más larga con las letras que aparecen en pantalla, a la vez. Hay varias rondas internas; el equipo que gane más rondas suma el punto del minijuego. Si las palabras se empatan, ganan los dos equipos esa ronda.', ejemplo: 'Ejemplo: "Con las letras A, R, T, O, S, E, N, I, L, P, todos escribid la palabra más larga que podáis formar."' },
   simon: { resumen: 'El módulo muestra un código y una secuencia de destellos de colores. Cada destello hay que responderlo con el color que indica la tabla de ese código. Hay códigos parecidos que sirven de trampa: hay que mirar siempre el código que dice el capitán. Solo el capitán pulsa; un error resta 5 segundos.', ejemplo: 'Ejemplo: "Código 263: el destello rojo se responde con el azul. ¿Quién tiene el rojo?"' },
   balanza: { resumen: 'Hay objetos con peso. Hay que repartirlos para que las dos bandejas pesen lo mismo.', ejemplo: 'Ejemplo: pasa objetos de la mesa a cada bandeja hasta que pesen igual.' }
@@ -116,6 +117,17 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </label>
           </div>
         </div>
+        <div *ngIf="isAdmin" class="space-y-2">
+          <div class="text-sm text-white">🛒 El Precio Justo: configuración</div>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <label class="flex flex-col gap-1 text-slate-300">Rondas internas
+              <select [(ngModel)]="rondasPrecioBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option [ngValue]="1">1</option><option [ngValue]="2">2</option><option [ngValue]="3">3</option><option [ngValue]="4">4</option><option [ngValue]="5">5</option></select>
+            </label>
+            <label class="flex flex-col gap-1 text-slate-300">Tiempo por ronda
+              <select [(ngModel)]="tiempoPrecioBorrador" class="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white"><option [ngValue]="30">30 s</option><option [ngValue]="45">45 s</option><option [ngValue]="60">60 s</option><option [ngValue]="90">90 s</option></select>
+            </label>
+          </div>
+        </div>
         <div *ngIf="isAdmin" class="flex items-center justify-between gap-2">
           <span class="text-sm text-white">⏱️ Segundos por turno</span>
           <input type="number" min="15" max="300" [(ngModel)]="segundosBorrador"
@@ -161,7 +173,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
         <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 flex flex-wrap justify-between gap-2 text-xs">
           <span class="font-bold text-cyan-300">Ronda {{ est.ronda }} de {{ est.totalRondas }}</span>
           <span class="text-slate-300">{{ nombreMinijuego[t.tipo] }} · nivel {{ t.nivel }}</span>
-          <span class="font-mono" [class.text-rose-400]="t.tipo === 'palabras' ? palabrasSegundos <= 10 : (t.tipo === 'subasta' ? subastaSegundos <= 10 : segundosRestantes <= 10)">⏱️ {{ formatear(t.tipo === 'palabras' ? palabrasSegundos : (t.tipo === 'subasta' ? subastaSegundos : segundosRestantes)) }}</span>
+          <span class="font-mono" [class.text-rose-400]="t.tipo === 'palabras' ? palabrasSegundos <= 10 : (t.tipo === 'subasta' ? subastaSegundos <= 10 : (t.tipo === 'precio' ? precioSegundos <= 10 : segundosRestantes <= 10))">⏱️ {{ formatear(t.tipo === 'palabras' ? palabrasSegundos : (t.tipo === 'subasta' ? subastaSegundos : (t.tipo === 'precio' ? precioSegundos : segundosRestantes))) }}</span>
         </div>
 
         <div class="bg-slate-900 p-4 rounded-2xl border-2 text-center space-y-1"
@@ -651,6 +663,39 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 </div>
               </ng-container>
             </div>
+            <div *ngSwitchCase="'precio'" class="space-y-3">
+              <div class="text-xs text-slate-400 text-center">Individual: todos adivináis a la vez. Ronda {{ precioP?.ronda }} de {{ precioP?.total }}.</div>
+              <div class="flex justify-center gap-2 flex-wrap text-xs">
+                <span *ngFor="let j of precioJugadores; trackBy: trackNombre" class="px-3 py-1 rounded-full bg-slate-800 border border-slate-600 text-slate-200">{{ j.nombre }} · <b class="text-white">{{ j.puntos }}</b> pts<ng-container *ngIf="precioP?.fase === 'apostando'"> · <b [ngClass]="j.apostado ? 'text-emerald-300' : 'text-amber-300'">{{ j.apostado ? '✓ apostado' : 'pendiente' }}</b></ng-container></span>
+              </div>
+              <ng-container *ngIf="precioP?.fase === 'apostando'">
+                <div class="text-center text-3xl font-black text-yellow-400">{{ precioSegundos }}s</div>
+                <div *ngIf="precioP.producto" class="bg-slate-950 rounded-2xl border border-slate-700 p-4 text-center space-y-2">
+                  <img *ngIf="precioP.producto.imagen" [src]="precioP.producto.imagen" class="w-40 h-40 object-contain mx-auto" />
+                  <div class="font-black text-white">{{ precioP.producto.nombre }}</div>
+                </div>
+                <div *ngIf="precioMiApuesta === undefined" class="flex gap-2 max-w-xs mx-auto">
+                  <input type="number" step="0.01" min="0" [(ngModel)]="apuestaPre" placeholder="€" class="flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white text-center font-bold focus:outline-none focus:border-cyan-400" />
+                  <button (click)="enviarApuestaPre()" class="bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black px-4 rounded-xl">Enviar</button>
+                </div>
+                <div *ngIf="apuestaErrPre" class="text-rose-300 text-xs text-center">{{ apuestaErrPre }}</div>
+                <div *ngIf="precioMiApuesta !== undefined" class="text-center text-sm text-emerald-300 font-bold">✓ Apuesta enviada: {{ precioMiApuesta | number:'1.2-2' }} €</div>
+              </ng-container>
+              <ng-container *ngIf="precioP?.fase === 'revelacion'">
+                <div class="text-center">
+                  <div class="text-[10px] uppercase tracking-widest text-slate-400">Precio real</div>
+                  <div class="text-3xl font-black text-yellow-300">{{ precioP.ultimo?.precioReal | number:'1.2-2' }} €</div>
+                </div>
+                <div *ngFor="let r of precioP.ultimo?.resultados; let i = index; trackBy: trackNombreRes" class="flex justify-between items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border-2" [ngClass]="i === 0 ? 'border-yellow-400' : 'border-slate-700'">
+                  <span class="font-bold text-white">{{ r.nombre }}</span>
+                  <span class="text-xs text-slate-400">{{ r.apuesta | number:'1.2-2' }} € · desviación {{ r.delta | number:'1.2-2' }} €</span>
+                  <span class="font-black text-yellow-300">+{{ r.puntos }}</span>
+                </div>
+                <div *ngIf="isAdmin" class="text-center">
+                  <button (click)="siguienteRondaPre()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 rounded-xl uppercase text-xs">Siguiente ronda interna</button>
+                </div>
+              </ng-container>
+            </div>
             <div *ngSwitchCase="'metro'" class="space-y-3">
               <div class="text-xs text-slate-400">¿Cuántos transbordos mínimos hacen falta para ir del origen al destino?</div>
               <div class="flex items-center justify-center gap-3">
@@ -894,7 +939,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
           </div>
         </ng-container>
 
-        <div *ngIf="!enEquipoActivo && miEquipoId && t.tipo !== 'palabras' && t.tipo !== 'subasta'" class="text-center text-sm text-slate-400">
+        <div *ngIf="!enEquipoActivo && miEquipoId && t.tipo !== 'palabras' && t.tipo !== 'subasta' && t.tipo !== 'precio'" class="text-center text-sm text-slate-400">
           👀 Observas el turno del otro equipo. Después te toca a ti, con otra versión de este minijuego.
         </div>
 
@@ -972,6 +1017,12 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   respuestaSub = '';
   errorRespSub: string | null = null;
   private subastaSeleccionPedida = false;
+  // El Precio Justo dentro del minijuego
+  rondasPrecioBorrador = 3;
+  tiempoPrecioBorrador = 45;
+  apuestaPre: number | null = null;
+  apuestaErrPre: string | null = null;
+  private precioCalculoPedido = false;
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1309,6 +1360,13 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
   ngDoCheck(): void {
+    // El Precio Justo: al acabar el tiempo de la ronda se calcula (una sola vez)
+    const PR = this.precioP;
+    if (PR?.fase === 'apostando' && Date.now() >= PR.tiempoFin && !this.precioCalculoPedido && this.sala && this.currentName) {
+      this.precioCalculoPedido = true;
+      this.salaService.calcularRondaPrecioMinijuego(this.sala.codigo, this.currentName);
+    }
+    if (PR?.fase === 'apostando' && Date.now() < PR.tiempoFin) this.precioCalculoPedido = false;
     // La Subasta de Respuestas: al acabar el tiempo pasa a selección (una sola vez)
     const S = this.subastaS;
     if (S?.fase === 'respondiendo' && Date.now() >= S.tiempoFin && !this.subastaSeleccionPedida && this.sala && this.currentName) {
@@ -1535,6 +1593,85 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   async descartarCategoriaSubastaMin(): Promise<void> {
     if (!this.sala || !this.currentName) return;
     await this.salaService.descartarCategoriaSubastaMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  /** Datos de El Precio Justo dentro del minijuego (individual, todos a la vez). */
+  get precioP(): any | null {
+    const t: any = this.est?.turno;
+    if (!t || t.tipo !== 'precio' || !t.precio) return null;
+    return t.precio;
+  }
+
+  get precioSegundos(): number {
+    const P = this.precioP;
+    if (!P) return 0;
+    return Math.max(0, Math.ceil((P.tiempoFin - this.ahora) / 1000));
+  }
+
+  /** Mi apuesta de esta ronda (undefined si aún no he apostado). */
+  get precioMiApuesta(): number | undefined {
+    return this.precioP?.apuestas?.[this.currentName ?? ''];
+  }
+
+  /** Jugadores con sus puntos acumulados y si ya han apostado (sin ver las apuestas). */
+  get precioJugadores(): any[] {
+    const P = this.precioP;
+    if (!P || !this.sala) return [];
+    return this.sala.jugadores.map(j => ({
+      nombre: j.nombre,
+      puntos: (P.puntos || {})[j.nombre] || 0,
+      apostado: (P.apuestas || {})[j.nombre] !== undefined
+    }));
+  }
+
+  async enviarApuestaPre(): Promise<void> {
+    if (!this.sala || !this.currentName || this.apuestaPre === null) return;
+    this.apuestaErrPre = null;
+    const ok = await this.salaService.apostarPrecioMinijuego(this.sala.codigo, this.currentName, Number(this.apuestaPre));
+    if (!ok) this.apuestaErrPre = 'No se ha podido registrar la apuesta.';
+  }
+
+  async siguienteRondaPre(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.avanzarRondaPrecioMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  trackNombre(_: number, j: any): string {
+    return j.nombre;
+  }
+
+  trackNombreRes(_: number, r: any): string {
+    return r.nombre;
+  }
+
+  /** Productos aleatorios del catálogo de Mercadona (mismo origen que El Precio Justo). */
+  private async cargarProductosPrecio(n: number): Promise<any[]> {
+    const out: any[] = [];
+    try {
+      const cats: any = await fetch('assets/Categoria.json').then(r => r.json());
+      const subIds: number[] = [];
+      (cats?.results || []).forEach((r: any) => (r.categories || []).forEach((sc: any) => { if (sc?.id) subIds.push(sc.id); }));
+      for (let i = 0; i < n && subIds.length; i++) {
+        const sub: any = await fetch('assets/subcategorias/' + subIds[Math.floor(Math.random() * subIds.length)] + '.json').then(r => r.json());
+        const productos: any[] = [...(sub.products || [])];
+        (sub.categories || []).forEach((b: any) => {
+          productos.push(...(b.products || []));
+          (b.categories || []).forEach((c2: any) => productos.push(...(c2.products || [])));
+        });
+        const prod = productos[Math.floor(Math.random() * productos.length)];
+        if (!prod) continue;
+        const precio = Number(prod.price_instructions?.unit_price ?? prod.price?.unit_price ?? 0);
+        out.push({
+          id: String(prod.id ?? ''),
+          nombre: prod.display_name || prod.name || '',
+          precio: isNaN(precio) ? 0 : precio,
+          imagen: prod.thumbnail || prod.photos?.[0]?.regular || ''
+        });
+      }
+    } catch {
+      this.error = 'No se pudieron cargar los productos del Precio Justo.';
+    }
+    return out;
   }
 
   /** Carga las categorías de la dificultad elegida (mismo fichero que el juego original). */
@@ -2480,7 +2617,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       return;
     }
     const catalogoSub = elegidos.includes('subasta') ? await this.cargarCatalogoSubasta() : [];
-    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador, { rondas: Number(this.rondasPalabrasBorrador), tiempoSeg: Number(this.tiempoPalabrasBorrador), numLetras: Number(this.numLetrasPalabrasBorrador), dificultad: this.dificultadPalabrasBorrador }, { rondas: Number(this.rondasSubastaBorrador), tiempoSeg: Number(this.tiempoSubastaBorrador), dificultad: this.dificultadSubastaBorrador, catalogo: catalogoSub });
+    const catalogoPrecio = elegidos.includes('precio') ? await this.cargarProductosPrecio(Number(this.rondasPrecioBorrador)) : [];
+    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador, { rondas: Number(this.rondasPalabrasBorrador), tiempoSeg: Number(this.tiempoPalabrasBorrador), numLetras: Number(this.numLetrasPalabrasBorrador), dificultad: this.dificultadPalabrasBorrador }, { rondas: Number(this.rondasSubastaBorrador), tiempoSeg: Number(this.tiempoSubastaBorrador), dificultad: this.dificultadSubastaBorrador, catalogo: catalogoSub }, { rondas: Number(this.rondasPrecioBorrador), tiempoSeg: Number(this.tiempoPrecioBorrador), productos: catalogoPrecio });
     if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
 
