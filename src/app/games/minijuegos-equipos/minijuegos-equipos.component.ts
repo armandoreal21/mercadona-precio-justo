@@ -689,6 +689,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div *ngIf="apuestaErrPre" class="text-rose-300 text-xs text-center">{{ apuestaErrPre }}</div>
                 <div *ngIf="isAdmin" class="text-center">
                   <button (click)="terminarTiempoPre()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg">⏭ Terminar tiempo ya</button>
+                  <button (click)="cambiarProductoPre()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg ml-2">🔄 Cambiar producto</button>
                 </div>
                 <div *ngIf="precioMiApuesta !== undefined" class="text-center text-sm text-emerald-300 font-bold">✓ Apuesta enviada: {{ precioMiApuesta | number:'1.2-2' }} €</div>
               </ng-container>
@@ -1650,6 +1651,11 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   get precioApostados(): number {
     return this.precioJugadores.filter(j => j.apostado).length;
+  }
+
+  async cambiarProductoPre(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.cambiarProductoPrecioMinijuego(this.sala.codigo, this.currentName);
   }
 
   async terminarTiempoPre(): Promise<void> {

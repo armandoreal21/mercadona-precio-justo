@@ -2913,6 +2913,22 @@ export class SalaService {
     });
   }
 
+  /** Admin: cambia el producto de la ronda actual (si no gusta o hay conflicto). Borra las apuestas hechas sobre el anterior. */
+  async cambiarProductoPrecioMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const P = this.precioDe(est);
+      const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+      if (!P || !esAdmin || P.fase !== 'apostando') return false;
+      const nuevo = this.siguienteProductoPrecio(est);
+      if (!nuevo) return false;
+      P.producto = nuevo;
+      P.apuestas = {};
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
   /** Admin: pasa a la siguiente ronda interna con otro producto, o cierra el minijuego. */
   async avanzarRondaPrecioMinijuego(codigo: string, usuario: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
