@@ -161,7 +161,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
         <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 flex flex-wrap justify-between gap-2 text-xs">
           <span class="font-bold text-cyan-300">Ronda {{ est.ronda }} de {{ est.totalRondas }}</span>
           <span class="text-slate-300">{{ nombreMinijuego[t.tipo] }} · nivel {{ t.nivel }}</span>
-          <span class="font-mono" [class.text-rose-400]="segundosRestantes <= 10">⏱️ {{ formatear(segundosRestantes) }}</span>
+          <span class="font-mono" [class.text-rose-400]="t.tipo === 'palabras' ? palabrasSegundos <= 10 : (t.tipo === 'subasta' ? subastaSegundos <= 10 : segundosRestantes <= 10)">⏱️ {{ formatear(t.tipo === 'palabras' ? palabrasSegundos : (t.tipo === 'subasta' ? subastaSegundos : segundosRestantes)) }}</span>
         </div>
 
         <div class="bg-slate-900 p-4 rounded-2xl border-2 text-center space-y-1"
