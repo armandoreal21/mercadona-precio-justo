@@ -682,9 +682,9 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                   <img *ngIf="precioP.producto.imagen" [src]="precioP.producto.imagen" class="w-40 h-40 object-contain mx-auto" />
                   <div class="font-black text-white">{{ precioP.producto.nombre }}</div>
                 </div>
-                <div *ngIf="precioMiApuesta === undefined" class="flex gap-2 max-w-xs mx-auto">
-                  <input type="number" step="0.01" min="0" [(ngModel)]="apuestaPre" placeholder="€" class="flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white text-center font-bold focus:outline-none focus:border-cyan-400" />
-                  <button (click)="enviarApuestaPre()" class="bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black px-4 rounded-xl">Enviar</button>
+                <div *ngIf="precioMiApuesta === undefined" class="flex flex-col sm:flex-row gap-2 w-full max-w-xs mx-auto">
+                  <input type="number" step="0.01" min="0" [(ngModel)]="apuestaPre" placeholder="€" class="w-full sm:flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white text-center font-bold focus:outline-none focus:border-cyan-400" />
+                  <button (click)="enviarApuestaPre()" class="w-full sm:w-auto bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black py-2 sm:py-0 px-4 rounded-xl">Enviar</button>
                 </div>
                 <div *ngIf="apuestaErrPre" class="text-rose-300 text-xs text-center">{{ apuestaErrPre }}</div>
                 <div *ngIf="isAdmin" class="text-center">
@@ -1036,6 +1036,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   apuestaErrPre: string | null = null;
   private precioCalculoPedido = false;
   precioClasifAbierta = false;
+  precioRondaVista = 0;
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1373,6 +1374,11 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
   ngDoCheck(): void {
+    // El Precio Justo: al empezar una ronda nueva, el campo de apuesta vuelve vacío
+    if (this.precioP && this.precioP.ronda !== this.precioRondaVista) {
+      this.precioRondaVista = this.precioP.ronda;
+      this.apuestaPre = null;
+    }
     // El Precio Justo: al acabar el tiempo de la ronda se calcula (una sola vez)
     const PR = this.precioP;
     if (PR?.fase === 'apostando' && (Date.now() >= PR.tiempoFin || this.precioTodosApostaron) && !this.precioCalculoPedido && this.sala && this.currentName) {
@@ -1667,7 +1673,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (!this.sala || !this.currentName || this.apuestaPre === null) return;
     this.apuestaErrPre = null;
     const ok = await this.salaService.apostarPrecioMinijuego(this.sala.codigo, this.currentName, Number(this.apuestaPre));
-    if (!ok) this.apuestaErrPre = 'No se ha podido registrar la apuesta.';
+    if (ok) this.apuestaPre = null;
+    else this.apuestaErrPre = 'No se ha podido registrar la apuesta.';
   }
 
   async siguienteRondaPre(): Promise<void> {
