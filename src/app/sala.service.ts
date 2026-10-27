@@ -2474,7 +2474,7 @@ export class SalaService {
     const t: any = est.turno;
     if (!t || t.tipo !== 'palabras' || !t.palabras) return null;
     // Firebase elimina las listas y objetos vacíos al guardar: se restauran aquí
-    t.palabras.aportes = t.palabras.aportes || [];
+    t.palabras.aportes = t.palabras.aportes || {};
     t.palabras.selecciones = t.palabras.selecciones || {};
     t.palabras.ganadas = t.palabras.ganadas || {};
     return t.palabras;
@@ -2505,8 +2505,122 @@ export class SalaService {
     });
   }
 
-  /** Un jugador añade una palabra a su equipo mientras dura la ronda interna. */
+  /** Aportaciones de la ronda como lista (sirve tanto si están guardadas como registro como si son lista). */
+  private aportesPalabras(P: any): any[] {
+    return Object.values(P?.aportes || {});
+  }
+
+  /** Una aportación por jugador y palabra: cada jugador escribe solo la suya, sin transacción. */
+  private claveAportePalabra(usuario: string, palabra: string): string {
+    return `${this.claveJugador(usuario)}__${palabra}`;
+  }
+
+  private palabrasPath(upCode: string): string {
+    return `${this.firebaseRefPath}/${upCode}/estadoMinijuegos/turno/palabras`;
+  }
+
   async aportarPalabraMinijuego(codigo: string, usuario: string, palabra: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.aportarPalabraSalaLocal(codigo, usuario, palabra);
+    const clean = (palabra || '').trim().toUpperCase();
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const P = this.palabrasDe(this.asegurarEstadoMinijuegos(local));
+    if (!P || P.fase !== 'jugando' || Date.now() >= P.tiempoFin) return false;
+    const j = local.jugadores.find(x => x.nombre === usuario);
+    if (!j || !j.equipoId) return false;
+    if (clean.length < 2 || !validarLetrasPalabras(clean, P.letras)) return false;
+    const key = this.claveAportePalabra(usuario, clean);
+    if (P.aportes[key]) return false;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, `${this.palabrasPath(upCode)}/aportes`), {
+        [key]: { jugador: usuario, equipoId: j.equipoId, palabra: clean, longitud: clean.length }
+      });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] aportarPalabra error', e);
+      return false;
+    }
+  }
+
+  /** Cada equipo elige una palabra: su selección se escribe en la clave de su equipo. */
+  async seleccionarPalabraPorEquipoMinijuego(codigo: string, usuario: string, palabra: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.seleccionarPalabraSalaLocal(codigo, usuario, palabra);
+    const clean = (palabra || '').trim().toUpperCase();
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const est = this.asegurarEstadoMinijuegos(local);
+    const P = this.palabrasDe(est);
+    if (!P || P.fase !== 'seleccion') return false;
+    const j = local.jugadores.find(x => x.nombre === usuario);
+    if (!j || !j.equipoId) return false;
+    if (!this.aportesPalabras(P).some((a: any) => a.palabra === clean && a.equipoId === j.equipoId)) return false;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, this.palabrasPath(upCode)), {
+        [`selecciones/${j.equipoId}`]: { equipoId: j.equipoId, palabra: clean, longitud: clean.length, seleccionadaPor: usuario, descartada: false }
+      });
+      // Si todos los equipos han elegido, pasa a revelación (escritura directa, idempotente)
+      const todos = est.equiposOrden.every(e => e === j.equipoId || !!P.selecciones[e]);
+      if (todos) await update(ref(this.firebaseDb, this.palabrasPath(upCode)), { fase: 'revelacion' });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] seleccionarPalabra error', e);
+      return false;
+    }
+  }
+
+  /** Quita la selección del equipo del jugador (solo durante la fase de selección). */
+  async quitarSeleccionPalabraMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.quitarSeleccionSalaLocal(codigo, usuario);
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const P = this.palabrasDe(this.asegurarEstadoMinijuegos(local));
+    const j = local.jugadores.find(x => x.nombre === usuario);
+    if (!P || P.fase !== 'seleccion' || !j || !j.equipoId || !P.selecciones[j.equipoId]) return false;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, this.palabrasPath(upCode)), { [`selecciones/${j.equipoId}`]: null });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] quitarSeleccion error', e);
+      return false;
+    }
+  }
+
+  /** Pasa a selección cuando se acaba el tiempo (cualquiera) o el admin lo fuerza: escritura directa, idempotente. */
+  async pasarASeleccionPalabrasMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.pasarASeleccionSalaLocal(codigo, usuario);
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const P = this.palabrasDe(this.asegurarEstadoMinijuegos(local));
+    if (!P || P.fase !== 'jugando') return false;
+    const esAdmin = !!local.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+    if (Date.now() < P.tiempoFin && !esAdmin) return false;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, this.palabrasPath(upCode)), { fase: 'seleccion' });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] pasarASeleccion error', e);
+      return false;
+    }
+  }
+
+  /** Un jugador añade una palabra a su equipo mientras dura la ronda interna. */
+  private async aportarPalabraSalaLocal(codigo: string, usuario: string, palabra: string): Promise<boolean> {
     const clean = (palabra || '').trim().toUpperCase();
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
@@ -2523,7 +2637,7 @@ export class SalaService {
   }
 
   /** Pasa a selección cuando se acaba el tiempo (cualquiera lo puede pedir) o el admin lo fuerza. */
-  async pasarASeleccionPalabrasMinijuego(codigo: string, usuario: string): Promise<boolean> {
+  private async pasarASeleccionSalaLocal(codigo: string, usuario: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const P = this.palabrasDe(est);
@@ -2537,7 +2651,7 @@ export class SalaService {
   }
 
   /** Cada equipo elige una de sus palabras aportadas. */
-  async seleccionarPalabraPorEquipoMinijuego(codigo: string, usuario: string, palabra: string): Promise<boolean> {
+  private async seleccionarPalabraSalaLocal(codigo: string, usuario: string, palabra: string): Promise<boolean> {
     const clean = (palabra || '').trim().toUpperCase();
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
@@ -2555,7 +2669,7 @@ export class SalaService {
   }
 
   /** Quita la palabra elegida por el equipo del jugador (solo durante la selección). */
-  async quitarSeleccionPalabraMinijuego(codigo: string, usuario: string): Promise<boolean> {
+  private async quitarSeleccionSalaLocal(codigo: string, usuario: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const P = this.palabrasDe(est);

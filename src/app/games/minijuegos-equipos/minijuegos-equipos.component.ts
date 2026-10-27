@@ -564,9 +564,9 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div class="flex flex-wrap justify-center gap-2">
                   <div *ngFor="let l of palabrasP.letras" class="w-11 h-12 bg-gradient-to-b from-amber-200 to-amber-400 text-slate-950 font-black text-2xl rounded-xl flex items-center justify-center shadow">{{ l }}</div>
                 </div>
-                <div *ngIf="palabrasMiEquipo" class="flex gap-2 max-w-md mx-auto">
-                  <input [(ngModel)]="palabraPal" (keyup.enter)="enviarPalabraPal()" autocomplete="off" placeholder="Escribe una palabra" class="flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-bold uppercase focus:outline-none focus:border-cyan-400" />
-                  <button (click)="enviarPalabraPal()" class="bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black px-4 rounded-xl">Añadir</button>
+                <div *ngIf="palabrasMiEquipo" class="flex flex-col sm:flex-row gap-2 w-full max-w-md mx-auto">
+                  <input [(ngModel)]="palabraPal" (keyup.enter)="enviarPalabraPal()" autocomplete="off" placeholder="Escribe una palabra" class="w-full sm:flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-bold uppercase focus:outline-none focus:border-cyan-400" />
+                  <button (click)="enviarPalabraPal()" class="w-full sm:w-auto bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black py-2 sm:py-0 px-4 rounded-xl">Añadir</button>
                 </div>
                 <div *ngIf="palabraErrPal" class="text-rose-300 text-xs text-center">{{ palabraErrPal }}</div>
                 <div *ngIf="!palabrasMiEquipo" class="text-center text-xs text-slate-400">Solo los jugadores de un equipo pueden aportar palabras.</div>
@@ -998,7 +998,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   ahora = Date.now();
   readonly todosLosJuegos = TIPOS_MINIJUEGO;
   juegosAbiertos = false;
-  juegosMarcados: Record<string, boolean> = Object.fromEntries(TIPOS_MINIJUEGO.map(t => [t, true]));
+  juegosMarcados: Record<string, boolean> = Object.fromEntries(TIPOS_MINIJUEGO.map(t => [t, !['puntero', 'grua', 'pinta', 'mezcla', 'balanza'].includes(t)]));
 
 /** Marca todos los juegos, o los desmarca si ya estaban todos marcados. */
   toggleTodosJuegos(): void {
@@ -1465,7 +1465,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   get palabrasMisAportes(): any[] {
     const P = this.palabrasP;
     if (!P) return [];
-    return (P.aportes || []).filter((a: any) => a.jugador === this.currentName);
+    return Object.values(P.aportes || {}).filter((a: any) => a.jugador === this.currentName);
   }
 
   /** Palabras aportadas por mi equipo, sin repetir. */
@@ -1474,7 +1474,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const eq = this.palabrasMiEquipo;
     if (!P || !eq) return [];
     const vistas = new Set<string>();
-    return (P.aportes || []).filter((a: any) => {
+    return Object.values(P.aportes || {}).filter((a: any) => {
       if (a.equipoId !== eq || vistas.has(a.palabra)) return false;
       vistas.add(a.palabra);
       return true;
