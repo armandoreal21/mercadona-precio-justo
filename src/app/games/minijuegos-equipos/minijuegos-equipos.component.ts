@@ -562,7 +562,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
               <ng-container *ngIf="palabrasP?.fase === 'jugando'">
                 <div class="text-center text-3xl font-black text-yellow-400">{{ palabrasSegundos }}s</div>
                 <div class="flex flex-wrap justify-center gap-2">
-                  <div *ngFor="let l of palabrasP.letras" class="w-11 h-12 bg-gradient-to-b from-amber-200 to-amber-400 text-slate-950 font-black text-2xl rounded-xl flex items-center justify-center shadow">{{ l }}</div>
+                  <div *ngFor="let l of palabrasP.letras; let i = index" (click)="tocarLetraPal(i)" class="w-11 h-12 bg-gradient-to-b from-amber-200 to-amber-400 text-slate-950 font-black text-2xl rounded-xl flex items-center justify-center shadow cursor-pointer select-none active:scale-95 transition" [class.opacity-30]="palabraLetrasUsadas.has(i)" [class.pointer-events-none]="palabraLetrasUsadas.has(i)">{{ l }}</div>
                 </div>
                 <div *ngIf="palabrasMiEquipo" class="flex flex-col sm:flex-row gap-2 w-full max-w-md mx-auto">
                   <input [(ngModel)]="palabraPal" (keyup.enter)="enviarPalabraPal()" autocomplete="off" placeholder="Escribe una palabra" class="w-full sm:flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-bold uppercase focus:outline-none focus:border-cyan-400" />
@@ -1783,6 +1783,37 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const P = this.palabrasP;
     const eq = this.palabrasMiEquipo;
     return P && eq ? ((P.selecciones || {})[eq] || null) : null;
+  }
+
+  /** Fichas de la pantalla usadas en el campo, en el orden en que se pulsaron (la fila de cada letra importa). */
+  palabraIdx: number[] = [];
+
+  /** Si el campo se ha escrito a mano, recalcula qué fichas corresponden a cada letra. */
+  private sincronizarIdxPal(): void {
+    const letras: string[] = this.palabrasP?.letras || [];
+    const texto = (this.palabraPal || '').toUpperCase();
+    if (this.palabraIdx.map(i => letras[i]).join('') === texto) return;
+    const usadas: number[] = [];
+    for (const ch of texto) {
+      const i = letras.findIndex((l, idx) => l === ch && !usadas.includes(idx));
+      if (i >= 0) usadas.push(i);
+    }
+    this.palabraIdx = usadas;
+  }
+
+  /** Posiciones de las fichas ya usadas (cada ficha se usa una sola vez). */
+  get palabraLetrasUsadas(): Set<number> {
+    this.sincronizarIdxPal();
+    return new Set(this.palabraIdx);
+  }
+
+  /** Pulsar una ficha la añade al campo: se marca exactamente la que se ha pulsado. */
+  tocarLetraPal(i: number): void {
+    const letras: string[] = this.palabrasP?.letras || [];
+    this.sincronizarIdxPal();
+    if (this.palabraIdx.includes(i) || !letras[i]) return;
+    this.palabraIdx = [...this.palabraIdx, i];
+    this.palabraPal = (this.palabraPal || '') + letras[i];
   }
 
   async enviarPalabraPal(): Promise<void> {
