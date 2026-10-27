@@ -1947,6 +1947,17 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return out;
   }
 
+  /** Carga la lista de palabras de Palabra desordenada (assets/games/palabra-desordenada/palabras.json). */
+  private async cargarPalabrasJuego(): Promise<string[]> {
+    try {
+      const lista = await firstValueFrom(this.http.get<string[]>('assets/games/palabra-desordenada/palabras.json'));
+      return lista.map(p => String(p).trim().toLowerCase()).filter(p => p.length >= 4);
+    } catch {
+      this.error = 'No se pudo cargar la lista de palabras.';
+      return [];
+    }
+  }
+
   /** Carga las categorías de la dificultad elegida (mismo fichero que el juego original). */
   private async cargarCatalogoSubasta(): Promise<{ id: string; categoria: string; descripcion: string }[]> {
     try {
@@ -2920,9 +2931,10 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
       this.error = 'Marca al menos un juego.';
       return;
     }
+    const catalogoPal = elegidos.includes('palabra') ? await this.cargarPalabrasJuego() : [];
     const catalogoSub = elegidos.includes('subasta') ? await this.cargarCatalogoSubasta() : [];
     const catalogoPrecio = elegidos.includes('precio') ? await this.cargarPoolPrecio(Number(this.rondasPrecioBorrador)) : [];
-    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador, { rondas: Number(this.rondasPalabrasBorrador), tiempoSeg: Number(this.tiempoPalabrasBorrador), numLetras: Number(this.numLetrasPalabrasBorrador), dificultad: this.dificultadPalabrasBorrador }, { rondas: Number(this.rondasSubastaBorrador), tiempoSeg: Number(this.tiempoSubastaBorrador), dificultad: this.dificultadSubastaBorrador, catalogo: catalogoSub }, { rondas: Number(this.rondasPrecioBorrador), tiempoSeg: Number(this.tiempoPrecioBorrador), productos: catalogoPrecio });
+    const ok = await this.salaService.iniciarMinijuegos(this.sala.codigo, { ...this.capitanBorrador }, Number(this.segundosBorrador), elegidos, this.mostrarMetaBorrador, { rondas: Number(this.rondasPalabrasBorrador), tiempoSeg: Number(this.tiempoPalabrasBorrador), numLetras: Number(this.numLetrasPalabrasBorrador), dificultad: this.dificultadPalabrasBorrador, catalogo: catalogoPal }, { rondas: Number(this.rondasSubastaBorrador), tiempoSeg: Number(this.tiempoSubastaBorrador), dificultad: this.dificultadSubastaBorrador, catalogo: catalogoSub }, { rondas: Number(this.rondasPrecioBorrador), tiempoSeg: Number(this.tiempoPrecioBorrador), productos: catalogoPrecio });
     if (!ok) this.error = 'No se pudo iniciar la partida. Revisa los capitanes.';
   }
 

@@ -60,7 +60,7 @@ function repartir(items: string[], n: number): string[] {
 }
 
 /** Genera un puzle del tipo indicado. El nivel sube la dificultad; el resultado es aleatorio. */
-export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: number, usadas: string[] = []): Puzle {
+export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: number, usadas: string[] = [], catalogo: string[] = []): Puzle {
   const n = Math.max(1, ayudantes);
   const L = Math.max(1, nivel);
   switch (tipo) {
@@ -70,7 +70,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'codigo': return generarCodigo(L, n);
     case 'metro': return generarMetro(L, n);
     case 'ecuacion': return generarEcuacion(L, n);
-    case 'palabra': return generarPalabraTodos(L, n, usadas);
+    case 'palabra': return generarPalabraTodos(L, n, usadas, catalogo);
     case 'carrera': return generarCarrera(L, n);
     case 'torres': return generarTorres(L, n);
     case 'pinta': return generarPinta(L, n);
@@ -651,34 +651,15 @@ function normalizarPalabra(t: string): string {
 
 interface PistaPalabra { texto: string; comprueba: (w: string) => boolean; }
 
-/** Lista de palabras del juego de palabras desordenadas (sin tildes, de 4 a 8 letras). */
-const PALABRAS_JUEGO: string[] = [
-  // 4 letras
-  'casa', 'mesa', 'gato', 'flor', 'lago', 'nube', 'mano', 'pato', 'vela', 'copa', 'vaso', 'roca', 'lobo', 'cola', 'pera', 'pino', 'sopa', 'miel', 'bola', 'cubo', 'dedo', 'toro', 'rama', 'hada', 'rosa', 'tela', 'nido', 'piso', 'cama', 'pelo',
-  // 5 letras
-  'luna', 'playa', 'queso', 'reloj', 'silla', 'globo', 'barco', 'avion', 'cesta', 'nieve', 'fresa', 'boton', 'cable', 'faro', 'cabra', 'vaca', 'rana', 'hielo', 'dulce', 'pluma', 'noche', 'sabor', 'traje', 'cerdo', 'gorra', 'pollo', 'zorro', 'lapiz', 'tigre', 'puente', 'monte',
-  // 6 letras
-  'perro', 'libro', 'viento', 'tierra', 'piedra', 'sombra', 'cometa', 'puerta', 'ventana', 'bosque', 'estrella', 'jardin', 'pelota', 'zapato', 'camisa', 'cuerda', 'caballo', 'nariz', 'abeja', 'cohete', 'tortuga', 'cebada', 'pajaro', 'tomate', 'ciudad', 'espejo', 'cocina', 'bolsa', 'nuevo', 'maleta',
-  // 7 letras
-  'manzana', 'cuchara', 'lechuga', 'cebolla', 'canguro', 'pescado', 'mochila', 'gallina', 'platano', 'camello', 'granja', 'escuela', 'familia', 'cartera', 'pintura', 'naranja', 'verano', 'invierno', 'bombero', 'paseo', 'cerveza', 'helado', 'hormiga', 'tesoro', 'vecino',
-  // 8 letras
-  'guitarra', 'almendra', 'cuchillo', 'paraguas', 'alfombra', 'castillo', 'elefante', 'arcoiris', 'bombilla', 'tortilla', 'pantalla', 'sombrero', 'calabaza', 'lavadora', 'bicicleta', 'montana', 'cocodrilo', 'mariposa', 'pistola', 'cangrejo', 'ventilador', 'amarillo', 'plataforma', 'caramelo',
-  // más de 4 letras
-  'taza', 'gema', 'nata', 'lima', 'pozo', 'raiz', 'hoja', 'lazo', 'mapa', 'ropa',
-  'brisa', 'pulpo', 'bolso', 'salto', 'bruja', 'botas', 'ganso', 'limon', 'carta', 'banco',
-  'escoba', 'hamaca', 'gusano', 'tijera', 'castor', 'cuadro', 'pirata', 'trompa', 'velero', 'cuerpo',
-  'ciruela', 'cordero', 'tigresa', 'vaquero', 'alfiler', 'gaviota', 'manteca', 'corazon', 'ternera', 'carnero',
-  'almohada', 'bolsillo', 'cuchilla', 'telefono', 'martillo', 'dentista', 'mosquito', 'pinguino', 'bizcocho', 'escalera'
-];
-
-/** Palabra desordenada, versión presencial: todos ven las letras; el capitán escribe la palabra que le digan. */
-function generarPalabraTodos(L: number, n: number, usadas: string[] = []): Puzle {
+/** Palabra desordenada, versión presencial: todos ven las letras; el capitán escribe la palabra que le digan. Las palabras vienen de assets/games/palabra-desordenada/palabras.json. */
+function generarPalabraTodos(L: number, n: number, usadas: string[] = [], catalogo: string[] = []): Puzle {
   // Sube despacio: cada longitud dura dos niveles (4 letras en 1-2, 5 en 3-4, ... 8 desde el 9)
-  const longitud = Math.min(4 + Math.floor((L - 1) / 2), 8);
-  const delLargo = PALABRAS_JUEGO.filter(p => p.length === longitud);
+  const longitud = Math.min(4 + Math.floor((L - 1) / 2), 9);
+  const base = catalogo.length ? catalogo : ['casa', 'mesa', 'luna', 'perro'];
+  const delLargo = base.filter(p => p.length === longitud);
   let candidatas = delLargo.filter(p => !usadas.includes(p));
   if (!candidatas.length) candidatas = delLargo;
-  if (!candidatas.length) candidatas = PALABRAS_JUEGO;
+  if (!candidatas.length) candidatas = base;
   const palabra = pick(candidatas);
   let letras = barajar(palabra.toUpperCase().split(''));
   let intentos = 0;

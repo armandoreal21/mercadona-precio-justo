@@ -2046,7 +2046,7 @@ export class SalaService {
     if (tipo === 'palabras') { this.crearTurnoPalabras(sala, est); return; }
     if (tipo === 'subasta') { this.crearTurnoSubasta(sala, est); return; }
     if (tipo === 'precio') { this.crearTurnoPrecio(sala, est); return; }
-    const p = generarPuzle(tipo, 1, this.ayudantesDe(sala, est, equipoId), (est as any).palabrasUsadas || []);
+    const p = generarPuzle(tipo, 1, this.ayudantesDe(sala, est, equipoId), (est as any).palabrasUsadas || [], (est as any).palabrasCfg?.catalogo || []);
     if (tipo === 'palabra') this.registrarPalabraUsada(est, p.solucion);
     const ahora = Date.now();
     est.turno = {
@@ -2059,7 +2059,7 @@ export class SalaService {
   /** Tras un acierto, sustituye el puzle por otro del siguiente nivel. */
   private siguientePuzleMinijuego(sala: Sala, est: EstadoMinijuegos): void {
     const t = est.turno!;
-    const p = generarPuzle(t.tipo, t.nivel + 1, this.ayudantesDe(sala, est, t.equipoId), (est as any).palabrasUsadas || []);
+    const p = generarPuzle(t.tipo, t.nivel + 1, this.ayudantesDe(sala, est, t.equipoId), (est as any).palabrasUsadas || [], (est as any).palabrasCfg?.catalogo || []);
     if (t.tipo === 'palabra') this.registrarPalabraUsada(est, p.solucion);
     t.nivel += 1;
     t.panel = p.panel;
@@ -2131,7 +2131,7 @@ export class SalaService {
     });
   }
 
-  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false, configPalabras?: { rondas: number; tiempoSeg: number; numLetras: number; dificultad: string }, configSubasta?: { rondas: number; tiempoSeg: number; dificultad: string; catalogo: { id: string; categoria: string; descripcion: string }[] }, configPrecio?: { rondas: number; tiempoSeg: number; productos: any[] }): Promise<boolean> {
+  async iniciarMinijuegos(codigo: string, capitanes: Record<string, string>, tiempoSeg: number, juegos: TipoMinijuego[], mostrarMeta = false, configPalabras?: { rondas: number; tiempoSeg: number; numLetras: number; dificultad: string; catalogo?: string[] }, configSubasta?: { rondas: number; tiempoSeg: number; dificultad: string; catalogo: { id: string; categoria: string; descripcion: string }[] }, configPrecio?: { rondas: number; tiempoSeg: number; productos: any[] }): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       if (est.fase !== 'esperando') return false;
@@ -3493,7 +3493,7 @@ export class SalaService {
       const t: any = est.turno;
       if (est.fase !== 'jugando' || !t || t.tipo !== 'palabra' || !t.iniciado) return false;
       if (est.capitanes[t.equipoId] !== usuario || Date.now() >= t.finMs) return false;
-      const p = generarPuzle('palabra', t.nivel, this.ayudantesDe(sala, est, t.equipoId), (est as any).palabrasUsadas || []);
+      const p = generarPuzle('palabra', t.nivel, this.ayudantesDe(sala, est, t.equipoId), (est as any).palabrasUsadas || [], (est as any).palabrasCfg?.catalogo || []);
       this.registrarPalabraUsada(est, p.solucion);
       t.panel = p.panel;
       t.pistas = p.pistas;
