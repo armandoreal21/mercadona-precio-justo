@@ -632,7 +632,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                 <div class="flex flex-wrap justify-center gap-2">
                   <span *ngFor="let r of subastaMisPropias; trackBy: trackClaveSub" class="px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 text-emerald-300 font-bold">{{ r.respuesta }}</span>
                 </div>
-                <div *ngIf="isAdmin && Object.keys(subastaS.respuestas || {}).length === 0" class="text-center">
+                <div *ngIf="isAdmin && subastaSinRespuestas" class="text-center">
                   <button (click)="descartarCategoriaSubastaMin()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg">Cambiar categoría</button>
                 </div>
               </ng-container>
@@ -1043,6 +1043,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   private precioCalculoPedido = false;
   precioClasifAbierta = false;
   precioRondaVista = 0;
+  palabrasRondaVista = '';
+  subastaRondaVista = '';
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1380,6 +1382,17 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
   ngDoCheck(): void {
+    // La Palabra Más Larga y La Subasta: al empezar una ronda interna nueva, el campo vuelve vacío
+    const clavePal = this.palabrasP ? `${this.est?.turno?.inicioMs}-${this.palabrasP.ronda}` : '';
+    if (clavePal && clavePal !== this.palabrasRondaVista) {
+      this.palabrasRondaVista = clavePal;
+      this.palabraPal = '';
+    }
+    const claveSub = this.subastaS ? `${this.est?.turno?.inicioMs}-${this.subastaS.ronda}` : '';
+    if (claveSub && claveSub !== this.subastaRondaVista) {
+      this.subastaRondaVista = claveSub;
+      this.respuestaSub = '';
+    }
     // El Precio Justo: al empezar una ronda nueva, el campo de apuesta vuelve vacío
     if (this.precioP && this.precioP.ronda !== this.precioRondaVista) {
       this.precioRondaVista = this.precioP.ronda;
@@ -1663,6 +1676,11 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   get precioApostados(): number {
     return this.precioJugadores.filter(j => j.apostado).length;
+  }
+
+  /** True si nadie ha escrito respuestas todavía en la ronda (permite cambiar la categoría). */
+  get subastaSinRespuestas(): boolean {
+    return Object.keys(this.subastaS?.respuestas || {}).length === 0;
   }
 
   async terminarTiempoPal(): Promise<void> {
