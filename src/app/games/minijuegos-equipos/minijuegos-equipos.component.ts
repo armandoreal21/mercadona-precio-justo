@@ -19,7 +19,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
   codigo: { resumen: 'Hay que introducir un código de dígitos. Cada pista da un dígito.', ejemplo: 'Ejemplo: "primer dígito: el doble de 4" → 8.' },
   metro: { resumen: 'Hay que calcular los transbordos mínimos entre dos estaciones usando el mapa de líneas.', ejemplo: 'Ejemplo: de Origen a Destino con un transbordo → respuesta: 1.' },
   ecuacion: { resumen: 'Hay que resolver una operación cuyo resultado falta.', ejemplo: 'Ejemplo: 7 + 5 = ? → 12.' },
-  palabra: { resumen: 'Os dan letras desordenadas. Hay que ordenarlas para formar una palabra.', ejemplo: 'Ejemplo: A-S-O-C → CASO.' },
+  palabra: { resumen: 'Todos veis las letras desordenadas en pantalla. Quien descubra la palabra se la dice en voz alta al capitán, y el capitán la escribe.', ejemplo: 'Ejemplo: ver A-S-O-C y decir "CASO".' },
   carrera: { resumen: 'Hay corredores y un objetivo. Hay que decir en qué posición llegó.', ejemplo: 'Ejemplo: si el objetivo llegó 2º → respuesta: 2.' },
   torres: { resumen: 'Hay que pasar todos los discos a otra torre. Un disco grande nunca va sobre uno pequeño.', ejemplo: 'Ejemplo: toca la torre de origen y después la de destino.' },
   pinta: { resumen: 'Hay que pintar la cuadrícula igual que el patrón de la pista. El capitán toca las casillas para cambiar su color.', ejemplo: 'Ejemplo: la fila 1 de la pista es azul, rojo, azul.' },
@@ -186,7 +186,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
         </div>
 
         <!-- Panel: lo ve el capitán activo y el equipo que observa -->
-        <div *ngIf="puedeVerPanel()" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+        <div *ngIf="puedeVerPanel() || t.tipo === 'palabra'" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
           <div class="text-xs uppercase text-slate-400 tracking-wider">Panel</div>
           <ng-container [ngSwitch]="t.tipo">
             <div *ngSwitchCase="'secuencia'" class="space-y-3">
@@ -761,7 +761,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </button>
           </div>
 
-          <div *ngIf="!esCapitan || soloCapitan" class="bg-slate-900 p-4 rounded-2xl border border-cyan-700 space-y-2">
+          <div *ngIf="(!esCapitan || soloCapitan) && t.tipo !== 'palabra'" class="bg-slate-900 p-4 rounded-2xl border border-cyan-700 space-y-2">
             <div class="text-xs uppercase text-cyan-300 font-bold">Tu pista (solo para ti)</div>
             <div *ngIf="t.tipo === 'fraude'" class="inline-block text-xs font-bold px-2 py-1 rounded-lg bg-slate-800 border border-slate-600">{{ etiquetaNorma }}</div>
 
@@ -1046,6 +1046,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   palabrasRondaVista = '';
   subastaRondaVista = '';
   turnoRespuestaVista = '';
+  juegosCargados = false;
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1383,6 +1384,30 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
   ngDoCheck(): void {
+    // Configuración conservada tras reiniciar o terminar: se recupera la selección de juegos y los ajustes
+    const E: any = this.est;
+    if (!this.juegosCargados && E?.juegosElegidos) {
+      this.juegosCargados = true;
+      const elegidos: string[] = E.juegosElegidos;
+      this.juegosMarcados = Object.fromEntries(TIPOS_MINIJUEGO.map(t => [t, elegidos.includes(t)]));
+      if (E.tiempoTurnoSeg) this.segundosBorrador = E.tiempoTurnoSeg;
+      this.mostrarMetaBorrador = !!E.mostrarMetaAyudantes;
+      if (E.palabrasCfg) {
+        this.rondasPalabrasBorrador = E.palabrasCfg.rondas;
+        this.tiempoPalabrasBorrador = E.palabrasCfg.tiempoSeg;
+        this.numLetrasPalabrasBorrador = E.palabrasCfg.numLetras;
+        this.dificultadPalabrasBorrador = E.palabrasCfg.dificultad;
+      }
+      if (E.subastaCfg) {
+        this.rondasSubastaBorrador = E.subastaCfg.rondas;
+        this.tiempoSubastaBorrador = E.subastaCfg.tiempoSeg;
+        this.dificultadSubastaBorrador = E.subastaCfg.dificultad;
+      }
+      if (E.precioCfg) {
+        this.rondasPrecioBorrador = E.precioCfg.rondas;
+        this.tiempoPrecioBorrador = E.precioCfg.tiempoSeg;
+      }
+    }
     // Al empezar un turno nuevo, la respuesta del capitán y los dígitos de secuencia vuelven vacíos
     const claveTurnoRsp = this.est?.turno ? `${this.est.turno.inicioMs}-${this.est.turno.ronda}` : '';
     if (claveTurnoRsp && claveTurnoRsp !== this.turnoRespuestaVista) {

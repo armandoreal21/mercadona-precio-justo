@@ -70,7 +70,7 @@ export function generarPuzle(tipo: TipoMinijuego, nivel: number, ayudantes: numb
     case 'codigo': return generarCodigo(L, n);
     case 'metro': return generarMetro(L, n);
     case 'ecuacion': return generarEcuacion(L, n);
-    case 'palabra': return generarPalabra(L, n);
+    case 'palabra': return generarPalabraTodos(L, n);
     case 'carrera': return generarCarrera(L, n);
     case 'torres': return generarTorres(L, n);
     case 'pinta': return generarPinta(L, n);
@@ -650,6 +650,19 @@ function normalizarPalabra(t: string): string {
 }
 
 interface PistaPalabra { texto: string; comprueba: (w: string) => boolean; }
+
+/** Palabra desordenada, versión presencial: todos ven las letras; el capitán escribe la palabra que le digan. */
+function generarPalabraTodos(L: number, n: number): Puzle {
+  const longitud = Math.min(3 + L, 8);
+  let candidatas = PALABRAS.filter(p => p.length === longitud);
+  if (!candidatas.length) candidatas = PALABRAS;
+  const palabra = pick(candidatas);
+  let letras = barajar(palabra.toUpperCase().split(''));
+  let intentos = 0;
+  while (letras.join('') === palabra.toUpperCase() && intentos++ < 20) letras = barajar(palabra.toUpperCase().split(''));
+  const aviso = 'Todos mirad las letras de la pantalla. En cuanto alguien descubra la palabra, decidla en voz alta al capitán.';
+  return { panel: { letras }, pistas: Array.from({ length: n }, () => aviso), solucion: palabra };
+}
 
 function generarPalabra(L: number, n: number): Puzle {
   const longitud = Math.min(3 + L, 8);

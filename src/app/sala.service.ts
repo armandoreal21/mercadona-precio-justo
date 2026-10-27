@@ -2134,6 +2134,7 @@ export class SalaService {
       est.equiposOrden = equipos;
       est.tiempoTurnoSeg = Math.min(300, Math.max(15, Math.round(tiempoSeg || SEG_TURNO_DEFAULT)));
       (est as any).mostrarMetaAyudantes = !!mostrarMeta;
+      (est as any).juegosElegidos = [...juegos];
       (est as any).palabrasCfg = configPalabras || (est as any).palabrasCfg || { rondas: 3, tiempoSeg: 45, numLetras: 10, dificultad: 'facil' };
       (est as any).subastaCfg = configSubasta || (est as any).subastaCfg || { rondas: 3, tiempoSeg: 45, dificultad: 'facil', catalogo: [] };
       (est as any).precioCfg = configPrecio || (est as any).precioCfg || { rondas: 3, tiempoSeg: 45, productos: [] };
@@ -3324,7 +3325,29 @@ export class SalaService {
     this.abrirTurnoMinijuego(sala, est, est.equiposOrden[(est.ronda - 1) % est.equiposOrden.length]);
   }
 
+  /** Reinicia los minijuegos conservando los juegos elegidos y la configuración (no los capitanes). */
   async reiniciarMinijuegos(codigo: string): Promise<boolean> {
+    const upCode = (codigo || '').toUpperCase();
+    const previo: any = this.obtenerSalaPorCodigo(upCode)?.estadoMinijuegos;
+    const conservar = previo ? JSON.parse(JSON.stringify({
+      juegosElegidos: previo.juegosElegidos,
+      tiempoTurnoSeg: previo.tiempoTurnoSeg,
+      mostrarMetaAyudantes: previo.mostrarMetaAyudantes,
+      palabrasCfg: previo.palabrasCfg,
+      subastaCfg: previo.subastaCfg,
+      precioCfg: previo.precioCfg
+    })) : null;
+    const ok = await this.reiniciarMinijuegosBase(codigo);
+    if (ok && conservar) {
+      await this.mutarSala(codigo, (sala) => {
+        Object.assign(this.asegurarEstadoMinijuegos(sala) as any, conservar);
+        return true;
+      });
+    }
+    return ok;
+  }
+
+  private async reiniciarMinijuegosBase(codigo: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       sala.estadoMinijuegos = this.estadoInicialMinijuegos();
       sala.updatedAt = Date.now();
