@@ -1580,7 +1580,16 @@ export class SalaService {
   }
 
   /** Aplica una mutación a la sala: transacción en Firebase o escritura local. Devuelve si se aplicó. */
+  /** Aplica una mutación a la sala con reintentos: si Firebase no la confirma por choques con otros jugadores, se repite tras una espera aleatoria. */
   private async mutarSala(codigo: string, mutator: (sala: Sala) => boolean): Promise<boolean> {
+    for (let intento = 0; intento < 4; intento++) {
+      if (await this.mutarSalaUnaVez(codigo, mutator)) return true;
+      await new Promise(r => setTimeout(r, 150 + Math.random() * 400 * (intento + 1)));
+    }
+    return false;
+  }
+
+  private async mutarSalaUnaVez(codigo: string, mutator: (sala: Sala) => boolean): Promise<boolean> {
     const upCode = (codigo || '').toUpperCase();
     if (this.useFirebase && this.firebaseDb) {
       let aplicado = false;

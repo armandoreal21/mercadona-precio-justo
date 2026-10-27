@@ -1045,6 +1045,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   precioRondaVista = 0;
   palabrasRondaVista = '';
   subastaRondaVista = '';
+  turnoRespuestaVista = '';
 
   /** Camino que va marcando el capitán con las flechas (solo mapa). */
   recorrido: string[] = [];
@@ -1382,6 +1383,14 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   /** Detecta un fallo nuevo del módulo Simón (de los últimos 2 segundos) y lo muestra 1,5 s. */
   ngDoCheck(): void {
+    // Al empezar un turno nuevo, la respuesta del capitán y los dígitos de secuencia vuelven vacíos
+    const claveTurnoRsp = this.est?.turno ? `${this.est.turno.inicioMs}-${this.est.turno.ronda}` : '';
+    if (claveTurnoRsp && claveTurnoRsp !== this.turnoRespuestaVista) {
+      this.turnoRespuestaVista = claveTurnoRsp;
+      this.respuesta = '';
+      this.digitosRespuesta = [];
+      this.digitoActivo = 0;
+    }
     // La Palabra Más Larga y La Subasta: al empezar una ronda interna nueva, el campo vuelve vacío
     const clavePal = this.palabrasP ? `${this.est?.turno?.inicioMs}-${this.palabrasP.ronda}` : '';
     if (clavePal && clavePal !== this.palabrasRondaVista) {
