@@ -569,6 +569,9 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                   <button (click)="enviarPalabraPal()" class="w-full sm:w-auto bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black py-2 sm:py-0 px-4 rounded-xl">Añadir</button>
                 </div>
                 <div *ngIf="palabraErrPal" class="text-rose-300 text-xs text-center">{{ palabraErrPal }}</div>
+                <div *ngIf="isAdmin" class="text-center">
+                  <button (click)="terminarTiempoPal()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg">⏭ Terminar tiempo ya</button>
+                </div>
                 <div *ngIf="!palabrasMiEquipo" class="text-center text-xs text-slate-400">Solo los jugadores de un equipo pueden aportar palabras.</div>
                 <div class="flex flex-wrap justify-center gap-2">
                   <span *ngFor="let a of palabrasMisAportes" class="px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 text-emerald-300 font-bold">{{ a.palabra }}</span>
@@ -617,16 +620,19 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
                   <div *ngIf="subastaS.categoria?.descripcion" class="text-xs text-slate-300 mt-1">{{ subastaS.categoria.descripcion }}</div>
                 </div>
                 <div class="text-center text-3xl font-black text-yellow-400">{{ subastaSegundos }}s</div>
-                <div *ngIf="palabrasMiEquipo" class="flex gap-2 max-w-md mx-auto">
-                  <input [(ngModel)]="respuestaSub" (keyup.enter)="enviarRespuestaSub()" autocomplete="off" placeholder="Escribe una respuesta" class="flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-bold focus:outline-none focus:border-cyan-400" />
-                  <button (click)="enviarRespuestaSub()" class="bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black px-4 rounded-xl">Añadir</button>
+                <div *ngIf="palabrasMiEquipo" class="flex flex-col sm:flex-row gap-2 w-full max-w-md mx-auto">
+                  <input [(ngModel)]="respuestaSub" (keyup.enter)="enviarRespuestaSub()" autocomplete="off" placeholder="Escribe una respuesta" class="w-full sm:flex-1 bg-slate-900 border-2 border-slate-600 rounded-xl px-3 py-2 text-white font-bold focus:outline-none focus:border-cyan-400" />
+                  <button (click)="enviarRespuestaSub()" class="w-full sm:w-auto bg-cyan-400 hover:bg-cyan-300 text-slate-900 font-black py-2 sm:py-0 px-4 rounded-xl">Añadir</button>
                 </div>
                 <div *ngIf="errorRespSub" class="text-rose-300 text-xs text-center">{{ errorRespSub }}</div>
+                <div *ngIf="isAdmin" class="text-center">
+                  <button (click)="terminarTiempoSub()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg">⏭ Terminar tiempo ya</button>
+                </div>
                 <div *ngIf="!palabrasMiEquipo" class="text-center text-xs text-slate-400">Solo los jugadores de un equipo pueden aportar respuestas.</div>
                 <div class="flex flex-wrap justify-center gap-2">
                   <span *ngFor="let r of subastaMisPropias; trackBy: trackClaveSub" class="px-2 py-1 rounded-lg bg-slate-900 border border-slate-700 text-emerald-300 font-bold">{{ r.respuesta }}</span>
                 </div>
-                <div *ngIf="isAdmin && subastaS.respuestas.length === 0" class="text-center">
+                <div *ngIf="isAdmin && Object.keys(subastaS.respuestas || {}).length === 0" class="text-center">
                   <button (click)="descartarCategoriaSubastaMin()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-3 py-1 rounded-lg">Cambiar categoría</button>
                 </div>
               </ng-container>
@@ -1657,6 +1663,16 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   get precioApostados(): number {
     return this.precioJugadores.filter(j => j.apostado).length;
+  }
+
+  async terminarTiempoPal(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.pasarASeleccionPalabrasMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  async terminarTiempoSub(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.pasarASeleccionSubastaMinijuego(this.sala.codigo, this.currentName);
   }
 
   async cambiarProductoPre(): Promise<void> {
