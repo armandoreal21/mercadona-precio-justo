@@ -2021,6 +2021,11 @@ export class SalaService {
     return Math.max(1, this.miembrosDeEquipo(sala, equipoId).filter(n => n !== capitan).length);
   }
 
+  /** Guarda la palabra que ha salido para no repetirla en esta partida. */
+  private registrarPalabraUsada(est: EstadoMinijuegos, solucion: any): void {
+    (est as any).palabrasUsadas = [...((est as any).palabrasUsadas || []), String(solucion)];
+  }
+
   /** Crea el turno simultáneo de La Palabra Más Larga con la configuración que eligió el admin. */
   private crearTurnoPalabras(sala: Sala, est: EstadoMinijuegos): void {
     const cfg = (est as any).palabrasCfg || { rondas: 3, tiempoSeg: 45, numLetras: 10, dificultad: 'facil' };
@@ -2041,7 +2046,8 @@ export class SalaService {
     if (tipo === 'palabras') { this.crearTurnoPalabras(sala, est); return; }
     if (tipo === 'subasta') { this.crearTurnoSubasta(sala, est); return; }
     if (tipo === 'precio') { this.crearTurnoPrecio(sala, est); return; }
-    const p = generarPuzle(tipo, 1, this.ayudantesDe(sala, est, equipoId));
+    const p = generarPuzle(tipo, 1, this.ayudantesDe(sala, est, equipoId), (est as any).palabrasUsadas || []);
+    if (tipo === 'palabra') this.registrarPalabraUsada(est, p.solucion);
     const ahora = Date.now();
     est.turno = {
       equipoId, ronda: est.ronda, tipo, nivel: 1, panel: p.panel, pistas: p.pistas, solucion: p.solucion,
@@ -2053,7 +2059,8 @@ export class SalaService {
   /** Tras un acierto, sustituye el puzle por otro del siguiente nivel. */
   private siguientePuzleMinijuego(sala: Sala, est: EstadoMinijuegos): void {
     const t = est.turno!;
-    const p = generarPuzle(t.tipo, t.nivel + 1, this.ayudantesDe(sala, est, t.equipoId));
+    const p = generarPuzle(t.tipo, t.nivel + 1, this.ayudantesDe(sala, est, t.equipoId), (est as any).palabrasUsadas || []);
+    if (t.tipo === 'palabra') this.registrarPalabraUsada(est, p.solucion);
     t.nivel += 1;
     t.panel = p.panel;
     t.pistas = p.pistas;
@@ -2142,6 +2149,7 @@ export class SalaService {
       (est as any).subastaCfg = configSubasta || (est as any).subastaCfg || { rondas: 3, tiempoSeg: 45, dificultad: 'facil', catalogo: [] };
       (est as any).precioCfg = configPrecio || (est as any).precioCfg || { rondas: 3, tiempoSeg: 45, productos: [] };
       (est as any).precioUsados = [];
+      (est as any).palabrasUsadas = [];
       const elegidos = (juegos || []).filter(j => TIPOS_MINIJUEGO.includes(j));
       if (elegidos.length === 0) return false;
       est.tiposRonda = this.tiposParaRondas(elegidos, est.totalRondas);
@@ -3485,7 +3493,8 @@ export class SalaService {
       const t: any = est.turno;
       if (est.fase !== 'jugando' || !t || t.tipo !== 'palabra' || !t.iniciado) return false;
       if (est.capitanes[t.equipoId] !== usuario || Date.now() >= t.finMs) return false;
-      const p = generarPuzle('palabra', t.nivel, this.ayudantesDe(sala, est, t.equipoId));
+      const p = generarPuzle('palabra', t.nivel, this.ayudantesDe(sala, est, t.equipoId), (est as any).palabrasUsadas || []);
+      this.registrarPalabraUsada(est, p.solucion);
       t.panel = p.panel;
       t.pistas = p.pistas;
       t.solucion = p.solucion;
