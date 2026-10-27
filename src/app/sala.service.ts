@@ -574,6 +574,44 @@ export class SalaService {
   }
 
   /** Lee /salas, aplica la mutación y escribe solo las salas que cambian. */
+  /** Transacción sobre varias salas: cada sala que cambia se escribe con su propia transacción y se vuelve a aplicar sobre la versión actual, así no se pisan cambios de otros jugadores. */
+  private async applyTransactionNueva(mutator: (state: { salasActivas: Sala[] }) => { salasActivas: Sala[] } | null): Promise<{ salasActivas: Sala[] } | null> {
+    if (!this.useFirebase || !this.firebaseDb) return null;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const get = (databaseMod as any).get;
+      const runTransaction = (databaseMod as any).runTransaction;
+      const snap: any = await get(ref(this.firebaseDb, this.firebaseRefPath));
+      const val = snap && typeof snap.val === 'function' ? snap.val() : null;
+      const actual: Sala[] = this.estadoDesdeSalas(val).salasActivas;
+      // Ensayo para saber qué salas cambia la mutación
+      const resultado = mutator({ salasActivas: JSON.parse(JSON.stringify(actual)) as Sala[] });
+      if (resultado === null) return null;
+      const antes = this.firmasDe(actual);
+      const cambiadas = resultado.salasActivas.filter(s => s && s.codigo && antes[s.codigo] !== this.firmaSala(s));
+      // Cada sala cambiada: transacción propia, con la mutación aplicada sobre su versión actual
+      for (const s of cambiadas) {
+        const codigo = s.codigo;
+        const existia = actual.some(x => x.codigo === codigo);
+        await runTransaction(ref(this.firebaseDb, `${this.firebaseRefPath}/${codigo}`), (current: any) => {
+          // Copia local vacía de una sala que ya existe: devolver null hace que Firebase pida la versión real y reintente
+          if ((current === null || current === undefined) && existia) return null;
+          const lista: Sala[] = current ? [JSON.parse(JSON.stringify(current))] : [];
+          const r = mutator({ salasActivas: lista });
+          return r?.salasActivas?.find(x => x.codigo === codigo) ?? undefined;
+        });
+      }
+      this.firmasEnviadas = this.firmasDe(resultado.salasActivas);
+      this.guardarLocal(resultado.salasActivas);
+      if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('mpj_state_updated', { detail: { source: 'firebase-transaction' } }));
+      return { salasActivas: resultado.salasActivas };
+    } catch (e) {
+      console.error('[SalaService] applyTransaction error', e);
+      return null;
+    }
+  }
+
   private async applyTransaction(mutator: (state: { salasActivas: Sala[] }) => { salasActivas: Sala[] } | null): Promise<{ salasActivas: Sala[] } | null> {
     if (!this.useFirebase || !this.firebaseDb) return null;
     try {
@@ -2862,7 +2900,38 @@ export class SalaService {
   }
 
   /** Un jugador pone su apuesta una sola vez y sin ver las de los demás. */
+  /** Clave segura para Firebase a partir del nombre del jugador (no admite . # $ [ ] /). */
+  claveJugador(nombre: string): string {
+    return (nombre || '').replace(/[.#$\[\]\/]/g, '_');
+  }
+
+  /** Un jugador pone su apuesta escribiendo solo su propia clave: sin transacción, así no hay conflictos entre jugadores. */
   async apostarPrecioMinijuego(codigo: string, usuario: string, valor: number): Promise<boolean> {
+    const v = Number(valor);
+    if (isNaN(v) || v < 0) return false;
+    const upCode = (codigo || '').toUpperCase();
+    if (this.useFirebase && this.firebaseDb) {
+      const local = this.obtenerSalaPorCodigo(upCode);
+      if (!local) return false;
+      const P = this.precioDe(this.asegurarEstadoMinijuegos(local));
+      if (!P || P.fase !== 'apostando' || Date.now() >= P.tiempoFin) return false;
+      if (!local.jugadores.some(j => j.nombre === usuario)) return false;
+      if (P.apuestas[this.claveJugador(usuario)] !== undefined) return false;
+      try {
+        const databaseMod = await import('firebase/database');
+        const ref = (databaseMod as any).ref;
+        const update = (databaseMod as any).update;
+        await update(ref(this.firebaseDb, `${this.firebaseRefPath}/${upCode}/estadoMinijuegos/turno/precio/apuestas`), { [this.claveJugador(usuario)]: v });
+        return true;
+      } catch (e) {
+        console.warn('[SalaService] apostarPrecio error', e);
+        return false;
+      }
+    }
+    return this.apostarPrecioMinijuegoLocal(codigo, usuario, v);
+  }
+
+  private async apostarPrecioMinijuegoLocal(codigo: string, usuario: string, valor: number): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const P = this.precioDe(est);
@@ -2884,11 +2953,11 @@ export class SalaService {
       const P = this.precioDe(est);
       if (!P || P.fase !== 'apostando') return false;
       const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
-      const todosApostaron = sala.jugadores.length > 0 && sala.jugadores.every(j => P.apuestas[j.nombre] !== undefined);
+      const todosApostaron = sala.jugadores.length > 0 && sala.jugadores.every(j => P.apuestas[this.claveJugador(j.nombre)] !== undefined);
       if (Date.now() < P.tiempoFin && !esAdmin && !todosApostaron) return false;
       const real = Number(P.producto?.precio ?? 0);
       const lista = Object.entries(P.apuestas).map(([nombre, apuesta]) => ({
-        nombre, apuesta: Number(apuesta), delta: Math.abs(Number(apuesta) - real)
+        nombre: sala.jugadores.find(j => this.claveJugador(j.nombre) === nombre)?.nombre ?? nombre, apuesta: Number(apuesta), delta: Math.abs(Number(apuesta) - real)
       }));
       lista.sort((a, b) => a.delta - b.delta);
       const base = [10, 7, 5];

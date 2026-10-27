@@ -1377,7 +1377,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const PR = this.precioP;
     if (PR?.fase === 'apostando' && (Date.now() >= PR.tiempoFin || this.precioTodosApostaron) && !this.precioCalculoPedido && this.sala && this.currentName) {
       this.precioCalculoPedido = true;
-      this.salaService.calcularRondaPrecioMinijuego(this.sala.codigo, this.currentName);
+      setTimeout(() => this.salaService.calcularRondaPrecioMinijuego(this.sala!.codigo, this.currentName!), Math.random() * 1500);
     }
     if (PR?.fase === 'apostando' && Date.now() < PR.tiempoFin && !this.precioTodosApostaron) this.precioCalculoPedido = false;
     // La Subasta de Respuestas: al acabar el tiempo pasa a selección (una sola vez)
@@ -1623,7 +1623,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
 
   /** Mi apuesta de esta ronda (undefined si aún no he apostado). */
   get precioMiApuesta(): number | undefined {
-    return this.precioP?.apuestas?.[this.currentName ?? ''];
+    return this.precioP?.apuestas?.[this.salaService.claveJugador(this.currentName ?? '')];
   }
 
   /** Jugadores con sus puntos acumulados y si ya han apostado (sin ver las apuestas). */
@@ -1633,7 +1633,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     return this.sala.jugadores.map(j => ({
       nombre: j.nombre,
       puntos: (P.puntos || {})[j.nombre] || 0,
-      apostado: (P.apuestas || {})[j.nombre] !== undefined
+      apostado: (P.apuestas || {})[this.salaService.claveJugador(j.nombre)] !== undefined
     }));
   }
 
@@ -1641,7 +1641,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   get precioTodosApostaron(): boolean {
     const P = this.precioP;
     if (!P || !this.sala || !this.sala.jugadores.length) return false;
-    return this.sala.jugadores.every(j => (P.apuestas || {})[j.nombre] !== undefined);
+    return this.sala.jugadores.every(j => (P.apuestas || {})[this.salaService.claveJugador(j.nombre)] !== undefined);
   }
 
   /** Jugadores ordenados por puntos (y por nombre si empatan) para la clasificación. */
