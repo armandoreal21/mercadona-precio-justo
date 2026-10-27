@@ -1509,7 +1509,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const t: any = this.est?.turno;
     if (!t || t.tipo !== 'subasta' || !t.subasta) return null;
     const S = t.subasta;
-    S.respuestas = S.respuestas || [];
+    S.respuestas = S.respuestas || {};
     S.selecciones = S.selecciones || {};
     S.ganadas = S.ganadas || {};
     return S;
@@ -1527,7 +1527,7 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     const eq = this.palabrasMiEquipo;
     if (!S || !eq) return [];
     const vistas = new Set<string>();
-    return S.respuestas.filter((r: any) => {
+    return Object.values(S.respuestas || {}).filter((r: any) => {
       if (r.equipoId !== eq || vistas.has(r.clave)) return false;
       vistas.add(r.clave);
       return true;
@@ -1538,13 +1538,13 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   get subastaMisPropias(): any[] {
     const S = this.subastaS;
     if (!S) return [];
-    return S.respuestas.filter((r: any) => r.jugador === this.currentName);
+    return Object.values(S.respuestas || {}).filter((r: any) => r.jugador === this.currentName);
   }
 
   subastaElegida(clave: string): boolean {
     const S = this.subastaS;
     const eq = this.palabrasMiEquipo;
-    return !!S && !!eq && (S.selecciones[eq]?.elegidas || []).some((e: any) => e.clave === clave);
+    return !!S && !!eq && (Object.values(S.selecciones[eq]?.elegidas || {}) as any[]).some((e: any) => e.clave === clave);
   }
 
   get subastaMiConfirmado(): boolean {
@@ -1559,8 +1559,8 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
     if (!S || !this.sala) return [];
     return (this.est?.equiposOrden || []).map((id: string) => {
       const sel = S.selecciones[id] || {};
-      const elegidas = sel.elegidas || [];
-      const invalidas: string[] = sel.invalidas || [];
+      const elegidas = Object.values(sel.elegidas || {}) as any[];
+      const invalidas: string[] = Object.values(sel.invalidas || {}) as string[];
       const validas = elegidas.filter((e: any) => !invalidas.includes(e.clave)).length;
       return {
         id,

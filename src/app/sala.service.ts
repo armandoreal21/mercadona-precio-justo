@@ -2764,7 +2764,7 @@ export class SalaService {
     const t: any = est.turno;
     if (!t || t.tipo !== 'subasta' || !t.subasta) return null;
     const S = t.subasta;
-    S.respuestas = S.respuestas || [];
+    S.respuestas = S.respuestas || {};
     S.selecciones = S.selecciones || {};
     S.ganadas = S.ganadas || {};
     S.usadas = S.usadas || [];
@@ -2797,13 +2797,174 @@ export class SalaService {
         ronda: 1, total: cfg.rondas, tiempoSeg: tiempo, dificultad: cfg.dificultad,
         puntosPorRespuesta: cfg.dificultad === 'dificil' ? 2 : 1,
         categoria: cat, usadas: [], tiempoFin: ahora + tiempo * 1000,
-        fase: 'respondiendo', respuestas: [], selecciones: {}, ganadas: {}
+        fase: 'respondiendo', respuestas: {}, selecciones: {}, ganadas: {}
       }
     } as any;
   }
 
-  /** Un jugador escribe una respuesta para su equipo mientras dura la ronda. */
+  // ====================================================================
+  // SUBASTA: escritura directa por clave (cada jugador y cada equipo escribe solo lo suyo)
+  // ====================================================================
+
+  private subastaPath(upCode: string): string {
+    return `${this.firebaseRefPath}/${upCode}/estadoMinijuegos/turno/subasta`;
+  }
+
+  private respuestasSub(S: any): any[] {
+    return Object.values(S?.respuestas || {});
+  }
+
+  /** Un jugador escribe una respuesta en su propia entrada (sin transacción). */
   async aportarRespuestaSubastaMinijuego(codigo: string, usuario: string, texto: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.aportarRespuestaSalaLocal(codigo, usuario, texto);
+    const limpio = (texto || '').trim().replace(/\s+/g, ' ');
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const S = this.subastaDe(this.asegurarEstadoMinijuegos(local));
+    if (!S || S.fase !== 'respondiendo' || Date.now() >= S.tiempoFin) return false;
+    const j = local.jugadores.find(x => x.nombre === usuario);
+    if (!j || !j.equipoId || limpio.length < 2) return false;
+    const clave = this.claveSubasta(limpio);
+    const key = `${this.claveJugador(usuario)}__${this.claveJugador(clave)}`;
+    if (S.respuestas[key]) return false;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, `${this.subastaPath(upCode)}/respuestas`), {
+        [key]: { jugador: usuario, equipoId: j.equipoId, respuesta: limpio, clave }
+      });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] aportarRespuestaSubasta error', e);
+      return false;
+    }
+  }
+
+  /** Pasa a selección cuando se acaba el tiempo (cualquiera) o el admin lo fuerza. */
+  async pasarASeleccionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.pasarASeleccionSalaLocalSub(codigo, usuario);
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const S = this.subastaDe(this.asegurarEstadoMinijuegos(local));
+    if (!S || S.fase !== 'respondiendo') return false;
+    const esAdmin = !!local.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+    if (Date.now() < S.tiempoFin && !esAdmin) return false;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, this.subastaPath(upCode)), { fase: 'seleccion' });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] pasarASeleccionSubasta error', e);
+      return false;
+    }
+  }
+
+  /** Cada equipo marca o desmarca una respuesta: su clave dentro de la selección del equipo. */
+  async toggleEleccionSubastaMinijuego(codigo: string, usuario: string, clave: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.toggleEleccionSalaLocal(codigo, usuario, clave);
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const S = this.subastaDe(this.asegurarEstadoMinijuegos(local));
+    if (!S || S.fase !== 'seleccion') return false;
+    const j = local.jugadores.find(x => x.nombre === usuario);
+    if (!j || !j.equipoId) return false;
+    const sel = S.selecciones[j.equipoId] || {};
+    if (sel.confirmada) return false;
+    const yaEsta = (Object.values(sel.elegidas || {}) as any[]).some(e => e.clave === clave);
+    let valor: any = null;
+    if (!yaEsta) {
+      const r = this.respuestasSub(S).find((x: any) => x.equipoId === j.equipoId && x.clave === clave);
+      if (!r) return false;
+      valor = { clave, texto: r.respuesta };
+    }
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, this.subastaPath(upCode)), { [`selecciones/${j.equipoId}/elegidas/${this.claveJugador(clave)}`]: valor });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] toggleEleccionSubasta error', e);
+      return false;
+    }
+  }
+
+  /** El equipo confirma su selección. Cuando todos confirman, pasa a revelación. */
+  async confirmarSeleccionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.confirmarSeleccionSalaLocal(codigo, usuario);
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const est = this.asegurarEstadoMinijuegos(local);
+    const S = this.subastaDe(est);
+    if (!S || S.fase !== 'seleccion') return false;
+    const j = local.jugadores.find(x => x.nombre === usuario);
+    if (!j || !j.equipoId) return false;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, this.subastaPath(upCode)), { [`selecciones/${j.equipoId}/confirmada`]: true });
+      const todos = est.equiposOrden.every(e => e === j.equipoId || !!S.selecciones[e]?.confirmada);
+      if (todos) await update(ref(this.firebaseDb, this.subastaPath(upCode)), { fase: 'revelacion' });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] confirmarSeleccionSubasta error', e);
+      return false;
+    }
+  }
+
+  /** Admin: pasa a revelación aunque algún equipo no haya confirmado. */
+  async pasarARevelacionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.pasarARevelacionSalaLocal(codigo, usuario);
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const S = this.subastaDe(this.asegurarEstadoMinijuegos(local));
+    const esAdmin = !!local.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+    if (!S || !esAdmin || S.fase !== 'seleccion') return false;
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, this.subastaPath(upCode)), { fase: 'revelacion' });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] pasarARevelacionSubasta error', e);
+      return false;
+    }
+  }
+
+  /** Admin (árbitro): invalida o recupera una respuesta presentada, con una escritura por respuesta. */
+  async toggleInvalidaSubastaMinijuego(codigo: string, usuario: string, equipoId: string, clave: string): Promise<boolean> {
+    if (!(this.useFirebase && this.firebaseDb)) return this.toggleInvalidaSalaLocal(codigo, usuario, equipoId, clave);
+    const upCode = (codigo || '').toUpperCase();
+    const local = this.obtenerSalaPorCodigo(upCode);
+    if (!local) return false;
+    const S = this.subastaDe(this.asegurarEstadoMinijuegos(local));
+    const esAdmin = !!local.jugadores.find(j => j.nombre === usuario)?.esAdmin;
+    if (!S || !esAdmin || S.fase !== 'revelacion' || !S.selecciones[equipoId]) return false;
+    const yaInvalida = (Object.values(S.selecciones[equipoId].invalidas || {}) as string[]).includes(clave);
+    try {
+      const databaseMod = await import('firebase/database');
+      const ref = (databaseMod as any).ref;
+      const update = (databaseMod as any).update;
+      await update(ref(this.firebaseDb, this.subastaPath(upCode)), { [`selecciones/${equipoId}/invalidas/${this.claveJugador(clave)}`]: yaInvalida ? null : clave });
+      return true;
+    } catch (e) {
+      console.warn('[SalaService] toggleInvalidaSubasta error', e);
+      return false;
+    }
+  }
+
+  /** Un jugador escribe una respuesta para su equipo mientras dura la ronda. */
+  private async aportarRespuestaSalaLocal(codigo: string, usuario: string, texto: string): Promise<boolean> {
     const limpio = (texto || '').trim().replace(/\s+/g, ' ');
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
@@ -2825,7 +2986,7 @@ export class SalaService {
       const est = this.asegurarEstadoMinijuegos(sala);
       const S = this.subastaDe(est);
       const esAdmin = !!sala.jugadores.find(j => j.nombre === usuario)?.esAdmin;
-      if (!S || !esAdmin || S.fase !== 'respondiendo' || S.respuestas.length > 0) return false;
+      if (!S || !esAdmin || S.fase !== 'respondiendo' || Object.keys(S.respuestas || {}).length > 0) return false;
       S.categoria = this.elegirCategoriaSubasta(est, S.usadas, S.categoria?.id);
       S.tiempoFin = Date.now() + S.tiempoSeg * 1000;
       sala.updatedAt = Date.now();
@@ -2834,7 +2995,7 @@ export class SalaService {
   }
 
   /** Pasa a selección cuando se acaba el tiempo (cualquiera lo puede pedir) o el admin lo fuerza. */
-  async pasarASeleccionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+  private async pasarASeleccionSalaLocalSub(codigo: string, usuario: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const S = this.subastaDe(est);
@@ -2848,7 +3009,7 @@ export class SalaService {
   }
 
   /** Cada equipo marca o desmarca las respuestas que presenta (mientras no haya confirmado). */
-  async toggleEleccionSubastaMinijuego(codigo: string, usuario: string, clave: string): Promise<boolean> {
+  private async toggleEleccionSalaLocal(codigo: string, usuario: string, clave: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const S = this.subastaDe(est);
@@ -2873,7 +3034,7 @@ export class SalaService {
   }
 
   /** El equipo da por cerrada su selección. Cuando todos confirman, pasa a revelación. */
-  async confirmarSeleccionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+  private async confirmarSeleccionSalaLocal(codigo: string, usuario: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const S = this.subastaDe(est);
@@ -2890,7 +3051,7 @@ export class SalaService {
   }
 
   /** Admin: pasa a revelación aunque algún equipo no haya confirmado. */
-  async pasarARevelacionSubastaMinijuego(codigo: string, usuario: string): Promise<boolean> {
+  private async pasarARevelacionSalaLocal(codigo: string, usuario: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const S = this.subastaDe(est);
@@ -2903,7 +3064,7 @@ export class SalaService {
   }
 
   /** Admin (árbitro): invalida o recupera una respuesta presentada. */
-  async toggleInvalidaSubastaMinijuego(codigo: string, usuario: string, equipoId: string, clave: string): Promise<boolean> {
+  private async toggleInvalidaSalaLocal(codigo: string, usuario: string, equipoId: string, clave: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
       const S = this.subastaDe(est);
@@ -2922,8 +3083,8 @@ export class SalaService {
   private puntosSubastaEquipo(S: any, equipoId: string): number {
     const sel = S.selecciones[equipoId];
     if (!sel) return 0;
-    const invalidas = new Set(sel.invalidas || []);
-    const validas = (sel.elegidas || []).filter((e: any) => !invalidas.has(e.clave)).length;
+    const invalidas = new Set<string>(Object.values(sel.invalidas || {}) as string[]);
+    const validas = (Object.values(sel.elegidas || {}) as any[]).filter((e: any) => !invalidas.has(e.clave)).length;
     return validas * S.puntosPorRespuesta;
   }
 
@@ -2943,7 +3104,7 @@ export class SalaService {
         S.categoria = this.elegirCategoriaSubasta(est, S.usadas);
         S.tiempoFin = Date.now() + S.tiempoSeg * 1000;
         S.fase = 'respondiendo';
-        S.respuestas = [];
+        S.respuestas = {};
         S.selecciones = {};
       } else {
         this.cerrarMinijuegoRondasInternas(sala, est, S.ganadas);
