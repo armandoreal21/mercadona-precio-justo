@@ -2058,6 +2058,9 @@ export class SalaService {
     t.panel = p.panel;
     t.pistas = p.pistas;
     t.solucion = p.solucion;
+    (t as any).puzzleId = ((t as any).puzzleId || 0) + 1;
+    delete (t as any).revelado;
+    delete (t as any).escritura;
     t.recorrido = [];
     if (p.estadoInicial !== undefined) t.estadoJ = JSON.stringify(this.conTiempo(p.estadoInicial));
     else delete t.estadoJ;
@@ -3456,6 +3459,58 @@ export class SalaService {
     });
   }
 
+  /** Palabra desordenada: pista (−1 y 2 letras al azar fijadas). Solo el capitán. */
+  async pedirPistaPalabraMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t: any = est.turno;
+      if (est.fase !== 'jugando' || !t || t.tipo !== 'palabra' || !t.iniciado) return false;
+      if (est.capitanes[t.equipoId] !== usuario || Date.now() >= t.finMs) return false;
+      const sol = String(t.solucion);
+      const yaFijadas: number[] = (t.revelado || []).map((r: any) => r.pos);
+      const libres = [...sol].map((_, i) => i).filter(i => !yaFijadas.includes(i));
+      if (libres.length === 0) return false;
+      const elegidas = barajar(libres).slice(0, 2);
+      t.revelado = [...(t.revelado || []), ...elegidas.map(pos => ({ pos, letra: sol[pos].toUpperCase() }))];
+      t.aciertos -= 1;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Palabra desordenada: cambiar de palabra (−2). Mismo nivel, nueva palabra. */
+  async cambiarPalabraMinijuego(codigo: string, usuario: string): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t: any = est.turno;
+      if (est.fase !== 'jugando' || !t || t.tipo !== 'palabra' || !t.iniciado) return false;
+      if (est.capitanes[t.equipoId] !== usuario || Date.now() >= t.finMs) return false;
+      const p = generarPuzle('palabra', t.nivel, this.ayudantesDe(sala, est, t.equipoId));
+      t.panel = p.panel;
+      t.pistas = p.pistas;
+      t.solucion = p.solucion;
+      t.recorrido = [];
+      t.aciertos -= 2;
+      t.puzzleId = (t.puzzleId || 0) + 1;
+      delete t.revelado;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
+  /** Palabra desordenada: el capitán comparte en tiempo real las fichas que pulsa (para que todos vean lo que escribe). */
+  async escribirPalabraMinijuego(codigo: string, usuario: string, indices: number[]): Promise<boolean> {
+    return this.mutarSala(codigo, (sala) => {
+      const est = this.asegurarEstadoMinijuegos(sala);
+      const t: any = est.turno;
+      if (est.fase !== 'jugando' || !t || t.tipo !== 'palabra') return false;
+      if (est.capitanes[t.equipoId] !== usuario) return false;
+      t.escritura = indices.length ? indices : null;
+      sala.updatedAt = Date.now();
+      return true;
+    });
+  }
+
   async resolverMinijuego(codigo: string, usuario: string, respuesta: string): Promise<boolean> {
     return this.mutarSala(codigo, (sala) => {
       const est = this.asegurarEstadoMinijuegos(sala);
@@ -3465,8 +3520,11 @@ export class SalaService {
       if (Date.now() >= t.finMs) {
         this.cerrarTurnoMinijuego(sala, est);
       } else if (validarRespuesta(t.tipo, t.solucion, respuesta)) {
-        t.aciertos += 1;
+        t.aciertos += t.tipo === 'palabra' ? 3 : 1;
         this.siguientePuzleMinijuego(sala, est);
+      } else if (t.tipo === 'palabra') {
+        // Palabra desordenada: un fallo no resta; solo se avisa para que lo vuelvan a intentar
+        (t as any).falloPal = Date.now();
       } else {
         t.errores += 1;
         t.finMs -= PENALIZACION_ERROR_MS;

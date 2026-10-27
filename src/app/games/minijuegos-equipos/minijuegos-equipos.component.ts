@@ -186,7 +186,7 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
         </div>
 
         <!-- Panel: lo ve el capitán activo y el equipo que observa -->
-        <div *ngIf="puedeVerPanel() || t.tipo === 'palabra'" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+        <div *ngIf="(puedeVerPanel() || t.tipo === 'palabra') && !(esCapitan && t.tipo === 'palabra')" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
           <div class="text-xs uppercase text-slate-400 tracking-wider">Panel</div>
           <ng-container [ngSwitch]="t.tipo">
             <div *ngSwitchCase="'secuencia'" class="space-y-3">
@@ -237,8 +237,9 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
             </div>
             <div *ngSwitchCase="'palabra'" class="space-y-2">
               <div class="text-xs text-slate-400">Ordena estas letras para formar una palabra:</div>
+              <div class="flex justify-center gap-1 flex-wrap"><span *ngFor="let s of slotsPalabra" class="w-8 h-9 rounded-lg border-2 flex items-center justify-center font-black" [ngClass]="s.fijada ? 'border-amber-400 bg-amber-900/40 text-amber-200' : 'border-slate-600 text-slate-500'">{{ s.letra || '_' }}</span></div>
               <div class="flex flex-wrap justify-center gap-2">
-                <span *ngFor="let l of t.panel.letras" class="w-10 h-10 rounded-lg bg-slate-800 border-2 border-cyan-500 flex items-center justify-center font-black text-lg">{{ l }}</span>
+                <span *ngFor="let l of t.panel.letras; let i = index" class="w-10 h-10 rounded-lg bg-slate-800 border-2 border-cyan-500 flex items-center justify-center font-black text-lg" [class.opacity-30]="escrituraPal.includes(i) || reservadasPal.has(i)">{{ l }}</span>
               </div>
             </div>
             <div *ngSwitchCase="'carrera'" class="space-y-2">
@@ -749,9 +750,27 @@ const INSTRUCCIONES: Record<string, { resumen: string; ejemplo: string }> = {
           <button (click)="enviarSecuencia()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2 rounded-lg uppercase text-xs tracking-wide">Enviar</button>
         </div>
 
+        <!-- Palabra desordenada: el capitán pulsa las fichas; las letras fijadas por pista ya aparecen -->
+        <div *ngIf="esCapitan && t.tipo === 'palabra'" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div class="text-xs text-emerald-300 font-bold text-center">Pulsa las letras en orden. Las que ya están fijadas no hace falta pulsarlas.</div>
+          <div class="flex justify-center gap-1 flex-wrap">
+            <span *ngFor="let s of slotsPalabra" class="w-9 h-10 rounded-lg border-2 flex items-center justify-center font-black text-lg" [ngClass]="palabraFalloActivo ? 'border-rose-500 bg-rose-950/60 text-rose-300 animate-pulse' : (s.fijada ? 'border-amber-400 bg-amber-900/40 text-amber-200' : (s.letra ? 'border-cyan-400 bg-slate-950 text-white' : 'border-slate-600 text-slate-600'))">{{ s.letra || '_' }}</span>
+          </div>
+          <div class="flex flex-wrap justify-center gap-2">
+            <button *ngFor="let l of t.panel.letras; let i = index" (click)="pulsarFichaCap(i)" [disabled]="fichaCapDeshabilitada(i)" class="w-10 h-11 rounded-lg font-black text-lg bg-gradient-to-b from-amber-200 to-amber-400 text-slate-950 disabled:opacity-30 active:scale-95 transition">{{ l }}</button>
+          </div>
+          <div class="flex gap-2">
+            <button (click)="borrarFichaCap()" [disabled]="palabraCapPulsadas.length === 0" class="flex-1 bg-slate-800 border border-slate-600 text-slate-200 font-bold py-2 rounded-lg text-xs disabled:opacity-40">⌫ Borrar</button>
+          </div>
+          <div class="flex gap-2">
+            <button (click)="pedirPistaPal()" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-2 rounded-lg text-xs">💡 Pista (−1)</button>
+            <button (click)="cambiarPalabraCap()" class="flex-1 bg-rose-500 hover:bg-rose-400 text-white font-black py-2 rounded-lg text-xs">🔄 Cambiar palabra (−2)</button>
+          </div>
+        </div>
+
         <!-- Equipo activo: el capitán responde, los ayudantes ven su pista -->
         <ng-container *ngIf="enEquipoActivo">
-          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && t.tipo !== 'secuencia' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
+          <div *ngIf="esCapitan && t.tipo !== 'mapa' && t.tipo !== 'cableado' && t.tipo !== 'fraude' && t.tipo !== 'reactor' && t.tipo !== 'puntero' && t.tipo !== 'semaforo' && t.tipo !== 'barco' && t.tipo !== 'cocina' && t.tipo !== 'grua' && t.tipo !== 'quien' && t.tipo !== 'simon' && t.tipo !== 'secuencia' && t.tipo !== 'palabra' && !esInteractivo(t.tipo)" class="bg-slate-900 p-4 rounded-2xl border border-slate-700 space-y-3">
             <div class="text-xs text-emerald-300 font-bold">Eres el capitán: escribe la respuesta cuando tu equipo te la dé.</div>
             <input [(ngModel)]="respuesta" (keyup.enter)="enviar()" [placeholder]="placeholderRespuesta(t.tipo)"
                    class="w-full bg-slate-800 border-2 border-slate-600 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-400" />
@@ -1715,6 +1734,99 @@ export class MinijuegosEquiposComponent implements OnInit, OnDestroy {
   /** True si nadie ha escrito respuestas todavía en la ronda (permite cambiar la categoría). */
   get subastaSinRespuestas(): boolean {
     return Object.keys(this.subastaS?.respuestas || {}).length === 0;
+  }
+
+  /** Fichas que el capitán ha pulsado (en orden), por índice de ficha. */
+  palabraCapPulsadas: number[] = [];
+
+  /** Fichas que se muestran: las del capitán (en local, al instante) o las que comparte el servidor para los demás. */
+  get escrituraPal(): number[] {
+    const t: any = this.est?.turno;
+    return this.esCapitan ? this.palabraCapPulsadas : (t?.escritura || []);
+  }
+
+  /** Comparte con el resto de la sala las fichas que el capitán lleva pulsadas. */
+  private emitirEscrituraPal(): void {
+    if (!this.sala || !this.currentName) return;
+    this.salaService.escribirPalabraMinijuego(this.sala.codigo, this.currentName, this.palabraCapPulsadas);
+  }
+
+  /** Fichas reservadas para las letras ya fijadas por una pista (no se pueden pulsar). */
+  get reservadasPal(): Set<number> {
+    const t: any = this.est?.turno;
+    const letras: string[] = t?.panel?.letras || [];
+    const res = new Set<number>();
+    for (const r of (t?.revelado || [])) {
+      const i = letras.findIndex((l, k) => l === r.letra && !res.has(k));
+      if (i >= 0) res.add(i);
+    }
+    return res;
+  }
+
+  fichaCapDeshabilitada(i: number): boolean {
+    return this.reservadasPal.has(i) || this.escrituraPal.includes(i);
+  }
+
+  /** Huecos de la palabra: las letras fijadas ya aparecen y las demás se llenan con las fichas pulsadas. */
+  get slotsPalabra(): { letra: string | null; fijada: boolean }[] {
+    const t: any = this.est?.turno;
+    const letras: string[] = t?.panel?.letras || [];
+    const fijadas = new Map<number, string>((t?.revelado || []).map((r: any) => [r.pos, r.letra]));
+    const pulsadas = this.escrituraPal.map(i => letras[i]);
+    const slots: { letra: string | null; fijada: boolean }[] = [];
+    let k = 0;
+    for (let p = 0; p < letras.length; p++) {
+      if (fijadas.has(p)) {
+        slots.push({ letra: fijadas.get(p) || null, fijada: true });
+      } else {
+        slots.push({ letra: k < pulsadas.length ? pulsadas[k] : null, fijada: false });
+        k++;
+      }
+    }
+    return slots;
+  }
+
+  get palabraCapCompleta(): boolean {
+    return this.slotsPalabra.length > 0 && this.slotsPalabra.every(s => !!s.letra);
+  }
+
+  pulsarFichaCap(i: number): void {
+    if (this.fichaCapDeshabilitada(i)) return;
+    this.palabraCapPulsadas = [...this.palabraCapPulsadas, i];
+    this.emitirEscrituraPal();
+    // Palabra completa: se envía sola
+    if (this.palabraCapCompleta) this.enviarPalabraCap();
+  }
+
+  borrarFichaCap(): void {
+    this.palabraCapPulsadas = this.palabraCapPulsadas.slice(0, -1);
+    this.emitirEscrituraPal();
+  }
+
+  async enviarPalabraCap(): Promise<void> {
+    if (!this.sala || !this.currentName || !this.palabraCapCompleta) return;
+    const palabra = this.slotsPalabra.map(s => s.letra).join('').toLowerCase();
+    // Se limpian ya, antes de esperar al servidor: si no, al cambiar el puzle quedan posiciones antiguas
+    this.palabraCapPulsadas = [];
+    this.emitirEscrituraPal();
+    await this.salaService.resolverMinijuego(this.sala.codigo, this.currentName, palabra);
+  }
+
+  /** Aviso visual de palabra no válida durante 1,5 s (no resta nada). */
+  get palabraFalloActivo(): boolean {
+    const f = (this.est?.turno as any)?.falloPal;
+    return !!f && this.ahora - f < 1500;
+  }
+
+  async pedirPistaPal(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    await this.salaService.pedirPistaPalabraMinijuego(this.sala.codigo, this.currentName);
+  }
+
+  async cambiarPalabraCap(): Promise<void> {
+    if (!this.sala || !this.currentName) return;
+    this.palabraCapPulsadas = [];
+    await this.salaService.cambiarPalabraMinijuego(this.sala.codigo, this.currentName);
   }
 
   async terminarTiempoPal(): Promise<void> {
